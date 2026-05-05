@@ -1,0 +1,1466 @@
+# do /home/lpt-10xe/Desktop/Internship10x/Project/platform/pipeline/sim/mentor/run_sim.do
+# reading modelsim.ini
+# [exec] file_copy
+# List Of Command Line Aliases
+# 
+# file_copy                                         -- Copy ROM/RAM files to simulation directory
+# 
+# dev_com                                           -- Compile device library files
+# 
+# com                                               -- Compile the design files in correct order
+# 
+# elab                                              -- Elaborate top level design
+# 
+# elab_debug                                        -- Elaborate the top level design with -voptargs=+acc option
+# 
+# ld                                                -- Compile all the design files and elaborate the top level design
+# 
+# ld_debug                                          -- Compile all the design files and elaborate the top level design with  -voptargs=+acc
+# 
+# 
+# 
+# List Of Variables
+# 
+# TOP_LEVEL_NAME                                    -- Top level module name.
+#                                                      For most designs, this should be overridden
+#                                                      to enable the elab/elab_debug aliases.
+# 
+# SYSTEM_INSTANCE_NAME                              -- Instantiated system module name inside top level module.
+# 
+# QSYS_SIMDIR                                       -- Qsys base simulation directory.
+# 
+# QUARTUS_INSTALL_DIR                               -- Quartus installation directory.
+# 
+# USER_DEFINED_COMPILE_OPTIONS                      -- User-defined compile options, added to com/dev_com aliases.
+# 
+# USER_DEFINED_VHDL_COMPILE_OPTIONS                 -- User-defined vhdl compile options, added to com/dev_com aliases.
+# 
+# USER_DEFINED_VERILOG_COMPILE_OPTIONS              -- User-defined verilog compile options, added to com/dev_com aliases.
+# 
+# USER_DEFINED_ELAB_OPTIONS                         -- User-defined elaboration options, added to elab/elab_debug aliases.
+# 
+# SILENCE                                           -- Set to true to suppress all informational and/or warning messages in the generated simulation script. 
+# 
+# PRECOMP_DEVICE_LIB_FILE                           -- Precompiled device library file.
+#                                                     Use this variable to provide modelsim.ini or tcl containing device library mapping and dev_com will be skipped
+#                                                     If value is empty, device libraries will be compiled local
+# 
+# FORCE_MODELSIM_AE_SELECTION                       -- Set to true to force to select Modelsim AE always.
+# [exec] dev_com
+# [exec] com
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:36 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/sim/mentor/intel_vvp_common_pkg.sv -work altera_common_sv_packages 
+# 
+# Top level modules:
+# 	--none--
+# End time: 10:42:36 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:36 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/intel_vvp_clipper_scheduler_2451/sim/mentor/intel_vvp_clipper_pkg.sv -work altera_common_sv_packages 
+# 
+# Top level modules:
+# 	--none--
+# End time: 10:42:36 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:36 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/sim/mentor/intel_mtm_common_pkg.sv -work altera_common_sv_packages 
+# 
+# Top level modules:
+# 	--none--
+# End time: 10:42:37 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:37 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/sim/mentor/intel_vvp_utility_pkg.sv -work altera_common_sv_packages 
+# 
+# Top level modules:
+# 	--none--
+# End time: 10:42:37 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:37 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_vert_scaler_scheduler_2451/sim/mentor/intel_vvp_scaler_pkg.sv -work altera_common_sv_packages 
+# 
+# Top level modules:
+# 	--none--
+# End time: 10:42:37 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:37 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/sim/mentor/intel_vvp_tpg_pkg.sv -work altera_common_sv_packages 
+# 
+# Top level modules:
+# 	--none--
+# End time: 10:42:37 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:37 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_reset_sync_2440/sim/mentor/src_hdl/intel_vvp_reset_sync.sv -L altera_common_sv_packages -work intel_vvp_reset_sync_2440 
+# 
+# Top level modules:
+# End time: 10:42:37 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:37 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/sim/mentor/intel_vvp_axi_pipeline_stage.sv -L altera_common_sv_packages -work intel_vvp_int_to_ext_bridge_2460 
+# 
+# Top level modules:
+# End time: 10:42:37 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:37 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/sim/mentor/intel_vvp_axi_master.sv -L altera_common_sv_packages -work intel_vvp_int_to_ext_bridge_2460 
+# 
+# Top level modules:
+# End time: 10:42:37 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:37 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/sim/mentor/src_hdl/intel_vvp_int_to_ext_bridge.sv -L altera_common_sv_packages -work intel_vvp_int_to_ext_bridge_2460 
+# 
+# Top level modules:
+# End time: 10:42:37 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:37 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/sim/mentor/intel_vvp_axi_pipeline_stage.sv -L altera_common_sv_packages -work intel_vvp_output_interface_bridge_2440 
+# 
+# Top level modules:
+# End time: 10:42:37 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:37 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/sim/mentor/intel_vvp_axi_master.sv -L altera_common_sv_packages -work intel_vvp_output_interface_bridge_2440 
+# 
+# Top level modules:
+# End time: 10:42:38 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:38 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/sim/mentor/src_hdl/intel_vvp_output_interface_bridge.sv -L altera_common_sv_packages -work intel_vvp_output_interface_bridge_2440 
+# 
+# Top level modules:
+# End time: 10:42:38 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:38 on May 01,2026
+# vlog ../../../ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_protocol_conv_2460/sim/pipeline_intel_vvp_protocol_conv_0_intel_vvp_protocol_conv_2460_ydxwruq.v -work intel_vvp_protocol_conv_2460 
+# -- Compiling module pipeline_intel_vvp_protocol_conv_0_intel_vvp_protocol_conv_2460_ydxwruq
+# 
+# Top level modules:
+# 	pipeline_intel_vvp_protocol_conv_0_intel_vvp_protocol_conv_2460_ydxwruq
+# End time: 10:42:38 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:38 on May 01,2026
+# vlog ../../../ip/pipeline/pipeline_intel_vvp_protocol_conv_0/sim/pipeline_intel_vvp_protocol_conv_0.v -work pipeline_intel_vvp_protocol_conv_0 
+# -- Compiling module pipeline_intel_vvp_protocol_conv_0
+# 
+# Top level modules:
+# 	pipeline_intel_vvp_protocol_conv_0
+# End time: 10:42:38 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:38 on May 01,2026
+# vlog ../../../ip/pipeline/pipeline_reset_in/sim/pipeline_reset_in.v -work pipeline_reset_in 
+# -- Compiling module pipeline_reset_in
+# 
+# Top level modules:
+# 	pipeline_reset_in
+# End time: 10:42:38 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:38 on May 01,2026
+# vlog ../../../ip/pipeline/pipeline_clock_in/sim/pipeline_clock_in.v -work pipeline_clock_in 
+# -- Compiling module pipeline_clock_in
+# 
+# Top level modules:
+# 	pipeline_clock_in
+# End time: 10:42:38 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:38 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/intel_vvp_reset_sync_2440/sim/mentor/src_hdl/intel_vvp_reset_sync.sv -L altera_common_sv_packages -work intel_vvp_reset_sync_2440 
+# 
+# Top level modules:
+# End time: 10:42:38 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:38 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/intel_vvp_input_interface_bridge_2440/sim/mentor/intel_vvp_axi_pipeline_stage.sv -L altera_common_sv_packages -work intel_vvp_input_interface_bridge_2440 
+# 
+# Top level modules:
+# End time: 10:42:38 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:38 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/intel_vvp_input_interface_bridge_2440/sim/mentor/intel_vvp_axi_master.sv -L altera_common_sv_packages -work intel_vvp_input_interface_bridge_2440 
+# 
+# Top level modules:
+# End time: 10:42:38 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:38 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/intel_vvp_input_interface_bridge_2440/sim/mentor/src_hdl/intel_vvp_input_interface_bridge.sv -L altera_common_sv_packages -work intel_vvp_input_interface_bridge_2440 
+# 
+# Top level modules:
+# End time: 10:42:38 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:39 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/intel_vvp_output_interface_bridge_2440/sim/mentor/intel_vvp_axi_pipeline_stage.sv -L altera_common_sv_packages -work intel_vvp_output_interface_bridge_2440 
+# 
+# Top level modules:
+# End time: 10:42:39 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:39 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/intel_vvp_output_interface_bridge_2440/sim/mentor/intel_vvp_axi_master.sv -L altera_common_sv_packages -work intel_vvp_output_interface_bridge_2440 
+# 
+# Top level modules:
+# End time: 10:42:39 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:39 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/intel_vvp_output_interface_bridge_2440/sim/mentor/src_hdl/intel_vvp_output_interface_bridge.sv -L altera_common_sv_packages -work intel_vvp_output_interface_bridge_2440 
+# 
+# Top level modules:
+# End time: 10:42:39 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:39 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/intel_vvp_clipper_scheduler_2451/sim/mentor/intel_vvp_pipelined_mux.sv -L altera_common_sv_packages -work intel_vvp_clipper_scheduler_2451 
+# 
+# Top level modules:
+# End time: 10:42:39 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:39 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/intel_vvp_clipper_scheduler_2451/sim/mentor/intel_vvp_common_slave_interface.sv -L altera_common_sv_packages -work intel_vvp_clipper_scheduler_2451 
+# 
+# Top level modules:
+# End time: 10:42:39 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:39 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/intel_vvp_clipper_scheduler_2451/sim/mentor/intel_vvp_axi_pipeline_stage.sv -L altera_common_sv_packages -work intel_vvp_clipper_scheduler_2451 
+# 
+# Top level modules:
+# End time: 10:42:39 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:39 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/intel_vvp_clipper_scheduler_2451/sim/mentor/intel_vvp_axi_master.sv -L altera_common_sv_packages -work intel_vvp_clipper_scheduler_2451 
+# 
+# Top level modules:
+# End time: 10:42:39 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:39 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/intel_vvp_clipper_scheduler_2451/sim/mentor/src_hdl/intel_vvp_clipper_scheduler.sv -L altera_common_sv_packages -work intel_vvp_clipper_scheduler_2451 
+# 
+# Top level modules:
+# End time: 10:42:39 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:39 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/intel_vvp_clipper_algo_comp_2451/sim/mentor/intel_vvp_shift_mux.sv -L altera_common_sv_packages -work intel_vvp_clipper_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:40 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:40 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/intel_vvp_clipper_algo_comp_2451/sim/mentor/intel_vvp_axi_zero_pad.sv -L altera_common_sv_packages -work intel_vvp_clipper_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:40 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:40 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/intel_vvp_clipper_algo_comp_2451/sim/mentor/intel_vvp_axi_zero_strip.sv -L altera_common_sv_packages -work intel_vvp_clipper_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:40 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:40 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/intel_vvp_clipper_algo_comp_2451/sim/mentor/intel_vvp_axi_pipeline_stage.sv -L altera_common_sv_packages -work intel_vvp_clipper_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:40 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:40 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/intel_vvp_clipper_algo_comp_2451/sim/mentor/intel_vvp_axi_master.sv -L altera_common_sv_packages -work intel_vvp_clipper_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:40 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:40 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/intel_vvp_clipper_algo_comp_2451/sim/mentor/src_hdl/intel_vvp_clipper_algo_comp_front.sv -L altera_common_sv_packages -work intel_vvp_clipper_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:40 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:40 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/intel_vvp_clipper_algo_comp_2451/sim/mentor/src_hdl/intel_vvp_clipper_algo_comp_back.sv -L altera_common_sv_packages -work intel_vvp_clipper_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:40 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:40 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/intel_vvp_clipper_algo_comp_2451/sim/mentor/src_hdl/intel_vvp_clipper_algo_comp.sv -L altera_common_sv_packages -work intel_vvp_clipper_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:40 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:40 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/intel_vvp_reset_bridge_2440/sim/mentor/src_hdl/intel_vvp_reset_bridge.sv -L altera_common_sv_packages -work intel_vvp_reset_bridge_2440 
+# 
+# Top level modules:
+# End time: 10:42:40 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:41 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/intel_vvp_ro_reg_servicer_2441/sim/mentor/src_hdl/intel_vvp_ro_reg_servicer.sv -L altera_common_sv_packages -work intel_vvp_ro_reg_servicer_2441 
+# 
+# Top level modules:
+# End time: 10:42:41 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:41 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/intel_vvp_ro_reg_servicer_2441/sim/pipeline_intel_vvp_clipper_0_intel_vvp_ro_reg_servicer_2441_yjzttmi.sv -L altera_common_sv_packages -work intel_vvp_ro_reg_servicer_2441 
+# -- Compiling module pipeline_intel_vvp_clipper_0_intel_vvp_ro_reg_servicer_2441_yjzttmi
+# 
+# Top level modules:
+# 	pipeline_intel_vvp_clipper_0_intel_vvp_ro_reg_servicer_2441_yjzttmi
+# End time: 10:42:41 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:41 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/intel_vvp_mm_agent_reset_hold_2440/sim/mentor/src_hdl/intel_vvp_mm_agent_reset_hold.sv -L altera_common_sv_packages -work intel_vvp_mm_agent_reset_hold_2440 
+# 
+# Top level modules:
+# End time: 10:42:41 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:41 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/altera_merlin_master_translator_193/sim/pipeline_intel_vvp_clipper_0_altera_merlin_master_translator_193_lgcew2q.sv -L altera_common_sv_packages -work altera_merlin_master_translator_193 
+# -- Compiling module pipeline_intel_vvp_clipper_0_altera_merlin_master_translator_193_lgcew2q
+# ** Warning: ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/altera_merlin_master_translator_193/sim/pipeline_intel_vvp_clipper_0_altera_merlin_master_translator_193_lgcew2q.sv(695): (vlog-13528) Extra Parentheses after time system function.
+# ** Warning: ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/altera_merlin_master_translator_193/sim/pipeline_intel_vvp_clipper_0_altera_merlin_master_translator_193_lgcew2q.sv(751): (vlog-13528) Extra Parentheses after time system function.
+# 
+# Top level modules:
+# 	pipeline_intel_vvp_clipper_0_altera_merlin_master_translator_193_lgcew2q
+# End time: 10:42:41 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 2
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:41 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/altera_merlin_slave_translator_191/sim/pipeline_intel_vvp_clipper_0_altera_merlin_slave_translator_191_xg7rzxi.sv -L altera_common_sv_packages -work altera_merlin_slave_translator_191 
+# -- Compiling module pipeline_intel_vvp_clipper_0_altera_merlin_slave_translator_191_xg7rzxi
+# 
+# Top level modules:
+# 	pipeline_intel_vvp_clipper_0_altera_merlin_slave_translator_191_xg7rzxi
+# End time: 10:42:41 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:41 on May 01,2026
+# vlog ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_clipper_0_altera_mm_interconnect_1920_epi4vay.v -work altera_mm_interconnect_1920 
+# -- Compiling module pipeline_intel_vvp_clipper_0_altera_mm_interconnect_1920_epi4vay
+# 
+# Top level modules:
+# 	pipeline_intel_vvp_clipper_0_altera_mm_interconnect_1920_epi4vay
+# End time: 10:42:41 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:41 on May 01,2026
+# vlog ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/intel_vvp_slave_front_end_2441/sim/pipeline_intel_vvp_clipper_0_intel_vvp_slave_front_end_2441_pty7jna.v -work intel_vvp_slave_front_end_2441 
+# -- Compiling module pipeline_intel_vvp_clipper_0_intel_vvp_slave_front_end_2441_pty7jna
+# 
+# Top level modules:
+# 	pipeline_intel_vvp_clipper_0_intel_vvp_slave_front_end_2441_pty7jna
+# End time: 10:42:41 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:41 on May 01,2026
+# vlog ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_clipper_0_altera_mm_interconnect_1920_vibtxqa.v -work altera_mm_interconnect_1920 
+# -- Compiling module pipeline_intel_vvp_clipper_0_altera_mm_interconnect_1920_vibtxqa
+# 
+# Top level modules:
+# 	pipeline_intel_vvp_clipper_0_altera_mm_interconnect_1920_vibtxqa
+# End time: 10:42:41 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:41 on May 01,2026
+# vlog ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/intel_vvp_clipper_2451/sim/pipeline_intel_vvp_clipper_0_intel_vvp_clipper_2451_usqaouy.v -work intel_vvp_clipper_2451 
+# -- Compiling module pipeline_intel_vvp_clipper_0_intel_vvp_clipper_2451_usqaouy
+# 
+# Top level modules:
+# 	pipeline_intel_vvp_clipper_0_intel_vvp_clipper_2451_usqaouy
+# End time: 10:42:41 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:41 on May 01,2026
+# vlog ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/sim/pipeline_intel_vvp_clipper_0.v -work pipeline_intel_vvp_clipper_0 
+# -- Compiling module pipeline_intel_vvp_clipper_0
+# 
+# Top level modules:
+# 	pipeline_intel_vvp_clipper_0
+# End time: 10:42:42 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:42 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_reset_sync_2440/sim/mentor/src_hdl/intel_vvp_reset_sync.sv -L altera_common_sv_packages -work intel_vvp_reset_sync_2440 
+# 
+# Top level modules:
+# End time: 10:42:42 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:42 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_input_interface_bridge_2440/sim/mentor/intel_vvp_axi_pipeline_stage.sv -L altera_common_sv_packages -work intel_vvp_input_interface_bridge_2440 
+# 
+# Top level modules:
+# End time: 10:42:42 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:42 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_input_interface_bridge_2440/sim/mentor/intel_vvp_axi_master.sv -L altera_common_sv_packages -work intel_vvp_input_interface_bridge_2440 
+# 
+# Top level modules:
+# End time: 10:42:42 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:42 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_input_interface_bridge_2440/sim/mentor/src_hdl/intel_vvp_input_interface_bridge.sv -L altera_common_sv_packages -work intel_vvp_input_interface_bridge_2440 
+# 
+# Top level modules:
+# End time: 10:42:42 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:42 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_output_interface_bridge_2440/sim/mentor/intel_vvp_axi_pipeline_stage.sv -L altera_common_sv_packages -work intel_vvp_output_interface_bridge_2440 
+# 
+# Top level modules:
+# End time: 10:42:42 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:42 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_output_interface_bridge_2440/sim/mentor/intel_vvp_axi_master.sv -L altera_common_sv_packages -work intel_vvp_output_interface_bridge_2440 
+# 
+# Top level modules:
+# End time: 10:42:42 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:42 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_output_interface_bridge_2440/sim/mentor/src_hdl/intel_vvp_output_interface_bridge.sv -L altera_common_sv_packages -work intel_vvp_output_interface_bridge_2440 
+# 
+# Top level modules:
+# End time: 10:42:42 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:42 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_line_buffer_2440/sim/mentor/intel_vvp_axi_pipeline_stage.sv -L altera_common_sv_packages -work intel_vvp_line_buffer_2440 
+# 
+# Top level modules:
+# End time: 10:42:42 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:42 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_line_buffer_2440/sim/mentor/intel_vvp_axi_master.sv -L altera_common_sv_packages -work intel_vvp_line_buffer_2440 
+# 
+# Top level modules:
+# End time: 10:42:43 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:43 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_line_buffer_2440/sim/mentor/intel_vvp_axi_zero_pad.sv -L altera_common_sv_packages -work intel_vvp_line_buffer_2440 
+# 
+# Top level modules:
+# End time: 10:42:43 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:43 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_line_buffer_2440/sim/mentor/intel_vvp_axi_zero_strip.sv -L altera_common_sv_packages -work intel_vvp_line_buffer_2440 
+# 
+# Top level modules:
+# End time: 10:42:43 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:43 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_line_buffer_2440/sim/mentor/src_hdl/intel_vvp_line_buffer_no_resend.sv -L altera_common_sv_packages -work intel_vvp_line_buffer_2440 
+# 
+# Top level modules:
+# End time: 10:42:43 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:43 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_line_buffer_2440/sim/mentor/src_hdl/intel_vvp_line_buffer_resend.sv -L altera_common_sv_packages -work intel_vvp_line_buffer_2440 
+# 
+# Top level modules:
+# End time: 10:42:43 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:43 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_line_buffer_2440/sim/mentor/src_hdl/intel_vvp_line_buffer_ram.sv -L altera_common_sv_packages -work intel_vvp_line_buffer_2440 
+# 
+# Top level modules:
+# End time: 10:42:43 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:43 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_line_buffer_2440/sim/mentor/src_hdl/intel_vvp_line_buffer_cmd_mngr.sv -L altera_common_sv_packages -work intel_vvp_line_buffer_2440 
+# 
+# Top level modules:
+# End time: 10:42:43 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:43 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_line_buffer_2440/sim/mentor/src_hdl/intel_vvp_line_buffer.sv -L altera_common_sv_packages -work intel_vvp_line_buffer_2440 
+# 
+# Top level modules:
+# End time: 10:42:43 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:43 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_vert_scaler_scheduler_2451/sim/mentor/intel_vvp_axi_pipeline_stage.sv -L altera_common_sv_packages -work intel_vvp_vert_scaler_scheduler_2451 
+# 
+# Top level modules:
+# End time: 10:42:44 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:44 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_vert_scaler_scheduler_2451/sim/mentor/intel_vvp_axi_master.sv -L altera_common_sv_packages -work intel_vvp_vert_scaler_scheduler_2451 
+# 
+# Top level modules:
+# End time: 10:42:44 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:44 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_vert_scaler_scheduler_2451/sim/mentor/intel_vvp_pipelined_mux.sv -L altera_common_sv_packages -work intel_vvp_vert_scaler_scheduler_2451 
+# 
+# Top level modules:
+# End time: 10:42:44 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:44 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_vert_scaler_scheduler_2451/sim/mentor/intel_vvp_common_slave_interface.sv -L altera_common_sv_packages -work intel_vvp_vert_scaler_scheduler_2451 
+# 
+# Top level modules:
+# End time: 10:42:44 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:44 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_vert_scaler_scheduler_2451/sim/mentor/intel_vvp_serial_divider.sv -L altera_common_sv_packages -work intel_vvp_vert_scaler_scheduler_2451 
+# 
+# Top level modules:
+# End time: 10:42:44 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:44 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_vert_scaler_scheduler_2451/sim/mentor/src_hdl/intel_vvp_vert_scaler_scheduler_ext_ctrl.sv -L altera_common_sv_packages -work intel_vvp_vert_scaler_scheduler_2451 
+# 
+# Top level modules:
+# End time: 10:42:44 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:44 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_vert_scaler_scheduler_2451/sim/mentor/src_hdl/intel_vvp_vert_scaler_scheduler_int_ctrl.sv -L altera_common_sv_packages -work intel_vvp_vert_scaler_scheduler_2451 
+# 
+# Top level modules:
+# End time: 10:42:44 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:44 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_vert_scaler_scheduler_2451/sim/mentor/src_hdl/intel_vvp_vert_scaler_scheduler_ctrl_out.sv -L altera_common_sv_packages -work intel_vvp_vert_scaler_scheduler_2451 
+# 
+# Top level modules:
+# End time: 10:42:44 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:44 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_vert_scaler_scheduler_2451/sim/mentor/src_hdl/intel_vvp_vert_scaler_scheduler_main.sv -L altera_common_sv_packages -work intel_vvp_vert_scaler_scheduler_2451 
+# 
+# Top level modules:
+# End time: 10:42:45 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:45 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_vert_scaler_scheduler_2451/sim/mentor/src_hdl/intel_vvp_vert_scaler_scheduler_init.sv -L altera_common_sv_packages -work intel_vvp_vert_scaler_scheduler_2451 
+# 
+# Top level modules:
+# End time: 10:42:45 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:45 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_vert_scaler_scheduler_2451/sim/mentor/src_hdl/intel_vvp_vert_scaler_scheduler.sv -L altera_common_sv_packages -work intel_vvp_vert_scaler_scheduler_2451 
+# 
+# Top level modules:
+# End time: 10:42:45 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:45 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_reset_bridge_2440/sim/mentor/src_hdl/intel_vvp_reset_bridge.sv -L altera_common_sv_packages -work intel_vvp_reset_bridge_2440 
+# 
+# Top level modules:
+# End time: 10:42:45 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:45 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_cmd_2451/sim/mentor/src_hdl/intel_vvp_horiz_scaler_cmd.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_cmd_2451 
+# 
+# Top level modules:
+# End time: 10:42:45 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:45 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_add_tree.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:45 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:45 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_mult.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:45 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:45 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_2_mult_add.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:45 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:45 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_3_mult_add.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:46 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:46 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_4_mult_add.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:46 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:46 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_mult_add.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:46 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:46 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_round_sat.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:46 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:46 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_rotate_mux.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:46 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:46 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_pip_bunch.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:46 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:46 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_pip_merge.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:46 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:46 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_shift_mux.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:46 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:46 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_pipelined_mux.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:47 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:47 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_edge_pad.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:47 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:47 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_mirror.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:47 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:47 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_h_kernel.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:47 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:47 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_h_kernel_mirror.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:47 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:47 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_h_kernel_422.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:47 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:47 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_serial_divider.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:47 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:47 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_binary_to_gray.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:47 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:47 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_gray_to_binary.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:48 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:48 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_counter_clock_crosser.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:48 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:48 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_fifo_input.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:48 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:48 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_fifo_output.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:48 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:48 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_common_fifo.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:48 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:48 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_axi_pipeline_stage.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:48 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:48 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_axi_master.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:48 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:48 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_axi_fifo_input.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:48 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:48 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_axi_fifo_output.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:49 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:49 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_axi_fifo.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:49 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:49 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_token_fifo_input.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:49 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:49 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_axi_zero_pad.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:49 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:49 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_axi_zero_strip.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:50 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:50 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_scaler_iterative_base.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:51 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:51 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_scaler_iterative_init_ready.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:51 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:51 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_scaler_iterative_init_valid.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:52 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:52 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/intel_vvp_scaler_iterative_init_phase.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:53 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:53 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/src_hdl/intel_vvp_horiz_scaler_algo_comp_ctrl.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:53 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:53 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/src_hdl/intel_vvp_horiz_scaler_algo_comp_coeff.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:54 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:54 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/src_hdl/intel_vvp_horiz_scaler_algo_comp_infifo.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:55 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:55 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/src_hdl/intel_vvp_horiz_scaler_algo_comp_outfifo.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:55 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:55 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/src_hdl/intel_vvp_horiz_scaler_algo_comp_backend.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:56 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:56 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/mentor/src_hdl/intel_vvp_horiz_scaler_algo_comp.sv -L altera_common_sv_packages -work intel_vvp_horiz_scaler_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:42:57 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:57 on May 01,2026
+# vlog ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/sim/pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_npk6mki.v -work intel_vvp_horiz_scaler_algo_comp_2451 
+# -- Compiling module pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_npk6mki
+# 
+# Top level modules:
+# 	pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_npk6mki
+# End time: 10:42:57 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:57 on May 01,2026
+# vlog ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_scaler_h_macro_2451/sim/pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_7xdsdlq.v -work intel_vvp_scaler_h_macro_2451 
+# -- Compiling module pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_7xdsdlq
+# 
+# Top level modules:
+# 	pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_7xdsdlq
+# End time: 10:42:57 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:57 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_ro_reg_servicer_2441/sim/mentor/src_hdl/intel_vvp_ro_reg_servicer.sv -L altera_common_sv_packages -work intel_vvp_ro_reg_servicer_2441 
+# 
+# Top level modules:
+# End time: 10:42:58 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:58 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_ro_reg_servicer_2441/sim/pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_shbm2aq.sv -L altera_common_sv_packages -work intel_vvp_ro_reg_servicer_2441 
+# -- Compiling module pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_shbm2aq
+# 
+# Top level modules:
+# 	pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_shbm2aq
+# End time: 10:42:58 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:58 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_mm_agent_reset_hold_2440/sim/mentor/src_hdl/intel_vvp_mm_agent_reset_hold.sv -L altera_common_sv_packages -work intel_vvp_mm_agent_reset_hold_2440 
+# 
+# Top level modules:
+# End time: 10:42:59 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:59 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/altera_merlin_master_translator_193/sim/pipeline_intel_vvp_scaler_0_altera_merlin_master_translator_193_lgcew2q.sv -L altera_common_sv_packages -work altera_merlin_master_translator_193 
+# -- Compiling module pipeline_intel_vvp_scaler_0_altera_merlin_master_translator_193_lgcew2q
+# ** Warning: ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/altera_merlin_master_translator_193/sim/pipeline_intel_vvp_scaler_0_altera_merlin_master_translator_193_lgcew2q.sv(695): (vlog-13528) Extra Parentheses after time system function.
+# ** Warning: ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/altera_merlin_master_translator_193/sim/pipeline_intel_vvp_scaler_0_altera_merlin_master_translator_193_lgcew2q.sv(751): (vlog-13528) Extra Parentheses after time system function.
+# 
+# Top level modules:
+# 	pipeline_intel_vvp_scaler_0_altera_merlin_master_translator_193_lgcew2q
+# End time: 10:42:59 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 2
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:59 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/altera_merlin_slave_translator_191/sim/pipeline_intel_vvp_scaler_0_altera_merlin_slave_translator_191_xg7rzxi.sv -L altera_common_sv_packages -work altera_merlin_slave_translator_191 
+# -- Compiling module pipeline_intel_vvp_scaler_0_altera_merlin_slave_translator_191_xg7rzxi
+# 
+# Top level modules:
+# 	pipeline_intel_vvp_scaler_0_altera_merlin_slave_translator_191_xg7rzxi
+# End time: 10:42:59 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:42:59 on May 01,2026
+# vlog ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_epi4vay.v -work altera_mm_interconnect_1920 
+# -- Compiling module pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_epi4vay
+# 
+# Top level modules:
+# 	pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_epi4vay
+# End time: 10:43:00 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:43:00 on May 01,2026
+# vlog ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_slave_front_end_2441/sim/pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_5acy5eq.v -work intel_vvp_slave_front_end_2441 
+# -- Compiling module pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_5acy5eq
+# 
+# Top level modules:
+# 	pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_5acy5eq
+# End time: 10:43:00 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:43:00 on May 01,2026
+# vlog ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_vevxpda.v -work altera_mm_interconnect_1920 
+# -- Compiling module pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_vevxpda
+# 
+# Top level modules:
+# 	pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_vevxpda
+# End time: 10:43:00 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:43:00 on May 01,2026
+# vlog ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_scaler_2451/sim/pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_z7wmuia.v -work intel_vvp_scaler_2451 
+# -- Compiling module pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_z7wmuia
+# 
+# Top level modules:
+# 	pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_z7wmuia
+# End time: 10:43:01 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:43:01 on May 01,2026
+# vlog ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/sim/pipeline_intel_vvp_scaler_0.v -work pipeline_intel_vvp_scaler_0 
+# -- Compiling module pipeline_intel_vvp_scaler_0
+# 
+# Top level modules:
+# 	pipeline_intel_vvp_scaler_0
+# End time: 10:43:01 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:43:01 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_tpg_0/intel_vvp_reset_sync_2440/sim/mentor/src_hdl/intel_vvp_reset_sync.sv -L altera_common_sv_packages -work intel_vvp_reset_sync_2440 
+# 
+# Top level modules:
+# End time: 10:43:01 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:43:02 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/sim/mentor/intel_vvp_axi_pipeline_stage.sv -L altera_common_sv_packages -work intel_vvp_tpg_scheduler_2451 
+# 
+# Top level modules:
+# End time: 10:43:02 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:43:02 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/sim/mentor/intel_vvp_axi_master.sv -L altera_common_sv_packages -work intel_vvp_tpg_scheduler_2451 
+# 
+# Top level modules:
+# End time: 10:43:02 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:43:02 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/sim/mentor/intel_vvp_pipelined_mux.sv -L altera_common_sv_packages -work intel_vvp_tpg_scheduler_2451 
+# 
+# Top level modules:
+# End time: 10:43:03 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:43:03 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/sim/mentor/intel_vvp_common_slave_interface.sv -L altera_common_sv_packages -work intel_vvp_tpg_scheduler_2451 
+# 
+# Top level modules:
+# End time: 10:43:03 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:43:03 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/sim/mentor/src_hdl/intel_vvp_tpg_scheduler.sv -L altera_common_sv_packages -work intel_vvp_tpg_scheduler_2451 
+# 
+# Top level modules:
+# End time: 10:43:04 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:43:04 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/sim/mentor/src_hdl/intel_vvp_tpg_scheduler_stopwatch.sv -L altera_common_sv_packages -work intel_vvp_tpg_scheduler_2451 
+# 
+# Top level modules:
+# End time: 10:43:04 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:43:04 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_tpg_0/intel_vvp_output_interface_bridge_2440/sim/mentor/intel_vvp_axi_pipeline_stage.sv -L altera_common_sv_packages -work intel_vvp_output_interface_bridge_2440 
+# 
+# Top level modules:
+# End time: 10:43:04 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:43:04 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_tpg_0/intel_vvp_output_interface_bridge_2440/sim/mentor/intel_vvp_axi_master.sv -L altera_common_sv_packages -work intel_vvp_output_interface_bridge_2440 
+# 
+# Top level modules:
+# End time: 10:43:05 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:43:05 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_tpg_0/intel_vvp_output_interface_bridge_2440/sim/mentor/src_hdl/intel_vvp_output_interface_bridge.sv -L altera_common_sv_packages -work intel_vvp_output_interface_bridge_2440 
+# 
+# Top level modules:
+# End time: 10:43:05 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:43:05 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/sim/mentor/intel_vvp_axi_zero_pad.sv -L altera_common_sv_packages -work intel_vvp_tpg_bars_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:43:05 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:43:06 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/sim/mentor/intel_vvp_axi_zero_strip.sv -L altera_common_sv_packages -work intel_vvp_tpg_bars_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:43:06 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:43:06 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/sim/mentor/intel_vvp_axi_pipeline_stage.sv -L altera_common_sv_packages -work intel_vvp_tpg_bars_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:43:06 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:43:06 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/sim/mentor/intel_vvp_axi_master.sv -L altera_common_sv_packages -work intel_vvp_tpg_bars_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:43:07 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:43:07 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/sim/mentor/src_hdl/intel_vvp_tpg_bars_algo_comp_lut.sv -L altera_common_sv_packages -work intel_vvp_tpg_bars_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:43:07 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:43:07 on May 01,2026
+# vlog -sv ../../../ip/pipeline/pipeline_intel_vvp_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/sim/mentor/src_hdl/intel_vvp_tpg_bars_algo_comp.sv -L altera_common_sv_packages -work intel_vvp_tpg_bars_algo_comp_2451 
+# 
+# Top level modules:
+# End time: 10:43:07 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:43:07 on May 01,2026
+# vlog ../../../ip/pipeline/pipeline_intel_vvp_tpg_0/intel_vvp_tpg_2451/sim/pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_fjcws5y.v -work intel_vvp_tpg_2451 
+# -- Compiling module pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_fjcws5y
+# 
+# Top level modules:
+# 	pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_fjcws5y
+# End time: 10:43:08 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:43:08 on May 01,2026
+# vlog ../../../ip/pipeline/pipeline_intel_vvp_tpg_0/sim/pipeline_intel_vvp_tpg_0.v -work pipeline_intel_vvp_tpg_0 
+# -- Compiling module pipeline_intel_vvp_tpg_0
+# 
+# Top level modules:
+# 	pipeline_intel_vvp_tpg_0
+# End time: 10:43:08 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:43:08 on May 01,2026
+# vlog ../../altera_reset_controller_1924/sim/altera_reset_controller.v -work altera_reset_controller_1924 
+# -- Compiling module altera_reset_controller
+# 
+# Top level modules:
+# 	altera_reset_controller
+# End time: 10:43:08 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:43:08 on May 01,2026
+# vlog ../../altera_reset_controller_1924/sim/altera_reset_synchronizer.v -work altera_reset_controller_1924 
+# -- Compiling module altera_reset_synchronizer
+# 
+# Top level modules:
+# 	altera_reset_synchronizer
+# End time: 10:43:09 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:43:09 on May 01,2026
+# vlog ../pipeline.v -work pipeline 
+# -- Compiling module pipeline
+# 
+# Top level modules:
+# 	pipeline
+# End time: 10:43:09 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:43:09 on May 01,2026
+# vlog /home/lpt-10xe/Desktop/Internship10x/Project/rtl/tb.v 
+# -- Compiling module tb
+# 
+# Top level modules:
+# 	tb
+# End time: 10:43:09 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:43:09 on May 01,2026
+# vlog /home/lpt-10xe/Desktop/Internship10x/Project/rtl/top.v 
+# -- Compiling module top
+# 
+# Top level modules:
+# 	top
+# End time: 10:43:10 on May 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:43:10 on May 01,2026
+# vlog /home/lpt-10xe/Desktop/Internship10x/Project/rtl/make_file.v 
+# -- Compiling module make_file
+# 
+# Top level modules:
+# 	make_file
+# End time: 10:43:10 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2025.1 Compiler 2025.01 Jan 18 2025
+# Start time: 10:43:10 on May 01,2026
+# vlog /home/lpt-10xe/Desktop/Internship10x/Project/rtl/controller.v 
+# -- Compiling module frame_controller
+# 
+# Top level modules:
+# 	frame_controller
+# End time: 10:43:10 on May 01,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# work.tb
+# [exec] elab_debug
+# vsim -voptargs="+acc" -L work -L work_lib -L lpm_ver -L sgate_ver -L altera_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclone10gx_ver -L cyclone10gx_hip_ver -L cyclone10gx_hssi_ver -L lpm -L sgate -L altera -L altera_mf -L altera_lnsim -L cyclone10gx -L cyclone10gx_hip -L cyclone10gx_hssi -L altera_common_sv_packages -L intel_vvp_reset_sync_2440 -L intel_vvp_int_to_ext_bridge_2460 -L intel_vvp_output_interface_bridge_2440 -L intel_vvp_protocol_conv_2460 -L pipeline_intel_vvp_protocol_conv_0 -L pipeline_reset_in -L pipeline_clock_in -L intel_vvp_input_interface_bridge_2440 -L intel_vvp_clipper_scheduler_2451 -L intel_vvp_clipper_algo_comp_2451 -L intel_vvp_reset_bridge_2440 -L intel_vvp_ro_reg_servicer_2441 -L intel_vvp_mm_agent_reset_hold_2440 -L altera_merlin_master_translator_193 -L altera_merlin_slave_translator_191 -L altera_mm_interconnect_1920 -L intel_vvp_slave_front_end_2441 -L intel_vvp_clipper_2451 -L pipeline_intel_vvp_clipper_0 -L intel_vvp_line_buffer_2440 -L intel_vvp_vert_scaler_scheduler_2451 -L intel_vvp_horiz_scaler_cmd_2451 -L intel_vvp_horiz_scaler_algo_comp_2451 -L intel_vvp_scaler_h_macro_2451 -L intel_vvp_scaler_2451 -L pipeline_intel_vvp_scaler_0 -L intel_vvp_tpg_scheduler_2451 -L intel_vvp_tpg_bars_algo_comp_2451 -L intel_vvp_tpg_2451 -L pipeline_intel_vvp_tpg_0 -L altera_reset_controller_1924 -L pipeline work.tb 
+# Start time: 10:43:10 on May 01,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: (vopt-10908) Some optimizations are turned off because the +acc switch is in effect.
+# ** Warning: ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/altera_merlin_master_translator_193/sim/pipeline_intel_vvp_scaler_0_altera_merlin_master_translator_193_lgcew2q.sv(695): (vopt-13528) Extra Parentheses after time system function.
+# ** Warning: ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/altera_merlin_master_translator_193/sim/pipeline_intel_vvp_scaler_0_altera_merlin_master_translator_193_lgcew2q.sv(751): (vopt-13528) Extra Parentheses after time system function.
+# ** Note: (vopt-143) Recognized 2 FSMs in module "top(fast)".
+# ** Warning: ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/altera_merlin_master_translator_193/sim/pipeline_intel_vvp_clipper_0_altera_merlin_master_translator_193_lgcew2q.sv(695): (vopt-13528) Extra Parentheses after time system function.
+# ** Warning: ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/altera_merlin_master_translator_193/sim/pipeline_intel_vvp_clipper_0_altera_merlin_master_translator_193_lgcew2q.sv(751): (vopt-13528) Extra Parentheses after time system function.
+# ** Warning: ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/altera_merlin_master_translator_193/sim/pipeline_intel_vvp_clipper_0_altera_merlin_master_translator_193_lgcew2q.sv(695): (vopt-13528) Extra Parentheses after time system function.
+# ** Warning: ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/altera_merlin_master_translator_193/sim/pipeline_intel_vvp_clipper_0_altera_merlin_master_translator_193_lgcew2q.sv(751): (vopt-13528) Extra Parentheses after time system function.
+# ** Warning: ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/altera_merlin_master_translator_193/sim/pipeline_intel_vvp_scaler_0_altera_merlin_master_translator_193_lgcew2q.sv(695): (vopt-13528) Extra Parentheses after time system function.
+# ** Warning: ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/altera_merlin_master_translator_193/sim/pipeline_intel_vvp_scaler_0_altera_merlin_master_translator_193_lgcew2q.sv(751): (vopt-13528) Extra Parentheses after time system function.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=9.
+# //  Questa Intel Starter FPGA Edition-64
+# //  Version 2025.1 linux_x86_64 Jan 18 2025
+# //
+# // Unpublished work. Copyright 2025 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading work.tb(fast)
+# Loading work.make_file(fast)
+# Loading work.frame_controller(fast)
+# Loading work.make_file(fast__1)
+# Loading work.frame_controller(fast__1)
+# Loading work.top(fast)
+# Loading pipeline.pipeline(fast)
+# Loading pipeline_clock_in.pipeline_clock_in(fast)
+# Loading pipeline_intel_vvp_clipper_0.pipeline_intel_vvp_clipper_0(fast)
+# Loading intel_vvp_clipper_2451.pipeline_intel_vvp_clipper_0_intel_vvp_clipper_2451_usqaouy(fast)
+# Loading sv_std.std
+# Loading intel_vvp_slave_front_end_2441.pipeline_intel_vvp_clipper_0_intel_vvp_slave_front_end_2441_pty7jna(fast)
+# Loading intel_vvp_ro_reg_servicer_2441.pipeline_intel_vvp_clipper_0_intel_vvp_ro_reg_servicer_2441_yjzttmi(fast)
+# Loading altera_mm_interconnect_1920.pipeline_intel_vvp_clipper_0_altera_mm_interconnect_1920_epi4vay(fast)
+# Loading altera_merlin_master_translator_193.pipeline_intel_vvp_clipper_0_altera_merlin_master_translator_193_lgcew2q(fast)
+# Loading altera_merlin_slave_translator_191.pipeline_intel_vvp_clipper_0_altera_merlin_slave_translator_191_xg7rzxi(fast)
+# Loading altera_mm_interconnect_1920.pipeline_intel_vvp_clipper_0_altera_mm_interconnect_1920_vibtxqa(fast)
+# Loading altera_merlin_master_translator_193.pipeline_intel_vvp_clipper_0_altera_merlin_master_translator_193_lgcew2q(fast__1)
+# Loading altera_merlin_slave_translator_191.pipeline_intel_vvp_clipper_0_altera_merlin_slave_translator_191_xg7rzxi(fast__1)
+# Loading pipeline_intel_vvp_protocol_conv_0.pipeline_intel_vvp_protocol_conv_0(fast)
+# Loading intel_vvp_protocol_conv_2460.pipeline_intel_vvp_protocol_conv_0_intel_vvp_protocol_conv_2460_ydxwruq(fast)
+# Loading pipeline_intel_vvp_scaler_0.pipeline_intel_vvp_scaler_0(fast)
+# Loading intel_vvp_scaler_2451.pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_z7wmuia(fast)
+# Loading altera_lnsim_ver.ace5_lite_bfm_types_pkg(fast)
+# Loading altera_lnsim_ver.ace5_lite_operations_class_pkg(fast)
+# Loading altera_lnsim_ver.altera_lnsim_sv_unit(fast)
+# Loading altera_lnsim_ver.altera_syncram(fast)
+# Loading altera_lnsim_ver.ALTERA_LNSIM_MEMORY_INITIALIZATION(fast)
+# Loading intel_vvp_scaler_h_macro_2451.pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_7xdsdlq(fast)
+# Loading intel_vvp_horiz_scaler_algo_comp_2451.pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_npk6mki(fast)
+# Loading altera_lnsim_ver.altera_syncram(fast__1)
+# Loading altera_lnsim_ver.altera_syncram(fast__2)
+# Loading intel_vvp_slave_front_end_2441.pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_5acy5eq(fast)
+# Loading intel_vvp_ro_reg_servicer_2441.pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_shbm2aq(fast)
+# Loading altera_mm_interconnect_1920.pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_epi4vay(fast)
+# Loading altera_merlin_master_translator_193.pipeline_intel_vvp_scaler_0_altera_merlin_master_translator_193_lgcew2q(fast)
+# Loading altera_merlin_slave_translator_191.pipeline_intel_vvp_scaler_0_altera_merlin_slave_translator_191_xg7rzxi(fast)
+# Loading altera_mm_interconnect_1920.pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_vevxpda(fast)
+# Loading altera_merlin_master_translator_193.pipeline_intel_vvp_scaler_0_altera_merlin_master_translator_193_lgcew2q(fast__1)
+# Loading altera_merlin_slave_translator_191.pipeline_intel_vvp_scaler_0_altera_merlin_slave_translator_191_xg7rzxi(fast__1)
+# Loading pipeline_intel_vvp_tpg_0.pipeline_intel_vvp_tpg_0(fast)
+# Loading intel_vvp_tpg_2451.pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_fjcws5y(fast)
+# Loading pipeline_reset_in.pipeline_reset_in(fast)
+# Loading altera_reset_controller_1924.altera_reset_controller(fast)
+# Loading altera_reset_controller_1924.altera_reset_synchronizer(fast)
+# Loading altera_reset_controller_1924.altera_reset_synchronizer(fast__1)
+# Unable to lock WLF file "vsim.wlf". Retrying 1 times, errno 11
+# Unable to lock WLF file "vsim.wlf". Retrying 2 times, errno 11
+# Unable to lock WLF file "vsim.wlf". Retrying 3 times, errno 11
+# Cannot lock WLF file: "vsim.wlf"
+#           errno 11: Resource temporarily unavailable.
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: lpt-10xe  Hostname: lpt10xe  ProcessID: 50181
+#           Attempting to use alternate WLF file "./wlftz4WZfE".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftz4WZfE
+# [95000] Reset de-asserted. Starting Configuration...
+#               195000: tb.dut.u_pipeline_inst.intel_vvp_clipper_0.intel_vvp_clipper_0.slave_interface.mm_interconnect_0.mm_reset_hold_av_mm_master_translator.waitrequest_monitor.async_rst5: Error: Input controls/data changed while av_waitrequest is asserted.
+# av_address                124 --> 120
+# av_byteenable             f --> f
+# av_burstcount             1 --> 1
+# av_writedata              00000020 --> 00000020
+# av_write                  1 --> 1
+# av_read                   0 --> 0
+# av_lock                   0 --> 0
+# av_chipselect             0 --> 0
+# av_debugaccess            0 --> 0
+#               215000: tb.dut.u_pipeline_inst.intel_vvp_clipper_0.intel_vvp_clipper_0.slave_interface.mm_interconnect_0.mm_reset_hold_av_mm_master_translator.waitrequest_monitor.async_rst5: Error: Input controls/data changed while av_waitrequest is asserted.
+# av_address                120 --> 130
+# av_byteenable             f --> f
+# av_burstcount             1 --> 1
+# av_writedata              00000020 --> 00000001
+# av_write                  1 --> 1
+# av_read                   0 --> 0
+# av_lock                   0 --> 0
+# av_chipselect             0 --> 0
+# av_debugaccess            0 --> 0
+#               235000: tb.dut.u_pipeline_inst.intel_vvp_clipper_0.intel_vvp_clipper_0.slave_interface.mm_interconnect_0.mm_reset_hold_av_mm_master_translator.waitrequest_monitor.async_rst5: Error: Input controls/data changed while av_waitrequest is asserted.
+# av_address                130 --> 134
+# av_byteenable             f --> f
+# av_burstcount             1 --> 1
+# av_writedata              00000001 --> 00000003
+# av_write                  1 --> 1
+# av_read                   0 --> 0
+# av_lock                   0 --> 0
+# av_chipselect             0 --> 0
+# av_debugaccess            0 --> 0
+#               255000: tb.dut.u_pipeline_inst.intel_vvp_clipper_0.intel_vvp_clipper_0.slave_interface.mm_interconnect_0.mm_reset_hold_av_mm_master_translator.waitrequest_monitor.async_rst5: Error: Input controls/data changed while av_waitrequest is asserted.
+# av_address                134 --> 148
+# av_byteenable             f --> f
+# av_burstcount             1 --> 1
+# av_writedata              00000003 --> 00000004
+# av_write                  1 --> 1
+# av_read                   0 --> 0
+# av_lock                   0 --> 0
+# av_chipselect             0 --> 0
+# av_debugaccess            0 --> 0
+#               275000: tb.dut.u_pipeline_inst.intel_vvp_clipper_0.intel_vvp_clipper_0.slave_interface.mm_interconnect_0.mm_reset_hold_av_mm_master_translator.waitrequest_monitor.async_rst5: Error: Input controls/data changed while av_waitrequest is asserted.
+# av_address                148 --> 14c
+# av_byteenable             f --> f
+# av_burstcount             1 --> 1
+# av_writedata              00000004 --> 00000004
+# av_write                  1 --> 1
+# av_read                   0 --> 0
+# av_lock                   0 --> 0
+# av_chipselect             0 --> 0
+# av_debugaccess            0 --> 0
+#               295000: tb.dut.u_pipeline_inst.intel_vvp_clipper_0.intel_vvp_clipper_0.slave_interface.mm_interconnect_0.mm_reset_hold_av_mm_master_translator.waitrequest_monitor.async_rst5: Error: Input controls/data changed while av_waitrequest is asserted.
+# av_address                14c --> 150
+# av_byteenable             f --> f
+# av_burstcount             1 --> 1
+# av_writedata              00000004 --> 00000004
+# av_write                  1 --> 1
+# av_read                   0 --> 0
+# av_lock                   0 --> 0
+# av_chipselect             0 --> 0
+# av_debugaccess            0 --> 0
+#               315000: tb.dut.u_pipeline_inst.intel_vvp_clipper_0.intel_vvp_clipper_0.slave_interface.mm_interconnect_0.mm_reset_hold_av_mm_master_translator.waitrequest_monitor.async_rst5: Error: Input controls/data changed while av_waitrequest is asserted.
+# av_address                150 --> 154
+# av_byteenable             f --> f
+# av_burstcount             1 --> 1
+# av_writedata              00000004 --> 00000004
+# av_write                  1 --> 1
+# av_read                   0 --> 0
+# av_lock                   0 --> 0
+# av_chipselect             0 --> 0
+# av_debugaccess            0 --> 0
+#               335000: tb.dut.u_pipeline_inst.intel_vvp_clipper_0.intel_vvp_clipper_0.slave_interface.mm_interconnect_0.mm_reset_hold_av_mm_master_translator.waitrequest_monitor.async_rst5: Error: Input controls/data changed while av_waitrequest is asserted.
+# av_address                154 --> 144
+# av_byteenable             f --> f
+# av_burstcount             1 --> 1
+# av_writedata              00000004 --> 00000001
+# av_write                  1 --> 1
+# av_read                   0 --> 0
+# av_lock                   0 --> 0
+# av_chipselect             0 --> 0
+# av_debugaccess            0 --> 0
+#               385000: tb.dut.u_pipeline_inst.intel_vvp_scaler_0.intel_vvp_scaler_0.slave_interface.mm_interconnect_0.mm_reset_hold_av_mm_master_translator.waitrequest_monitor.async_rst5: Error: Input controls/data changed while av_waitrequest is asserted.
+# av_address                120 --> 124
+# av_byteenable             f --> f
+# av_burstcount             1 --> 1
+# av_writedata              00000018 --> 00000018
+# av_write                  1 --> 1
+# av_read                   0 --> 0
+# av_lock                   0 --> 0
+# av_chipselect             0 --> 0
+# av_debugaccess            0 --> 0
+#               405000: tb.dut.u_pipeline_inst.intel_vvp_scaler_0.intel_vvp_scaler_0.slave_interface.mm_interconnect_0.mm_reset_hold_av_mm_master_translator.waitrequest_monitor.async_rst5: Error: Input controls/data changed while av_waitrequest is asserted.
+# av_address                124 --> 148
+# av_byteenable             f --> f
+# av_burstcount             1 --> 1
+# av_writedata              00000018 --> 00000008
+# av_write                  1 --> 1
+# av_read                   0 --> 0
+# av_lock                   0 --> 0
+# av_chipselect             0 --> 0
+# av_debugaccess            0 --> 0
+#               425000: tb.dut.u_pipeline_inst.intel_vvp_scaler_0.intel_vvp_scaler_0.slave_interface.mm_interconnect_0.mm_reset_hold_av_mm_master_translator.waitrequest_monitor.async_rst5: Error: Input controls/data changed while av_waitrequest is asserted.
+# av_address                148 --> 14c
+# av_byteenable             f --> f
+# av_burstcount             1 --> 1
+# av_writedata              00000008 --> 00000008
+# av_write                  1 --> 1
+# av_read                   0 --> 0
+# av_lock                   0 --> 0
+# av_chipselect             0 --> 0
+# av_debugaccess            0 --> 0
+# [425000] Configuration Complete. System is now WORKING.
+# [4045000] First Start of Frame (SOF) detected!
+# [7155000] Captured data segments. Simulation passing.
+# [MODULE] Frame Done detected for /home/lpt-10xe/Desktop/Internship10x/Project/app/sc_data.txt. Closing file.
+# [MODULE] Hex file closed.
+# [MODULE] Frame Done detected for /home/lpt-10xe/Desktop/Internship10x/Project/app/sc_data.txt. Closing file.
+# [MODULE] Hex file closed.
+# [MODULE] Frame Done detected for /home/lpt-10xe/Desktop/Internship10x/Project/app/sc_data.txt. Closing file.
+# [MODULE] Hex file closed.
+# [MODULE] Frame Done detected for /home/lpt-10xe/Desktop/Internship10x/Project/app/sc_data.txt. Closing file.
+# [MODULE] Hex file closed.
+# [MODULE] Frame Done detected for /home/lpt-10xe/Desktop/Internship10x/Project/app/sc_data.txt. Closing file.
+# [MODULE] Hex file closed.
+# [MODULE] Frame Done detected for /home/lpt-10xe/Desktop/Internship10x/Project/app/sc_data.txt. Closing file.
+# [MODULE] Hex file closed.
+# [MODULE] Frame Done detected for /home/lpt-10xe/Desktop/Internship10x/Project/app/sc_data.txt. Closing file.
+# [MODULE] Hex file closed.
+# [MODULE] Frame Done detected for /home/lpt-10xe/Desktop/Internship10x/Project/app/sc_data.txt. Closing file.
+# [MODULE] Hex file closed.
+# [MODULE] Frame Done detected for /home/lpt-10xe/Desktop/Internship10x/Project/app/sc_data.txt. Closing file.
+# [MODULE] Hex file closed.
+# [MODULE] Frame Done detected for /home/lpt-10xe/Desktop/Internship10x/Project/app/sc_data.txt. Closing file.
+# [MODULE] Hex file closed.
+# [MODULE] Frame Done detected for /home/lpt-10xe/Desktop/Internship10x/Project/app/sc_data.txt. Closing file.
+# [MODULE] Hex file closed.
+# [MODULE] Frame Done detected for /home/lpt-10xe/Desktop/Internship10x/Project/app/sc_data.txt. Closing file.
+# [MODULE] Hex file closed.
+# [MODULE] Frame Done detected for /home/lpt-10xe/Desktop/Internship10x/Project/app/sc_data.txt. Closing file.
+# [MODULE] Hex file closed.
+# [MODULE] Frame Done detected for /home/lpt-10xe/Desktop/Internship10x/Project/app/sc_data.txt. Closing file.
+# [MODULE] Hex file closed.
+# [MODULE] Frame Done detected for /home/lpt-10xe/Desktop/Internship10x/Project/app/sc_data.txt. Closing file.
+# [MODULE] Hex file closed.
+# [MODULE] Frame Done detected for /home/lpt-10xe/Desktop/Internship10x/Project/app/sc_data.txt. Closing file.
+# [MODULE] Hex file closed.
+# [MODULE] Frame Done detected for /home/lpt-10xe/Desktop/Internship10x/Project/app/sc_data.txt. Closing file.
+# [MODULE] Hex file closed.
+# [MODULE] Frame Done detected for /home/lpt-10xe/Desktop/Internship10x/Project/app/sc_data.txt. Closing file.
+# [MODULE] Hex file closed.
+# [MODULE] Frame Done detected for /home/lpt-10xe/Desktop/Internship10x/Project/app/sc_data.txt. Closing file.
+# [MODULE] Hex file closed.
+# [MODULE] Frame Done detected for /home/lpt-10xe/Desktop/Internship10x/Project/app/sc_data.txt. Closing file.
+# [MODULE] Hex file closed.
+# [MODULE] Frame Done detected for /home/lpt-10xe/Desktop/Internship10x/Project/app/sc_data.txt. Closing file.
+# [MODULE] Hex file closed.
+# [MODULE] Frame Done detected for /home/lpt-10xe/Desktop/Internship10x/Project/app/sc_data.txt. Closing file.
+# [MODULE] Hex file closed.
+# [MODULE] Frame Done detected for /home/lpt-10xe/Desktop/Internship10x/Project/app/sc_data.txt. Closing file.
+# [MODULE] Hex file closed.
+# [MODULE] Frame Done detected for /home/lpt-10xe/Desktop/Internship10x/Project/app/sc_data.txt. Closing file.
+# [18185000] Frame successfully written to file.
+# ** Note: $stop    : /home/lpt-10xe/Desktop/Internship10x/Project/rtl/tb.v(134)
+#    Time: 18185 ns  Iteration: 2  Instance: /tb
+# Break in Module tb at /home/lpt-10xe/Desktop/Internship10x/Project/rtl/tb.v line 134
+# Stopped at /home/lpt-10xe/Desktop/Internship10x/Project/rtl/tb.v line 134

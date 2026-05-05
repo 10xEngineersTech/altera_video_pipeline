@@ -12,9 +12,7 @@ altera_video_pipeline/
 │   │   ├── runProject.py       # Generates .do script and launches QuestaSim (console mode)
 │   │   ├── hex_to_png.py       # Converts simulation hex output to PNG using OpenCV
 │   │   ├── png_to_hex.py       # Utility: converts PNG to hex format
-│   │   ├── tpg.png             # Reference test pattern image (displayed on startup)
-│   │   ├── configuration.vh    # ⚡ Auto-generated at runtime — Verilog parameter header
-│   │   └── pipeline_config.txt # ⚡ Auto-generated at runtime — plain-text parameter file
+│   │   └── tpg.png             # Reference test pattern image (displayed on startup)
 │   ├── rtl/                    # Simulation RTL sources
 │   │   ├── tb.v                # Top-level testbench
 │   │   ├── top.v               # DUT wrapper + Avalon-MM configuration state machine
@@ -29,8 +27,6 @@ altera_video_pipeline/
     ├── resampler_axisfull_1ppc_fixed/
     └── scaler_axislite_reconfigurable/
 ```
-
-> **Note:** `configuration.vh` and `pipeline_config.txt` do **not** exist on a fresh clone. They are created the first time you click **Apply Settings** in the GUI.
 
 ---
 
@@ -126,19 +122,6 @@ python3 image_viewer.py
 | `app/sc_data.txt` | `make_file` (`IS_FULL=0`, Scaler tap) | Raw Scaler pixel hex data — one complete frame in 24-bit U-Y-V hex format |
 | `app/result.png` | `hex_to_png.py` | Final RGB image reconstructed from scaler output; dimensions taken from `pipeline_config.txt` |
 
-### Timeout Watchdog
-
-`tb.v` computes an adaptive simulation timeout at elaboration time:
-
-```verilog
-localparam END_TIME = (SCALER_HEIGHT * SCALER_WIDTH < TPG_WIDTH * TPG_HEIGHT)
-                      ? TPG_WIDTH * TPG_HEIGHT * 100
-                      : SCALER_HEIGHT * SCALER_WIDTH * 100;
-```
-
-This ensures the simulation never hangs regardless of the chosen resolution combination.
-
----
 
 ## 2. Independent IP Testing (`IPs/`)
 
@@ -202,3 +185,4 @@ Validates the **Intel VVP Scaler IP** in **Lite Mode** with a reconfigurable out
 | `0x49` – `IMG_INFO_HEIGHT` | Input lines per frame (from TPG) |
 | `0x52` – `OUTPUT_WIDTH` | Target output pixels per line |
 | `0x53` – `OUTPUT_HEIGHT` | Target output lines per frame |
+

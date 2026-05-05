@@ -8,16 +8,7 @@ A high-performance video processing pipeline implemented using Altera Video and 
 altera_video_pipeline/
 ├── Integrated_design/          # Full end-to-end pipeline simulation
 │   ├── app/                    # GUI application & Python utilities
-│   │   ├── image_viewer.py     # Native GTK3 control panel & image viewer
-│   │   ├── runProject.py       # Generates .do script and launches QuestaSim (console mode)
-│   │   ├── hex_to_png.py       # Converts simulation hex output to PNG using OpenCV
-│   │   ├── png_to_hex.py       # Utility: converts PNG to hex format
-│   │   └── tpg.png             # Reference test pattern image (displayed on startup)
 │   ├── rtl/                    # Simulation RTL sources
-│   │   ├── tb.v                # Top-level testbench
-│   │   ├── top.v               # DUT wrapper + Avalon-MM configuration state machine
-│   │   ├── make_file.v         # AXI4-Stream sink: captures one frame and writes hex data
-│   │   └── controller.v        # Frame controller: pixel/line counting & write-flag logic
 │   ├── platform/               # Platform Designer (Qsys) IP system
 │   └── quartus/                # Quartus project files
 └── IPs/                        # Independent IP validation testbenches
@@ -38,14 +29,10 @@ The integrated pipeline implements the following data flow. All dimensions are p
 
 ```mermaid
 graph LR
-    A["TPG\n(W × H)"] -- "AXIS Full\n24-bit RGB" --> B["Clipper\n(W-L-R) × (H-T-B)"]
-    B -- "AXIS Full\n24-bit RGB" --> C["Protocol Converter\n(Qsys internal)"]
-    C -- "AXIS Lite\n24-bit RGB" --> D["Scaler\n(Sw × Sh)"]
-    D -- "AXIS Lite\n24-bit UYV" --> E["make_file\nscaler_out"]
-    E --> F["hex_to_png.py"]
-    F --> G["result.png"]
-    A -. "tap" .-> H["make_file\ntpg_out"]
-    H --> I["tpg_data.txt"]
+    A[TPG 32x32] -- "AXIS Full" --> B[Clipper]
+    B -- "AXIS Full" --> C[Protocol Converter]
+    C -- "AXIS Lite" --> D[Scaler]
+    D -- "AXIS Lite" --> E[Video Checker]
 ```
 
 **Key gating behaviour:** AXI-Stream data from the TPG is held back until the Avalon-MM configuration sequence for the Clipper and Scaler is fully complete (`STATE_WORKING`). This ensures IPs never receive video before their registers are programmed.

@@ -126,8 +126,20 @@ Validates the **AXI4-Stream Full Clipper IP** in a reconfigurable setup. A TPG f
 | Top Offset | 4 pixels |
 | Right Offset | 4 pixels |
 | Bottom Offset | 4 pixels |
-| Configuration | Avalon-MM with commit register (`0x144`) |
+| Configuration | Avalon-MM with commit register (`0x144` byte / `0x51` word) |
 | Clock | 100 MHz |
+
+| Register (Word Addr) | Description |
+| :--- | :--- |
+| `0x49` – `IMG_INFO_HEIGHT` | Input lines per frame |
+| `0x48` – `IMG_INFO_WIDTH` | Input pixels per line |
+| `0x4C` – `IMG_INFO_COLOR_SPC` | Input color space |
+| `0x4D` – `IMG_INFO_CHROMA_SUB` | Input chroma subsampling |
+| `0x52` – `LEFT_OFFSET` | Left crop offset |
+| `0x53` – `TOP_OFFSET` | Top crop offset |
+| `0x54` – `RIGHT_OFFSET` | Right crop offset |
+| `0x55` – `BOTTOM_OFFSET` | Bottom crop offset |
+| `0x51` – `COMMIT` | Commit configuration |
 
 ### `deinterlacer_axisfull_rgb_only/`
 

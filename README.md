@@ -39,13 +39,13 @@ graph LR
 
 ### Component Breakdown
 
-| Component | Functionality | Configuration |
-| :--- | :--- | :--- |
-| **Test Pattern Generator (TPG)** | Source generation | Configurable resolution, AXI4-Stream Full mode |
-| **Clipper** | Spatial cropping | Extracts active region with Top/Bottom/Left/Right offsets; programmed via Avalon-MM with commit register (`0x51`) |
-| **Protocol Converter** | Interface adaptation | Internal Qsys component; bridges AXI4-Stream Full metadata to AXI4-Stream Lite |
-| **Scaler** | Resolution reduction | Performs high-quality downscaling; programmed via Avalon-MM (input & output dimensions) |
-| **make_file** | Data capture | AXI4-Stream sink; instantiates `frame_controller` to track frame boundaries and write pixel hex data to file |
+| Component | Functionality | Configuration | Reconfigurability |
+| :--- | :--- | :--- | :--- |
+| **Test Pattern Generator (TPG)** | Source generation | Fixed resolution, AXI4-Stream Full mode | Not Reconfigurable |
+| **Clipper** | Spatial cropping | Extracts active region with Top/Bottom/Left/Right offsets; programmed via Avalon-MM with commit register (`0x51`) | Reconfigurable |
+| **Protocol Converter** | Interface adaptation | Internal Qsys component; bridges AXI4-Stream Full metadata to AXI4-Stream Lite | Not Reconfigurable |
+| **Scaler** | Resolution reduction | Performs high-quality downscaling; programmed via Avalon-MM (input & output dimensions) | Reconfigurable |
+| **make_file** | Data capture | AXI4-Stream sink; instantiates `frame_controller` to track frame boundaries and write pixel hex data to file | Not Reconfigurable |
 
 ### RTL Files (`rtl/`)
 

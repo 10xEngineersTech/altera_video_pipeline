@@ -1,0 +1,19 @@
+	component system_alt_vip_cl_crs_0 is
+		port (
+			main_clock         : in  std_logic                     := 'X';             -- clk
+			main_reset         : in  std_logic                     := 'X';             -- reset
+			din_data           : in  std_logic_vector(31 downto 0) := (others => 'X'); -- data
+			din_valid          : in  std_logic                     := 'X';             -- valid
+			din_startofpacket  : in  std_logic                     := 'X';             -- startofpacket
+			din_endofpacket    : in  std_logic                     := 'X';             -- endofpacket
+			din_empty          : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- empty
+			din_ready          : out std_logic;                                        -- ready
+			dout_data          : out std_logic_vector(47 downto 0);                    -- data
+			dout_valid         : out std_logic;                                        -- valid
+			dout_startofpacket : out std_logic;                                        -- startofpacket
+			dout_endofpacket   : out std_logic;                                        -- endofpacket
+			dout_empty         : out std_logic_vector(2 downto 0);                     -- empty
+			dout_ready         : in  std_logic                     := 'X'              -- ready
+		);
+	end component system_alt_vip_cl_crs_0;
+

@@ -1,0 +1,72 @@
+set_global_assignment -entity "clipper_ip" -library "clipper_ip" -name IP_TOOL_NAME "QsysPrimePro"
+set_global_assignment -entity "clipper_ip" -library "clipper_ip" -name IP_TOOL_VERSION "25.1"
+set_global_assignment -entity "clipper_ip" -library "clipper_ip" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -library "clipper_ip" -name SOPCINFO_FILE [file join $::quartus(qip_path) "clipper_ip.sopcinfo"]
+set_global_assignment -entity "clipper_ip" -library "clipper_ip" -name SLD_INFO "QSYS_NAME clipper_ip HAS_SOPCINFO 1 GENERATION_ID 0"
+set_global_assignment -library "clipper_ip" -name MISC_FILE [file join $::quartus(qip_path) "clipper_ip.cmp"]
+set_global_assignment -entity "clipper_ip" -library "clipper_ip" -name IP_TARGETED_DEVICE_FAMILY "Cyclone 10 GX"
+set_global_assignment -entity "clipper_ip" -library "clipper_ip" -name IP_GENERATED_DEVICE_FAMILY "{Cyclone 10 GX}"
+set_global_assignment -entity "clipper_ip" -library "clipper_ip" -name IP_QSYS_MODE "SYSTEM"
+set_global_assignment -name SYNTHESIS_ONLY_QIP ON
+set_global_assignment -library "clipper_ip" -name MISC_FILE [file join $::quartus(qip_path) "../clipper_ip.qsys"]
+
+set_global_assignment -entity "clipper_ip_clock_in" -library "clipper_ip_clock_in" -name IP_COMPONENT_NAME "Y2xpcHBlcl9pcF9jbG9ja19pbg=="
+set_global_assignment -entity "clipper_ip_clock_in" -library "clipper_ip_clock_in" -name IP_COMPONENT_DISPLAY_NAME "R2VuZXJpYyBDb21wb25lbnQ="
+set_global_assignment -entity "clipper_ip_clock_in" -library "clipper_ip_clock_in" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "clipper_ip_clock_in" -library "clipper_ip_clock_in" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "clipper_ip_clock_in" -library "clipper_ip_clock_in" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
+set_global_assignment -entity "clipper_ip_clock_in" -library "clipper_ip_clock_in" -name IP_COMPONENT_VERSION "MS4w"
+set_global_assignment -entity "clipper_ip_clock_in" -library "clipper_ip_clock_in" -name IP_COMPONENT_DESCRIPTION "QSBkeW5hbWljIGNvbXBvbmVudCB3aGVyZSB5b3UgY2FuIGFkZCwgbW9kaWZ5IG9yIHJlbW92ZSBpbnRlcmZhY2VzIGFuZCBwb3J0cyBvbiB0aGUgZmx5"
+set_global_assignment -entity "clipper_ip_clock_in" -library "clipper_ip_clock_in" -name IP_COMPONENT_GROUP "R2VuZXJpYyBDb21wb25lbnQ="
+set_global_assignment -entity "clipper_ip_intel_vvp_clipper_0" -library "clipper_ip_intel_vvp_clipper_0" -name IP_COMPONENT_NAME "Y2xpcHBlcl9pcF9pbnRlbF92dnBfY2xpcHBlcl8w"
+set_global_assignment -entity "clipper_ip_intel_vvp_clipper_0" -library "clipper_ip_intel_vvp_clipper_0" -name IP_COMPONENT_DISPLAY_NAME "R2VuZXJpYyBDb21wb25lbnQ="
+set_global_assignment -entity "clipper_ip_intel_vvp_clipper_0" -library "clipper_ip_intel_vvp_clipper_0" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "clipper_ip_intel_vvp_clipper_0" -library "clipper_ip_intel_vvp_clipper_0" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "clipper_ip_intel_vvp_clipper_0" -library "clipper_ip_intel_vvp_clipper_0" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
+set_global_assignment -entity "clipper_ip_intel_vvp_clipper_0" -library "clipper_ip_intel_vvp_clipper_0" -name IP_COMPONENT_VERSION "MS4w"
+set_global_assignment -entity "clipper_ip_intel_vvp_clipper_0" -library "clipper_ip_intel_vvp_clipper_0" -name IP_COMPONENT_DESCRIPTION "QSBkeW5hbWljIGNvbXBvbmVudCB3aGVyZSB5b3UgY2FuIGFkZCwgbW9kaWZ5IG9yIHJlbW92ZSBpbnRlcmZhY2VzIGFuZCBwb3J0cyBvbiB0aGUgZmx5"
+set_global_assignment -entity "clipper_ip_intel_vvp_clipper_0" -library "clipper_ip_intel_vvp_clipper_0" -name IP_COMPONENT_GROUP "R2VuZXJpYyBDb21wb25lbnQ="
+set_global_assignment -entity "clipper_ip_intel_vvp_tpg_0" -library "clipper_ip_intel_vvp_tpg_0" -name IP_COMPONENT_NAME "Y2xpcHBlcl9pcF9pbnRlbF92dnBfdHBnXzA="
+set_global_assignment -entity "clipper_ip_intel_vvp_tpg_0" -library "clipper_ip_intel_vvp_tpg_0" -name IP_COMPONENT_DISPLAY_NAME "R2VuZXJpYyBDb21wb25lbnQ="
+set_global_assignment -entity "clipper_ip_intel_vvp_tpg_0" -library "clipper_ip_intel_vvp_tpg_0" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "clipper_ip_intel_vvp_tpg_0" -library "clipper_ip_intel_vvp_tpg_0" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "clipper_ip_intel_vvp_tpg_0" -library "clipper_ip_intel_vvp_tpg_0" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
+set_global_assignment -entity "clipper_ip_intel_vvp_tpg_0" -library "clipper_ip_intel_vvp_tpg_0" -name IP_COMPONENT_VERSION "MS4w"
+set_global_assignment -entity "clipper_ip_intel_vvp_tpg_0" -library "clipper_ip_intel_vvp_tpg_0" -name IP_COMPONENT_DESCRIPTION "QSBkeW5hbWljIGNvbXBvbmVudCB3aGVyZSB5b3UgY2FuIGFkZCwgbW9kaWZ5IG9yIHJlbW92ZSBpbnRlcmZhY2VzIGFuZCBwb3J0cyBvbiB0aGUgZmx5"
+set_global_assignment -entity "clipper_ip_intel_vvp_tpg_0" -library "clipper_ip_intel_vvp_tpg_0" -name IP_COMPONENT_GROUP "R2VuZXJpYyBDb21wb25lbnQ="
+set_global_assignment -entity "clipper_ip_reset_in" -library "clipper_ip_reset_in" -name IP_COMPONENT_NAME "Y2xpcHBlcl9pcF9yZXNldF9pbg=="
+set_global_assignment -entity "clipper_ip_reset_in" -library "clipper_ip_reset_in" -name IP_COMPONENT_DISPLAY_NAME "R2VuZXJpYyBDb21wb25lbnQ="
+set_global_assignment -entity "clipper_ip_reset_in" -library "clipper_ip_reset_in" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "clipper_ip_reset_in" -library "clipper_ip_reset_in" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "clipper_ip_reset_in" -library "clipper_ip_reset_in" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
+set_global_assignment -entity "clipper_ip_reset_in" -library "clipper_ip_reset_in" -name IP_COMPONENT_VERSION "MS4w"
+set_global_assignment -entity "clipper_ip_reset_in" -library "clipper_ip_reset_in" -name IP_COMPONENT_DESCRIPTION "QSBkeW5hbWljIGNvbXBvbmVudCB3aGVyZSB5b3UgY2FuIGFkZCwgbW9kaWZ5IG9yIHJlbW92ZSBpbnRlcmZhY2VzIGFuZCBwb3J0cyBvbiB0aGUgZmx5"
+set_global_assignment -entity "clipper_ip_reset_in" -library "clipper_ip_reset_in" -name IP_COMPONENT_GROUP "R2VuZXJpYyBDb21wb25lbnQ="
+set_global_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name IP_COMPONENT_NAME "YWx0ZXJhX3Jlc2V0X2NvbnRyb2xsZXI="
+set_global_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name IP_COMPONENT_DISPLAY_NAME "TWVybGluIFJlc2V0IENvbnRyb2xsZXIgSW50ZWwgRlBHQSBJUA=="
+set_global_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name IP_COMPONENT_VERSION "MTkuMi40"
+set_global_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name IP_COMPONENT_DESCRIPTION "Rm9yIHN5c3RlbXMgd2l0aCBtdWx0aXBsZSByZXNldCBpbnB1dHMsIHRoZSBNZXJsaW4gUmVzZXQgQ29udHJvbGxlciBPUnMgYWxsIHJlc2V0IGlucHV0cyBhbmQgZ2VuZXJhdGVzIGEgc2luZ2xlIHJlc2V0IG91dHB1dC4="
+set_global_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name IP_COMPONENT_GROUP "QmFzaWMgRnVuY3Rpb25zL0Nsb2NrczsgUExMcyBhbmQgUmVzZXRz"
+set_global_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL3pjbjE1MTM5ODcyODI5MzUuaHRtbCNtd2gxNDA5OTU4ODI4NzMy"
+set_global_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvZGFtL3d3dy9wcm9ncmFtbWFibGUvdXMvZW4vcGRmcy9saXRlcmF0dXJlL3VnL3VnLXFwcC1wbGF0Zm9ybS1kZXNpZ25lci5wZGY="
+set_global_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2hjbzE0MTY4MzYxNDU1NTUuaHRtbCNoY28xNDE2ODM2NjUzMjIx"
+set_global_assignment -entity "clipper_ip" -library "clipper_ip" -name IP_COMPONENT_NAME "Y2xpcHBlcl9pcA=="
+set_global_assignment -entity "clipper_ip" -library "clipper_ip" -name IP_COMPONENT_DISPLAY_NAME "Y2xpcHBlcl9pcA=="
+set_global_assignment -entity "clipper_ip" -library "clipper_ip" -name IP_COMPONENT_REPORT_HIERARCHY "On"
+set_global_assignment -entity "clipper_ip" -library "clipper_ip" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "clipper_ip" -library "clipper_ip" -name IP_COMPONENT_VERSION "MS4w"
+
+
+set_global_assignment -library "altera_reset_controller_1924" -name VERILOG_FILE [file join $::quartus(qip_path) "altera_reset_controller_1924/synth/altera_reset_controller.v"]
+set_global_assignment -library "altera_reset_controller_1924" -name VERILOG_FILE [file join $::quartus(qip_path) "altera_reset_controller_1924/synth/altera_reset_synchronizer.v"]
+set_instance_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name SDC_ENTITY_FILE [file join $::quartus(qip_path) "altera_reset_controller_1924/synth/altera_reset_controller.sdc"] -no_sdc_promotion 
+set_global_assignment -library "clipper_ip" -name VERILOG_FILE [file join $::quartus(qip_path) "synth/clipper_ip.v"]
+
+
+set_global_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name IP_TOOL_NAME "altera_reset_controller"
+set_global_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name IP_TOOL_VERSION "19.2.4"
+set_global_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name IP_TOOL_ENV "QsysPrimePro"
+

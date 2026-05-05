@@ -1,0 +1,1059 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy
+ date="2026.03.17.16:40:42"
+ outputDirectory="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/">
+ <perimeter>
+  <parameter
+     name="AUTO_GENERATION_ID"
+     type="Integer"
+     defaultValue="0"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_UNIQUE_ID"
+     type="String"
+     defaultValue=""
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_FAMILY"
+     type="String"
+     defaultValue="Cyclone 10 GX"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE"
+     type="String"
+     defaultValue="10CX220YF780I5G"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_SPEEDGRADE"
+     type="String"
+     defaultValue="5"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_BOARD"
+     type="String"
+     defaultValue="default"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_MAIN_CLOCK_CLOCK_RATE"
+     type="Long"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_MAIN_CLOCK_CLOCK_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_MAIN_CLOCK_RESET_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <interface name="main_clock" kind="clock" start="0">
+   <property name="clockRate" value="0" />
+   <property name="externallyDriven" value="false" />
+   <property name="ptfSchematicName" value="" />
+   <port name="main_clock" direction="input" role="clk" width="1" />
+  </interface>
+  <interface name="main_reset" kind="reset" start="0">
+   <property name="associatedClock" value="main_clock" />
+   <property name="synchronousEdges" value="DEASSERT" />
+   <port name="main_reset" direction="input" role="reset" width="1" />
+  </interface>
+  <interface name="din" kind="avalon_streaming" start="0">
+   <property name="associatedClock" value="main_clock" />
+   <property name="associatedReset" value="main_reset" />
+   <property name="beatsPerCycle" value="1" />
+   <property name="dataBitsPerSymbol" value="8" />
+   <property name="emptyWithinPacket" value="false" />
+   <property name="errorDescriptor" value="" />
+   <property name="firstSymbolInHighOrderBits" value="true" />
+   <property name="highOrderSymbolAtMSB" value="false" />
+   <property name="maxChannel" value="0" />
+   <property name="packetDescription" value="" />
+   <property name="prSafe" value="false" />
+   <property name="readyAllowance" value="0" />
+   <property name="readyLatency" value="1" />
+   <property name="symbolsPerBeat" value="4" />
+   <port name="din_data" direction="input" role="data" width="32" />
+   <port name="din_valid" direction="input" role="valid" width="1" />
+   <port
+       name="din_startofpacket"
+       direction="input"
+       role="startofpacket"
+       width="1" />
+   <port name="din_endofpacket" direction="input" role="endofpacket" width="1" />
+   <port name="din_empty" direction="input" role="empty" width="2" />
+   <port name="din_ready" direction="output" role="ready" width="1" />
+  </interface>
+  <interface name="dout" kind="avalon_streaming" start="1">
+   <property name="associatedClock" value="main_clock" />
+   <property name="associatedReset" value="main_reset" />
+   <property name="beatsPerCycle" value="1" />
+   <property name="dataBitsPerSymbol" value="8" />
+   <property name="emptyWithinPacket" value="false" />
+   <property name="errorDescriptor" value="" />
+   <property name="firstSymbolInHighOrderBits" value="true" />
+   <property name="highOrderSymbolAtMSB" value="false" />
+   <property name="maxChannel" value="0" />
+   <property name="packetDescription" value="" />
+   <property name="prSafe" value="false" />
+   <property name="readyAllowance" value="0" />
+   <property name="readyLatency" value="1" />
+   <property name="symbolsPerBeat" value="6" />
+   <port name="dout_data" direction="output" role="data" width="48" />
+   <port name="dout_valid" direction="output" role="valid" width="1" />
+   <port
+       name="dout_startofpacket"
+       direction="output"
+       role="startofpacket"
+       width="1" />
+   <port
+       name="dout_endofpacket"
+       direction="output"
+       role="endofpacket"
+       width="1" />
+   <port name="dout_empty" direction="output" role="empty" width="3" />
+   <port name="dout_ready" direction="input" role="ready" width="1" />
+  </interface>
+ </perimeter>
+ <entity
+   kind="system_alt_vip_cl_crs_0"
+   version="1.0"
+   name="system_alt_vip_cl_crs_0">
+  <parameter name="AUTO_MAIN_CLOCK_RESET_DOMAIN" value="-1" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_MAIN_CLOCK_CLOCK_DOMAIN" value="-1" />
+  <parameter name="AUTO_MAIN_CLOCK_CLOCK_RATE" value="-1" />
+  <parameter name="AUTO_UNIQUE_ID" value="" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/synth/system_alt_vip_cl_crs_0.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/synth/system_alt_vip_cl_crs_0.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0.ip" />
+  </sourceFiles>
+  <childSourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/full_ip/alt_vip_cl_crs/alt_vip_cl_crs_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/processing/alt_vip_video_input_bridge_resp/alt_vip_video_input_bridge_resp_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/processing/alt_vip_video_output_bridge/alt_vip_video_output_bridge_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/full_ip/alt_vip_cl_crs/alt_vip_cl_crs_422_to_var_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/processing/alt_vip_video_input_bridge_cmd/alt_vip_video_input_bridge_cmd_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/utility/alt_vip_pip_converter_core/alt_vip_pip_converter_core_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/utility/alt_vip_packet_demux/alt_vip_packet_demux_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/processing/alt_vip_crs_h_up_core/alt_vip_crs_h_up_core_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/utility/alt_vip_cpp_converter/alt_vip_cpp_converter_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/utility/alt_vip_packet_mux/alt_vip_packet_mux_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/schedulers/alt_vip_crs_scheduler/alt_vip_crs_scheduler_hw.tcl" />
+  </childSourceFiles>
+  <messages>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: system_alt_vip_cl_crs_0"</message>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: system_alt_vip_cl_crs_0_alt_vip_cl_crs_2360_dbzwawy"</message>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_video_input_bridge_resp"</message>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_video_output_bridge"</message>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: system_alt_vip_cl_crs_0_alt_vip_cl_crs_422_to_var_2360_xj5jyii"</message>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_video_input_bridge_cmd"</message>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_pip_converter_core"</message>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_packet_demux"</message>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_crs_h_up_core"</message>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_cpp_converter"</message>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_packet_mux"</message>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_crs_scheduler"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="alt_vip_cl_crs"
+   version="23.6.0"
+   name="system_alt_vip_cl_crs_0_alt_vip_cl_crs_2360_dbzwawy">
+  <parameter name="VERT_CO_SITING" value="TOP" />
+  <parameter name="USER_PACKET_SUPPORT" value="PASSTHROUGH" />
+  <parameter name="VARIABLE_SIDE" value="NEITHER" />
+  <parameter name="SHOW_HIDDEN_FEATURES" value="1" />
+  <parameter name="PIP_IN" value="2" />
+  <parameter name="MAX_WIDTH" value="1920" />
+  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="HORIZ_CO_SITING" value="LEFT" />
+  <parameter name="C_OMNI_CAP_IRQ_ENABLE" value="0" />
+  <parameter name="HORIZ_ENABLE_LUMA_ADAPT" value="0" />
+  <parameter name="C_OMNI_CAP_VERSION" value="1" />
+  <parameter name="VERT_ALGORITHM" value="NEAREST_NEIGHBOUR" />
+  <parameter name="PIXELS_IN_PARALLEL" value="1" />
+  <parameter name="C_OMNI_CAP_ENABLED" value="0" />
+  <parameter name="VIP_OCS_ENABLED_INI" value="false" />
+  <parameter name="COLOR_PLANES_ARE_IN_PARALLEL" value="1" />
+  <parameter name="C_OMNI_CAP_IRQ_STATUS" value="0" />
+  <parameter name="BITS_PER_SYMBOL" value="8" />
+  <parameter name="ENABLE_ALPHA" value="0" />
+  <parameter name="USER_PACKET_FIFO_DEPTH" value="0" />
+  <parameter name="MAX_HEIGHT" value="1080" />
+  <parameter name="ENABLE_444_IN" value="0" />
+  <parameter name="HORIZ_ALGORITHM" value="NEAREST_NEIGHBOUR" />
+  <parameter name="VERT_ENABLE_LUMA_ADAPT" value="0" />
+  <parameter name="NUMBER_OF_COLOR_PLANES" value="2" />
+  <parameter name="ENABLE_420_OUT" value="0" />
+  <parameter name="LIMITED_READBACK" value="0" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="C_OMNI_CAP_IRQ" value="255" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="C_OMNI_CAP_ID_ASSOCIATED" value="0" />
+  <parameter name="ENABLE_422_OUT" value="0" />
+  <parameter name="ENABLE_422_IN" value="1" />
+  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="C_OMNI_CAP_TYPE" value="538" />
+  <parameter name="C_OMNI_CAP_TAG" value="0" />
+  <parameter name="C_OMNI_CAP_IRQ_ENABLE_EN" value="0" />
+  <parameter name="C_OMNI_CAP_IRQ_STATUS_EN" value="0" />
+  <parameter name="ENABLE_420_IN" value="0" />
+  <parameter name="C_OMNI_CAP_ID_COMPONENT" value="0" />
+  <parameter name="ENABLE_444_OUT" value="1" />
+  <parameter name="C_OMNI_CAP_SIZE" value="0" />
+  <parameter name="PIP_OUT" value="2" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_cl_crs_2360/synth/system_alt_vip_cl_crs_0_alt_vip_cl_crs_2360_dbzwawy.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_cl_crs_2360/synth/system_alt_vip_cl_crs_0_alt_vip_cl_crs_2360_dbzwawy.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/full_ip/alt_vip_cl_crs/alt_vip_cl_crs_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/processing/alt_vip_video_input_bridge_resp/alt_vip_video_input_bridge_resp_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/processing/alt_vip_video_output_bridge/alt_vip_video_output_bridge_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/full_ip/alt_vip_cl_crs/alt_vip_cl_crs_422_to_var_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/processing/alt_vip_video_input_bridge_cmd/alt_vip_video_input_bridge_cmd_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/utility/alt_vip_pip_converter_core/alt_vip_pip_converter_core_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/utility/alt_vip_packet_demux/alt_vip_packet_demux_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/processing/alt_vip_crs_h_up_core/alt_vip_crs_h_up_core_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/utility/alt_vip_cpp_converter/alt_vip_cpp_converter_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/utility/alt_vip_packet_mux/alt_vip_packet_mux_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/schedulers/alt_vip_crs_scheduler/alt_vip_crs_scheduler_hw.tcl" />
+  </childSourceFiles>
+  <instantiator instantiator="system_alt_vip_cl_crs_0" as="alt_vip_cl_crs_0" />
+  <messages>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: system_alt_vip_cl_crs_0_alt_vip_cl_crs_2360_dbzwawy"</message>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_video_input_bridge_resp"</message>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_video_output_bridge"</message>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: system_alt_vip_cl_crs_0_alt_vip_cl_crs_422_to_var_2360_xj5jyii"</message>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_video_input_bridge_cmd"</message>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_pip_converter_core"</message>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_packet_demux"</message>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_crs_h_up_core"</message>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_cpp_converter"</message>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_packet_mux"</message>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_crs_scheduler"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="alt_vip_video_input_bridge_resp"
+   version="23.6.0"
+   name="alt_vip_video_input_bridge_resp">
+  <parameter name="RESP_SRC_ADDRESS" value="0" />
+  <parameter name="MAX_WIDTH" value="1920" />
+  <parameter name="MULTI_CONTEXT_SUPPORT" value="0" />
+  <parameter name="CONTEXT_WIDTH" value="8" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="DEFAULT_LINE_LENGTH" value="1920" />
+  <parameter name="PIXELS_IN_PARALLEL" value="2" />
+  <parameter name="READY_LATENCY_1" value="1" />
+  <parameter name="DST_WIDTH" value="8" />
+  <parameter name="COLOR_PLANES_ARE_IN_PARALLEL" value="1" />
+  <parameter name="DATA_SRC_ADDRESS" value="0" />
+  <parameter name="SRC_WIDTH" value="8" />
+  <parameter name="RESP_DST_ADDRESS" value="0" />
+  <parameter name="BITS_PER_SYMBOL" value="8" />
+  <parameter name="VIDEO_PROTOCOL_NO" value="1" />
+  <parameter name="MAX_HEIGHT" value="1080" />
+  <parameter name="VIB_MODE" value="FULL" />
+  <parameter name="ENABLE_RESOLUTION_CHECK" value="0" />
+  <parameter name="TASK_WIDTH" value="8" />
+  <parameter name="NUMBER_OF_COLOR_PLANES" value="2" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_input_bridge_resp_2360/synth/common/alt_vip_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_input_bridge_resp_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_input_bridge_resp_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_input_bridge_resp_2360/synth/modules/alt_vip_common_video_packet_decode/src_hdl/alt_vip_common_latency_1_to_latency_0.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_input_bridge_resp_2360/synth/modules/alt_vip_common_video_packet_decode/src_hdl/alt_vip_common_video_packet_decode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_input_bridge_resp_2360/synth/src_hdl/alt_vip_video_input_bridge_resp.sv"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_input_bridge_resp_2360/synth/common/alt_vip_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_input_bridge_resp_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_input_bridge_resp_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_input_bridge_resp_2360/synth/modules/alt_vip_common_video_packet_decode/src_hdl/alt_vip_common_latency_1_to_latency_0.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_input_bridge_resp_2360/synth/modules/alt_vip_common_video_packet_decode/src_hdl/alt_vip_common_video_packet_decode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_input_bridge_resp_2360/synth/src_hdl/alt_vip_video_input_bridge_resp.sv"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/processing/alt_vip_video_input_bridge_resp/alt_vip_video_input_bridge_resp_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="system_alt_vip_cl_crs_0_alt_vip_cl_crs_2360_dbzwawy"
+     as="video_in_resp" />
+  <messages>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_video_input_bridge_resp"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="alt_vip_video_output_bridge"
+   version="23.6.0"
+   name="alt_vip_video_output_bridge">
+  <parameter name="LOW_LATENCY_COMMAND_MODE" value="0" />
+  <parameter name="SOP_PRE_ALIGNED" value="0" />
+  <parameter name="MULTI_CONTEXT_SUPPORT" value="0" />
+  <parameter name="NO_CONCATENATION" value="0" />
+  <parameter name="CONTEXT_WIDTH" value="8" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="PIXELS_IN_PARALLEL" value="2" />
+  <parameter name="READY_LATENCY_1" value="1" />
+  <parameter name="DST_WIDTH" value="8" />
+  <parameter name="COLOR_PLANES_ARE_IN_PARALLEL" value="1" />
+  <parameter name="SRC_WIDTH" value="8" />
+  <parameter name="BITS_PER_SYMBOL" value="8" />
+  <parameter name="TYPE_11_SUPPORT" value="0" />
+  <parameter name="VIDEO_PROTOCOL_NO" value="1" />
+  <parameter name="TASK_WIDTH" value="8" />
+  <parameter name="NUMBER_OF_COLOR_PLANES" value="3" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/common/alt_vip_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_video_packet_encode/src_hdl/alt_vip_common_latency_0_to_latency_1.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_video_packet_encode/src_hdl/alt_vip_common_video_packet_empty.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_video_packet_encode/src_hdl/alt_vip_common_video_packet_encode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_message_pipeline_stage/src_hdl/alt_vip_common_message_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_sop_align/src_hdl/alt_vip_common_sop_align.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/src_hdl/alt_vip_video_output_bridge.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/src_hdl/alt_vip_video_output_bridge.ocp"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/common/alt_vip_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_video_packet_encode/src_hdl/alt_vip_common_latency_0_to_latency_1.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_video_packet_encode/src_hdl/alt_vip_common_video_packet_empty.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_video_packet_encode/src_hdl/alt_vip_common_video_packet_encode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_message_pipeline_stage/src_hdl/alt_vip_common_message_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_sop_align/src_hdl/alt_vip_common_sop_align.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/src_hdl/alt_vip_video_output_bridge.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/src_hdl/alt_vip_video_output_bridge.ocp"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/processing/alt_vip_video_output_bridge/alt_vip_video_output_bridge_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="system_alt_vip_cl_crs_0_alt_vip_cl_crs_2360_dbzwawy"
+     as="video_out" />
+  <messages>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_video_output_bridge"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="alt_vip_cl_crs_422_to_var"
+   version="23.6.0"
+   name="system_alt_vip_cl_crs_0_alt_vip_cl_crs_422_to_var_2360_xj5jyii">
+  <parameter name="VERT_CO_SITING" value="TOP" />
+  <parameter name="USER_PACKET_SUPPORT" value="PASSTHROUGH" />
+  <parameter name="PIP_IN" value="2" />
+  <parameter name="ENABLE_420" value="0" />
+  <parameter name="MAX_WIDTH" value="1920" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="HORIZ_CO_SITING" value="LEFT" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="HORIZ_ENABLE_LUMA_ADAPT" value="0" />
+  <parameter name="VERT_ALGORITHM" value="NEAREST_NEIGHBOUR" />
+  <parameter name="ENABLE_444" value="1" />
+  <parameter name="ENABLE_422" value="0" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="COLOR_PLANES_ARE_IN_PARALLEL" value="1" />
+  <parameter name="BITS_PER_SYMBOL" value="8" />
+  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="ENABLE_ALPHA" value="0" />
+  <parameter name="USER_PACKET_FIFO_DEPTH" value="0" />
+  <parameter name="MAX_HEIGHT" value="1080" />
+  <parameter name="HORIZ_ALGORITHM" value="NEAREST_NEIGHBOUR" />
+  <parameter name="NUMBER_OF_COLOR_PLANES" value="2" />
+  <parameter name="PIP_OUT" value="2" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_cl_crs_422_to_var_2360/synth/system_alt_vip_cl_crs_0_alt_vip_cl_crs_422_to_var_2360_xj5jyii.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_cl_crs_422_to_var_2360/synth/system_alt_vip_cl_crs_0_alt_vip_cl_crs_422_to_var_2360_xj5jyii.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/full_ip/alt_vip_cl_crs/alt_vip_cl_crs_422_to_var_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/processing/alt_vip_video_input_bridge_cmd/alt_vip_video_input_bridge_cmd_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/utility/alt_vip_pip_converter_core/alt_vip_pip_converter_core_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/utility/alt_vip_packet_demux/alt_vip_packet_demux_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/processing/alt_vip_crs_h_up_core/alt_vip_crs_h_up_core_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/utility/alt_vip_cpp_converter/alt_vip_cpp_converter_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/utility/alt_vip_packet_mux/alt_vip_packet_mux_hw.tcl" />
+  </childSourceFiles>
+  <instantiator
+     instantiator="system_alt_vip_cl_crs_0_alt_vip_cl_crs_2360_dbzwawy"
+     as="inst_crs_int" />
+  <messages>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: system_alt_vip_cl_crs_0_alt_vip_cl_crs_422_to_var_2360_xj5jyii"</message>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_video_input_bridge_cmd"</message>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_pip_converter_core"</message>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_packet_demux"</message>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_crs_h_up_core"</message>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_cpp_converter"</message>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_packet_mux"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="alt_vip_crs_scheduler"
+   version="23.6.0"
+   name="alt_vip_crs_scheduler">
+  <parameter name="USER_PACKET_SUPPORT" value="PASSTHROUGH" />
+  <parameter name="VARIABLE_SIDE" value="NEITHER" />
+  <parameter name="ALGORITHM" value="NEAREST_NEIGHBOUR" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="ENABLE_422_OUT" value="0" />
+  <parameter name="CO_SITING" value="TOP" />
+  <parameter name="ENABLE_422_IN" value="1" />
+  <parameter name="USER_PACKET_FIFO_DEPTH" value="0" />
+  <parameter name="ENABLE_444_IN" value="0" />
+  <parameter name="ENABLE_420_IN" value="0" />
+  <parameter name="ENABLE_444_OUT" value="1" />
+  <parameter name="ENABLE_420_OUT" value="0" />
+  <parameter name="LIMITED_READBACK" value="0" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_scheduler_2360/synth/common/alt_vip_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_scheduler_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_scheduler_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_scheduler_2360/synth/modules/alt_vip_common_slave_interface/src_hdl/alt_vip_common_slave_interface.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_scheduler_2360/synth/modules/alt_vip_common_slave_interface/src_hdl/alt_vip_common_slave_interface_mux.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_scheduler_2360/synth/src_hdl/alt_vip_crs_scheduler.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_scheduler_2360/synth/src_hdl/alt_vip_crs_scheduler.ocp"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_scheduler_2360/synth/common/alt_vip_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_scheduler_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_scheduler_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_scheduler_2360/synth/modules/alt_vip_common_slave_interface/src_hdl/alt_vip_common_slave_interface.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_scheduler_2360/synth/modules/alt_vip_common_slave_interface/src_hdl/alt_vip_common_slave_interface_mux.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_scheduler_2360/synth/src_hdl/alt_vip_crs_scheduler.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_scheduler_2360/synth/src_hdl/alt_vip_crs_scheduler.ocp"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/schedulers/alt_vip_crs_scheduler/alt_vip_crs_scheduler_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="system_alt_vip_cl_crs_0_alt_vip_cl_crs_2360_dbzwawy"
+     as="scheduler" />
+  <messages>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_crs_scheduler"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="alt_vip_video_input_bridge_cmd"
+   version="23.6.0"
+   name="alt_vip_video_input_bridge_cmd">
+  <parameter name="COLOR_PLANES_ARE_IN_PARALLEL" value="1" />
+  <parameter name="DATA_SRC_ADDRESS" value="0" />
+  <parameter name="SRC_WIDTH" value="8" />
+  <parameter name="BITS_PER_SYMBOL" value="8" />
+  <parameter name="CONTEXT_WIDTH" value="8" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="TASK_WIDTH" value="8" />
+  <parameter name="NUMBER_OF_COLOR_PLANES" value="2" />
+  <parameter name="PIXELS_IN_PARALLEL" value="2" />
+  <parameter name="DST_WIDTH" value="8" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_input_bridge_cmd_2360/synth/common/alt_vip_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_input_bridge_cmd_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_input_bridge_cmd_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_input_bridge_cmd_2360/synth/src_hdl/alt_vip_video_input_bridge_cmd.sv"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_input_bridge_cmd_2360/synth/common/alt_vip_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_input_bridge_cmd_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_input_bridge_cmd_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_input_bridge_cmd_2360/synth/src_hdl/alt_vip_video_input_bridge_cmd.sv"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/processing/alt_vip_video_input_bridge_cmd/alt_vip_video_input_bridge_cmd_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="system_alt_vip_cl_crs_0_alt_vip_cl_crs_422_to_var_2360_xj5jyii"
+     as="video_in_cmd" />
+  <messages>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_video_input_bridge_cmd"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="alt_vip_pip_converter_core"
+   version="23.6.0"
+   name="alt_vip_pip_converter_core">
+  <parameter name="SRC_WIDTH" value="8" />
+  <parameter name="FIFO_DEPTH" value="0" />
+  <parameter name="PIXELS_IN_PARALLEL_IN" value="2" />
+  <parameter name="CONTEXT_WIDTH" value="8" />
+  <parameter name="PIXELS_IN_PARALLEL_OUT" value="2" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="INPUT_FIFO_DEPTH" value="0" />
+  <parameter name="TASK_WIDTH" value="8" />
+  <parameter name="OUTPUT_FIFO_DEPTH" value="0" />
+  <parameter name="PIXEL_WIDTH" value="16" />
+  <parameter name="DST_WIDTH" value="8" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_pip_converter_core_2360/synth/common/alt_vip_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_pip_converter_core_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_pip_converter_core_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_pip_converter_core_2360/synth/modules/alt_vip_common_fifo2/src_hdl/alt_vip_common_fifo2.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_pip_converter_core_2360/synth/src_hdl/alt_vip_pip_converter_core.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_pip_converter_core_2360/synth/modules/alt_vip_common_fifo2/src_hdl/alt_vip_common_fifo2.sdc"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_pip_converter_core_2360/synth/common/alt_vip_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_pip_converter_core_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_pip_converter_core_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_pip_converter_core_2360/synth/modules/alt_vip_common_fifo2/src_hdl/alt_vip_common_fifo2.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_pip_converter_core_2360/synth/src_hdl/alt_vip_pip_converter_core.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_pip_converter_core_2360/synth/modules/alt_vip_common_fifo2/src_hdl/alt_vip_common_fifo2.sdc"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/utility/alt_vip_pip_converter_core/alt_vip_pip_converter_core_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="system_alt_vip_cl_crs_0_alt_vip_cl_crs_422_to_var_2360_xj5jyii"
+     as="pip_other" />
+  <messages>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_pip_converter_core"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="alt_vip_packet_demux"
+   version="23.6.0"
+   name="alt_vip_packet_demux">
+  <parameter name="CMD_RESP_INTERFACE" value="0" />
+  <parameter name="SHIFT_ADDRESS_BITS" value="0" />
+  <parameter name="DATA_WIDTH_INT" value="33" />
+  <parameter name="CONTEXT_WIDTH" value="8" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="NUM_OUTPUTS" value="2" />
+  <parameter name="PIXELS_IN_PARALLEL" value="2" />
+  <parameter name="REGISTER_OUTPUT" value="1" />
+  <parameter name="DST_WIDTH" value="8" />
+  <parameter name="SRC_WIDTH" value="8" />
+  <parameter name="DATA_WIDTH" value="16" />
+  <parameter name="USER_WIDTH" value="0" />
+  <parameter name="TASK_WIDTH" value="8" />
+  <parameter name="CLIP_ADDRESS_BITS" value="0" />
+  <parameter name="USER_WIDTH_INT" value="1" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_packet_demux_2360/synth/common/alt_vip_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_packet_demux_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_packet_demux_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_packet_demux_2360/synth/src_hdl/alt_vip_packet_demux.sv"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_packet_demux_2360/synth/common/alt_vip_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_packet_demux_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_packet_demux_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_packet_demux_2360/synth/src_hdl/alt_vip_packet_demux.sv"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/utility/alt_vip_packet_demux/alt_vip_packet_demux_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="system_alt_vip_cl_crs_0_alt_vip_cl_crs_422_to_var_2360_xj5jyii"
+     as="middle_demux" />
+  <messages>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_packet_demux"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="alt_vip_crs_h_up_core"
+   version="23.6.0"
+   name="alt_vip_crs_h_up_core">
+  <parameter name="V_SERIES_STYLE" value="0" />
+  <parameter name="ALGORITHM" value="NEAREST_NEIGHBOUR" />
+  <parameter name="CONTEXT_WIDTH" value="8" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="CYCLONE_STYLE" value="1" />
+  <parameter name="PIXELS_IN_PARALLEL" value="2" />
+  <parameter name="DST_WIDTH" value="8" />
+  <parameter name="FAMILY" value="Cyclone 10 GX" />
+  <parameter name="COLOR_PLANES_ARE_IN_PARALLEL" value="1" />
+  <parameter name="SRC_WIDTH" value="8" />
+  <parameter name="CO_SITING" value="LEFT" />
+  <parameter name="BITS_PER_SYMBOL" value="8" />
+  <parameter name="ENABLE_LUMA_ADAPT" value="0" />
+  <parameter name="ENABLE_ALPHA" value="0" />
+  <parameter name="TASK_WIDTH" value="8" />
+  <parameter name="NUMBER_OF_COLOR_PLANES" value="2" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/common/alt_vip_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_h_kernel/src_hdl/alt_vip_common_h_kernel.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_h_kernel/src_hdl/alt_vip_common_h_kernel_par.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_h_kernel/src_hdl/alt_vip_common_h_kernel_seq.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_mirror/src_hdl/alt_vip_common_mirror.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_mux_tree/src_hdl/alt_vip_common_mux_tree.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_round_sat/src_hdl/alt_vip_common_round_sat.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_mult_add/src_hdl/alt_vip_common_mult_add.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_sop_align/src_hdl/alt_vip_common_sop_align.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_seq_par_convert/src_hdl/alt_vip_common_seq_par_convert.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/src_hdl/alt_vip_crs_h_up_core.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/src_hdl/alt_vip_crs_h_up_core_nn.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/src_hdl/alt_vip_crs_h_up_core_bl.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/src_hdl/alt_vip_crs_h_up_core_ft.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/src_hdl/alt_vip_crs_h_up_core_la.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/src_hdl/alt_vip_crs_h_up_core.ocp"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/common/alt_vip_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_h_kernel/src_hdl/alt_vip_common_h_kernel.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_h_kernel/src_hdl/alt_vip_common_h_kernel_par.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_h_kernel/src_hdl/alt_vip_common_h_kernel_seq.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_mirror/src_hdl/alt_vip_common_mirror.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_mux_tree/src_hdl/alt_vip_common_mux_tree.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_round_sat/src_hdl/alt_vip_common_round_sat.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_mult_add/src_hdl/alt_vip_common_mult_add.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_sop_align/src_hdl/alt_vip_common_sop_align.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_seq_par_convert/src_hdl/alt_vip_common_seq_par_convert.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/src_hdl/alt_vip_crs_h_up_core.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/src_hdl/alt_vip_crs_h_up_core_nn.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/src_hdl/alt_vip_crs_h_up_core_bl.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/src_hdl/alt_vip_crs_h_up_core_ft.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/src_hdl/alt_vip_crs_h_up_core_la.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_crs_h_up_core_2360/synth/src_hdl/alt_vip_crs_h_up_core.ocp"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/processing/alt_vip_crs_h_up_core/alt_vip_crs_h_up_core_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="system_alt_vip_cl_crs_0_alt_vip_cl_crs_422_to_var_2360_xj5jyii"
+     as="horiz_upsample" />
+  <messages>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_crs_h_up_core"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="alt_vip_cpp_converter"
+   version="23.6.0"
+   name="alt_vip_cpp_converter">
+  <parameter name="SRC_WIDTH" value="8" />
+  <parameter name="BITS_PER_SYMBOL" value="8" />
+  <parameter name="NUMBER_OF_COLOR_PLANES_IN" value="2" />
+  <parameter name="PIXELS_IN_PARALLEL_IN" value="2" />
+  <parameter name="CONTEXT_WIDTH" value="8" />
+  <parameter name="PIXELS_IN_PARALLEL_OUT" value="2" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="NUMBER_OF_COLOR_PLANES_OUT" value="3" />
+  <parameter name="TASK_WIDTH" value="8" />
+  <parameter name="DST_WIDTH" value="8" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_cpp_converter_2360/synth/common/alt_vip_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_cpp_converter_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_cpp_converter_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_cpp_converter_2360/synth/modules/alt_vip_common_fifo2/src_hdl/alt_vip_common_fifo2.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_cpp_converter_2360/synth/src_hdl/alt_vip_cpp_converter.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_cpp_converter_2360/synth/modules/alt_vip_common_fifo2/src_hdl/alt_vip_common_fifo2.sdc"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_cpp_converter_2360/synth/common/alt_vip_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_cpp_converter_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_cpp_converter_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_cpp_converter_2360/synth/modules/alt_vip_common_fifo2/src_hdl/alt_vip_common_fifo2.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_cpp_converter_2360/synth/src_hdl/alt_vip_cpp_converter.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_cpp_converter_2360/synth/modules/alt_vip_common_fifo2/src_hdl/alt_vip_common_fifo2.sdc"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/utility/alt_vip_cpp_converter/alt_vip_cpp_converter_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="system_alt_vip_cl_crs_0_alt_vip_cl_crs_422_to_var_2360_xj5jyii"
+     as="symbol_conv" />
+  <messages>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_cpp_converter"</message>
+  </messages>
+ </entity>
+ <entity kind="alt_vip_packet_mux" version="23.6.0" name="alt_vip_packet_mux">
+  <parameter name="CMD_RESP_INTERFACE" value="0" />
+  <parameter name="NUM_INPUTS" value="2" />
+  <parameter name="DATA_WIDTH_INT" value="49" />
+  <parameter name="CONTEXT_WIDTH" value="8" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="PIXELS_IN_PARALLEL" value="2" />
+  <parameter name="REGISTER_OUTPUT" value="0" />
+  <parameter name="NAME" value="undefined" />
+  <parameter name="DST_WIDTH" value="8" />
+  <parameter name="SRC_WIDTH" value="8" />
+  <parameter name="DATA_WIDTH" value="24" />
+  <parameter name="USER_WIDTH" value="0" />
+  <parameter name="TASK_WIDTH" value="8" />
+  <parameter name="USER_WIDTH_INT" value="1" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_packet_mux_2360/synth/common/alt_vip_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_packet_mux_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_packet_mux_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_packet_mux_2360/synth/modules/alt_vip_common_mux_tree/src_hdl/alt_vip_common_mux_tree.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_packet_mux_2360/synth/src_hdl/alt_vip_packet_mux.sv"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_packet_mux_2360/synth/common/alt_vip_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_packet_mux_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_packet_mux_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_packet_mux_2360/synth/modules/alt_vip_common_mux_tree/src_hdl/alt_vip_common_mux_tree.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_packet_mux_2360/synth/src_hdl/alt_vip_packet_mux.sv"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/utility/alt_vip_packet_mux/alt_vip_packet_mux_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="system_alt_vip_cl_crs_0_alt_vip_cl_crs_422_to_var_2360_xj5jyii"
+     as="middle_mux" />
+  <messages>
+   <message level="Info" culprit="system_alt_vip_cl_crs_0">"Generating: alt_vip_packet_mux"</message>
+  </messages>
+ </entity>
+</deploy>

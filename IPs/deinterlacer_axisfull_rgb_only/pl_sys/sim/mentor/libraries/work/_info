@@ -1,0 +1,71 @@
+m255
+K4
+z2
+Z0 !s99 nomlopt
+R0
+!s11f vlog 2021.2_1 2021.05, May 15 2021
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z1 d/mnt/ssd2/Faruqi/pl_sys/sim/mentor
+T_opt
+!s110 1777549872
+V8@6C6aB`S_:^7HbC;?hUX3
+04 9 4 work testbench fast 0
+=1-000ae431a4f1-69f34230-502a2-1aedcc
+!s124 OEM100
+o-quiet -auto_acc_if_foreign -work work -L work -L work_lib -L lpm_ver -L sgate_ver -L altera_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclone10gx_ver -L cyclone10gx_hip_ver -L cyclone10gx_hssi_ver -L lpm -L sgate -L altera -L altera_mf -L altera_lnsim -L cyclone10gx -L cyclone10gx_hip -L cyclone10gx_hssi -L altera_common_sv_packages -L intel_vvp_reset_sync_2440 -L intel_vvp_input_interface_bridge_2440 -L intel_vvp_pkt_mux_2450 -L intel_vvp_output_interface_bridge_2440 -L intel_vvp_pkt_duplicator_2450 -L intel_vvp_dil_bob_algo_comp_2451 -L intel_vvp_dil_bob_scheduler_2451 -L intel_vvp_line_buffer_2440 -L intel_vvp_dil_2451 -L pl_sys_intel_vvp_dil_0 -L intel_vvp_adv_tpg_scheduler_2451 -L intel_vvp_tpg_bars_algo_comp_2451 -L intel_vvp_mixer_algo_comp_2451 -L intel_vvp_adv_tpg_2451 -L pl_sys_intel_vvp_adv_tpg_0 -L pl_sys_clock_in -L pl_sys_reset_in -L altera_reset_controller_1924 -L pl_sys +acc
+Z2 tCvgOpt 0
+n@_opt
+OL;O;2021.2_1;73
+vtestbench
+Z3 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+!s110 1777549837
+!i10b 1
+!s100 RVH0Nbfk[P@Coz2S[6P:83
+IjFSf7E_6@hgoRYWKTnWf@1
+S1
+R1
+w1777549829
+8/mnt/ssd2/Faruqi/testbench.v
+F/mnt/ssd2/Faruqi/testbench.v
+!i122 3
+L0 3 91
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+Z5 OL;L;2021.2_1;73
+r1
+!s85 0
+31
+!s108 1777549837.000000
+!s107 /mnt/ssd2/Faruqi/testbench.v|
+!s90 -reportprogress|300|-sv|/mnt/ssd2/Faruqi/testbench.v|
+!i113 0
+Z6 o-sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R2
+vtop
+R3
+!s110 1777549716
+!i10b 1
+!s100 2YSWc]B<EHMOcMhSSPR621
+IdGWF4^Q]9oYi0^FA0mN2M2
+S1
+R1
+w1777463782
+8/mnt/ssd2/Faruqi/top.v
+F/mnt/ssd2/Faruqi/top.v
+!i122 2
+L0 3 23
+R4
+R5
+r1
+!s85 0
+31
+!s108 1777549716.000000
+!s107 /mnt/ssd2/Faruqi/top.v|
+!s90 -reportprogress|300|-sv|/mnt/ssd2/Faruqi/top.v|
+!i113 0
+R6
+R2

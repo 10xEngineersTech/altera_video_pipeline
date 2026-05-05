@@ -1,0 +1,101 @@
+set_global_assignment -entity "system_alt_vip_cl_tpg_0" -library "system_alt_vip_cl_tpg_0" -name IP_TOOL_NAME "QsysPrimePro"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0" -library "system_alt_vip_cl_tpg_0" -name IP_TOOL_VERSION "25.1.1"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0" -library "system_alt_vip_cl_tpg_0" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0" -library "system_alt_vip_cl_tpg_0" -name IP_TOOL_VENDOR_NAME "Intel Corporation"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0" -library "system_alt_vip_cl_tpg_0" -name IP_TOP_LEVEL_COMPONENT_NAME "alt_vip_cl_tpg"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0" -library "system_alt_vip_cl_tpg_0" -name PRE_COMPILED_MODULE "ON"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0" -library "system_alt_vip_cl_tpg_0" -name OCS_IP_FILE [file join $::quartus(qip_path) "../system_alt_vip_cl_tpg_0.ip"]
+set_global_assignment -entity "system_alt_vip_cl_tpg_0" -library "system_alt_vip_cl_tpg_0" -name OCS_IP_TYPE "alt_vip_cl_tpg"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0" -library "system_alt_vip_cl_tpg_0" -name OCS_IP_VERSION "23.6.0"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0" -library "system_alt_vip_cl_tpg_0" -name OCS_IP_HASH "qjrno4y"
+set_global_assignment -library "system_alt_vip_cl_tpg_0" -name SOPCINFO_FILE [file join $::quartus(qip_path) "system_alt_vip_cl_tpg_0.sopcinfo"]
+set_global_assignment -entity "system_alt_vip_cl_tpg_0" -library "system_alt_vip_cl_tpg_0" -name SLD_INFO "QSYS_NAME system_alt_vip_cl_tpg_0 HAS_SOPCINFO 1 GENERATION_ID 0"
+set_global_assignment -library "system_alt_vip_cl_tpg_0" -name MISC_FILE [file join $::quartus(qip_path) "system_alt_vip_cl_tpg_0.cmp"]
+set_global_assignment -entity "system_alt_vip_cl_tpg_0" -library "system_alt_vip_cl_tpg_0" -name IP_TARGETED_DEVICE_FAMILY "Cyclone 10 GX"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0" -library "system_alt_vip_cl_tpg_0" -name IP_GENERATED_DEVICE_FAMILY "{Cyclone 10 GX}"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0" -library "system_alt_vip_cl_tpg_0" -name IP_QSYS_MODE "STANDALONE"
+set_global_assignment -name SYNTHESIS_ONLY_QIP ON
+set_global_assignment -library "system_alt_vip_cl_tpg_0" -name MISC_FILE [file join $::quartus(qip_path) "../system_alt_vip_cl_tpg_0.ip"]
+
+set_global_assignment -entity "alt_vip_video_output_bridge" -library "alt_vip_video_output_bridge_2360" -name IP_COMPONENT_NAME "YWx0X3ZpcF92aWRlb19vdXRwdXRfYnJpZGdl"
+set_global_assignment -entity "alt_vip_video_output_bridge" -library "alt_vip_video_output_bridge_2360" -name IP_COMPONENT_DISPLAY_NAME "VmlkZW8gT3V0cHV0IEJyaWRnZQ=="
+set_global_assignment -entity "alt_vip_video_output_bridge" -library "alt_vip_video_output_bridge_2360" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "alt_vip_video_output_bridge" -library "alt_vip_video_output_bridge_2360" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "alt_vip_video_output_bridge" -library "alt_vip_video_output_bridge_2360" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "alt_vip_video_output_bridge" -library "alt_vip_video_output_bridge_2360" -name IP_COMPONENT_VERSION "MjMuNi4w"
+set_global_assignment -entity "alt_vip_video_output_bridge" -library "alt_vip_video_output_bridge_2360" -name IP_COMPONENT_DESCRIPTION "VGhlIFZpZGVvIE91dHB1dCBCcmlkZ2UgZ2VuZXJhdGVzIGFuIEF2YWxvbi1TVCBWaWRlbyBzdHJlYW0="
+set_global_assignment -entity "alt_vip_video_output_bridge" -library "alt_vip_video_output_bridge_2360" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBJbWFnZSBQcm9jZXNzaW5nL0NvbXBvbmVudCBMaWJyYXJ5"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa" -library "alt_vip_tpg_multi_scheduler_2360" -name IP_COMPONENT_NAME "c3lzdGVtX2FsdF92aXBfY2xfdHBnXzBfYWx0X3ZpcF90cGdfbXVsdGlfc2NoZWR1bGVyXzIzNjBfa3RkZ2hxYQ=="
+set_global_assignment -entity "system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa" -library "alt_vip_tpg_multi_scheduler_2360" -name IP_COMPONENT_DISPLAY_NAME "VGVzdCBQYXR0ZXJuIEdlbmVyYXRvciBTY2hlZHVsZXI="
+set_global_assignment -entity "system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa" -library "alt_vip_tpg_multi_scheduler_2360" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa" -library "alt_vip_tpg_multi_scheduler_2360" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa" -library "alt_vip_tpg_multi_scheduler_2360" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa" -library "alt_vip_tpg_multi_scheduler_2360" -name IP_COMPONENT_VERSION "MjMuNi4w"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa" -library "alt_vip_tpg_multi_scheduler_2360" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBJbWFnZSBQcm9jZXNzaW5nL0NvbXBvbmVudCBMaWJyYXJ5"
+set_global_assignment -entity "alt_vip_tpg_bars_alg_core" -library "alt_vip_tpg_bars_alg_core_2360" -name IP_COMPONENT_NAME "YWx0X3ZpcF90cGdfYmFyc19hbGdfY29yZQ=="
+set_global_assignment -entity "alt_vip_tpg_bars_alg_core" -library "alt_vip_tpg_bars_alg_core_2360" -name IP_COMPONENT_DISPLAY_NAME "VGVzdCBQYXR0ZXJuIEdlbmVyYXRvciBDb3JlIChDb2xvdXIgQmFycyk="
+set_global_assignment -entity "alt_vip_tpg_bars_alg_core" -library "alt_vip_tpg_bars_alg_core_2360" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "alt_vip_tpg_bars_alg_core" -library "alt_vip_tpg_bars_alg_core_2360" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "alt_vip_tpg_bars_alg_core" -library "alt_vip_tpg_bars_alg_core_2360" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "alt_vip_tpg_bars_alg_core" -library "alt_vip_tpg_bars_alg_core_2360" -name IP_COMPONENT_VERSION "MjMuNi4w"
+set_global_assignment -entity "alt_vip_tpg_bars_alg_core" -library "alt_vip_tpg_bars_alg_core_2360" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBJbWFnZSBQcm9jZXNzaW5nL0NvbXBvbmVudCBMaWJyYXJ5"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0_alt_vip_cl_tpg_2360_qjrno4y" -library "alt_vip_cl_tpg_2360" -name IP_COMPONENT_NAME "c3lzdGVtX2FsdF92aXBfY2xfdHBnXzBfYWx0X3ZpcF9jbF90cGdfMjM2MF9xanJubzR5"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0_alt_vip_cl_tpg_2360_qjrno4y" -library "alt_vip_cl_tpg_2360" -name IP_COMPONENT_DISPLAY_NAME "VGVzdCBQYXR0ZXJuIEdlbmVyYXRvciBJSSAoNEsgUmVhZHkp"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0_alt_vip_cl_tpg_2360_qjrno4y" -library "alt_vip_cl_tpg_2360" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0_alt_vip_cl_tpg_2360_qjrno4y" -library "alt_vip_cl_tpg_2360" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0_alt_vip_cl_tpg_2360_qjrno4y" -library "alt_vip_cl_tpg_2360" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "system_alt_vip_cl_tpg_0_alt_vip_cl_tpg_2360_qjrno4y" -library "alt_vip_cl_tpg_2360" -name IP_COMPONENT_VERSION "MjMuNi4w"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0_alt_vip_cl_tpg_2360_qjrno4y" -library "alt_vip_cl_tpg_2360" -name IP_COMPONENT_DESCRIPTION "VGhlIFRlc3QgUGF0dGVybiBHZW5lcmF0b3IgZ2VuZXJhdGVzIHZpZGVvIGZpZWxkcyB3aXRoIHZhcmlvdXMgcGF0dGVybnMgYWNjb3JkaW5nIHRvIHRoZSBzcGVjaWZpY2F0aW9ucyBvZiB0aGUgQXZhbG9uLVNUIFZpZGVvIHByb3RvY29sLg=="
+set_global_assignment -entity "system_alt_vip_cl_tpg_0_alt_vip_cl_tpg_2360_qjrno4y" -library "alt_vip_cl_tpg_2360" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBJbWFnZSBQcm9jZXNzaW5n"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0_alt_vip_cl_tpg_2360_qjrno4y" -library "alt_vip_cl_tpg_2360" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2JoYzE0MTEwMjA1OTY1MDcuaHRtbCNiaGMxNDExMDE5ODI4Mjc4"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0_alt_vip_cl_tpg_2360_qjrno4y" -library "alt_vip_cl_tpg_2360" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2hjbzE0MjE2OTc5OTMxMTMuaHRtbA=="
+set_global_assignment -entity "system_alt_vip_cl_tpg_0" -library "system_alt_vip_cl_tpg_0" -name IP_COMPONENT_NAME "c3lzdGVtX2FsdF92aXBfY2xfdHBnXzA="
+set_global_assignment -entity "system_alt_vip_cl_tpg_0" -library "system_alt_vip_cl_tpg_0" -name IP_COMPONENT_DISPLAY_NAME "c3lzdGVt"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0" -library "system_alt_vip_cl_tpg_0" -name IP_COMPONENT_REPORT_HIERARCHY "On"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0" -library "system_alt_vip_cl_tpg_0" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0" -library "system_alt_vip_cl_tpg_0" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "system_alt_vip_cl_tpg_0" -library "system_alt_vip_cl_tpg_0" -name IP_COMPONENT_VERSION "MS4w"
+
+
+set_global_assignment -library "alt_vip_video_output_bridge_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_video_output_bridge_2360/synth/common/alt_vip_common_pkg.sv"]
+set_global_assignment -library "alt_vip_video_output_bridge_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_video_packet_encode/src_hdl/alt_vip_common_latency_0_to_latency_1.sv"]
+set_global_assignment -library "alt_vip_video_output_bridge_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_video_packet_encode/src_hdl/alt_vip_common_video_packet_empty.sv"]
+set_global_assignment -library "alt_vip_video_output_bridge_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_video_packet_encode/src_hdl/alt_vip_common_video_packet_encode.sv"]
+set_global_assignment -library "alt_vip_video_output_bridge_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"]
+set_global_assignment -library "alt_vip_video_output_bridge_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"]
+set_global_assignment -library "alt_vip_video_output_bridge_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_message_pipeline_stage/src_hdl/alt_vip_common_message_pipeline_stage.sv"]
+set_global_assignment -library "alt_vip_video_output_bridge_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_sop_align/src_hdl/alt_vip_common_sop_align.sv"]
+set_global_assignment -library "alt_vip_video_output_bridge_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_video_output_bridge_2360/synth/src_hdl/alt_vip_video_output_bridge.sv"]
+set_global_assignment -library "alt_vip_video_output_bridge_2360" -name SOURCE_FILE [file join $::quartus(qip_path) "alt_vip_video_output_bridge_2360/synth/src_hdl/alt_vip_video_output_bridge.ocp"]
+set_global_assignment -library "alt_vip_tpg_multi_scheduler_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_tpg_multi_scheduler_2360/synth/common/alt_vip_common_pkg.sv"]
+set_global_assignment -library "alt_vip_tpg_multi_scheduler_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_tpg_multi_scheduler_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"]
+set_global_assignment -library "alt_vip_tpg_multi_scheduler_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_tpg_multi_scheduler_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"]
+set_global_assignment -library "alt_vip_tpg_multi_scheduler_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_tpg_multi_scheduler_2360/synth/modules/alt_vip_common_slave_interface/src_hdl/alt_vip_common_slave_interface.sv"]
+set_global_assignment -library "alt_vip_tpg_multi_scheduler_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_tpg_multi_scheduler_2360/synth/modules/alt_vip_common_slave_interface/src_hdl/alt_vip_common_slave_interface_mux.sv"]
+set_global_assignment -library "alt_vip_tpg_multi_scheduler_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_tpg_multi_scheduler_2360/synth/src_hdl/alt_vip_tpg_multi_scheduler.sv"]
+set_global_assignment -library "alt_vip_tpg_multi_scheduler_2360" -name SOURCE_FILE [file join $::quartus(qip_path) "alt_vip_tpg_multi_scheduler_2360/synth/src_hdl/alt_vip_tpg_multi_scheduler.ocp"]
+set_global_assignment -library "alt_vip_tpg_multi_scheduler_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_tpg_multi_scheduler_2360/synth/system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa.sv"]
+set_global_assignment -library "alt_vip_tpg_bars_alg_core_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_tpg_bars_alg_core_2360/synth/common/alt_vip_common_pkg.sv"]
+set_global_assignment -library "alt_vip_tpg_bars_alg_core_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_tpg_bars_alg_core_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"]
+set_global_assignment -library "alt_vip_tpg_bars_alg_core_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_tpg_bars_alg_core_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"]
+set_global_assignment -library "alt_vip_tpg_bars_alg_core_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_tpg_bars_alg_core_2360/synth/src_hdl/alt_vip_tpg_bars_alg_core.sv"]
+set_global_assignment -library "alt_vip_tpg_bars_alg_core_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_tpg_bars_alg_core_2360/synth/src_hdl/alt_vip_tpg_bars_alg_core_par_lut.sv"]
+set_global_assignment -library "alt_vip_tpg_bars_alg_core_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_tpg_bars_alg_core_2360/synth/src_hdl/alt_vip_tpg_bars_alg_core_seq_lut.sv"]
+set_global_assignment -library "alt_vip_tpg_bars_alg_core_2360" -name SOURCE_FILE [file join $::quartus(qip_path) "alt_vip_tpg_bars_alg_core_2360/synth/src_hdl/alt_vip_tpg_bars_alg_core.ocp"]
+set_global_assignment -library "alt_vip_cl_tpg_2360" -name VERILOG_FILE [file join $::quartus(qip_path) "alt_vip_cl_tpg_2360/synth/system_alt_vip_cl_tpg_0_alt_vip_cl_tpg_2360_qjrno4y.v"]
+set_global_assignment -library "system_alt_vip_cl_tpg_0" -name VERILOG_FILE [file join $::quartus(qip_path) "synth/system_alt_vip_cl_tpg_0.v"]
+
+
+set_global_assignment -entity "system_alt_vip_cl_tpg_0_alt_vip_cl_tpg_2360_qjrno4y" -library "alt_vip_cl_tpg_2360" -name IP_TOOL_NAME "alt_vip_cl_tpg"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0_alt_vip_cl_tpg_2360_qjrno4y" -library "alt_vip_cl_tpg_2360" -name IP_TOOL_VERSION "23.6.0"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0_alt_vip_cl_tpg_2360_qjrno4y" -library "alt_vip_cl_tpg_2360" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "alt_vip_tpg_bars_alg_core" -library "alt_vip_tpg_bars_alg_core_2360" -name IP_TOOL_NAME "alt_vip_tpg_bars_alg_core"
+set_global_assignment -entity "alt_vip_tpg_bars_alg_core" -library "alt_vip_tpg_bars_alg_core_2360" -name IP_TOOL_VERSION "23.6.0"
+set_global_assignment -entity "alt_vip_tpg_bars_alg_core" -library "alt_vip_tpg_bars_alg_core_2360" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa" -library "alt_vip_tpg_multi_scheduler_2360" -name IP_TOOL_NAME "alt_vip_tpg_multi_scheduler"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa" -library "alt_vip_tpg_multi_scheduler_2360" -name IP_TOOL_VERSION "23.6.0"
+set_global_assignment -entity "system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa" -library "alt_vip_tpg_multi_scheduler_2360" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "alt_vip_video_output_bridge" -library "alt_vip_video_output_bridge_2360" -name IP_TOOL_NAME "alt_vip_video_output_bridge"
+set_global_assignment -entity "alt_vip_video_output_bridge" -library "alt_vip_video_output_bridge_2360" -name IP_TOOL_VERSION "23.6.0"
+set_global_assignment -entity "alt_vip_video_output_bridge" -library "alt_vip_video_output_bridge_2360" -name IP_TOOL_ENV "QsysPrimePro"
+

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file
+   path="sim/system_reset_in.v"
+   type="VERILOG"
+   library="system_reset_in"
+   hasInlineConfiguration="true" />
+ <topLevel name="system_reset_in.system_reset_in" />
+ <deviceFamily name="cyclone10gx" />
+ <device name="10CX220YF780I5G" />
+</simPackage>

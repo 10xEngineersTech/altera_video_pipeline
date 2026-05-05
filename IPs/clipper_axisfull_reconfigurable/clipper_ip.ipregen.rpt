@@ -1,0 +1,273 @@
+IP Upgrade report for clipper_ip
+Tue May  5 12:30:38 2026
+Quartus Prime Version 25.1.1 Build 125 07/31/2025 Patches 1.31 SC Pro Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. IP Upgrade Summary
+  3. Successfully Upgraded IP Components
+  4. IP Upgrade Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+
++----------------------------------------------------------------------------------------+
+; IP Upgrade Summary                                                                     ;
++------------------------------+---------------------------------------------------------+
+; IP Components Upgrade Status ; Passed - Tue May  5 12:30:37 2026                       ;
+; Quartus Prime Version        ; 25.1.1 Build 125 07/31/2025 Patches 1.31 SC Pro Edition ;
+; Revision Name                ; clipper_ip                                              ;
+; Top-level Entity Name        ; clipper_ip                                              ;
+; Family                       ; Cyclone 10 GX                                           ;
++------------------------------+---------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Successfully Upgraded IP Components                                                                                                                                                          ;
++--------------------------------+-------------------+---------+-------------------------------------------------+-------------------------------------------------+-----------------+---------+
+; Entity Name                    ; Component Name    ; Version ; Original Source File                            ; Generation File Path                            ; New Source File ; Message ;
++--------------------------------+-------------------+---------+-------------------------------------------------+-------------------------------------------------+-----------------+---------+
+; clipper_ip_intel_vvp_tpg_0     ; intel_vvp_tpg     ; 24.5.0  ; ip/clipper_ip/clipper_ip_intel_vvp_tpg_0.ip     ; ip/clipper_ip/clipper_ip_intel_vvp_tpg_0.ip     ;                 ;         ;
+; clipper_ip_intel_vvp_clipper_0 ; intel_vvp_clipper ; 24.5.0  ; ip/clipper_ip/clipper_ip_intel_vvp_clipper_0.ip ; ip/clipper_ip/clipper_ip_intel_vvp_clipper_0.ip ;                 ;         ;
++--------------------------------+-------------------+---------+-------------------------------------------------+-------------------------------------------------+-----------------+---------+
+
+
++---------------------+
+; IP Upgrade Messages ;
++---------------------+
+Info (11902): Backing up file "/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0.ip" to "/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0.BAK.ip"
+Info (11902): Backing up file "ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/synth/clipper_ip_intel_vvp_tpg_0.v" to "/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0.BAK.v"
+Info (11902): Backing up file "/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_clipper_0.ip" to "/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_clipper_0.BAK.ip"
+Info (11902): Backing up file "ip/clipper_ip/clipper_ip_intel_vvp_clipper_0/synth/clipper_ip_intel_vvp_clipper_0.v" to "/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_clipper_0.BAK.v"
+Info (20325): ***************************************************************
+Info (20325): Quartus is a registered trademark of Intel Corporation in the
+Info (20325): US and other countries.  Portions of the Quartus Prime software
+Info (20325): code, and other portions of the code included in this download
+Info (20325): or on this DVD, are licensed to Intel Corporation and are the
+Info (20325): copyrighted property of third parties. For license details,
+Info (20325): refer to the End User License Agreement at
+Info (20325): http://fpgasoftware.intel.com/eula.
+Info (20325): ***************************************************************
+Info (20325): 2026.05.05.12:29:46 Info: Batch generation will generate the listed files in this order: /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0.ip, ip/clipper_ip/clipper_ip_intel_vvp_clipper_0.ip
+Info (20325): 2026.05.05.12:29:58 Info: Starting to upgrade the IP cores in the Platform Designer system
+Info (20325): 2026.05.05.12:29:58 Info: Finished upgrading the ip cores
+Info (20325): 2026.05.05.12:29:59 Info: Starting to upgrade the IP cores in the Platform Designer system
+Info (20325): 2026.05.05.12:29:59 Info: Finished upgrading the ip cores
+Info (20325): ***************************************************************
+Info (20325): Quartus is a registered trademark of Intel Corporation in the
+Info (20325): US and other countries.  Portions of the Quartus Prime software
+Info (20325): code, and other portions of the code included in this download
+Info (20325): or on this DVD, are licensed to Intel Corporation and are the
+Info (20325): copyrighted property of third parties. For license details,
+Info (20325): refer to the End User License Agreement at
+Info (20325): http://fpgasoftware.intel.com/eula.
+Info (20325): ***************************************************************
+Info (20325): 2026.05.05.12:29:59 Info: Batch generation will generate the listed files in this order: /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0.ip, ip/clipper_ip/clipper_ip_intel_vvp_clipper_0.ip
+Warning (20326): 2026.05.05.12:30:13 Warning: The component file /mnt/ssd2/hamza/intelFPGA_pro/25.1/ip/altera/vip/verification/dut/ip/dut/dut_alt_vip_cl_mixer_0.ip does not exist.
+Warning (20326): 2026.05.05.12:30:13 Warning: The component file /mnt/ssd2/hamza/intelFPGA_pro/25.1/ip/altera/vip/verification/dut/ip/dut/dut_alt_vip_cl_vfb_0.ip does not exist.
+Warning (20326): 2026.05.05.12:30:13 Warning: The component file /mnt/ssd2/hamza/intelFPGA_pro/25.1/ip/altera/vip/verification/testbench/ip/testbench/testbench_avalon_mm_clk.ip does not exist.
+Warning (20326): 2026.05.05.12:30:13 Warning: The component file /mnt/ssd2/hamza/intelFPGA_pro/25.1/ip/altera/vip/verification/testbench/ip/testbench/testbench_mm_master_bfm_for_mixer_control.ip does not exist.
+Warning (20326): 2026.05.05.12:30:13 Warning: The component file /mnt/ssd2/hamza/intelFPGA_pro/25.1/ip/altera/vip/verification/testbench/ip/testbench/testbench_mm_master_bfm_for_vfb_control.ip does not exist.
+Warning (20326): 2026.05.05.12:30:13 Warning: The component file /mnt/ssd2/hamza/intelFPGA_pro/25.1/ip/altera/vip/verification/testbench/ip/testbench/testbench_mm_slave_bfm_for_vfb_reads.ip does not exist.
+Warning (20326): 2026.05.05.12:30:13 Warning: The component file /mnt/ssd2/hamza/intelFPGA_pro/25.1/ip/altera/vip/verification/testbench/ip/testbench/testbench_mm_slave_bfm_for_vfb_writes.ip does not exist.
+Warning (20326): 2026.05.05.12:30:13 Warning: The component file /mnt/ssd2/hamza/intelFPGA_pro/25.1/ip/altera/vip/verification/testbench/ip/testbench/testbench_st_sink_bfm_0.ip does not exist.
+Warning (20326): 2026.05.05.12:30:13 Warning: The component file /mnt/ssd2/hamza/intelFPGA_pro/25.1/ip/altera/vip/verification/testbench/ip/testbench/testbench_st_source_bfm_0.ip does not exist.
+Warning (20326): 2026.05.05.12:30:13 Warning: The component file /mnt/ssd2/hamza/intelFPGA_pro/25.1/ip/altera/vip/verification/testbench/ip/testbench/testbench_videopipe_clk.ip does not exist.
+Warning (20326): 2026.05.05.12:30:13 Warning: The component file /mnt/ssd2/hamza/intelFPGA_pro/25.1/ip/altera/vip/verification/testbench/testbench.qsys does not exist.
+Info (20325): 2026.05.05.12:30:14 Info: Parallel IP Generation is enabled.
+Info (20325): 2026.05.05.12:30:14 Info: Platform Designer will attempt to use 2 processors for parallel IP generation based on available number of processors and the total number of IP to be generated.
+Info (20325): 2026.05.05.12:30:14 Info:
+Info (20325): 2026.05.05.12:30:14 Info: Starting: Platform Designer system generation
+Info (20325): 2026.05.05.12:30:34 Info:
+Info (20325): 2026.05.05.12:30:34 Info: Generating on localhost:43703
+Info (20325): 2026.05.05.12:30:34 Info: Saving generation log to /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/clipper_ip_intel_vvp_tpg_0_generation.rpt
+Info (20325): 2026.05.05.12:30:34 Info: Generated by version: 25.1.1 build 125
+Info (20325): 2026.05.05.12:30:34 Info: Starting: Create simulation model
+Info (20325): 2026.05.05.12:30:34 Info: qsys-generate /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0.ip --simulation=VERILOG --allow-mixed-language-simulation --output-directory=/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0 --family="Cyclone 10 GX" --part=10CX220YF780I5G
+Info (20325): 2026.05.05.12:30:34 Info: clipper_ip_intel_vvp_tpg_0: "Transforming system: clipper_ip_intel_vvp_tpg_0"
+Info (20325): 2026.05.05.12:30:34 Info: clipper_ip_intel_vvp_tpg_0: "Naming system components in system: clipper_ip_intel_vvp_tpg_0"
+Info (20325): 2026.05.05.12:30:34 Info: clipper_ip_intel_vvp_tpg_0: "Processing generation queue"
+Info (20325): 2026.05.05.12:30:34 Info: clipper_ip_intel_vvp_tpg_0: "Generating: clipper_ip_intel_vvp_tpg_0"
+Info (20325): 2026.05.05.12:30:34 Info: clipper_ip_intel_vvp_tpg_0: "Generating: clipper_ip_intel_vvp_tpg_0_intel_vvp_tpg_2451_d5l5lza"
+Info (20325): 2026.05.05.12:30:34 Info: clipper_ip_intel_vvp_tpg_0: "Generating: intel_vvp_reset_sync"
+Info (20325): 2026.05.05.12:30:34 Info: clipper_ip_intel_vvp_tpg_0: "Generating: intel_vvp_tpg_scheduler"
+Info (20325): 2026.05.05.12:30:34 Info: clipper_ip_intel_vvp_tpg_0: "Generating: intel_vvp_output_interface_bridge"
+Info (20325): 2026.05.05.12:30:34 Info: clipper_ip_intel_vvp_tpg_0: "Generating: intel_vvp_tpg_bars_algo_comp"
+Info (20325): 2026.05.05.12:30:34 Info: clipper_ip_intel_vvp_tpg_0: Done "clipper_ip_intel_vvp_tpg_0" with 6 modules, 96 files
+Info (20325): 2026.05.05.12:30:34 Info: Generating the following file(s) for MODELSIM simulator in /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/sim/ directory:
+Info (20325): 2026.05.05.12:30:34 Info: common/modelsim_files.tcl
+Info (20325): 2026.05.05.12:30:34 Info: Generating the following file(s) for VCSMX simulator in /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/sim/ directory:
+Info (20325): 2026.05.05.12:30:34 Info: common/vcsmx_files.tcl
+Info (20325): 2026.05.05.12:30:34 Info: Generating the following file(s) for VCS simulator in /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/sim/ directory:
+Info (20325): 2026.05.05.12:30:34 Info: common/vcs_files.tcl
+Info (20325): 2026.05.05.12:30:34 Info: Generating the following file(s) for XCELIUM simulator in /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/sim/ directory:
+Info (20325): 2026.05.05.12:30:34 Info: common/xcelium_files.tcl
+Info (20325): 2026.05.05.12:30:34 Info: Generating the following file(s) for RIVIERA simulator in /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/sim/ directory:
+Info (20325): 2026.05.05.12:30:34 Info: common/riviera_files.tcl
+Info (20325): 2026.05.05.12:30:34 Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/sim/.
+Info (20325): 2026.05.05.12:30:34 Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
+Info (20325): 2026.05.05.12:30:34 Info: Finished: Create simulation model
+Info (20325): 2026.05.05.12:30:34 Info: Starting: Create simulation script
+Info (20325): 2026.05.05.12:30:34 Info: sim-script-gen --system-file=/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0.ip --output-directory=/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/sim/ --use-relative-paths=true
+Info (20325): 2026.05.05.12:30:34 Info: Generating the following file(s) for MODELSIM simulator in /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/sim/ directory:
+Info (20325): 2026.05.05.12:30:34 Info: mentor/msim_setup.tcl
+Info (20325): 2026.05.05.12:30:34 Info: mentor/run_msim_setup.tcl
+Info (20325): 2026.05.05.12:30:34 Info: Generating the following file(s) for VCSMX simulator in /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/sim/ directory:
+Info (20325): 2026.05.05.12:30:34 Info: synopsys/vcsmx/_device_synopsys_sim.setup
+Info (20325): 2026.05.05.12:30:34 Info: synopsys/vcsmx/synopsys_sim.setup
+Info (20325): 2026.05.05.12:30:34 Info: synopsys/vcsmx/vcsmx_setup.sh
+Info (20325): 2026.05.05.12:30:34 Info: Generating the following file(s) for VCS simulator in /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/sim/ directory:
+Info (20325): 2026.05.05.12:30:34 Info: synopsys/vcs/vcs_setup.sh
+Info (20325): 2026.05.05.12:30:34 Info: Generating the following file(s) for XCELIUM simulator in /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/sim/ directory:
+Info (20325): 2026.05.05.12:30:34 Info: xcelium/cds.lib
+Info (20325): 2026.05.05.12:30:34 Info: xcelium/hdl.var
+Info (20325): 2026.05.05.12:30:34 Info: xcelium/xcelium_setup.sh
+Info (20325): 2026.05.05.12:30:34 Info: 8 .cds.lib files in xcelium/cds_libs/ directory
+Info (20325): 2026.05.05.12:30:34 Info: Generating the following file(s) for RIVIERA simulator in /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/sim/ directory:
+Info (20325): 2026.05.05.12:30:34 Info: aldec/rivierapro_setup.tcl
+Info (20325): 2026.05.05.12:30:34 Info: aldec/run_rivierapro_setup.tcl
+Info (20325): 2026.05.05.12:30:34 Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/sim/.
+Info (20325): 2026.05.05.12:30:34 Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
+Info (20325): 2026.05.05.12:30:34 Info: Finished: Create simulation script
+Info (20325): 2026.05.05.12:30:34 Info: Starting: Create block symbol file (.bsf)
+Info (20325): 2026.05.05.12:30:34 Info: qsys-generate /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0.ip --block-symbol-file --output-directory=/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0 --family="Cyclone 10 GX" --part=10CX220YF780I5G
+Info (20325): 2026.05.05.12:30:34 Info: Finished: Create block symbol file (.bsf)
+Info (20325): 2026.05.05.12:30:34 Info:
+Info (20325): 2026.05.05.12:30:34 Info: Starting: Create HDL design files for synthesis
+Info (20325): 2026.05.05.12:30:34 Info: qsys-generate /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0.ip --synthesis=VERILOG --output-directory=/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0 --family="Cyclone 10 GX" --part=10CX220YF780I5G
+Info (20325): 2026.05.05.12:30:34 Info: clipper_ip_intel_vvp_tpg_0: "Transforming system: clipper_ip_intel_vvp_tpg_0"
+Info (20325): 2026.05.05.12:30:34 Info: clipper_ip_intel_vvp_tpg_0: "Naming system components in system: clipper_ip_intel_vvp_tpg_0"
+Info (20325): 2026.05.05.12:30:34 Info: clipper_ip_intel_vvp_tpg_0: "Processing generation queue"
+Info (20325): 2026.05.05.12:30:34 Info: clipper_ip_intel_vvp_tpg_0: "Generating: clipper_ip_intel_vvp_tpg_0"
+Info (20325): 2026.05.05.12:30:34 Info: clipper_ip_intel_vvp_tpg_0: "Generating: clipper_ip_intel_vvp_tpg_0_intel_vvp_tpg_2451_d5l5lza"
+Info (20325): 2026.05.05.12:30:34 Info: clipper_ip_intel_vvp_tpg_0: "Generating: intel_vvp_reset_sync"
+Info (20325): 2026.05.05.12:30:34 Info: clipper_ip_intel_vvp_tpg_0: "Generating: intel_vvp_tpg_scheduler"
+Info (20325): 2026.05.05.12:30:34 Info: clipper_ip_intel_vvp_tpg_0: "Generating: intel_vvp_output_interface_bridge"
+Info (20325): 2026.05.05.12:30:34 Info: clipper_ip_intel_vvp_tpg_0: "Generating: intel_vvp_tpg_bars_algo_comp"
+Info (20325): 2026.05.05.12:30:34 Info: clipper_ip_intel_vvp_tpg_0: Done "clipper_ip_intel_vvp_tpg_0" with 6 modules, 27 files
+Info (20325): 2026.05.05.12:30:34 Info: Finished: Create HDL design files for synthesis
+Info (20325): 2026.05.05.12:30:34 Info: Generation of /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0.ip (clipper_ip_intel_vvp_tpg_0) took 7288 ms
+Info (20325): 2026.05.05.12:30:36 Info:
+Info (20325): 2026.05.05.12:30:36 Info: Generating on localhost:32837
+Info (20325): 2026.05.05.12:30:36 Info: Saving generation log to /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_clipper_0/clipper_ip_intel_vvp_clipper_0_generation.rpt
+Info (20325): 2026.05.05.12:30:36 Info: Generated by version: 25.1.1 build 125
+Info (20325): 2026.05.05.12:30:36 Info: Starting: Create simulation model
+Info (20325): 2026.05.05.12:30:36 Info: qsys-generate /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_clipper_0.ip --simulation=VERILOG --allow-mixed-language-simulation --output-directory=/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_clipper_0 --family="Cyclone 10 GX" --part=10CX220YF780I5G
+Info (20325): 2026.05.05.12:30:36 Info: clipper_ip_intel_vvp_clipper_0: "Transforming system: clipper_ip_intel_vvp_clipper_0"
+Info (20325): 2026.05.05.12:30:36 Info: Interconnect is inserted between master slave_interface.av_mm_master and slave scheduler.av_mm_slave because the master has address signal 7 bit wide, but the slave is 5 bit wide.
+Info (20325): 2026.05.05.12:30:36 Info: Interconnect is inserted between master mm_reset_hold.av_mm_master and slave ro_reg.av_mm_slave because the master has address signal 9 bit wide, but the slave is 7 bit wide.
+Info (20325): 2026.05.05.12:30:36 Info: clipper_ip_intel_vvp_clipper_0: "Naming system components in system: clipper_ip_intel_vvp_clipper_0"
+Info (20325): 2026.05.05.12:30:36 Info: clipper_ip_intel_vvp_clipper_0: "Processing generation queue"
+Info (20325): 2026.05.05.12:30:36 Info: clipper_ip_intel_vvp_clipper_0: "Generating: clipper_ip_intel_vvp_clipper_0"
+Info (20325): 2026.05.05.12:30:36 Info: clipper_ip_intel_vvp_clipper_0: "Generating: clipper_ip_intel_vvp_clipper_0_intel_vvp_clipper_2451_czyt47i"
+Info (20325): 2026.05.05.12:30:36 Info: clipper_ip_intel_vvp_clipper_0: "Generating: intel_vvp_reset_sync"
+Info (20325): 2026.05.05.12:30:36 Info: clipper_ip_intel_vvp_clipper_0: "Generating: intel_vvp_input_interface_bridge"
+Info (20325): 2026.05.05.12:30:36 Info: clipper_ip_intel_vvp_clipper_0: "Generating: intel_vvp_output_interface_bridge"
+Info (20325): 2026.05.05.12:30:36 Info: clipper_ip_intel_vvp_clipper_0: "Generating: intel_vvp_clipper_scheduler"
+Info (20325): 2026.05.05.12:30:36 Info: clipper_ip_intel_vvp_clipper_0: "Generating: intel_vvp_clipper_algo_comp"
+Info (20325): 2026.05.05.12:30:36 Info: clipper_ip_intel_vvp_clipper_0: "Generating: clipper_ip_intel_vvp_clipper_0_intel_vvp_slave_front_end_2441_bjsqhuy"
+Info (20325): 2026.05.05.12:30:36 Info: clipper_ip_intel_vvp_clipper_0: "Generating: clipper_ip_intel_vvp_clipper_0_altera_mm_interconnect_1920_vibtxqa"
+Info (20325): 2026.05.05.12:30:36 Info: clipper_ip_intel_vvp_clipper_0: "Generating: intel_vvp_reset_bridge"
+Info (20325): 2026.05.05.12:30:36 Info: clipper_ip_intel_vvp_clipper_0: "Generating: clipper_ip_intel_vvp_clipper_0_intel_vvp_ro_reg_servicer_2441_nuyi3qi"
+Info (20325): 2026.05.05.12:30:36 Info: clipper_ip_intel_vvp_clipper_0: "Generating: intel_vvp_mm_agent_reset_hold"
+Info (20325): 2026.05.05.12:30:36 Info: clipper_ip_intel_vvp_clipper_0: "Generating: clipper_ip_intel_vvp_clipper_0_altera_mm_interconnect_1920_epi4vay"
+Info (20325): 2026.05.05.12:30:36 Info: clipper_ip_intel_vvp_clipper_0: "Generating: clipper_ip_intel_vvp_clipper_0_altera_merlin_master_translator_193_lgcew2q"
+Info (20325): 2026.05.05.12:30:36 Info: clipper_ip_intel_vvp_clipper_0: "Generating: clipper_ip_intel_vvp_clipper_0_altera_merlin_slave_translator_191_xg7rzxi"
+Info (20325): 2026.05.05.12:30:36 Info: clipper_ip_intel_vvp_clipper_0: Done "clipper_ip_intel_vvp_clipper_0" with 15 modules, 134 files
+Info (20325): 2026.05.05.12:30:36 Info: Generating the following file(s) for MODELSIM simulator in /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_clipper_0/sim/ directory:
+Info (20325): 2026.05.05.12:30:36 Info: common/modelsim_files.tcl
+Info (20325): 2026.05.05.12:30:36 Info: Generating the following file(s) for RIVIERA simulator in /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_clipper_0/sim/ directory:
+Info (20325): 2026.05.05.12:30:36 Info: common/riviera_files.tcl
+Info (20325): 2026.05.05.12:30:36 Info: Generating the following file(s) for VCSMX simulator in /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_clipper_0/sim/ directory:
+Info (20325): 2026.05.05.12:30:36 Info: common/vcsmx_files.tcl
+Info (20325): 2026.05.05.12:30:36 Info: Generating the following file(s) for XCELIUM simulator in /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_clipper_0/sim/ directory:
+Info (20325): 2026.05.05.12:30:36 Info: common/xcelium_files.tcl
+Info (20325): 2026.05.05.12:30:36 Info: Generating the following file(s) for VCS simulator in /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_clipper_0/sim/ directory:
+Info (20325): 2026.05.05.12:30:36 Info: common/vcs_files.tcl
+Info (20325): 2026.05.05.12:30:36 Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_clipper_0/sim/.
+Info (20325): 2026.05.05.12:30:36 Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
+Info (20325): 2026.05.05.12:30:36 Info: Finished: Create simulation model
+Info (20325): 2026.05.05.12:30:36 Info: Starting: Create simulation script
+Info (20325): 2026.05.05.12:30:36 Info: sim-script-gen --system-file=/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_clipper_0.ip --output-directory=/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_clipper_0/sim/ --use-relative-paths=true
+Info (20325): 2026.05.05.12:30:36 Info: Generating the following file(s) for MODELSIM simulator in /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_clipper_0/sim/ directory:
+Info (20325): 2026.05.05.12:30:36 Info: mentor/msim_setup.tcl
+Info (20325): 2026.05.05.12:30:36 Info: mentor/run_msim_setup.tcl
+Info (20325): 2026.05.05.12:30:36 Info: Generating the following file(s) for RIVIERA simulator in /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_clipper_0/sim/ directory:
+Info (20325): 2026.05.05.12:30:36 Info: aldec/rivierapro_setup.tcl
+Info (20325): 2026.05.05.12:30:36 Info: aldec/run_rivierapro_setup.tcl
+Info (20325): 2026.05.05.12:30:36 Info: Generating the following file(s) for VCSMX simulator in /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_clipper_0/sim/ directory:
+Info (20325): 2026.05.05.12:30:36 Info: synopsys/vcsmx/_device_synopsys_sim.setup
+Info (20325): 2026.05.05.12:30:36 Info: synopsys/vcsmx/synopsys_sim.setup
+Info (20325): 2026.05.05.12:30:36 Info: synopsys/vcsmx/vcsmx_setup.sh
+Info (20325): 2026.05.05.12:30:36 Info: Generating the following file(s) for XCELIUM simulator in /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_clipper_0/sim/ directory:
+Info (20325): 2026.05.05.12:30:36 Info: xcelium/cds.lib
+Info (20325): 2026.05.05.12:30:36 Info: xcelium/hdl.var
+Info (20325): 2026.05.05.12:30:36 Info: xcelium/xcelium_setup.sh
+Info (20325): 2026.05.05.12:30:36 Info: 16 .cds.lib files in xcelium/cds_libs/ directory
+Info (20325): 2026.05.05.12:30:36 Info: Generating the following file(s) for VCS simulator in /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_clipper_0/sim/ directory:
+Info (20325): 2026.05.05.12:30:36 Info: synopsys/vcs/vcs_setup.sh
+Info (20325): 2026.05.05.12:30:36 Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_clipper_0/sim/.
+Info (20325): 2026.05.05.12:30:36 Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
+Info (20325): 2026.05.05.12:30:36 Info: Finished: Create simulation script
+Info (20325): 2026.05.05.12:30:36 Info: Starting: Create block symbol file (.bsf)
+Info (20325): 2026.05.05.12:30:36 Info: qsys-generate /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_clipper_0.ip --block-symbol-file --output-directory=/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_clipper_0 --family="Cyclone 10 GX" --part=10CX220YF780I5G
+Info (20325): 2026.05.05.12:30:36 Info: Finished: Create block symbol file (.bsf)
+Info (20325): 2026.05.05.12:30:37 Info:
+Info (20325): 2026.05.05.12:30:37 Info: Starting: Create HDL design files for synthesis
+Info (20325): 2026.05.05.12:30:37 Info: qsys-generate /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_clipper_0.ip --synthesis=VERILOG --output-directory=/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_clipper_0 --family="Cyclone 10 GX" --part=10CX220YF780I5G
+Info (20325): 2026.05.05.12:30:37 Info: clipper_ip_intel_vvp_clipper_0: "Transforming system: clipper_ip_intel_vvp_clipper_0"
+Info (20325): 2026.05.05.12:30:37 Info: Interconnect is inserted between master slave_interface.av_mm_master and slave scheduler.av_mm_slave because the master has address signal 7 bit wide, but the slave is 5 bit wide.
+Info (20325): 2026.05.05.12:30:37 Info: Interconnect is inserted between master mm_reset_hold.av_mm_master and slave ro_reg.av_mm_slave because the master has address signal 9 bit wide, but the slave is 7 bit wide.
+Info (20325): 2026.05.05.12:30:37 Info: clipper_ip_intel_vvp_clipper_0: "Naming system components in system: clipper_ip_intel_vvp_clipper_0"
+Info (20325): 2026.05.05.12:30:37 Info: clipper_ip_intel_vvp_clipper_0: "Processing generation queue"
+Info (20325): 2026.05.05.12:30:37 Info: clipper_ip_intel_vvp_clipper_0: "Generating: clipper_ip_intel_vvp_clipper_0"
+Info (20325): 2026.05.05.12:30:37 Info: clipper_ip_intel_vvp_clipper_0: "Generating: clipper_ip_intel_vvp_clipper_0_intel_vvp_clipper_2451_czyt47i"
+Info (20325): 2026.05.05.12:30:37 Info: clipper_ip_intel_vvp_clipper_0: "Generating: intel_vvp_reset_sync"
+Info (20325): 2026.05.05.12:30:37 Info: clipper_ip_intel_vvp_clipper_0: "Generating: intel_vvp_input_interface_bridge"
+Info (20325): 2026.05.05.12:30:37 Info: clipper_ip_intel_vvp_clipper_0: "Generating: intel_vvp_output_interface_bridge"
+Info (20325): 2026.05.05.12:30:37 Info: clipper_ip_intel_vvp_clipper_0: "Generating: intel_vvp_clipper_scheduler"
+Info (20325): 2026.05.05.12:30:37 Info: clipper_ip_intel_vvp_clipper_0: "Generating: intel_vvp_clipper_algo_comp"
+Info (20325): 2026.05.05.12:30:37 Info: clipper_ip_intel_vvp_clipper_0: "Generating: clipper_ip_intel_vvp_clipper_0_intel_vvp_slave_front_end_2441_bjsqhuy"
+Info (20325): 2026.05.05.12:30:37 Info: clipper_ip_intel_vvp_clipper_0: "Generating: clipper_ip_intel_vvp_clipper_0_altera_mm_interconnect_1920_vibtxqa"
+Info (20325): 2026.05.05.12:30:37 Info: clipper_ip_intel_vvp_clipper_0: "Generating: intel_vvp_reset_bridge"
+Info (20325): 2026.05.05.12:30:37 Info: clipper_ip_intel_vvp_clipper_0: "Generating: clipper_ip_intel_vvp_clipper_0_intel_vvp_ro_reg_servicer_2441_nuyi3qi"
+Info (20325): 2026.05.05.12:30:37 Info: clipper_ip_intel_vvp_clipper_0: "Generating: intel_vvp_mm_agent_reset_hold"
+Info (20325): 2026.05.05.12:30:37 Info: clipper_ip_intel_vvp_clipper_0: "Generating: clipper_ip_intel_vvp_clipper_0_altera_mm_interconnect_1920_epi4vay"
+Info (20325): 2026.05.05.12:30:37 Info: clipper_ip_intel_vvp_clipper_0: "Generating: clipper_ip_intel_vvp_clipper_0_altera_merlin_master_translator_193_lgcew2q"
+Info (20325): 2026.05.05.12:30:37 Info: clipper_ip_intel_vvp_clipper_0: "Generating: clipper_ip_intel_vvp_clipper_0_altera_merlin_slave_translator_191_xg7rzxi"
+Info (20325): 2026.05.05.12:30:37 Info: clipper_ip_intel_vvp_clipper_0: Done "clipper_ip_intel_vvp_clipper_0" with 15 modules, 41 files
+Info (20325): 2026.05.05.12:30:37 Info: Finished: Create HDL design files for synthesis
+Info (20325): 2026.05.05.12:30:37 Info: Generation of /mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_clipper_0.ip (clipper_ip_intel_vvp_clipper_0) took 9052 ms
+Info (20325): 2026.05.05.12:30:37 Info: Finished: Platform Designer system generation
+Info (11131): Completed upgrading IP component intel_vvp_tpg with file "ip/clipper_ip/clipper_ip_intel_vvp_tpg_0.ip"
+Info (11131): Completed upgrading IP component intel_vvp_clipper with file "ip/clipper_ip/clipper_ip_intel_vvp_clipper_0.ip"
+Info (23030): Evaluation of Tcl script /mnt/ssd2/Quartus_Setup_Installation/quartus/common/tcl/internal/ip_regen/ip_regen.tcl was successful
+Info: Quartus Prime Shell was successful. 0 errors, 11 warnings
+    Info: Peak virtual memory: 1403 megabytes
+    Info: Processing ended: Tue May  5 12:30:38 2026
+    Info: Elapsed time: 00:01:15
+    Info: System process ID: 3860623
+
+

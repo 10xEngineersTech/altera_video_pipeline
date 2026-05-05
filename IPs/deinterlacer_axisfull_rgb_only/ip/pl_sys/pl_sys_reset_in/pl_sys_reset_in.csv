@@ -1,0 +1,16 @@
+# system info pl_sys_reset_in on 2026.04.30.12:11:51
+system_info:
+name,value
+DEVICE,10CX220YF672E5G
+DEVICE_FAMILY,Cyclone 10 GX
+GENERATION_ID,0
+#
+#
+# Files generated for pl_sys_reset_in on 2026.04.30.12:11:51
+files:
+filepath,kind,attributes,module,is_top
+sim/pl_sys_reset_in.v,VERILOG,CONTAINS_INLINE_CONFIGURATION,pl_sys_reset_in,true
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module

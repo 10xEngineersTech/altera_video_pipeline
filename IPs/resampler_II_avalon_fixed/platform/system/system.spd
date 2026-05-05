@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file
+   path="sim/system.v"
+   type="VERILOG"
+   library="system"
+   hasInlineConfiguration="true" />
+ <topLevel name="system.system" />
+ <deviceFamily name="cyclone10gx" />
+ <device name="10CX220YF780I5G" />
+</simPackage>

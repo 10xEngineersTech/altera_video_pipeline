@@ -1,0 +1,352 @@
+Synthesis Analysis & Elaboration Stage Report for resampler
+Tue Mar 17 16:43:16 2026
+Quartus Prime Version 25.1.1 Build 125 07/31/2025 SC Pro Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Parameter Settings for User Entity system_alt_vip_cl_tpg_0_alt_vip_cl_tpg_2360_qjrno4y Instance: dut|alt_vip_cl_tpg_0|alt_vip_cl_tpg_0
+  3. XMRed Signals
+  4. Top Causes of Logic Optimized Away During Sweep
+  5. Analysis & Elaboration Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity system_alt_vip_cl_tpg_0_alt_vip_cl_tpg_2360_qjrno4y Instance: dut|alt_vip_cl_tpg_0|alt_vip_cl_tpg_0 ;
++--------------------+-------+-----------------------------------------------------------------------------------------------------------+
+; Parameter Name     ; Value ; Type                                                                                                      ;
++--------------------+-------+-----------------------------------------------------------------------------------------------------------+
+; CB0_B_0            ; 255   ; Signed Integer                                                                                            ;
+; CB0_B_1            ; 255   ; Signed Integer                                                                                            ;
+; CB0_B_2            ; 255   ; Signed Integer                                                                                            ;
+; CB0_B_3            ; 255   ; Signed Integer                                                                                            ;
+; CB0_B_4            ; 255   ; Signed Integer                                                                                            ;
+; CB0_B_5            ; 255   ; Signed Integer                                                                                            ;
+; CB0_B_6            ; 255   ; Signed Integer                                                                                            ;
+; CB0_B_7            ; 255   ; Signed Integer                                                                                            ;
+; CB0_G_0            ; 255   ; Signed Integer                                                                                            ;
+; CB0_G_1            ; 255   ; Signed Integer                                                                                            ;
+; CB0_G_2            ; 255   ; Signed Integer                                                                                            ;
+; CB0_G_3            ; 255   ; Signed Integer                                                                                            ;
+; CB0_G_4            ; 255   ; Signed Integer                                                                                            ;
+; CB0_G_5            ; 255   ; Signed Integer                                                                                            ;
+; CB0_G_6            ; 255   ; Signed Integer                                                                                            ;
+; CB0_G_7            ; 255   ; Signed Integer                                                                                            ;
+; CB0_R_0            ; 255   ; Signed Integer                                                                                            ;
+; CB0_R_1            ; 255   ; Signed Integer                                                                                            ;
+; CB0_R_2            ; 255   ; Signed Integer                                                                                            ;
+; CB0_R_3            ; 255   ; Signed Integer                                                                                            ;
+; CB0_R_4            ; 255   ; Signed Integer                                                                                            ;
+; CB0_R_5            ; 255   ; Signed Integer                                                                                            ;
+; CB0_R_6            ; 255   ; Signed Integer                                                                                            ;
+; CB0_R_7            ; 255   ; Signed Integer                                                                                            ;
+; CB1_B_0            ; 255   ; Signed Integer                                                                                            ;
+; CB1_B_1            ; 255   ; Signed Integer                                                                                            ;
+; CB1_B_2            ; 255   ; Signed Integer                                                                                            ;
+; CB1_B_3            ; 255   ; Signed Integer                                                                                            ;
+; CB1_B_4            ; 255   ; Signed Integer                                                                                            ;
+; CB1_B_5            ; 255   ; Signed Integer                                                                                            ;
+; CB1_B_6            ; 255   ; Signed Integer                                                                                            ;
+; CB1_B_7            ; 255   ; Signed Integer                                                                                            ;
+; CB1_G_0            ; 255   ; Signed Integer                                                                                            ;
+; CB1_G_1            ; 255   ; Signed Integer                                                                                            ;
+; CB1_G_2            ; 255   ; Signed Integer                                                                                            ;
+; CB1_G_3            ; 255   ; Signed Integer                                                                                            ;
+; CB1_G_4            ; 255   ; Signed Integer                                                                                            ;
+; CB1_G_5            ; 255   ; Signed Integer                                                                                            ;
+; CB1_G_6            ; 255   ; Signed Integer                                                                                            ;
+; CB1_G_7            ; 255   ; Signed Integer                                                                                            ;
+; CB1_R_0            ; 255   ; Signed Integer                                                                                            ;
+; CB1_R_1            ; 255   ; Signed Integer                                                                                            ;
+; CB1_R_2            ; 255   ; Signed Integer                                                                                            ;
+; CB1_R_3            ; 255   ; Signed Integer                                                                                            ;
+; CB1_R_4            ; 255   ; Signed Integer                                                                                            ;
+; CB1_R_5            ; 255   ; Signed Integer                                                                                            ;
+; CB1_R_6            ; 255   ; Signed Integer                                                                                            ;
+; CB1_R_7            ; 255   ; Signed Integer                                                                                            ;
+; CB2_B_0            ; 255   ; Signed Integer                                                                                            ;
+; CB2_B_1            ; 255   ; Signed Integer                                                                                            ;
+; CB2_B_2            ; 255   ; Signed Integer                                                                                            ;
+; CB2_B_3            ; 255   ; Signed Integer                                                                                            ;
+; CB2_B_4            ; 255   ; Signed Integer                                                                                            ;
+; CB2_B_5            ; 255   ; Signed Integer                                                                                            ;
+; CB2_B_6            ; 255   ; Signed Integer                                                                                            ;
+; CB2_B_7            ; 255   ; Signed Integer                                                                                            ;
+; CB2_G_0            ; 255   ; Signed Integer                                                                                            ;
+; CB2_G_1            ; 255   ; Signed Integer                                                                                            ;
+; CB2_G_2            ; 255   ; Signed Integer                                                                                            ;
+; CB2_G_3            ; 255   ; Signed Integer                                                                                            ;
+; CB2_G_4            ; 255   ; Signed Integer                                                                                            ;
+; CB2_G_5            ; 255   ; Signed Integer                                                                                            ;
+; CB2_G_6            ; 255   ; Signed Integer                                                                                            ;
+; CB2_G_7            ; 255   ; Signed Integer                                                                                            ;
+; CB2_R_0            ; 255   ; Signed Integer                                                                                            ;
+; CB2_R_1            ; 255   ; Signed Integer                                                                                            ;
+; CB2_R_2            ; 255   ; Signed Integer                                                                                            ;
+; CB2_R_3            ; 255   ; Signed Integer                                                                                            ;
+; CB2_R_4            ; 255   ; Signed Integer                                                                                            ;
+; CB2_R_5            ; 255   ; Signed Integer                                                                                            ;
+; CB2_R_6            ; 255   ; Signed Integer                                                                                            ;
+; CB2_R_7            ; 255   ; Signed Integer                                                                                            ;
+; CB3_B_0            ; 255   ; Signed Integer                                                                                            ;
+; CB3_B_1            ; 255   ; Signed Integer                                                                                            ;
+; CB3_B_2            ; 255   ; Signed Integer                                                                                            ;
+; CB3_B_3            ; 255   ; Signed Integer                                                                                            ;
+; CB3_B_4            ; 255   ; Signed Integer                                                                                            ;
+; CB3_B_5            ; 255   ; Signed Integer                                                                                            ;
+; CB3_B_6            ; 255   ; Signed Integer                                                                                            ;
+; CB3_B_7            ; 255   ; Signed Integer                                                                                            ;
+; CB3_G_0            ; 255   ; Signed Integer                                                                                            ;
+; CB3_G_1            ; 255   ; Signed Integer                                                                                            ;
+; CB3_G_2            ; 255   ; Signed Integer                                                                                            ;
+; CB3_G_3            ; 255   ; Signed Integer                                                                                            ;
+; CB3_G_4            ; 255   ; Signed Integer                                                                                            ;
+; CB3_G_5            ; 255   ; Signed Integer                                                                                            ;
+; CB3_G_6            ; 255   ; Signed Integer                                                                                            ;
+; CB3_G_7            ; 255   ; Signed Integer                                                                                            ;
+; CB3_R_0            ; 255   ; Signed Integer                                                                                            ;
+; CB3_R_1            ; 255   ; Signed Integer                                                                                            ;
+; CB3_R_2            ; 255   ; Signed Integer                                                                                            ;
+; CB3_R_3            ; 255   ; Signed Integer                                                                                            ;
+; CB3_R_4            ; 255   ; Signed Integer                                                                                            ;
+; CB3_R_5            ; 255   ; Signed Integer                                                                                            ;
+; CB3_R_6            ; 255   ; Signed Integer                                                                                            ;
+; CB3_R_7            ; 255   ; Signed Integer                                                                                            ;
+; CB4_B_0            ; 255   ; Signed Integer                                                                                            ;
+; CB4_B_1            ; 255   ; Signed Integer                                                                                            ;
+; CB4_B_2            ; 255   ; Signed Integer                                                                                            ;
+; CB4_B_3            ; 255   ; Signed Integer                                                                                            ;
+; CB4_B_4            ; 255   ; Signed Integer                                                                                            ;
+; CB4_B_5            ; 255   ; Signed Integer                                                                                            ;
+; CB4_B_6            ; 255   ; Signed Integer                                                                                            ;
+; CB4_B_7            ; 255   ; Signed Integer                                                                                            ;
+; CB4_G_0            ; 255   ; Signed Integer                                                                                            ;
+; CB4_G_1            ; 255   ; Signed Integer                                                                                            ;
+; CB4_G_2            ; 255   ; Signed Integer                                                                                            ;
+; CB4_G_3            ; 255   ; Signed Integer                                                                                            ;
+; CB4_G_4            ; 255   ; Signed Integer                                                                                            ;
+; CB4_G_5            ; 255   ; Signed Integer                                                                                            ;
+; CB4_G_6            ; 255   ; Signed Integer                                                                                            ;
+; CB4_G_7            ; 255   ; Signed Integer                                                                                            ;
+; CB4_R_0            ; 255   ; Signed Integer                                                                                            ;
+; CB4_R_1            ; 255   ; Signed Integer                                                                                            ;
+; CB4_R_2            ; 255   ; Signed Integer                                                                                            ;
+; CB4_R_3            ; 255   ; Signed Integer                                                                                            ;
+; CB4_R_4            ; 255   ; Signed Integer                                                                                            ;
+; CB4_R_5            ; 255   ; Signed Integer                                                                                            ;
+; CB4_R_6            ; 255   ; Signed Integer                                                                                            ;
+; CB4_R_7            ; 255   ; Signed Integer                                                                                            ;
+; CB5_B_0            ; 255   ; Signed Integer                                                                                            ;
+; CB5_B_1            ; 255   ; Signed Integer                                                                                            ;
+; CB5_B_2            ; 255   ; Signed Integer                                                                                            ;
+; CB5_B_3            ; 255   ; Signed Integer                                                                                            ;
+; CB5_B_4            ; 255   ; Signed Integer                                                                                            ;
+; CB5_B_5            ; 255   ; Signed Integer                                                                                            ;
+; CB5_B_6            ; 255   ; Signed Integer                                                                                            ;
+; CB5_B_7            ; 255   ; Signed Integer                                                                                            ;
+; CB5_G_0            ; 255   ; Signed Integer                                                                                            ;
+; CB5_G_1            ; 255   ; Signed Integer                                                                                            ;
+; CB5_G_2            ; 255   ; Signed Integer                                                                                            ;
+; CB5_G_3            ; 255   ; Signed Integer                                                                                            ;
+; CB5_G_4            ; 255   ; Signed Integer                                                                                            ;
+; CB5_G_5            ; 255   ; Signed Integer                                                                                            ;
+; CB5_G_6            ; 255   ; Signed Integer                                                                                            ;
+; CB5_G_7            ; 255   ; Signed Integer                                                                                            ;
+; CB5_R_0            ; 255   ; Signed Integer                                                                                            ;
+; CB5_R_1            ; 255   ; Signed Integer                                                                                            ;
+; CB5_R_2            ; 255   ; Signed Integer                                                                                            ;
+; CB5_R_3            ; 255   ; Signed Integer                                                                                            ;
+; CB5_R_4            ; 255   ; Signed Integer                                                                                            ;
+; CB5_R_5            ; 255   ; Signed Integer                                                                                            ;
+; CB5_R_6            ; 255   ; Signed Integer                                                                                            ;
+; CB5_R_7            ; 255   ; Signed Integer                                                                                            ;
+; CB6_B_0            ; 255   ; Signed Integer                                                                                            ;
+; CB6_B_1            ; 255   ; Signed Integer                                                                                            ;
+; CB6_B_2            ; 255   ; Signed Integer                                                                                            ;
+; CB6_B_3            ; 255   ; Signed Integer                                                                                            ;
+; CB6_B_4            ; 255   ; Signed Integer                                                                                            ;
+; CB6_B_5            ; 255   ; Signed Integer                                                                                            ;
+; CB6_B_6            ; 255   ; Signed Integer                                                                                            ;
+; CB6_B_7            ; 255   ; Signed Integer                                                                                            ;
+; CB6_G_0            ; 255   ; Signed Integer                                                                                            ;
+; CB6_G_1            ; 255   ; Signed Integer                                                                                            ;
+; CB6_G_2            ; 255   ; Signed Integer                                                                                            ;
+; CB6_G_3            ; 255   ; Signed Integer                                                                                            ;
+; CB6_G_4            ; 255   ; Signed Integer                                                                                            ;
+; CB6_G_5            ; 255   ; Signed Integer                                                                                            ;
+; CB6_G_6            ; 255   ; Signed Integer                                                                                            ;
+; CB6_G_7            ; 255   ; Signed Integer                                                                                            ;
+; CB6_R_0            ; 255   ; Signed Integer                                                                                            ;
+; CB6_R_1            ; 255   ; Signed Integer                                                                                            ;
+; CB6_R_2            ; 255   ; Signed Integer                                                                                            ;
+; CB6_R_3            ; 255   ; Signed Integer                                                                                            ;
+; CB6_R_4            ; 255   ; Signed Integer                                                                                            ;
+; CB6_R_5            ; 255   ; Signed Integer                                                                                            ;
+; CB6_R_6            ; 255   ; Signed Integer                                                                                            ;
+; CB6_R_7            ; 255   ; Signed Integer                                                                                            ;
+; CB7_B_0            ; 255   ; Signed Integer                                                                                            ;
+; CB7_B_1            ; 255   ; Signed Integer                                                                                            ;
+; CB7_B_2            ; 255   ; Signed Integer                                                                                            ;
+; CB7_B_3            ; 255   ; Signed Integer                                                                                            ;
+; CB7_B_4            ; 255   ; Signed Integer                                                                                            ;
+; CB7_B_5            ; 255   ; Signed Integer                                                                                            ;
+; CB7_B_6            ; 255   ; Signed Integer                                                                                            ;
+; CB7_B_7            ; 255   ; Signed Integer                                                                                            ;
+; CB7_G_0            ; 255   ; Signed Integer                                                                                            ;
+; CB7_G_1            ; 255   ; Signed Integer                                                                                            ;
+; CB7_G_2            ; 255   ; Signed Integer                                                                                            ;
+; CB7_G_3            ; 255   ; Signed Integer                                                                                            ;
+; CB7_G_4            ; 255   ; Signed Integer                                                                                            ;
+; CB7_G_5            ; 255   ; Signed Integer                                                                                            ;
+; CB7_G_6            ; 255   ; Signed Integer                                                                                            ;
+; CB7_G_7            ; 255   ; Signed Integer                                                                                            ;
+; CB7_R_0            ; 255   ; Signed Integer                                                                                            ;
+; CB7_R_1            ; 255   ; Signed Integer                                                                                            ;
+; CB7_R_2            ; 255   ; Signed Integer                                                                                            ;
+; CB7_R_3            ; 255   ; Signed Integer                                                                                            ;
+; CB7_R_4            ; 255   ; Signed Integer                                                                                            ;
+; CB7_R_5            ; 255   ; Signed Integer                                                                                            ;
+; CB7_R_6            ; 255   ; Signed Integer                                                                                            ;
+; CB7_R_7            ; 255   ; Signed Integer                                                                                            ;
+; PIXELS_IN_PARALLEL ; 2     ; Signed Integer                                                                                            ;
++--------------------+-------+-----------------------------------------------------------------------------------------------------------+
+All Instances:
+dut|alt_vip_cl_tpg_0|alt_vip_cl_tpg_0
+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; XMRed Signals                                                                                                                                              ;
++-------------------------------------------------------+------------+---------------------------------------------------------------------------------------+
+; Net Instance Path                                     ; Net Type   ; Net XMRed at                                                                          ;
++-------------------------------------------------------+------------+---------------------------------------------------------------------------------------+
+; resampling_checker|dut|alt_vip_cl_tpg_0_dout_valid    ; Non-Forced ; /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/rtl/resampling_checker.v(36) ;
+; resampling_checker|dut|alt_vip_cl_tpg_0_dout_data[31] ; Non-Forced ; /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/rtl/resampling_checker.v(35) ;
+; resampling_checker|dut|alt_vip_cl_tpg_0_dout_data[30] ; Non-Forced ; /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/rtl/resampling_checker.v(35) ;
+; resampling_checker|dut|alt_vip_cl_tpg_0_dout_data[29] ; Non-Forced ; /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/rtl/resampling_checker.v(35) ;
+; resampling_checker|dut|alt_vip_cl_tpg_0_dout_data[28] ; Non-Forced ; /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/rtl/resampling_checker.v(35) ;
+; resampling_checker|dut|alt_vip_cl_tpg_0_dout_data[27] ; Non-Forced ; /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/rtl/resampling_checker.v(35) ;
+; resampling_checker|dut|alt_vip_cl_tpg_0_dout_data[26] ; Non-Forced ; /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/rtl/resampling_checker.v(35) ;
+; resampling_checker|dut|alt_vip_cl_tpg_0_dout_data[25] ; Non-Forced ; /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/rtl/resampling_checker.v(35) ;
+; resampling_checker|dut|alt_vip_cl_tpg_0_dout_data[24] ; Non-Forced ; /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/rtl/resampling_checker.v(35) ;
+; resampling_checker|dut|alt_vip_cl_tpg_0_dout_data[23] ; Non-Forced ; /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/rtl/resampling_checker.v(35) ;
+; resampling_checker|dut|alt_vip_cl_tpg_0_dout_data[22] ; Non-Forced ; /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/rtl/resampling_checker.v(35) ;
+; resampling_checker|dut|alt_vip_cl_tpg_0_dout_data[21] ; Non-Forced ; /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/rtl/resampling_checker.v(35) ;
+; resampling_checker|dut|alt_vip_cl_tpg_0_dout_data[20] ; Non-Forced ; /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/rtl/resampling_checker.v(35) ;
+; resampling_checker|dut|alt_vip_cl_tpg_0_dout_data[19] ; Non-Forced ; /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/rtl/resampling_checker.v(35) ;
+; resampling_checker|dut|alt_vip_cl_tpg_0_dout_data[18] ; Non-Forced ; /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/rtl/resampling_checker.v(35) ;
+; resampling_checker|dut|alt_vip_cl_tpg_0_dout_data[17] ; Non-Forced ; /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/rtl/resampling_checker.v(35) ;
+; resampling_checker|dut|alt_vip_cl_tpg_0_dout_data[16] ; Non-Forced ; /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/rtl/resampling_checker.v(35) ;
+; resampling_checker|dut|alt_vip_cl_tpg_0_dout_data[7]  ; Non-Forced ; /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/rtl/resampling_checker.v(35) ;
+; resampling_checker|dut|alt_vip_cl_tpg_0_dout_data[6]  ; Non-Forced ; /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/rtl/resampling_checker.v(35) ;
+; resampling_checker|dut|alt_vip_cl_tpg_0_dout_data[5]  ; Non-Forced ; /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/rtl/resampling_checker.v(35) ;
+; resampling_checker|dut|alt_vip_cl_tpg_0_dout_data[4]  ; Non-Forced ; /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/rtl/resampling_checker.v(35) ;
+; resampling_checker|dut|alt_vip_cl_tpg_0_dout_data[3]  ; Non-Forced ; /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/rtl/resampling_checker.v(35) ;
+; resampling_checker|dut|alt_vip_cl_tpg_0_dout_data[2]  ; Non-Forced ; /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/rtl/resampling_checker.v(35) ;
+; resampling_checker|dut|alt_vip_cl_tpg_0_dout_data[1]  ; Non-Forced ; /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/rtl/resampling_checker.v(35) ;
+; resampling_checker|dut|alt_vip_cl_tpg_0_dout_data[0]  ; Non-Forced ; /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/rtl/resampling_checker.v(35) ;
++-------------------------------------------------------+------------+---------------------------------------------------------------------------------------+
+
+
+Top root causes of logic optimization that have been identified during sweep. For more details and filtering options, ensure that you have compiled with the "Enable RTL Analysis Debug Mode " setting turned on under Assignments->Settings->Compiler Settings, then go to the " Root Causes Tab " in the " Sweep Hints Viewer " tool in the " RTL Analyzer ".
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Top Causes of Logic Optimized Away During Sweep                                                                                           ;
++------------------------------------------------------------------------------------+------------------+-------------+---------------------+
+; Root Object Path                                                                   ; Root Object Type ; Root Reason ; Swept Objects Count ;
++------------------------------------------------------------------------------------+------------------+-------------+---------------------+
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vib_cmd_encoder|context_in[7]      ; INPUT_INST_PORT  ; stuck at 0  ; 28                  ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vib_cmd_encoder|context_in[6]      ; INPUT_INST_PORT  ; stuck at 0  ; 28                  ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vib_cmd_encoder|context_in[5]      ; INPUT_INST_PORT  ; stuck at 0  ; 28                  ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vib_cmd_encoder|context_in[4]      ; INPUT_INST_PORT  ; stuck at 0  ; 28                  ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vib_cmd_encoder|context_in[3]      ; INPUT_INST_PORT  ; stuck at 0  ; 28                  ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vib_cmd_encoder|context_in[2]      ; INPUT_INST_PORT  ; stuck at 0  ; 28                  ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vib_cmd_encoder|context_in[1]      ; INPUT_INST_PORT  ; stuck at 0  ; 28                  ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vib_cmd_encoder|context_in[0]      ; INPUT_INST_PORT  ; stuck at 0  ; 28                  ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vib_cmd_encoder|arguments_in[0][7] ; INPUT_INST_PORT  ; stuck at 0  ; 28                  ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vib_cmd_encoder|arguments_in[0][6] ; INPUT_INST_PORT  ; stuck at 0  ; 28                  ;
++------------------------------------------------------------------------------------+------------------+-------------+---------------------+
+Table limited at 10 items. To change the number of top root causes reported, set the "Number of Top Root Causes Reported in Synthesis Report " option under Assignments->Settings->Compiler Settings->Advanced Settings (Synthesis)
+
+
++---------------------------------+
+; Analysis & Elaboration Messages ;
++---------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Synthesis
+    Info: Version 25.1.1 Build 125 07/31/2025 SC Pro Edition
+    Info: Processing started: Tue Mar 17 16:42:43 2026
+    Info: System process ID: 1035673
+Info: Command: quartus_syn --read_settings_files=on --write_settings_files=off resampler -c resampler
+Info: qis_default_flow_script.tcl version: #1
+Info: Initializing Synthesis...
+Info: Project = "resampler"
+Info: Revision = "resampler"
+Info (21958): Initialized Quartus Message Database
+Info: Analyzing source files
+Info (18237): File "/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/common/alt_vip_common_pkg.sv" is a duplicate of already analyzed file "/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/common/alt_vip_common_pkg.sv" (same filename, same library name and same md5 digest). Skipping analysis of this file.
+Info (18237): File "/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_video_packet_encode/src_hdl/alt_vip_common_latency_0_to_latency_1.sv" is a duplicate of already analyzed file "/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_video_packet_encode/src_hdl/alt_vip_common_latency_0_to_latency_1.sv" (same filename, same library name and same md5 digest). Skipping analysis of this file.
+Info (18237): File "/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_video_packet_encode/src_hdl/alt_vip_common_video_packet_empty.sv" is a duplicate of already analyzed file "/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_video_packet_encode/src_hdl/alt_vip_common_video_packet_empty.sv" (same filename, same library name and same md5 digest). Skipping analysis of this file.
+Info (18237): File "/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_video_packet_encode/src_hdl/alt_vip_common_video_packet_encode.sv" is a duplicate of already analyzed file "/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_video_packet_encode/src_hdl/alt_vip_common_video_packet_encode.sv" (same filename, same library name and same md5 digest). Skipping analysis of this file.
+Info (18237): File "/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv" is a duplicate of already analyzed file "/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv" (same filename, same library name and same md5 digest). Skipping analysis of this file.
+Info (18237): File "/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv" is a duplicate of already analyzed file "/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv" (same filename, same library name and same md5 digest). Skipping analysis of this file.
+Info (18237): File "/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_message_pipeline_stage/src_hdl/alt_vip_common_message_pipeline_stage.sv" is a duplicate of already analyzed file "/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_message_pipeline_stage/src_hdl/alt_vip_common_message_pipeline_stage.sv" (same filename, same library name and same md5 digest). Skipping analysis of this file.
+Info (18237): File "/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_sop_align/src_hdl/alt_vip_common_sop_align.sv" is a duplicate of already analyzed file "/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_sop_align/src_hdl/alt_vip_common_sop_align.sv" (same filename, same library name and same md5 digest). Skipping analysis of this file.
+Info (18237): File "/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/src_hdl/alt_vip_video_output_bridge.sv" is a duplicate of already analyzed file "/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/src_hdl/alt_vip_video_output_bridge.sv" (same filename, same library name and same md5 digest). Skipping analysis of this file.
+Info (18237): File "/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_video_output_bridge_2360/synth/src_hdl/alt_vip_video_output_bridge.ocp" is a duplicate of already analyzed file "/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/src_hdl/alt_vip_video_output_bridge.ocp" (same filename, same library name and same md5 digest). Skipping analysis of this file.
+Info: Elaborating from top-level entity "resampling_checker"
+Info (18235): Library search order is as follows: "system_clock_in; system_reset_in; system; alt_vip_video_output_bridge_2360; alt_vip_tpg_multi_scheduler_2360; alt_vip_tpg_bars_alg_core_2360; alt_vip_cl_tpg_2360; system_alt_vip_cl_tpg_0; alt_vip_video_input_bridge_resp_2360; alt_vip_video_input_bridge_cmd_2360; alt_vip_pip_converter_core_2360; alt_vip_packet_demux_2360; alt_vip_crs_h_up_core_2360; alt_vip_cpp_converter_2360; alt_vip_packet_mux_2360; alt_vip_cl_crs_422_to_var_2360; alt_vip_crs_scheduler_2360; alt_vip_cl_crs_2360; system_alt_vip_cl_crs_0". Quartus will look for undefined design units in your libraries in that order. To modify the ordering, please specify a semi-colon separated library list using the assignment LIBRARY_SEARCH_ORDER.
+Info (22567): Verilog HDL info at alt_vip_cpp_converter.sv(132): extracting RAM for identifier 'output_symbols' File: /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_cpp_converter_2360/synth/src_hdl/alt_vip_cpp_converter.sv Line: 132
+Warning (13469): Verilog HDL assignment warning at alt_vip_cpp_converter.sv(275): truncated value with size 32 to match size of target (3) File: /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_crs_0/alt_vip_cpp_converter_2360/synth/src_hdl/alt_vip_cpp_converter.sv Line: 275
+Warning (24541): Verilog HDL warning at system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa.sv(99): actual bit length 4 differs from formal bit length 1 for port "av_mm_control_address" File: /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_multi_scheduler_2360/synth/system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa.sv Line: 99
+Warning (24541): Verilog HDL warning at system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa.sv(100): actual bit length 32 differs from formal bit length 1 for port "av_mm_control_writedata" File: /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_multi_scheduler_2360/synth/system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa.sv Line: 100
+Warning (24541): Verilog HDL warning at system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa.sv(102): actual bit length 32 differs from formal bit length 1 for port "av_mm_control_readdata" File: /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_multi_scheduler_2360/synth/system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa.sv Line: 102
+Warning (16788): Net "av_st_cmd_mux_ready" does not have a driver at system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa.sv(35) File: /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_multi_scheduler_2360/synth/system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa.sv Line: 35
+Warning (16788): Net "av_mm_control_write" does not have a driver at system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa.sv(40) File: /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_multi_scheduler_2360/synth/system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa.sv Line: 40
+Warning (16788): Net "av_mm_control_read" does not have a driver at system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa.sv(41) File: /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_multi_scheduler_2360/synth/system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa.sv Line: 41
+Warning (16788): Net "av_mm_control_byteenable[3]" does not have a driver at system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa.sv(42) File: /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_multi_scheduler_2360/synth/system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa.sv Line: 42
+Warning (16788): Net "av_mm_control_address[0]" does not have a driver at system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa.sv(43) File: /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_multi_scheduler_2360/synth/system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa.sv Line: 43
+Warning (16788): Net "av_mm_control_writedata[0]" does not have a driver at system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa.sv(44) File: /mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_multi_scheduler_2360/synth/system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa.sv Line: 44
+Info: Found 83 design entities
+Info: There are 70 partitions after elaboration.
+Info (19337): VHDL info at altera_ocp_endpoint.vhd(122): executing entity "altera_ocp_endpoint(sld_ocp_timeout=3600,sld_ocp_soft_timeout=0,sld_ocp_ip_info="01101010111101110000000011101110")(1,32)" with architecture "rtl" File: /mnt/ssd2/Quartus_Setup_Installation/quartus/libraries/megafunctions/altera_ocp_endpoint.vhd Line: 122
+Info (19337): VHDL info at altera_fabric_endpoint.vhd(126): executing entity "altera_fabric_endpoint(send_width=2,receive_width=1,settings="{fabric ocp dir agent sld_ocp_timeout 3600 sld_ocp_soft_timeout 0 sld_ocp_ip_info {01101010111101110000000011101110} type_name 0 instance_name 0 psig 89ac057a}")(1,159)" with architecture "rtl" File: /mnt/ssd2/Quartus_Setup_Installation/quartus/libraries/megafunctions/altera_fabric_endpoint.vhd Line: 126
+Warning (23195): Intel FPGA IP Evaluation Mode feature is turned on for the following cores:
+    Warning (23196): "IP-CRS_II" will use the Intel FPGA IP Evaluation Mode feature.
+Warning (265072): Messages from megafunction that supports Intel FPGA IP Evaluation Mode feature
+    Warning (265073): Messages from megafunction that supports Intel FPGA IP Evaluation Mode feature IP-TEST_PATTERN_GENERATOR_II
+        Warning (265074): The Test Pattern Generator II MegaCore function will be disabled after time-out is reached
+        Warning (265074): The Test Pattern Generator II MegaCore function will be disabled after time-out is reached
+    Warning (265073): Messages from megafunction that supports Intel FPGA IP Evaluation Mode feature IP-CRS_II
+        Warning (265074): The Chroma Resampler II MegaCore function will be disabled after time-out is reached
+Warning (265069): Megafunction that supports Intel FPGA IP Evaluation Mode feature will stop functioning in 1 hour after device is programmed
+Info (265071): Evaluation period of megafunction that supports Intel FPGA IP Evaluation Mode feature can be extended indefinitely by using tethered operation
+Info: DA report generation in native DNI mode
+Info (21615): Running Design Assistant Rules for snapshot 'partitioned'
+Info: No waiver waived any violations
+Info (22360): Design Assistant Results: 3 of 3 enabled rules passed, and 0 rules was disabled, in snapshot 'partitioned'
+Info (21622): Design Assistant Results: 0 of 3 Low severity rules issued violations in snapshot 'partitioned'
+
+

@@ -1,0 +1,214 @@
+Fitter Route Stage Report for resampler
+Wed Mar 18 11:35:45 2026
+Quartus Prime Version 25.1.1 Build 125 07/31/2025 SC Pro Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Delay Chain Summary
+  3. Routing Usage Summary
+  4. Route Messages
+  5. Estimated Delay Added for Hold Timing Summary
+  6. Estimated Delay Added for Hold Timing Details
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Delay Chain Summary                                                                                                                                          ;
++-------------+----------+---------------------+--------------------+----------------+-----------------------------------+-------------------------------------+
+; Name        ; Pin Type ; Input Delay Chain 0 ; Output Delay Chain ; OE Delay Chain ; IO_12_LANE Input Data Delay Chain ; IO_12_LANE Input Strobe Delay Chain ;
++-------------+----------+---------------------+--------------------+----------------+-----------------------------------+-------------------------------------+
+; status_led  ; Output   ; --                  ; 0                  ; 0              ; --                                ; --                                  ;
+; clk_clk     ; Input    ; 0                   ; --                 ; --             ; --                                ; --                                  ;
+; reset_reset ; Input    ; 0                   ; --                 ; --             ; --                                ; --                                  ;
++-------------+----------+---------------------+--------------------+----------------+-----------------------------------+-------------------------------------+
+
+
++----------------------------------------------------------+
+; Routing Usage Summary                                    ;
++------------------------------+---------------------------+
+; Routing Resource Type        ; Usage                     ;
++------------------------------+---------------------------+
+; Block interconnects          ; 3,201 / 664,374 ( < 1 % ) ;
+; C27 interconnects            ; 3 / 12,769 ( < 1 % )      ;
+; C4 interconnects             ; 1,245 / 514,392 ( < 1 % ) ;
+; Direct links                 ; 965 / 664,374 ( < 1 % )   ;
+; Global clocks                ; 2 / 32 ( 6 % )            ;
+; Periphery clocks             ; 0 / 410 ( 0 % )           ;
+; R3 interconnects             ; 829 / 246,936 ( < 1 % )   ;
+; R32 interconnects            ; 0 / 28,257 ( 0 % )        ;
+; R32/C27 interconnect drivers ; 2 / 74,920 ( < 1 % )      ;
+; R6 interconnects             ; 1,113 / 527,108 ( < 1 % ) ;
+; Regional clock lefts         ; 0 / 8 ( 0 % )             ;
+; Regional clock out bottoms   ; 0 / 8 ( 0 % )             ;
+; Regional clock out tops      ; 0 / 8 ( 0 % )             ;
+; Regional clock rights        ; 0 / 8 ( 0 % )             ;
+; Regional clocks              ; 0 / 8 ( 0 % )             ;
+; Spine buffers                ; 2 / 220 ( < 1 % )         ;
+; Spine clocks                 ; 2 / 330 ( < 1 % )         ;
+; Spine feedthroughs           ; 0 / 224 ( 0 % )           ;
++------------------------------+---------------------------+
+
+
++----------------+
+; Route Messages ;
++----------------+
+Info (20030): Parallel compilation is enabled and will use 24 of the 32 processors detected
+Info: *******************************************************************
+Info: Running Quartus Prime Fitter
+    Info: Version 25.1.1 Build 125 07/31/2025 SC Pro Edition
+    Info: Processing started: Wed Mar 18 11:34:25 2026
+    Info: System process ID: 1183095
+Info: Command: quartus_fit --read_settings_files=on --write_settings_files=off resampler -c resampler
+Info: qfit2_default_script.tcl version: #1
+Info: Project  = resampler
+Info: Revision = resampler
+Info (22300): Design uses Placement Effort Multiplier = 1.0.
+Info (170193): Fitter routing operations beginning
+Info (170202): The Fitter performed an Auto Fit compilation.  No optimizations were skipped because the design's timing and routability requirements required full optimization.
+Info (25133): Total time spent on timing analysis during Routing is 0.29 seconds.
+Info (16607): Fitter routing operations ending: elapsed time is 00:00:19
+
+
++------------------------------------------------------------+
+; Estimated Delay Added for Hold Timing Summary              ;
++-----------------+----------------------+-------------------+
+; Source Clock(s) ; Destination Clock(s) ; Delay Added in ns ;
++-----------------+----------------------+-------------------+
+; clk_clk~derived ; clk_clk~derived      ; 254.2             ;
++-----------------+----------------------+-------------------+
+Note: For more information on problematic transfers, consider running the Fitter again with the Optimize hold timing option (Settings Menu) turned off.
+This will disable optimization of problematic paths and expose them for further analysis using the Timing Analyzer.
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Estimated Delay Added for Hold Timing Details                                                                                                                                                                                                   ;
++----------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------+-------------------+
+; Source Register                                                                                                      ; Destination Register                                                                                 ; Delay Added in ns ;
++----------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------+-------------------+
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vib_resp_str_width[4]                                                ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vob_cmd_encoder|av_st_dout_data[4]                   ; 0.351             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vib_resp_str_height[8]                                               ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vob_cmd_encoder|av_st_dout_data[24]                  ; 0.341             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vib_resp_str_height[6]                                               ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vob_cmd_encoder|av_st_dout_data[22]                  ; 0.339             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vib_resp_str_width[14]                                               ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vob_cmd_encoder|av_st_dout_data[14]                  ; 0.339             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|inst_crs_int|symbol_conv|dout_encoder|av_st_dout_data[41]                      ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|sop_realigner|delayed_din_sample[0][17]              ; 0.335             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vib_resp_str_height[9]                                               ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vob_cmd_encoder|av_st_dout_data[25]                  ; 0.328             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_in_resp|data_output|av_st_dout_data[11]                                  ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|inst_crs_int|video_in_cmd|data_output|av_st_dout_data[11]      ; 0.326             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vib_resp_str_width[12]                                               ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vob_cmd_encoder|av_st_dout_data[12]                  ; 0.322             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vib_resp_str_height[1]                                               ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vob_cmd_encoder|av_st_dout_data[17]                  ; 0.318             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_in_resp|rsp_output|av_st_dout_data[48]                                   ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vib_resp_decoder|task_reg[0]                         ; 0.318             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vib_resp_str_width[10]                                               ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vob_cmd_encoder|av_st_dout_data[10]                  ; 0.317             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_args_str[0][14]                                                  ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|av_st_din_dout_control_reg[0][2]        ; 0.312             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_in_resp|video_input|height_int[4]                                        ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_in_resp|height_str[4]                                    ; 0.311             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|inst_crs_int|symbol_conv|dout_encoder|av_st_dout_data[25]                      ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|sop_realigner|delayed_din_sample[0][1]               ; 0.311             ;
+; dut|alt_vip_cl_tpg_0|alt_vip_cl_tpg_0|video_out|video_output|empty_converter|stored_data[1][14]                      ; dut|alt_vip_cl_tpg_0|alt_vip_cl_tpg_0|video_out|video_output|latency_converter|av_st_dout_data_1[30] ; 0.307             ;
+; dut|alt_vip_cl_tpg_0|alt_vip_cl_tpg_0|video_out|video_output|av_st_din_dout_control_reg[0][8]                        ; dut|alt_vip_cl_tpg_0|alt_vip_cl_tpg_0|video_out|video_output|empty_converter|stored_data[0][8]       ; 0.306             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|empty_converter|stored_data[0][8]                       ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|latency_converter|av_st_dout_data_1[8]  ; 0.305             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|empty_converter|stored_data[1][22]                      ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|latency_converter|av_st_dout_data_1[46] ; 0.303             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_in_resp|data_output|av_st_dout_data[10]                                  ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|inst_crs_int|video_in_cmd|data_output|av_st_dout_data[10]      ; 0.303             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_in_resp|data_output|av_st_dout_data[1]                                   ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|inst_crs_int|video_in_cmd|data_output|av_st_dout_data[1]       ; 0.301             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|inst_crs_int|middle_demux|gen_loop_no_fifo[0].data_encoder|av_st_dout_data[30] ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|inst_crs_int|horiz_upsample|dout_encode|av_st_dout_data[46]    ; 0.300             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_args_str[0][5]                                                   ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|av_st_din_dout_control_reg[0][17]       ; 0.297             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vib_resp_str_height[13]                                              ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vob_cmd_encoder|av_st_dout_data[29]                  ; 0.294             ;
+; dut|alt_vip_cl_tpg_0|alt_vip_cl_tpg_0|core_0|dout_encode|av_st_dout_data[23]                                         ; dut|alt_vip_cl_tpg_0|alt_vip_cl_tpg_0|video_out|video_output|empty_converter|stored_data[0][7]       ; 0.293             ;
+; dut|alt_vip_cl_tpg_0|alt_vip_cl_tpg_0|core_0|dout_encode|av_st_dout_data[26]                                         ; dut|alt_vip_cl_tpg_0|alt_vip_cl_tpg_0|video_out|video_output|empty_converter|stored_data[0][10]      ; 0.292             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vob_cmd_encoder|av_st_dout_data[48]                                  ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_input|task_reg[0]                                ; 0.292             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_in_resp|video_input|height_int[3]                                        ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_in_resp|height_str[3]                                    ; 0.290             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|latency_converter|av_st_dout_data_1[28]                 ; first_stage0[28]                                                                                     ; 0.290             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_in_resp|video_input|width_int[14]                                        ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_in_resp|width_str[14]                                    ; 0.289             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|inst_crs_int|symbol_conv|pack_reg[0][2]                                        ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|inst_crs_int|symbol_conv|dout_encoder|av_st_dout_data[26]      ; 0.289             ;
+; dut|alt_vip_cl_tpg_0|alt_vip_cl_tpg_0|scheduler|tpg_multi_scheduler_inst|ac_cmd_encoder|av_st_dout_data[0]           ; dut|alt_vip_cl_tpg_0|alt_vip_cl_tpg_0|core_0|cmd_decode|arguments_reg[0][0]                          ; 0.289             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|inst_crs_int|symbol_conv|dout_encoder|av_st_dout_data[27]                      ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|sop_realigner|delayed_din_sample[0][3]               ; 0.288             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_args_str[0][9]                                                   ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|av_st_din_dout_control_reg[0][9]        ; 0.287             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|latency_converter|av_st_dout_data_1[27]                 ; first_stage0[27]                                                                                     ; 0.287             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_args_str[0][8]                                                   ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|av_st_din_dout_control_reg[0][8]        ; 0.287             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vib_resp_str_height[3]                                               ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vob_cmd_encoder|av_st_dout_data[19]                  ; 0.286             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_in_resp|video_input|height_int[11]                                       ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_in_resp|height_str[11]                                   ; 0.286             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|empty_converter|stored_data[0][21]                      ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|latency_converter|av_st_dout_data_1[21] ; 0.285             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|inst_crs_int|symbol_conv|pack_reg[0][0]                                        ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|inst_crs_int|symbol_conv|dout_encoder|av_st_dout_data[24]      ; 0.285             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_args_str[0][11]                                                  ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|av_st_din_dout_control_reg[0][11]       ; 0.285             ;
+; dut|alt_vip_cl_tpg_0|alt_vip_cl_tpg_0|video_out|cmd_args_str[0][2]                                                   ; dut|alt_vip_cl_tpg_0|alt_vip_cl_tpg_0|video_out|video_output|av_st_din_dout_control_reg[0][26]       ; 0.285             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|inst_crs_int|symbol_conv|dout_encoder|av_st_dout_data[40]                      ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|sop_realigner|delayed_din_sample[0][16]              ; 0.284             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_in_resp|rsp_output|av_st_dout_data[30]                                   ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vib_resp_decoder|arguments_reg[0][30]                ; 0.283             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_args_str[0][2]                                                   ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|av_st_din_dout_control_reg[0][26]       ; 0.282             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|sop_realigner|delayed_din_sample[0][18]                              ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|empty_converter|stored_data[0][18]      ; 0.282             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vib_resp_str_width[6]                                                ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vob_cmd_encoder|av_st_dout_data[6]                   ; 0.281             ;
+; dut|alt_vip_cl_tpg_0|alt_vip_cl_tpg_0|video_out|video_output|empty_converter|stored_data[0][14]                      ; dut|alt_vip_cl_tpg_0|alt_vip_cl_tpg_0|video_out|video_output|latency_converter|av_st_dout_data_1[14] ; 0.281             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_in_resp|video_input|height_int[0]                                        ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_in_resp|height_str[0]                                    ; 0.281             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_input|arguments_reg[0][15]                                       ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_args_str[0][15]                                  ; 0.281             ;
+; dut|alt_vip_cl_tpg_0|alt_vip_cl_tpg_0|core_0|dout_encode|av_st_dout_data[9]                                          ; dut|alt_vip_cl_tpg_0|alt_vip_cl_tpg_0|video_out|video_output|empty_converter|din_data_delay[1][9]    ; 0.279             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_input|arguments_reg[0][30]                                       ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_args_str[0][30]                                  ; 0.276             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vib_resp_str_height[11]                                              ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vob_cmd_encoder|av_st_dout_data[27]                  ; 0.275             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_input|arguments_reg[0][22]                                       ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_args_str[0][22]                                  ; 0.275             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_args_str[0][0]                                                   ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|av_st_din_dout_control_reg[0][24]       ; 0.275             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_input|arguments_reg[0][7]                                        ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_args_str[0][7]                                   ; 0.275             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_args_str[0][28]                                                  ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|av_st_din_dout_control_reg[0][32]       ; 0.275             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_in_resp|rsp_output|av_st_dout_data[26]                                   ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vib_resp_decoder|arguments_reg[0][26]                ; 0.275             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vib_resp_str_interlaced[0]                                           ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vob_cmd_encoder|av_st_dout_data[0]                   ; 0.274             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_args_str[0][12]                                                  ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|av_st_din_dout_control_reg[0][0]        ; 0.274             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|inst_crs_int|symbol_conv|dout_encoder|av_st_dout_data[47]                      ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|sop_realigner|delayed_din_sample[0][23]              ; 0.274             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|inst_crs_int|symbol_conv|dout_encoder|av_st_dout_data[28]                      ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|sop_realigner|delayed_din_sample[0][4]               ; 0.274             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|inst_crs_int|middle_demux|gen_loop_no_fifo[1].data_encoder|av_st_dout_data[14] ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|inst_crs_int|symbol_conv|pack_reg[1][6]                        ; 0.272             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_input|arguments_reg[0][12]                                       ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_args_str[0][12]                                  ; 0.272             ;
+; dut|alt_vip_cl_tpg_0|alt_vip_cl_tpg_0|core_0|dout_encode|av_st_dout_data[25]                                         ; dut|alt_vip_cl_tpg_0|alt_vip_cl_tpg_0|video_out|video_output|empty_converter|stored_data[0][9]       ; 0.272             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_input|arguments_reg[0][13]                                       ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_args_str[0][13]                                  ; 0.272             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|latency_converter|av_st_dout_data_1[22]                 ; first_stage0[22]                                                                                     ; 0.269             ;
+; dut|alt_vip_cl_tpg_0|alt_vip_cl_tpg_0|core_0|cmd_decode|task_reg[1]                                                  ; dut|alt_vip_cl_tpg_0|alt_vip_cl_tpg_0|core_0|state.INIT1                                             ; 0.269             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|state.SEND_OM_CMD                                                    ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|state.SEND_VOB_CTRL_CMD                              ; 0.269             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_in_resp|data_output|av_st_dout_data[14]                                  ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|inst_crs_int|video_in_cmd|data_output|av_st_dout_data[14]      ; 0.268             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_in_resp|data_output|av_st_dout_data[21]                                  ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|inst_crs_int|video_in_cmd|data_output|av_st_dout_data[21]      ; 0.268             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|latency_converter|av_st_dout_data_1[16]                 ; first_stage0[16]                                                                                     ; 0.268             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|inst_crs_int|symbol_conv|dout_encoder|av_st_dout_data[21]                      ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|sop_realigner|delayed_din_sample[1][21]              ; 0.268             ;
+; dut|alt_vip_cl_tpg_0|alt_vip_cl_tpg_0|scheduler|tpg_multi_scheduler_inst|ac_cmd_encoder|av_st_dout_endofpacket       ; dut|alt_vip_cl_tpg_0|alt_vip_cl_tpg_0|core_0|cmd_decode|arguments_valid_reg                          ; 0.268             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_args_str[0][10]                                                  ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|av_st_din_dout_control_reg[0][10]       ; 0.267             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|inst_crs_int|middle_demux|gen_loop_no_fifo[1].data_encoder|av_st_dout_data[26] ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|inst_crs_int|symbol_conv|pack_reg[1][2]                        ; 0.267             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_in_resp|video_input|height_int[1]                                        ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_in_resp|height_str[1]                                    ; 0.267             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_args_str[0][7]                                                   ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|av_st_din_dout_control_reg[0][19]       ; 0.267             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|empty_converter|stored_data[0][19]                      ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|latency_converter|av_st_dout_data_1[19] ; 0.267             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_in_resp|data_output|av_st_dout_data[23]                                  ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|inst_crs_int|video_in_cmd|data_output|av_st_dout_data[23]      ; 0.267             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|inst_crs_int|horiz_upsample|dout_encode|av_st_dout_data[41]                    ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|sop_realigner|delayed_din_sample[0][17]              ; 0.266             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vib_resp_decoder|arguments_reg[0][20]                                ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vib_resp_str_height[4]                               ; 0.265             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|latency_converter|av_st_dout_data_1[32]                 ; first_stage0[32]                                                                                     ; 0.265             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_input|arguments_reg[0][4]                                        ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_args_str[0][4]                                   ; 0.265             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_args_str[0][27]                                                  ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|av_st_din_dout_control_reg[0][43]       ; 0.264             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|latency_converter|av_st_dout_data_1[12]                 ; first_stage0[12]                                                                                     ; 0.264             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|inst_crs_int|symbol_conv|dout_encoder|av_st_dout_data[12]                      ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|sop_realigner|delayed_din_sample[1][12]              ; 0.264             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|latency_converter|av_st_dout_data_1[5]                  ; first_stage0[5]                                                                                      ; 0.264             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_args_str[0][3]                                                   ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|av_st_din_dout_control_reg[0][27]       ; 0.264             ;
+; dut|alt_vip_cl_tpg_0|alt_vip_cl_tpg_0|core_0|dout_encode|av_st_dout_data[29]                                         ; dut|alt_vip_cl_tpg_0|alt_vip_cl_tpg_0|video_out|video_output|empty_converter|stored_data[0][13]      ; 0.264             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_in_resp|rsp_output|av_st_dout_endofpacket                                ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|scheduler|vib_resp_decoder|arguments_valid_reg                 ; 0.264             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_in_resp|video_input|width_int[13]                                        ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_in_resp|width_str[13]                                    ; 0.264             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|inst_crs_int|symbol_conv|dout_encoder|av_st_dout_data[8]                       ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|sop_realigner|delayed_din_sample[1][8]               ; 0.263             ;
+; dut|alt_vip_cl_tpg_0|alt_vip_cl_tpg_0|video_out|video_output|state.CONTROL_FINAL                                     ; dut|alt_vip_cl_tpg_0|alt_vip_cl_tpg_0|video_out|video_output|state.IDLE                              ; 0.262             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|inst_crs_int|middle_demux|gen_loop_no_fifo[1].data_encoder|av_st_dout_data[0]  ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|inst_crs_int|symbol_conv|pack_reg[0][0]                        ; 0.261             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|latency_converter|av_st_dout_data_1[36]                 ; first_stage0[36]                                                                                     ; 0.258             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|latency_converter|av_st_dout_data_1[37]                 ; first_stage0[37]                                                                                     ; 0.258             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|latency_converter|av_st_dout_data_1[23]                 ; first_stage0[23]                                                                                     ; 0.258             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_input|arguments_reg[0][23]                                       ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|cmd_args_str[0][23]                                  ; 0.258             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|sop_realigner|delayed_din_sample[1][2]                               ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|video_output|empty_converter|stored_data[0][2]       ; 0.258             ;
+; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|inst_crs_int|symbol_conv|dout_encoder|av_st_dout_data[10]                      ; dut|alt_vip_cl_crs_0|alt_vip_cl_crs_0|video_out|sop_realigner|delayed_din_sample[1][10]              ; 0.258             ;
++----------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------+-------------------+
+Note: This table only shows the top 100 path(s) that have the largest delay added for hold.
+
+

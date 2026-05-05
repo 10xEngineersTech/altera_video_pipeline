@@ -1,0 +1,194 @@
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0" -library "pl_sys_intel_vvp_dil_0" -name IP_TOOL_NAME "QsysPrimePro"
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0" -library "pl_sys_intel_vvp_dil_0" -name IP_TOOL_VERSION "25.1.1"
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0" -library "pl_sys_intel_vvp_dil_0" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0" -library "pl_sys_intel_vvp_dil_0" -name IP_TOOL_VENDOR_NAME "Intel Corporation"
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0" -library "pl_sys_intel_vvp_dil_0" -name IP_TOP_LEVEL_COMPONENT_NAME "intel_vvp_dil"
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0" -library "pl_sys_intel_vvp_dil_0" -name PRE_COMPILED_MODULE "ON"
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0" -library "pl_sys_intel_vvp_dil_0" -name OCS_IP_FILE [file join $::quartus(qip_path) "../pl_sys_intel_vvp_dil_0.ip"]
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0" -library "pl_sys_intel_vvp_dil_0" -name OCS_IP_TYPE "intel_vvp_dil"
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0" -library "pl_sys_intel_vvp_dil_0" -name OCS_IP_VERSION "24.5.1"
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0" -library "pl_sys_intel_vvp_dil_0" -name OCS_IP_HASH "zskkody"
+set_global_assignment -library "pl_sys_intel_vvp_dil_0" -name SOPCINFO_FILE [file join $::quartus(qip_path) "pl_sys_intel_vvp_dil_0.sopcinfo"]
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0" -library "pl_sys_intel_vvp_dil_0" -name SLD_INFO "QSYS_NAME pl_sys_intel_vvp_dil_0 HAS_SOPCINFO 1 GENERATION_ID 0"
+set_global_assignment -library "pl_sys_intel_vvp_dil_0" -name MISC_FILE [file join $::quartus(qip_path) "pl_sys_intel_vvp_dil_0.cmp"]
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0" -library "pl_sys_intel_vvp_dil_0" -name IP_TARGETED_DEVICE_FAMILY "Cyclone 10 GX"
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0" -library "pl_sys_intel_vvp_dil_0" -name IP_GENERATED_DEVICE_FAMILY "{Cyclone 10 GX}"
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0" -library "pl_sys_intel_vvp_dil_0" -name IP_QSYS_MODE "STANDALONE"
+set_global_assignment -name SYNTHESIS_ONLY_QIP ON
+set_global_assignment -library "pl_sys_intel_vvp_dil_0" -name MISC_FILE [file join $::quartus(qip_path) "../pl_sys_intel_vvp_dil_0.ip"]
+
+set_global_assignment -entity "intel_vvp_reset_sync" -library "intel_vvp_reset_sync_2440" -name IP_COMPONENT_NAME "aW50ZWxfdnZwX3Jlc2V0X3N5bmM="
+set_global_assignment -entity "intel_vvp_reset_sync" -library "intel_vvp_reset_sync_2440" -name IP_COMPONENT_DISPLAY_NAME "VlZQIGN1c3RvbSByZXNldCBzeW5jaHJvbmlzZXI="
+set_global_assignment -entity "intel_vvp_reset_sync" -library "intel_vvp_reset_sync_2440" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "intel_vvp_reset_sync" -library "intel_vvp_reset_sync_2440" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "intel_vvp_reset_sync" -library "intel_vvp_reset_sync_2440" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "intel_vvp_reset_sync" -library "intel_vvp_reset_sync_2440" -name IP_COMPONENT_VERSION "MjQuNC4w"
+set_global_assignment -entity "intel_vvp_reset_sync" -library "intel_vvp_reset_sync_2440" -name IP_COMPONENT_DESCRIPTION "SnVzdCBsaWtlIGEgbm9ybWFsIHJlc2V0IHN5bmNocm9uaXNlciwgYnV0IHdpdGggYSBjdXN0b20gU0RDIGZpbGU="
+set_global_assignment -entity "intel_vvp_reset_sync" -library "intel_vvp_reset_sync_2440" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBWaXNpb24gUHJvY2Vzc2luZy9Db21wb25lbnQgTGlicmFyeQ=="
+set_global_assignment -entity "intel_vvp_reset_sync" -library "intel_vvp_reset_sync_2440" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2VuZDE2MTg5MDk2MTI5NTUuaHRtbA=="
+set_global_assignment -entity "intel_vvp_input_interface_bridge" -library "intel_vvp_input_interface_bridge_2440" -name IP_COMPONENT_NAME "aW50ZWxfdnZwX2lucHV0X2ludGVyZmFjZV9icmlkZ2U="
+set_global_assignment -entity "intel_vvp_input_interface_bridge" -library "intel_vvp_input_interface_bridge_2440" -name IP_COMPONENT_DISPLAY_NAME "SW5wdXQgaW50ZXJmYWNlIGJyaWRnZQ=="
+set_global_assignment -entity "intel_vvp_input_interface_bridge" -library "intel_vvp_input_interface_bridge_2440" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "intel_vvp_input_interface_bridge" -library "intel_vvp_input_interface_bridge_2440" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "intel_vvp_input_interface_bridge" -library "intel_vvp_input_interface_bridge_2440" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "intel_vvp_input_interface_bridge" -library "intel_vvp_input_interface_bridge_2440" -name IP_COMPONENT_VERSION "MjQuNC4w"
+set_global_assignment -entity "intel_vvp_input_interface_bridge" -library "intel_vvp_input_interface_bridge_2440" -name IP_COMPONENT_DESCRIPTION "SW5wdXQgaW50ZXJmYWNlIGJyaWRnZSBmb3IgVlZQIGNvcmVz"
+set_global_assignment -entity "intel_vvp_input_interface_bridge" -library "intel_vvp_input_interface_bridge_2440" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBWaXNpb24gUHJvY2Vzc2luZy9Db21wb25lbnQgTGlicmFyeQ=="
+set_global_assignment -entity "intel_vvp_input_interface_bridge" -library "intel_vvp_input_interface_bridge_2440" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2VuZDE2MTg5MDk2MTI5NTUuaHRtbA=="
+set_global_assignment -entity "intel_vvp_pkt_mux" -library "intel_vvp_pkt_mux_2450" -name IP_COMPONENT_NAME "aW50ZWxfdnZwX3BrdF9tdXg="
+set_global_assignment -entity "intel_vvp_pkt_mux" -library "intel_vvp_pkt_mux_2450" -name IP_COMPONENT_DISPLAY_NAME "UGFja2V0IE11eA=="
+set_global_assignment -entity "intel_vvp_pkt_mux" -library "intel_vvp_pkt_mux_2450" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "intel_vvp_pkt_mux" -library "intel_vvp_pkt_mux_2450" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "intel_vvp_pkt_mux" -library "intel_vvp_pkt_mux_2450" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "intel_vvp_pkt_mux" -library "intel_vvp_pkt_mux_2450" -name IP_COMPONENT_VERSION "MjQuNS4w"
+set_global_assignment -entity "intel_vvp_pkt_mux" -library "intel_vvp_pkt_mux_2450" -name IP_COMPONENT_DESCRIPTION "Q29tcG9uZW50IGZvciBtdWx0aXBsZXhpbmcgc2V2ZXJhbCBpbnB1dHMgdG8gb25lIG91dHB1dCBzdHJlYW0="
+set_global_assignment -entity "intel_vvp_pkt_mux" -library "intel_vvp_pkt_mux_2450" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBWaXNpb24gUHJvY2Vzc2luZy9Db21wb25lbnQgTGlicmFyeQ=="
+set_global_assignment -entity "intel_vvp_pkt_mux" -library "intel_vvp_pkt_mux_2450" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2VuZDE2MTg5MDk2MTI5NTUuaHRtbA=="
+set_global_assignment -entity "intel_vvp_output_interface_bridge" -library "intel_vvp_output_interface_bridge_2440" -name IP_COMPONENT_NAME "aW50ZWxfdnZwX291dHB1dF9pbnRlcmZhY2VfYnJpZGdl"
+set_global_assignment -entity "intel_vvp_output_interface_bridge" -library "intel_vvp_output_interface_bridge_2440" -name IP_COMPONENT_DISPLAY_NAME "T3V0cHV0IGludGVyZmFjZSBicmlkZ2U="
+set_global_assignment -entity "intel_vvp_output_interface_bridge" -library "intel_vvp_output_interface_bridge_2440" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "intel_vvp_output_interface_bridge" -library "intel_vvp_output_interface_bridge_2440" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "intel_vvp_output_interface_bridge" -library "intel_vvp_output_interface_bridge_2440" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "intel_vvp_output_interface_bridge" -library "intel_vvp_output_interface_bridge_2440" -name IP_COMPONENT_VERSION "MjQuNC4w"
+set_global_assignment -entity "intel_vvp_output_interface_bridge" -library "intel_vvp_output_interface_bridge_2440" -name IP_COMPONENT_DESCRIPTION "T3V0cHV0IGludGVyZmFjZSBicmlkZ2UgZm9yIFZWUCBjb3Jlcw=="
+set_global_assignment -entity "intel_vvp_output_interface_bridge" -library "intel_vvp_output_interface_bridge_2440" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBWaXNpb24gUHJvY2Vzc2luZy9Db21wb25lbnQgTGlicmFyeQ=="
+set_global_assignment -entity "intel_vvp_output_interface_bridge" -library "intel_vvp_output_interface_bridge_2440" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2VuZDE2MTg5MDk2MTI5NTUuaHRtbA=="
+set_global_assignment -entity "intel_vvp_pkt_duplicator" -library "intel_vvp_pkt_duplicator_2450" -name IP_COMPONENT_NAME "aW50ZWxfdnZwX3BrdF9kdXBsaWNhdG9y"
+set_global_assignment -entity "intel_vvp_pkt_duplicator" -library "intel_vvp_pkt_duplicator_2450" -name IP_COMPONENT_DISPLAY_NAME "UGFja2V0IER1cGxpY2F0b3I="
+set_global_assignment -entity "intel_vvp_pkt_duplicator" -library "intel_vvp_pkt_duplicator_2450" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "intel_vvp_pkt_duplicator" -library "intel_vvp_pkt_duplicator_2450" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "intel_vvp_pkt_duplicator" -library "intel_vvp_pkt_duplicator_2450" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "intel_vvp_pkt_duplicator" -library "intel_vvp_pkt_duplicator_2450" -name IP_COMPONENT_VERSION "MjQuNS4w"
+set_global_assignment -entity "intel_vvp_pkt_duplicator" -library "intel_vvp_pkt_duplicator_2450" -name IP_COMPONENT_DESCRIPTION "Q29tcG9uZW50IGZvciBkdXBsaWNhdGluZyBzZXZlcmFsIG91dHB1dHMgZnJvbSBvbmUgaW5wdXQgc3RyZWFt"
+set_global_assignment -entity "intel_vvp_pkt_duplicator" -library "intel_vvp_pkt_duplicator_2450" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBWaXNpb24gUHJvY2Vzc2luZy9Db21wb25lbnQgTGlicmFyeQ=="
+set_global_assignment -entity "intel_vvp_pkt_duplicator" -library "intel_vvp_pkt_duplicator_2450" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2VuZDE2MTg5MDk2MTI5NTUuaHRtbA=="
+set_global_assignment -entity "intel_vvp_dil_bob_algo_comp" -library "intel_vvp_dil_bob_algo_comp_2451" -name IP_COMPONENT_NAME "aW50ZWxfdnZwX2RpbF9ib2JfYWxnb19jb21w"
+set_global_assignment -entity "intel_vvp_dil_bob_algo_comp" -library "intel_vvp_dil_bob_algo_comp_2451" -name IP_COMPONENT_DISPLAY_NAME "RGlsIEJvYiBBbGdvcml0aG1pYyBDb21wb25lbnQ="
+set_global_assignment -entity "intel_vvp_dil_bob_algo_comp" -library "intel_vvp_dil_bob_algo_comp_2451" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "intel_vvp_dil_bob_algo_comp" -library "intel_vvp_dil_bob_algo_comp_2451" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "intel_vvp_dil_bob_algo_comp" -library "intel_vvp_dil_bob_algo_comp_2451" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "intel_vvp_dil_bob_algo_comp" -library "intel_vvp_dil_bob_algo_comp_2451" -name IP_COMPONENT_VERSION "MjQuNS4x"
+set_global_assignment -entity "intel_vvp_dil_bob_algo_comp" -library "intel_vvp_dil_bob_algo_comp_2451" -name IP_COMPONENT_DESCRIPTION "RGlsIEJvYiBhbGdvcml0aG1pYyBjb21wb25lbnQgZm9yIHRoZSBkZWludGVybGFjZXIgSVAgY29yZQ=="
+set_global_assignment -entity "intel_vvp_dil_bob_algo_comp" -library "intel_vvp_dil_bob_algo_comp_2451" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBWaXNpb24gUHJvY2Vzc2luZy9Db21wb25lbnQgTGlicmFyeQ=="
+set_global_assignment -entity "intel_vvp_dil_bob_algo_comp" -library "intel_vvp_dil_bob_algo_comp_2451" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2VuZDE2MTg5MDk2MTI5NTUuaHRtbA=="
+set_global_assignment -entity "intel_vvp_dil_bob_scheduler" -library "intel_vvp_dil_bob_scheduler_2451" -name IP_COMPONENT_NAME "aW50ZWxfdnZwX2RpbF9ib2Jfc2NoZWR1bGVy"
+set_global_assignment -entity "intel_vvp_dil_bob_scheduler" -library "intel_vvp_dil_bob_scheduler_2451" -name IP_COMPONENT_DISPLAY_NAME "RGVpbnRlcmxhY2VyIGJvYiBzY2hlZHVsZXI="
+set_global_assignment -entity "intel_vvp_dil_bob_scheduler" -library "intel_vvp_dil_bob_scheduler_2451" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "intel_vvp_dil_bob_scheduler" -library "intel_vvp_dil_bob_scheduler_2451" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "intel_vvp_dil_bob_scheduler" -library "intel_vvp_dil_bob_scheduler_2451" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "intel_vvp_dil_bob_scheduler" -library "intel_vvp_dil_bob_scheduler_2451" -name IP_COMPONENT_VERSION "MjQuNS4x"
+set_global_assignment -entity "intel_vvp_dil_bob_scheduler" -library "intel_vvp_dil_bob_scheduler_2451" -name IP_COMPONENT_DESCRIPTION "U2NoZWR1bGVyIGZvciB0aGUgYm9iIGRlaW50ZXJsYWNlciBjb3Jl"
+set_global_assignment -entity "intel_vvp_dil_bob_scheduler" -library "intel_vvp_dil_bob_scheduler_2451" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBWaXNpb24gUHJvY2Vzc2luZy9Db21wb25lbnQgTGlicmFyeQ=="
+set_global_assignment -entity "intel_vvp_dil_bob_scheduler" -library "intel_vvp_dil_bob_scheduler_2451" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2VuZDE2MTg5MDk2MTI5NTUuaHRtbA=="
+set_global_assignment -entity "intel_vvp_line_buffer" -library "intel_vvp_line_buffer_2440" -name IP_COMPONENT_NAME "aW50ZWxfdnZwX2xpbmVfYnVmZmVy"
+set_global_assignment -entity "intel_vvp_line_buffer" -library "intel_vvp_line_buffer_2440" -name IP_COMPONENT_DISPLAY_NAME "VmlkZW8gTGluZSBCdWZmZXI="
+set_global_assignment -entity "intel_vvp_line_buffer" -library "intel_vvp_line_buffer_2440" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "intel_vvp_line_buffer" -library "intel_vvp_line_buffer_2440" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "intel_vvp_line_buffer" -library "intel_vvp_line_buffer_2440" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "intel_vvp_line_buffer" -library "intel_vvp_line_buffer_2440" -name IP_COMPONENT_VERSION "MjQuNC4w"
+set_global_assignment -entity "intel_vvp_line_buffer" -library "intel_vvp_line_buffer_2440" -name IP_COMPONENT_DESCRIPTION "Q29tcG9uZW50IGZvciBzdG9yaW5nIG11bHRpcGxlIHZpZGVvIGxpbmVzIGFuZCBwcmVzZW50aW5nIHRoZW0gaW4gcGFyYWxsZWw="
+set_global_assignment -entity "intel_vvp_line_buffer" -library "intel_vvp_line_buffer_2440" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBWaXNpb24gUHJvY2Vzc2luZy9Db21wb25lbnQgTGlicmFyeQ=="
+set_global_assignment -entity "intel_vvp_line_buffer" -library "intel_vvp_line_buffer_2440" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2VuZDE2MTg5MDk2MTI5NTUuaHRtbA=="
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0_intel_vvp_dil_2451_zskkody" -library "intel_vvp_dil_2451" -name IP_COMPONENT_NAME "cGxfc3lzX2ludGVsX3Z2cF9kaWxfMF9pbnRlbF92dnBfZGlsXzI0NTFfenNra29keQ=="
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0_intel_vvp_dil_2451_zskkody" -library "intel_vvp_dil_2451" -name IP_COMPONENT_DISPLAY_NAME "RGVpbnRlcmxhY2Vy"
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0_intel_vvp_dil_2451_zskkody" -library "intel_vvp_dil_2451" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0_intel_vvp_dil_2451_zskkody" -library "intel_vvp_dil_2451" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0_intel_vvp_dil_2451_zskkody" -library "intel_vvp_dil_2451" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0_intel_vvp_dil_2451_zskkody" -library "intel_vvp_dil_2451" -name IP_COMPONENT_VERSION "MjQuNS4x"
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0_intel_vvp_dil_2451_zskkody" -library "intel_vvp_dil_2451" -name IP_COMPONENT_DESCRIPTION "RGVpbnRlcmxhY2VyIElQIHdpdGggQm9iL1dlYXZlL01vdGlvbiBBZGFwdGl2ZSBhbGdvcml0aG0="
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0_intel_vvp_dil_2451_zskkody" -library "intel_vvp_dil_2451" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBWaXNpb24gUHJvY2Vzc2luZw=="
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0_intel_vvp_dil_2451_zskkody" -library "intel_vvp_dil_2451" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2VuZDE2MTg5MDk2MTI5NTUuaHRtbA=="
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0" -library "pl_sys_intel_vvp_dil_0" -name IP_COMPONENT_NAME "cGxfc3lzX2ludGVsX3Z2cF9kaWxfMA=="
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0" -library "pl_sys_intel_vvp_dil_0" -name IP_COMPONENT_DISPLAY_NAME "c3lzdGVt"
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0" -library "pl_sys_intel_vvp_dil_0" -name IP_COMPONENT_REPORT_HIERARCHY "On"
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0" -library "pl_sys_intel_vvp_dil_0" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0" -library "pl_sys_intel_vvp_dil_0" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0" -library "pl_sys_intel_vvp_dil_0" -name IP_COMPONENT_VERSION "MS4w"
+
+
+set_global_assignment -library "intel_vvp_reset_sync_2440" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_reset_sync_2440/synth/src_hdl/intel_vvp_reset_sync.sv"]
+set_global_assignment -library "intel_vvp_input_interface_bridge_2440" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_input_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"]
+set_global_assignment -library "intel_vvp_input_interface_bridge_2440" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_input_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"]
+set_global_assignment -library "intel_vvp_input_interface_bridge_2440" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_input_interface_bridge_2440/synth/intel_vvp_axi_master.sv"]
+set_global_assignment -library "intel_vvp_input_interface_bridge_2440" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_input_interface_bridge_2440/synth/src_hdl/intel_vvp_input_interface_bridge.sv"]
+set_global_assignment -library "intel_vvp_pkt_mux_2450" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_pkt_mux_2450/synth/intel_mtm_common_pkg.sv"]
+set_global_assignment -library "intel_vvp_pkt_mux_2450" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_pkt_mux_2450/synth/intel_vvp_common_pkg.sv"]
+set_global_assignment -library "intel_vvp_pkt_mux_2450" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_pkt_mux_2450/synth/intel_vvp_utility_pkg.sv"]
+set_global_assignment -library "intel_vvp_pkt_mux_2450" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_pkt_mux_2450/synth/intel_vvp_pipelined_mux.sv"]
+set_global_assignment -library "intel_vvp_pkt_mux_2450" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_pkt_mux_2450/synth/intel_vvp_axi_pipeline_stage.sv"]
+set_global_assignment -library "intel_vvp_pkt_mux_2450" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_pkt_mux_2450/synth/intel_vvp_axi_master.sv"]
+set_global_assignment -library "intel_vvp_pkt_mux_2450" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_pkt_mux_2450/synth/src_hdl/intel_vvp_pkt_mux.sv"]
+set_global_assignment -library "intel_vvp_output_interface_bridge_2440" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_output_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"]
+set_global_assignment -library "intel_vvp_output_interface_bridge_2440" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"]
+set_global_assignment -library "intel_vvp_output_interface_bridge_2440" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_master.sv"]
+set_global_assignment -library "intel_vvp_output_interface_bridge_2440" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_output_interface_bridge_2440/synth/src_hdl/intel_vvp_output_interface_bridge.sv"]
+set_global_assignment -library "intel_vvp_pkt_duplicator_2450" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_pkt_duplicator_2450/synth/intel_mtm_common_pkg.sv"]
+set_global_assignment -library "intel_vvp_pkt_duplicator_2450" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_pkt_duplicator_2450/synth/intel_vvp_common_pkg.sv"]
+set_global_assignment -library "intel_vvp_pkt_duplicator_2450" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_pkt_duplicator_2450/synth/intel_vvp_utility_pkg.sv"]
+set_global_assignment -library "intel_vvp_pkt_duplicator_2450" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_pkt_duplicator_2450/synth/intel_vvp_axi_pipeline_stage.sv"]
+set_global_assignment -library "intel_vvp_pkt_duplicator_2450" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_pkt_duplicator_2450/synth/intel_vvp_axi_master.sv"]
+set_global_assignment -library "intel_vvp_pkt_duplicator_2450" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_pkt_duplicator_2450/synth/src_hdl/intel_vvp_pkt_duplicator.sv"]
+set_global_assignment -library "intel_vvp_dil_bob_algo_comp_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_dil_bob_algo_comp_2451/synth/intel_vvp_common_pkg.sv"]
+set_global_assignment -library "intel_vvp_dil_bob_algo_comp_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_dil_bob_algo_comp_2451/synth/intel_vvp_axi_zero_pad.sv"]
+set_global_assignment -library "intel_vvp_dil_bob_algo_comp_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_dil_bob_algo_comp_2451/synth/intel_vvp_axi_zero_strip.sv"]
+set_global_assignment -library "intel_vvp_dil_bob_algo_comp_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_dil_bob_algo_comp_2451/synth/intel_vvp_axi_pipeline_stage.sv"]
+set_global_assignment -library "intel_vvp_dil_bob_algo_comp_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_dil_bob_algo_comp_2451/synth/intel_vvp_axi_master.sv"]
+set_global_assignment -library "intel_vvp_dil_bob_algo_comp_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_dil_bob_algo_comp_2451/synth/intel_vvp_dil_common_pkg.sv"]
+set_global_assignment -library "intel_vvp_dil_bob_algo_comp_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_dil_bob_algo_comp_2451/synth/intel_vvp_dil_bob_pkg.sv"]
+set_global_assignment -library "intel_vvp_dil_bob_algo_comp_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_dil_bob_algo_comp_2451/synth/src_hdl/intel_vvp_dil_bob_algo_comp.sv"]
+set_global_assignment -library "intel_vvp_dil_bob_algo_comp_2451" -name SOURCE_FILE [file join $::quartus(qip_path) "intel_vvp_dil_bob_algo_comp_2451/synth/src_hdl/intel_vvp_dil_bob_algo_comp.ocp"]
+set_global_assignment -library "intel_vvp_dil_bob_scheduler_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_dil_bob_scheduler_2451/synth/intel_mtm_common_pkg.sv"]
+set_global_assignment -library "intel_vvp_dil_bob_scheduler_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_dil_bob_scheduler_2451/synth/intel_vvp_common_pkg.sv"]
+set_global_assignment -library "intel_vvp_dil_bob_scheduler_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_dil_bob_scheduler_2451/synth/intel_vvp_pipelined_mux.sv"]
+set_global_assignment -library "intel_vvp_dil_bob_scheduler_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_dil_bob_scheduler_2451/synth/intel_vvp_common_slave_interface.sv"]
+set_global_assignment -library "intel_vvp_dil_bob_scheduler_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_dil_bob_scheduler_2451/synth/intel_vvp_axi_pipeline_stage.sv"]
+set_global_assignment -library "intel_vvp_dil_bob_scheduler_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_dil_bob_scheduler_2451/synth/intel_vvp_axi_master.sv"]
+set_global_assignment -library "intel_vvp_dil_bob_scheduler_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_dil_bob_scheduler_2451/synth/intel_vvp_dil_common_pkg.sv"]
+set_global_assignment -library "intel_vvp_dil_bob_scheduler_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_dil_bob_scheduler_2451/synth/intel_vvp_dil_bob_pkg.sv"]
+set_global_assignment -library "intel_vvp_dil_bob_scheduler_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_dil_bob_scheduler_2451/synth/intel_vvp_utility_pkg.sv"]
+set_global_assignment -library "intel_vvp_dil_bob_scheduler_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_dil_bob_scheduler_2451/synth/src_hdl/intel_vvp_dil_bob_scheduler.sv"]
+set_global_assignment -library "intel_vvp_dil_bob_scheduler_2451" -name SOURCE_FILE [file join $::quartus(qip_path) "intel_vvp_dil_bob_scheduler_2451/synth/src_hdl/intel_vvp_dil_bob_scheduler.ocp"]
+set_global_assignment -library "intel_vvp_line_buffer_2440" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_line_buffer_2440/synth/intel_mtm_common_pkg.sv"]
+set_global_assignment -library "intel_vvp_line_buffer_2440" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_line_buffer_2440/synth/intel_vvp_common_pkg.sv"]
+set_global_assignment -library "intel_vvp_line_buffer_2440" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_line_buffer_2440/synth/intel_vvp_utility_pkg.sv"]
+set_global_assignment -library "intel_vvp_line_buffer_2440" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_line_buffer_2440/synth/intel_vvp_axi_pipeline_stage.sv"]
+set_global_assignment -library "intel_vvp_line_buffer_2440" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_line_buffer_2440/synth/intel_vvp_axi_master.sv"]
+set_global_assignment -library "intel_vvp_line_buffer_2440" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_line_buffer_2440/synth/intel_vvp_axi_zero_pad.sv"]
+set_global_assignment -library "intel_vvp_line_buffer_2440" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_line_buffer_2440/synth/intel_vvp_axi_zero_strip.sv"]
+set_global_assignment -library "intel_vvp_line_buffer_2440" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_line_buffer_2440/synth/src_hdl/intel_vvp_line_buffer_no_resend.sv"]
+set_global_assignment -library "intel_vvp_line_buffer_2440" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_line_buffer_2440/synth/src_hdl/intel_vvp_line_buffer_resend.sv"]
+set_global_assignment -library "intel_vvp_line_buffer_2440" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_line_buffer_2440/synth/src_hdl/intel_vvp_line_buffer_ram.sv"]
+set_global_assignment -library "intel_vvp_line_buffer_2440" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_line_buffer_2440/synth/src_hdl/intel_vvp_line_buffer_cmd_mngr.sv"]
+set_global_assignment -library "intel_vvp_line_buffer_2440" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_line_buffer_2440/synth/src_hdl/intel_vvp_line_buffer.sv"]
+set_global_assignment -library "intel_vvp_dil_2451" -name VERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_dil_2451/synth/pl_sys_intel_vvp_dil_0_intel_vvp_dil_2451_zskkody.v"]
+set_global_assignment -library "pl_sys_intel_vvp_dil_0" -name VERILOG_FILE [file join $::quartus(qip_path) "synth/pl_sys_intel_vvp_dil_0.v"]
+
+
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0_intel_vvp_dil_2451_zskkody" -library "intel_vvp_dil_2451" -name IP_TOOL_NAME "intel_vvp_dil"
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0_intel_vvp_dil_2451_zskkody" -library "intel_vvp_dil_2451" -name IP_TOOL_VERSION "24.5.1"
+set_global_assignment -entity "pl_sys_intel_vvp_dil_0_intel_vvp_dil_2451_zskkody" -library "intel_vvp_dil_2451" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "intel_vvp_line_buffer" -library "intel_vvp_line_buffer_2440" -name IP_TOOL_NAME "intel_vvp_line_buffer"
+set_global_assignment -entity "intel_vvp_line_buffer" -library "intel_vvp_line_buffer_2440" -name IP_TOOL_VERSION "24.4.0"
+set_global_assignment -entity "intel_vvp_line_buffer" -library "intel_vvp_line_buffer_2440" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "intel_vvp_dil_bob_scheduler" -library "intel_vvp_dil_bob_scheduler_2451" -name IP_TOOL_NAME "intel_vvp_dil_bob_scheduler"
+set_global_assignment -entity "intel_vvp_dil_bob_scheduler" -library "intel_vvp_dil_bob_scheduler_2451" -name IP_TOOL_VERSION "24.5.1"
+set_global_assignment -entity "intel_vvp_dil_bob_scheduler" -library "intel_vvp_dil_bob_scheduler_2451" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "intel_vvp_dil_bob_algo_comp" -library "intel_vvp_dil_bob_algo_comp_2451" -name IP_TOOL_NAME "intel_vvp_dil_bob_algo_comp"
+set_global_assignment -entity "intel_vvp_dil_bob_algo_comp" -library "intel_vvp_dil_bob_algo_comp_2451" -name IP_TOOL_VERSION "24.5.1"
+set_global_assignment -entity "intel_vvp_dil_bob_algo_comp" -library "intel_vvp_dil_bob_algo_comp_2451" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "intel_vvp_pkt_duplicator" -library "intel_vvp_pkt_duplicator_2450" -name IP_TOOL_NAME "intel_vvp_pkt_duplicator"
+set_global_assignment -entity "intel_vvp_pkt_duplicator" -library "intel_vvp_pkt_duplicator_2450" -name IP_TOOL_VERSION "24.5.0"
+set_global_assignment -entity "intel_vvp_pkt_duplicator" -library "intel_vvp_pkt_duplicator_2450" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "intel_vvp_output_interface_bridge" -library "intel_vvp_output_interface_bridge_2440" -name IP_TOOL_NAME "intel_vvp_output_interface_bridge"
+set_global_assignment -entity "intel_vvp_output_interface_bridge" -library "intel_vvp_output_interface_bridge_2440" -name IP_TOOL_VERSION "24.4.0"
+set_global_assignment -entity "intel_vvp_output_interface_bridge" -library "intel_vvp_output_interface_bridge_2440" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "intel_vvp_pkt_mux" -library "intel_vvp_pkt_mux_2450" -name IP_TOOL_NAME "intel_vvp_pkt_mux"
+set_global_assignment -entity "intel_vvp_pkt_mux" -library "intel_vvp_pkt_mux_2450" -name IP_TOOL_VERSION "24.5.0"
+set_global_assignment -entity "intel_vvp_pkt_mux" -library "intel_vvp_pkt_mux_2450" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "intel_vvp_input_interface_bridge" -library "intel_vvp_input_interface_bridge_2440" -name IP_TOOL_NAME "intel_vvp_input_interface_bridge"
+set_global_assignment -entity "intel_vvp_input_interface_bridge" -library "intel_vvp_input_interface_bridge_2440" -name IP_TOOL_VERSION "24.4.0"
+set_global_assignment -entity "intel_vvp_input_interface_bridge" -library "intel_vvp_input_interface_bridge_2440" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "intel_vvp_reset_sync" -library "intel_vvp_reset_sync_2440" -name IP_TOOL_NAME "intel_vvp_reset_sync"
+set_global_assignment -entity "intel_vvp_reset_sync" -library "intel_vvp_reset_sync_2440" -name IP_TOOL_VERSION "24.4.0"
+set_global_assignment -entity "intel_vvp_reset_sync" -library "intel_vvp_reset_sync_2440" -name IP_TOOL_ENV "QsysPrimePro"
+

@@ -1,0 +1,13 @@
+	component system is
+		port (
+			alt_vip_cl_crs_0_dout_data          : out std_logic_vector(47 downto 0);        -- data
+			alt_vip_cl_crs_0_dout_valid         : out std_logic;                            -- valid
+			alt_vip_cl_crs_0_dout_startofpacket : out std_logic;                            -- startofpacket
+			alt_vip_cl_crs_0_dout_endofpacket   : out std_logic;                            -- endofpacket
+			alt_vip_cl_crs_0_dout_empty         : out std_logic_vector(2 downto 0);         -- empty
+			alt_vip_cl_crs_0_dout_ready         : in  std_logic                     := 'X'; -- ready
+			clk_clk                             : in  std_logic                     := 'X'; -- clk
+			reset_reset                         : in  std_logic                     := 'X'  -- reset
+		);
+	end component system;
+

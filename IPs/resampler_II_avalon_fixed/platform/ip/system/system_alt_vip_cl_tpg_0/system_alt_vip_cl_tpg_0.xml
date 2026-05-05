@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy
+ date="2026.03.17.16:40:51"
+ outputDirectory="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/">
+ <perimeter>
+  <parameter
+     name="AUTO_GENERATION_ID"
+     type="Integer"
+     defaultValue="0"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_UNIQUE_ID"
+     type="String"
+     defaultValue=""
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_FAMILY"
+     type="String"
+     defaultValue="Cyclone 10 GX"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE"
+     type="String"
+     defaultValue="10CX220YF780I5G"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_SPEEDGRADE"
+     type="String"
+     defaultValue="5"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_BOARD"
+     type="String"
+     defaultValue="default"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_MAIN_CLOCK_CLOCK_RATE"
+     type="Long"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_MAIN_CLOCK_CLOCK_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_MAIN_CLOCK_RESET_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <interface name="main_clock" kind="clock" start="0">
+   <property name="clockRate" value="0" />
+   <property name="externallyDriven" value="false" />
+   <property name="ptfSchematicName" value="" />
+   <port name="main_clock" direction="input" role="clk" width="1" />
+  </interface>
+  <interface name="main_reset" kind="reset" start="0">
+   <property name="associatedClock" value="main_clock" />
+   <property name="synchronousEdges" value="DEASSERT" />
+   <port name="main_reset" direction="input" role="reset" width="1" />
+  </interface>
+  <interface name="dout" kind="avalon_streaming" start="1">
+   <property name="associatedClock" value="main_clock" />
+   <property name="associatedReset" value="main_reset" />
+   <property name="beatsPerCycle" value="1" />
+   <property name="dataBitsPerSymbol" value="8" />
+   <property name="emptyWithinPacket" value="false" />
+   <property name="errorDescriptor" value="" />
+   <property name="firstSymbolInHighOrderBits" value="true" />
+   <property name="highOrderSymbolAtMSB" value="false" />
+   <property name="maxChannel" value="0" />
+   <property name="packetDescription" value="" />
+   <property name="prSafe" value="false" />
+   <property name="readyAllowance" value="0" />
+   <property name="readyLatency" value="1" />
+   <property name="symbolsPerBeat" value="4" />
+   <port name="dout_data" direction="output" role="data" width="32" />
+   <port name="dout_valid" direction="output" role="valid" width="1" />
+   <port
+       name="dout_startofpacket"
+       direction="output"
+       role="startofpacket"
+       width="1" />
+   <port
+       name="dout_endofpacket"
+       direction="output"
+       role="endofpacket"
+       width="1" />
+   <port name="dout_empty" direction="output" role="empty" width="2" />
+   <port name="dout_ready" direction="input" role="ready" width="1" />
+  </interface>
+ </perimeter>
+ <entity
+   kind="system_alt_vip_cl_tpg_0"
+   version="1.0"
+   name="system_alt_vip_cl_tpg_0">
+  <parameter name="AUTO_MAIN_CLOCK_RESET_DOMAIN" value="-1" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_MAIN_CLOCK_CLOCK_DOMAIN" value="-1" />
+  <parameter name="AUTO_MAIN_CLOCK_CLOCK_RATE" value="-1" />
+  <parameter name="AUTO_UNIQUE_ID" value="" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/synth/system_alt_vip_cl_tpg_0.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/synth/system_alt_vip_cl_tpg_0.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0.ip" />
+  </sourceFiles>
+  <childSourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/full_ip/alt_vip_cl_tpg/alt_vip_cl_tpg_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/processing/alt_vip_video_output_bridge/alt_vip_video_output_bridge_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/schedulers/alt_vip_tpg_multi_scheduler/alt_vip_tpg_multi_scheduler_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/processing/alt_vip_tpg_bars_alg_core/alt_vip_tpg_bars_alg_core_hw.tcl" />
+  </childSourceFiles>
+  <messages>
+   <message level="Info" culprit="system_alt_vip_cl_tpg_0">"Generating: system_alt_vip_cl_tpg_0"</message>
+   <message level="Info" culprit="system_alt_vip_cl_tpg_0">"Generating: system_alt_vip_cl_tpg_0_alt_vip_cl_tpg_2360_qjrno4y"</message>
+   <message level="Info" culprit="system_alt_vip_cl_tpg_0">"Generating: alt_vip_video_output_bridge"</message>
+   <message level="Info" culprit="system_alt_vip_cl_tpg_0">"Generating: system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa"</message>
+   <message level="Info" culprit="system_alt_vip_cl_tpg_0">"Generating: alt_vip_tpg_bars_alg_core"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="alt_vip_cl_tpg"
+   version="23.6.0"
+   name="system_alt_vip_cl_tpg_0_alt_vip_cl_tpg_2360_qjrno4y">
+  <parameter name="CB4_B_1" value="255" />
+  <parameter name="CB4_B_2" value="255" />
+  <parameter name="CB4_B_0" value="255" />
+  <parameter name="CB4_B_5" value="255" />
+  <parameter name="MAX_WIDTH" value="1920" />
+  <parameter name="CB4_B_6" value="255" />
+  <parameter name="CB4_B_3" value="255" />
+  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="CB4_B_4" value="255" />
+  <parameter name="CB4_R_1" value="255" />
+  <parameter name="CB4_R_2" value="255" />
+  <parameter name="CB4_R_0" value="255" />
+  <parameter name="CB4_R_5" value="255" />
+  <parameter name="CB4_R_6" value="255" />
+  <parameter name="CB4_R_3" value="255" />
+  <parameter name="CB4_R_4" value="255" />
+  <parameter name="COLOR_SPACE_0" value="YCbCr_422" />
+  <parameter name="CB4_B_7" value="255" />
+  <parameter name="COLOR_SPACE_4" value="RGB_444" />
+  <parameter name="COLOR_SPACE_3" value="RGB_444" />
+  <parameter name="COLOR_SPACE_2" value="RGB_444" />
+  <parameter name="COLOR_SPACE_1" value="RGB_444" />
+  <parameter name="COLOR_SPACE_7" value="RGB_444" />
+  <parameter name="COLOR_SPACE_6" value="RGB_444" />
+  <parameter name="COLOR_SPACE_5" value="RGB_444" />
+  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="C_OMNI_CAP_SIZE" value="0" />
+  <parameter name="CB0_R_1" value="255" />
+  <parameter name="CB0_R_2" value="255" />
+  <parameter name="CB0_R_0" value="255" />
+  <parameter name="CB0_R_5" value="255" />
+  <parameter name="C_OMNI_CAP_IRQ_ENABLE" value="0" />
+  <parameter name="CB0_R_6" value="255" />
+  <parameter name="CB0_R_3" value="255" />
+  <parameter name="CB0_R_4" value="255" />
+  <parameter name="PIXELS_IN_PARALLEL" value="2" />
+  <parameter name="CB0_R_7" value="255" />
+  <parameter name="FAMILY" value="Cyclone 10 GX" />
+  <parameter name="CB0_B_0" value="255" />
+  <parameter name="CB0_B_2" value="255" />
+  <parameter name="CB0_B_1" value="255" />
+  <parameter name="CB0_B_4" value="255" />
+  <parameter name="CB0_B_3" value="255" />
+  <parameter name="CB0_B_6" value="255" />
+  <parameter name="CB0_B_5" value="255" />
+  <parameter name="CB0_B_7" value="255" />
+  <parameter name="CB2_G_2" value="255" />
+  <parameter name="CB2_G_3" value="255" />
+  <parameter name="CB2_G_0" value="255" />
+  <parameter name="CB2_G_1" value="255" />
+  <parameter name="CB7_B_4" value="255" />
+  <parameter name="CB7_B_5" value="255" />
+  <parameter name="CB7_B_6" value="255" />
+  <parameter name="CB7_B_7" value="255" />
+  <parameter name="CB7_R_0" value="255" />
+  <parameter name="CB7_R_1" value="255" />
+  <parameter name="CB7_R_2" value="255" />
+  <parameter name="CB7_R_3" value="255" />
+  <parameter name="DEFAULT_BOARDER" value="1" />
+  <parameter name="CB7_B_0" value="255" />
+  <parameter name="CB5_R_6" value="255" />
+  <parameter name="CB7_B_1" value="255" />
+  <parameter name="CB5_R_7" value="255" />
+  <parameter name="CB7_B_2" value="255" />
+  <parameter name="CB7_B_3" value="255" />
+  <parameter name="CB2_G_6" value="255" />
+  <parameter name="CB2_G_7" value="255" />
+  <parameter name="CB2_G_4" value="255" />
+  <parameter name="CB2_G_5" value="255" />
+  <parameter name="CB5_R_0" value="255" />
+  <parameter name="CB5_R_1" value="255" />
+  <parameter name="CB5_R_2" value="255" />
+  <parameter name="CB5_R_3" value="255" />
+  <parameter name="CB5_R_4" value="255" />
+  <parameter name="CB5_R_5" value="255" />
+  <parameter name="CB5_B_6" value="255" />
+  <parameter name="CB5_B_7" value="255" />
+  <parameter name="OUTPUT_FORMAT" value="4.2.2" />
+  <parameter name="CB5_B_0" value="255" />
+  <parameter name="CB5_B_1" value="255" />
+  <parameter name="CB5_B_2" value="255" />
+  <parameter name="CB7_R_4" value="255" />
+  <parameter name="CB5_B_3" value="255" />
+  <parameter name="CB7_R_5" value="255" />
+  <parameter name="CB5_B_4" value="255" />
+  <parameter name="CB7_R_6" value="255" />
+  <parameter name="CB5_B_5" value="255" />
+  <parameter name="CB7_R_7" value="255" />
+  <parameter name="CB1_B_0" value="255" />
+  <parameter name="CB1_B_1" value="255" />
+  <parameter name="CB1_B_2" value="255" />
+  <parameter name="CB1_B_3" value="255" />
+  <parameter name="CB1_B_4" value="255" />
+  <parameter name="CB1_B_5" value="255" />
+  <parameter name="CB1_B_6" value="255" />
+  <parameter name="CB1_B_7" value="255" />
+  <parameter name="CB1_R_0" value="255" />
+  <parameter name="CB1_R_1" value="255" />
+  <parameter name="CB1_R_2" value="255" />
+  <parameter name="CB1_R_3" value="255" />
+  <parameter name="C_OMNI_CAP_ID_COMPONENT" value="0" />
+  <parameter name="CB1_R_4" value="255" />
+  <parameter name="CB1_R_5" value="255" />
+  <parameter name="CB1_R_6" value="255" />
+  <parameter name="CB1_R_7" value="255" />
+  <parameter name="ROLLING_BARS_ENABLED" value="0" />
+  <parameter name="C_OMNI_CAP_VERSION" value="1" />
+  <parameter name="CB6_B_3" value="255" />
+  <parameter name="CB3_G_7" value="255" />
+  <parameter name="CB6_B_4" value="255" />
+  <parameter name="CB6_B_1" value="255" />
+  <parameter name="C_OMNI_CAP_IRQ" value="255" />
+  <parameter name="CB6_B_2" value="255" />
+  <parameter name="CB3_G_3" value="255" />
+  <parameter name="CB6_B_0" value="255" />
+  <parameter name="CB3_G_4" value="255" />
+  <parameter name="CB3_G_5" value="255" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="CB3_G_6" value="255" />
+  <parameter name="C_OMNI_CAP_ID_ASSOCIATED" value="0" />
+  <parameter name="CB3_G_0" value="255" />
+  <parameter name="CB3_G_1" value="255" />
+  <parameter name="CB3_G_2" value="255" />
+  <parameter name="CB6_B_7" value="255" />
+  <parameter name="C_OMNI_CAP_TYPE" value="552" />
+  <parameter name="CB6_B_5" value="255" />
+  <parameter name="CB6_B_6" value="255" />
+  <parameter name="CB6_R_3" value="255" />
+  <parameter name="CB6_R_4" value="255" />
+  <parameter name="UNIFORM_VALUE_GCB" value="16" />
+  <parameter name="CB6_R_1" value="255" />
+  <parameter name="CB6_R_2" value="255" />
+  <parameter name="CB6_R_0" value="255" />
+  <parameter name="CB0_G_6" value="255" />
+  <parameter name="CB0_G_7" value="255" />
+  <parameter name="CB6_R_7" value="255" />
+  <parameter name="CB6_R_5" value="255" />
+  <parameter name="CB6_R_6" value="255" />
+  <parameter name="COLOR_PLANES_ARE_IN_PARALLEL" value="1" />
+  <parameter name="BITS_PER_SYMBOL" value="8" />
+  <parameter name="CB0_G_0" value="255" />
+  <parameter name="CB0_G_1" value="255" />
+  <parameter name="CB0_G_4" value="255" />
+  <parameter name="CB0_G_5" value="255" />
+  <parameter name="CB0_G_2" value="255" />
+  <parameter name="LIMITED_READBACK" value="0" />
+  <parameter name="CB0_G_3" value="255" />
+  <parameter name="CB7_G_3" value="255" />
+  <parameter name="CB2_B_7" value="255" />
+  <parameter name="CB7_G_4" value="255" />
+  <parameter name="CB2_B_5" value="255" />
+  <parameter name="CB7_G_5" value="255" />
+  <parameter name="CB2_B_6" value="255" />
+  <parameter name="CB7_G_6" value="255" />
+  <parameter name="CB2_B_3" value="255" />
+  <parameter name="CB7_G_0" value="255" />
+  <parameter name="CB2_B_4" value="255" />
+  <parameter name="CB2_B_1" value="255" />
+  <parameter name="CB7_G_1" value="255" />
+  <parameter name="CB2_B_2" value="255" />
+  <parameter name="CB7_G_2" value="255" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="CB2_B_0" value="255" />
+  <parameter name="CB7_G_7" value="255" />
+  <parameter name="CB2_R_7" value="255" />
+  <parameter name="CB2_R_5" value="255" />
+  <parameter name="CB2_R_6" value="255" />
+  <parameter name="CB2_R_3" value="255" />
+  <parameter name="CB2_R_4" value="255" />
+  <parameter name="CB2_R_1" value="255" />
+  <parameter name="CB2_R_2" value="255" />
+  <parameter name="CB2_R_0" value="255" />
+  <parameter name="PATTERN_3" value="colorbars" />
+  <parameter name="PATTERN_4" value="colorbars" />
+  <parameter name="RUNTIME_CONTROL" value="0" />
+  <parameter name="PATTERN_5" value="colorbars" />
+  <parameter name="PATTERN_6" value="colorbars" />
+  <parameter name="CB4_G_0" value="255" />
+  <parameter name="PATTERN_0" value="colorbars" />
+  <parameter name="CB4_G_1" value="255" />
+  <parameter name="PATTERN_1" value="colorbars" />
+  <parameter name="PATTERN_2" value="colorbars" />
+  <parameter name="PATTERN_7" value="colorbars" />
+  <parameter name="CB4_G_4" value="255" />
+  <parameter name="CB4_G_5" value="255" />
+  <parameter name="CB4_G_2" value="255" />
+  <parameter name="CB4_G_3" value="255" />
+  <parameter name="CB4_G_6" value="255" />
+  <parameter name="CB4_G_7" value="255" />
+  <parameter name="C_OMNI_CAP_IRQ_ENABLE_EN" value="0" />
+  <parameter name="C_OMNI_CAP_ENABLED" value="0" />
+  <parameter name="VIP_OCS_ENABLED_INI" value="false" />
+  <parameter name="INTERLACING" value="PROGRESSIVE" />
+  <parameter name="C_OMNI_CAP_IRQ_STATUS" value="0" />
+  <parameter name="MAX_HEIGHT" value="1080" />
+  <parameter name="CB3_R_4" value="255" />
+  <parameter name="CB3_R_5" value="255" />
+  <parameter name="CB3_R_6" value="255" />
+  <parameter name="CB3_R_7" value="255" />
+  <parameter name="CB3_R_0" value="255" />
+  <parameter name="CB3_R_1" value="255" />
+  <parameter name="CB3_R_2" value="255" />
+  <parameter name="CB3_R_3" value="255" />
+  <parameter name="UNIFORM_VALUE_BCR" value="16" />
+  <parameter name="CB3_B_4" value="255" />
+  <parameter name="CB6_G_6" value="255" />
+  <parameter name="CB3_B_5" value="255" />
+  <parameter name="CB6_G_7" value="255" />
+  <parameter name="CB6_G_4" value="255" />
+  <parameter name="CB3_B_6" value="255" />
+  <parameter name="CB6_G_5" value="255" />
+  <parameter name="CB3_B_7" value="255" />
+  <parameter name="NUM_CORES" value="1" />
+  <parameter name="CB3_B_0" value="255" />
+  <parameter name="CB6_G_2" value="255" />
+  <parameter name="CB3_B_1" value="255" />
+  <parameter name="CB6_G_3" value="255" />
+  <parameter name="CB6_G_0" value="255" />
+  <parameter name="CB3_B_2" value="255" />
+  <parameter name="CB6_G_1" value="255" />
+  <parameter name="CB3_B_3" value="255" />
+  <parameter name="C_OMNI_CAP_TAG" value="0" />
+  <parameter name="UNIFORM_VALUE_RY" value="16" />
+  <parameter name="CB5_G_1" value="255" />
+  <parameter name="CB5_G_2" value="255" />
+  <parameter name="CB5_G_3" value="255" />
+  <parameter name="CB5_G_4" value="255" />
+  <parameter name="CB5_G_5" value="255" />
+  <parameter name="CB5_G_6" value="255" />
+  <parameter name="CB5_G_7" value="255" />
+  <parameter name="CB5_G_0" value="255" />
+  <parameter name="NUMBER_OF_COLOR_PLANES" value="2" />
+  <parameter name="CB4_R_7" value="255" />
+  <parameter name="CB1_G_0" value="255" />
+  <parameter name="CB1_G_1" value="255" />
+  <parameter name="CB1_G_2" value="255" />
+  <parameter name="CB1_G_3" value="255" />
+  <parameter name="CB1_G_4" value="255" />
+  <parameter name="CB1_G_5" value="255" />
+  <parameter name="CB1_G_6" value="255" />
+  <parameter name="CB1_G_7" value="255" />
+  <parameter name="C_OMNI_CAP_IRQ_STATUS_EN" value="0" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_cl_tpg_2360/synth/system_alt_vip_cl_tpg_0_alt_vip_cl_tpg_2360_qjrno4y.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_cl_tpg_2360/synth/system_alt_vip_cl_tpg_0_alt_vip_cl_tpg_2360_qjrno4y.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/full_ip/alt_vip_cl_tpg/alt_vip_cl_tpg_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/processing/alt_vip_video_output_bridge/alt_vip_video_output_bridge_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/schedulers/alt_vip_tpg_multi_scheduler/alt_vip_tpg_multi_scheduler_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/processing/alt_vip_tpg_bars_alg_core/alt_vip_tpg_bars_alg_core_hw.tcl" />
+  </childSourceFiles>
+  <instantiator instantiator="system_alt_vip_cl_tpg_0" as="alt_vip_cl_tpg_0" />
+  <messages>
+   <message level="Info" culprit="system_alt_vip_cl_tpg_0">"Generating: system_alt_vip_cl_tpg_0_alt_vip_cl_tpg_2360_qjrno4y"</message>
+   <message level="Info" culprit="system_alt_vip_cl_tpg_0">"Generating: alt_vip_video_output_bridge"</message>
+   <message level="Info" culprit="system_alt_vip_cl_tpg_0">"Generating: system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa"</message>
+   <message level="Info" culprit="system_alt_vip_cl_tpg_0">"Generating: alt_vip_tpg_bars_alg_core"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="alt_vip_video_output_bridge"
+   version="23.6.0"
+   name="alt_vip_video_output_bridge">
+  <parameter name="LOW_LATENCY_COMMAND_MODE" value="0" />
+  <parameter name="SOP_PRE_ALIGNED" value="1" />
+  <parameter name="MULTI_CONTEXT_SUPPORT" value="0" />
+  <parameter name="NO_CONCATENATION" value="0" />
+  <parameter name="CONTEXT_WIDTH" value="8" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="PIXELS_IN_PARALLEL" value="2" />
+  <parameter name="READY_LATENCY_1" value="1" />
+  <parameter name="DST_WIDTH" value="8" />
+  <parameter name="COLOR_PLANES_ARE_IN_PARALLEL" value="1" />
+  <parameter name="SRC_WIDTH" value="8" />
+  <parameter name="BITS_PER_SYMBOL" value="8" />
+  <parameter name="TYPE_11_SUPPORT" value="0" />
+  <parameter name="VIDEO_PROTOCOL_NO" value="1" />
+  <parameter name="TASK_WIDTH" value="8" />
+  <parameter name="NUMBER_OF_COLOR_PLANES" value="2" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/common/alt_vip_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_video_packet_encode/src_hdl/alt_vip_common_latency_0_to_latency_1.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_video_packet_encode/src_hdl/alt_vip_common_video_packet_empty.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_video_packet_encode/src_hdl/alt_vip_common_video_packet_encode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_message_pipeline_stage/src_hdl/alt_vip_common_message_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_sop_align/src_hdl/alt_vip_common_sop_align.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/src_hdl/alt_vip_video_output_bridge.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/src_hdl/alt_vip_video_output_bridge.ocp"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/common/alt_vip_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_video_packet_encode/src_hdl/alt_vip_common_latency_0_to_latency_1.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_video_packet_encode/src_hdl/alt_vip_common_video_packet_empty.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_video_packet_encode/src_hdl/alt_vip_common_video_packet_encode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_message_pipeline_stage/src_hdl/alt_vip_common_message_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_sop_align/src_hdl/alt_vip_common_sop_align.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/src_hdl/alt_vip_video_output_bridge.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_video_output_bridge_2360/synth/src_hdl/alt_vip_video_output_bridge.ocp"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/processing/alt_vip_video_output_bridge/alt_vip_video_output_bridge_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="system_alt_vip_cl_tpg_0_alt_vip_cl_tpg_2360_qjrno4y"
+     as="video_out" />
+  <messages>
+   <message level="Info" culprit="system_alt_vip_cl_tpg_0">"Generating: alt_vip_video_output_bridge"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="alt_vip_tpg_multi_scheduler"
+   version="23.6.0"
+   name="system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa">
+  <parameter name="RUNTIME_CONTROL" value="0" />
+  <parameter name="MAX_WIDTH" value="1920" />
+  <parameter name="PIXELS_IN_PARALLEL" value="2" />
+  <parameter name="CORE_SUBSAMP_0" value="1" />
+  <parameter name="CORE_SUBSAMP_1" value="0" />
+  <parameter name="BITS_PER_SYMBOL" value="8" />
+  <parameter name="CORE_SUBSAMP_2" value="0" />
+  <parameter name="DEFAULT_R_Y" value="16" />
+  <parameter name="CORE_SUBSAMP_3" value="0" />
+  <parameter name="CORE_SUBSAMP_4" value="0" />
+  <parameter name="CORE_SUBSAMP_5" value="0" />
+  <parameter name="MAX_HEIGHT" value="1080" />
+  <parameter name="CORE_SUBSAMP_6" value="0" />
+  <parameter name="CORE_SUBSAMP_7" value="0" />
+  <parameter name="CORE_SUBSAMP_8" value="0" />
+  <parameter name="CORE_SUBSAMP_9" value="0" />
+  <parameter name="LIMITED_READBACK" value="0" />
+  <parameter name="CORE_TYPE_9" value="0" />
+  <parameter name="CORE_TYPE_5" value="0" />
+  <parameter name="CORE_TYPE_14" value="0" />
+  <parameter name="CORE_TYPE_6" value="0" />
+  <parameter name="CORE_TYPE_15" value="0" />
+  <parameter name="CORE_TYPE_7" value="0" />
+  <parameter name="CORE_TYPE_8" value="0" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="CORE_TYPE_10" value="0" />
+  <parameter name="CORE_TYPE_11" value="0" />
+  <parameter name="CORE_TYPE_12" value="0" />
+  <parameter name="CORE_TYPE_13" value="0" />
+  <parameter name="DEFAULT_INTERLACE" value="PROGRESSIVE" />
+  <parameter name="CORE_SUBSAMP_15" value="0" />
+  <parameter name="CORE_SUBSAMP_14" value="0" />
+  <parameter name="DEFAULT_G_CB" value="16" />
+  <parameter name="CORE_SUBSAMP_13" value="0" />
+  <parameter name="CORE_SUBSAMP_12" value="0" />
+  <parameter name="CORE_SUBSAMP_11" value="0" />
+  <parameter name="CORE_SUBSAMP_10" value="0" />
+  <parameter name="NUM_CORES" value="1" />
+  <parameter name="DEFAULT_BOARDER" value="1" />
+  <parameter name="CORE_TYPE_1" value="0" />
+  <parameter name="CORE_TYPE_2" value="0" />
+  <parameter name="CORE_TYPE_3" value="0" />
+  <parameter name="CORE_TYPE_4" value="0" />
+  <parameter name="DEFAULT_B_CR" value="16" />
+  <parameter name="CORE_TYPE_0" value="0" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_multi_scheduler_2360/synth/common/alt_vip_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_multi_scheduler_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_multi_scheduler_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_multi_scheduler_2360/synth/modules/alt_vip_common_slave_interface/src_hdl/alt_vip_common_slave_interface.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_multi_scheduler_2360/synth/modules/alt_vip_common_slave_interface/src_hdl/alt_vip_common_slave_interface_mux.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_multi_scheduler_2360/synth/src_hdl/alt_vip_tpg_multi_scheduler.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_multi_scheduler_2360/synth/src_hdl/alt_vip_tpg_multi_scheduler.ocp"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_multi_scheduler_2360/synth/system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa.sv"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_multi_scheduler_2360/synth/common/alt_vip_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_multi_scheduler_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_multi_scheduler_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_multi_scheduler_2360/synth/modules/alt_vip_common_slave_interface/src_hdl/alt_vip_common_slave_interface.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_multi_scheduler_2360/synth/modules/alt_vip_common_slave_interface/src_hdl/alt_vip_common_slave_interface_mux.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_multi_scheduler_2360/synth/src_hdl/alt_vip_tpg_multi_scheduler.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_multi_scheduler_2360/synth/src_hdl/alt_vip_tpg_multi_scheduler.ocp"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_multi_scheduler_2360/synth/system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa.sv"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/schedulers/alt_vip_tpg_multi_scheduler/alt_vip_tpg_multi_scheduler_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="system_alt_vip_cl_tpg_0_alt_vip_cl_tpg_2360_qjrno4y"
+     as="scheduler" />
+  <messages>
+   <message level="Info" culprit="system_alt_vip_cl_tpg_0">"Generating: system_alt_vip_cl_tpg_0_alt_vip_tpg_multi_scheduler_2360_ktdghqa"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="alt_vip_tpg_bars_alg_core"
+   version="23.6.0"
+   name="alt_vip_tpg_bars_alg_core">
+  <parameter name="SOURCE_ID" value="0" />
+  <parameter name="TPG_CS" value="YCbCr_422" />
+  <parameter name="MAX_WIDTH" value="1920" />
+  <parameter name="BW_ONLY" value="0" />
+  <parameter name="CONTEXT_WIDTH" value="8" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="PIXELS_IN_PARALLEL" value="2" />
+  <parameter name="DST_WIDTH" value="8" />
+  <parameter name="COLOR_PLANES_ARE_IN_PARALLEL" value="1" />
+  <parameter name="SRC_WIDTH" value="8" />
+  <parameter name="GREYSCALE" value="0" />
+  <parameter name="BITS_PER_SYMBOL" value="8" />
+  <parameter name="PATTERN" value="COLOUR_BARS" />
+  <parameter name="MAX_HEIGHT" value="1080" />
+  <parameter name="TASK_WIDTH" value="8" />
+  <parameter name="NUMBER_OF_COLOR_PLANES" value="2" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_bars_alg_core_2360/synth/common/alt_vip_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_bars_alg_core_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_bars_alg_core_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_bars_alg_core_2360/synth/src_hdl/alt_vip_tpg_bars_alg_core.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_bars_alg_core_2360/synth/src_hdl/alt_vip_tpg_bars_alg_core_par_lut.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_bars_alg_core_2360/synth/src_hdl/alt_vip_tpg_bars_alg_core_seq_lut.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_bars_alg_core_2360/synth/src_hdl/alt_vip_tpg_bars_alg_core.ocp"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_bars_alg_core_2360/synth/common/alt_vip_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_bars_alg_core_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_bars_alg_core_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_bars_alg_core_2360/synth/src_hdl/alt_vip_tpg_bars_alg_core.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_bars_alg_core_2360/synth/src_hdl/alt_vip_tpg_bars_alg_core_par_lut.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_bars_alg_core_2360/synth/src_hdl/alt_vip_tpg_bars_alg_core_seq_lut.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/QuartusProjects/VVP_IP_Validation/resampler_II/platform/ip/system/system_alt_vip_cl_tpg_0/alt_vip_tpg_bars_alg_core_2360/synth/src_hdl/alt_vip_tpg_bars_alg_core.ocp"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/vip/ip_library/component_ip/processing/alt_vip_tpg_bars_alg_core/alt_vip_tpg_bars_alg_core_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="system_alt_vip_cl_tpg_0_alt_vip_cl_tpg_2360_qjrno4y"
+     as="core_0" />
+  <messages>
+   <message level="Info" culprit="system_alt_vip_cl_tpg_0">"Generating: alt_vip_tpg_bars_alg_core"</message>
+  </messages>
+ </entity>
+</deploy>

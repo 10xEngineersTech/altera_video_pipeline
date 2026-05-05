@@ -1,0 +1,168 @@
+
+//`timescale 1 ps / 1 ps
+//
+//module clipper_ip_tb();
+//
+//    // Parameters
+//    localparam CLK_PERIOD = 10000; // 100MHz = 10ns (10000ps)
+//    
+//    // Register Addresses
+//    localparam CLIP_IN_WIDTH_ADDR   = 7'h48;
+//    localparam CLIP_IN_HEIGHT_ADDR  = 7'h49;
+//    localparam CLIP_IN_COLOR_ADDR   = 7'h4C;
+//    localparam CLIP_IN_SUBSAMPLING  = 7'h4D;
+//    localparam CLIP_COMMIT_ADDR     = 7'h51;
+//    localparam CLIP_LEFT_OFF_ADDR   = 7'h52;
+//    localparam CLIP_TOP_OFF_ADDR    = 7'h53;
+//    localparam CLIP_RIGHT_OFF_ADDR  = 7'h54;
+//    localparam CLIP_BOT_OFF_ADDR    = 7'h55;
+//	 localparam CLIP_IN_INTERLACE    = 7'h4A;
+//	 localparam IMG_INFO_COSITING    = 7'h4E;
+//
+//    // Signals
+//    reg         clk_clk = 0;
+//    reg         reset_reset = 1;
+//    
+//    // Video Stream Signals
+//    wire [23:0] tdata;
+//    wire        tvalid;
+//    reg         tready = 0;
+//    wire        tlast;
+//    wire [2:0]  tuser;
+//
+//    // Avalon-MM Signals
+//    reg  [6:0]  av_addr = 0;
+//    reg         av_write = 0;
+//    reg  [3:0]  av_byteenable = 4'hF;
+//    reg  [31:0] av_writedata = 0;
+//    reg         av_read = 0;
+//    wire [31:0] av_readdata;
+//    wire        av_readdatavalid;
+//    wire        av_waitrequest;
+//
+//    // Instantiate DUT
+//    clipper_wrapper dut (
+//        .clk_clk                                       (clk_clk),
+//        .intel_vvp_clipper_0_axi4s_vid_out_tdata       (tdata),
+//        .intel_vvp_clipper_0_axi4s_vid_out_tvalid      (tvalid),
+//        .intel_vvp_clipper_0_axi4s_vid_out_tready      (tready),
+//        .intel_vvp_clipper_0_axi4s_vid_out_tlast       (tlast),
+//        .intel_vvp_clipper_0_axi4s_vid_out_tuser        (tuser),
+//        .intel_vvp_clipper_0_av_mm_control_agent_address (av_addr),
+//        .intel_vvp_clipper_0_av_mm_control_agent_write   (av_write),
+//        .intel_vvp_clipper_0_av_mm_control_agent_byteenable (av_byteenable),
+//        .intel_vvp_clipper_0_av_mm_control_agent_writedata  (av_writedata),
+//        .intel_vvp_clipper_0_av_mm_control_agent_read       (av_read),
+//        .intel_vvp_clipper_0_av_mm_control_agent_readdata   (av_readdata),
+//        .intel_vvp_clipper_0_av_mm_control_agent_readdatavalid (av_readdatavalid),
+//        .intel_vvp_clipper_0_av_mm_control_agent_waitrequest   (av_waitrequest),
+//        .reset_reset                                   (reset_reset)
+//    );
+//
+//    // Clock Generation
+//    always #(CLK_PERIOD/2) clk_clk = ~clk_clk;
+//
+//    // Task for Avalon-MM Read
+//    task av_mm_read(input [6:0] addr);
+//        begin
+//            @(posedge clk_clk);
+//            av_addr = addr;
+//            av_read = 1;
+//            // Wait for waitrequest to be low
+//            while (av_waitrequest) @(posedge clk_clk);
+//            @(posedge clk_clk);
+//            av_read = 0;
+//            // Wait for readdatavalid
+//            while (!av_readdatavalid) @(posedge clk_clk);
+//            $display("Read Addr 0x%h: Data 0x%h", addr, av_readdata);
+//        end
+//    endtask
+//
+//    // Main Simulation Process
+//    initial begin
+//        // Reset sequence
+//        repeat(10) @(posedge clk_clk);
+//        reset_reset = 0;
+//        repeat(10) @(posedge clk_clk);
+//
+//        $display("--- Starting Register Reads ---");
+//		  $display("--- Width ---");
+//        av_mm_read(CLIP_IN_WIDTH_ADDR);
+//		  $display("--- Hight ---");
+//        av_mm_read(CLIP_IN_HEIGHT_ADDR);
+//		  $display("--- Color ---");
+//        av_mm_read(CLIP_IN_COLOR_ADDR);
+//		  $display("--- Subsampling ---");
+//        av_mm_read(CLIP_IN_SUBSAMPLING);
+//		  $display("--- Interlaced ---");
+//        av_mm_read(CLIP_IN_INTERLACE);
+//		  $display("--- Costing ---");
+//        av_mm_read(IMG_INFO_COSITING);
+//		  $display("--- Left ---");
+//        av_mm_read(CLIP_LEFT_OFF_ADDR);
+//		  $display("--- TOP ---");
+//        av_mm_read(CLIP_TOP_OFF_ADDR);
+//		  $display("--- Right ---");
+//        av_mm_read(CLIP_RIGHT_OFF_ADDR);
+//		  $display("--- Bottom ---");
+//        av_mm_read(CLIP_BOT_OFF_ADDR);
+//        
+//        $display("--- Register Reads Complete. Asserting TREADY ---");
+//        tready = 1;
+//
+//        // Continue until 2000 total cycles
+//        repeat(2000) @(posedge clk_clk);
+//        
+//        $display("Simulation finished at 2000 cycles.");
+//        $stop;
+//    end
+//
+//endmodule
+
+`timescale 1 ps / 1 ps
+
+module tb();
+
+    reg         clk;
+    reg         reset;
+    
+    wire [23:0] axi_st_out_tdata;
+    wire        axi_st_out_tvalid;
+    reg         axi_st_out_tready;
+    wire        axi_st_out_tlast;
+    wire [2:0]  axi_st_out_tuser;
+	 
+    initial clk = 0;
+    always #5000 clk = ~clk;
+	 
+    clipper_wrapper dut (
+	 clk,
+	 reset,
+	 axi_st_out_tdata,
+	 axi_st_out_tvalid,
+    axi_st_out_tready,
+    axi_st_out_tlast,
+    axi_st_out_tuser
+    );
+	 
+    initial begin
+	 
+        reset = 1;
+        axi_st_out_tready = 0;
+        
+        repeat (10) @(posedge clk);
+        reset = 0;
+		  axi_st_out_tready = 1;
+        $display("[%0t] Reset De-asserted.", $time);
+		  
+        wait(axi_st_out_tuser[0] == 1'b1);
+		  $display("[%0t] 1st tuser[0]", $time);
+		  wait(axi_st_out_tuser[0] == 1'b1);
+		  $display("[%0t] 2nd tuser[0]", $time);
+		  wait(axi_st_out_tuser[0] == 1'b1);
+		  $display("[%0t] 3rd tuser[0]", $time);
+
+        $display("[%0t] Simulation Finished.", $time);
+        $stop;
+    end
+endmodule

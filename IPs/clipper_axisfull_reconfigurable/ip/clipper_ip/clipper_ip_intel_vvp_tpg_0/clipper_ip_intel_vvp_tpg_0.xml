@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy
+ date="2026.05.05.12:30:34"
+ outputDirectory="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/">
+ <perimeter>
+  <parameter
+     name="AUTO_GENERATION_ID"
+     type="Integer"
+     defaultValue="0"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_UNIQUE_ID"
+     type="String"
+     defaultValue=""
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_FAMILY"
+     type="String"
+     defaultValue="Cyclone 10 GX"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE"
+     type="String"
+     defaultValue="10CX220YF780I5G"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_SPEEDGRADE"
+     type="String"
+     defaultValue="5"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_BOARD"
+     type="String"
+     defaultValue="default"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_MAIN_CLOCK_CLOCK_RATE"
+     type="Long"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_MAIN_CLOCK_CLOCK_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_MAIN_CLOCK_RESET_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <interface name="main_clock" kind="clock" start="0">
+   <property name="clockRate" value="0" />
+   <property name="externallyDriven" value="false" />
+   <property name="ptfSchematicName" value="" />
+   <port name="main_clock_clk" direction="input" role="clk" width="1" />
+  </interface>
+  <interface name="main_reset" kind="reset" start="0">
+   <property name="associatedClock" value="main_clock" />
+   <property name="synchronousEdges" value="BOTH" />
+   <port name="main_reset_reset" direction="input" role="reset" width="1" />
+  </interface>
+  <interface name="axi4s_vid_out" kind="axi4stream" start="1">
+   <property name="associatedClock" value="main_clock" />
+   <property name="associatedReset" value="main_reset" />
+   <port name="axi4s_vid_out_tdata" direction="output" role="tdata" width="24" />
+   <port
+       name="axi4s_vid_out_tvalid"
+       direction="output"
+       role="tvalid"
+       width="1" />
+   <port name="axi4s_vid_out_tready" direction="input" role="tready" width="1" />
+   <port name="axi4s_vid_out_tlast" direction="output" role="tlast" width="1" />
+   <port name="axi4s_vid_out_tuser" direction="output" role="tuser" width="3" />
+  </interface>
+ </perimeter>
+ <entity
+   kind="clipper_ip_intel_vvp_tpg_0"
+   version="1.0"
+   name="clipper_ip_intel_vvp_tpg_0">
+  <parameter name="AUTO_MAIN_CLOCK_RESET_DOMAIN" value="-1" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_MAIN_CLOCK_CLOCK_DOMAIN" value="-1" />
+  <parameter name="AUTO_MAIN_CLOCK_CLOCK_RATE" value="-1" />
+  <parameter name="AUTO_UNIQUE_ID" value="" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/synth/clipper_ip_intel_vvp_tpg_0.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/synth/clipper_ip_intel_vvp_tpg_0.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0.ip" />
+  </sourceFiles>
+  <childSourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/test_pattern_gen/intel_vvp_tpg/intel_vvp_tpg_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/resets/intel_vvp_reset_sync/intel_vvp_reset_sync_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/test_pattern_gen/intel_vvp_tpg_scheduler/intel_vvp_tpg_scheduler_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/in_out_bridges/intel_vvp_output_interface_bridge/intel_vvp_output_interface_bridge_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/test_pattern_gen/intel_vvp_tpg_bars_algo_comp/intel_vvp_tpg_bars_algo_comp_hw.tcl" />
+  </childSourceFiles>
+  <messages>
+   <message level="Info" culprit="clipper_ip_intel_vvp_tpg_0">"Generating: clipper_ip_intel_vvp_tpg_0"</message>
+   <message level="Info" culprit="clipper_ip_intel_vvp_tpg_0">"Generating: clipper_ip_intel_vvp_tpg_0_intel_vvp_tpg_2451_d5l5lza"</message>
+   <message level="Info" culprit="clipper_ip_intel_vvp_tpg_0">"Generating: intel_vvp_reset_sync"</message>
+   <message level="Info" culprit="clipper_ip_intel_vvp_tpg_0">"Generating: intel_vvp_tpg_scheduler"</message>
+   <message level="Info" culprit="clipper_ip_intel_vvp_tpg_0">"Generating: intel_vvp_output_interface_bridge"</message>
+   <message level="Info" culprit="clipper_ip_intel_vvp_tpg_0">"Generating: intel_vvp_tpg_bars_algo_comp"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="intel_vvp_tpg"
+   version="24.5.1"
+   name="clipper_ip_intel_vvp_tpg_0_intel_vvp_tpg_2451_d5l5lza">
+  <parameter name="FIXED_B_BACKGROUND" value="0" />
+  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="C_OMNI_CAP_ENABLED" value="0" />
+  <parameter name="C_OMNI_CAP_IRQ_STATUS" value="0" />
+  <parameter name="OUTPUT_FORMAT" value="4.4.4" />
+  <parameter name="FIXED_INTERLACE" value="0" />
+  <parameter name="FIXED_WIDTH" value="32" />
+  <parameter name="FIXED_FINE_FACTOR" value="256" />
+  <parameter name="CORE_PATTERN_7" value="0" />
+  <parameter name="VVP_OCS_ENABLED_INI" value="false" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="CORE_PATTERN_2" value="0" />
+  <parameter name="CORE_PATTERN_1" value="0" />
+  <parameter name="FIXED_R_BACKGROUND" value="0" />
+  <parameter name="CORE_PATTERN_0" value="0" />
+  <parameter name="FIXED_G_FONT" value="255" />
+  <parameter name="CORE_PATTERN_6" value="0" />
+  <parameter name="FIXED_BARS_MODE" value="0" />
+  <parameter name="CORE_PATTERN_5" value="0" />
+  <parameter name="FIXED_POWER_FACTOR" value="16" />
+  <parameter name="CORE_PATTERN_4" value="0" />
+  <parameter name="CORE_PATTERN_3" value="0" />
+  <parameter name="NUM_CORES" value="1" />
+  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="C_OMNI_CAP_TAG" value="0" />
+  <parameter name="C_OMNI_CAP_ID_COMPONENT" value="0" />
+  <parameter name="SLAVE_PROTOCOL" value="Avalon" />
+  <parameter name="C_OMNI_CAP_SIZE" value="0" />
+  <parameter name="FIXED_B_FONT" value="255" />
+  <parameter name="RUNTIME_CONTROL" value="0" />
+  <parameter name="BPS" value="8" />
+  <parameter name="C_OMNI_CAP_IRQ_ENABLE" value="0" />
+  <parameter name="ENABLE_DEBUG" value="0" />
+  <parameter name="C_OMNI_CAP_VERSION" value="1" />
+  <parameter name="SEPARATE_SLAVE_CLOCK" value="0" />
+  <parameter name="PIXELS_IN_PARALLEL" value="1" />
+  <parameter name="FIXED_G_Y" value="16" />
+  <parameter name="EXTERNAL_MODE" value="0" />
+  <parameter name="FIXED_SCALE_FACTOR" value="1" />
+  <parameter name="FIXED_R_FONT" value="255" />
+  <parameter name="BINARY_DISPLAY_MODE" value="Seconds" />
+  <parameter name="FIXED_FPS" value="60" />
+  <parameter name="C_OMNI_CAP_IRQ" value="255" />
+  <parameter name="ENABLE_CTRL_IN" value="0" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="CORE_COL_SPACE_4" value="0" />
+  <parameter name="C_OMNI_CAP_ID_ASSOCIATED" value="0" />
+  <parameter name="CORE_COL_SPACE_5" value="0" />
+  <parameter name="CORE_COL_SPACE_6" value="0" />
+  <parameter name="CORE_COL_SPACE_7" value="0" />
+  <parameter name="FIXED_HEIGHT" value="32" />
+  <parameter name="CORE_COL_SPACE_0" value="0" />
+  <parameter name="CORE_COL_SPACE_1" value="0" />
+  <parameter name="FIXED_B_CB" value="16" />
+  <parameter name="CORE_COL_SPACE_2" value="0" />
+  <parameter name="C_OMNI_CAP_TYPE" value="566" />
+  <parameter name="CORE_COL_SPACE_3" value="0" />
+  <parameter name="C_OMNI_CAP_IRQ_ENABLE_EN" value="0" />
+  <parameter name="FIXED_LOCATION_X" value="0" />
+  <parameter name="C_OMNI_CAP_IRQ_STATUS_EN" value="0" />
+  <parameter name="FIXED_LOCATION_Y" value="0" />
+  <parameter name="FIXED_G_BACKGROUND" value="0" />
+  <parameter name="FIXED_R_CR" value="16" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_2451/synth/clipper_ip_intel_vvp_tpg_0_intel_vvp_tpg_2451_d5l5lza.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_2451/synth/clipper_ip_intel_vvp_tpg_0_intel_vvp_tpg_2451_d5l5lza.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/test_pattern_gen/intel_vvp_tpg/intel_vvp_tpg_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/resets/intel_vvp_reset_sync/intel_vvp_reset_sync_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/test_pattern_gen/intel_vvp_tpg_scheduler/intel_vvp_tpg_scheduler_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/in_out_bridges/intel_vvp_output_interface_bridge/intel_vvp_output_interface_bridge_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/test_pattern_gen/intel_vvp_tpg_bars_algo_comp/intel_vvp_tpg_bars_algo_comp_hw.tcl" />
+  </childSourceFiles>
+  <instantiator instantiator="clipper_ip_intel_vvp_tpg_0" as="intel_vvp_tpg_0" />
+  <messages>
+   <message level="Info" culprit="clipper_ip_intel_vvp_tpg_0">"Generating: clipper_ip_intel_vvp_tpg_0_intel_vvp_tpg_2451_d5l5lza"</message>
+   <message level="Info" culprit="clipper_ip_intel_vvp_tpg_0">"Generating: intel_vvp_reset_sync"</message>
+   <message level="Info" culprit="clipper_ip_intel_vvp_tpg_0">"Generating: intel_vvp_tpg_scheduler"</message>
+   <message level="Info" culprit="clipper_ip_intel_vvp_tpg_0">"Generating: intel_vvp_output_interface_bridge"</message>
+   <message level="Info" culprit="clipper_ip_intel_vvp_tpg_0">"Generating: intel_vvp_tpg_bars_algo_comp"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="intel_vvp_reset_sync"
+   version="24.4.0"
+   name="intel_vvp_reset_sync">
+  <parameter name="SYNC_LEN" value="3" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_reset_sync_2440/synth/src_hdl/intel_vvp_reset_sync.sv"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_reset_sync_2440/synth/src_hdl/intel_vvp_reset_sync.sv"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/resets/intel_vvp_reset_sync/intel_vvp_reset_sync_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="clipper_ip_intel_vvp_tpg_0_intel_vvp_tpg_2451_d5l5lza"
+     as="main_rst_bridge" />
+  <messages>
+   <message level="Info" culprit="clipper_ip_intel_vvp_tpg_0">"Generating: intel_vvp_reset_sync"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="intel_vvp_tpg_scheduler"
+   version="24.5.1"
+   name="intel_vvp_tpg_scheduler">
+  <parameter name="FIXED_B_FONT" value="255" />
+  <parameter name="RUNTIME_CONTROL" value="0" />
+  <parameter name="BPS" value="8" />
+  <parameter name="FIXED_B_BACKGROUND" value="0" />
+  <parameter name="SLAVE_ADDRESS_WIDTH" value="6" />
+  <parameter name="ENABLE_DEBUG" value="0" />
+  <parameter name="FIXED_G_Y" value="16" />
+  <parameter name="FIXED_INTERLACE" value="0" />
+  <parameter name="EXTERNAL_MODE" value="0" />
+  <parameter name="FIXED_SCALE_FACTOR" value="1" />
+  <parameter name="FIXED_WIDTH" value="32" />
+  <parameter name="FIXED_FINE_FACTOR" value="256" />
+  <parameter name="FIXED_R_FONT" value="255" />
+  <parameter name="CORE_PATTERN_7" value="0" />
+  <parameter name="FIXED_FPS" value="60" />
+  <parameter name="CORE_PATTERN_2" value="0" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="CORE_PATTERN_1" value="0" />
+  <parameter name="FIXED_R_BACKGROUND" value="0" />
+  <parameter name="CORE_PATTERN_0" value="0" />
+  <parameter name="FIXED_G_FONT" value="255" />
+  <parameter name="CORE_PATTERN_6" value="0" />
+  <parameter name="FIXED_BARS_MODE" value="0" />
+  <parameter name="CORE_PATTERN_5" value="0" />
+  <parameter name="ENABLE_CTRL_IN" value="0" />
+  <parameter name="FIXED_POWER_FACTOR" value="16" />
+  <parameter name="CORE_PATTERN_4" value="0" />
+  <parameter name="CORE_PATTERN_3" value="0" />
+  <parameter name="CORE_COL_SPACE_4" value="0" />
+  <parameter name="CORE_COL_SPACE_5" value="0" />
+  <parameter name="CORE_COL_SPACE_6" value="0" />
+  <parameter name="CORE_COL_SPACE_7" value="0" />
+  <parameter name="NUM_CORES" value="1" />
+  <parameter name="FIXED_HEIGHT" value="32" />
+  <parameter name="CORE_COL_SPACE_0" value="0" />
+  <parameter name="CORE_COL_SPACE_1" value="0" />
+  <parameter name="FIXED_B_CB" value="16" />
+  <parameter name="CORE_COL_SPACE_2" value="0" />
+  <parameter name="CORE_COL_SPACE_3" value="0" />
+  <parameter name="FIXED_LOCATION_X" value="0" />
+  <parameter name="FIXED_LOCATION_Y" value="0" />
+  <parameter name="FIXED_G_BACKGROUND" value="0" />
+  <parameter name="FIXED_R_CR" value="16" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/synth/intel_mtm_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/synth/intel_vvp_tpg_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/synth/intel_vvp_utility_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/synth/intel_vvp_pipelined_mux.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/synth/intel_vvp_common_slave_interface.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/synth/src_hdl/intel_vvp_tpg_scheduler.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/synth/src_hdl/intel_vvp_tpg_scheduler_stopwatch.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/synth/src_hdl/intel_vvp_tpg_scheduler.ocp"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/synth/intel_mtm_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/synth/intel_vvp_tpg_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/synth/intel_vvp_utility_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/synth/intel_vvp_pipelined_mux.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/synth/intel_vvp_common_slave_interface.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/synth/src_hdl/intel_vvp_tpg_scheduler.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/synth/src_hdl/intel_vvp_tpg_scheduler_stopwatch.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_scheduler_2451/synth/src_hdl/intel_vvp_tpg_scheduler.ocp"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/test_pattern_gen/intel_vvp_tpg_scheduler/intel_vvp_tpg_scheduler_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="clipper_ip_intel_vvp_tpg_0_intel_vvp_tpg_2451_d5l5lza"
+     as="scheduler" />
+  <messages>
+   <message level="Info" culprit="clipper_ip_intel_vvp_tpg_0">"Generating: intel_vvp_tpg_scheduler"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="intel_vvp_output_interface_bridge"
+   version="24.4.0"
+   name="intel_vvp_output_interface_bridge">
+  <parameter name="BPS" value="8" />
+  <parameter name="EXTERNAL_MODE" value="0" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="NUMBER_OF_COLOR_PLANES" value="3" />
+  <parameter name="PIXELS_IN_PARALLEL" value="1" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_output_interface_bridge_2440/synth/src_hdl/intel_vvp_output_interface_bridge.sv"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_output_interface_bridge_2440/synth/src_hdl/intel_vvp_output_interface_bridge.sv"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/in_out_bridges/intel_vvp_output_interface_bridge/intel_vvp_output_interface_bridge_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="clipper_ip_intel_vvp_tpg_0_intel_vvp_tpg_2451_d5l5lza"
+     as="out_bridge" />
+  <messages>
+   <message level="Info" culprit="clipper_ip_intel_vvp_tpg_0">"Generating: intel_vvp_output_interface_bridge"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="intel_vvp_tpg_bars_algo_comp"
+   version="24.5.1"
+   name="intel_vvp_tpg_bars_algo_comp">
+  <parameter name="BPS" value="8" />
+  <parameter name="TPG_CS" value="RGB_444" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="NUMBER_OF_COLOR_PLANES" value="3" />
+  <parameter name="PIXELS_IN_PARALLEL" value="1" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/intel_vvp_tpg_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/intel_vvp_axi_zero_pad.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/intel_vvp_axi_zero_strip.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/src_hdl/intel_vvp_tpg_bars_algo_comp_lut.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/src_hdl/intel_vvp_tpg_bars_algo_comp.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/src_hdl/intel_vvp_tpg_bars_algo_comp.ocp"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/intel_vvp_tpg_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/intel_vvp_axi_zero_pad.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/intel_vvp_axi_zero_strip.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/src_hdl/intel_vvp_tpg_bars_algo_comp_lut.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/src_hdl/intel_vvp_tpg_bars_algo_comp.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/clipper_axisfull_reconfigurable/ip/clipper_ip/clipper_ip_intel_vvp_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/src_hdl/intel_vvp_tpg_bars_algo_comp.ocp"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/test_pattern_gen/intel_vvp_tpg_bars_algo_comp/intel_vvp_tpg_bars_algo_comp_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="clipper_ip_intel_vvp_tpg_0_intel_vvp_tpg_2451_d5l5lza"
+     as="core_inst_0" />
+  <messages>
+   <message level="Info" culprit="clipper_ip_intel_vvp_tpg_0">"Generating: intel_vvp_tpg_bars_algo_comp"</message>
+  </messages>
+ </entity>
+</deploy>

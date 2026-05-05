@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file
+   path="altera_reset_controller_1924/sim/altera_reset_controller.v"
+   type="VERILOG"
+   library="altera_reset_controller_1924" />
+ <file
+   path="altera_reset_controller_1924/sim/altera_reset_synchronizer.v"
+   type="VERILOG"
+   library="altera_reset_controller_1924" />
+ <file
+   path="altera_reset_controller_1924/sim/altera_reset_controller.sdc"
+   type="SDC_ENTITY"
+   library="altera_reset_controller_1924" />
+ <file
+   path="sim/pl_sys.v"
+   type="VERILOG"
+   library="pl_sys"
+   hasInlineConfiguration="true" />
+ <topLevel name="pl_sys.pl_sys" />
+ <deviceFamily name="cyclone10gx" />
+ <device name="10CX220YF672E5G" />
+</simPackage>

@@ -1,0 +1,24 @@
+# system info clipper_ip on 2026.04.23.23:15:27
+system_info:
+name,value
+DEVICE,10CX220YF780I5G
+DEVICE_FAMILY,Cyclone 10 GX
+GENERATION_ID,0
+#
+#
+# Files generated for clipper_ip on 2026.04.23.23:15:27
+files:
+filepath,kind,attributes,module,is_top
+sim/clipper_ip.v,VERILOG,CONTAINS_INLINE_CONFIGURATION,clipper_ip,true
+altera_reset_controller_1924/sim/altera_reset_controller.v,VERILOG,,altera_reset_controller,false
+altera_reset_controller_1924/sim/altera_reset_synchronizer.v,VERILOG,,altera_reset_controller,false
+altera_reset_controller_1924/sim/altera_reset_controller.sdc,SDC_ENTITY,NO_SDC_PROMOTION,altera_reset_controller,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+clipper_ip.clock_in,clipper_ip_clock_in
+clipper_ip.intel_vvp_clipper_0,clipper_ip_intel_vvp_clipper_0
+clipper_ip.intel_vvp_tpg_0,clipper_ip_intel_vvp_tpg_0
+clipper_ip.reset_in,clipper_ip_reset_in
+clipper_ip.rst_controller,altera_reset_controller

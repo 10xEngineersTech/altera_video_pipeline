@@ -1,0 +1,19 @@
+
+DEFINE                      std                                    $CDS_ROOT/tools/inca/files/STD/                    
+DEFINE                      synopsys                               $CDS_ROOT/tools/inca/files/SYNOPSYS/               
+DEFINE                      ieee                                   $CDS_ROOT/tools/inca/files/IEEE/                   
+DEFINE                      ambit                                  $CDS_ROOT/tools/inca/files/AMBIT/                  
+DEFINE                      vital_memory                           $CDS_ROOT/tools/inca/files/VITAL_MEMORY/           
+DEFINE                      ncutils                                $CDS_ROOT/tools/inca/files/NCUTILS/                
+DEFINE                      ncinternal                             $CDS_ROOT/tools/inca/files/NCINTERNAL/             
+DEFINE                      ncmodels                               $CDS_ROOT/tools/inca/files/NCMODELS/               
+DEFINE                      cds_assertions                         $CDS_ROOT/tools/inca/files/CDS_ASSERTIONS/         
+DEFINE                      work                                   ./libraries/work/                                  
+DEFINE                      altera_common_sv_packages              ./libraries/altera_common_sv_packages/             
+DEFINE                      intel_vvp_reset_sync_2440              ./libraries/intel_vvp_reset_sync_2440/             
+DEFINE                      intel_vvp_tpg_scheduler_2451           ./libraries/intel_vvp_tpg_scheduler_2451/          
+DEFINE                      intel_vvp_output_interface_bridge_2440 ./libraries/intel_vvp_output_interface_bridge_2440/
+DEFINE                      intel_vvp_tpg_bars_algo_comp_2451      ./libraries/intel_vvp_tpg_bars_algo_comp_2451/     
+DEFINE                      intel_vvp_tpg_2451                     ./libraries/intel_vvp_tpg_2451/                    
+DEFINE                      clipper_ip_intel_vvp_tpg_0             ./libraries/clipper_ip_intel_vvp_tpg_0/            
+SOFTINCLUDE _device.cds.lib                                                                                           

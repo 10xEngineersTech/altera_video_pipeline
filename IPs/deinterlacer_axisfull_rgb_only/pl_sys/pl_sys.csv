@@ -1,0 +1,24 @@
+# system info pl_sys on 2026.04.30.12:11:52
+system_info:
+name,value
+DEVICE,10CX220YF672E5G
+DEVICE_FAMILY,Cyclone 10 GX
+GENERATION_ID,0
+#
+#
+# Files generated for pl_sys on 2026.04.30.12:11:52
+files:
+filepath,kind,attributes,module,is_top
+sim/pl_sys.v,VERILOG,CONTAINS_INLINE_CONFIGURATION,pl_sys,true
+altera_reset_controller_1924/sim/altera_reset_controller.v,VERILOG,,altera_reset_controller,false
+altera_reset_controller_1924/sim/altera_reset_synchronizer.v,VERILOG,,altera_reset_controller,false
+altera_reset_controller_1924/sim/altera_reset_controller.sdc,SDC_ENTITY,NO_SDC_PROMOTION,altera_reset_controller,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+pl_sys.clock_in,pl_sys_clock_in
+pl_sys.intel_vvp_adv_tpg_0,pl_sys_intel_vvp_adv_tpg_0
+pl_sys.intel_vvp_dil_0,pl_sys_intel_vvp_dil_0
+pl_sys.reset_in,pl_sys_reset_in
+pl_sys.rst_controller,altera_reset_controller

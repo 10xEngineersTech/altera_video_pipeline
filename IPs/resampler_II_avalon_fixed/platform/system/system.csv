@@ -1,0 +1,20 @@
+# system info system on 2026.03.17.16:40:52
+system_info:
+name,value
+DEVICE,10CX220YF780I5G
+DEVICE_FAMILY,Cyclone 10 GX
+GENERATION_ID,0
+#
+#
+# Files generated for system on 2026.03.17.16:40:52
+files:
+filepath,kind,attributes,module,is_top
+sim/system.v,VERILOG,CONTAINS_INLINE_CONFIGURATION,system,true
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+system.alt_vip_cl_crs_0,system_alt_vip_cl_crs_0
+system.alt_vip_cl_tpg_0,system_alt_vip_cl_tpg_0
+system.clock_in,system_clock_in
+system.reset_in,system_reset_in

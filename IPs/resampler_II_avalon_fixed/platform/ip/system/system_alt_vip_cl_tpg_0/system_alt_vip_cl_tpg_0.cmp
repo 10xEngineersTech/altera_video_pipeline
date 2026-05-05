@@ -1,0 +1,13 @@
+	component system_alt_vip_cl_tpg_0 is
+		port (
+			main_clock         : in  std_logic                     := 'X'; -- clk
+			main_reset         : in  std_logic                     := 'X'; -- reset
+			dout_data          : out std_logic_vector(31 downto 0);        -- data
+			dout_valid         : out std_logic;                            -- valid
+			dout_startofpacket : out std_logic;                            -- startofpacket
+			dout_endofpacket   : out std_logic;                            -- endofpacket
+			dout_empty         : out std_logic_vector(1 downto 0);         -- empty
+			dout_ready         : in  std_logic                     := 'X'  -- ready
+		);
+	end component system_alt_vip_cl_tpg_0;
+

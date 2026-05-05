@@ -1,0 +1,1106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy
+ date="2026.04.30.12:11:56"
+ outputDirectory="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/">
+ <perimeter>
+  <parameter
+     name="AUTO_GENERATION_ID"
+     type="Integer"
+     defaultValue="0"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_UNIQUE_ID"
+     type="String"
+     defaultValue=""
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_FAMILY"
+     type="String"
+     defaultValue="Cyclone 10 GX"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE"
+     type="String"
+     defaultValue="10CX220YF672E5G"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_SPEEDGRADE"
+     type="String"
+     defaultValue="5"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_BOARD"
+     type="String"
+     defaultValue="default"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_MAIN_CLOCK_CLOCK_RATE"
+     type="Long"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_MAIN_CLOCK_CLOCK_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_MAIN_CLOCK_RESET_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <interface name="main_clock" kind="clock" start="0">
+   <property name="clockRate" value="0" />
+   <property name="externallyDriven" value="false" />
+   <property name="ptfSchematicName" value="" />
+   <port name="main_clock_clk" direction="input" role="clk" width="1" />
+  </interface>
+  <interface name="main_reset" kind="reset" start="0">
+   <property name="associatedClock" value="main_clock" />
+   <property name="synchronousEdges" value="BOTH" />
+   <port name="main_reset_reset" direction="input" role="reset" width="1" />
+  </interface>
+  <interface name="axi4s_vid_out" kind="axi4stream" start="1">
+   <property name="associatedClock" value="main_clock" />
+   <property name="associatedReset" value="main_reset" />
+   <port name="axi4s_vid_out_tdata" direction="output" role="tdata" width="24" />
+   <port
+       name="axi4s_vid_out_tvalid"
+       direction="output"
+       role="tvalid"
+       width="1" />
+   <port name="axi4s_vid_out_tready" direction="input" role="tready" width="1" />
+   <port name="axi4s_vid_out_tlast" direction="output" role="tlast" width="1" />
+   <port name="axi4s_vid_out_tuser" direction="output" role="tuser" width="3" />
+  </interface>
+ </perimeter>
+ <entity
+   kind="pl_sys_intel_vvp_adv_tpg_0"
+   version="1.0"
+   name="pl_sys_intel_vvp_adv_tpg_0">
+  <parameter name="AUTO_MAIN_CLOCK_RESET_DOMAIN" value="-1" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_DEVICE" value="10CX220YF672E5G" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_MAIN_CLOCK_CLOCK_DOMAIN" value="-1" />
+  <parameter name="AUTO_MAIN_CLOCK_CLOCK_RATE" value="-1" />
+  <parameter name="AUTO_UNIQUE_ID" value="" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/synth/pl_sys_intel_vvp_adv_tpg_0.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/synth/pl_sys_intel_vvp_adv_tpg_0.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0.ip" />
+  </sourceFiles>
+  <childSourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/test_pattern_gen/intel_vvp_adv_tpg/intel_vvp_adv_tpg_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/resets/intel_vvp_reset_sync/intel_vvp_reset_sync_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/test_pattern_gen/intel_vvp_adv_tpg_scheduler/intel_vvp_adv_tpg_scheduler_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/in_out_bridges/intel_vvp_output_interface_bridge/intel_vvp_output_interface_bridge_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/test_pattern_gen/intel_vvp_tpg_bars_algo_comp/intel_vvp_tpg_bars_algo_comp_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/mixer/intel_vvp_mixer_algo_comp/intel_vvp_mixer_algo_comp_hw.tcl" />
+  </childSourceFiles>
+  <messages>
+   <message level="Info" culprit="pl_sys_intel_vvp_adv_tpg_0">"Generating: pl_sys_intel_vvp_adv_tpg_0"</message>
+   <message level="Info" culprit="pl_sys_intel_vvp_adv_tpg_0">"Generating: pl_sys_intel_vvp_adv_tpg_0_intel_vvp_adv_tpg_2451_2yhnr6i"</message>
+   <message level="Info" culprit="pl_sys_intel_vvp_adv_tpg_0">"Generating: intel_vvp_reset_sync"</message>
+   <message level="Info" culprit="pl_sys_intel_vvp_adv_tpg_0">"Generating: intel_vvp_adv_tpg_scheduler"</message>
+   <message level="Info" culprit="pl_sys_intel_vvp_adv_tpg_0">"Generating: intel_vvp_output_interface_bridge"</message>
+   <message level="Info" culprit="pl_sys_intel_vvp_adv_tpg_0">"Generating: intel_vvp_tpg_bars_algo_comp"</message>
+   <message level="Info" culprit="pl_sys_intel_vvp_adv_tpg_0">"Generating: intel_vvp_mixer_algo_comp"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="intel_vvp_adv_tpg"
+   version="24.5.1"
+   name="pl_sys_intel_vvp_adv_tpg_0_intel_vvp_adv_tpg_2451_2yhnr6i">
+  <parameter name="FIXED_SIGTAP_BACK_R_1" value="0" />
+  <parameter name="FIXED_SIGTAP_BACK_R_2" value="0" />
+  <parameter name="FIXED_SIGTAP_FONT_B_7" value="16" />
+  <parameter name="FIXED_SIGTAP_BACK_R_0" value="0" />
+  <parameter name="FIXED_SIGTAP_FONT_B_5" value="16" />
+  <parameter name="FIXED_SIGTAP_FONT_B_6" value="16" />
+  <parameter name="FIXED_SIGTAP_FONT_B_3" value="16" />
+  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="FIXED_SIGTAP_FONT_B_4" value="16" />
+  <parameter name="FIXED_SIGTAP_FONT_B_1" value="16" />
+  <parameter name="FIXED_SIGTAP_FONT_B_2" value="16" />
+  <parameter name="FIXED_SIGTAP_BACK_B_7" value="0" />
+  <parameter name="FIXED_SIGTAP_FONT_B_0" value="16" />
+  <parameter name="FIXED_SIGTAP_BACK_B_5" value="0" />
+  <parameter name="FIXED_SIGTAP_BACK_B_6" value="0" />
+  <parameter name="FIXED_SIGTAP_BACK_B_3" value="0" />
+  <parameter name="FIXED_SIGTAP_BACK_B_4" value="0" />
+  <parameter name="FIXED_INTERLACE" value="8" />
+  <parameter name="FIXED_SIGTAP_FONT_R_7" value="16" />
+  <parameter name="FIXED_SIGTAP_FONT_R_5" value="16" />
+  <parameter name="FIXED_SIGTAP_FONT_R_6" value="16" />
+  <parameter name="FIXED_SIGTAP_FONT_R_3" value="16" />
+  <parameter name="FIXED_SIGTAP_FONT_R_4" value="16" />
+  <parameter name="FIXED_SIGTAP_FONT_R_1" value="16" />
+  <parameter name="FIXED_SIGTAP_FONT_R_2" value="16" />
+  <parameter name="FIXED_WIDTH" value="20" />
+  <parameter name="FIXED_SIGTAP_BACK_R_7" value="0" />
+  <parameter name="FIXED_SIGTAP_FONT_R_0" value="16" />
+  <parameter name="FIXED_SIGTAP_BACK_R_5" value="0" />
+  <parameter name="FIXED_SIGTAP_BACK_R_6" value="0" />
+  <parameter name="FIXED_SIGTAP_BACK_R_3" value="0" />
+  <parameter name="FIXED_SIGTAP_BACK_R_4" value="0" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="FIXED_LAYER_2_ALPHA" value="0" />
+  <parameter name="FIXED_SIGTAP_BACK_B_1" value="0" />
+  <parameter name="FIXED_SIGTAP_BACK_B_2" value="0" />
+  <parameter name="FIXED_SIGTAP_BACK_B_0" value="0" />
+  <parameter name="FIXED_LAYER_4_WIDTH" value="16384" />
+  <parameter name="AUTO_DEVICE" value="10CX220YF672E5G" />
+  <parameter name="FIXED_LAYER_2_H_OFFSET" value="0" />
+  <parameter name="FIXED_LAYER_2_V_OFFSET" value="0" />
+  <parameter name="FIXED_LAYER_7_V_OFFSET" value="0" />
+  <parameter name="C_OMNI_CAP_SIZE" value="0" />
+  <parameter name="FIXED_PRIMARY_R_CR_6" value="0" />
+  <parameter name="FIXED_PRIMARY_R_CR_5" value="0" />
+  <parameter name="FIXED_PRIMARY_R_CR_4" value="0" />
+  <parameter name="FIXED_PRIMARY_R_CR_3" value="0" />
+  <parameter name="FIXED_PRIMARY_R_CR_7" value="0" />
+  <parameter name="C_OMNI_CAP_IRQ_ENABLE" value="0" />
+  <parameter name="FIXED_LAYER_4_V_OFFSET" value="0" />
+  <parameter name="FIXED_PRIMARY_R_CR_2" value="0" />
+  <parameter name="PIXELS_IN_PARALLEL" value="1" />
+  <parameter name="FIXED_PRIMARY_R_CR_1" value="0" />
+  <parameter name="FIXED_PRIMARY_R_CR_0" value="0" />
+  <parameter name="FIXED_SIGTAP_LOCATION_Y_6" value="0" />
+  <parameter name="FIXED_SIGTAP_LOCATION_Y_7" value="0" />
+  <parameter name="FIXED_SIGTAP_LOCATION_Y_2" value="0" />
+  <parameter name="FIXED_SIGTAP_LOCATION_Y_3" value="0" />
+  <parameter name="FIXED_SIGTAP_LOCATION_Y_4" value="0" />
+  <parameter name="FIXED_SIGTAP_LOCATION_Y_5" value="0" />
+  <parameter name="FIXED_SIGTAP_LOCATION_Y_0" value="0" />
+  <parameter name="FIXED_SIGTAP_LOCATION_Y_1" value="0" />
+  <parameter name="FIXED_FPS_6" value="1" />
+  <parameter name="FIXED_FPS_5" value="1" />
+  <parameter name="FIXED_FPS_7" value="1" />
+  <parameter name="FIXED_FPS_2" value="1" />
+  <parameter name="FIXED_FPS_1" value="1" />
+  <parameter name="FIXED_FPS_4" value="1" />
+  <parameter name="FIXED_FPS_3" value="1" />
+  <parameter name="FIXED_FPS_0" value="1" />
+  <parameter name="FIXED_LAYER_4_HEIGHT" value="16384" />
+  <parameter name="FIXED_DIGITAL_FONT_G_7" value="16" />
+  <parameter name="FIXED_DIGITAL_FONT_G_6" value="16" />
+  <parameter name="FIXED_LAYER_5_V_OFFSET" value="0" />
+  <parameter name="FIXED_PRIMARY_B_CB_7" value="0" />
+  <parameter name="FIXED_PRIMARY_B_CB_4" value="0" />
+  <parameter name="FIXED_PRIMARY_B_CB_3" value="0" />
+  <parameter name="FIXED_LAYER_6_ALPHA" value="0" />
+  <parameter name="FIXED_PRIMARY_B_CB_6" value="0" />
+  <parameter name="FIXED_PRIMARY_B_CB_5" value="0" />
+  <parameter name="FIXED_PRIMARY_B_CB_0" value="0" />
+  <parameter name="FIXED_PRIMARY_B_CB_2" value="0" />
+  <parameter name="FIXED_PRIMARY_B_CB_1" value="0" />
+  <parameter name="VVP_OCS_ENABLED_INI" value="false" />
+  <parameter name="FIXED_LAYER_1_H_OFFSET" value="0" />
+  <parameter name="FIXED_ZONE_ORIGIN_Y_3" value="0" />
+  <parameter name="FIXED_ZONE_ORIGIN_Y_4" value="0" />
+  <parameter name="FIXED_ZONE_ORIGIN_Y_5" value="0" />
+  <parameter name="FIXED_ZONE_ORIGIN_Y_6" value="0" />
+  <parameter name="FIXED_ZONE_ORIGIN_Y_0" value="0" />
+  <parameter name="FIXED_ZONE_ORIGIN_Y_1" value="0" />
+  <parameter name="FIXED_ZONE_ORIGIN_Y_2" value="0" />
+  <parameter name="C_OMNI_CAP_ID_COMPONENT" value="0" />
+  <parameter name="FIXED_LAYER_7_H_OFFSET" value="0" />
+  <parameter name="FIXED_SIGTAP_FONT_G_4" value="16" />
+  <parameter name="FIXED_SIGTAP_FONT_G_5" value="16" />
+  <parameter name="FIXED_SIGTAP_FONT_G_2" value="16" />
+  <parameter name="FIXED_SIGTAP_FONT_G_3" value="16" />
+  <parameter name="FIXED_SIGTAP_FONT_G_0" value="16" />
+  <parameter name="FIXED_SIGTAP_FONT_G_1" value="16" />
+  <parameter name="C_OMNI_CAP_VERSION" value="1" />
+  <parameter name="SEPARATE_SLAVE_CLOCK" value="0" />
+  <parameter name="FIXED_ZONE_ORIGIN_Y_7" value="0" />
+  <parameter name="FIXED_PRIMARY_G_Y_6" value="0" />
+  <parameter name="FIXED_PRIMARY_G_Y_7" value="0" />
+  <parameter name="FIXED_PRIMARY_G_Y_4" value="0" />
+  <parameter name="FIXED_PRIMARY_G_Y_5" value="0" />
+  <parameter name="FIXED_PRIMARY_G_Y_2" value="0" />
+  <parameter name="FIXED_PRIMARY_G_Y_3" value="0" />
+  <parameter name="EXTERNAL_MODE" value="0" />
+  <parameter name="FIXED_PRIMARY_G_Y_0" value="0" />
+  <parameter name="FIXED_CONST_R_CR_1" value="16" />
+  <parameter name="FIXED_CONST_R_CR_0" value="16" />
+  <parameter name="FIXED_PRIMARY_G_Y_1" value="0" />
+  <parameter name="FIXED_CONST_R_CR_3" value="16" />
+  <parameter name="FIXED_CONST_R_CR_2" value="16" />
+  <parameter name="FIXED_CONST_R_CR_5" value="16" />
+  <parameter name="FIXED_CONST_R_CR_4" value="16" />
+  <parameter name="FIXED_CONST_R_CR_7" value="16" />
+  <parameter name="FIXED_CONST_R_CR_6" value="16" />
+  <parameter name="FIXED_SIGTAP_FONT_G_6" value="16" />
+  <parameter name="FIXED_SIGTAP_FONT_G_7" value="16" />
+  <parameter name="FIXED_SECONDARY_R_CR_0" value="0" />
+  <parameter name="FIXED_SECONDARY_R_CR_2" value="0" />
+  <parameter name="FIXED_SECONDARY_R_CR_1" value="0" />
+  <parameter name="FIXED_SECONDARY_R_CR_4" value="0" />
+  <parameter name="FIXED_SECONDARY_R_CR_3" value="0" />
+  <parameter name="FIXED_SECONDARY_R_CR_6" value="0" />
+  <parameter name="FIXED_SECONDARY_R_CR_5" value="0" />
+  <parameter name="FIXED_SECONDARY_R_CR_7" value="0" />
+  <parameter name="C_OMNI_CAP_IRQ" value="255" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="FIXED_ZONE_ORIGIN_X_4" value="0" />
+  <parameter name="C_OMNI_CAP_ID_ASSOCIATED" value="0" />
+  <parameter name="FIXED_ZONE_ORIGIN_X_5" value="0" />
+  <parameter name="FIXED_DIGITAL_FONT_G_1" value="16" />
+  <parameter name="FIXED_ZONE_ORIGIN_X_6" value="0" />
+  <parameter name="FIXED_LAYER_7_ALPHA" value="0" />
+  <parameter name="FIXED_DIGITAL_FONT_G_0" value="16" />
+  <parameter name="FIXED_ZONE_ORIGIN_X_7" value="0" />
+  <parameter name="FIXED_ZONE_ORIGIN_X_0" value="0" />
+  <parameter name="FIXED_DIGITAL_FONT_G_3" value="16" />
+  <parameter name="FIXED_LAYER_4_H_OFFSET" value="0" />
+  <parameter name="FIXED_ZONE_ORIGIN_X_1" value="0" />
+  <parameter name="FIXED_DIGITAL_FONT_G_2" value="16" />
+  <parameter name="FIXED_ZONE_ORIGIN_X_2" value="0" />
+  <parameter name="FIXED_DIGITAL_FONT_G_5" value="16" />
+  <parameter name="C_OMNI_CAP_TYPE" value="594" />
+  <parameter name="FIXED_ZONE_ORIGIN_X_3" value="0" />
+  <parameter name="FIXED_DIGITAL_FONT_G_4" value="16" />
+  <parameter name="FIXED_SIGTAP_FPS_2" value="60" />
+  <parameter name="FIXED_LAYER_2_HEIGHT" value="16384" />
+  <parameter name="FIXED_SIGTAP_FPS_3" value="60" />
+  <parameter name="FIXED_SIGTAP_FPS_0" value="60" />
+  <parameter name="FIXED_SIGTAP_FPS_1" value="60" />
+  <parameter name="FIXED_SIGTAP_FPS_6" value="60" />
+  <parameter name="FIXED_SIGTAP_FPS_7" value="60" />
+  <parameter name="FIXED_SIGTAP_FPS_4" value="60" />
+  <parameter name="FIXED_SIGTAP_FPS_5" value="60" />
+  <parameter name="FIXED_LAYER_1_WIDTH" value="20" />
+  <parameter name="FIXED_LAYER_3_H_OFFSET" value="0" />
+  <parameter name="SIGTAP_TYPE_2" value="0" />
+  <parameter name="FIXED_LAYER_3_V_OFFSET" value="0" />
+  <parameter name="SIGTAP_TYPE_3" value="0" />
+  <parameter name="FIXED_LAYER_7_WIDTH" value="16384" />
+  <parameter name="SIGTAP_TYPE_0" value="0" />
+  <parameter name="SIGTAP_TYPE_1" value="0" />
+  <parameter name="CORE_PATTERN_7" value="0" />
+  <parameter name="SIGTAP_TYPE_6" value="0" />
+  <parameter name="SIGTAP_TYPE_7" value="0" />
+  <parameter name="SIGTAP_TYPE_4" value="0" />
+  <parameter name="SIGTAP_TYPE_5" value="0" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="CORE_PATTERN_2" value="0" />
+  <parameter name="CORE_PATTERN_1" value="0" />
+  <parameter name="CORE_PATTERN_0" value="0" />
+  <parameter name="FIXED_SECONDARY_G_Y_1" value="0" />
+  <parameter name="CORE_PATTERN_6" value="0" />
+  <parameter name="FIXED_SECONDARY_G_Y_0" value="0" />
+  <parameter name="CORE_PATTERN_5" value="0" />
+  <parameter name="FIXED_SECONDARY_G_Y_3" value="0" />
+  <parameter name="CORE_PATTERN_4" value="0" />
+  <parameter name="FIXED_SECONDARY_G_Y_2" value="0" />
+  <parameter name="CORE_PATTERN_3" value="0" />
+  <parameter name="FIXED_LAYER_5_HEIGHT" value="16384" />
+  <parameter name="FIXED_LAYER_7_HEIGHT" value="16384" />
+  <parameter name="FIXED_LAYER_5_ALPHA" value="0" />
+  <parameter name="FIXED_LAYER_1_HEIGHT" value="10" />
+  <parameter name="FIXED_LAYER_3_HEIGHT" value="16384" />
+  <parameter name="FIXED_DIGITAL_FONT_R_4" value="16" />
+  <parameter name="FIXED_DIGITAL_FONT_R_3" value="16" />
+  <parameter name="RUNTIME_CONTROL" value="0" />
+  <parameter name="FIXED_DIGITAL_FONT_R_6" value="16" />
+  <parameter name="FIXED_DIGITAL_FONT_R_5" value="16" />
+  <parameter name="FIXED_DIGITAL_FONT_R_7" value="16" />
+  <parameter name="FIXED_DIGITAL_BACK_R_4" value="0" />
+  <parameter name="FIXED_DIGITAL_BACK_R_3" value="0" />
+  <parameter name="FIXED_DIGITAL_BACK_R_6" value="0" />
+  <parameter name="FIXED_DIGITAL_BACK_R_5" value="0" />
+  <parameter name="FIXED_DIGITAL_FONT_R_0" value="16" />
+  <parameter name="FIXED_DIGITAL_BACK_R_7" value="0" />
+  <parameter name="FIXED_LAYER_1_V_OFFSET" value="0" />
+  <parameter name="FIXED_DIGITAL_FONT_R_2" value="16" />
+  <parameter name="FIXED_LOCATION_X_6" value="0" />
+  <parameter name="FIXED_DIGITAL_FONT_R_1" value="16" />
+  <parameter name="FIXED_LOCATION_X_7" value="0" />
+  <parameter name="FIXED_LOCATION_X_4" value="0" />
+  <parameter name="FIXED_SECONDARY_G_Y_5" value="0" />
+  <parameter name="FIXED_SECONDARY_G_Y_4" value="0" />
+  <parameter name="FIXED_LOCATION_X_5" value="0" />
+  <parameter name="YCC_422_3_COLOR_PLANES" value="false" />
+  <parameter name="FIXED_LOCATION_X_2" value="0" />
+  <parameter name="FIXED_SECONDARY_G_Y_7" value="0" />
+  <parameter name="FIXED_LOCATION_X_3" value="0" />
+  <parameter name="FIXED_SECONDARY_G_Y_6" value="0" />
+  <parameter name="FIXED_LOCATION_X_0" value="0" />
+  <parameter name="FIXED_LOCATION_X_1" value="0" />
+  <parameter name="FIXED_BARS_MODE_0" value="0" />
+  <parameter name="FIXED_BARS_MODE_1" value="0" />
+  <parameter name="FIXED_BARS_MODE_2" value="0" />
+  <parameter name="FIXED_BARS_MODE_3" value="0" />
+  <parameter name="FIXED_BARS_MODE_4" value="0" />
+  <parameter name="FIXED_BARS_MODE_5" value="0" />
+  <parameter name="FIXED_BARS_MODE_6" value="0" />
+  <parameter name="FIXED_BARS_MODE_7" value="0" />
+  <parameter name="FIXED_DIGITAL_BACK_B_0" value="0" />
+  <parameter name="FIXED_CONST_G_Y_6" value="16" />
+  <parameter name="FIXED_CONST_G_Y_5" value="16" />
+  <parameter name="FIXED_DIGITAL_BACK_B_2" value="0" />
+  <parameter name="FIXED_DIGITAL_BACK_B_1" value="0" />
+  <parameter name="FIXED_CONST_G_Y_7" value="16" />
+  <parameter name="FIXED_LAYER_4_ALPHA" value="0" />
+  <parameter name="FIXED_LAYER_5_H_OFFSET" value="0" />
+  <parameter name="FIXED_DIGITAL_BACK_R_0" value="0" />
+  <parameter name="FIXED_DIGITAL_BACK_R_2" value="0" />
+  <parameter name="FIXED_DIGITAL_BACK_R_1" value="0" />
+  <parameter name="FIXED_CONST_G_Y_2" value="16" />
+  <parameter name="FIXED_DIGITAL_BACK_B_4" value="0" />
+  <parameter name="C_OMNI_CAP_IRQ_ENABLE_EN" value="0" />
+  <parameter name="FIXED_CONST_G_Y_1" value="16" />
+  <parameter name="FIXED_DIGITAL_BACK_B_3" value="0" />
+  <parameter name="FIXED_CONST_G_Y_4" value="16" />
+  <parameter name="FIXED_DIGITAL_BACK_B_6" value="0" />
+  <parameter name="FIXED_LAYER_6_WIDTH" value="16384" />
+  <parameter name="FIXED_CONST_G_Y_3" value="16" />
+  <parameter name="FIXED_DIGITAL_BACK_B_5" value="0" />
+  <parameter name="FIXED_DIGITAL_BACK_B_7" value="0" />
+  <parameter name="FIXED_CONST_G_Y_0" value="16" />
+  <parameter name="FIXED_DIGITAL_SCALE_FACTOR_4" value="1" />
+  <parameter name="FIXED_DIGITAL_SCALE_FACTOR_3" value="1" />
+  <parameter name="FIXED_LAYER_6_H_OFFSET" value="0" />
+  <parameter name="FIXED_DIGITAL_SCALE_FACTOR_2" value="1" />
+  <parameter name="FIXED_DIGITAL_SCALE_FACTOR_1" value="1" />
+  <parameter name="FIXED_DIGITAL_SCALE_FACTOR_7" value="1" />
+  <parameter name="FIXED_DIGITAL_SCALE_FACTOR_6" value="1" />
+  <parameter name="FIXED_DIGITAL_SCALE_FACTOR_5" value="1" />
+  <parameter name="FIXED_DIGITAL_SCALE_FACTOR_0" value="1" />
+  <parameter name="FIXED_LOCATION_Y_7" value="0" />
+  <parameter name="FIXED_LOCATION_Y_5" value="0" />
+  <parameter name="FIXED_LAYER_3_ALPHA" value="0" />
+  <parameter name="C_OMNI_CAP_ENABLED" value="0" />
+  <parameter name="FIXED_LOCATION_Y_6" value="0" />
+  <parameter name="FIXED_SECONDARY_B_CB_0" value="0" />
+  <parameter name="FIXED_LOCATION_Y_3" value="0" />
+  <parameter name="FIXED_LOCATION_Y_4" value="0" />
+  <parameter name="C_OMNI_CAP_IRQ_STATUS" value="0" />
+  <parameter name="FIXED_LOCATION_Y_1" value="0" />
+  <parameter name="FIXED_LOCATION_Y_2" value="0" />
+  <parameter name="FIXED_SECONDARY_B_CB_4" value="0" />
+  <parameter name="FIXED_SIGTAP_LOCATION_X_7" value="0" />
+  <parameter name="FIXED_LAYER_5_WIDTH" value="16384" />
+  <parameter name="FIXED_LOCATION_Y_0" value="0" />
+  <parameter name="FIXED_SECONDARY_B_CB_3" value="0" />
+  <parameter name="FIXED_SECONDARY_B_CB_2" value="0" />
+  <parameter name="FIXED_SECONDARY_B_CB_1" value="0" />
+  <parameter name="FIXED_SIGTAP_LOCATION_X_3" value="0" />
+  <parameter name="FIXED_SIGTAP_LOCATION_X_4" value="0" />
+  <parameter name="FIXED_SECONDARY_B_CB_7" value="0" />
+  <parameter name="FIXED_SIGTAP_LOCATION_X_5" value="0" />
+  <parameter name="FIXED_SECONDARY_B_CB_6" value="0" />
+  <parameter name="FIXED_SECONDARY_B_CB_5" value="0" />
+  <parameter name="FIXED_SIGTAP_LOCATION_X_6" value="0" />
+  <parameter name="FIXED_SIGTAP_LOCATION_X_0" value="0" />
+  <parameter name="FIXED_SIGTAP_LOCATION_X_1" value="0" />
+  <parameter name="FIXED_SIGTAP_LOCATION_X_2" value="0" />
+  <parameter name="FIXED_LAYER_6_V_OFFSET" value="0" />
+  <parameter name="FIXED_CONST_B_CB_3" value="16" />
+  <parameter name="FIXED_CONST_B_CB_2" value="16" />
+  <parameter name="FIXED_CONST_B_CB_1" value="16" />
+  <parameter name="FIXED_DIGITAL_LOCATION_Y_6" value="0" />
+  <parameter name="FIXED_CONST_B_CB_0" value="16" />
+  <parameter name="FIXED_DIGITAL_LOCATION_Y_7" value="0" />
+  <parameter name="FIXED_DIGITAL_LOCATION_Y_4" value="0" />
+  <parameter name="FIXED_CONST_B_CB_7" value="16" />
+  <parameter name="FIXED_DIGITAL_LOCATION_Y_5" value="0" />
+  <parameter name="FIXED_CONST_B_CB_6" value="16" />
+  <parameter name="FIXED_DIGITAL_LOCATION_Y_2" value="0" />
+  <parameter name="FIXED_CONST_B_CB_5" value="16" />
+  <parameter name="FIXED_DIGITAL_LOCATION_Y_3" value="0" />
+  <parameter name="FIXED_CONST_B_CB_4" value="16" />
+  <parameter name="FIXED_DIGITAL_LOCATION_Y_0" value="0" />
+  <parameter name="FIXED_DIGITAL_LOCATION_Y_1" value="0" />
+  <parameter name="FIXED_DIGITAL_FONT_B_4" value="16" />
+  <parameter name="FIXED_DIGITAL_BACK_G_7" value="0" />
+  <parameter name="FIXED_DIGITAL_FONT_B_3" value="16" />
+  <parameter name="FIXED_DIGITAL_BACK_G_6" value="0" />
+  <parameter name="FIXED_DIGITAL_FONT_B_6" value="16" />
+  <parameter name="FIXED_DIGITAL_FONT_B_5" value="16" />
+  <parameter name="NUM_CORES" value="2" />
+  <parameter name="FIXED_DIGITAL_FONT_B_7" value="16" />
+  <parameter name="C_OMNI_CAP_TAG" value="0" />
+  <parameter name="FIXED_DIGITAL_BACK_G_1" value="0" />
+  <parameter name="FIXED_DIGITAL_BACK_G_0" value="0" />
+  <parameter name="FIXED_DIGITAL_FONT_B_0" value="16" />
+  <parameter name="FIXED_DIGITAL_BACK_G_3" value="0" />
+  <parameter name="FIXED_DIGITAL_BACK_G_2" value="0" />
+  <parameter name="SLAVE_PROTOCOL" value="Avalon" />
+  <parameter name="FIXED_DIGITAL_FONT_B_2" value="16" />
+  <parameter name="FIXED_DIGITAL_BACK_G_5" value="0" />
+  <parameter name="FIXED_DIGITAL_FONT_B_1" value="16" />
+  <parameter name="FIXED_DIGITAL_BACK_G_4" value="0" />
+  <parameter name="BPS" value="8" />
+  <parameter name="FIXED_SIGTAP_BACK_G_6" value="0" />
+  <parameter name="FIXED_SIGTAP_BACK_G_7" value="0" />
+  <parameter name="FIXED_SIGTAP_BACK_G_4" value="0" />
+  <parameter name="FIXED_SIGTAP_BACK_G_5" value="0" />
+  <parameter name="FIXED_SIGTAP_BACK_G_2" value="0" />
+  <parameter name="FIXED_LAYER_3_WIDTH" value="16384" />
+  <parameter name="ENABLE_DEBUG" value="0" />
+  <parameter name="FIXED_SIGTAP_BACK_G_3" value="0" />
+  <parameter name="FIXED_SIGTAP_BACK_G_0" value="0" />
+  <parameter name="FIXED_SIGTAP_BACK_G_1" value="0" />
+  <parameter name="FIXED_ZONE_FINE_0" value="256" />
+  <parameter name="FIXED_ZONE_FINE_2" value="256" />
+  <parameter name="FIXED_ZONE_FINE_1" value="256" />
+  <parameter name="FIXED_ZONE_FINE_4" value="256" />
+  <parameter name="FIXED_ZONE_FINE_3" value="256" />
+  <parameter name="FIXED_ZONE_FINE_6" value="256" />
+  <parameter name="FIXED_ZONE_FINE_5" value="256" />
+  <parameter name="FIXED_ZONE_FINE_7" value="256" />
+  <parameter name="FIXED_LAYER_1_ALPHA" value="0" />
+  <parameter name="COLOUR_SPACE" value="0" />
+  <parameter name="FIXED_ZONE_COARSE_5" value="16" />
+  <parameter name="FIXED_ZONE_COARSE_4" value="16" />
+  <parameter name="FIXED_ZONE_COARSE_7" value="16" />
+  <parameter name="FIXED_ZONE_COARSE_6" value="16" />
+  <parameter name="FIXED_ZONE_COARSE_1" value="16" />
+  <parameter name="FIXED_ZONE_COARSE_0" value="16" />
+  <parameter name="FIXED_LAYER_2_WIDTH" value="16384" />
+  <parameter name="FIXED_ZONE_COARSE_3" value="16" />
+  <parameter name="FIXED_DIGITAL_LOCATION_X_7" value="0" />
+  <parameter name="FIXED_ZONE_COARSE_2" value="16" />
+  <parameter name="FIXED_DIGITAL_LOCATION_X_5" value="0" />
+  <parameter name="FIXED_DIGITAL_FPS_6" value="1" />
+  <parameter name="FIXED_DIGITAL_LOCATION_X_6" value="0" />
+  <parameter name="FIXED_DIGITAL_FPS_7" value="1" />
+  <parameter name="FIXED_DIGITAL_LOCATION_X_3" value="0" />
+  <parameter name="FIXED_DIGITAL_FPS_4" value="1" />
+  <parameter name="FIXED_DIGITAL_LOCATION_X_4" value="0" />
+  <parameter name="FIXED_DIGITAL_FPS_5" value="1" />
+  <parameter name="FIXED_DIGITAL_LOCATION_X_1" value="0" />
+  <parameter name="FIXED_DIGITAL_FPS_2" value="1" />
+  <parameter name="FIXED_DIGITAL_LOCATION_X_2" value="0" />
+  <parameter name="FIXED_DIGITAL_FPS_3" value="1" />
+  <parameter name="FIXED_DIGITAL_FPS_0" value="1" />
+  <parameter name="FIXED_DIGITAL_LOCATION_X_0" value="0" />
+  <parameter name="FIXED_DIGITAL_FPS_1" value="1" />
+  <parameter name="FIXED_LAYER_6_HEIGHT" value="16384" />
+  <parameter name="FIXED_HEIGHT" value="10" />
+  <parameter name="C_OMNI_CAP_IRQ_STATUS_EN" value="0" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_adv_tpg_2451/synth/pl_sys_intel_vvp_adv_tpg_0_intel_vvp_adv_tpg_2451_2yhnr6i.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_adv_tpg_2451/synth/pl_sys_intel_vvp_adv_tpg_0_intel_vvp_adv_tpg_2451_2yhnr6i.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/test_pattern_gen/intel_vvp_adv_tpg/intel_vvp_adv_tpg_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/resets/intel_vvp_reset_sync/intel_vvp_reset_sync_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/test_pattern_gen/intel_vvp_adv_tpg_scheduler/intel_vvp_adv_tpg_scheduler_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/in_out_bridges/intel_vvp_output_interface_bridge/intel_vvp_output_interface_bridge_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/test_pattern_gen/intel_vvp_tpg_bars_algo_comp/intel_vvp_tpg_bars_algo_comp_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/mixer/intel_vvp_mixer_algo_comp/intel_vvp_mixer_algo_comp_hw.tcl" />
+  </childSourceFiles>
+  <instantiator instantiator="pl_sys_intel_vvp_adv_tpg_0" as="intel_vvp_adv_tpg_0" />
+  <messages>
+   <message level="Info" culprit="pl_sys_intel_vvp_adv_tpg_0">"Generating: pl_sys_intel_vvp_adv_tpg_0_intel_vvp_adv_tpg_2451_2yhnr6i"</message>
+   <message level="Info" culprit="pl_sys_intel_vvp_adv_tpg_0">"Generating: intel_vvp_reset_sync"</message>
+   <message level="Info" culprit="pl_sys_intel_vvp_adv_tpg_0">"Generating: intel_vvp_adv_tpg_scheduler"</message>
+   <message level="Info" culprit="pl_sys_intel_vvp_adv_tpg_0">"Generating: intel_vvp_output_interface_bridge"</message>
+   <message level="Info" culprit="pl_sys_intel_vvp_adv_tpg_0">"Generating: intel_vvp_tpg_bars_algo_comp"</message>
+   <message level="Info" culprit="pl_sys_intel_vvp_adv_tpg_0">"Generating: intel_vvp_mixer_algo_comp"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="intel_vvp_reset_sync"
+   version="24.4.0"
+   name="intel_vvp_reset_sync">
+  <parameter name="SYNC_LEN" value="3" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_reset_sync_2440/synth/src_hdl/intel_vvp_reset_sync.sv"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_reset_sync_2440/synth/src_hdl/intel_vvp_reset_sync.sv"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/resets/intel_vvp_reset_sync/intel_vvp_reset_sync_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="pl_sys_intel_vvp_adv_tpg_0_intel_vvp_adv_tpg_2451_2yhnr6i"
+     as="main_rst_bridge" />
+  <messages>
+   <message level="Info" culprit="pl_sys_intel_vvp_adv_tpg_0">"Generating: intel_vvp_reset_sync"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="intel_vvp_adv_tpg_scheduler"
+   version="24.5.1"
+   name="intel_vvp_adv_tpg_scheduler">
+  <parameter name="FIXED_LAYER_1_WIDTH" value="20" />
+  <parameter name="SLAVE_ADDRESS_WIDTH" value="7" />
+  <parameter name="FIXED_INTERLACE" value="8" />
+  <parameter name="FIXED_WIDTH" value="20" />
+  <parameter name="FIXED_LAYER_3_H_OFFSET" value="0" />
+  <parameter name="SIGTAP_TYPE_2" value="0" />
+  <parameter name="FIXED_LAYER_3_V_OFFSET" value="0" />
+  <parameter name="SIGTAP_TYPE_3" value="0" />
+  <parameter name="FIXED_LAYER_7_WIDTH" value="16384" />
+  <parameter name="SIGTAP_TYPE_0" value="0" />
+  <parameter name="SIGTAP_TYPE_1" value="0" />
+  <parameter name="CORE_PATTERN_7" value="0" />
+  <parameter name="SIGTAP_TYPE_6" value="0" />
+  <parameter name="SIGTAP_TYPE_7" value="0" />
+  <parameter name="SIGTAP_TYPE_4" value="0" />
+  <parameter name="SIGTAP_TYPE_5" value="0" />
+  <parameter name="CORE_PATTERN_2" value="0" />
+  <parameter name="FIXED_LAYER_2_ALPHA" value="0" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="CORE_PATTERN_1" value="0" />
+  <parameter name="CORE_PATTERN_0" value="0" />
+  <parameter name="FIXED_SECONDARY_G_Y_1" value="0" />
+  <parameter name="CORE_PATTERN_6" value="0" />
+  <parameter name="FIXED_SECONDARY_G_Y_0" value="0" />
+  <parameter name="CORE_PATTERN_5" value="0" />
+  <parameter name="FIXED_SECONDARY_G_Y_3" value="0" />
+  <parameter name="CORE_PATTERN_4" value="0" />
+  <parameter name="FIXED_SECONDARY_G_Y_2" value="0" />
+  <parameter name="CORE_PATTERN_3" value="0" />
+  <parameter name="FIXED_LAYER_5_HEIGHT" value="16384" />
+  <parameter name="FIXED_LAYER_4_WIDTH" value="16384" />
+  <parameter name="FIXED_LAYER_7_HEIGHT" value="16384" />
+  <parameter name="FIXED_LAYER_2_H_OFFSET" value="0" />
+  <parameter name="FIXED_LAYER_5_ALPHA" value="0" />
+  <parameter name="FIXED_LAYER_1_HEIGHT" value="10" />
+  <parameter name="FIXED_LAYER_2_V_OFFSET" value="0" />
+  <parameter name="FIXED_LAYER_3_HEIGHT" value="16384" />
+  <parameter name="FIXED_LAYER_7_V_OFFSET" value="0" />
+  <parameter name="FIXED_PRIMARY_R_CR_6" value="0" />
+  <parameter name="FIXED_PRIMARY_R_CR_5" value="0" />
+  <parameter name="RUNTIME_CONTROL" value="0" />
+  <parameter name="FIXED_PRIMARY_R_CR_4" value="0" />
+  <parameter name="FIXED_PRIMARY_R_CR_3" value="0" />
+  <parameter name="FIXED_PRIMARY_R_CR_7" value="0" />
+  <parameter name="FIXED_LAYER_4_V_OFFSET" value="0" />
+  <parameter name="FIXED_PRIMARY_R_CR_2" value="0" />
+  <parameter name="FIXED_PRIMARY_R_CR_1" value="0" />
+  <parameter name="FIXED_LAYER_1_V_OFFSET" value="0" />
+  <parameter name="FIXED_PRIMARY_R_CR_0" value="0" />
+  <parameter name="FIXED_LOCATION_X_6" value="0" />
+  <parameter name="FIXED_LOCATION_X_7" value="0" />
+  <parameter name="FIXED_LOCATION_X_4" value="0" />
+  <parameter name="FIXED_SECONDARY_G_Y_5" value="0" />
+  <parameter name="FIXED_SECONDARY_G_Y_4" value="0" />
+  <parameter name="FIXED_LOCATION_X_5" value="0" />
+  <parameter name="FIXED_LOCATION_X_2" value="0" />
+  <parameter name="FIXED_SECONDARY_G_Y_7" value="0" />
+  <parameter name="FIXED_LOCATION_X_3" value="0" />
+  <parameter name="FIXED_SECONDARY_G_Y_6" value="0" />
+  <parameter name="FIXED_LOCATION_X_0" value="0" />
+  <parameter name="FIXED_LOCATION_X_1" value="0" />
+  <parameter name="FIXED_BARS_MODE_0" value="0" />
+  <parameter name="FIXED_BARS_MODE_1" value="0" />
+  <parameter name="FIXED_BARS_MODE_2" value="0" />
+  <parameter name="FIXED_BARS_MODE_3" value="0" />
+  <parameter name="FIXED_BARS_MODE_4" value="0" />
+  <parameter name="FIXED_BARS_MODE_5" value="0" />
+  <parameter name="FIXED_BARS_MODE_6" value="0" />
+  <parameter name="FIXED_BARS_MODE_7" value="0" />
+  <parameter name="FIXED_FPS_6" value="0" />
+  <parameter name="FIXED_FPS_5" value="0" />
+  <parameter name="FIXED_FPS_7" value="0" />
+  <parameter name="FIXED_FPS_2" value="0" />
+  <parameter name="FIXED_FPS_1" value="1" />
+  <parameter name="FIXED_FPS_4" value="0" />
+  <parameter name="FIXED_FPS_3" value="0" />
+  <parameter name="FIXED_LAYER_4_ALPHA" value="0" />
+  <parameter name="FIXED_LAYER_5_H_OFFSET" value="0" />
+  <parameter name="FIXED_FPS_0" value="1" />
+  <parameter name="FIXED_LAYER_6_WIDTH" value="16384" />
+  <parameter name="FIXED_LAYER_4_HEIGHT" value="16384" />
+  <parameter name="FIXED_DIGITAL_SCALE_FACTOR_4" value="0" />
+  <parameter name="FIXED_DIGITAL_SCALE_FACTOR_3" value="0" />
+  <parameter name="FIXED_LAYER_6_H_OFFSET" value="0" />
+  <parameter name="FIXED_DIGITAL_SCALE_FACTOR_2" value="0" />
+  <parameter name="FIXED_DIGITAL_SCALE_FACTOR_1" value="1" />
+  <parameter name="FIXED_DIGITAL_SCALE_FACTOR_7" value="0" />
+  <parameter name="FIXED_DIGITAL_SCALE_FACTOR_6" value="0" />
+  <parameter name="FIXED_DIGITAL_SCALE_FACTOR_5" value="0" />
+  <parameter name="FIXED_LAYER_5_V_OFFSET" value="0" />
+  <parameter name="FIXED_DIGITAL_SCALE_FACTOR_0" value="1" />
+  <parameter name="FIXED_LOCATION_Y_7" value="0" />
+  <parameter name="FIXED_LOCATION_Y_5" value="0" />
+  <parameter name="FIXED_LAYER_3_ALPHA" value="0" />
+  <parameter name="FIXED_LOCATION_Y_6" value="0" />
+  <parameter name="FIXED_SECONDARY_B_CB_0" value="0" />
+  <parameter name="FIXED_LOCATION_Y_3" value="0" />
+  <parameter name="FIXED_LOCATION_Y_4" value="0" />
+  <parameter name="FIXED_PRIMARY_B_CB_7" value="0" />
+  <parameter name="FIXED_LOCATION_Y_1" value="0" />
+  <parameter name="FIXED_LOCATION_Y_2" value="0" />
+  <parameter name="FIXED_PRIMARY_B_CB_4" value="0" />
+  <parameter name="FIXED_SECONDARY_B_CB_4" value="0" />
+  <parameter name="FIXED_LAYER_5_WIDTH" value="16384" />
+  <parameter name="FIXED_LOCATION_Y_0" value="0" />
+  <parameter name="FIXED_PRIMARY_B_CB_3" value="0" />
+  <parameter name="FIXED_SECONDARY_B_CB_3" value="0" />
+  <parameter name="FIXED_LAYER_6_ALPHA" value="0" />
+  <parameter name="FIXED_SECONDARY_B_CB_2" value="0" />
+  <parameter name="FIXED_PRIMARY_B_CB_6" value="0" />
+  <parameter name="FIXED_SECONDARY_B_CB_1" value="0" />
+  <parameter name="FIXED_PRIMARY_B_CB_5" value="0" />
+  <parameter name="FIXED_PRIMARY_B_CB_0" value="0" />
+  <parameter name="FIXED_SECONDARY_B_CB_7" value="0" />
+  <parameter name="FIXED_PRIMARY_B_CB_2" value="0" />
+  <parameter name="FIXED_SECONDARY_B_CB_6" value="0" />
+  <parameter name="FIXED_PRIMARY_B_CB_1" value="0" />
+  <parameter name="FIXED_SECONDARY_B_CB_5" value="0" />
+  <parameter name="FIXED_LAYER_6_V_OFFSET" value="0" />
+  <parameter name="FIXED_LAYER_1_H_OFFSET" value="0" />
+  <parameter name="NUM_CORES" value="2" />
+  <parameter name="FIXED_LAYER_7_H_OFFSET" value="0" />
+  <parameter name="BPS" value="8" />
+  <parameter name="FIXED_LAYER_3_WIDTH" value="16384" />
+  <parameter name="ENABLE_DEBUG" value="0" />
+  <parameter name="FIXED_PRIMARY_G_Y_6" value="0" />
+  <parameter name="FIXED_PRIMARY_G_Y_7" value="0" />
+  <parameter name="FIXED_PRIMARY_G_Y_4" value="0" />
+  <parameter name="FIXED_PRIMARY_G_Y_5" value="0" />
+  <parameter name="FIXED_ZONE_FINE_0" value="256" />
+  <parameter name="FIXED_PRIMARY_G_Y_2" value="0" />
+  <parameter name="FIXED_PRIMARY_G_Y_3" value="0" />
+  <parameter name="EXTERNAL_MODE" value="0" />
+  <parameter name="FIXED_PRIMARY_G_Y_0" value="0" />
+  <parameter name="FIXED_ZONE_FINE_2" value="256" />
+  <parameter name="FIXED_ZONE_FINE_1" value="256" />
+  <parameter name="FIXED_PRIMARY_G_Y_1" value="0" />
+  <parameter name="FIXED_ZONE_FINE_4" value="256" />
+  <parameter name="FIXED_ZONE_FINE_3" value="256" />
+  <parameter name="FIXED_ZONE_FINE_6" value="256" />
+  <parameter name="FIXED_ZONE_FINE_5" value="256" />
+  <parameter name="FIXED_ZONE_FINE_7" value="256" />
+  <parameter name="FIXED_LAYER_1_ALPHA" value="0" />
+  <parameter name="COLOUR_SPACE" value="0" />
+  <parameter name="FIXED_ZONE_COARSE_5" value="16" />
+  <parameter name="FIXED_ZONE_COARSE_4" value="16" />
+  <parameter name="FIXED_SECONDARY_R_CR_0" value="0" />
+  <parameter name="FIXED_ZONE_COARSE_7" value="16" />
+  <parameter name="FIXED_ZONE_COARSE_6" value="16" />
+  <parameter name="FIXED_ZONE_COARSE_1" value="16" />
+  <parameter name="FIXED_SECONDARY_R_CR_2" value="0" />
+  <parameter name="FIXED_ZONE_COARSE_0" value="16" />
+  <parameter name="FIXED_SECONDARY_R_CR_1" value="0" />
+  <parameter name="FIXED_LAYER_2_WIDTH" value="16384" />
+  <parameter name="FIXED_ZONE_COARSE_3" value="16" />
+  <parameter name="FIXED_SECONDARY_R_CR_4" value="0" />
+  <parameter name="FIXED_ZONE_COARSE_2" value="16" />
+  <parameter name="FIXED_SECONDARY_R_CR_3" value="0" />
+  <parameter name="FIXED_SECONDARY_R_CR_6" value="0" />
+  <parameter name="FIXED_SECONDARY_R_CR_5" value="0" />
+  <parameter name="FIXED_SECONDARY_R_CR_7" value="0" />
+  <parameter name="FIXED_LAYER_7_ALPHA" value="0" />
+  <parameter name="FIXED_LAYER_6_HEIGHT" value="16384" />
+  <parameter name="FIXED_HEIGHT" value="10" />
+  <parameter name="FIXED_LAYER_4_H_OFFSET" value="0" />
+  <parameter name="FIXED_LAYER_2_HEIGHT" value="16384" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_adv_tpg_scheduler_2451/synth/intel_mtm_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_adv_tpg_scheduler_2451/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_adv_tpg_scheduler_2451/synth/intel_vvp_tpg_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_adv_tpg_scheduler_2451/synth/intel_vvp_adv_tpg_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_adv_tpg_scheduler_2451/synth/intel_vvp_utility_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_adv_tpg_scheduler_2451/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_adv_tpg_scheduler_2451/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_adv_tpg_scheduler_2451/synth/intel_vvp_pipelined_mux.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_adv_tpg_scheduler_2451/synth/intel_vvp_common_slave_interface.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_adv_tpg_scheduler_2451/synth/src_hdl/intel_vvp_adv_tpg_scheduler.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_adv_tpg_scheduler_2451/synth/src_hdl/intel_vvp_adv_tpg_scheduler_stopwatch.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_adv_tpg_scheduler_2451/synth/intel_vvp_mixer_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_adv_tpg_scheduler_2451/synth/src_hdl/intel_vvp_adv_tpg_scheduler.ocp"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_adv_tpg_scheduler_2451/synth/intel_mtm_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_adv_tpg_scheduler_2451/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_adv_tpg_scheduler_2451/synth/intel_vvp_tpg_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_adv_tpg_scheduler_2451/synth/intel_vvp_adv_tpg_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_adv_tpg_scheduler_2451/synth/intel_vvp_utility_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_adv_tpg_scheduler_2451/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_adv_tpg_scheduler_2451/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_adv_tpg_scheduler_2451/synth/intel_vvp_pipelined_mux.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_adv_tpg_scheduler_2451/synth/intel_vvp_common_slave_interface.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_adv_tpg_scheduler_2451/synth/src_hdl/intel_vvp_adv_tpg_scheduler.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_adv_tpg_scheduler_2451/synth/src_hdl/intel_vvp_adv_tpg_scheduler_stopwatch.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_adv_tpg_scheduler_2451/synth/intel_vvp_mixer_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_adv_tpg_scheduler_2451/synth/src_hdl/intel_vvp_adv_tpg_scheduler.ocp"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/test_pattern_gen/intel_vvp_adv_tpg_scheduler/intel_vvp_adv_tpg_scheduler_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="pl_sys_intel_vvp_adv_tpg_0_intel_vvp_adv_tpg_2451_2yhnr6i"
+     as="scheduler" />
+  <messages>
+   <message level="Info" culprit="pl_sys_intel_vvp_adv_tpg_0">"Generating: intel_vvp_adv_tpg_scheduler"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="intel_vvp_output_interface_bridge"
+   version="24.4.0"
+   name="intel_vvp_output_interface_bridge">
+  <parameter name="BPS" value="8" />
+  <parameter name="EXTERNAL_MODE" value="0" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="NUMBER_OF_COLOR_PLANES" value="3" />
+  <parameter name="PIXELS_IN_PARALLEL" value="1" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_output_interface_bridge_2440/synth/src_hdl/intel_vvp_output_interface_bridge.sv"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_output_interface_bridge_2440/synth/src_hdl/intel_vvp_output_interface_bridge.sv"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/in_out_bridges/intel_vvp_output_interface_bridge/intel_vvp_output_interface_bridge_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="pl_sys_intel_vvp_adv_tpg_0_intel_vvp_adv_tpg_2451_2yhnr6i"
+     as="out_bridge" />
+  <messages>
+   <message level="Info" culprit="pl_sys_intel_vvp_adv_tpg_0">"Generating: intel_vvp_output_interface_bridge"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="intel_vvp_tpg_bars_algo_comp"
+   version="24.5.1"
+   name="intel_vvp_tpg_bars_algo_comp">
+  <parameter name="BPS" value="8" />
+  <parameter name="TPG_CS" value="RGB_444" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="NUMBER_OF_COLOR_PLANES" value="3" />
+  <parameter name="PIXELS_IN_PARALLEL" value="1" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/intel_vvp_tpg_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/intel_vvp_axi_zero_pad.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/intel_vvp_axi_zero_strip.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/src_hdl/intel_vvp_tpg_bars_algo_comp_lut.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/src_hdl/intel_vvp_tpg_bars_algo_comp.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/src_hdl/intel_vvp_tpg_bars_algo_comp.ocp"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/intel_vvp_tpg_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/intel_vvp_axi_zero_pad.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/intel_vvp_axi_zero_strip.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/src_hdl/intel_vvp_tpg_bars_algo_comp_lut.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/src_hdl/intel_vvp_tpg_bars_algo_comp.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_tpg_bars_algo_comp_2451/synth/src_hdl/intel_vvp_tpg_bars_algo_comp.ocp"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/test_pattern_gen/intel_vvp_tpg_bars_algo_comp/intel_vvp_tpg_bars_algo_comp_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="pl_sys_intel_vvp_adv_tpg_0_intel_vvp_adv_tpg_2451_2yhnr6i"
+     as="core_inst_0,core_inst_1" />
+  <messages>
+   <message level="Info" culprit="pl_sys_intel_vvp_adv_tpg_0">"Generating: intel_vvp_tpg_bars_algo_comp"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="intel_vvp_mixer_algo_comp"
+   version="24.5.1"
+   name="intel_vvp_mixer_algo_comp">
+  <parameter name="BPS" value="8" />
+  <parameter name="DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="BLENDING_MODE" value="1" />
+  <parameter name="DO_ROUNDING" value="1" />
+  <parameter name="RESTRICTED_OFFSETS" value="0" />
+  <parameter name="NUMBER_OF_COLOR_PLANES" value="3" />
+  <parameter name="PIXELS_IN_PARALLEL" value="1" />
+  <parameter name="PIPELINE_LEVEL" value="0" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_mtm_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_vvp_mixer_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_vvp_add_tree.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_vvp_mult.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_vvp_2_mult_add.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_vvp_3_mult_add.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_vvp_4_mult_add.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_vvp_mult_add.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_vvp_round_sat.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_vvp_shift_mux.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_vvp_axi_zero_pad.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_vvp_axi_zero_strip.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/src_hdl/intel_vvp_mixer_algo_comp_align.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/src_hdl/intel_vvp_mixer_algo_comp_dp.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/src_hdl/intel_vvp_mixer_algo_comp.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/src_hdl/intel_vvp_mixer_algo_comp.ocp"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_mtm_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_vvp_mixer_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_vvp_add_tree.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_vvp_mult.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_vvp_2_mult_add.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_vvp_3_mult_add.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_vvp_4_mult_add.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_vvp_mult_add.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_vvp_round_sat.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_vvp_shift_mux.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_vvp_axi_zero_pad.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_vvp_axi_zero_strip.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/src_hdl/intel_vvp_mixer_algo_comp_align.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/src_hdl/intel_vvp_mixer_algo_comp_dp.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/src_hdl/intel_vvp_mixer_algo_comp.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/Faruqi/ip/pl_sys/pl_sys_intel_vvp_adv_tpg_0/intel_vvp_mixer_algo_comp_2451/synth/src_hdl/intel_vvp_mixer_algo_comp.ocp"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/mixer/intel_vvp_mixer_algo_comp/intel_vvp_mixer_algo_comp_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="pl_sys_intel_vvp_adv_tpg_0_intel_vvp_adv_tpg_2451_2yhnr6i"
+     as="mixer_inst_0" />
+  <messages>
+   <message level="Info" culprit="pl_sys_intel_vvp_adv_tpg_0">"Generating: intel_vvp_mixer_algo_comp"</message>
+  </messages>
+ </entity>
+</deploy>

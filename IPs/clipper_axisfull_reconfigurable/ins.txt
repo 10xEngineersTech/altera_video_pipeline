@@ -1,0 +1,24 @@
+cd /home/lpt-10xe/Desktop/Internship10x/Clipper_IP/clipper_ip/sim/mentor
+
+source msim_setup.tcl
+
+dev_com
+
+com
+
+vlog /home/lpt-10xe/Desktop/Internship10x/Clipper_IP/tb.v
+vlog /home/lpt-10xe/Desktop/Internship10x/Clipper_IP/top.v
+
+set TOP_LEVEL_NAME work.tb
+
+elab_debug
+
+add wave /tb/dut/u_clipper_ip_inst/intel_vvp_tpg_0/axi4s_vid_out_tdata
+add wave /tb/dut/u_clipper_ip_inst/intel_vvp_tpg_0/axi4s_vid_out_tvalid
+add wave /tb/dut/u_clipper_ip_inst/intel_vvp_tpg_0/axi4s_vid_out_tready
+add wave /tb/dut/u_clipper_ip_inst/intel_vvp_tpg_0/axi4s_vid_out_tlast
+add wave /tb/dut/u_clipper_ip_inst/intel_vvp_tpg_0/axi4s_vid_out_tuser
+
+add wave /*
+
+run -all

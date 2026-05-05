@@ -1,0 +1,53 @@
+
+State Machine - Summary
+
+State Machine - dut|intel_vvp_crs_0|intel_vvp_crs_0|slave_interface|ro_reg|ro_reg_servicer_inst|write_state
+Name write_state.VVP_RO_REG_WAIT_WRITE write_state.VVP_RO_REG_REMOTE_WRITE write_state.VVP_RO_REG_LOCAL_WRITE 
+write_state.VVP_RO_REG_WAIT_WRITE 0 0 0 
+write_state.VVP_RO_REG_LOCAL_WRITE 1 0 1 
+write_state.VVP_RO_REG_REMOTE_WRITE 1 1 0 
+
+State Machine - dut|intel_vvp_crs_0|intel_vvp_crs_0|slave_interface|ro_reg|ro_reg_servicer_inst|read_state
+Name read_state.VVP_RO_REG_SERVICE_LOCAL_READ read_state.VVP_RO_REG_REMOTE_READ_START read_state.VVP_RO_REG_LOCAL_READ read_state.VVP_RO_REG_WAIT_READ read_state.VVP_RO_REG_REMOTE_READ 
+read_state.VVP_RO_REG_WAIT_READ 0 0 0 0 0 
+read_state.VVP_RO_REG_LOCAL_READ 0 0 1 1 0 
+read_state.VVP_RO_REG_REMOTE_READ_START 0 1 0 1 0 
+read_state.VVP_RO_REG_SERVICE_LOCAL_READ 1 0 0 1 0 
+read_state.VVP_RO_REG_REMOTE_READ 0 0 0 1 1 
+
+State Machine - dut|intel_vvp_crs_0|intel_vvp_crs_0|scheduler|ext_inst|state
+Name state.SEND_CORE_CMD state.TAKE_CTRL state.STORE_SETTINGS state.WAITING_LINE 
+state.WAITING_LINE 0 0 0 0 
+state.STORE_SETTINGS 0 0 1 1 
+state.TAKE_CTRL 0 1 0 1 
+state.SEND_CORE_CMD 1 0 0 1 
+
+State Machine - dut|intel_vvp_tpg_0|intel_vvp_tpg_0|core_inst_0|state
+Name state.INIT3 state.INIT2 state.INIT1 state.IDLE state.RUN 
+state.IDLE 0 0 0 0 0 
+state.INIT1 0 0 1 1 0 
+state.INIT2 0 1 0 1 0 
+state.INIT3 1 0 0 1 0 
+state.RUN 0 0 0 1 1 
+
+State Machine - dut|intel_vvp_tpg_0|intel_vvp_tpg_0|scheduler|state
+Name state.SEND_EOF_CTRL state.DONE state.INIT_EOF state.INSERT_CTRL_POST state.SEND_MUX_CMD state.WAIT_SEND_DONE state.PIPE_SEND_CMD state.SEND_CORE_CMD state.SEND_LINE_CTRL state.INIT_LINE_CTRL state.SEND_SOF_CTRL state.CHECK_FRAME_DONE state.INIT_SOF state.INSERT_CTRL_PRE state.WAIT_SETUP_DONE state.PIPE_SETUP_CMD state.SEND_CORE_SETUP_CMD state.STOPPED state.IDLE 
+state.IDLE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.STOPPED 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.SEND_CORE_SETUP_CMD 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.PIPE_SETUP_CMD 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.WAIT_SETUP_DONE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.INSERT_CTRL_PRE 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.INIT_SOF 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.CHECK_FRAME_DONE 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.SEND_SOF_CTRL 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.INIT_LINE_CTRL 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.SEND_LINE_CTRL 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.SEND_CORE_CMD 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.PIPE_SEND_CMD 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+state.WAIT_SEND_DONE 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.SEND_MUX_CMD 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.INSERT_CTRL_POST 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.INIT_EOF 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.DONE 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.SEND_EOF_CTRL 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 

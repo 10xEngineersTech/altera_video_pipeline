@@ -1,0 +1,218 @@
+set_global_assignment -entity "system_alt_vip_cl_crs_0" -library "system_alt_vip_cl_crs_0" -name IP_TOOL_NAME "QsysPrimePro"
+set_global_assignment -entity "system_alt_vip_cl_crs_0" -library "system_alt_vip_cl_crs_0" -name IP_TOOL_VERSION "25.1.1"
+set_global_assignment -entity "system_alt_vip_cl_crs_0" -library "system_alt_vip_cl_crs_0" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "system_alt_vip_cl_crs_0" -library "system_alt_vip_cl_crs_0" -name IP_TOOL_VENDOR_NAME "Intel Corporation"
+set_global_assignment -entity "system_alt_vip_cl_crs_0" -library "system_alt_vip_cl_crs_0" -name IP_TOP_LEVEL_COMPONENT_NAME "alt_vip_cl_crs"
+set_global_assignment -entity "system_alt_vip_cl_crs_0" -library "system_alt_vip_cl_crs_0" -name PRE_COMPILED_MODULE "ON"
+set_global_assignment -entity "system_alt_vip_cl_crs_0" -library "system_alt_vip_cl_crs_0" -name OCS_IP_FILE [file join $::quartus(qip_path) "../system_alt_vip_cl_crs_0.ip"]
+set_global_assignment -entity "system_alt_vip_cl_crs_0" -library "system_alt_vip_cl_crs_0" -name OCS_IP_TYPE "alt_vip_cl_crs"
+set_global_assignment -entity "system_alt_vip_cl_crs_0" -library "system_alt_vip_cl_crs_0" -name OCS_IP_VERSION "23.6.0"
+set_global_assignment -entity "system_alt_vip_cl_crs_0" -library "system_alt_vip_cl_crs_0" -name OCS_IP_HASH "dbzwawy"
+set_global_assignment -library "system_alt_vip_cl_crs_0" -name SOPCINFO_FILE [file join $::quartus(qip_path) "system_alt_vip_cl_crs_0.sopcinfo"]
+set_global_assignment -entity "system_alt_vip_cl_crs_0" -library "system_alt_vip_cl_crs_0" -name SLD_INFO "QSYS_NAME system_alt_vip_cl_crs_0 HAS_SOPCINFO 1 GENERATION_ID 0"
+set_global_assignment -library "system_alt_vip_cl_crs_0" -name MISC_FILE [file join $::quartus(qip_path) "system_alt_vip_cl_crs_0.cmp"]
+set_global_assignment -entity "system_alt_vip_cl_crs_0" -library "system_alt_vip_cl_crs_0" -name IP_TARGETED_DEVICE_FAMILY "Cyclone 10 GX"
+set_global_assignment -entity "system_alt_vip_cl_crs_0" -library "system_alt_vip_cl_crs_0" -name IP_GENERATED_DEVICE_FAMILY "{Cyclone 10 GX}"
+set_global_assignment -entity "system_alt_vip_cl_crs_0" -library "system_alt_vip_cl_crs_0" -name IP_QSYS_MODE "STANDALONE"
+set_global_assignment -name SYNTHESIS_ONLY_QIP ON
+set_global_assignment -library "system_alt_vip_cl_crs_0" -name MISC_FILE [file join $::quartus(qip_path) "../system_alt_vip_cl_crs_0.ip"]
+
+set_global_assignment -entity "alt_vip_video_input_bridge_resp" -library "alt_vip_video_input_bridge_resp_2360" -name IP_COMPONENT_NAME "YWx0X3ZpcF92aWRlb19pbnB1dF9icmlkZ2VfcmVzcA=="
+set_global_assignment -entity "alt_vip_video_input_bridge_resp" -library "alt_vip_video_input_bridge_resp_2360" -name IP_COMPONENT_DISPLAY_NAME "VmlkZW8gSW5wdXQgQnJpZGdlIChyZXNwIG9ubHkp"
+set_global_assignment -entity "alt_vip_video_input_bridge_resp" -library "alt_vip_video_input_bridge_resp_2360" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "alt_vip_video_input_bridge_resp" -library "alt_vip_video_input_bridge_resp_2360" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "alt_vip_video_input_bridge_resp" -library "alt_vip_video_input_bridge_resp_2360" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "alt_vip_video_input_bridge_resp" -library "alt_vip_video_input_bridge_resp_2360" -name IP_COMPONENT_VERSION "MjMuNi4w"
+set_global_assignment -entity "alt_vip_video_input_bridge_resp" -library "alt_vip_video_input_bridge_resp_2360" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBJbWFnZSBQcm9jZXNzaW5nL0NvbXBvbmVudCBMaWJyYXJ5"
+set_global_assignment -entity "alt_vip_video_output_bridge" -library "alt_vip_video_output_bridge_2360" -name IP_COMPONENT_NAME "YWx0X3ZpcF92aWRlb19vdXRwdXRfYnJpZGdl"
+set_global_assignment -entity "alt_vip_video_output_bridge" -library "alt_vip_video_output_bridge_2360" -name IP_COMPONENT_DISPLAY_NAME "VmlkZW8gT3V0cHV0IEJyaWRnZQ=="
+set_global_assignment -entity "alt_vip_video_output_bridge" -library "alt_vip_video_output_bridge_2360" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "alt_vip_video_output_bridge" -library "alt_vip_video_output_bridge_2360" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "alt_vip_video_output_bridge" -library "alt_vip_video_output_bridge_2360" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "alt_vip_video_output_bridge" -library "alt_vip_video_output_bridge_2360" -name IP_COMPONENT_VERSION "MjMuNi4w"
+set_global_assignment -entity "alt_vip_video_output_bridge" -library "alt_vip_video_output_bridge_2360" -name IP_COMPONENT_DESCRIPTION "VGhlIFZpZGVvIE91dHB1dCBCcmlkZ2UgZ2VuZXJhdGVzIGFuIEF2YWxvbi1TVCBWaWRlbyBzdHJlYW0="
+set_global_assignment -entity "alt_vip_video_output_bridge" -library "alt_vip_video_output_bridge_2360" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBJbWFnZSBQcm9jZXNzaW5nL0NvbXBvbmVudCBMaWJyYXJ5"
+set_global_assignment -entity "alt_vip_video_input_bridge_cmd" -library "alt_vip_video_input_bridge_cmd_2360" -name IP_COMPONENT_NAME "YWx0X3ZpcF92aWRlb19pbnB1dF9icmlkZ2VfY21k"
+set_global_assignment -entity "alt_vip_video_input_bridge_cmd" -library "alt_vip_video_input_bridge_cmd_2360" -name IP_COMPONENT_DISPLAY_NAME "Q29tbWFuZCBJbnB1dCBCcmlkZ2U="
+set_global_assignment -entity "alt_vip_video_input_bridge_cmd" -library "alt_vip_video_input_bridge_cmd_2360" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "alt_vip_video_input_bridge_cmd" -library "alt_vip_video_input_bridge_cmd_2360" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "alt_vip_video_input_bridge_cmd" -library "alt_vip_video_input_bridge_cmd_2360" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "alt_vip_video_input_bridge_cmd" -library "alt_vip_video_input_bridge_cmd_2360" -name IP_COMPONENT_VERSION "MjMuNi4w"
+set_global_assignment -entity "alt_vip_video_input_bridge_cmd" -library "alt_vip_video_input_bridge_cmd_2360" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBJbWFnZSBQcm9jZXNzaW5nL0NvbXBvbmVudCBMaWJyYXJ5"
+set_global_assignment -entity "alt_vip_pip_converter_core" -library "alt_vip_pip_converter_core_2360" -name IP_COMPONENT_NAME "YWx0X3ZpcF9waXBfY29udmVydGVyX2NvcmU="
+set_global_assignment -entity "alt_vip_pip_converter_core" -library "alt_vip_pip_converter_core_2360" -name IP_COMPONENT_DISPLAY_NAME "UGl4ZWxzIGluIHBhcmFsbGVsIGNvbnZlcnRlciBjb3Jl"
+set_global_assignment -entity "alt_vip_pip_converter_core" -library "alt_vip_pip_converter_core_2360" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "alt_vip_pip_converter_core" -library "alt_vip_pip_converter_core_2360" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "alt_vip_pip_converter_core" -library "alt_vip_pip_converter_core_2360" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "alt_vip_pip_converter_core" -library "alt_vip_pip_converter_core_2360" -name IP_COMPONENT_VERSION "MjMuNi4w"
+set_global_assignment -entity "alt_vip_pip_converter_core" -library "alt_vip_pip_converter_core_2360" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBJbWFnZSBQcm9jZXNzaW5nL0NvbXBvbmVudCBMaWJyYXJ5"
+set_global_assignment -entity "alt_vip_packet_demux" -library "alt_vip_packet_demux_2360" -name IP_COMPONENT_NAME "YWx0X3ZpcF9wYWNrZXRfZGVtdXg="
+set_global_assignment -entity "alt_vip_packet_demux" -library "alt_vip_packet_demux_2360" -name IP_COMPONENT_DISPLAY_NAME "UGFja2V0IERlbXV4"
+set_global_assignment -entity "alt_vip_packet_demux" -library "alt_vip_packet_demux_2360" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "alt_vip_packet_demux" -library "alt_vip_packet_demux_2360" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "alt_vip_packet_demux" -library "alt_vip_packet_demux_2360" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "alt_vip_packet_demux" -library "alt_vip_packet_demux_2360" -name IP_COMPONENT_VERSION "MjMuNi4w"
+set_global_assignment -entity "alt_vip_packet_demux" -library "alt_vip_packet_demux_2360" -name IP_COMPONENT_DESCRIPTION "Rm9yd2FyZCBpbmNvbWluZyBwYWNrZXRzIHRvIG9uZSBvZiAodXAgdG8pIDIxIG91dHB1dHM="
+set_global_assignment -entity "alt_vip_packet_demux" -library "alt_vip_packet_demux_2360" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBJbWFnZSBQcm9jZXNzaW5nL0NvbXBvbmVudCBMaWJyYXJ5"
+set_global_assignment -entity "alt_vip_crs_h_up_core" -library "alt_vip_crs_h_up_core_2360" -name IP_COMPONENT_NAME "YWx0X3ZpcF9jcnNfaF91cF9jb3Jl"
+set_global_assignment -entity "alt_vip_crs_h_up_core" -library "alt_vip_crs_h_up_core_2360" -name IP_COMPONENT_DISPLAY_NAME "Q2hyb21hIHJlc2FtcGxlciBjb3JlOiA0OjI6MiB0byA0OjQ6NA=="
+set_global_assignment -entity "alt_vip_crs_h_up_core" -library "alt_vip_crs_h_up_core_2360" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "alt_vip_crs_h_up_core" -library "alt_vip_crs_h_up_core_2360" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "alt_vip_crs_h_up_core" -library "alt_vip_crs_h_up_core_2360" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "alt_vip_crs_h_up_core" -library "alt_vip_crs_h_up_core_2360" -name IP_COMPONENT_VERSION "MjMuNi4w"
+set_global_assignment -entity "alt_vip_crs_h_up_core" -library "alt_vip_crs_h_up_core_2360" -name IP_COMPONENT_DESCRIPTION "VXBzYW1wbGVzIDQ6MjoyIHZpZGVvIGxpbmVzIHRvIDQ6NDo0"
+set_global_assignment -entity "alt_vip_crs_h_up_core" -library "alt_vip_crs_h_up_core_2360" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBJbWFnZSBQcm9jZXNzaW5nL0NvbXBvbmVudCBMaWJyYXJ5"
+set_global_assignment -entity "alt_vip_cpp_converter" -library "alt_vip_cpp_converter_2360" -name IP_COMPONENT_NAME "YWx0X3ZpcF9jcHBfY29udmVydGVy"
+set_global_assignment -entity "alt_vip_cpp_converter" -library "alt_vip_cpp_converter_2360" -name IP_COMPONENT_DISPLAY_NAME "Q29sb3IgUGxhbmVzIHBlciBQaXhlbCBjb252ZXJ0ZXI="
+set_global_assignment -entity "alt_vip_cpp_converter" -library "alt_vip_cpp_converter_2360" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "alt_vip_cpp_converter" -library "alt_vip_cpp_converter_2360" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "alt_vip_cpp_converter" -library "alt_vip_cpp_converter_2360" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "alt_vip_cpp_converter" -library "alt_vip_cpp_converter_2360" -name IP_COMPONENT_VERSION "MjMuNi4w"
+set_global_assignment -entity "alt_vip_cpp_converter" -library "alt_vip_cpp_converter_2360" -name IP_COMPONENT_DESCRIPTION "UmVzdHJ1Y3R1cmUgY29sb3IgcGxhbmVzIHBhY2tldHM="
+set_global_assignment -entity "alt_vip_cpp_converter" -library "alt_vip_cpp_converter_2360" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBJbWFnZSBQcm9jZXNzaW5nL0NvbXBvbmVudCBMaWJyYXJ5"
+set_global_assignment -entity "alt_vip_packet_mux" -library "alt_vip_packet_mux_2360" -name IP_COMPONENT_NAME "YWx0X3ZpcF9wYWNrZXRfbXV4"
+set_global_assignment -entity "alt_vip_packet_mux" -library "alt_vip_packet_mux_2360" -name IP_COMPONENT_DISPLAY_NAME "UGFja2V0IE11eA=="
+set_global_assignment -entity "alt_vip_packet_mux" -library "alt_vip_packet_mux_2360" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "alt_vip_packet_mux" -library "alt_vip_packet_mux_2360" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "alt_vip_packet_mux" -library "alt_vip_packet_mux_2360" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "alt_vip_packet_mux" -library "alt_vip_packet_mux_2360" -name IP_COMPONENT_VERSION "MjMuNi4w"
+set_global_assignment -entity "alt_vip_packet_mux" -library "alt_vip_packet_mux_2360" -name IP_COMPONENT_DESCRIPTION "TXV4IHVwIHRvIDIxIGluY29taW5nIHN0cmVhbXMgb2YgQXZhbG9uLVNUIHBhY2tldHM="
+set_global_assignment -entity "alt_vip_packet_mux" -library "alt_vip_packet_mux_2360" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBJbWFnZSBQcm9jZXNzaW5nL0NvbXBvbmVudCBMaWJyYXJ5"
+set_global_assignment -entity "system_alt_vip_cl_crs_0_alt_vip_cl_crs_422_to_var_2360_xj5jyii" -library "alt_vip_cl_crs_422_to_var_2360" -name IP_COMPONENT_NAME "c3lzdGVtX2FsdF92aXBfY2xfY3JzXzBfYWx0X3ZpcF9jbF9jcnNfNDIyX3RvX3Zhcl8yMzYwX3hqNWp5aWk="
+set_global_assignment -entity "system_alt_vip_cl_crs_0_alt_vip_cl_crs_422_to_var_2360_xj5jyii" -library "alt_vip_cl_crs_422_to_var_2360" -name IP_COMPONENT_DISPLAY_NAME "Q2hyb21hIFJlc2FtcGxlciAoNDoyOjIgdG8gdmFyaWFibGUp"
+set_global_assignment -entity "system_alt_vip_cl_crs_0_alt_vip_cl_crs_422_to_var_2360_xj5jyii" -library "alt_vip_cl_crs_422_to_var_2360" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "system_alt_vip_cl_crs_0_alt_vip_cl_crs_422_to_var_2360_xj5jyii" -library "alt_vip_cl_crs_422_to_var_2360" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "system_alt_vip_cl_crs_0_alt_vip_cl_crs_422_to_var_2360_xj5jyii" -library "alt_vip_cl_crs_422_to_var_2360" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "system_alt_vip_cl_crs_0_alt_vip_cl_crs_422_to_var_2360_xj5jyii" -library "alt_vip_cl_crs_422_to_var_2360" -name IP_COMPONENT_VERSION "MjMuNi4w"
+set_global_assignment -entity "system_alt_vip_cl_crs_0_alt_vip_cl_crs_422_to_var_2360_xj5jyii" -library "alt_vip_cl_crs_422_to_var_2360" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBJbWFnZSBQcm9jZXNzaW5n"
+set_global_assignment -entity "system_alt_vip_cl_crs_0_alt_vip_cl_crs_422_to_var_2360_xj5jyii" -library "alt_vip_cl_crs_422_to_var_2360" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2JoYzE0MTEwMjA1OTY1MDcuaHRtbCNiaGMxNDExMDE5ODI4Mjc4"
+set_global_assignment -entity "system_alt_vip_cl_crs_0_alt_vip_cl_crs_422_to_var_2360_xj5jyii" -library "alt_vip_cl_crs_422_to_var_2360" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2hjbzE0MjE2OTc5OTMxMTMuaHRtbA=="
+set_global_assignment -entity "alt_vip_crs_scheduler" -library "alt_vip_crs_scheduler_2360" -name IP_COMPONENT_NAME "YWx0X3ZpcF9jcnNfc2NoZWR1bGVy"
+set_global_assignment -entity "alt_vip_crs_scheduler" -library "alt_vip_crs_scheduler_2360" -name IP_COMPONENT_DISPLAY_NAME "Q1JTIFNjaGVkdWxlcg=="
+set_global_assignment -entity "alt_vip_crs_scheduler" -library "alt_vip_crs_scheduler_2360" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "alt_vip_crs_scheduler" -library "alt_vip_crs_scheduler_2360" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "alt_vip_crs_scheduler" -library "alt_vip_crs_scheduler_2360" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "alt_vip_crs_scheduler" -library "alt_vip_crs_scheduler_2360" -name IP_COMPONENT_VERSION "MjMuNi4w"
+set_global_assignment -entity "alt_vip_crs_scheduler" -library "alt_vip_crs_scheduler_2360" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBJbWFnZSBQcm9jZXNzaW5nL0NvbXBvbmVudCBMaWJyYXJ5"
+set_global_assignment -entity "system_alt_vip_cl_crs_0_alt_vip_cl_crs_2360_dbzwawy" -library "alt_vip_cl_crs_2360" -name IP_COMPONENT_NAME "c3lzdGVtX2FsdF92aXBfY2xfY3JzXzBfYWx0X3ZpcF9jbF9jcnNfMjM2MF9kYnp3YXd5"
+set_global_assignment -entity "system_alt_vip_cl_crs_0_alt_vip_cl_crs_2360_dbzwawy" -library "alt_vip_cl_crs_2360" -name IP_COMPONENT_DISPLAY_NAME "Q2hyb21hIFJlc2FtcGxlciBJSSAoNEsgUmVhZHkpIEludGVsIEZQR0EgSVA="
+set_global_assignment -entity "system_alt_vip_cl_crs_0_alt_vip_cl_crs_2360_dbzwawy" -library "alt_vip_cl_crs_2360" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "system_alt_vip_cl_crs_0_alt_vip_cl_crs_2360_dbzwawy" -library "alt_vip_cl_crs_2360" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "system_alt_vip_cl_crs_0_alt_vip_cl_crs_2360_dbzwawy" -library "alt_vip_cl_crs_2360" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "system_alt_vip_cl_crs_0_alt_vip_cl_crs_2360_dbzwawy" -library "alt_vip_cl_crs_2360" -name IP_COMPONENT_VERSION "MjMuNi4w"
+set_global_assignment -entity "system_alt_vip_cl_crs_0_alt_vip_cl_crs_2360_dbzwawy" -library "alt_vip_cl_crs_2360" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBJbWFnZSBQcm9jZXNzaW5n"
+set_global_assignment -entity "system_alt_vip_cl_crs_0_alt_vip_cl_crs_2360_dbzwawy" -library "alt_vip_cl_crs_2360" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2JoYzE0MTEwMjA1OTY1MDcuaHRtbCNiaGMxNDExMDE5ODI4Mjc4"
+set_global_assignment -entity "system_alt_vip_cl_crs_0_alt_vip_cl_crs_2360_dbzwawy" -library "alt_vip_cl_crs_2360" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2hjbzE0MjE2OTc5OTMxMTMuaHRtbA=="
+set_global_assignment -entity "system_alt_vip_cl_crs_0" -library "system_alt_vip_cl_crs_0" -name IP_COMPONENT_NAME "c3lzdGVtX2FsdF92aXBfY2xfY3JzXzA="
+set_global_assignment -entity "system_alt_vip_cl_crs_0" -library "system_alt_vip_cl_crs_0" -name IP_COMPONENT_DISPLAY_NAME "c3lzdGVt"
+set_global_assignment -entity "system_alt_vip_cl_crs_0" -library "system_alt_vip_cl_crs_0" -name IP_COMPONENT_REPORT_HIERARCHY "On"
+set_global_assignment -entity "system_alt_vip_cl_crs_0" -library "system_alt_vip_cl_crs_0" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "system_alt_vip_cl_crs_0" -library "system_alt_vip_cl_crs_0" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "system_alt_vip_cl_crs_0" -library "system_alt_vip_cl_crs_0" -name IP_COMPONENT_VERSION "MS4w"
+
+
+set_global_assignment -library "alt_vip_video_input_bridge_resp_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_video_input_bridge_resp_2360/synth/common/alt_vip_common_pkg.sv"]
+set_global_assignment -library "alt_vip_video_input_bridge_resp_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_video_input_bridge_resp_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"]
+set_global_assignment -library "alt_vip_video_input_bridge_resp_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_video_input_bridge_resp_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"]
+set_global_assignment -library "alt_vip_video_input_bridge_resp_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_video_input_bridge_resp_2360/synth/modules/alt_vip_common_video_packet_decode/src_hdl/alt_vip_common_latency_1_to_latency_0.sv"]
+set_global_assignment -library "alt_vip_video_input_bridge_resp_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_video_input_bridge_resp_2360/synth/modules/alt_vip_common_video_packet_decode/src_hdl/alt_vip_common_video_packet_decode.sv"]
+set_global_assignment -library "alt_vip_video_input_bridge_resp_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_video_input_bridge_resp_2360/synth/src_hdl/alt_vip_video_input_bridge_resp.sv"]
+set_global_assignment -library "alt_vip_video_output_bridge_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_video_output_bridge_2360/synth/common/alt_vip_common_pkg.sv"]
+set_global_assignment -library "alt_vip_video_output_bridge_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_video_packet_encode/src_hdl/alt_vip_common_latency_0_to_latency_1.sv"]
+set_global_assignment -library "alt_vip_video_output_bridge_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_video_packet_encode/src_hdl/alt_vip_common_video_packet_empty.sv"]
+set_global_assignment -library "alt_vip_video_output_bridge_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_video_packet_encode/src_hdl/alt_vip_common_video_packet_encode.sv"]
+set_global_assignment -library "alt_vip_video_output_bridge_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"]
+set_global_assignment -library "alt_vip_video_output_bridge_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"]
+set_global_assignment -library "alt_vip_video_output_bridge_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_message_pipeline_stage/src_hdl/alt_vip_common_message_pipeline_stage.sv"]
+set_global_assignment -library "alt_vip_video_output_bridge_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_video_output_bridge_2360/synth/modules/alt_vip_common_sop_align/src_hdl/alt_vip_common_sop_align.sv"]
+set_global_assignment -library "alt_vip_video_output_bridge_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_video_output_bridge_2360/synth/src_hdl/alt_vip_video_output_bridge.sv"]
+set_global_assignment -library "alt_vip_video_output_bridge_2360" -name SOURCE_FILE [file join $::quartus(qip_path) "alt_vip_video_output_bridge_2360/synth/src_hdl/alt_vip_video_output_bridge.ocp"]
+set_global_assignment -library "alt_vip_video_input_bridge_cmd_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_video_input_bridge_cmd_2360/synth/common/alt_vip_common_pkg.sv"]
+set_global_assignment -library "alt_vip_video_input_bridge_cmd_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_video_input_bridge_cmd_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"]
+set_global_assignment -library "alt_vip_video_input_bridge_cmd_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_video_input_bridge_cmd_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"]
+set_global_assignment -library "alt_vip_video_input_bridge_cmd_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_video_input_bridge_cmd_2360/synth/src_hdl/alt_vip_video_input_bridge_cmd.sv"]
+set_global_assignment -library "alt_vip_pip_converter_core_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_pip_converter_core_2360/synth/common/alt_vip_common_pkg.sv"]
+set_global_assignment -library "alt_vip_pip_converter_core_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_pip_converter_core_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"]
+set_global_assignment -library "alt_vip_pip_converter_core_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_pip_converter_core_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"]
+set_global_assignment -library "alt_vip_pip_converter_core_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_pip_converter_core_2360/synth/modules/alt_vip_common_fifo2/src_hdl/alt_vip_common_fifo2.sv"]
+set_global_assignment -library "alt_vip_pip_converter_core_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_pip_converter_core_2360/synth/src_hdl/alt_vip_pip_converter_core.sv"]
+set_global_assignment -library "alt_vip_pip_converter_core_2360" -name SDC_FILE [file join $::quartus(qip_path) "alt_vip_pip_converter_core_2360/synth/modules/alt_vip_common_fifo2/src_hdl/alt_vip_common_fifo2.sdc"]
+set_global_assignment -library "alt_vip_packet_demux_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_packet_demux_2360/synth/common/alt_vip_common_pkg.sv"]
+set_global_assignment -library "alt_vip_packet_demux_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_packet_demux_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"]
+set_global_assignment -library "alt_vip_packet_demux_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_packet_demux_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"]
+set_global_assignment -library "alt_vip_packet_demux_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_packet_demux_2360/synth/src_hdl/alt_vip_packet_demux.sv"]
+set_global_assignment -library "alt_vip_crs_h_up_core_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_crs_h_up_core_2360/synth/common/alt_vip_common_pkg.sv"]
+set_global_assignment -library "alt_vip_crs_h_up_core_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"]
+set_global_assignment -library "alt_vip_crs_h_up_core_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"]
+set_global_assignment -library "alt_vip_crs_h_up_core_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_h_kernel/src_hdl/alt_vip_common_h_kernel.sv"]
+set_global_assignment -library "alt_vip_crs_h_up_core_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_h_kernel/src_hdl/alt_vip_common_h_kernel_par.sv"]
+set_global_assignment -library "alt_vip_crs_h_up_core_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_h_kernel/src_hdl/alt_vip_common_h_kernel_seq.sv"]
+set_global_assignment -library "alt_vip_crs_h_up_core_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_mirror/src_hdl/alt_vip_common_mirror.sv"]
+set_global_assignment -library "alt_vip_crs_h_up_core_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_mux_tree/src_hdl/alt_vip_common_mux_tree.sv"]
+set_global_assignment -library "alt_vip_crs_h_up_core_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_round_sat/src_hdl/alt_vip_common_round_sat.sv"]
+set_global_assignment -library "alt_vip_crs_h_up_core_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_mult_add/src_hdl/alt_vip_common_mult_add.sv"]
+set_global_assignment -library "alt_vip_crs_h_up_core_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_sop_align/src_hdl/alt_vip_common_sop_align.sv"]
+set_global_assignment -library "alt_vip_crs_h_up_core_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_crs_h_up_core_2360/synth/modules/alt_vip_common_seq_par_convert/src_hdl/alt_vip_common_seq_par_convert.sv"]
+set_global_assignment -library "alt_vip_crs_h_up_core_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_crs_h_up_core_2360/synth/src_hdl/alt_vip_crs_h_up_core.sv"]
+set_global_assignment -library "alt_vip_crs_h_up_core_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_crs_h_up_core_2360/synth/src_hdl/alt_vip_crs_h_up_core_nn.sv"]
+set_global_assignment -library "alt_vip_crs_h_up_core_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_crs_h_up_core_2360/synth/src_hdl/alt_vip_crs_h_up_core_bl.sv"]
+set_global_assignment -library "alt_vip_crs_h_up_core_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_crs_h_up_core_2360/synth/src_hdl/alt_vip_crs_h_up_core_ft.sv"]
+set_global_assignment -library "alt_vip_crs_h_up_core_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_crs_h_up_core_2360/synth/src_hdl/alt_vip_crs_h_up_core_la.sv"]
+set_global_assignment -library "alt_vip_crs_h_up_core_2360" -name SOURCE_FILE [file join $::quartus(qip_path) "alt_vip_crs_h_up_core_2360/synth/src_hdl/alt_vip_crs_h_up_core.ocp"]
+set_global_assignment -library "alt_vip_cpp_converter_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_cpp_converter_2360/synth/common/alt_vip_common_pkg.sv"]
+set_global_assignment -library "alt_vip_cpp_converter_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_cpp_converter_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"]
+set_global_assignment -library "alt_vip_cpp_converter_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_cpp_converter_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"]
+set_global_assignment -library "alt_vip_cpp_converter_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_cpp_converter_2360/synth/modules/alt_vip_common_fifo2/src_hdl/alt_vip_common_fifo2.sv"]
+set_global_assignment -library "alt_vip_cpp_converter_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_cpp_converter_2360/synth/src_hdl/alt_vip_cpp_converter.sv"]
+set_global_assignment -library "alt_vip_cpp_converter_2360" -name SDC_FILE [file join $::quartus(qip_path) "alt_vip_cpp_converter_2360/synth/modules/alt_vip_common_fifo2/src_hdl/alt_vip_common_fifo2.sdc"]
+set_global_assignment -library "alt_vip_packet_mux_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_packet_mux_2360/synth/common/alt_vip_common_pkg.sv"]
+set_global_assignment -library "alt_vip_packet_mux_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_packet_mux_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"]
+set_global_assignment -library "alt_vip_packet_mux_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_packet_mux_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"]
+set_global_assignment -library "alt_vip_packet_mux_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_packet_mux_2360/synth/modules/alt_vip_common_mux_tree/src_hdl/alt_vip_common_mux_tree.sv"]
+set_global_assignment -library "alt_vip_packet_mux_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_packet_mux_2360/synth/src_hdl/alt_vip_packet_mux.sv"]
+set_global_assignment -library "alt_vip_cl_crs_422_to_var_2360" -name VERILOG_FILE [file join $::quartus(qip_path) "alt_vip_cl_crs_422_to_var_2360/synth/system_alt_vip_cl_crs_0_alt_vip_cl_crs_422_to_var_2360_xj5jyii.v"]
+set_global_assignment -library "alt_vip_crs_scheduler_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_crs_scheduler_2360/synth/common/alt_vip_common_pkg.sv"]
+set_global_assignment -library "alt_vip_crs_scheduler_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_crs_scheduler_2360/synth/modules/alt_vip_common_event_packet_decode/src_hdl/alt_vip_common_event_packet_decode.sv"]
+set_global_assignment -library "alt_vip_crs_scheduler_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_crs_scheduler_2360/synth/modules/alt_vip_common_event_packet_encode/src_hdl/alt_vip_common_event_packet_encode.sv"]
+set_global_assignment -library "alt_vip_crs_scheduler_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_crs_scheduler_2360/synth/modules/alt_vip_common_slave_interface/src_hdl/alt_vip_common_slave_interface.sv"]
+set_global_assignment -library "alt_vip_crs_scheduler_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_crs_scheduler_2360/synth/modules/alt_vip_common_slave_interface/src_hdl/alt_vip_common_slave_interface_mux.sv"]
+set_global_assignment -library "alt_vip_crs_scheduler_2360" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_vip_crs_scheduler_2360/synth/src_hdl/alt_vip_crs_scheduler.sv"]
+set_global_assignment -library "alt_vip_crs_scheduler_2360" -name SOURCE_FILE [file join $::quartus(qip_path) "alt_vip_crs_scheduler_2360/synth/src_hdl/alt_vip_crs_scheduler.ocp"]
+set_global_assignment -library "alt_vip_cl_crs_2360" -name VERILOG_FILE [file join $::quartus(qip_path) "alt_vip_cl_crs_2360/synth/system_alt_vip_cl_crs_0_alt_vip_cl_crs_2360_dbzwawy.v"]
+set_global_assignment -library "system_alt_vip_cl_crs_0" -name VERILOG_FILE [file join $::quartus(qip_path) "synth/system_alt_vip_cl_crs_0.v"]
+
+
+set_global_assignment -entity "system_alt_vip_cl_crs_0_alt_vip_cl_crs_2360_dbzwawy" -library "alt_vip_cl_crs_2360" -name IP_TOOL_NAME "alt_vip_cl_crs"
+set_global_assignment -entity "system_alt_vip_cl_crs_0_alt_vip_cl_crs_2360_dbzwawy" -library "alt_vip_cl_crs_2360" -name IP_TOOL_VERSION "23.6.0"
+set_global_assignment -entity "system_alt_vip_cl_crs_0_alt_vip_cl_crs_2360_dbzwawy" -library "alt_vip_cl_crs_2360" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "alt_vip_crs_scheduler" -library "alt_vip_crs_scheduler_2360" -name IP_TOOL_NAME "alt_vip_crs_scheduler"
+set_global_assignment -entity "alt_vip_crs_scheduler" -library "alt_vip_crs_scheduler_2360" -name IP_TOOL_VERSION "23.6.0"
+set_global_assignment -entity "alt_vip_crs_scheduler" -library "alt_vip_crs_scheduler_2360" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "system_alt_vip_cl_crs_0_alt_vip_cl_crs_422_to_var_2360_xj5jyii" -library "alt_vip_cl_crs_422_to_var_2360" -name IP_TOOL_NAME "alt_vip_cl_crs_422_to_var"
+set_global_assignment -entity "system_alt_vip_cl_crs_0_alt_vip_cl_crs_422_to_var_2360_xj5jyii" -library "alt_vip_cl_crs_422_to_var_2360" -name IP_TOOL_VERSION "23.6.0"
+set_global_assignment -entity "system_alt_vip_cl_crs_0_alt_vip_cl_crs_422_to_var_2360_xj5jyii" -library "alt_vip_cl_crs_422_to_var_2360" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "alt_vip_packet_mux" -library "alt_vip_packet_mux_2360" -name IP_TOOL_NAME "alt_vip_packet_mux"
+set_global_assignment -entity "alt_vip_packet_mux" -library "alt_vip_packet_mux_2360" -name IP_TOOL_VERSION "23.6.0"
+set_global_assignment -entity "alt_vip_packet_mux" -library "alt_vip_packet_mux_2360" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "alt_vip_cpp_converter" -library "alt_vip_cpp_converter_2360" -name IP_TOOL_NAME "alt_vip_cpp_converter"
+set_global_assignment -entity "alt_vip_cpp_converter" -library "alt_vip_cpp_converter_2360" -name IP_TOOL_VERSION "23.6.0"
+set_global_assignment -entity "alt_vip_cpp_converter" -library "alt_vip_cpp_converter_2360" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "alt_vip_crs_h_up_core" -library "alt_vip_crs_h_up_core_2360" -name IP_TOOL_NAME "alt_vip_crs_h_up_core"
+set_global_assignment -entity "alt_vip_crs_h_up_core" -library "alt_vip_crs_h_up_core_2360" -name IP_TOOL_VERSION "23.6.0"
+set_global_assignment -entity "alt_vip_crs_h_up_core" -library "alt_vip_crs_h_up_core_2360" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "alt_vip_packet_demux" -library "alt_vip_packet_demux_2360" -name IP_TOOL_NAME "alt_vip_packet_demux"
+set_global_assignment -entity "alt_vip_packet_demux" -library "alt_vip_packet_demux_2360" -name IP_TOOL_VERSION "23.6.0"
+set_global_assignment -entity "alt_vip_packet_demux" -library "alt_vip_packet_demux_2360" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "alt_vip_pip_converter_core" -library "alt_vip_pip_converter_core_2360" -name IP_TOOL_NAME "alt_vip_pip_converter_core"
+set_global_assignment -entity "alt_vip_pip_converter_core" -library "alt_vip_pip_converter_core_2360" -name IP_TOOL_VERSION "23.6.0"
+set_global_assignment -entity "alt_vip_pip_converter_core" -library "alt_vip_pip_converter_core_2360" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "alt_vip_video_input_bridge_cmd" -library "alt_vip_video_input_bridge_cmd_2360" -name IP_TOOL_NAME "alt_vip_video_input_bridge_cmd"
+set_global_assignment -entity "alt_vip_video_input_bridge_cmd" -library "alt_vip_video_input_bridge_cmd_2360" -name IP_TOOL_VERSION "23.6.0"
+set_global_assignment -entity "alt_vip_video_input_bridge_cmd" -library "alt_vip_video_input_bridge_cmd_2360" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "alt_vip_video_output_bridge" -library "alt_vip_video_output_bridge_2360" -name IP_TOOL_NAME "alt_vip_video_output_bridge"
+set_global_assignment -entity "alt_vip_video_output_bridge" -library "alt_vip_video_output_bridge_2360" -name IP_TOOL_VERSION "23.6.0"
+set_global_assignment -entity "alt_vip_video_output_bridge" -library "alt_vip_video_output_bridge_2360" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "alt_vip_video_input_bridge_resp" -library "alt_vip_video_input_bridge_resp_2360" -name IP_TOOL_NAME "alt_vip_video_input_bridge_resp"
+set_global_assignment -entity "alt_vip_video_input_bridge_resp" -library "alt_vip_video_input_bridge_resp_2360" -name IP_TOOL_VERSION "23.6.0"
+set_global_assignment -entity "alt_vip_video_input_bridge_resp" -library "alt_vip_video_input_bridge_resp_2360" -name IP_TOOL_ENV "QsysPrimePro"
+

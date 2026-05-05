@@ -1,0 +1,24 @@
+# system info system on 2026.04.30.16:38:47
+system_info:
+name,value
+DEVICE,10CX220YF780I5G
+DEVICE_FAMILY,Cyclone 10 GX
+GENERATION_ID,0
+#
+#
+# Files generated for system on 2026.04.30.16:38:47
+files:
+filepath,kind,attributes,module,is_top
+sim/system.v,VERILOG,CONTAINS_INLINE_CONFIGURATION,system,true
+altera_reset_controller_1924/sim/altera_reset_controller.v,VERILOG,,altera_reset_controller,false
+altera_reset_controller_1924/sim/altera_reset_synchronizer.v,VERILOG,,altera_reset_controller,false
+altera_reset_controller_1924/sim/altera_reset_controller.sdc,SDC_ENTITY,NO_SDC_PROMOTION,altera_reset_controller,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+system.clock_in,system_clock_in
+system.intel_vvp_crs_0,system_intel_vvp_crs_0
+system.intel_vvp_tpg_0,system_intel_vvp_tpg_0
+system.reset_in,system_reset_in
+system.rst_controller,altera_reset_controller

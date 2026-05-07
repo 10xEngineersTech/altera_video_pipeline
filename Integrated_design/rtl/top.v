@@ -51,12 +51,19 @@ module top #(
     localparam SCL_OUT_WIDTH_ADDR  = 7'h52;
     localparam SCL_OUT_HEIGHT_ADDR = 7'h53;
 
-    // --- Internal AXI-Stream: TPG to Clipper ---
-    wire [23:0] tpg_tdata;
+    // --- Internal AXI-Stream: TPG to CRS ---
+    wire [15:0] tpg_tdata;
     wire        tpg_tvalid;
     wire        tpg_tready;
     wire        tpg_tlast;
-    wire [2:0]  tpg_tuser;
+    wire [1:0]  tpg_tuser;
+
+    // --- Internal AXI-Stream: CRS to Clipper ---
+    wire [23:0] crs_tdata;
+    wire        crs_tvalid;
+    wire        crs_tready;
+    wire        crs_tlast;
+    wire [2:0]  crs_tuser;
 
     // --- Avalon-MM Control Signals ---
     reg  [6:0]  clip_addr;
@@ -133,8 +140,11 @@ module top #(
     // -------------------------------------------------------------------------
     wire ready_to_start = (current_state == STATE_WORKING);
 
+    wire crs_in_ready;
+    wire tpg_to_crs_valid = tpg_tvalid && ready_to_start;
+
     wire gated_clipper_ready; 
-    wire tpg_to_clipper_valid = tpg_tvalid && ready_to_start;
+    wire crs_to_clipper_valid = crs_tvalid;
 
     // -------------------------------------------------------------------------
     // System Pipeline Instance
@@ -149,15 +159,28 @@ module top #(
         .intel_vvp_tpg_0_axi4s_vid_out_tready          (tpg_tready),
         .intel_vvp_tpg_0_axi4s_vid_out_tlast           (tpg_tlast),
         .intel_vvp_tpg_0_axi4s_vid_out_tuser           (tpg_tuser),
+        
+        // 2. Resampler (CRS)
+        .intel_vvp_crs_0_axi4s_vid_in_tdata            (tpg_tdata),
+        .intel_vvp_crs_0_axi4s_vid_in_tvalid           (tpg_to_crs_valid),
+        .intel_vvp_crs_0_axi4s_vid_in_tready           (crs_in_ready),
+        .intel_vvp_crs_0_axi4s_vid_in_tlast            (tpg_tlast),
+        .intel_vvp_crs_0_axi4s_vid_in_tuser            (tpg_tuser),
 
-        // 2. Clipper Input (Connected to TPG with gating)
-        .intel_vvp_clipper_0_axi4s_vid_in_tdata        (tpg_tdata),
-        .intel_vvp_clipper_0_axi4s_vid_in_tvalid       (tpg_to_clipper_valid),
+        .intel_vvp_crs_0_axi4s_vid_out_tdata           (crs_tdata),
+        .intel_vvp_crs_0_axi4s_vid_out_tvalid          (crs_tvalid),
+        .intel_vvp_crs_0_axi4s_vid_out_tready          (crs_tready),
+        .intel_vvp_crs_0_axi4s_vid_out_tlast           (crs_tlast),
+        .intel_vvp_crs_0_axi4s_vid_out_tuser           (crs_tuser),
+
+        // 3. Clipper Input (Connected to CRS)
+        .intel_vvp_clipper_0_axi4s_vid_in_tdata        (crs_tdata),
+        .intel_vvp_clipper_0_axi4s_vid_in_tvalid       (crs_to_clipper_valid),
         .intel_vvp_clipper_0_axi4s_vid_in_tready       (gated_clipper_ready),
-        .intel_vvp_clipper_0_axi4s_vid_in_tlast        (tpg_tlast),
-        .intel_vvp_clipper_0_axi4s_vid_in_tuser        (tpg_tuser),
+        .intel_vvp_clipper_0_axi4s_vid_in_tlast        (crs_tlast),
+        .intel_vvp_clipper_0_axi4s_vid_in_tuser        (crs_tuser),
 
-        // 3. Clipper Control Agent
+        // 4. Clipper Control Agent
         .intel_vvp_clipper_0_av_mm_control_agent_address       (clip_addr),
         .intel_vvp_clipper_0_av_mm_control_agent_write         (clip_write),
         .intel_vvp_clipper_0_av_mm_control_agent_byteenable    (4'hF),
@@ -167,7 +190,7 @@ module top #(
         .intel_vvp_clipper_0_av_mm_control_agent_readdatavalid (),
         .intel_vvp_clipper_0_av_mm_control_agent_waitrequest   (clip_wait),
 
-        // 4. Scaler Control Agent
+        // 5. Scaler Control Agent
         .intel_vvp_scaler_0_av_mm_control_agent_address        (scl_addr),
         .intel_vvp_scaler_0_av_mm_control_agent_write          (scl_write),
         .intel_vvp_scaler_0_av_mm_control_agent_byteenable     (4'hF),
@@ -177,7 +200,7 @@ module top #(
         .intel_vvp_scaler_0_av_mm_control_agent_readdatavalid  (),
         .intel_vvp_scaler_0_av_mm_control_agent_waitrequest    (scl_wait),
 
-        // 5. External Scaler Output (Module Ports)
+        // 6. External Scaler Output (Module Ports)
         .intel_vvp_scaler_0_axi4s_vid_out_tdata        (out_tdata),
         .intel_vvp_scaler_0_axi4s_vid_out_tvalid       (out_tvalid),
         .intel_vvp_scaler_0_axi4s_vid_out_tready       (out_tready),
@@ -186,6 +209,7 @@ module top #(
     );
 
     // Provide backpressure to TPG if pipeline is not ready or config is not done
-    assign tpg_tready = gated_clipper_ready && ready_to_start;
+    assign tpg_tready = crs_in_ready && ready_to_start;
+    assign crs_tready = gated_clipper_ready;
 
 endmodule

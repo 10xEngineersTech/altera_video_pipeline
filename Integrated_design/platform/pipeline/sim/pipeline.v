@@ -18,6 +18,16 @@ module pipeline (
 		output wire [31:0] intel_vvp_clipper_0_av_mm_control_agent_readdata,      //                                        .readdata
 		output wire        intel_vvp_clipper_0_av_mm_control_agent_readdatavalid, //                                        .readdatavalid
 		output wire        intel_vvp_clipper_0_av_mm_control_agent_waitrequest,   //                                        .waitrequest
+		input  wire [15:0] intel_vvp_crs_0_axi4s_vid_in_tdata,                    //            intel_vvp_crs_0_axi4s_vid_in.tdata
+		input  wire        intel_vvp_crs_0_axi4s_vid_in_tvalid,                   //                                        .tvalid
+		output wire        intel_vvp_crs_0_axi4s_vid_in_tready,                   //                                        .tready
+		input  wire        intel_vvp_crs_0_axi4s_vid_in_tlast,                    //                                        .tlast
+		input  wire [1:0]  intel_vvp_crs_0_axi4s_vid_in_tuser,                    //                                        .tuser
+		output wire [23:0] intel_vvp_crs_0_axi4s_vid_out_tdata,                   //           intel_vvp_crs_0_axi4s_vid_out.tdata
+		output wire        intel_vvp_crs_0_axi4s_vid_out_tvalid,                  //                                        .tvalid
+		input  wire        intel_vvp_crs_0_axi4s_vid_out_tready,                  //                                        .tready
+		output wire        intel_vvp_crs_0_axi4s_vid_out_tlast,                   //                                        .tlast
+		output wire [2:0]  intel_vvp_crs_0_axi4s_vid_out_tuser,                   //                                        .tuser
 		output wire [23:0] intel_vvp_scaler_0_axi4s_vid_out_tdata,                //        intel_vvp_scaler_0_axi4s_vid_out.tdata
 		output wire        intel_vvp_scaler_0_axi4s_vid_out_tvalid,               //                                        .tvalid
 		input  wire        intel_vvp_scaler_0_axi4s_vid_out_tready,               //                                        .tready
@@ -31,11 +41,11 @@ module pipeline (
 		output wire [31:0] intel_vvp_scaler_0_av_mm_control_agent_readdata,       //                                        .readdata
 		output wire        intel_vvp_scaler_0_av_mm_control_agent_readdatavalid,  //                                        .readdatavalid
 		output wire        intel_vvp_scaler_0_av_mm_control_agent_waitrequest,    //                                        .waitrequest
-		output wire [23:0] intel_vvp_tpg_0_axi4s_vid_out_tdata,                   //           intel_vvp_tpg_0_axi4s_vid_out.tdata
+		output wire [15:0] intel_vvp_tpg_0_axi4s_vid_out_tdata,                   //           intel_vvp_tpg_0_axi4s_vid_out.tdata
 		output wire        intel_vvp_tpg_0_axi4s_vid_out_tvalid,                  //                                        .tvalid
 		input  wire        intel_vvp_tpg_0_axi4s_vid_out_tready,                  //                                        .tready
 		output wire        intel_vvp_tpg_0_axi4s_vid_out_tlast,                   //                                        .tlast
-		output wire [2:0]  intel_vvp_tpg_0_axi4s_vid_out_tuser,                   //                                        .tuser
+		output wire [1:0]  intel_vvp_tpg_0_axi4s_vid_out_tuser,                   //                                        .tuser
 		input  wire        reset_reset                                            //                                   reset.reset
 	);
 
@@ -49,8 +59,8 @@ module pipeline (
 	wire         intel_vvp_protocol_conv_0_axi4s_vid_out_tready; // intel_vvp_scaler_0:axi4s_vid_in_tready -> intel_vvp_protocol_conv_0:axi4s_vid_out_tready
 	wire  [23:0] intel_vvp_protocol_conv_0_axi4s_vid_out_tdata;  // intel_vvp_protocol_conv_0:axi4s_vid_out_tdata -> intel_vvp_scaler_0:axi4s_vid_in_tdata
 	wire         intel_vvp_protocol_conv_0_axi4s_vid_out_tlast;  // intel_vvp_protocol_conv_0:axi4s_vid_out_tlast -> intel_vvp_scaler_0:axi4s_vid_in_tlast
-	wire         clock_in_out_clk_clk;                           // clock_in:out_clk -> [intel_vvp_clipper_0:main_clock_clk, intel_vvp_protocol_conv_0:main_clock_clk, intel_vvp_scaler_0:main_clock_clk, intel_vvp_tpg_0:main_clock_clk, reset_in:clk, rst_controller:clk]
-	wire         rst_controller_reset_out_reset;                 // rst_controller:reset_out -> [intel_vvp_clipper_0:main_reset_reset, intel_vvp_protocol_conv_0:main_reset_reset, intel_vvp_scaler_0:main_reset_reset, intel_vvp_tpg_0:main_reset_reset]
+	wire         clock_in_out_clk_clk;                           // clock_in:out_clk -> [intel_vvp_clipper_0:main_clock_clk, intel_vvp_crs_0:main_clock_clk, intel_vvp_protocol_conv_0:main_clock_clk, intel_vvp_scaler_0:main_clock_clk, intel_vvp_tpg_0:main_clock_clk, reset_in:clk, rst_controller:clk]
+	wire         rst_controller_reset_out_reset;                 // rst_controller:reset_out -> [intel_vvp_clipper_0:main_reset_reset, intel_vvp_crs_0:main_reset_reset, intel_vvp_protocol_conv_0:main_reset_reset, intel_vvp_scaler_0:main_reset_reset, intel_vvp_tpg_0:main_reset_reset]
 	wire         reset_in_out_reset_reset;                       // reset_in:out_reset -> rst_controller:reset_in0
 
 	pipeline_clock_in clock_in (
@@ -79,6 +89,21 @@ module pipeline (
 		.av_mm_control_agent_readdata      (intel_vvp_clipper_0_av_mm_control_agent_readdata),      //  output,  width = 32,                    .readdata
 		.av_mm_control_agent_readdatavalid (intel_vvp_clipper_0_av_mm_control_agent_readdatavalid), //  output,   width = 1,                    .readdatavalid
 		.av_mm_control_agent_waitrequest   (intel_vvp_clipper_0_av_mm_control_agent_waitrequest)    //  output,   width = 1,                    .waitrequest
+	);
+
+	pipeline_intel_vvp_crs_0 intel_vvp_crs_0 (
+		.main_clock_clk       (clock_in_out_clk_clk),                 //   input,   width = 1,    main_clock.clk
+		.main_reset_reset     (rst_controller_reset_out_reset),       //   input,   width = 1,    main_reset.reset
+		.axi4s_vid_in_tdata   (intel_vvp_crs_0_axi4s_vid_in_tdata),   //   input,  width = 16,  axi4s_vid_in.tdata
+		.axi4s_vid_in_tvalid  (intel_vvp_crs_0_axi4s_vid_in_tvalid),  //   input,   width = 1,              .tvalid
+		.axi4s_vid_in_tready  (intel_vvp_crs_0_axi4s_vid_in_tready),  //  output,   width = 1,              .tready
+		.axi4s_vid_in_tlast   (intel_vvp_crs_0_axi4s_vid_in_tlast),   //   input,   width = 1,              .tlast
+		.axi4s_vid_in_tuser   (intel_vvp_crs_0_axi4s_vid_in_tuser),   //   input,   width = 2,              .tuser
+		.axi4s_vid_out_tdata  (intel_vvp_crs_0_axi4s_vid_out_tdata),  //  output,  width = 24, axi4s_vid_out.tdata
+		.axi4s_vid_out_tvalid (intel_vvp_crs_0_axi4s_vid_out_tvalid), //  output,   width = 1,              .tvalid
+		.axi4s_vid_out_tready (intel_vvp_crs_0_axi4s_vid_out_tready), //   input,   width = 1,              .tready
+		.axi4s_vid_out_tlast  (intel_vvp_crs_0_axi4s_vid_out_tlast),  //  output,   width = 1,              .tlast
+		.axi4s_vid_out_tuser  (intel_vvp_crs_0_axi4s_vid_out_tuser)   //  output,   width = 3,              .tuser
 	);
 
 	pipeline_intel_vvp_protocol_conv_0 intel_vvp_protocol_conv_0 (
@@ -122,11 +147,11 @@ module pipeline (
 	pipeline_intel_vvp_tpg_0 intel_vvp_tpg_0 (
 		.main_clock_clk       (clock_in_out_clk_clk),                 //   input,   width = 1,    main_clock.clk
 		.main_reset_reset     (rst_controller_reset_out_reset),       //   input,   width = 1,    main_reset.reset
-		.axi4s_vid_out_tdata  (intel_vvp_tpg_0_axi4s_vid_out_tdata),  //  output,  width = 24, axi4s_vid_out.tdata
+		.axi4s_vid_out_tdata  (intel_vvp_tpg_0_axi4s_vid_out_tdata),  //  output,  width = 16, axi4s_vid_out.tdata
 		.axi4s_vid_out_tvalid (intel_vvp_tpg_0_axi4s_vid_out_tvalid), //  output,   width = 1,              .tvalid
 		.axi4s_vid_out_tready (intel_vvp_tpg_0_axi4s_vid_out_tready), //   input,   width = 1,              .tready
 		.axi4s_vid_out_tlast  (intel_vvp_tpg_0_axi4s_vid_out_tlast),  //  output,   width = 1,              .tlast
-		.axi4s_vid_out_tuser  (intel_vvp_tpg_0_axi4s_vid_out_tuser)   //  output,   width = 3,              .tuser
+		.axi4s_vid_out_tuser  (intel_vvp_tpg_0_axi4s_vid_out_tuser)   //  output,   width = 2,              .tuser
 	);
 
 	pipeline_reset_in reset_in (

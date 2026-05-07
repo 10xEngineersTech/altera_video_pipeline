@@ -29,7 +29,8 @@ The integrated pipeline implements the following data flow. All dimensions are p
 
 ```mermaid
 graph LR
-    A[TPG 32x32] -- "AXIS Full" --> B[Clipper]
+    A[TPG 32x32] -- "AXIS Full (YUV422)" --> R[Resampler]
+    R -- "AXIS Full (YUV444)" --> B[Clipper]
     B -- "AXIS Full" --> C[Protocol Converter]
     C -- "AXIS Lite" --> D[Scaler]
     D -- "AXIS Lite" --> E[Video Checker]
@@ -41,7 +42,8 @@ graph LR
 
 | Component | Functionality | Configuration | Configure using Register Map |
 | :--- | :--- | :--- | :--- |
-| **Test Pattern Generator (TPG)** | Source generation | Fixed resolution, AXI4-Stream Full mode | Not Reconfigurable |
+| **Test Pattern Generator (TPG)** | Source generation | Fixed resolution, AXI4-Stream Full mode (YUV422 output) | Not Reconfigurable |
+| **Resampler** | Chroma upsampling | Converts YUV 4:2:2 to YUV 4:4:4 | Not Reconfigurable |
 | **Clipper** | Spatial cropping | Extracts active region with Top/Bottom/Left/Right offsets; programmed via Avalon-MM with commit register (`0x51`) | Reconfigurable |
 | **Protocol Converter** | Interface adaptation | Internal Qsys component; bridges AXI4-Stream Full metadata to AXI4-Stream Lite | Not Reconfigurable |
 | **Scaler** | Resolution reduction | Performs high-quality downscaling; programmed via Avalon-MM (input & output dimensions) | Reconfigurable |
@@ -67,7 +69,7 @@ Reset ──► STATE_CONFIG_CLIP (0)
               │  4 Avalon-MM writes: Input W/H (clipped size), Output W/H
               ▼
          STATE_WORKING (2)
-              │  TPG → Clipper data flow enabled; simulation captures frames
+              │  TPG → Resampler → Clipper data flow enabled; simulation captures frames
 ```
 
 ### App Folder (`app/`)

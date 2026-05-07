@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2026.05.07.16:57:26"
+ date="2026.05.07.17:28:10"
  outputDirectory="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/">
  <perimeter>
   <parameter
@@ -71,11 +71,11 @@
   <interface name="axi4s_vid_in" kind="axi4stream" start="0">
    <property name="associatedClock" value="main_clock" />
    <property name="associatedReset" value="main_reset" />
-   <port name="axi4s_vid_in_tdata" direction="input" role="tdata" width="16" />
+   <port name="axi4s_vid_in_tdata" direction="input" role="tdata" width="24" />
    <port name="axi4s_vid_in_tvalid" direction="input" role="tvalid" width="1" />
    <port name="axi4s_vid_in_tready" direction="output" role="tready" width="1" />
    <port name="axi4s_vid_in_tlast" direction="input" role="tlast" width="1" />
-   <port name="axi4s_vid_in_tuser" direction="input" role="tuser" width="2" />
+   <port name="axi4s_vid_in_tuser" direction="input" role="tuser" width="3" />
   </interface>
   <interface name="axi4s_vid_out" kind="axi4stream" start="1">
    <property name="associatedClock" value="main_clock" />
@@ -128,7 +128,29 @@
    <file
        path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/in_out_bridges/intel_vvp_output_interface_bridge/intel_vvp_output_interface_bridge_hw.tcl" />
    <file
-       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/chroma_resampler/intel_vvp_crs_scheduler/intel_vvp_crs_scheduler_hw.tcl" />
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/chroma_resampler/intel_vvp_crs_scheduler_420/intel_vvp_crs_scheduler_420_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/line_buffer/intel_vvp_line_buffer/intel_vvp_line_buffer_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/chroma_resampler/intel_vvp_crs/intel_vvp_crs_v_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/resets/intel_vvp_reset_bridge/intel_vvp_reset_bridge_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/chroma_resampler/intel_vvp_crs_v_cmd_gen/intel_vvp_crs_v_cmd_gen_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/packet_utils/intel_vvp_pkt_clip/intel_vvp_pkt_clip_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/mux_demux/intel_vvp_pkt_demux/intel_vvp_pkt_demux_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/mux_demux/intel_vvp_pkt_mux/intel_vvp_pkt_mux_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/kernel_select/intel_vvp_kernel_select/intel_vvp_kernel_select_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/pip_conv_core/intel_vvp_pip_conv_core/intel_vvp_pip_conv_core_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/chroma_resampler/intel_vvp_crs_v_up_algo_comp/intel_vvp_crs_v_up_algo_comp_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/color_planes_adapter/intel_vvp_cpp_adapter/intel_vvp_cpp_adapter_hw.tcl" />
    <file
        path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/chroma_resampler/intel_vvp_crs/intel_vvp_crs_h_hw.tcl" />
    <file
@@ -142,11 +164,22 @@
   </childSourceFiles>
   <messages>
    <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: system_intel_vvp_crs_0"</message>
-   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: system_intel_vvp_crs_0_intel_vvp_crs_2451_kuffg4i"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: system_intel_vvp_crs_0_intel_vvp_crs_2451_jg5hjci"</message>
    <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_reset_sync"</message>
    <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_input_interface_bridge"</message>
    <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_output_interface_bridge"</message>
-   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_crs_scheduler"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_crs_scheduler_420"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_line_buffer"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: system_intel_vvp_crs_0_intel_vvp_crs_v_2451_dmyhifa"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_reset_bridge"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_crs_v_cmd_gen"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_pkt_clip"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_pkt_demux"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_pkt_mux"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_kernel_select"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_pip_conv_core"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_crs_v_up_algo_comp"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_cpp_adapter"</message>
    <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: system_intel_vvp_crs_0_intel_vvp_crs_h_2451_7uuv3hi"</message>
    <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_reset_bridge"</message>
    <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_crs_h_cmd_gen"</message>
@@ -157,7 +190,7 @@
  <entity
    kind="intel_vvp_crs"
    version="24.5.1"
-   name="system_intel_vvp_crs_0_intel_vvp_crs_2451_kuffg4i">
+   name="system_intel_vvp_crs_0_intel_vvp_crs_2451_jg5hjci">
   <parameter name="VERT_CO_SITING" value="TOP" />
   <parameter name="RUNTIME_CONTROL" value="1" />
   <parameter name="BPS" value="8" />
@@ -169,7 +202,7 @@
   <parameter name="ENABLE_DEBUG" value="0" />
   <parameter name="C_OMNI_CAP_VERSION" value="1" />
   <parameter name="SEPARATE_SLAVE_CLOCK" value="0" />
-  <parameter name="VERT_ALGORITHM" value="BILINEAR" />
+  <parameter name="VERT_ALGORITHM" value="NEAREST_NEIGHBOUR" />
   <parameter name="C_OMNI_CAP_ENABLED" value="0" />
   <parameter name="SUPPORT_422_TO_444" value="1" />
   <parameter name="C_OMNI_CAP_IRQ_STATUS" value="0" />
@@ -177,7 +210,7 @@
   <parameter name="SUPPORT_422_PASS" value="0" />
   <parameter name="EXTERNAL_MODE" value="0" />
   <parameter name="SUPPORT_420_TO_422" value="0" />
-  <parameter name="SUPPORT_420_TO_444" value="0" />
+  <parameter name="SUPPORT_420_TO_444" value="1" />
   <parameter name="PIXELS_IN_PARALLEL_IN" value="1" />
   <parameter name="P_UPDATE_CMD_SUPPORTED" value="0" />
   <parameter name="P_CORE_CTRL_ID" value="0" />
@@ -205,12 +238,12 @@
   <parameter name="C_OMNI_CAP_SIZE" value="0" />
   <generatedFiles>
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_2451/synth/system_intel_vvp_crs_0_intel_vvp_crs_2451_kuffg4i.v"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_2451/synth/system_intel_vvp_crs_0_intel_vvp_crs_2451_jg5hjci.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_2451/synth/system_intel_vvp_crs_0_intel_vvp_crs_2451_kuffg4i.v"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_2451/synth/system_intel_vvp_crs_0_intel_vvp_crs_2451_jg5hjci.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </childGeneratedFiles>
   <sourceFiles>
@@ -225,7 +258,29 @@
    <file
        path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/in_out_bridges/intel_vvp_output_interface_bridge/intel_vvp_output_interface_bridge_hw.tcl" />
    <file
-       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/chroma_resampler/intel_vvp_crs_scheduler/intel_vvp_crs_scheduler_hw.tcl" />
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/chroma_resampler/intel_vvp_crs_scheduler_420/intel_vvp_crs_scheduler_420_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/line_buffer/intel_vvp_line_buffer/intel_vvp_line_buffer_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/chroma_resampler/intel_vvp_crs/intel_vvp_crs_v_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/resets/intel_vvp_reset_bridge/intel_vvp_reset_bridge_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/chroma_resampler/intel_vvp_crs_v_cmd_gen/intel_vvp_crs_v_cmd_gen_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/packet_utils/intel_vvp_pkt_clip/intel_vvp_pkt_clip_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/mux_demux/intel_vvp_pkt_demux/intel_vvp_pkt_demux_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/mux_demux/intel_vvp_pkt_mux/intel_vvp_pkt_mux_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/kernel_select/intel_vvp_kernel_select/intel_vvp_kernel_select_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/pip_conv_core/intel_vvp_pip_conv_core/intel_vvp_pip_conv_core_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/chroma_resampler/intel_vvp_crs_v_up_algo_comp/intel_vvp_crs_v_up_algo_comp_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/color_planes_adapter/intel_vvp_cpp_adapter/intel_vvp_cpp_adapter_hw.tcl" />
    <file
        path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/chroma_resampler/intel_vvp_crs/intel_vvp_crs_h_hw.tcl" />
    <file
@@ -239,11 +294,22 @@
   </childSourceFiles>
   <instantiator instantiator="system_intel_vvp_crs_0" as="intel_vvp_crs_0" />
   <messages>
-   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: system_intel_vvp_crs_0_intel_vvp_crs_2451_kuffg4i"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: system_intel_vvp_crs_0_intel_vvp_crs_2451_jg5hjci"</message>
    <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_reset_sync"</message>
    <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_input_interface_bridge"</message>
    <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_output_interface_bridge"</message>
-   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_crs_scheduler"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_crs_scheduler_420"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_line_buffer"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: system_intel_vvp_crs_0_intel_vvp_crs_v_2451_dmyhifa"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_reset_bridge"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_crs_v_cmd_gen"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_pkt_clip"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_pkt_demux"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_pkt_mux"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_kernel_select"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_pip_conv_core"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_crs_v_up_algo_comp"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_cpp_adapter"</message>
    <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: system_intel_vvp_crs_0_intel_vvp_crs_h_2451_7uuv3hi"</message>
    <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_reset_bridge"</message>
    <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_crs_h_cmd_gen"</message>
@@ -272,7 +338,7 @@
   </sourceFiles>
   <childSourceFiles/>
   <instantiator
-     instantiator="system_intel_vvp_crs_0_intel_vvp_crs_2451_kuffg4i"
+     instantiator="system_intel_vvp_crs_0_intel_vvp_crs_2451_jg5hjci"
      as="main_rst_bridge" />
   <messages>
    <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_reset_sync"</message>
@@ -285,7 +351,7 @@
   <parameter name="BPS" value="8" />
   <parameter name="EXTERNAL_MODE" value="0" />
   <parameter name="PIPELINE_READY" value="0" />
-  <parameter name="NUMBER_OF_COLOR_PLANES" value="2" />
+  <parameter name="NUMBER_OF_COLOR_PLANES" value="3" />
   <parameter name="PIXELS_IN_PARALLEL" value="1" />
   <generatedFiles>
    <file
@@ -321,7 +387,7 @@
   </sourceFiles>
   <childSourceFiles/>
   <instantiator
-     instantiator="system_intel_vvp_crs_0_intel_vvp_crs_2451_kuffg4i"
+     instantiator="system_intel_vvp_crs_0_intel_vvp_crs_2451_jg5hjci"
      as="in_bridge" />
   <messages>
    <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_input_interface_bridge"</message>
@@ -370,102 +436,306 @@
   </sourceFiles>
   <childSourceFiles/>
   <instantiator
-     instantiator="system_intel_vvp_crs_0_intel_vvp_crs_2451_kuffg4i"
+     instantiator="system_intel_vvp_crs_0_intel_vvp_crs_2451_jg5hjci"
      as="out_bridge" />
   <messages>
    <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_output_interface_bridge"</message>
   </messages>
  </entity>
  <entity
-   kind="intel_vvp_crs_scheduler"
+   kind="intel_vvp_crs_scheduler_420"
    version="24.5.1"
-   name="intel_vvp_crs_scheduler">
-  <parameter name="SUPPORT_422_TO_444" value="1" />
-  <parameter name="SUPPORT_422_PASS" value="0" />
+   name="intel_vvp_crs_scheduler_420">
   <parameter name="RUNTIME_CONTROL" value="0" />
-  <parameter name="EXTERNAL_MODE" value="0" />
+  <parameter name="MAX_WIDTH" value="16384" />
+  <parameter name="ALGORITHM" value="NEAREST_NEIGHBOUR" />
   <parameter name="PIPELINE_READY" value="0" />
   <parameter name="SLAVE_ADDRESS_WIDTH" value="5" />
+  <parameter name="ENABLE_DEBUG" value="0" />
+  <parameter name="SUPPORT_444_TO_422" value="0" />
+  <parameter name="SUPPORT_444_TO_420" value="0" />
+  <parameter name="SUPPORT_422_TO_444" value="1" />
+  <parameter name="SUPPORT_422_TO_420" value="0" />
+  <parameter name="SUPPORT_422_PASS" value="0" />
+  <parameter name="NO_BLANKING" value="0" />
+  <parameter name="CO_SITING" value="TOP" />
+  <parameter name="EXTERNAL_MODE" value="0" />
+  <parameter name="SUPPORT_420_TO_422" value="0" />
+  <parameter name="SUPPORT_420_TO_444" value="1" />
   <parameter name="SUPPORT_444_PASS" value="0" />
   <parameter name="P_UPDATE_CMD_SUPPORTED" value="0" />
   <parameter name="P_CORE_CTRL_ID" value="0" />
   <parameter name="SUPPORT_420_PASS" value="0" />
-  <parameter name="ENABLE_DEBUG" value="0" />
-  <parameter name="SUPPORT_444_TO_422" value="0" />
   <generatedFiles>
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_2451/synth/intel_vvp_common_pkg.sv"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_420_2451/synth/intel_mtm_common_pkg.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_2451/synth/intel_vvp_crs_pkg.sv"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_420_2451/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_2451/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_420_2451/synth/intel_vvp_crs_pkg.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_2451/synth/intel_vvp_axi_master.sv"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_420_2451/synth/intel_vvp_utility_pkg.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_2451/synth/intel_vvp_pipelined_mux.sv"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_420_2451/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_2451/synth/intel_vvp_common_slave_interface.sv"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_420_2451/synth/intel_vvp_axi_master.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_2451/synth/src_hdl/intel_vvp_crs_scheduler_ext.sv"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_420_2451/synth/intel_vvp_pipelined_mux.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_2451/synth/src_hdl/intel_vvp_crs_scheduler_int.sv"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_420_2451/synth/intel_vvp_common_slave_interface.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_2451/synth/src_hdl/intel_vvp_crs_scheduler.sv"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_420_2451/synth/src_hdl/intel_vvp_crs_scheduler_420_ext_ctrl.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_2451/synth/src_hdl/intel_vvp_crs_scheduler.ocp"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_420_2451/synth/src_hdl/intel_vvp_crs_scheduler_420_int_ctrl.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_420_2451/synth/src_hdl/intel_vvp_crs_scheduler_420_ctrl_out.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_420_2451/synth/src_hdl/intel_vvp_crs_scheduler_420_main.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_420_2451/synth/src_hdl/intel_vvp_crs_scheduler_420.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_420_2451/synth/src_hdl/intel_vvp_crs_scheduler_420.ocp"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_2451/synth/intel_vvp_common_pkg.sv"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_420_2451/synth/intel_mtm_common_pkg.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_2451/synth/intel_vvp_crs_pkg.sv"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_420_2451/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_2451/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_420_2451/synth/intel_vvp_crs_pkg.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_2451/synth/intel_vvp_axi_master.sv"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_420_2451/synth/intel_vvp_utility_pkg.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_2451/synth/intel_vvp_pipelined_mux.sv"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_420_2451/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_2451/synth/intel_vvp_common_slave_interface.sv"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_420_2451/synth/intel_vvp_axi_master.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_2451/synth/src_hdl/intel_vvp_crs_scheduler_ext.sv"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_420_2451/synth/intel_vvp_pipelined_mux.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_2451/synth/src_hdl/intel_vvp_crs_scheduler_int.sv"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_420_2451/synth/intel_vvp_common_slave_interface.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_2451/synth/src_hdl/intel_vvp_crs_scheduler.sv"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_420_2451/synth/src_hdl/intel_vvp_crs_scheduler_420_ext_ctrl.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_2451/synth/src_hdl/intel_vvp_crs_scheduler.ocp"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_420_2451/synth/src_hdl/intel_vvp_crs_scheduler_420_int_ctrl.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_420_2451/synth/src_hdl/intel_vvp_crs_scheduler_420_ctrl_out.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_420_2451/synth/src_hdl/intel_vvp_crs_scheduler_420_main.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_420_2451/synth/src_hdl/intel_vvp_crs_scheduler_420.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_scheduler_420_2451/synth/src_hdl/intel_vvp_crs_scheduler_420.ocp"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/chroma_resampler/intel_vvp_crs_scheduler/intel_vvp_crs_scheduler_hw.tcl" />
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/chroma_resampler/intel_vvp_crs_scheduler_420/intel_vvp_crs_scheduler_420_hw.tcl" />
   </sourceFiles>
   <childSourceFiles/>
   <instantiator
-     instantiator="system_intel_vvp_crs_0_intel_vvp_crs_2451_kuffg4i"
+     instantiator="system_intel_vvp_crs_0_intel_vvp_crs_2451_jg5hjci"
      as="scheduler" />
   <messages>
-   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_crs_scheduler"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_crs_scheduler_420"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="intel_vvp_line_buffer"
+   version="24.4.0"
+   name="intel_vvp_line_buffer">
+  <parameter name="ENABLE_RESEND" value="0" />
+  <parameter name="BPS" value="8" />
+  <parameter name="MAX_WIDTH" value="16384" />
+  <parameter name="ENABLE_RESPONSE" value="0" />
+  <parameter name="DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="NUMBER_OF_COLOR_PLANES" value="3" />
+  <parameter name="PIXELS_IN_PARALLEL" value="1" />
+  <parameter name="NUM_LINES" value="3" />
+  <parameter name="CMD_COMPATIBILITY" value="1" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_line_buffer_2440/synth/intel_mtm_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_line_buffer_2440/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_line_buffer_2440/synth/intel_vvp_utility_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_line_buffer_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_line_buffer_2440/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_line_buffer_2440/synth/intel_vvp_axi_zero_pad.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_line_buffer_2440/synth/intel_vvp_axi_zero_strip.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_line_buffer_2440/synth/src_hdl/intel_vvp_line_buffer_no_resend.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_line_buffer_2440/synth/src_hdl/intel_vvp_line_buffer_resend.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_line_buffer_2440/synth/src_hdl/intel_vvp_line_buffer_ram.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_line_buffer_2440/synth/src_hdl/intel_vvp_line_buffer_cmd_mngr.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_line_buffer_2440/synth/src_hdl/intel_vvp_line_buffer.sv"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_line_buffer_2440/synth/intel_mtm_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_line_buffer_2440/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_line_buffer_2440/synth/intel_vvp_utility_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_line_buffer_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_line_buffer_2440/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_line_buffer_2440/synth/intel_vvp_axi_zero_pad.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_line_buffer_2440/synth/intel_vvp_axi_zero_strip.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_line_buffer_2440/synth/src_hdl/intel_vvp_line_buffer_no_resend.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_line_buffer_2440/synth/src_hdl/intel_vvp_line_buffer_resend.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_line_buffer_2440/synth/src_hdl/intel_vvp_line_buffer_ram.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_line_buffer_2440/synth/src_hdl/intel_vvp_line_buffer_cmd_mngr.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_line_buffer_2440/synth/src_hdl/intel_vvp_line_buffer.sv"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/line_buffer/intel_vvp_line_buffer/intel_vvp_line_buffer_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="system_intel_vvp_crs_0_intel_vvp_crs_2451_jg5hjci"
+     as="line_buffer" />
+  <messages>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_line_buffer"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="intel_vvp_crs_v"
+   version="24.5.1"
+   name="system_intel_vvp_crs_0_intel_vvp_crs_v_2451_dmyhifa">
+  <parameter name="USE_PASSTHROUGH" value="1" />
+  <parameter name="BPS" value="8" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="ALGORITHM" value="NEAREST_NEIGHBOUR" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="PASSTHROUGH_COLOURS" value="2" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="NO_BLANKING" value="0" />
+  <parameter name="CO_SITING" value="TOP" />
+  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="ENABLE_LUMA_ADAPT" value="0" />
+  <parameter name="PIXELS_IN_PARALLEL_IN" value="1" />
+  <parameter name="PIXELS_IN_PARALLEL_OUT" value="1" />
+  <parameter name="USE_UP_CORE" value="1" />
+  <parameter name="USE_DOWN_CORE" value="0" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_2451/synth/system_intel_vvp_crs_0_intel_vvp_crs_v_2451_dmyhifa.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_2451/synth/system_intel_vvp_crs_0_intel_vvp_crs_v_2451_dmyhifa.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/chroma_resampler/intel_vvp_crs/intel_vvp_crs_v_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/resets/intel_vvp_reset_bridge/intel_vvp_reset_bridge_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/chroma_resampler/intel_vvp_crs_v_cmd_gen/intel_vvp_crs_v_cmd_gen_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/packet_utils/intel_vvp_pkt_clip/intel_vvp_pkt_clip_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/mux_demux/intel_vvp_pkt_demux/intel_vvp_pkt_demux_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/mux_demux/intel_vvp_pkt_mux/intel_vvp_pkt_mux_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/kernel_select/intel_vvp_kernel_select/intel_vvp_kernel_select_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/pip_conv_core/intel_vvp_pip_conv_core/intel_vvp_pip_conv_core_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/chroma_resampler/intel_vvp_crs_v_up_algo_comp/intel_vvp_crs_v_up_algo_comp_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/color_planes_adapter/intel_vvp_cpp_adapter/intel_vvp_cpp_adapter_hw.tcl" />
+  </childSourceFiles>
+  <instantiator
+     instantiator="system_intel_vvp_crs_0_intel_vvp_crs_2451_jg5hjci"
+     as="v_core" />
+  <messages>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: system_intel_vvp_crs_0_intel_vvp_crs_v_2451_dmyhifa"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_reset_bridge"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_crs_v_cmd_gen"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_pkt_clip"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_pkt_demux"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_pkt_mux"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_kernel_select"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_pip_conv_core"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_crs_v_up_algo_comp"</message>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_cpp_adapter"</message>
   </messages>
  </entity>
  <entity
@@ -511,8 +781,8 @@
        path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/chroma_resampler/intel_vvp_crs_h_up_algo_comp/intel_vvp_crs_h_up_algo_comp_hw.tcl" />
   </childSourceFiles>
   <instantiator
-     instantiator="system_intel_vvp_crs_0_intel_vvp_crs_2451_kuffg4i"
-     as="core" />
+     instantiator="system_intel_vvp_crs_0_intel_vvp_crs_2451_jg5hjci"
+     as="h_up_core" />
   <messages>
    <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: system_intel_vvp_crs_0_intel_vvp_crs_h_2451_7uuv3hi"</message>
    <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_reset_bridge"</message>
@@ -541,10 +811,617 @@
   </sourceFiles>
   <childSourceFiles/>
   <instantiator
+     instantiator="system_intel_vvp_crs_0_intel_vvp_crs_v_2451_dmyhifa"
+     as="main_rst_bridge" />
+  <instantiator
      instantiator="system_intel_vvp_crs_0_intel_vvp_crs_h_2451_7uuv3hi"
      as="main_rst_bridge" />
   <messages>
    <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_reset_bridge"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="intel_vvp_crs_v_cmd_gen"
+   version="24.5.1"
+   name="intel_vvp_crs_v_cmd_gen">
+  <parameter name="USE_PASSTHROUGH" value="1" />
+  <parameter name="USE_UP_CORE" value="1" />
+  <parameter name="USE_DOWN_CORE" value="0" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_cmd_gen_2451/synth/intel_mtm_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_cmd_gen_2451/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_cmd_gen_2451/synth/intel_vvp_utility_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_cmd_gen_2451/synth/intel_vvp_crs_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_cmd_gen_2451/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_cmd_gen_2451/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_cmd_gen_2451/synth/src_hdl/intel_vvp_crs_v_cmd_gen.sv"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_cmd_gen_2451/synth/intel_mtm_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_cmd_gen_2451/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_cmd_gen_2451/synth/intel_vvp_utility_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_cmd_gen_2451/synth/intel_vvp_crs_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_cmd_gen_2451/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_cmd_gen_2451/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_cmd_gen_2451/synth/src_hdl/intel_vvp_crs_v_cmd_gen.sv"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/chroma_resampler/intel_vvp_crs_v_cmd_gen/intel_vvp_crs_v_cmd_gen_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="system_intel_vvp_crs_0_intel_vvp_crs_v_2451_dmyhifa"
+     as="scheduler" />
+  <messages>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_crs_v_cmd_gen"</message>
+  </messages>
+ </entity>
+ <entity kind="intel_vvp_pkt_clip" version="24.4.0" name="intel_vvp_pkt_clip">
+  <parameter name="BPS" value="8" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="NUMBER_OF_COLOR_PLANES" value="2" />
+  <parameter name="PIXELS_IN_PARALLEL" value="1" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_clip_2440/synth/intel_mtm_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_clip_2440/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_clip_2440/synth/intel_vvp_utility_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_clip_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_clip_2440/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_clip_2440/synth/src_hdl/intel_vvp_pkt_clip.sv"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_clip_2440/synth/intel_mtm_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_clip_2440/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_clip_2440/synth/intel_vvp_utility_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_clip_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_clip_2440/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_clip_2440/synth/src_hdl/intel_vvp_pkt_clip.sv"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/packet_utils/intel_vvp_pkt_clip/intel_vvp_pkt_clip_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="system_intel_vvp_crs_0_intel_vvp_crs_v_2451_dmyhifa"
+     as="out_clip" />
+  <messages>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_pkt_clip"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="intel_vvp_pkt_demux"
+   version="24.5.0"
+   name="intel_vvp_pkt_demux">
+  <parameter name="DATA_WIDTH" value="72" />
+  <parameter name="INTERFACE_TYPE" value="DATA" />
+  <parameter name="BPS" value="8" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="NUM_OUTPUTS" value="2" />
+  <parameter name="NUMBER_OF_COLOR_PLANES" value="9" />
+  <parameter name="PIXELS_IN_PARALLEL" value="1" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_demux_2450/synth/intel_mtm_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_demux_2450/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_demux_2450/synth/intel_vvp_utility_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_demux_2450/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_demux_2450/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_demux_2450/synth/src_hdl/intel_vvp_pkt_demux.sv"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_demux_2450/synth/intel_mtm_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_demux_2450/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_demux_2450/synth/intel_vvp_utility_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_demux_2450/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_demux_2450/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_demux_2450/synth/src_hdl/intel_vvp_pkt_demux.sv"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/mux_demux/intel_vvp_pkt_demux/intel_vvp_pkt_demux_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="system_intel_vvp_crs_0_intel_vvp_crs_v_2451_dmyhifa"
+     as="in_demux" />
+  <messages>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_pkt_demux"</message>
+  </messages>
+ </entity>
+ <entity kind="intel_vvp_pkt_mux" version="24.5.0" name="intel_vvp_pkt_mux">
+  <parameter name="DATA_WIDTH" value="16" />
+  <parameter name="NUM_INPUTS" value="2" />
+  <parameter name="INTERFACE_TYPE" value="DATA" />
+  <parameter name="BPS" value="8" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="NUMBER_OF_COLOR_PLANES" value="2" />
+  <parameter name="PIXELS_IN_PARALLEL" value="1" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_mux_2450/synth/intel_mtm_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_mux_2450/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_mux_2450/synth/intel_vvp_utility_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_mux_2450/synth/intel_vvp_pipelined_mux.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_mux_2450/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_mux_2450/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_mux_2450/synth/src_hdl/intel_vvp_pkt_mux.sv"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_mux_2450/synth/intel_mtm_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_mux_2450/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_mux_2450/synth/intel_vvp_utility_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_mux_2450/synth/intel_vvp_pipelined_mux.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_mux_2450/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_mux_2450/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pkt_mux_2450/synth/src_hdl/intel_vvp_pkt_mux.sv"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/mux_demux/intel_vvp_pkt_mux/intel_vvp_pkt_mux_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="system_intel_vvp_crs_0_intel_vvp_crs_v_2451_dmyhifa"
+     as="out_mux" />
+  <messages>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_pkt_mux"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="intel_vvp_kernel_select"
+   version="24.4.0"
+   name="intel_vvp_kernel_select">
+  <parameter name="OFFSET_LINE" value="0" />
+  <parameter name="BPS" value="8" />
+  <parameter name="NUMBER_OF_COLOR_PLANES_IN" value="3" />
+  <parameter name="NUM_LINES_IN" value="3" />
+  <parameter name="NUMBER_OF_COLOR_PLANES_OUT" value="3" />
+  <parameter name="PIXELS_IN_PARALLEL" value="1" />
+  <parameter name="NUM_LINES_OUT" value="3" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_kernel_select_2440/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_kernel_select_2440/synth/intel_vvp_axi_zero_pad.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_kernel_select_2440/synth/intel_vvp_axi_zero_strip.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_kernel_select_2440/synth/src_hdl/intel_vvp_kernel_select.sv"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_kernel_select_2440/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_kernel_select_2440/synth/intel_vvp_axi_zero_pad.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_kernel_select_2440/synth/intel_vvp_axi_zero_strip.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_kernel_select_2440/synth/src_hdl/intel_vvp_kernel_select.sv"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/kernel_select/intel_vvp_kernel_select/intel_vvp_kernel_select_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="system_intel_vvp_crs_0_intel_vvp_crs_v_2451_dmyhifa"
+     as="up_select,pass_select" />
+  <messages>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_kernel_select"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="intel_vvp_pip_conv_core"
+   version="24.5.0"
+   name="intel_vvp_pip_conv_core">
+  <parameter name="BPS" value="8" />
+  <parameter name="PIXELS_IN_PARALLEL_IN" value="1" />
+  <parameter name="PIXELS_IN_PARALLEL_OUT" value="1" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="NUMBER_OF_COLOR_PLANES" value="9" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pip_conv_core_2450/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pip_conv_core_2450/synth/intel_vvp_shift_mux.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pip_conv_core_2450/synth/intel_vvp_pack_simple.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pip_conv_core_2450/synth/intel_vvp_unpack_simple.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pip_conv_core_2450/synth/intel_vvp_pack_hard.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pip_conv_core_2450/synth/intel_vvp_unpack_hard.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pip_conv_core_2450/synth/intel_vvp_axi_zero_pad.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pip_conv_core_2450/synth/intel_vvp_axi_zero_strip.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pip_conv_core_2450/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pip_conv_core_2450/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pip_conv_core_2450/synth/src_hdl/intel_vvp_pip_conv_core.sv"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pip_conv_core_2450/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pip_conv_core_2450/synth/intel_vvp_shift_mux.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pip_conv_core_2450/synth/intel_vvp_pack_simple.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pip_conv_core_2450/synth/intel_vvp_unpack_simple.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pip_conv_core_2450/synth/intel_vvp_pack_hard.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pip_conv_core_2450/synth/intel_vvp_unpack_hard.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pip_conv_core_2450/synth/intel_vvp_axi_zero_pad.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pip_conv_core_2450/synth/intel_vvp_axi_zero_strip.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pip_conv_core_2450/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pip_conv_core_2450/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_pip_conv_core_2450/synth/src_hdl/intel_vvp_pip_conv_core.sv"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/pip_conv_core/intel_vvp_pip_conv_core/intel_vvp_pip_conv_core_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="system_intel_vvp_crs_0_intel_vvp_crs_v_2451_dmyhifa"
+     as="up_pip_in,up_pip_out,pass_pip_conv" />
+  <messages>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_pip_conv_core"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="intel_vvp_crs_v_up_algo_comp"
+   version="24.5.1"
+   name="intel_vvp_crs_v_up_algo_comp">
+  <parameter name="CO_SITING" value="TOP" />
+  <parameter name="BPS" value="8" />
+  <parameter name="ENABLE_LUMA_ADAPT" value="0" />
+  <parameter name="ALGORITHM" value="NEAREST_NEIGHBOUR" />
+  <parameter name="DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="PIXELS_IN_PARALLEL" value="2" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_mtm_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_crs_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_pipelined_mux.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_edge_pad.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_mirror.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_axi_zero_pad.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_axi_zero_strip.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_round_sat.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_add_tree.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_mult.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_2_mult_add.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_3_mult_add.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_4_mult_add.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_mult_add.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/src_hdl/intel_vvp_crs_v_up_algo_comp.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/src_hdl/intel_vvp_crs_v_up_algo_comp_nn.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/src_hdl/intel_vvp_crs_v_up_algo_comp_bl.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/src_hdl/intel_vvp_crs_v_up_algo_comp_ft.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/src_hdl/intel_vvp_crs_v_up_algo_comp.ocp"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_mtm_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_crs_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_pipelined_mux.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_edge_pad.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_mirror.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_axi_zero_pad.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_axi_zero_strip.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_round_sat.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_add_tree.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_mult.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_2_mult_add.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_3_mult_add.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_4_mult_add.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/intel_vvp_mult_add.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/src_hdl/intel_vvp_crs_v_up_algo_comp.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/src_hdl/intel_vvp_crs_v_up_algo_comp_nn.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/src_hdl/intel_vvp_crs_v_up_algo_comp_bl.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/src_hdl/intel_vvp_crs_v_up_algo_comp_ft.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_crs_v_up_algo_comp_2451/synth/src_hdl/intel_vvp_crs_v_up_algo_comp.ocp"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/chroma_resampler/intel_vvp_crs_v_up_algo_comp/intel_vvp_crs_v_up_algo_comp_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="system_intel_vvp_crs_0_intel_vvp_crs_v_2451_dmyhifa"
+     as="up_core" />
+  <messages>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_crs_v_up_algo_comp"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="intel_vvp_cpp_adapter"
+   version="24.4.0"
+   name="intel_vvp_cpp_adapter">
+  <parameter name="INTERFACE_TYPE" value="DATA" />
+  <parameter name="BPS" value="8" />
+  <parameter name="NUMBER_OF_COLOR_PLANES_IN" value="2" />
+  <parameter name="NUMBER_OF_COLOR_PLANES_OUT" value="2" />
+  <parameter name="PIXELS_IN_PARALLEL" value="1" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_cpp_adapter_2440/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_cpp_adapter_2440/synth/intel_vvp_axi_zero_pad.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_cpp_adapter_2440/synth/intel_vvp_axi_zero_strip.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_cpp_adapter_2440/synth/src_hdl/intel_vvp_cpp_adapter.sv"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_cpp_adapter_2440/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_cpp_adapter_2440/synth/intel_vvp_axi_zero_pad.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_cpp_adapter_2440/synth/intel_vvp_axi_zero_strip.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_cpp_adapter_2440/synth/src_hdl/intel_vvp_cpp_adapter.sv"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/color_planes_adapter/intel_vvp_cpp_adapter/intel_vvp_cpp_adapter_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="system_intel_vvp_crs_0_intel_vvp_crs_v_2451_dmyhifa"
+     as="up_cols_conv" />
+  <instantiator
+     instantiator="system_intel_vvp_crs_0_intel_vvp_crs_h_2451_7uuv3hi"
+     as="up_cols_conv" />
+  <messages>
+   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_cpp_adapter"</message>
   </messages>
  </entity>
  <entity
@@ -610,55 +1487,6 @@
      as="scheduler" />
   <messages>
    <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_crs_h_cmd_gen"</message>
-  </messages>
- </entity>
- <entity
-   kind="intel_vvp_cpp_adapter"
-   version="24.4.0"
-   name="intel_vvp_cpp_adapter">
-  <parameter name="INTERFACE_TYPE" value="DATA" />
-  <parameter name="BPS" value="8" />
-  <parameter name="NUMBER_OF_COLOR_PLANES_IN" value="2" />
-  <parameter name="NUMBER_OF_COLOR_PLANES_OUT" value="2" />
-  <parameter name="PIXELS_IN_PARALLEL" value="1" />
-  <generatedFiles>
-   <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_cpp_adapter_2440/synth/intel_vvp_common_pkg.sv"
-       attributes="" />
-   <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_cpp_adapter_2440/synth/intel_vvp_axi_zero_pad.sv"
-       attributes="" />
-   <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_cpp_adapter_2440/synth/intel_vvp_axi_zero_strip.sv"
-       attributes="" />
-   <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_cpp_adapter_2440/synth/src_hdl/intel_vvp_cpp_adapter.sv"
-       attributes="" />
-  </generatedFiles>
-  <childGeneratedFiles>
-   <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_cpp_adapter_2440/synth/intel_vvp_common_pkg.sv"
-       attributes="" />
-   <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_cpp_adapter_2440/synth/intel_vvp_axi_zero_pad.sv"
-       attributes="" />
-   <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_cpp_adapter_2440/synth/intel_vvp_axi_zero_strip.sv"
-       attributes="" />
-   <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_intel_vvp_crs_0/intel_vvp_cpp_adapter_2440/synth/src_hdl/intel_vvp_cpp_adapter.sv"
-       attributes="" />
-  </childGeneratedFiles>
-  <sourceFiles>
-   <file
-       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/color_planes_adapter/intel_vvp_cpp_adapter/intel_vvp_cpp_adapter_hw.tcl" />
-  </sourceFiles>
-  <childSourceFiles/>
-  <instantiator
-     instantiator="system_intel_vvp_crs_0_intel_vvp_crs_h_2451_7uuv3hi"
-     as="up_cols_conv" />
-  <messages>
-   <message level="Info" culprit="system_intel_vvp_crs_0">"Generating: intel_vvp_cpp_adapter"</message>
   </messages>
  </entity>
  <entity

@@ -6,11 +6,11 @@
 module system_intel_vvp_crs_0 (
 		input  wire        main_clock_clk,       //    main_clock.clk,   Clock Input
 		input  wire        main_reset_reset,     //    main_reset.reset
-		input  wire [15:0] axi4s_vid_in_tdata,   //  axi4s_vid_in.tdata
+		input  wire [23:0] axi4s_vid_in_tdata,   //  axi4s_vid_in.tdata
 		input  wire        axi4s_vid_in_tvalid,  //              .tvalid
 		output wire        axi4s_vid_in_tready,  //              .tready
 		input  wire        axi4s_vid_in_tlast,   //              .tlast
-		input  wire [1:0]  axi4s_vid_in_tuser,   //              .tuser
+		input  wire [2:0]  axi4s_vid_in_tuser,   //              .tuser
 		output wire [23:0] axi4s_vid_out_tdata,  // axi4s_vid_out.tdata
 		output wire        axi4s_vid_out_tvalid, //              .tvalid
 		input  wire        axi4s_vid_out_tready, //              .tready
@@ -18,14 +18,14 @@ module system_intel_vvp_crs_0 (
 		output wire [2:0]  axi4s_vid_out_tuser   //              .tuser
 	);
 
-	system_intel_vvp_crs_0_intel_vvp_crs_2451_kuffg4i intel_vvp_crs_0 (
+	system_intel_vvp_crs_0_intel_vvp_crs_2451_jg5hjci intel_vvp_crs_0 (
 		.main_clock_clk       (main_clock_clk),       //   input,   width = 1,    main_clock.clk
 		.main_reset_reset     (main_reset_reset),     //   input,   width = 1,    main_reset.reset
-		.axi4s_vid_in_tdata   (axi4s_vid_in_tdata),   //   input,  width = 16,  axi4s_vid_in.tdata
+		.axi4s_vid_in_tdata   (axi4s_vid_in_tdata),   //   input,  width = 24,  axi4s_vid_in.tdata
 		.axi4s_vid_in_tvalid  (axi4s_vid_in_tvalid),  //   input,   width = 1,              .tvalid
 		.axi4s_vid_in_tready  (axi4s_vid_in_tready),  //  output,   width = 1,              .tready
 		.axi4s_vid_in_tlast   (axi4s_vid_in_tlast),   //   input,   width = 1,              .tlast
-		.axi4s_vid_in_tuser   (axi4s_vid_in_tuser),   //   input,   width = 2,              .tuser
+		.axi4s_vid_in_tuser   (axi4s_vid_in_tuser),   //   input,   width = 3,              .tuser
 		.axi4s_vid_out_tdata  (axi4s_vid_out_tdata),  //  output,  width = 24, axi4s_vid_out.tdata
 		.axi4s_vid_out_tvalid (axi4s_vid_out_tvalid), //  output,   width = 1,              .tvalid
 		.axi4s_vid_out_tready (axi4s_vid_out_tready), //   input,   width = 1,              .tready

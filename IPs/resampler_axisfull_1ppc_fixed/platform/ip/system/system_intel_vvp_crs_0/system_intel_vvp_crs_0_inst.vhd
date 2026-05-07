@@ -2,11 +2,11 @@
 		port (
 			main_clock_clk       : in  std_logic                     := 'X';             -- clk
 			main_reset_reset     : in  std_logic                     := 'X';             -- reset
-			axi4s_vid_in_tdata   : in  std_logic_vector(15 downto 0) := (others => 'X'); -- tdata
+			axi4s_vid_in_tdata   : in  std_logic_vector(23 downto 0) := (others => 'X'); -- tdata
 			axi4s_vid_in_tvalid  : in  std_logic                     := 'X';             -- tvalid
 			axi4s_vid_in_tready  : out std_logic;                                        -- tready
 			axi4s_vid_in_tlast   : in  std_logic                     := 'X';             -- tlast
-			axi4s_vid_in_tuser   : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- tuser
+			axi4s_vid_in_tuser   : in  std_logic_vector(2 downto 0)  := (others => 'X'); -- tuser
 			axi4s_vid_out_tdata  : out std_logic_vector(23 downto 0);                    -- tdata
 			axi4s_vid_out_tvalid : out std_logic;                                        -- tvalid
 			axi4s_vid_out_tready : in  std_logic                     := 'X';             -- tready

@@ -34,8 +34,8 @@ on the Quartus Prime software download page.
 	(port
 		(pt 0 126)
 		(input)
-		(text "intel_vvp_crs_0_axi4s_vid_in_tdata[15..0]" (rect 0 0 171 12)(font "SansSerif" (font_size 8)))
-		(text "intel_vvp_crs_0_axi4s_vid_in_tdata[15..0]" (rect 4 115 250 126)(font "SansSerif" (font_size 8)))
+		(text "intel_vvp_crs_0_axi4s_vid_in_tdata[23..0]" (rect 0 0 172 12)(font "SansSerif" (font_size 8)))
+		(text "intel_vvp_crs_0_axi4s_vid_in_tdata[23..0]" (rect 4 115 250 126)(font "SansSerif" (font_size 8)))
 		(line (pt 0 126)(pt 221 126)(line_width 3))
 	)
 	(port
@@ -55,8 +55,8 @@ on the Quartus Prime software download page.
 	(port
 		(pt 0 226)
 		(input)
-		(text "intel_vvp_crs_0_axi4s_vid_in_tuser[1..0]" (rect 0 0 167 12)(font "SansSerif" (font_size 8)))
-		(text "intel_vvp_crs_0_axi4s_vid_in_tuser[1..0]" (rect 4 215 244 226)(font "SansSerif" (font_size 8)))
+		(text "intel_vvp_crs_0_axi4s_vid_in_tuser[2..0]" (rect 0 0 168 12)(font "SansSerif" (font_size 8)))
+		(text "intel_vvp_crs_0_axi4s_vid_in_tuser[2..0]" (rect 4 215 244 226)(font "SansSerif" (font_size 8)))
 		(line (pt 0 226)(pt 221 226)(line_width 3))
 	)
 	(port
@@ -117,8 +117,8 @@ on the Quartus Prime software download page.
 	(port
 		(pt 544 226)
 		(output)
-		(text "intel_vvp_tpg_0_axi4s_vid_out_tdata[15..0]" (rect 0 0 175 12)(font "SansSerif" (font_size 8)))
-		(text "intel_vvp_tpg_0_axi4s_vid_out_tdata[15..0]" (rect 328 215 580 226)(font "SansSerif" (font_size 8)))
+		(text "intel_vvp_tpg_0_axi4s_vid_out_tdata[23..0]" (rect 0 0 177 12)(font "SansSerif" (font_size 8)))
+		(text "intel_vvp_tpg_0_axi4s_vid_out_tdata[23..0]" (rect 326 215 578 226)(font "SansSerif" (font_size 8)))
 		(line (pt 544 226)(pt 306 226)(line_width 3))
 	)
 	(port
@@ -138,8 +138,8 @@ on the Quartus Prime software download page.
 	(port
 		(pt 544 326)
 		(output)
-		(text "intel_vvp_tpg_0_axi4s_vid_out_tuser[1..0]" (rect 0 0 172 12)(font "SansSerif" (font_size 8)))
-		(text "intel_vvp_tpg_0_axi4s_vid_out_tuser[1..0]" (rect 333 315 579 326)(font "SansSerif" (font_size 8)))
+		(text "intel_vvp_tpg_0_axi4s_vid_out_tuser[2..0]" (rect 0 0 173 12)(font "SansSerif" (font_size 8)))
+		(text "intel_vvp_tpg_0_axi4s_vid_out_tuser[2..0]" (rect 331 315 577 326)(font "SansSerif" (font_size 8)))
 		(line (pt 544 326)(pt 306 326)(line_width 3))
 	)
 	(drawing

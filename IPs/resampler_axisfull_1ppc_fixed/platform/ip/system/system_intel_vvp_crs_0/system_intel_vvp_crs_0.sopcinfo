@@ -5,7 +5,7 @@
  version="1.0"
  fabric="QSYS">
  <!-- Format version 25.1.1 125 (Future versions may contain additional information.) -->
- <!-- 2026.05.07.16:57:26 -->
+ <!-- 2026.05.07.17:28:10 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
@@ -112,7 +112,7 @@
    name="intel_vvp_crs_0"
    kind="intel_vvp_crs"
    version="24.5.1"
-   entity="system_intel_vvp_crs_0_intel_vvp_crs_2451_kuffg4i"
+   entity="system_intel_vvp_crs_0_intel_vvp_crs_2451_jg5hjci"
    library="intel_vvp_crs_2451"
    path="intel_vvp_crs_0"
    hpath="intel_vvp_crs_0"
@@ -139,7 +139,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>16384</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -211,7 +211,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>1</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -257,7 +257,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="SUPPORT_420_TO_444">
    <type>int</type>
-   <value>0</value>
+   <value>1</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -313,9 +313,9 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="VERT_ALGORITHM">
    <type>java.lang.String</type>
-   <value>BILINEAR</value>
+   <value>NEAREST_NEIGHBOUR</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -339,7 +339,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>0</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -608,7 +608,7 @@ parameters are a RESULT of the module parameters. -->
    </assignment>
    <assignment>
     <name>intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES</name>
-    <value>2</value>
+    <value>3</value>
    </assignment>
    <assignment>
     <name>intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL</name>
@@ -656,7 +656,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>axi4s_vid_in_tdata</name>
     <direction>Input</direction>
-    <width>16</width>
+    <width>24</width>
     <role>tdata</role>
    </port>
    <port>
@@ -680,7 +680,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>axi4s_vid_in_tuser</name>
     <direction>Input</direction>
-    <width>2</width>
+    <width>3</width>
     <role>tuser</role>
    </port>
   </interface>

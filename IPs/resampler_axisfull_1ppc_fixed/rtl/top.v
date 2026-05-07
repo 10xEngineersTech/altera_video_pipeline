@@ -7,11 +7,11 @@ module top (
 );
 
     // TPG signals (Exported)
-    wire [15:0] tpg_out_tdata;
+    wire [23:0] tpg_out_tdata;
     wire        tpg_out_tvalid;
     wire        tpg_out_tready;
     wire        tpg_out_tlast;
-    wire [1:0]  tpg_out_tuser;
+    wire [2:0]  tpg_out_tuser;
 
     // Resampler In (Exported)
     wire [23:0] crs_in_tdata;
@@ -28,10 +28,10 @@ module top (
     wire [2:0]  crs_out_tuser;
 
     // Connections: TPG -> Resampler
-    assign crs_in_tdata  = {8'b0, tpg_out_tdata};
+    assign crs_in_tdata  = tpg_out_tdata;
     assign crs_in_tvalid = tpg_out_tvalid;
     assign crs_in_tlast  = tpg_out_tlast;
-    assign crs_in_tuser  = {1'b0, tpg_out_tuser};
+    assign crs_in_tuser  =  tpg_out_tuser;
     assign tpg_out_tready = crs_in_tready;
 
     assign crs_out_tready = 1'b1; // checker is always ready

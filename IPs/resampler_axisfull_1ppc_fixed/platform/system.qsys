@@ -167,6 +167,27 @@ https://fpgasoftware.intel.com/eula.-->
                 &lt;consumedSystemInfos/&gt;
             &lt;/value&gt;
         &lt;/entry&gt;
+        &lt;entry&gt;
+            &lt;key&gt;intel_vvp_crs_0_av_mm_control_agent&lt;/key&gt;
+            &lt;value&gt;
+                &lt;connectionPointName&gt;intel_vvp_crs_0_av_mm_control_agent&lt;/connectionPointName&gt;
+                &lt;suppliedSystemInfos/&gt;
+                &lt;consumedSystemInfos&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;ADDRESS_MAP&lt;/key&gt;
+                        &lt;value&gt;&amp;lt;address-map&amp;gt;&amp;lt;slave name='intel_vvp_crs_0.av_mm_control_agent' start='0x0' end='0x200' datawidth='32' /&amp;gt;&amp;lt;/address-map&amp;gt;&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;ADDRESS_WIDTH&lt;/key&gt;
+                        &lt;value&gt;9&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;MAX_SLAVE_DATA_WIDTH&lt;/key&gt;
+                        &lt;value&gt;32&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/consumedSystemInfos&gt;
+            &lt;/value&gt;
+        &lt;/entry&gt;
     &lt;/connPtSystemInfos&gt;
 &lt;/systemInfosDefinition&gt;</ipxact:value>
         </ipxact:parameter>
@@ -1974,7 +1995,6 @@ https://fpgasoftware.intel.com/eula.-->
       </altera:module>
     </altera:modules>
     <altera:connections>
-      <altera:connection altera:kind="axi4stream" altera:version="25.1" altera:start="intel_vvp_tpg_0.axi4s_vid_out" altera:end="intel_vvp_crs_0.axi4s_vid_in"></altera:connection>
       <altera:connection altera:kind="clock" altera:version="25.1" altera:start="clock_in.out_clk" altera:end="reset_in.clk"></altera:connection>
       <altera:connection altera:kind="clock" altera:version="25.1" altera:start="clock_in.out_clk" altera:end="intel_vvp_tpg_0.main_clock"></altera:connection>
       <altera:connection altera:kind="clock" altera:version="25.1" altera:start="clock_in.out_clk" altera:end="intel_vvp_crs_0.main_clock"></altera:connection>
@@ -1989,7 +2009,9 @@ https://fpgasoftware.intel.com/eula.-->
     <altera:altera_interface_boundary>
       <altera:interface_mapping altera:name="clk" altera:internal="clock_in.in_clk" altera:type="clock" altera:dir="end"></altera:interface_mapping>
       <altera:interface_mapping altera:name="intel_vvp_crs_0_av_mm_control_agent" altera:internal="intel_vvp_crs_0.av_mm_control_agent"></altera:interface_mapping>
+      <altera:interface_mapping altera:name="intel_vvp_crs_0_axi4s_vid_in" altera:internal="intel_vvp_crs_0.axi4s_vid_in" altera:type="axi4stream" altera:dir="end"></altera:interface_mapping>
       <altera:interface_mapping altera:name="intel_vvp_crs_0_axi4s_vid_out" altera:internal="intel_vvp_crs_0.axi4s_vid_out" altera:type="axi4stream" altera:dir="start"></altera:interface_mapping>
+      <altera:interface_mapping altera:name="intel_vvp_tpg_0_axi4s_vid_out" altera:internal="intel_vvp_tpg_0.axi4s_vid_out" altera:type="axi4stream" altera:dir="start"></altera:interface_mapping>
       <altera:interface_mapping altera:name="reset" altera:internal="reset_in.in_reset" altera:type="reset" altera:dir="end"></altera:interface_mapping>
     </altera:altera_interface_boundary>
     <ipxact:components>

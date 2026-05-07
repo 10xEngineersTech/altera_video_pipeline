@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2026.04.30.16:38:35"
- outputDirectory="/mnt/ssd2/hamza/VVP_IP_Validation/resampler_axis/platform/ip/system/system_reset_in/">
+ date="2026.05.07.16:57:06"
+ outputDirectory="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_reset_in/">
  <perimeter>
   <parameter
      name="AUTO_GENERATION_ID"
@@ -88,17 +88,17 @@
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
   <generatedFiles>
    <file
-       path="/mnt/ssd2/hamza/VVP_IP_Validation/resampler_axis/platform/ip/system/system_reset_in/synth/system_reset_in.v"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_reset_in/synth/system_reset_in.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/mnt/ssd2/hamza/VVP_IP_Validation/resampler_axis/platform/ip/system/system_reset_in/synth/system_reset_in.v"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_reset_in/synth/system_reset_in.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/mnt/ssd2/hamza/VVP_IP_Validation/resampler_axis/platform/ip/system/system_reset_in.ip" />
+       path="/mnt/ssd2/hamza/altera_video_pipeline/IPs/resampler_axisfull_1ppc_fixed/platform/ip/system/system_reset_in.ip" />
   </sourceFiles>
   <childSourceFiles/>
   <messages>

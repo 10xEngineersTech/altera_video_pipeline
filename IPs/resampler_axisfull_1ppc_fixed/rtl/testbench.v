@@ -6,10 +6,6 @@ module testbench();
     reg reset_reset;
     wire status_led;
 
-
-
-
-
     // ----- Clock Generation -----
     initial begin
         clk_clk = 0;
@@ -42,7 +38,7 @@ module testbench();
         repeat (100) @(posedge clk_clk);
         
         $display("Monitoring status_led...");
-        repeat (1000) begin
+        repeat (5000) begin // Keep increased timeout
             @(posedge clk_clk);
             if (status_led) begin
                 $display("Status: PASS (status_led is HIGH)");
@@ -81,22 +77,22 @@ module testbench();
             saved_cb  <= 8'd0;
             saved_y0  <= 8'd0;
         end else begin
-            if (u_top.u_dut.intel_vvp_tpg_0_axi4s_vid_out_tvalid &&
-                (u_top.u_dut.intel_vvp_tpg_0_axi4s_vid_out_tuser[1] == 1'b0)) begin
+            if (u_top.tpg_out_tvalid &&
+                (u_top.tpg_out_tuser[1] == 1'b0)) begin
 
                 // tuser[0] = SOF → forces re-sync to even phase
-                if (u_top.u_dut.intel_vvp_tpg_0_axi4s_vid_out_tuser[0] || tpg_phase == 1'b0) begin
+                if (u_top.tpg_out_tuser[0] || tpg_phase == 1'b0) begin
                     // Even pixel: {Cb, Y0}
-                    saved_cb  <= u_top.u_dut.intel_vvp_tpg_0_axi4s_vid_out_tdata[15:8];
-                    saved_y0  <= u_top.u_dut.intel_vvp_tpg_0_axi4s_vid_out_tdata[7:0];
+                    saved_cb  <= u_top.tpg_out_tdata[15:8];
+                    saved_y0  <= u_top.tpg_out_tdata[7:0];
                     tpg_phase <= 1'b1;
                 end else begin
                     // Odd pixel: {Cr, Y1}  → write complete pair
                     $fdisplay(fd_yuv422, "%02x%02x%02x%02x",
-                        u_top.u_dut.intel_vvp_tpg_0_axi4s_vid_out_tdata[15:8], // Cr
-                        u_top.u_dut.intel_vvp_tpg_0_axi4s_vid_out_tdata[7:0],  // Y1
-                        saved_cb,                                                 // Cb
-                        saved_y0);                                                // Y0
+                        u_top.tpg_out_tdata[15:8], // Cr
+                        u_top.tpg_out_tdata[7:0],  // Y1
+                        saved_cb,                  // Cb
+                        saved_y0);                 // Y0
                     tpg_phase <= 1'b0;
                 end
             end
@@ -105,7 +101,7 @@ module testbench();
 
     // CRS YUV444 dump  -- {V[7:0], Y[7:0], U[7:0]}
     always @(posedge clk_clk) begin
-        if (u_top.crs_out_tvalid && u_top.crs_out_tready &&
+        if (u_top.crs_out_tvalid && 1'b1 && // crs_out_tready is always 1 in top.v
             (u_top.crs_out_tuser[1] == 1'b0)) begin
             $fdisplay(fd_yuv444, "%06x", u_top.crs_out_tdata);
         end

@@ -51,12 +51,19 @@ module top #(
     localparam SCL_OUT_WIDTH_ADDR  = 7'h52;
     localparam SCL_OUT_HEIGHT_ADDR = 7'h53;
 
-    // --- Internal AXI-Stream: TPG to CRS ---
+    // --- Internal AXI-Stream: TPG to DIL ---
     wire [15:0] tpg_tdata;
     wire        tpg_tvalid;
     wire        tpg_tready;
     wire        tpg_tlast;
     wire [1:0]  tpg_tuser;
+
+    // --- Internal AXI-Stream: DIL to CRS ---
+    wire [23:0] dil_tdata;
+    wire        dil_tvalid;
+    wire        dil_tready;
+    wire        dil_tlast;
+    wire [2:0]  dil_tuser;
 
     // --- Internal AXI-Stream: CRS to Clipper ---
     wire [23:0] crs_tdata;
@@ -140,8 +147,11 @@ module top #(
     // -------------------------------------------------------------------------
     wire ready_to_start = (current_state == STATE_WORKING);
 
+    wire dil_in_ready;
+    wire tpg_to_dil_valid = tpg_tvalid && ready_to_start;
+
     wire crs_in_ready;
-    wire tpg_to_crs_valid = tpg_tvalid && ready_to_start;
+    wire dil_to_crs_valid = dil_tvalid;
 
     wire gated_clipper_ready; 
     wire crs_to_clipper_valid = crs_tvalid;
@@ -159,13 +169,26 @@ module top #(
         .intel_vvp_tpg_0_axi4s_vid_out_tready          (tpg_tready),
         .intel_vvp_tpg_0_axi4s_vid_out_tlast           (tpg_tlast),
         .intel_vvp_tpg_0_axi4s_vid_out_tuser           (tpg_tuser),
+
+        // 2. Deinterlacer (DIL)
+        .intel_vvp_dil_0_axi4s_vid_in_tdata            ({8'h0, tpg_tdata}),
+        .intel_vvp_dil_0_axi4s_vid_in_tvalid           (tpg_to_dil_valid),
+        .intel_vvp_dil_0_axi4s_vid_in_tready           (dil_in_ready),
+        .intel_vvp_dil_0_axi4s_vid_in_tlast            (tpg_tlast),
+        .intel_vvp_dil_0_axi4s_vid_in_tuser            ({1'b0, tpg_tuser}),
+
+        .intel_vvp_dil_0_axi4s_vid_out_tdata           (dil_tdata),
+        .intel_vvp_dil_0_axi4s_vid_out_tvalid          (dil_tvalid),
+        .intel_vvp_dil_0_axi4s_vid_out_tready          (dil_tready),
+        .intel_vvp_dil_0_axi4s_vid_out_tlast           (dil_tlast),
+        .intel_vvp_dil_0_axi4s_vid_out_tuser           (dil_tuser),
         
-        // 2. Resampler (CRS)
-        .intel_vvp_crs_0_axi4s_vid_in_tdata            (tpg_tdata),
-        .intel_vvp_crs_0_axi4s_vid_in_tvalid           (tpg_to_crs_valid),
+        // 3. Resampler (CRS)
+        .intel_vvp_crs_0_axi4s_vid_in_tdata            (dil_tdata[15:0]),
+        .intel_vvp_crs_0_axi4s_vid_in_tvalid           (dil_to_crs_valid),
         .intel_vvp_crs_0_axi4s_vid_in_tready           (crs_in_ready),
-        .intel_vvp_crs_0_axi4s_vid_in_tlast            (tpg_tlast),
-        .intel_vvp_crs_0_axi4s_vid_in_tuser            (tpg_tuser),
+        .intel_vvp_crs_0_axi4s_vid_in_tlast            (dil_tlast),
+        .intel_vvp_crs_0_axi4s_vid_in_tuser            (dil_tuser[1:0]),
 
         .intel_vvp_crs_0_axi4s_vid_out_tdata           (crs_tdata),
         .intel_vvp_crs_0_axi4s_vid_out_tvalid          (crs_tvalid),
@@ -173,7 +196,7 @@ module top #(
         .intel_vvp_crs_0_axi4s_vid_out_tlast           (crs_tlast),
         .intel_vvp_crs_0_axi4s_vid_out_tuser           (crs_tuser),
 
-        // 3. Clipper Input (Connected to CRS)
+        // 4. Clipper Input (Connected to CRS)
         .intel_vvp_clipper_0_axi4s_vid_in_tdata        (crs_tdata),
         .intel_vvp_clipper_0_axi4s_vid_in_tvalid       (crs_to_clipper_valid),
         .intel_vvp_clipper_0_axi4s_vid_in_tready       (gated_clipper_ready),
@@ -209,7 +232,8 @@ module top #(
     );
 
     // Provide backpressure to TPG if pipeline is not ready or config is not done
-    assign tpg_tready = crs_in_ready && ready_to_start;
+    assign tpg_tready = dil_in_ready && ready_to_start;
+    assign dil_tready = crs_in_ready;
     assign crs_tready = gated_clipper_ready;
 
 endmodule

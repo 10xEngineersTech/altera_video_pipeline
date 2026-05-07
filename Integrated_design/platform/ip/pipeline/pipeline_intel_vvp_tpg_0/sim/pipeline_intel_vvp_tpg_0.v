@@ -13,7 +13,7 @@ module pipeline_intel_vvp_tpg_0 (
 		output wire [1:0]  axi4s_vid_out_tuser   //              .tuser
 	);
 
-	pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_g7yk52i intel_vvp_tpg_0 (
+	pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_k6ocxki intel_vvp_tpg_0 (
 		.main_clock_clk       (main_clock_clk),       //   input,   width = 1,    main_clock.clk
 		.main_reset_reset     (main_reset_reset),     //   input,   width = 1,    main_reset.reset
 		.axi4s_vid_out_tdata  (axi4s_vid_out_tdata),  //  output,  width = 16, axi4s_vid_out.tdata

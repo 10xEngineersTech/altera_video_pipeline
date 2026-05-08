@@ -1,0 +1,72 @@
+set_global_assignment -entity "color_space" -library "color_space" -name IP_TOOL_NAME "QsysPrimePro"
+set_global_assignment -entity "color_space" -library "color_space" -name IP_TOOL_VERSION "25.1.1"
+set_global_assignment -entity "color_space" -library "color_space" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -library "color_space" -name SOPCINFO_FILE [file join $::quartus(qip_path) "color_space.sopcinfo"]
+set_global_assignment -entity "color_space" -library "color_space" -name SLD_INFO "QSYS_NAME color_space HAS_SOPCINFO 1 GENERATION_ID 0"
+set_global_assignment -library "color_space" -name MISC_FILE [file join $::quartus(qip_path) "color_space.cmp"]
+set_global_assignment -entity "color_space" -library "color_space" -name IP_TARGETED_DEVICE_FAMILY "Cyclone 10 GX"
+set_global_assignment -entity "color_space" -library "color_space" -name IP_GENERATED_DEVICE_FAMILY "{Cyclone 10 GX}"
+set_global_assignment -entity "color_space" -library "color_space" -name IP_QSYS_MODE "SYSTEM"
+set_global_assignment -name SYNTHESIS_ONLY_QIP ON
+set_global_assignment -library "color_space" -name MISC_FILE [file join $::quartus(qip_path) "../color_space.qsys"]
+
+set_global_assignment -entity "color_space_clock_in" -library "color_space_clock_in" -name IP_COMPONENT_NAME "Y29sb3Jfc3BhY2VfY2xvY2tfaW4="
+set_global_assignment -entity "color_space_clock_in" -library "color_space_clock_in" -name IP_COMPONENT_DISPLAY_NAME "R2VuZXJpYyBDb21wb25lbnQ="
+set_global_assignment -entity "color_space_clock_in" -library "color_space_clock_in" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "color_space_clock_in" -library "color_space_clock_in" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "color_space_clock_in" -library "color_space_clock_in" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
+set_global_assignment -entity "color_space_clock_in" -library "color_space_clock_in" -name IP_COMPONENT_VERSION "MS4w"
+set_global_assignment -entity "color_space_clock_in" -library "color_space_clock_in" -name IP_COMPONENT_DESCRIPTION "QSBkeW5hbWljIGNvbXBvbmVudCB3aGVyZSB5b3UgY2FuIGFkZCwgbW9kaWZ5IG9yIHJlbW92ZSBpbnRlcmZhY2VzIGFuZCBwb3J0cyBvbiB0aGUgZmx5"
+set_global_assignment -entity "color_space_clock_in" -library "color_space_clock_in" -name IP_COMPONENT_GROUP "R2VuZXJpYyBDb21wb25lbnQ="
+set_global_assignment -entity "color_space_intel_vvp_csc_0" -library "color_space_intel_vvp_csc_0" -name IP_COMPONENT_NAME "Y29sb3Jfc3BhY2VfaW50ZWxfdnZwX2NzY18w"
+set_global_assignment -entity "color_space_intel_vvp_csc_0" -library "color_space_intel_vvp_csc_0" -name IP_COMPONENT_DISPLAY_NAME "R2VuZXJpYyBDb21wb25lbnQ="
+set_global_assignment -entity "color_space_intel_vvp_csc_0" -library "color_space_intel_vvp_csc_0" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "color_space_intel_vvp_csc_0" -library "color_space_intel_vvp_csc_0" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "color_space_intel_vvp_csc_0" -library "color_space_intel_vvp_csc_0" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
+set_global_assignment -entity "color_space_intel_vvp_csc_0" -library "color_space_intel_vvp_csc_0" -name IP_COMPONENT_VERSION "MS4w"
+set_global_assignment -entity "color_space_intel_vvp_csc_0" -library "color_space_intel_vvp_csc_0" -name IP_COMPONENT_DESCRIPTION "QSBkeW5hbWljIGNvbXBvbmVudCB3aGVyZSB5b3UgY2FuIGFkZCwgbW9kaWZ5IG9yIHJlbW92ZSBpbnRlcmZhY2VzIGFuZCBwb3J0cyBvbiB0aGUgZmx5"
+set_global_assignment -entity "color_space_intel_vvp_csc_0" -library "color_space_intel_vvp_csc_0" -name IP_COMPONENT_GROUP "R2VuZXJpYyBDb21wb25lbnQ="
+set_global_assignment -entity "color_space_intel_vvp_tpg_0" -library "color_space_intel_vvp_tpg_0" -name IP_COMPONENT_NAME "Y29sb3Jfc3BhY2VfaW50ZWxfdnZwX3RwZ18w"
+set_global_assignment -entity "color_space_intel_vvp_tpg_0" -library "color_space_intel_vvp_tpg_0" -name IP_COMPONENT_DISPLAY_NAME "R2VuZXJpYyBDb21wb25lbnQ="
+set_global_assignment -entity "color_space_intel_vvp_tpg_0" -library "color_space_intel_vvp_tpg_0" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "color_space_intel_vvp_tpg_0" -library "color_space_intel_vvp_tpg_0" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "color_space_intel_vvp_tpg_0" -library "color_space_intel_vvp_tpg_0" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
+set_global_assignment -entity "color_space_intel_vvp_tpg_0" -library "color_space_intel_vvp_tpg_0" -name IP_COMPONENT_VERSION "MS4w"
+set_global_assignment -entity "color_space_intel_vvp_tpg_0" -library "color_space_intel_vvp_tpg_0" -name IP_COMPONENT_DESCRIPTION "QSBkeW5hbWljIGNvbXBvbmVudCB3aGVyZSB5b3UgY2FuIGFkZCwgbW9kaWZ5IG9yIHJlbW92ZSBpbnRlcmZhY2VzIGFuZCBwb3J0cyBvbiB0aGUgZmx5"
+set_global_assignment -entity "color_space_intel_vvp_tpg_0" -library "color_space_intel_vvp_tpg_0" -name IP_COMPONENT_GROUP "R2VuZXJpYyBDb21wb25lbnQ="
+set_global_assignment -entity "color_space_reset_in" -library "color_space_reset_in" -name IP_COMPONENT_NAME "Y29sb3Jfc3BhY2VfcmVzZXRfaW4="
+set_global_assignment -entity "color_space_reset_in" -library "color_space_reset_in" -name IP_COMPONENT_DISPLAY_NAME "R2VuZXJpYyBDb21wb25lbnQ="
+set_global_assignment -entity "color_space_reset_in" -library "color_space_reset_in" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "color_space_reset_in" -library "color_space_reset_in" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "color_space_reset_in" -library "color_space_reset_in" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
+set_global_assignment -entity "color_space_reset_in" -library "color_space_reset_in" -name IP_COMPONENT_VERSION "MS4w"
+set_global_assignment -entity "color_space_reset_in" -library "color_space_reset_in" -name IP_COMPONENT_DESCRIPTION "QSBkeW5hbWljIGNvbXBvbmVudCB3aGVyZSB5b3UgY2FuIGFkZCwgbW9kaWZ5IG9yIHJlbW92ZSBpbnRlcmZhY2VzIGFuZCBwb3J0cyBvbiB0aGUgZmx5"
+set_global_assignment -entity "color_space_reset_in" -library "color_space_reset_in" -name IP_COMPONENT_GROUP "R2VuZXJpYyBDb21wb25lbnQ="
+set_global_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name IP_COMPONENT_NAME "YWx0ZXJhX3Jlc2V0X2NvbnRyb2xsZXI="
+set_global_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name IP_COMPONENT_DISPLAY_NAME "TWVybGluIFJlc2V0IENvbnRyb2xsZXIgSW50ZWwgRlBHQSBJUA=="
+set_global_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name IP_COMPONENT_VERSION "MTkuMi40"
+set_global_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name IP_COMPONENT_DESCRIPTION "Rm9yIHN5c3RlbXMgd2l0aCBtdWx0aXBsZSByZXNldCBpbnB1dHMsIHRoZSBNZXJsaW4gUmVzZXQgQ29udHJvbGxlciBPUnMgYWxsIHJlc2V0IGlucHV0cyBhbmQgZ2VuZXJhdGVzIGEgc2luZ2xlIHJlc2V0IG91dHB1dC4="
+set_global_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name IP_COMPONENT_GROUP "QmFzaWMgRnVuY3Rpb25zL0Nsb2NrczsgUExMcyBhbmQgUmVzZXRz"
+set_global_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL3pjbjE1MTM5ODcyODI5MzUuaHRtbCNtd2gxNDA5OTU4ODI4NzMy"
+set_global_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvZGFtL3d3dy9wcm9ncmFtbWFibGUvdXMvZW4vcGRmcy9saXRlcmF0dXJlL3VnL3VnLXFwcC1wbGF0Zm9ybS1kZXNpZ25lci5wZGY="
+set_global_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2hjbzE0MTY4MzYxNDU1NTUuaHRtbCNoY28xNDE2ODM2NjUzMjIx"
+set_global_assignment -entity "color_space" -library "color_space" -name IP_COMPONENT_NAME "Y29sb3Jfc3BhY2U="
+set_global_assignment -entity "color_space" -library "color_space" -name IP_COMPONENT_DISPLAY_NAME "Y29sb3Jfc3BhY2U="
+set_global_assignment -entity "color_space" -library "color_space" -name IP_COMPONENT_REPORT_HIERARCHY "On"
+set_global_assignment -entity "color_space" -library "color_space" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "color_space" -library "color_space" -name IP_COMPONENT_VERSION "MS4w"
+
+
+set_global_assignment -library "altera_reset_controller_1924" -name VERILOG_FILE [file join $::quartus(qip_path) "altera_reset_controller_1924/synth/altera_reset_controller.v"]
+set_global_assignment -library "altera_reset_controller_1924" -name VERILOG_FILE [file join $::quartus(qip_path) "altera_reset_controller_1924/synth/altera_reset_synchronizer.v"]
+set_instance_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name SDC_ENTITY_FILE [file join $::quartus(qip_path) "altera_reset_controller_1924/synth/altera_reset_controller.sdc"] -no_sdc_promotion 
+set_global_assignment -library "color_space" -name VERILOG_FILE [file join $::quartus(qip_path) "synth/color_space.v"]
+
+
+set_global_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name IP_TOOL_NAME "altera_reset_controller"
+set_global_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name IP_TOOL_VERSION "19.2.4"
+set_global_assignment -entity "altera_reset_controller" -library "altera_reset_controller_1924" -name IP_TOOL_ENV "QsysPrimePro"
+

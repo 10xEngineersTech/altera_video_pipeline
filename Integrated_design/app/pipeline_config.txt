@@ -1,9 +1,9 @@
 # Video Pipeline Configuration
-tpg_width      = 32
-tpg_height     = 32
+tpg_width      = 64
+tpg_height     = 64
 clipper_top     = 4
 clipper_bottom  = 4
 clipper_left    = 4
-clipper_right   = 8
-scaler_width   = 12
-scaler_height  = 12
+clipper_right   = 4
+scaler_width   = 32
+scaler_height  = 32

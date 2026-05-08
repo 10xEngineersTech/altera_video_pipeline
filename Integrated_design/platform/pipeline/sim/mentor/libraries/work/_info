@@ -1,57 +1,65 @@
 m255
 K4
 z2
-Z0 !s99 nomlopt
+Z0 !s12c _opt
+Z1 !s99 nomlopt
 R0
-!s11f vlog 2021.2_1 2021.05, May 15 2021
+R1
+!s11f vlog 2025.1 2025.01, Jan 18 2025
 13
 !s112 1.1
 !i10d 8192
 !i10e 25
 !i10f 100
 cModel Technology
-Z1 d/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/pipeline/sim/mentor
+Z2 d/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/platform/pipeline/sim/mentor
 T_opt
-!s110 1778144534
-V7=oNikEThz]]zCZ?=4Xhz2
+!s110 1778242795
+VT6C9[OJ`W@T?T6;3e:5nD3
 04 2 4 work tb fast 0
-=1-000ae431a4f1-69fc5515-7fef2-25ed85
-!s124 OEM100
-o-quiet -auto_acc_if_foreign -work work -L work -L work_lib -L lpm_ver -L sgate_ver -L altera_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclone10gx_ver -L cyclone10gx_hip_ver -L cyclone10gx_hssi_ver -L lpm -L sgate -L altera -L altera_mf -L altera_lnsim -L cyclone10gx -L cyclone10gx_hip -L cyclone10gx_hssi -L altera_common_sv_packages -L intel_vvp_reset_sync_2440 -L intel_vvp_input_interface_bridge_2440 -L intel_vvp_output_interface_bridge_2440 -L intel_vvp_line_buffer_2440 -L intel_vvp_vert_scaler_scheduler_2451 -L intel_vvp_reset_bridge_2440 -L intel_vvp_horiz_scaler_cmd_2451 -L intel_vvp_horiz_scaler_algo_comp_2451 -L intel_vvp_scaler_h_macro_2451 -L intel_vvp_ro_reg_servicer_2441 -L intel_vvp_mm_agent_reset_hold_2440 -L altera_merlin_master_translator_193 -L altera_merlin_slave_translator_191 -L altera_mm_interconnect_1920 -L intel_vvp_slave_front_end_2441 -L intel_vvp_scaler_2451 -L pipeline_intel_vvp_scaler_0 -L pipeline_reset_in -L intel_vvp_clipper_scheduler_2451 -L intel_vvp_clipper_algo_comp_2451 -L intel_vvp_clipper_2451 -L pipeline_intel_vvp_clipper_0 -L intel_vvp_crs_scheduler_2451 -L intel_vvp_crs_h_cmd_gen_2451 -L intel_vvp_cpp_adapter_2440 -L intel_vvp_crs_h_up_algo_comp_2451 -L intel_vvp_crs_h_2451 -L intel_vvp_crs_2451 -L pipeline_intel_vvp_crs_0 -L intel_vvp_int_to_ext_bridge_2460 -L intel_vvp_protocol_conv_2460 -L pipeline_intel_vvp_protocol_conv_0 -L pipeline_clock_in -L intel_vvp_pkt_mux_2450 -L intel_vvp_pkt_duplicator_2450 -L intel_vvp_dil_bob_algo_comp_2451 -L intel_vvp_dil_bob_scheduler_2451 -L intel_vvp_dil_2451 -L pipeline_intel_vvp_dil_0 -L intel_vvp_tpg_scheduler_2451 -L intel_vvp_tpg_bars_algo_comp_2451 -L intel_vvp_tpg_2451 -L pipeline_intel_vvp_tpg_0 -L altera_reset_controller_1924 -L pipeline +acc +acc
-Z2 tCvgOpt 0
+=1-000ae431a4f1-69fdd4e7-1087a-93ea
+R1
+!s12f OEM100
+!s12b OEM100
+!s124 OEM10U48 
+!s135 nogc
+o-quiet -auto_acc_if_foreign -work work -L work -L work_lib -L lpm_ver -L sgate_ver -L altera_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclone10gx_ver -L cyclone10gx_hip_ver -L cyclone10gx_hssi_ver -L lpm -L sgate -L altera -L altera_mf -L altera_lnsim -L cyclone10gx -L cyclone10gx_hip -L cyclone10gx_hssi -L altera_common_sv_packages -L intel_vvp_reset_sync_2440 -L intel_vvp_tpg_scheduler_2451 -L intel_vvp_output_interface_bridge_2440 -L intel_vvp_tpg_bars_algo_comp_2451 -L intel_vvp_reset_bridge_2440 -L intel_vvp_ro_reg_servicer_2441 -L intel_vvp_mm_agent_reset_hold_2440 -L altera_merlin_master_translator_193 -L altera_merlin_slave_translator_191 -L altera_mm_interconnect_1920 -L intel_vvp_slave_front_end_2441 -L intel_vvp_tpg_2451 -L pipeline_intel_vvp_tpg_0 -L intel_vvp_input_interface_bridge_2440 -L intel_vvp_pkt_mux_2450 -L intel_vvp_pkt_duplicator_2450 -L intel_vvp_dil_bob_algo_comp_2451 -L intel_vvp_dil_bob_scheduler_2451 -L intel_vvp_line_buffer_2440 -L intel_vvp_dil_2451 -L pipeline_intel_vvp_dil_0 -L intel_vvp_vert_scaler_scheduler_2451 -L intel_vvp_horiz_scaler_cmd_2451 -L intel_vvp_horiz_scaler_algo_comp_2451 -L intel_vvp_scaler_h_macro_2451 -L intel_vvp_scaler_2451 -L pipeline_intel_vvp_scaler_0 -L intel_vvp_clipper_scheduler_2451 -L intel_vvp_clipper_algo_comp_2451 -L intel_vvp_clipper_2451 -L pipeline_intel_vvp_clipper_0 -L pipeline_reset_in -L pipeline_clock_in -L intel_vvp_crs_scheduler_2451 -L intel_vvp_crs_h_cmd_gen_2451 -L intel_vvp_cpp_adapter_2440 -L intel_vvp_crs_h_up_algo_comp_2451 -L intel_vvp_crs_h_2451 -L intel_vvp_crs_2451 -L pipeline_intel_vvp_crs_0 -L intel_vvp_int_to_ext_bridge_2460 -L intel_vvp_protocol_conv_2460 -L pipeline_intel_vvp_protocol_conv_0 -L altera_reset_controller_1924 -L pipeline +acc +acc
+Z3 tCvgOpt 0
 n@_opt
-OL;O;2021.2_1;73
+OL;O;2025.1;82
 vframe_controller
-Z3 !s110 1778144533
+2/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/app/../rtl/controller.v
+!s110 1778242790
 !i10b 1
 !s100 Ob98zged_V_iR[HhOlk7I3
-I^d=B:QJXY;FNCfVH1heQ22
-R1
-Z4 w1778139049
-8/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/app/../rtl/controller.v
-F/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/app/../rtl/controller.v
+I]ZJn?DIEh95ijmoJV^Z6H1
+R2
+Z4 w1778217732
+8/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/app/../rtl/controller.v
+F/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/app/../rtl/controller.v
 !i122 7
 L0 1 74
 Z5 VDg1SIo80bB@j0V0VzS_@n1
-Z6 OL;L;2021.2_1;73
+Z6 OL;L;2025.1;82
 r1
 !s85 0
 31
-Z7 !s108 1778144533.000000
-!s107 /mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/app/../rtl/controller.v|
-!s90 /mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/app/../rtl/controller.v|
+Z7 !s108 1778242789.000000
+!s107 /home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/app/../rtl/controller.v|
+!s90 /home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/app/../rtl/controller.v|
 !i113 0
 Z8 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-R2
-vmake_file
 R3
+vmake_file
+2/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/app/../rtl/make_file.v
+Z9 !s110 1778242789
 !i10b 1
-!s100 EU0HGL0=8Q?d7H?eX]UDR0
-IboDoBTkB>h8>=?=6=UCiH1
-R1
+!s100 J]7GHZno6nJIjNbf=CNcM3
+Ib<g3mcADfQi5gXcdS:OTz1
+R2
 R4
-8/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/app/../rtl/make_file.v
-F/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/app/../rtl/make_file.v
+8/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/app/../rtl/make_file.v
+F/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/app/../rtl/make_file.v
 !i122 6
 L0 3 75
 R5
@@ -60,21 +68,22 @@ r1
 !s85 0
 31
 R7
-!s107 /mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/app/../rtl/make_file.v|
-!s90 /mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/app/../rtl/make_file.v|
+!s107 /home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/app/../rtl/make_file.v|
+!s90 /home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/app/../rtl/make_file.v|
 !i113 0
 R8
-R2
+R3
 vtb
-!s110 1778144532
+2/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/app/../rtl/tb.v
+!s110 1778242788
 !i10b 1
-!s100 g>ZZQzjlT_l5U`41XATQ@1
-I2LYD6TP:7BSJP^X?<UVYc2
-R1
-w1778144442
-8/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/app/../rtl/tb.v
-F/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/app/../rtl/tb.v
-F/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/app/../rtl/../app/configuration.vh
+!s100 @M[G5@dbMnjlP4zML<3JS2
+IJi=IV]gzN_5b?hkPX@G<90
+R2
+w1778242620
+8/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/app/../rtl/tb.v
+F/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/app/../rtl/tb.v
+F/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/app/../rtl/../app/configuration.vh
 !i122 4
 L0 3 154
 R5
@@ -82,31 +91,32 @@ R6
 r1
 !s85 0
 31
-Z9 !s108 1778144532.000000
-!s107 /mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/app/../rtl/../app/configuration.vh|/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/app/../rtl/tb.v|
-!s90 /mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/app/../rtl/tb.v|
+Z10 !s108 1778242788.000000
+!s107 /home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/app/../rtl/../app/configuration.vh|/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/app/../rtl/tb.v|
+!s90 /home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/app/../rtl/tb.v|
 !i113 0
 R8
-R2
-vtop
 R3
+vtop
+2/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/app/../rtl/top.v
+R9
 !i10b 1
-!s100 jSnFUTh0AE`z4:1nE=Aa82
-IVVz7[hUXZTO=mTWmYm]LB3
-R1
-w1778143932
-8/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/app/../rtl/top.v
-F/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/app/../rtl/top.v
+!s100 Hi2S9>FzYF3<E2TCRG0Z23
+IJ@PLDV=`;68db=59l1XXg2
+R2
+w1778242091
+8/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/app/../rtl/top.v
+F/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/app/../rtl/top.v
 !i122 5
-L0 3 237
+L0 3 274
 R5
 R6
 r1
 !s85 0
 31
-R9
-!s107 /mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/app/../rtl/top.v|
-!s90 /mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/app/../rtl/top.v|
+R10
+!s107 /home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/app/../rtl/top.v|
+!s90 /home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/app/../rtl/top.v|
 !i113 0
 R8
-R2
+R3

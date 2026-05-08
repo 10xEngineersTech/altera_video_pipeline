@@ -1,21 +1,21 @@
 
 # Move to sim directory
-cd /mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/app/../platform/pipeline/sim/mentor
+cd /home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/app/../platform/pipeline/sim/mentor
 
 # Setup and Compile IP
 source msim_setup.tcl
 
 # Compile Device Libraries
-dev_com
+#dev_com
 
 # Compile IP
 com
 
 # Compile RTL and TB
-vlog /mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/app/../rtl/tb.v
-vlog /mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/app/../rtl/top.v
-vlog /mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/app/../rtl/make_file.v
-vlog /mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/app/../rtl/controller.v
+vlog /home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/app/../rtl/tb.v
+vlog /home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/app/../rtl/top.v
+vlog /home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/app/../rtl/make_file.v
+vlog /home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/app/../rtl/controller.v
 
 # Elaborate
 set TOP_LEVEL_NAME work.tb

@@ -1,31 +1,33 @@
 m255
 K4
 z2
-!s11f vlog 2021.2_1 2021.05, May 15 2021
+!s11f vlog 2025.1 2025.01, Jan 18 2025
 13
 !s112 1.1
 !i10d 8192
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 d/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/pipeline/sim/mentor
+Z0 d/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/platform/pipeline/sim/mentor
 valtera_reset_controller
-Z1 !s110 1778144532
+Z1 !s106 Intel
+2../../altera_reset_controller_1924/sim/altera_reset_controller.v
+Z2 !s110 1778242787
 !i10b 1
-!s100 >K1e_Y]4g=XKB8ehSYc:b0
-IAad`kfL3SjaWiL>W6Aa?B1
+!s100 DBkVS>o?79=N51TDO7j7[2
+IA;n?HT9:PB1@5^0E>j14C1
 R0
-Z2 w1778143470
+Z3 w1778241299
 8../../altera_reset_controller_1924/sim/altera_reset_controller.v
 F../../altera_reset_controller_1924/sim/altera_reset_controller.v
 !i122 2
 L0 41 324
-Z3 VDg1SIo80bB@j0V0VzS_@n1
-Z4 OL;L;2021.2_1;73
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+Z5 OL;L;2025.1;82
 r1
 !s85 0
 31
-Z5 !s108 1778144532.000000
+!s108 1778242786.000000
 !s107 ../../altera_reset_controller_1924/sim/altera_reset_controller.v|
 !s90 ../../altera_reset_controller_1924/sim/altera_reset_controller.v|-work|altera_reset_controller_1924|
 !i113 0
@@ -33,21 +35,23 @@ Z6 o-work altera_reset_controller_1924 -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -
 Z7 tCvgOpt 0
 valtera_reset_synchronizer
 R1
-!i10b 1
-!s100 lNCNNf@BZ[fiYT03EHdnm2
-IlX8G0emE?z;Ugm6a60H421
-R0
+2../../altera_reset_controller_1924/sim/altera_reset_synchronizer.v
 R2
+!i10b 1
+!s100 gRTPP6UHcn9gYP88mFbmQ1
+I@_aTLc:VBaac`XoQiUK8>3
+R0
+R3
 8../../altera_reset_controller_1924/sim/altera_reset_synchronizer.v
 F../../altera_reset_controller_1924/sim/altera_reset_synchronizer.v
 !i122 3
 L0 23 63
-R3
 R4
+R5
 r1
 !s85 0
 31
-R5
+!s108 1778242787.000000
 !s107 ../../altera_reset_controller_1924/sim/altera_reset_synchronizer.v|
 !s90 ../../altera_reset_controller_1924/sim/altera_reset_synchronizer.v|-work|altera_reset_controller_1924|
 !i113 0

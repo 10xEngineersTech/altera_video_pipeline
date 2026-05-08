@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy
+ date="2026.05.08.09:41:07"
+ outputDirectory="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/">
+ <perimeter>
+  <parameter
+     name="AUTO_GENERATION_ID"
+     type="Integer"
+     defaultValue="0"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_UNIQUE_ID"
+     type="String"
+     defaultValue=""
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_FAMILY"
+     type="String"
+     defaultValue="Cyclone 10 GX"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE"
+     type="String"
+     defaultValue="10CX220YF780I5G"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_SPEEDGRADE"
+     type="String"
+     defaultValue="5"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_BOARD"
+     type="String"
+     defaultValue="default"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_MAIN_CLOCK_CLOCK_RATE"
+     type="Long"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_MAIN_CLOCK_CLOCK_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_MAIN_CLOCK_RESET_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <interface name="main_clock" kind="clock" start="0">
+   <property name="clockRate" value="0" />
+   <property name="externallyDriven" value="false" />
+   <property name="ptfSchematicName" value="" />
+   <port name="main_clock_clk" direction="input" role="clk" width="1" />
+  </interface>
+  <interface name="main_reset" kind="reset" start="0">
+   <property name="associatedClock" value="main_clock" />
+   <property name="synchronousEdges" value="BOTH" />
+   <port name="main_reset_reset" direction="input" role="reset" width="1" />
+  </interface>
+  <interface name="axi4s_vid_in" kind="axi4stream" start="0">
+   <property name="associatedClock" value="main_clock" />
+   <property name="associatedReset" value="main_reset" />
+   <port name="axi4s_vid_in_tdata" direction="input" role="tdata" width="24" />
+   <port name="axi4s_vid_in_tvalid" direction="input" role="tvalid" width="1" />
+   <port name="axi4s_vid_in_tready" direction="output" role="tready" width="1" />
+   <port name="axi4s_vid_in_tlast" direction="input" role="tlast" width="1" />
+   <port name="axi4s_vid_in_tuser" direction="input" role="tuser" width="3" />
+  </interface>
+  <interface name="axi4s_vid_out" kind="axi4stream" start="1">
+   <property name="associatedClock" value="main_clock" />
+   <property name="associatedReset" value="main_reset" />
+   <port name="axi4s_vid_out_tdata" direction="output" role="tdata" width="24" />
+   <port
+       name="axi4s_vid_out_tvalid"
+       direction="output"
+       role="tvalid"
+       width="1" />
+   <port name="axi4s_vid_out_tready" direction="input" role="tready" width="1" />
+   <port name="axi4s_vid_out_tlast" direction="output" role="tlast" width="1" />
+   <port name="axi4s_vid_out_tuser" direction="output" role="tuser" width="3" />
+  </interface>
+ </perimeter>
+ <entity
+   kind="color_space_intel_vvp_csc_0"
+   version="1.0"
+   name="color_space_intel_vvp_csc_0">
+  <parameter name="AUTO_MAIN_CLOCK_RESET_DOMAIN" value="-1" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_MAIN_CLOCK_CLOCK_DOMAIN" value="-1" />
+  <parameter name="AUTO_MAIN_CLOCK_CLOCK_RATE" value="-1" />
+  <parameter name="AUTO_UNIQUE_ID" value="" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <generatedFiles>
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/synth/color_space_intel_vvp_csc_0.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/synth/color_space_intel_vvp_csc_0.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0.ip" />
+  </sourceFiles>
+  <childSourceFiles>
+   <file
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/cores/vvp/color_space_conv/intel_vvp_csc/intel_vvp_csc_hw.tcl" />
+   <file
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/cores/vvp/color_space_conv/intel_vvp_csc/csc_helper.jar" />
+   <file
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/components/resets/intel_vvp_reset_sync/intel_vvp_reset_sync_hw.tcl" />
+   <file
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/cores/vvp/color_space_conv/intel_vvp_csc_algo_comp/intel_vvp_csc_algo_comp_hw.tcl" />
+   <file
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/components/in_out_bridges/intel_vvp_input_interface_bridge/intel_vvp_input_interface_bridge_hw.tcl" />
+   <file
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/components/in_out_bridges/intel_vvp_output_interface_bridge/intel_vvp_output_interface_bridge_hw.tcl" />
+   <file
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/cores/vvp/color_space_conv/intel_vvp_csc_scheduler/intel_vvp_csc_scheduler_hw.tcl" />
+  </childSourceFiles>
+  <messages>
+   <message level="Info" culprit="color_space_intel_vvp_csc_0">"Generating: color_space_intel_vvp_csc_0"</message>
+   <message level="Info" culprit="color_space_intel_vvp_csc_0">"Generating: color_space_intel_vvp_csc_0_intel_vvp_csc_2451_6iisa2q"</message>
+   <message level="Info" culprit="color_space_intel_vvp_csc_0">"Generating: intel_vvp_reset_sync"</message>
+   <message level="Info" culprit="color_space_intel_vvp_csc_0">"Generating: intel_vvp_csc_algo_comp"</message>
+   <message level="Info" culprit="color_space_intel_vvp_csc_0">"Generating: intel_vvp_input_interface_bridge"</message>
+   <message level="Info" culprit="color_space_intel_vvp_csc_0">"Generating: intel_vvp_output_interface_bridge"</message>
+   <message level="Info" culprit="color_space_intel_vvp_csc_0">"Generating: intel_vvp_csc_scheduler"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="intel_vvp_csc"
+   version="24.5.1"
+   name="color_space_intel_vvp_csc_0_intel_vvp_csc_2451_6iisa2q">
+  <parameter name="COEFF_A0" value="0" />
+  <parameter name="SUMMAND_INT_BITS" value="9" />
+  <parameter name="COEFF_A2" value="0" />
+  <parameter name="COEFF_A1" value="0" />
+  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="REMOVE_FRACTION_METHOD" value="1" />
+  <parameter name="C_OMNI_CAP_ENABLED" value="0" />
+  <parameter name="SUMMAND_SIGNED" value="1" />
+  <parameter name="C_OMNI_CAP_IRQ_STATUS" value="0" />
+  <parameter name="REQ_FCOEFF_A0" value="2.115" />
+  <parameter name="P_UPDATE_CMD_SUPPORTED" value="0" />
+  <parameter name="P_CORE_CTRL_ID" value="0" />
+  <parameter name="REQ_FCOEFF_A1" value="-0.213" />
+  <parameter name="REQ_FCOEFF_A2" value="0.0" />
+  <parameter name="VVP_OCS_ENABLED_INI" value="false" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="BPS_OUT" value="8" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="min_output_s4" value="0" />
+  <parameter name="min_output_s2" value="0.0" />
+  <parameter name="min_output_s3" value="0" />
+  <parameter name="OUTPUT_COLORSPACE" value="0" />
+  <parameter name="min_output_s1" value="0.0" />
+  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="max_output_s4" value="0" />
+  <parameter name="C_OMNI_CAP_TAG" value="0" />
+  <parameter name="C_OMNI_CAP_ID_COMPONENT" value="0" />
+  <parameter name="max_output_s1" value="0.0" />
+  <parameter name="SLAVE_PROTOCOL" value="Avalon" />
+  <parameter name="max_output_s2" value="0.0" />
+  <parameter name="C_OMNI_CAP_SIZE" value="0" />
+  <parameter name="max_output_s3" value="0" />
+  <parameter name="COEFF_C2" value="0" />
+  <parameter name="COEFF_C1" value="0" />
+  <parameter name="RUNTIME_CONTROL" value="0" />
+  <parameter name="COEFF_C0" value="0" />
+  <parameter name="REQ_FCOEFF_S2" value="-248.128" />
+  <parameter name="C_OMNI_CAP_IRQ_ENABLE" value="0" />
+  <parameter name="REQ_FCOEFF_S0" value="-289.344" />
+  <parameter name="ENABLE_DEBUG" value="0" />
+  <parameter name="REQ_FCOEFF_S1" value="76.992" />
+  <parameter name="COEFFICIENT_INT_BITS" value="2" />
+  <parameter name="C_OMNI_CAP_VERSION" value="1" />
+  <parameter name="SEPARATE_SLAVE_CLOCK" value="0" />
+  <parameter name="PIXELS_IN_PARALLEL" value="1" />
+  <parameter name="COEFF_S2" value="0" />
+  <parameter name="COEFF_S1" value="0" />
+  <parameter name="EXTERNAL_MODE" value="0" />
+  <parameter name="COEF_SUM_FRACTION_BITS" value="8" />
+  <parameter name="COEFF_S0" value="0" />
+  <parameter name="REQ_FCOEFF_C2" value="1.793" />
+  <parameter name="REQ_FCOEFF_C0" value="0.0" />
+  <parameter name="REQ_FCOEFF_C1" value="-0.534" />
+  <parameter name="COEFF_B1" value="0" />
+  <parameter name="COEFF_B0" value="0" />
+  <parameter name="COEFF_B2" value="0" />
+  <parameter name="COEFFICIENT_SIGNED" value="1" />
+  <parameter name="C_OMNI_CAP_IRQ" value="255" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="MOVE_BINARY_POINT_RIGHT" value="0" />
+  <parameter name="C_OMNI_CAP_ID_ASSOCIATED" value="0" />
+  <parameter name="BPS_IN" value="8" />
+  <parameter name="C_OMNI_CAP_TYPE" value="559" />
+  <parameter name="REQ_FCOEFF_B1" value="1.164" />
+  <parameter name="C_OMNI_CAP_IRQ_ENABLE_EN" value="0" />
+  <parameter name="REQ_FCOEFF_B2" value="1.164" />
+  <parameter name="C_OMNI_CAP_IRQ_STATUS_EN" value="0" />
+  <parameter name="REQ_FCOEFF_B0" value="1.164" />
+  <generatedFiles>
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_2451/synth/color_space_intel_vvp_csc_0_intel_vvp_csc_2451_6iisa2q.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_2451/synth/color_space_intel_vvp_csc_0_intel_vvp_csc_2451_6iisa2q.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/cores/vvp/color_space_conv/intel_vvp_csc/intel_vvp_csc_hw.tcl" />
+   <file
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/cores/vvp/color_space_conv/intel_vvp_csc/csc_helper.jar" />
+  </sourceFiles>
+  <childSourceFiles>
+   <file
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/components/resets/intel_vvp_reset_sync/intel_vvp_reset_sync_hw.tcl" />
+   <file
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/cores/vvp/color_space_conv/intel_vvp_csc_algo_comp/intel_vvp_csc_algo_comp_hw.tcl" />
+   <file
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/components/in_out_bridges/intel_vvp_input_interface_bridge/intel_vvp_input_interface_bridge_hw.tcl" />
+   <file
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/components/in_out_bridges/intel_vvp_output_interface_bridge/intel_vvp_output_interface_bridge_hw.tcl" />
+   <file
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/cores/vvp/color_space_conv/intel_vvp_csc_scheduler/intel_vvp_csc_scheduler_hw.tcl" />
+  </childSourceFiles>
+  <instantiator instantiator="color_space_intel_vvp_csc_0" as="intel_vvp_csc_0" />
+  <messages>
+   <message level="Info" culprit="color_space_intel_vvp_csc_0">"Generating: color_space_intel_vvp_csc_0_intel_vvp_csc_2451_6iisa2q"</message>
+   <message level="Info" culprit="color_space_intel_vvp_csc_0">"Generating: intel_vvp_reset_sync"</message>
+   <message level="Info" culprit="color_space_intel_vvp_csc_0">"Generating: intel_vvp_csc_algo_comp"</message>
+   <message level="Info" culprit="color_space_intel_vvp_csc_0">"Generating: intel_vvp_input_interface_bridge"</message>
+   <message level="Info" culprit="color_space_intel_vvp_csc_0">"Generating: intel_vvp_output_interface_bridge"</message>
+   <message level="Info" culprit="color_space_intel_vvp_csc_0">"Generating: intel_vvp_csc_scheduler"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="intel_vvp_reset_sync"
+   version="24.4.0"
+   name="intel_vvp_reset_sync">
+  <parameter name="SYNC_LEN" value="3" />
+  <generatedFiles>
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_reset_sync_2440/synth/src_hdl/intel_vvp_reset_sync.sv"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_reset_sync_2440/synth/src_hdl/intel_vvp_reset_sync.sv"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/components/resets/intel_vvp_reset_sync/intel_vvp_reset_sync_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="color_space_intel_vvp_csc_0_intel_vvp_csc_2451_6iisa2q"
+     as="main_rst_bridge" />
+  <messages>
+   <message level="Info" culprit="color_space_intel_vvp_csc_0">"Generating: intel_vvp_reset_sync"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="intel_vvp_csc_algo_comp"
+   version="24.5.1"
+   name="intel_vvp_csc_algo_comp">
+  <parameter name="COEFF_A0" value="541" />
+  <parameter name="COEFF_C2" value="459" />
+  <parameter name="COEFF_C1" value="-137" />
+  <parameter name="RUNTIME_CONTROL" value="0" />
+  <parameter name="COEFF_A2" value="0" />
+  <parameter name="COEFF_A1" value="-55" />
+  <parameter name="COEFF_C0" value="0" />
+  <parameter name="DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="SUMMAND_INTEGER_BITS" value="9" />
+  <parameter name="PIXELS_IN_PARALLEL" value="1" />
+  <parameter name="ROUNDING_METHOD" value="ROUND_HALF_UP" />
+  <parameter name="SUMMAND_SIGNED" value="1" />
+  <parameter name="COEFF_S2" value="-63521" />
+  <parameter name="COEFF_S1" value="19710" />
+  <parameter name="EXTERNAL_MODE" value="0" />
+  <parameter name="SUMMAND_FRACTION_BITS" value="8" />
+  <parameter name="COEFF_S0" value="-74072" />
+  <parameter name="COEFF_SIGNED" value="1" />
+  <parameter name="COEFF_B1" value="298" />
+  <parameter name="COEFF_B0" value="298" />
+  <parameter name="COEFF_B2" value="298" />
+  <parameter name="BPS_OUT" value="8" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="MOVE_BINARY_POINT_RIGHT" value="0" />
+  <parameter name="BPS_IN" value="8" />
+  <parameter name="COEFF_INTEGER_BITS" value="2" />
+  <parameter name="COEFF_FRACTION_BITS" value="8" />
+  <generatedFiles>
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/intel_mtm_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/intel_vvp_csc_pkg.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/intel_vvp_axi_zero_pad.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/intel_vvp_axi_zero_strip.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/intel_vvp_add_tree.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/intel_vvp_mult.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/intel_vvp_2_mult_add.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/intel_vvp_3_mult_add.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/intel_vvp_4_mult_add.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/intel_vvp_mult_add.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/intel_vvp_round_sat.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/src_hdl/intel_vvp_csc_algo_comp.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/src_hdl/intel_vvp_csc_algo_comp.ocp"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/intel_mtm_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/intel_vvp_csc_pkg.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/intel_vvp_axi_zero_pad.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/intel_vvp_axi_zero_strip.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/intel_vvp_add_tree.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/intel_vvp_mult.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/intel_vvp_2_mult_add.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/intel_vvp_3_mult_add.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/intel_vvp_4_mult_add.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/intel_vvp_mult_add.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/intel_vvp_round_sat.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/src_hdl/intel_vvp_csc_algo_comp.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_algo_comp_2451/synth/src_hdl/intel_vvp_csc_algo_comp.ocp"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/cores/vvp/color_space_conv/intel_vvp_csc_algo_comp/intel_vvp_csc_algo_comp_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="color_space_intel_vvp_csc_0_intel_vvp_csc_2451_6iisa2q"
+     as="algo_comp" />
+  <messages>
+   <message level="Info" culprit="color_space_intel_vvp_csc_0">"Generating: intel_vvp_csc_algo_comp"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="intel_vvp_input_interface_bridge"
+   version="24.4.0"
+   name="intel_vvp_input_interface_bridge">
+  <parameter name="BPS" value="8" />
+  <parameter name="EXTERNAL_MODE" value="0" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="NUMBER_OF_COLOR_PLANES" value="3" />
+  <parameter name="PIXELS_IN_PARALLEL" value="1" />
+  <generatedFiles>
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_input_interface_bridge_2440/synth/src_hdl/intel_vvp_input_interface_bridge.sv"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_input_interface_bridge_2440/synth/src_hdl/intel_vvp_input_interface_bridge.sv"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/components/in_out_bridges/intel_vvp_input_interface_bridge/intel_vvp_input_interface_bridge_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="color_space_intel_vvp_csc_0_intel_vvp_csc_2451_6iisa2q"
+     as="iib" />
+  <messages>
+   <message level="Info" culprit="color_space_intel_vvp_csc_0">"Generating: intel_vvp_input_interface_bridge"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="intel_vvp_output_interface_bridge"
+   version="24.4.0"
+   name="intel_vvp_output_interface_bridge">
+  <parameter name="BPS" value="8" />
+  <parameter name="EXTERNAL_MODE" value="0" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="NUMBER_OF_COLOR_PLANES" value="3" />
+  <parameter name="PIXELS_IN_PARALLEL" value="1" />
+  <generatedFiles>
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_output_interface_bridge_2440/synth/src_hdl/intel_vvp_output_interface_bridge.sv"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_output_interface_bridge_2440/synth/src_hdl/intel_vvp_output_interface_bridge.sv"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/components/in_out_bridges/intel_vvp_output_interface_bridge/intel_vvp_output_interface_bridge_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="color_space_intel_vvp_csc_0_intel_vvp_csc_2451_6iisa2q"
+     as="oib" />
+  <messages>
+   <message level="Info" culprit="color_space_intel_vvp_csc_0">"Generating: intel_vvp_output_interface_bridge"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="intel_vvp_csc_scheduler"
+   version="24.5.1"
+   name="intel_vvp_csc_scheduler">
+  <parameter name="RUNTIME_CONTROL" value="0" />
+  <parameter name="OUTPUT_COLORSPACE" value="0" />
+  <parameter name="EXTERNAL_MODE" value="0" />
+  <parameter name="BPS_OUT" value="8" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="P_UPDATE_CMD_SUPPORTED" value="0" />
+  <parameter name="P_CORE_CTRL_ID" value="0" />
+  <parameter name="ENABLE_DEBUG" value="0" />
+  <generatedFiles>
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_scheduler_2451/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_scheduler_2451/synth/intel_vvp_pipelined_mux.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_scheduler_2451/synth/intel_vvp_common_slave_interface.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_scheduler_2451/synth/intel_vvp_csc_pkg.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_scheduler_2451/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_scheduler_2451/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_scheduler_2451/synth/src_hdl/intel_vvp_csc_scheduler.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_scheduler_2451/synth/src_hdl/intel_vvp_csc_scheduler.ocp"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_scheduler_2451/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_scheduler_2451/synth/intel_vvp_pipelined_mux.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_scheduler_2451/synth/intel_vvp_common_slave_interface.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_scheduler_2451/synth/intel_vvp_csc_pkg.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_scheduler_2451/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_scheduler_2451/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_scheduler_2451/synth/src_hdl/intel_vvp_csc_scheduler.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/Desktop/Internship10x/ColorSpace/platform/ip/color_space/color_space_intel_vvp_csc_0/intel_vvp_csc_scheduler_2451/synth/src_hdl/intel_vvp_csc_scheduler.ocp"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/cores/vvp/color_space_conv/intel_vvp_csc_scheduler/intel_vvp_csc_scheduler_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="color_space_intel_vvp_csc_0_intel_vvp_csc_2451_6iisa2q"
+     as="scheduler" />
+  <messages>
+   <message level="Info" culprit="color_space_intel_vvp_csc_0">"Generating: intel_vvp_csc_scheduler"</message>
+  </messages>
+ </entity>
+</deploy>

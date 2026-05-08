@@ -1,0 +1,23 @@
+# system info tpg_ip on 2026.05.08.15:50:53
+system_info:
+name,value
+DEVICE,10CX220YF780I5G
+DEVICE_FAMILY,Cyclone 10 GX
+GENERATION_ID,0
+#
+#
+# Files generated for tpg_ip on 2026.05.08.15:50:53
+files:
+filepath,kind,attributes,module,is_top
+sim/tpg_ip.v,VERILOG,CONTAINS_INLINE_CONFIGURATION,tpg_ip,true
+altera_reset_controller_1924/sim/altera_reset_controller.v,VERILOG,,altera_reset_controller,false
+altera_reset_controller_1924/sim/altera_reset_synchronizer.v,VERILOG,,altera_reset_controller,false
+altera_reset_controller_1924/sim/altera_reset_controller.sdc,SDC_ENTITY,NO_SDC_PROMOTION,altera_reset_controller,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+tpg_ip.clock_in,tpg_ip_clock_in
+tpg_ip.intel_vvp_tpg_0,tpg_ip_intel_vvp_tpg_0
+tpg_ip.reset_in,tpg_ip_reset_in
+tpg_ip.rst_controller,altera_reset_controller

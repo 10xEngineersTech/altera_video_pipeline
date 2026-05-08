@@ -1,0 +1,36 @@
+cd /home/lpt-10xe/Desktop/Internship10x/tpg_full_mode_configurable/platform/tpg_ip/sim/mentor/
+source msim_setup.tcl
+dev_com
+com
+
+vlog /home/lpt-10xe/Desktop/Internship10x/tpg_full_mode_configurable/rtl/tb.v
+vlog /home/lpt-10xe/Desktop/Internship10x/tpg_full_mode_configurable/rtl/top.v
+
+set TOP_LEVEL_NAME work.tb
+
+elab_debug
+
+add wave /tb/uut/dut/clk_clk
+add wave /tb/uut/dut/reset_reset
+
+add wave /tb/uut/dut/intel_vvp_tpg_0_axi4s_vid_out_tdata
+add wave /tb/uut/dut/intel_vvp_tpg_0_axi4s_vid_out_tvalid
+add wave /tb/uut/dut/intel_vvp_tpg_0_axi4s_vid_out_tready
+add wave /tb/uut/dut/intel_vvp_tpg_0_axi4s_vid_out_tlast
+add wave /tb/uut/dut/intel_vvp_tpg_0_axi4s_vid_out_tuser
+
+add wave /tb/uut/dut/intel_vvp_tpg_0_av_mm_control_agent_address
+add wave /tb/uut/dut/intel_vvp_tpg_0_av_mm_control_agent_write
+add wave /tb/uut/dut/intel_vvp_tpg_0_av_mm_control_agent_byteenable
+add wave /tb/uut/dut/intel_vvp_tpg_0_av_mm_control_agent_writedata
+add wave /tb/uut/dut/intel_vvp_tpg_0_av_mm_control_agent_read
+add wave /tb/uut/dut/intel_vvp_tpg_0_av_mm_control_agent_readdata
+add wave /tb/uut/dut/intel_vvp_tpg_0_av_mm_control_agent_readdatavalid
+add wave /tb/uut/dut/intel_vvp_tpg_0_av_mm_control_agent_waitrequest
+
+add wave /tb/uut/current_state
+add wave /tb/uut/cycle_count
+
+add wave /tb/uut/dut/reset_reset
+
+run -all

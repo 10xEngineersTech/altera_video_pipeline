@@ -10,11 +10,9 @@ Generates:
 
 Data format:
     tpg_yuv420.txt  : one 6-hex-digit word per clock (24-bit, 1PPC)
-                      {plane2[7:0], plane1[7:0], plane0[7:0]}
-                      plane0=Y, plane1=U/Cb, plane2=V/Cr
+                      data[23:0] = {V[7:0], Y[7:0], U[7:0]}
     crs_yuv444.txt  : one 6-hex-digit word per clock (24-bit, 1PPC)
-                      {plane2[7:0], plane1[7:0], plane0[7:0]}
-                      plane0=Y, plane1=U/Cb, plane2=V/Cr
+                      data[23:0] = {V[7:0], Y[7:0], U[7:0]}
 """
 
 import sys
@@ -48,8 +46,8 @@ def write_ppm(filename, width, height, rgb_pixels):
 
 def parse_yuv444(filename, width, height):
     """
-    Parse YUV444 dump  {plane2, plane1, plane0} one 6-hex-digit word per pixel.
-    plane0=Y, plane1=U/Cb, plane2=V/Cr
+    Parse YUV444 dump: one 6-hex-digit word per pixel.
+    data[23:0] = {V[7:0], Y[7:0], U[7:0]}
     """
     try:
         raw = [l.strip() for l in open(filename) if l.strip()]
@@ -67,9 +65,9 @@ def parse_yuv444(filename, width, height):
             skipped += 1
             continue
         val = int(word, 16)
-        v   = (val >> 16) & 0xFF   # plane2 = V/Cr
-        u   = (val >>  8) & 0xFF   # plane1 = U/Cb
-        y   =  val        & 0xFF   # plane0 = Y
+        v   = (val >> 16) & 0xFF   # data[23:16] = V
+        y   = (val >>  8) & 0xFF   # data[15:8]  = Y
+        u   =  val        & 0xFF   # data[7:0]   = U
         pixels.append(ycbcr_to_rgb(y, u, v))
     if skipped:
         print(f"  Skipped {skipped} invalid (x/z) words in {filename}")
@@ -84,8 +82,7 @@ def parse_yuv420(filename, width, height):
     """
     Parse TPG YUV420 1PPC dump.
     Each line is one 6-hex-digit word per pixel:
-      {plane2[7:0], plane1[7:0], plane0[7:0]}
-      plane0=Y, plane1=U/Cb, plane2=V/Cr
+      data[23:0] = {V[7:0], Y[7:0], U[7:0]}
 
     In YUV420, chroma is subsampled 2x2. The TPG sends per-pixel data
     on the bus, but chroma values are only valid for every other pixel
@@ -111,9 +108,9 @@ def parse_yuv420(filename, width, height):
         if len(pixels) >= total:
             break
         val = int(word, 16)
-        v   = (val >> 16) & 0xFF   # plane2 = V/Cr
-        u   = (val >>  8) & 0xFF   # plane1 = U/Cb
-        y   =  val        & 0xFF   # plane0 = Y
+        v   = (val >> 16) & 0xFF   # data[23:16] = V
+        y   = (val >>  8) & 0xFF   # data[15:8]  = Y
+        u   =  val        & 0xFF   # data[7:0]   = U
         pixels.append(ycbcr_to_rgb(y, u, v))
 
     if len(pixels) < total:

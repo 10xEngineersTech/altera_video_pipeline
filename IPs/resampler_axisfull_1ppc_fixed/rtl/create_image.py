@@ -5,18 +5,20 @@ Usage:
     python3 create_image.py [width height]
 
 Generates:
-    tpg_yuv422.ppm   – TPG input reconstructed from YUV422 1PPC stream
+    tpg_yuv420.ppm   – TPG input reconstructed from YUV420 1PPC stream
     crs_yuv444.ppm   – CRS output from YUV444 1PPC stream
 
 Data format:
-    tpg_yuv422.txt  : one 4-hex-digit word per clock
-                      even pixels → {Cb[7:0], Y[7:0]}
-                      odd  pixels → {Cr[7:0], Y[7:0]}
-    crs_yuv444.txt  : one 6-hex-digit word per clock
-                      {V[7:0], Y[7:0], U[7:0]}
+    tpg_yuv420.txt  : one 6-hex-digit word per clock (24-bit, 1PPC)
+                      {plane2[7:0], plane1[7:0], plane0[7:0]}
+                      plane0=Y, plane1=U/Cb, plane2=V/Cr
+    crs_yuv444.txt  : one 6-hex-digit word per clock (24-bit, 1PPC)
+                      {plane2[7:0], plane1[7:0], plane0[7:0]}
+                      plane0=Y, plane1=U/Cb, plane2=V/Cr
 """
 
 import sys
+
 
 def ycbcr_to_rgb(y, cb, cr):
     """BT.601 full-range YCbCr → clipped RGB tuple."""
@@ -45,7 +47,10 @@ def write_ppm(filename, width, height, rgb_pixels):
 
 
 def parse_yuv444(filename, width, height):
-    """Parse CRS YUV444 dump  {V, Y, U} one word per pixel."""
+    """
+    Parse YUV444 dump  {plane2, plane1, plane0} one 6-hex-digit word per pixel.
+    plane0=Y, plane1=U/Cb, plane2=V/Cr
+    """
     try:
         raw = [l.strip() for l in open(filename) if l.strip()]
     except FileNotFoundError:
@@ -62,9 +67,9 @@ def parse_yuv444(filename, width, height):
             skipped += 1
             continue
         val = int(word, 16)
-        v   = (val >> 16) & 0xFF
-        y   = (val >>  8) & 0xFF
-        u   =  val        & 0xFF
+        v   = (val >> 16) & 0xFF   # plane2 = V/Cr
+        u   = (val >>  8) & 0xFF   # plane1 = U/Cb
+        y   =  val        & 0xFF   # plane0 = Y
         pixels.append(ycbcr_to_rgb(y, u, v))
     if skipped:
         print(f"  Skipped {skipped} invalid (x/z) words in {filename}")
@@ -75,12 +80,19 @@ def parse_yuv444(filename, width, height):
     return pixels
 
 
-def parse_yuv422(filename, width, height):
+def parse_yuv420(filename, width, height):
     """
-    Parse TPG YUV422 1PPC dump.
-    The Verilog now writes one line per PAIR (8 hex chars):
-      {Cr[7:0], Y1[7:0], Cb[7:0], Y0[7:0]}
-    This guarantees phase alignment — no Cb/Cr swap possible.
+    Parse TPG YUV420 1PPC dump.
+    Each line is one 6-hex-digit word per pixel:
+      {plane2[7:0], plane1[7:0], plane0[7:0]}
+      plane0=Y, plane1=U/Cb, plane2=V/Cr
+
+    In YUV420, chroma is subsampled 2x2. The TPG sends per-pixel data
+    on the bus, but chroma values are only valid for every other pixel
+    horizontally and every other line vertically.
+
+    For display purposes, we treat each pixel's data as-is (the TPG
+    repeats chroma for subsampled positions).
     """
     try:
         raw = [l.strip() for l in open(filename) if l.strip()]
@@ -98,14 +110,11 @@ def parse_yuv422(filename, width, height):
     for word in valid:
         if len(pixels) >= total:
             break
-        val = int(word, 16)          # 32-bit: {Cr, Y1, Cb, Y0}
-        cr  = (val >> 24) & 0xFF
-        y1  = (val >> 16) & 0xFF
-        cb  = (val >>  8) & 0xFF
-        y0  =  val        & 0xFF
-
-        pixels.append(ycbcr_to_rgb(y0, cb, cr))  # pixel 0
-        pixels.append(ycbcr_to_rgb(y1, cb, cr))  # pixel 1
+        val = int(word, 16)
+        v   = (val >> 16) & 0xFF   # plane2 = V/Cr
+        u   = (val >>  8) & 0xFF   # plane1 = U/Cb
+        y   =  val        & 0xFF   # plane0 = Y
+        pixels.append(ycbcr_to_rgb(y, u, v))
 
     if len(pixels) < total:
         print(f"  Warning: only {len(pixels)} pixels reconstructed from {filename}, expected {total}. Padding black.")
@@ -128,10 +137,10 @@ def main():
     if yuv444_pixels:
         write_ppm("crs_yuv444.ppm", width, height, yuv444_pixels)
 
-    # --- YUV422 TPG input (upsampled to 4:4:4 for display) ---
-    yuv422_pixels = parse_yuv422("tpg_yuv422.txt", width, height)
-    if yuv422_pixels:
-        write_ppm("tpg_yuv422.ppm", width, height, yuv422_pixels)
+    # --- YUV420 TPG input (rendered for display) ---
+    yuv420_pixels = parse_yuv420("tpg_yuv420.txt", width, height)
+    if yuv420_pixels:
+        write_ppm("tpg_yuv420.ppm", width, height, yuv420_pixels)
 
 
 if __name__ == "__main__":

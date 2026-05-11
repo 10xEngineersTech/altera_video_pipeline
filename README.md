@@ -1,6 +1,6 @@
 # Altera Video Processing Pipeline
 
-The primary goal is to develop an integrated design using the Altera toolchain that successfully replicates the functionality of AMD?s Video Processing Subsystem (VPSS) IP.
+The primary goal is to develop an integrated design using the Altera toolchain that successfully replicates the functionality of AMD’s Video Processing Subsystem (VPSS) IP.
 
 ## Toolchain Specifications
 Development and validation will be conducted using the following software environment:
@@ -11,19 +11,19 @@ Development and validation will be conducted using the following software enviro
 
 ```
 altera_video_pipeline/
-??? Integrated_design/          # Full end-to-end pipeline simulation
-?   ??? app/                    # GUI application & Python utilities
-?   ??? rtl/                    # Simulation RTL sources
-?   ??? platform/               # Platform Designer (Qsys) IP system
-?   ??? quartus/                # Quartus project files
-??? IPs/                        # Independent IP validation testbenches
-    ??? clipper_axisfull_reconfigurable/
-    ??? deinterlacer_axisfull_rgb_only/
-    ??? resampler_II_avalon_fixed/
-    ??? resampler_axisfull_1ppc_fixed/
-    ??? ColorSpace
-    ??? tpg_full_mode_configurable
-    ??? scaler_axislite_reconfigurable/
+├── Integrated_design/          # Full end-to-end pipeline simulation
+│   ├── app/                    # GUI application & Python utilities
+│   ├── rtl/                    # Simulation RTL sources
+│   ├── platform/               # Platform Designer (Qsys) IP system
+│   └── quartus/                # Quartus project files
+└── IPs/                        # Independent IP validation testbenches
+    ├── clipper_axisfull_reconfigurable/
+    ├── deinterlacer_axisfull_rgb_only/
+    ├── resampler_II_avalon_fixed/
+    ├── resampler_axisfull_1ppc_fixed/
+    ├── ColorSpace
+    ├── tpg_full_mode_configurable
+    └── scaler_axislite_reconfigurable/
 ```
 
 ---
@@ -61,37 +61,37 @@ graph LR
 
 | File | Description |
 | :--- | :--- |
-| `tb.v` | Top-level testbench ? includes `configuration.vh`, drives clock/reset, instantiates two `make_file` taps (TPG & Scaler), waits for `frame_done1 && frame_done2`, and enforces a resolution-scaled timeout watchdog |
-| `top.v` | DUT wrapper ? instantiates the Platform Designer subsystem AND implements the 3-state Avalon-MM configuration FSM (`CONFIG_CLIP ? CONFIG_SCALER ? WORKING`); gates TPG data flow until configuration is complete |
-| `make_file.v` | Parametric AXI4-Stream sink ? instantiates `frame_controller` for SOF/line detection, opens a hex file and writes one complete frame; supports both Full (`IS_FULL=1`) and Lite (`IS_FULL=0`) stream modes |
-| `controller.v` | `frame_controller` module ? tracks pixel and line counts, detects Start-of-Frame (`tuser[0]`), and asserts `write_flag` only for valid in-bounds pixels of the **first** frame; signals `frame_done` at end of frame |
+| `tb.v` | Top-level testbench — includes `configuration.vh`, drives clock/reset, instantiates two `make_file` taps (TPG & Scaler), waits for `frame_done1 && frame_done2`, and enforces a resolution-scaled timeout watchdog |
+| `top.v` | DUT wrapper — instantiates the Platform Designer subsystem AND implements the 3-state Avalon-MM configuration FSM (`CONFIG_CLIP → CONFIG_SCALER → WORKING`); gates TPG data flow until configuration is complete |
+| `make_file.v` | Parametric AXI4-Stream sink — instantiates `frame_controller` for SOF/line detection, opens a hex file and writes one complete frame; supports both Full (`IS_FULL=1`) and Lite (`IS_FULL=0`) stream modes |
+| `controller.v` | `frame_controller` module — tracks pixel and line counts, detects Start-of-Frame (`tuser[0]`), and asserts `write_flag` only for valid in-bounds pixels of the **first** frame; signals `frame_done` at end of frame |
 
 #### `top.v` Configuration State Machine
 
 ```
-Reset ??? STATE_CONFIG_CLIP (0)
-              ?  8 Avalon-MM writes: Width, Height, Color, Chroma,
-              ?  Left/Top/Right/Bottom offsets ? Commit (0x51)
-              ?
+Reset ──► STATE_CONFIG_CLIP (0)
+              │  8 Avalon-MM writes: Width, Height, Color, Chroma,
+              │  Left/Top/Right/Bottom offsets → Commit (0x51)
+              ▼
          STATE_CONFIG_SCALER (1)
-              ?  4 Avalon-MM writes: Input W/H (clipped size), Output W/H
-              ?
+              │  4 Avalon-MM writes: Input W/H (clipped size), Output W/H
+              ▼
          STATE_WORKING (2)
-              ?  TPG ? Deinterlacer ? Resampler ? Clipper data flow enabled; simulation captures frames
+              │  TPG → Deinterlacer → Resampler → Clipper data flow enabled; simulation captures frames
 ```
 
 ### App Folder (`app/`)
 
-A native **GTK3 desktop application** providing a dark-themed control panel for the full pipeline. It configures video parameters, triggers the simulation, and displays results ? all in one window.
+A native **GTK3 desktop application** providing a dark-themed control panel for the full pipeline. It configures video parameters, triggers the simulation, and displays results — all in one window.
 
 | File | Description |
 | :--- | :--- |
-| `image_viewer.py` | Main GUI ? parameter sidebar (TPG, Clipper, Scaler), image viewer (shows `tpg.png` on startup, `result.png` after a successful run), and pipeline control |
+| `image_viewer.py` | Main GUI — parameter sidebar (TPG, Clipper, Scaler), image viewer (shows `tpg.png` on startup, `result.png` after a successful run), and pipeline control |
 | `runProject.py` | Generates a QuestaSim `.do` script using **relative paths** derived from the script's own location, then executes `vsim -c` (console/batch mode) |
 | `hex_to_png.py` | Reads `pipeline_config.txt` to obtain scaler dimensions dynamically; parses `sc_data.txt` 24-bit **U-Y-V** hex pixels and converts to `result.png` using OpenCV |
 | `png_to_hex.py` | Utility to convert a PNG image to a hex file for hardware input |
-| `configuration.vh` | Auto-generated by the GUI ? Verilog `parameter` definitions (`TPG_WIDTH/HEIGHT`, `CLIPPER_*`, `SCALER_WIDTH/HEIGHT`) included directly by `tb.v` |
-| `pipeline_config.txt` | Auto-generated by the GUI ? human-readable `key = value` parameter file read by `hex_to_png.py` |
+| `configuration.vh` | Auto-generated by the GUI — Verilog `parameter` definitions (`TPG_WIDTH/HEIGHT`, `CLIPPER_*`, `SCALER_WIDTH/HEIGHT`) included directly by `tb.v` |
+| `pipeline_config.txt` | Auto-generated by the GUI — human-readable `key = value` parameter file read by `hex_to_png.py` |
 | `tpg.png` | Reference test pattern image displayed in the GUI on startup |
 
 
@@ -104,19 +104,19 @@ python3 image_viewer.py
 
 #### Workflow
 
-1. **Set Parameters** ? Use the sidebar to configure TPG Width/Height, Clipper offsets (Top, Bottom, Left, Right), and Scaler output dimensions.
-2. **Apply Settings** ? Click **Apply Settings**. This:
+1. **Set Parameters** — Use the sidebar to configure TPG Width/Height, Clipper offsets (Top, Bottom, Left, Right), and Scaler output dimensions.
+2. **Apply Settings** — Click **Apply Settings**. This:
    - Saves `configuration.vh` (Verilog header) and `pipeline_config.txt` (Python-readable config).
    - Launches QuestaSim in console mode (`vsim -c`) to compile and simulate the design.
    - Converts the simulation hex output (`sc_data.txt`) to `result.png` using `hex_to_png.py`.
-3. **View Results** ? The status badge updates to `IMAGE READY`. The `result.png` file is saved in the `app/` directory and its dimensions are shown in the viewer info bar.
+3. **View Results** — The status badge updates to `IMAGE READY`. The `result.png` file is saved in the `app/` directory and its dimensions are shown in the viewer info bar.
 
 ### Simulation Output Files
 
 | File | Written by | Contents |
 | :--- | :--- | :--- |
-| `app/tpg_data.txt` | `make_file` (`IS_FULL=1`, TPG tap) | Raw TPG pixel hex data ? one complete frame at source resolution |
-| `app/sc_data.txt` | `make_file` (`IS_FULL=0`, Scaler tap) | Raw Scaler pixel hex data ? one complete frame in 24-bit U-Y-V hex format |
+| `app/tpg_data.txt` | `make_file` (`IS_FULL=1`, TPG tap) | Raw TPG pixel hex data — one complete frame at source resolution |
+| `app/sc_data.txt` | `make_file` (`IS_FULL=0`, Scaler tap) | Raw Scaler pixel hex data — one complete frame in 24-bit U-Y-V hex format |
 | `app/result.png` | `hex_to_png.py` | Final RGB image reconstructed from scaler output; dimensions taken from `pipeline_config.txt` |
 
 
@@ -141,15 +141,15 @@ Validates the **AXI4-Stream Full Clipper IP** in a reconfigurable setup. A TPG f
 
 | Register (Word Addr) | Description |
 | :--- | :--- |
-| `0x49` ? `IMG_INFO_HEIGHT` | Input lines per frame |
-| `0x48` ? `IMG_INFO_WIDTH` | Input pixels per line |
-| `0x4C` ? `IMG_INFO_COLOR_SPC` | Input color space |
-| `0x4D` ? `IMG_INFO_CHROMA_SUB` | Input chroma subsampling |
-| `0x52` ? `LEFT_OFFSET` | Left crop offset |
-| `0x53` ? `TOP_OFFSET` | Top crop offset |
-| `0x54` ? `RIGHT_OFFSET` | Right crop offset |
-| `0x55` ? `BOTTOM_OFFSET` | Bottom crop offset |
-| `0x51` ? `COMMIT` | Commit configuration |
+| `0x49` – `IMG_INFO_HEIGHT` | Input lines per frame |
+| `0x48` – `IMG_INFO_WIDTH` | Input pixels per line |
+| `0x4C` – `IMG_INFO_COLOR_SPC` | Input color space |
+| `0x4D` – `IMG_INFO_CHROMA_SUB` | Input chroma subsampling |
+| `0x52` – `LEFT_OFFSET` | Left crop offset |
+| `0x53` – `TOP_OFFSET` | Top crop offset |
+| `0x54` – `RIGHT_OFFSET` | Right crop offset |
+| `0x55` – `BOTTOM_OFFSET` | Bottom crop offset |
+| `0x51` – `COMMIT` | Commit configuration |
 
 ### `deinterlacer_axisfull_rgb_only/`
 
@@ -159,7 +159,7 @@ Validates the **Deinterlacer IP** operating on an AXI4-Stream Full interface wit
 | :--- | :--- |
 | Interface | AXI4-Stream Full |
 | Output Data Width | 24 bits (RGB) |
-| Input Resolution | 20 � 10 (Width � Height) |
+| Input Resolution | 20 × 10 (Width × Height) |
 | Color Format | RGB only |
 | Output | `video_dump.hex` (one captured frame) |
 | Clock | 100 MHz |
@@ -180,7 +180,7 @@ Validates the **Chroma Resampler II IP** using an **AXI4-Stream Full** interface
 
 | Parameter | Value |
 | :--- | :--- |
-| Sampling Conversion | YUV 4:2:2 ? 4:4:4 |
+| Sampling Conversion | YUV 4:2:2 → 4:4:4 |
 | Interface | AXI4-Stream Full |
 | Throughput | 1 pixel per clock |
 
@@ -190,9 +190,9 @@ Validates the **Intel VVP Scaler IP** in **Lite Mode** with a reconfigurable out
 
 | Register (Word Addr) | Description |
 | :--- | :--- |
-| `0x48` ? `IMG_INFO_WIDTH` | Input pixels per line (from TPG) |
-| `0x49` ? `IMG_INFO_HEIGHT` | Input lines per frame (from TPG) |
-| `0x52` ? `OUTPUT_WIDTH` | Target output pixels per line |
-| `0x53` ? `OUTPUT_HEIGHT` | Target output lines per frame |
+| `0x48` – `IMG_INFO_WIDTH` | Input pixels per line (from TPG) |
+| `0x49` – `IMG_INFO_HEIGHT` | Input lines per frame (from TPG) |
+| `0x52` – `OUTPUT_WIDTH` | Target output pixels per line |
+| `0x53` – `OUTPUT_HEIGHT` | Target output lines per frame |
 
 

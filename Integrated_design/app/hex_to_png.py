@@ -11,13 +11,23 @@ def load_config(config_file):
     cfg = {}
     if not os.path.exists(config_file):
         print(f"Warning: Configuration file {config_file} not found. Using defaults.")
-        return {"scaler_width": 20, "scaler_height": 20} # Fallback defaults
+        return {"scale_w": 640, "scale_h": 480} # Fallback defaults
         
     with open(config_file, 'r') as f:
         for line in f:
             if '=' in line:
                 name, value = line.split('=')
-                cfg[name.strip()] = int(value.strip())
+                val_str = value.strip()
+                # Handle boolean and integer types
+                if val_str.lower() == 'true':
+                    cfg[name.strip()] = True
+                elif val_str.lower() == 'false':
+                    cfg[name.strip()] = False
+                else:
+                    try:
+                        cfg[name.strip()] = int(val_str)
+                    except ValueError:
+                        cfg[name.strip()] = val_str
     return cfg
 
 def convert_hex_yuv_to_png_cv2(input_file, output_file, width, height):
@@ -79,8 +89,9 @@ if __name__ == "__main__":
     
     # IMPORTANT: We use the SCALER dimensions because that is the 
     # output of your hardware pipeline (sc_data.txt)
-    WIDTH  = params.get('scaler_width', 20)
-    HEIGHT = params.get('scaler_height', 20)
+    # Using keys from image_viewer.py: 'scale_w' and 'scale_h'
+    WIDTH  = params.get('scale_w', 640)
+    HEIGHT = params.get('scale_h', 480)
     
     INPUT_TXT  = os.path.join(base_dir, "sc_data.txt")
     OUTPUT_IMG = os.path.join(base_dir, "result.png")

@@ -1,9 +1,19 @@
 import subprocess
 import os
+import sys
 
-# 1. Define your paths and commands
+# 1. Receive the isDebugging value from command line arguments
+# The main GUI passes str(is_debugging), which is "True" or "False"
+is_debug = False
+if len(sys.argv) > 1:
+    is_debug = sys.argv[1] == "True"
+
+# 2. Define your paths and commands
 sim_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "platform", "pipeline", "sim", "mentor")
 do_file_path = os.path.join(sim_path, "run_sim.do")
+
+# Logic for automatic quitting if in background mode
+quit_command = "" if is_debug else "quit -f"
 
 tcl_commands = f"""
 # Move to sim directory
@@ -29,28 +39,37 @@ set TOP_LEVEL_NAME work.tb
 set USER_DEFINED_ELAB_OPTIONS {{-voptargs="+acc"}}
 elab_debug
 
-# Add Waves (TPG)
+# Add Waves (only useful if GUI opens, but harmless in command line)
 add wave /tb/dut/u_pipeline_inst/intel_vvp_tpg_0_axi4s_vid_out_*
-# Add Waves (Clipper)
 add wave /tb/dut/u_pipeline_inst/intel_vvp_clipper_0_axi4s_vid_out_*
 add wave /tb/dut/u_pipeline_inst/intel_vvp_clipper_0_av_mm_control_agent_*
-# Add Waves (Scaler)
 add wave /tb/dut/u_pipeline_inst/intel_vvp_scaler_0_av_mm_control_agent_*
-
-# Add everything else and run
 add wave -r /*
+
+# Run simulation
 run -all
+
+# Exit if not in debug mode
+{quit_command}
 """
 
-# 2. Write the DO file
+# 3. Write the DO file
 with open(do_file_path, "w") as f:
     f.write(tcl_commands)
 
-# 3. Execute Questa
-# -gui opens the window, -do executes the script
+# 4. Execute Questa
+# If is_debug is True: Use "-gui"
+# If is_debug is False: Use "-c" (Command Line / Console mode)
+mode_flag = "-gui" if is_debug else "-c"
+
 try:
-    print("Launching QuestaSim...")
-    subprocess.run(["vsim", "-c", "-do", do_file_path], check=True)
+    if is_debug:
+        print("Launching QuestaSim GUI Mode...")
+    else:
+        print("Running Simulation in Background (Command Line Mode)...")
+        
+    subprocess.run(["vsim", mode_flag, "-do", do_file_path], check=True)
+    
 except FileNotFoundError:
     print("Error: 'vsim' not found in PATH. Make sure Questa is sourced.")
 except subprocess.CalledProcessError as e:

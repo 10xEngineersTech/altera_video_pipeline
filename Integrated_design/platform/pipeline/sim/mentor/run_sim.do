@@ -6,7 +6,7 @@ cd /home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Inte
 source msim_setup.tcl
 
 # Compile Device Libraries
-#dev_com
+dev_com
 
 # Compile IP
 com
@@ -22,14 +22,15 @@ set TOP_LEVEL_NAME work.tb
 set USER_DEFINED_ELAB_OPTIONS {-voptargs="+acc"}
 elab_debug
 
-# Add Waves (TPG)
+# Add Waves (only useful if GUI opens, but harmless in command line)
 add wave /tb/dut/u_pipeline_inst/intel_vvp_tpg_0_axi4s_vid_out_*
-# Add Waves (Clipper)
 add wave /tb/dut/u_pipeline_inst/intel_vvp_clipper_0_axi4s_vid_out_*
 add wave /tb/dut/u_pipeline_inst/intel_vvp_clipper_0_av_mm_control_agent_*
-# Add Waves (Scaler)
 add wave /tb/dut/u_pipeline_inst/intel_vvp_scaler_0_av_mm_control_agent_*
-
-# Add everything else and run
 add wave -r /*
+
+# Run simulation
 run -all
+
+# Exit if not in debug mode
+

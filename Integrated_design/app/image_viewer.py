@@ -22,10 +22,9 @@ class ImageViewerWindow(Gtk.Window):
         self.set_position(Gtk.WindowPosition.CENTER)
         self.connect("destroy", Gtk.main_quit)
 
-        # Apply Premium Dark Theme Styling
         self.apply_styling()
 
-        # Main Layout Container (Vertical)
+        # Main Layout Container
         main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
         self.add(main_box)
 
@@ -39,14 +38,13 @@ class ImageViewerWindow(Gtk.Window):
         self.status_badge = Gtk.Label(label="CONNECTED")
         self.status_badge.get_style_context().add_class("status-badge")
         header.pack_end(self.status_badge, False, False, 20)
-        
         main_box.pack_start(header, False, False, 0)
 
-        # Main Content Area (Horizontal Split)
+        # Main Content
         content_panes = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
         main_box.pack_start(content_panes, True, True, 0)
 
-        # --- Sidebar (Configuration) ---
+        # Sidebar
         sidebar = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=15)
         sidebar.get_style_context().add_class("sidebar")
         sidebar.set_size_request(300, -1)
@@ -75,14 +73,20 @@ class ImageViewerWindow(Gtk.Window):
             ("Scaler Height", "scale_h", 480)
         ])
 
+        # Debugging Checkbox
+        self.debug_checkbox = Gtk.CheckButton(label="Enable Debugging Mode")
+        self.debug_checkbox.get_style_context().add_class("debug-checkbox")
+        sidebar.pack_start(self.debug_checkbox, False, False, 5)
+
         # Apply Button
         apply_btn = Gtk.Button(label="Apply Settings")
         apply_btn.get_style_context().add_class("apply-button")
         apply_btn.connect("clicked", self.on_apply_clicked)
         sidebar.pack_end(apply_btn, False, False, 20)
 
-        # --- Viewer Area ---
+        # Viewer Area
         viewer_container = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=20)
+        # GTK 3 specific margin settings
         viewer_container.set_margin_top(30)
         viewer_container.set_margin_bottom(30)
         viewer_container.set_margin_start(30)
@@ -93,18 +97,21 @@ class ImageViewerWindow(Gtk.Window):
         self.image_container.get_style_context().add_class("image-container")
         viewer_container.pack_start(self.image_container, True, True, 0)
 
+        self.image_widget = Gtk.Image()
+        self.image_container.pack_start(self.image_widget, True, True, 0)
+
         try:
-            pixbuf = GdkPixbuf.Pixbuf.new_from_file(image_path)
-            image = Gtk.Image()
-            image.set_from_pixbuf(pixbuf)
-            self.image_container.pack_start(image, True, True, 0)
+            if os.path.exists(image_path):
+                pixbuf = GdkPixbuf.Pixbuf.new_from_file(image_path)
+                self.image_widget.set_from_pixbuf(pixbuf)
+                self.info_label = Gtk.Label(label=f"Buffer: {pixbuf.get_width()}x{pixbuf.get_height()}")
+            else:
+                self.info_label = Gtk.Label(label="No image found. Run pipeline to generate.")
             
-            self.info_label = Gtk.Label(label=f"Current Buffer: {pixbuf.get_width()}x{pixbuf.get_height()}")
             self.info_label.get_style_context().add_class("info-text")
             viewer_container.pack_start(self.info_label, False, False, 0)
         except Exception as e:
             err = Gtk.Label(label=f"Load Error: {e}")
-            err.get_style_context().add_class("error-text")
             self.image_container.pack_start(err, True, True, 0)
 
     def add_param_group(self, parent, title, fields):
@@ -122,9 +129,8 @@ class ImageViewerWindow(Gtk.Window):
             field_label.set_xalign(0)
             hbox.pack_start(field_label, True, True, 0)
             
-            adj = Gtk.Adjustment(value=default, lower=1, upper=8192, step_increment=1, page_increment=10, page_size=0)
+            adj = Gtk.Adjustment(value=default, lower=0, upper=8192, step_increment=1)
             spin = Gtk.SpinButton(adjustment=adj, climb_rate=1, digits=0)
-            spin.set_numeric(True)
             spin.set_width_chars(6)
             hbox.pack_end(spin, False, False, 0)
             
@@ -134,90 +140,70 @@ class ImageViewerWindow(Gtk.Window):
         parent.pack_start(group_box, False, False, 0)
 
     def on_apply_clicked(self, widget):
+        is_debugging = self.debug_checkbox.get_active()
         values = {k: v.get_value_as_int() for k, v in self.params.items()}
-        base_dir    = os.path.dirname(os.path.abspath(__file__))
+        base_dir = os.path.dirname(os.path.abspath(__file__))
         
         config_path = os.path.join(base_dir, "pipeline_config.txt")
-        vh_path     = os.path.join(base_dir, "configuration.vh")
-        
-        # Paths for your scripts
+        vh_path = os.path.join(base_dir, "configuration.vh")
         run_project_script = os.path.join(base_dir, "runProject.py")
-        hex_to_png_script  = os.path.join(base_dir, "hex_to_png.py")
+        hex_to_png_script = os.path.join(base_dir, "hex_to_png.py")
 
         try:
-            # --- Save plain text file ---
+            # 1. Write Text Config
             with open(config_path, "w") as f:
-                f.write("# Video Pipeline Configuration\n")
-                f.write(f"tpg_width      = {values['tpg_w']}\n")
-                f.write(f"tpg_height     = {values['tpg_h']}\n")
-                f.write(f"clipper_top     = {values['clip_top']}\n")
-                f.write(f"clipper_bottom  = {values['clip_bottom']}\n")
-                f.write(f"clipper_left    = {values['clip_left']}\n")
-                f.write(f"clipper_right   = {values['clip_right']}\n")
-                f.write(f"scaler_width   = {values['scale_w']}\n")
-                f.write(f"scaler_height  = {values['scale_h']}\n")
+                f.write(f"debug_mode = {is_debugging}\n")
+                for k, v in values.items():
+                    f.write(f"{k} = {v}\n")
 
-            # --- Save Verilog header file ---
+            # 2. Write Verilog Header (.vh) with EXACT names for tb.v
             with open(vh_path, "w") as f:
-                f.write("// Auto-generated by image_viewer.py — do not edit manually\n\n")
-                f.write(f"parameter TPG_WIDTH      = {values['tpg_w']};\n")
-                f.write(f"parameter TPG_HEIGHT     = {values['tpg_h']};\n")
-                f.write(f"parameter CLIPPER_TOP    = {values['clip_top']};\n")
-                f.write(f"parameter CLIPPER_BOTTOM = {values['clip_bottom']};\n")
-                f.write(f"parameter CLIPPER_LEFT   = {values['clip_left']};\n")
-                f.write(f"parameter CLIPPER_RIGHT  = {values['clip_right']};\n")
-                f.write(f"parameter SCALER_WIDTH   = {values['scale_w']};\n")
-                f.write(f"parameter SCALER_HEIGHT  = {values['scale_h']};\n")
+                f.write("// Auto-generated Configuration Header\n\n")
+                f.write(f"parameter DEBUG_MODE      = {1 if is_debugging else 0};\n")
+                f.write(f"parameter TPG_WIDTH       = {values['tpg_w']};\n")
+                f.write(f"parameter TPG_HEIGHT      = {values['tpg_h']};\n")
+                f.write(f"parameter CLIPPER_TOP     = {values['clip_top']};\n")
+                f.write(f"parameter CLIPPER_BOTTOM  = {values['clip_bottom']};\n")
+                f.write(f"parameter CLIPPER_LEFT    = {values['clip_left']};\n")
+                f.write(f"parameter CLIPPER_RIGHT   = {values['clip_right']};\n")
+                f.write(f"parameter SCALER_WIDTH    = {values['scale_w']};\n")
+                f.write(f"parameter SCALER_HEIGHT   = {values['scale_h']};\n")
 
-            print(f"Config files saved. Starting background pipeline...")
-
-            def run_pipeline_sequence():
+            def run_pipeline():
                 try:
-                    # 1. Run Simulation
-                    print("Step 1: Starting Simulation...")
-                    subprocess.run(["python3", run_project_script], check=True)
-
-                    # 2. Convert Output
-                    print("Step 2: Converting Hex to PNG...")
+                    # Pass debugging flag to runProject.py
+                    subprocess.run(["python3", run_project_script, str(is_debugging)], check=True)
+                    # Convert result
                     subprocess.run(["python3", hex_to_png_script], check=True)
+                    GLib.idle_add(self.update_badge_finished)
+                except Exception as e:
+                    print(f"Pipeline Error: {e}")
+                    GLib.idle_add(self.update_badge_error)
 
-                    # 3. Trigger UI update on the main thread
-                    GLib.idle_add(self.update_badge_finished, None)
-                except subprocess.CalledProcessError as e:
-                    print(f"Error during sequence: {e}")
-                    GLib.idle_add(self.update_badge_error, None)
-
-            # Start thread
-            thread = threading.Thread(target=run_pipeline_sequence)
-            thread.daemon = True
-            thread.start()
-
+            threading.Thread(target=run_pipeline, daemon=True).start()
             self.status_badge.set_text("PROCESSING...")
             self.status_badge.get_style_context().remove_class("success-badge")
 
         except Exception as e:
-            print(f"Error: {e}")
+            print(f"Save Error: {e}")
 
-    def update_badge_finished(self, user_data):
-        """Update status badge — keep showing tpg.png in the viewer"""
+    def update_badge_finished(self):
         self.status_badge.set_text("IMAGE READY")
         self.status_badge.get_style_context().add_class("success-badge")
-
-        base_dir = os.path.dirname(os.path.abspath(__file__))
-        result_path = os.path.join(base_dir, "result.png")
-
-        if os.path.exists(result_path):
-            try:
+        
+        # Refresh the image in the UI
+        try:
+            base_dir = os.path.dirname(os.path.abspath(__file__))
+            result_path = os.path.join(base_dir, "result.png")
+            if os.path.exists(result_path):
                 pixbuf = GdkPixbuf.Pixbuf.new_from_file(result_path)
-                self.info_label.set_text(
-                    f"Pipeline Output Ready: {pixbuf.get_width()}x{pixbuf.get_height()} — see result.png"
-                )
-            except Exception as e:
-                print(f"Could not read result.png dimensions: {e}")
+                self.image_widget.set_from_pixbuf(pixbuf)
+                self.info_label.set_text(f"Buffer: {pixbuf.get_width()}x{pixbuf.get_height()}")
+        except Exception as e:
+            print(f"UI Refresh Error: {e}")
+        return False
 
-        return False  # Return False to stop the idle timer
-
-    def update_badge_error(self, user_data):
+    def update_badge_error(self):
         self.status_badge.set_text("PIPELINE FAILED")
         return False
 
@@ -233,25 +219,38 @@ class ImageViewerWindow(Gtk.Window):
             .sidebar-title { color: #94a3b8; font-size: 12px; font-weight: 700; }
             .param-group { background-color: rgba(255,255,255,0.03); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); }
             .group-label { color: #38bdf8; font-weight: 700; font-size: 13px; margin-bottom: 5px; }
-            label { color: #cbd5e1; font-size: 13px; }
-            spinbutton { background-color: #0f172a; color: white; border: 1px solid #334155; border-radius: 6px; padding: 4px; }
-            .apply-button { background-color: #6366f1; color: white; border-radius: 8px; padding: 12px; font-weight: 700; }
-            .apply-button:hover { background-color: #818cf8; }
+            
+            /* Emerald Button styling */
+            button.apply-button { 
+                background-image: none;
+                background-color: #10b981; 
+                border-radius: 8px; 
+                padding: 12px; 
+                margin-top: 10px;
+                border: none;
+                box-shadow: none;
+            }
+            button.apply-button label { 
+                color: #000000; 
+                font-weight: 800; 
+            }
+            button.apply-button:hover { 
+                background-color: #34d399; 
+            }
+            
+            .debug-checkbox label { color: #cbd5e1; font-size: 13px; }
+            spinbutton { background-color: #0f172a; color: white; border: 1px solid #334155; border-radius: 6px; }
             .image-container { background-color: #020617; border-radius: 16px; padding: 15px; border: 1px solid #334155; }
             .info-text { color: #64748b; font-size: 12px; }
-            .error-text { color: #ef4444; font-weight: bold; }
         """
         style_provider.load_from_data(css.encode())
         Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(), style_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
 if __name__ == "__main__":
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    # Initial image to show on startup
-    img_path = os.path.join(current_dir, "tpg.png")
+    img_path = os.path.join(current_dir, "result.png")
+    if len(sys.argv) > 1: img_path = sys.argv[1]
     
-    if len(sys.argv) > 1:
-        img_path = sys.argv[1]
-
     win = ImageViewerWindow(img_path)
     win.show_all()
     Gtk.main()

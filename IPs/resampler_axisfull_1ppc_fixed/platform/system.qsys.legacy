@@ -1707,7 +1707,7 @@ https://fpgasoftware.intel.com/eula.-->
                         <name>axi4s_vid_out_tdata</name>
                         <role>tdata</role>
                         <direction>Output</direction>
-                        <width>16</width>
+                        <width>24</width>
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                         <terminationValue>0</terminationValue>
@@ -1743,7 +1743,7 @@ https://fpgasoftware.intel.com/eula.-->
                         <name>axi4s_vid_out_tuser</name>
                         <role>tuser</role>
                         <direction>Output</direction>
-                        <width>2</width>
+                        <width>3</width>
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                         <terminationValue>0</terminationValue>
@@ -1761,7 +1761,7 @@ https://fpgasoftware.intel.com/eula.-->
                         </entry>
                         <entry>
                             <key>intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES</key>
-                            <value>2</value>
+                            <value>3</value>
                         </entry>
                         <entry>
                             <key>intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL</key>
@@ -1909,7 +1909,7 @@ https://fpgasoftware.intel.com/eula.-->
                     <name>axi4s_vid_out_tdata</name>
                     <role>tdata</role>
                     <direction>Output</direction>
-                    <width>16</width>
+                    <width>24</width>
                     <lowerBound>0</lowerBound>
                     <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                     <terminationValue>0</terminationValue>
@@ -1945,7 +1945,7 @@ https://fpgasoftware.intel.com/eula.-->
                     <name>axi4s_vid_out_tuser</name>
                     <role>tuser</role>
                     <direction>Output</direction>
-                    <width>2</width>
+                    <width>3</width>
                     <lowerBound>0</lowerBound>
                     <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                     <terminationValue>0</terminationValue>
@@ -1963,7 +1963,7 @@ https://fpgasoftware.intel.com/eula.-->
                     </entry>
                     <entry>
                         <key>intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES</key>
-                        <value>2</value>
+                        <value>3</value>
                     </entry>
                     <entry>
                         <key>intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL</key>

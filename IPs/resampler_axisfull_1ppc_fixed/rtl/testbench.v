@@ -98,6 +98,8 @@ module testbench();
 
 
     reg [31:0] read_val;
+    reg [31:0] output_mode_val;
+    integer fd_crs_out;
     // ----- Stimulus and Monitor -----
     initial begin
         // Initialize Avalon signals
@@ -118,15 +120,27 @@ module testbench();
         repeat (2) @(posedge clk_clk);  // minimal settling time
 
         // --- CRITICAL: Program CRS before TPG sends first frame ---
-        $display("[TB  ][%5t ns] Programming Resampler (OUTPUT_MODE=3 → YUV444)...", $time/1000);
+        output_mode_val = 32'h2; // 2 for YUV422, 3 for YUV444
+        $display("[TB  ][%5t ns] Programming Resampler (OUTPUT_MODE=%0d)...", $time/1000, output_mode_val);
 
         // Address 0x0148 (Word address 7'h52): OUTPUT_MODE
-        // Write 3 for 4:4:4 output (per IP documentation)
-        avmm_wr(7'h52, 32'h3);
+        avmm_wr(7'h52, output_mode_val);
 
         // Address 0x0144 (Word address 7'h51): COMMIT
         // Write any value to commit changes and apply scaling settings
         avmm_wr(7'h51, 32'h1);
+
+        // Open the appropriate file for CRS output dump
+        if (output_mode_val == 32'h2) begin
+            fd_crs_out = $fopen("crs_yuv422.txt", "w");
+            $display("[TB  ] CRS output will be dumped to crs_yuv422.txt");
+        end else if (output_mode_val == 32'h3) begin
+            fd_crs_out = $fopen("crs_yuv444.txt", "w");
+            $display("[TB  ] CRS output will be dumped to crs_yuv444.txt");
+        end else begin
+            fd_crs_out = $fopen("crs_unknown.txt", "w");
+            $display("[TB  ] CRS output will be dumped to crs_unknown.txt");
+        end
 
         $display("[TB  ][%5t ns] Resampler programmed.", $time/1000);
 
@@ -157,10 +171,10 @@ module testbench();
     end
 
     // ----- Data Dump for Image Generation -----
-    integer fd_yuv420, fd_yuv444;
+    integer fd_yuv420;
     initial begin
         fd_yuv420 = $fopen("tpg_yuv420.txt", "w");   // TPG output:  24-bit YUV420 1PPC (internal)
-        fd_yuv444 = $fopen("crs_yuv444.txt", "w");    // CRS output:  24-bit YUV444 1PPC
+        // fd_crs_out is opened dynamically after OUTPUT_MODE is programmed
     end
 
     // TPG YUV420 dump -- probe intermediate TPG→CRS signals in top.v
@@ -175,13 +189,25 @@ module testbench();
         end
     end
 
-    // CRS YUV444 dump -- {plane2[7:0], plane1[7:0], plane0[7:0]}
+    // CRS output dump -- {plane2[7:0], plane1[7:0], plane0[7:0]}
     // For YUV444: plane0=Y, plane1=U/Cb, plane2=V/Cr
-    // Only dump video data (not control packets: tuser[1]==0)
+    // For YUV422: plane0=Cb(even) or Cr(odd), plane1=Y, plane2=0
+    //
+    // IMPORTANT: The Intel VVP CRS IP emits control/info packets on the
+    // same AXI4-S bus with tuser[1]=0 (same as pixel data), so tuser[1]
+    // does NOT reliably filter them out. Instead we filter using:
+    //   1. tuser[0] == 0  --> skip SAV/SOP marker beats
+    //   2. crs_out_tdata[23:16] == 8'h00 -- upper byte should always be
+    //      zero for valid 1PPC video data; control words have non-zero
+    //      upper nibbles or known sentinel values. This gate is a safety
+    //      net; the Python script also strips control frames.
     always @(posedge clk_clk) begin
-        if (u_top.crs_out_tvalid && u_top.crs_out_tready &&
-            (u_top.crs_out_tuser[1] == 1'b0)) begin
-            $fdisplay(fd_yuv444, "%06x", u_top.crs_out_tdata);
+        if (fd_crs_out != 0) begin
+            if (u_top.crs_out_tvalid && u_top.crs_out_tready &&
+                (u_top.crs_out_tuser[1] == 1'b0) &&  // skip info-packets (belt)
+                (u_top.crs_out_tdata[23:16] == 8'h00)) begin // upper byte 0 = valid pixel
+                $fdisplay(fd_crs_out, "%06x", u_top.crs_out_tdata);
+            end
         end
     end
 

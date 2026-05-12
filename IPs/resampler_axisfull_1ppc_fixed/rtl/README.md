@@ -9,8 +9,8 @@ The checker is designed to operate on a **1 pixel per clock (1ppc)** streaming i
 ### Data Formatting
 In a 1ppc AXI4-Stream Video configuration:
 - **4:2:2 Input (TPG)**: Chroma components alternate. 
-  - **Even Pixels** (Cycle 0): Data contains `{U (Cb), Y}`
-  - **Odd Pixels** (Cycle 1): Data contains `{V (Cr), Y}`
+  - **Even Pixels** (Cycle 0): Data contains `{Y, U (Cb)}`
+  - **Odd Pixels** (Cycle 1): Data contains `{Y, V (Cr)}`
 - **4:4:4 Output (Resampler)**: Every pixel contains all three components: `{V, Y, U}`.
 
 ### Reference Model Synthesis

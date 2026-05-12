@@ -57,20 +57,20 @@ class ImageViewerWindow(Gtk.Window):
         # Configuration Groups
         self.params = {}
         self.add_param_group(sidebar, "Test Pattern Generator", [
-            ("TPG Width", "tpg_w", 1920),
-            ("TPG Height", "tpg_h", 1080)
+            ("TPG Width", "tpg_w", 32),
+            ("TPG Height", "tpg_h", 32)
         ])
         
         self.add_param_group(sidebar, "Clipper Offsets", [
-            ("Top Offset", "clip_top", 0),
-            ("Bottom Offset", "clip_bottom", 0),
-            ("Left Offset", "clip_left", 0),
-            ("Right Offset", "clip_right", 0)
+            ("Top Offset", "clip_top", 2),
+            ("Bottom Offset", "clip_bottom", 2),
+            ("Left Offset", "clip_left", 2),
+            ("Right Offset", "clip_right", 2)
         ])
         
         self.add_param_group(sidebar, "Scaler Output", [
-            ("Scaler Width", "scale_w", 640),
-            ("Scaler Height", "scale_h", 480)
+            ("Scaler Width", "scale_w", 128),
+            ("Scaler Height", "scale_h", 128)
         ])
 
         # Debugging Checkbox
@@ -217,7 +217,7 @@ class ImageViewerWindow(Gtk.Window):
             .success-badge { background-color: #10b981; }
             .sidebar { background-color: #1e293b; border-right: 1px solid #334155; padding: 20px; }
             .sidebar-title { color: #94a3b8; font-size: 12px; font-weight: 700; }
-            .param-group { background-color: rgba(255,255,255,0.03); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); }
+            .param-group { color: #94a3b8; background-color: rgba(255,255,255,0.03); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); }
             .group-label { color: #38bdf8; font-weight: 700; font-size: 13px; margin-bottom: 5px; }
             
             /* Emerald Button styling */

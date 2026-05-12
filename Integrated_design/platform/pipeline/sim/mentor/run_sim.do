@@ -33,4 +33,4 @@ add wave -r /*
 run -all
 
 # Exit if not in debug mode
-
+quit -f

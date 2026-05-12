@@ -163,15 +163,15 @@ module testbench();
         fd_yuv444 = $fopen("crs_yuv444.txt", "w");    // CRS output:  24-bit YUV444 1PPC
     end
 
-    // TPG YUV420 dump -- probe internal TPG→CRS signals inside the system
+    // TPG YUV420 dump -- probe intermediate TPG→CRS signals in top.v
     // The TPG output is 24-bit YUV420: {plane2[7:0], plane1[7:0], plane0[7:0]}
     // For YUV420: plane0=Y, plane1=U/Cb, plane2=V/Cr
     // Only dump video data (not control packets: tuser[1]==0)
     always @(posedge clk_clk) begin
-        if (u_top.u_dut.intel_vvp_tpg_0_axi4s_vid_out_tvalid &&
-            u_top.u_dut.intel_vvp_tpg_0_axi4s_vid_out_tready &&
-            (u_top.u_dut.intel_vvp_tpg_0_axi4s_vid_out_tuser[1] == 1'b0)) begin
-            $fdisplay(fd_yuv420, "%06x", u_top.u_dut.intel_vvp_tpg_0_axi4s_vid_out_tdata);
+        if (u_top.tpg_to_crs_tvalid &&
+            u_top.tpg_to_crs_tready &&
+            (u_top.tpg_to_crs_tuser[1] == 1'b0)) begin
+            $fdisplay(fd_yuv420, "%06x", u_top.tpg_to_crs_tdata);
         end
     end
 

@@ -20,6 +20,7 @@ tcl_commands = f"""
 cd {sim_path}
 
 # Setup and Compile IP
+set QUARTUS_INSTALL_DIR /mnt/ssd2/Quartus_Setup_Installation/quartus
 source msim_setup.tcl
 
 # Compile Device Libraries
@@ -68,7 +69,13 @@ try:
     else:
         print("Running Simulation in Background (Command Line Mode)...")
         
-    subprocess.run(["vsim", mode_flag, "-do", do_file_path], check=True)
+    # Define environment and config
+    my_env = os.environ.copy()
+    my_env["QUESTASIM_DIR"] = "/mnt/ssd2/Quartus21/questasim/linux_x86_64"
+    
+    project_ini_path = os.path.join(sim_path, "modelsim.ini")
+    
+    subprocess.run(["vsim", mode_flag, "-modelsimini", project_ini_path, "-do", do_file_path], check=True, env=my_env)
     
 except FileNotFoundError:
     print("Error: 'vsim' not found in PATH. Make sure Questa is sourced.")

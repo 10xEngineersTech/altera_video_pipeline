@@ -194,7 +194,7 @@ class ImageViewerWindow(Gtk.Window):
         # Refresh the image in the UI
         try:
             base_dir = os.path.dirname(os.path.abspath(__file__))
-            result_path = os.path.join(base_dir, "result.png")
+            result_path = os.path.join(base_dir, "tpg.png")
             if os.path.exists(result_path):
                 pixbuf = GdkPixbuf.Pixbuf.new_from_file(result_path)
                 self.image_widget.set_from_pixbuf(pixbuf)
@@ -248,7 +248,7 @@ class ImageViewerWindow(Gtk.Window):
 
 if __name__ == "__main__":
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    img_path = os.path.join(current_dir, "result.png")
+    img_path = os.path.join(current_dir, "tpg.png")
     if len(sys.argv) > 1: img_path = sys.argv[1]
     
     win = ImageViewerWindow(img_path)

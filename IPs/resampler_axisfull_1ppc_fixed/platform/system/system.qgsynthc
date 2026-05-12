@@ -1742,23 +1742,6 @@
           <incidentConnection>
             <parameters>
               <parameter>
-                <name>axiStreamingCrossbarTxSysInfo</name>
-                <value></value>
-              </parameter>
-              <parameter>
-                <name>axiStreamingCrossbarRxSysInfo</name>
-                <value></value>
-              </parameter>
-            </parameters>
-            <interconnectAssignments></interconnectAssignments>
-            <className>axi4stream</className>
-            <version>25.1</version>
-            <end>intel_vvp_crs_0/axi4s_vid_in</end>
-            <start>intel_vvp_tpg_0/axi4s_vid_out</start>
-          </incidentConnection>
-          <incidentConnection>
-            <parameters>
-              <parameter>
                 <name>resetDomainSysInfo</name>
                 <value>-1</value>
               </parameter>
@@ -2280,23 +2263,6 @@
             <version>25.1</version>
             <end>intel_vvp_tpg_0/main_clock</end>
             <start>clock_in/out_clk</start>
-          </incidentConnection>
-          <incidentConnection>
-            <parameters>
-              <parameter>
-                <name>axiStreamingCrossbarTxSysInfo</name>
-                <value></value>
-              </parameter>
-              <parameter>
-                <name>axiStreamingCrossbarRxSysInfo</name>
-                <value></value>
-              </parameter>
-            </parameters>
-            <interconnectAssignments></interconnectAssignments>
-            <className>axi4stream</className>
-            <version>25.1</version>
-            <end>intel_vvp_crs_0/axi4s_vid_in</end>
-            <start>intel_vvp_tpg_0/axi4s_vid_out</start>
           </incidentConnection>
           <incidentConnection>
             <parameters>

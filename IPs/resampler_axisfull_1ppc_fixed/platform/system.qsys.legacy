@@ -122,8 +122,18 @@ https://fpgasoftware.intel.com/eula.-->
    type="avalon"
    dir="end" />
  <interface
+   name="intel_vvp_crs_0_axi4s_vid_in"
+   internal="intel_vvp_crs_0.axi4s_vid_in"
+   type="axi4stream"
+   dir="end" />
+ <interface
    name="intel_vvp_crs_0_axi4s_vid_out"
    internal="intel_vvp_crs_0.axi4s_vid_out"
+   type="axi4stream"
+   dir="start" />
+ <interface
+   name="intel_vvp_tpg_0_axi4s_vid_out"
+   internal="intel_vvp_tpg_0.axi4s_vid_out"
    type="axi4stream"
    dir="start" />
  <interface name="reset" internal="reset_in.in_reset" type="reset" dir="end" />
@@ -2328,11 +2338,6 @@ https://fpgasoftware.intel.com/eula.-->
   <parameter name="svInterfaceDefinition" value="" />
   <parameter name="transformParameters"><![CDATA[<transformParameterDescriptorDefinitionList/>]]></parameter>
  </module>
- <connection
-   kind="axi4stream"
-   version="25.1"
-   start="intel_vvp_tpg_0.axi4s_vid_out"
-   end="intel_vvp_crs_0.axi4s_vid_in" />
  <connection
    kind="clock"
    version="25.1"

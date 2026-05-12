@@ -25,12 +25,32 @@ module top (
     // Sink is always ready to accept CRS output
     assign crs_out_tready = 1'b1;
 
+    // Intermediate AXI4-Stream wires: TPG -> CRS
+    wire [23:0] tpg_to_crs_tdata;
+    wire        tpg_to_crs_tvalid;
+    wire        tpg_to_crs_tready;
+    wire        tpg_to_crs_tlast;
+    wire [2:0]  tpg_to_crs_tuser;
+
     // ----- DUT Instance (System) -----
-    // TPG -> CRS connection is internal to the system module.
-    // Only CRS output and Avalon-MM control are exported.
+    // TPG output is connected to CRS input in this top-level RTL.
     system u_dut (
         .clk_clk                                           (clk_clk),
         .reset_reset                                       (reset_reset),
+
+        // TPG Out
+        .intel_vvp_tpg_0_axi4s_vid_out_tdata               (tpg_to_crs_tdata),
+        .intel_vvp_tpg_0_axi4s_vid_out_tvalid              (tpg_to_crs_tvalid),
+        .intel_vvp_tpg_0_axi4s_vid_out_tready              (tpg_to_crs_tready),
+        .intel_vvp_tpg_0_axi4s_vid_out_tlast               (tpg_to_crs_tlast),
+        .intel_vvp_tpg_0_axi4s_vid_out_tuser               (tpg_to_crs_tuser),
+
+        // Resampler In
+        .intel_vvp_crs_0_axi4s_vid_in_tdata                (tpg_to_crs_tdata),
+        .intel_vvp_crs_0_axi4s_vid_in_tvalid               (tpg_to_crs_tvalid),
+        .intel_vvp_crs_0_axi4s_vid_in_tready               (tpg_to_crs_tready),
+        .intel_vvp_crs_0_axi4s_vid_in_tlast                (tpg_to_crs_tlast),
+        .intel_vvp_crs_0_axi4s_vid_in_tuser                (tpg_to_crs_tuser),
 
         // Resampler Out
         .intel_vvp_crs_0_axi4s_vid_out_tdata               (crs_out_tdata),

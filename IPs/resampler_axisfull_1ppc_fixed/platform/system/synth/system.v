@@ -23,11 +23,11 @@ module system (
 		output wire [31:0] intel_vvp_crs_0_av_mm_control_agent_readdata,      //                                    .readdata
 		output wire        intel_vvp_crs_0_av_mm_control_agent_readdatavalid, //                                    .readdatavalid
 		output wire        intel_vvp_crs_0_av_mm_control_agent_waitrequest,   //                                    .waitrequest
-		output wire [23:0] intel_vvp_tpg_0_axi4s_vid_out_tdata,               //       intel_vvp_tpg_0_axi4s_vid_out.tdata
+		output wire [15:0] intel_vvp_tpg_0_axi4s_vid_out_tdata,               //       intel_vvp_tpg_0_axi4s_vid_out.tdata
 		output wire        intel_vvp_tpg_0_axi4s_vid_out_tvalid,              //                                    .tvalid
 		input  wire        intel_vvp_tpg_0_axi4s_vid_out_tready,              //                                    .tready
 		output wire        intel_vvp_tpg_0_axi4s_vid_out_tlast,               //                                    .tlast
-		output wire [2:0]  intel_vvp_tpg_0_axi4s_vid_out_tuser,               //                                    .tuser
+		output wire [1:0]  intel_vvp_tpg_0_axi4s_vid_out_tuser,               //                                    .tuser
 		input  wire        reset_reset                                        //                               reset.reset
 	);
 
@@ -66,11 +66,11 @@ module system (
 	system_intel_vvp_tpg_0 intel_vvp_tpg_0 (
 		.main_clock_clk       (clock_in_out_clk_clk),                 //   input,   width = 1,    main_clock.clk
 		.main_reset_reset     (rst_controller_reset_out_reset),       //   input,   width = 1,    main_reset.reset
-		.axi4s_vid_out_tdata  (intel_vvp_tpg_0_axi4s_vid_out_tdata),  //  output,  width = 24, axi4s_vid_out.tdata
+		.axi4s_vid_out_tdata  (intel_vvp_tpg_0_axi4s_vid_out_tdata),  //  output,  width = 16, axi4s_vid_out.tdata
 		.axi4s_vid_out_tvalid (intel_vvp_tpg_0_axi4s_vid_out_tvalid), //  output,   width = 1,              .tvalid
 		.axi4s_vid_out_tready (intel_vvp_tpg_0_axi4s_vid_out_tready), //   input,   width = 1,              .tready
 		.axi4s_vid_out_tlast  (intel_vvp_tpg_0_axi4s_vid_out_tlast),  //  output,   width = 1,              .tlast
-		.axi4s_vid_out_tuser  (intel_vvp_tpg_0_axi4s_vid_out_tuser)   //  output,   width = 3,              .tuser
+		.axi4s_vid_out_tuser  (intel_vvp_tpg_0_axi4s_vid_out_tuser)   //  output,   width = 2,              .tuser
 	);
 
 	system_reset_in reset_in (

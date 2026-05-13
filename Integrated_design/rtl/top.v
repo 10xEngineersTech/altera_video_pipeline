@@ -11,8 +11,9 @@ module top #(
     parameter IMG_R_OFF      = 32'd4,
     parameter IMG_B_OFF      = 32'd4,
     
-    parameter SCALER_OUT_W   = 32'd8,
-    parameter SCALER_OUT_H   = 32'd8
+    parameter SCALER_OUT_W    = 32'd8,
+    parameter SCALER_OUT_H    = 32'd8,
+    parameter CRS_OUTPUT_MODE = 32'd3  // Resampler output: 2=YUV422, 3=YUV444
 )(
     input  wire        clk,
     input  wire        reset,
@@ -30,23 +31,24 @@ module top #(
     localparam SCALER_IN_H  = IMG_HIGHT - IMG_T_OFF - IMG_B_OFF;
 
     // --- State Machine States (TPG + Clipper + Scaler) ---
-    localparam [3:0]
-        ST_IDLE          = 4'd0,
-        ST_TPG_CTRL_1    = 4'd1,
-        ST_TPG_WR_INTL   = 4'd2,
-        ST_TPG_WR_W      = 4'd3,
-        ST_TPG_WR_H      = 4'd4,
-        ST_TPG_WR_PAT_T  = 4'd5,
-        ST_TPG_WR_PAT_S  = 4'd6,
-        ST_TPG_WR_CMT    = 4'd7,
-        ST_TPG_CTRL_2    = 4'd8,
-        ST_TPG_POLL_ISS  = 4'd9,
-        ST_TPG_POLL_W    = 4'd10,
-        ST_TPG_IP_RST    = 4'd11,
-        ST_TPG_CTRL_3    = 4'd12,
-        ST_CONFIG_CLIP   = 4'd13,
-        ST_CONFIG_SCL    = 4'd14,
-        ST_WORKING       = 4'd15;
+    localparam [4:0]
+        ST_IDLE          = 5'd0,
+        ST_TPG_CTRL_1    = 5'd1,
+        ST_TPG_WR_INTL   = 5'd2,
+        ST_TPG_WR_W      = 5'd3,
+        ST_TPG_WR_H      = 5'd4,
+        ST_TPG_WR_PAT_T  = 5'd5,
+        ST_TPG_WR_PAT_S  = 5'd6,
+        ST_TPG_WR_CMT    = 5'd7,
+        ST_TPG_CTRL_2    = 5'd8,
+        ST_TPG_POLL_ISS  = 5'd9,
+        ST_TPG_POLL_W    = 5'd10,
+        ST_TPG_IP_RST    = 5'd11,
+        ST_TPG_CTRL_3    = 5'd12,
+        ST_CONFIG_CLIP   = 5'd13,
+        ST_CONFIG_SCL    = 5'd14,
+        ST_CONFIG_CRS    = 5'd15,
+        ST_WORKING       = 5'd16;
 
     // --- Register Addresses ---
     // TPG
@@ -76,8 +78,12 @@ module top #(
     localparam [6:0] SCL_OUT_WIDTH_ADDR  = 7'h52;
     localparam [6:0] SCL_OUT_HEIGHT_ADDR = 7'h53;
 
+    // CRS (Resampler) -- from resampler_axisfull_1ppc_fixed register map
+    localparam [6:0] CRS_OUTPUT_MODE_ADDR = 7'h52; // Word addr 0x148: OUTPUT_MODE
+    localparam [6:0] CRS_COMMIT_ADDR      = 7'h51; // Word addr 0x144: COMMIT
+
     // --- Internal Registers ---
-    reg [3:0]  current_state;
+    reg [4:0]  current_state;
     reg [3:0]  cfg_step;
     reg [7:0]  cycle_count;
     reg [6:0]  mm_addr;
@@ -87,7 +93,7 @@ module top #(
     // --- Internal Signals ---
     wire [31:0] tpg_readdata;
     wire        tpg_readdatavalid;
-    wire        tpg_wait, clip_wait, scl_wait;
+    wire        tpg_wait, clip_wait, scl_wait, crs_wait;
 
     // --- AXI-Stream Internal Connections ---
     wire [15:0] tpg_tdata; wire tpg_tvalid, tpg_tready, tpg_tlast; wire [1:0] tpg_tuser;
@@ -184,7 +190,18 @@ module top #(
                         4'd1: begin mm_write <= 1'b1; mm_addr <= SCL_IN_HEIGHT_ADDR;  mm_wdata <= SCALER_IN_H;  if(!scl_wait) cfg_step <= 4'd2; end
                         4'd2: begin mm_write <= 1'b1; mm_addr <= SCL_OUT_WIDTH_ADDR;  mm_wdata <= SCALER_OUT_W; if(!scl_wait) cfg_step <= 4'd3; end
                         4'd3: begin mm_write <= 1'b1; mm_addr <= SCL_OUT_HEIGHT_ADDR; mm_wdata <= SCALER_OUT_H; 
-                              if(!scl_wait) begin mm_write <= 1'b0; cfg_step <= 4'd0; current_state <= ST_WORKING; end end
+                              if(!scl_wait) begin mm_write <= 1'b0; cfg_step <= 4'd0; current_state <= ST_CONFIG_CRS; end end
+                    endcase
+                end
+
+                // CRS (Resampler) Configuration Sequence
+                // Programs OUTPUT_MODE then COMMIT before pipeline goes live
+                ST_CONFIG_CRS: begin
+                    case (cfg_step)
+                        4'd0: begin mm_write <= 1'b1; mm_addr <= CRS_OUTPUT_MODE_ADDR; mm_wdata <= CRS_OUTPUT_MODE;
+                              if(!crs_wait) cfg_step <= 4'd1; end
+                        4'd1: begin mm_write <= 1'b1; mm_addr <= CRS_COMMIT_ADDR; mm_wdata <= 32'h1;
+                              if(!crs_wait) begin mm_write <= 1'b0; cfg_step <= 4'd0; current_state <= ST_WORKING; end end
                     endcase
                 end
 
@@ -229,7 +246,7 @@ module top #(
         .intel_vvp_dil_0_axi4s_vid_out_tlast                   (dil_tlast),
         .intel_vvp_dil_0_axi4s_vid_out_tuser                   (dil_tuser),
 
-        // CRS
+        // CRS (Resampler) -- Streaming
         .intel_vvp_crs_0_axi4s_vid_in_tdata                    (dil_tdata[15:0]),
         .intel_vvp_crs_0_axi4s_vid_in_tvalid                   (dil_tvalid),
         .intel_vvp_crs_0_axi4s_vid_in_tready                   (crs_in_ready),
@@ -240,6 +257,13 @@ module top #(
         .intel_vvp_crs_0_axi4s_vid_out_tready                  (crs_tready),
         .intel_vvp_crs_0_axi4s_vid_out_tlast                   (crs_tlast),
         .intel_vvp_crs_0_axi4s_vid_out_tuser                   (crs_tuser),
+        // CRS (Resampler) -- Avalon-MM Control
+        .intel_vvp_crs_0_av_mm_control_agent_address           (mm_addr),
+        .intel_vvp_crs_0_av_mm_control_agent_write             (mm_write && (current_state == ST_CONFIG_CRS)),
+        .intel_vvp_crs_0_av_mm_control_agent_byteenable        (4'hF),
+        .intel_vvp_crs_0_av_mm_control_agent_writedata         (mm_wdata),
+        .intel_vvp_crs_0_av_mm_control_agent_read              (1'b0),
+        .intel_vvp_crs_0_av_mm_control_agent_waitrequest       (crs_wait),
 
         // Clipper
         .intel_vvp_clipper_0_axi4s_vid_in_tdata                (crs_tdata),

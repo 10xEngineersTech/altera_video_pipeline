@@ -1,90 +1,178 @@
 m255
 K4
 z2
-!s11f MIXED_VERSIONS
+!s11f vlog 2021.2_1 2021.05, May 15 2021
 13
 !s112 1.1
 !i10d 8192
 !i10e 25
 !i10f 100
 cModel Technology
-d/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/platform/pipeline/sim/mentor
+Z0 d/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/pipeline/sim/mentor
 vpipeline_intel_vvp_clipper_0_altera_mm_interconnect_1920_epi4vay
-Z0 !s110 1778581251
+Z1 !s110 1778681724
 !i10b 1
 !s100 OL6<kSgEM^0l9bbJQRBGj1
 I4JRKe=W<fUc_^L3TeD_kB2
-Z1 d/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/pipeline/sim/mentor
-Z2 w1778570694
+R0
+Z2 w1778655233
 8../../../ip/pipeline/pipeline_intel_vvp_clipper_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_clipper_0_altera_mm_interconnect_1920_epi4vay.v
 F../../../ip/pipeline/pipeline_intel_vvp_clipper_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_clipper_0_altera_mm_interconnect_1920_epi4vay.v
-!i122 94
+!i122 10
 Z3 L0 9 164
 Z4 VDg1SIo80bB@j0V0VzS_@n1
 Z5 OL;L;2021.2_1;73
 r1
 !s85 0
 31
-Z6 !s108 1778581251.000000
+!s108 1778681723.000000
 !s107 ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_clipper_0_altera_mm_interconnect_1920_epi4vay.v|
 !s90 ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_clipper_0_altera_mm_interconnect_1920_epi4vay.v|-work|altera_mm_interconnect_1920|
 !i113 0
-Z7 o-work altera_mm_interconnect_1920 -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-Z8 tCvgOpt 0
+Z6 o-work altera_mm_interconnect_1920 -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z7 tCvgOpt 0
 vpipeline_intel_vvp_clipper_0_altera_mm_interconnect_1920_vibtxqa
-R0
+R1
 !i10b 1
 !s100 Kn28LkHGNklC<JY8@e?eZ2
 I1`JQoc4NhW?QZTe2^QkmN2
-R1
+R0
 R2
 8../../../ip/pipeline/pipeline_intel_vvp_clipper_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_clipper_0_altera_mm_interconnect_1920_vibtxqa.v
 F../../../ip/pipeline/pipeline_intel_vvp_clipper_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_clipper_0_altera_mm_interconnect_1920_vibtxqa.v
-!i122 95
+!i122 11
 R3
 R4
 R5
 r1
 !s85 0
 31
-R6
+!s108 1778681724.000000
 !s107 ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_clipper_0_altera_mm_interconnect_1920_vibtxqa.v|
 !s90 ../../../ip/pipeline/pipeline_intel_vvp_clipper_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_clipper_0_altera_mm_interconnect_1920_vibtxqa.v|-work|altera_mm_interconnect_1920|
 !i113 0
+R6
 R7
-R8
-vpipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_epi4vay
-Z9 !s110 1778581247
+vpipeline_intel_vvp_crs_0_altera_mm_interconnect_1920_7yc6fii
+Z8 !s110 1778681743
 !i10b 1
-!s100 b:`Q6D@mAl7lEQ95HeRGd0
-I]]DWNI8e>HKgh<[B^NH4i1
-R1
-Z10 w1778570695
-8../../../ip/pipeline/pipeline_intel_vvp_scaler_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_epi4vay.v
-F../../../ip/pipeline/pipeline_intel_vvp_scaler_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_epi4vay.v
-!i122 92
+!s100 64j0=7_L:a;kKGF0R49A^1
+I=_JDK;a=aKH?f;Xk9nzNS2
+R0
+w1778655222
+8../../../ip/pipeline/pipeline_intel_vvp_crs_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_crs_0_altera_mm_interconnect_1920_7yc6fii.v
+F../../../ip/pipeline/pipeline_intel_vvp_crs_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_crs_0_altera_mm_interconnect_1920_7yc6fii.v
+!i122 13
 R3
 R4
 R5
 r1
 !s85 0
 31
-Z11 !s108 1778581247.000000
+!s108 1778681743.000000
+!s107 ../../../ip/pipeline/pipeline_intel_vvp_crs_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_crs_0_altera_mm_interconnect_1920_7yc6fii.v|
+!s90 ../../../ip/pipeline/pipeline_intel_vvp_crs_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_crs_0_altera_mm_interconnect_1920_7yc6fii.v|-work|altera_mm_interconnect_1920|
+!i113 0
+R6
+R7
+vpipeline_intel_vvp_crs_0_altera_mm_interconnect_1920_epi4vay
+R8
+!i10b 1
+!s100 MF2RcIXR;@Zec[f@AJM070
+IcFbP1XfkmhHK0@9`4nc_<0
+R0
+w1778655223
+8../../../ip/pipeline/pipeline_intel_vvp_crs_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_crs_0_altera_mm_interconnect_1920_epi4vay.v
+F../../../ip/pipeline/pipeline_intel_vvp_crs_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_crs_0_altera_mm_interconnect_1920_epi4vay.v
+!i122 12
+R3
+R4
+R5
+r1
+!s85 0
+31
+!s108 1778681742.000000
+!s107 ../../../ip/pipeline/pipeline_intel_vvp_crs_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_crs_0_altera_mm_interconnect_1920_epi4vay.v|
+!s90 ../../../ip/pipeline/pipeline_intel_vvp_crs_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_crs_0_altera_mm_interconnect_1920_epi4vay.v|-work|altera_mm_interconnect_1920|
+!i113 0
+R6
+R7
+vpipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_epi4vay
+!s110 1778681719
+!i10b 1
+!s100 b:`Q6D@mAl7lEQ95HeRGd0
+I]]DWNI8e>HKgh<[B^NH4i1
+R0
+Z9 w1778655241
+8../../../ip/pipeline/pipeline_intel_vvp_scaler_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_epi4vay.v
+F../../../ip/pipeline/pipeline_intel_vvp_scaler_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_epi4vay.v
+!i122 8
+R3
+R4
+R5
+r1
+!s85 0
+31
+!s108 1778681719.000000
 !s107 ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_epi4vay.v|
 !s90 ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_epi4vay.v|-work|altera_mm_interconnect_1920|
 !i113 0
+R6
 R7
-R8
 vpipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_vevxpda
-R9
+!s110 1778681720
 !i10b 1
 !s100 >^Sm4Q8:nZW^4fWcb<4[L1
 I_F7]@;Y3JflYZh7gkPzC01
-R1
-R10
+R0
+R9
 8../../../ip/pipeline/pipeline_intel_vvp_scaler_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_vevxpda.v
 F../../../ip/pipeline/pipeline_intel_vvp_scaler_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_vevxpda.v
-!i122 93
+!i122 9
+R3
+R4
+R5
+r1
+!s85 0
+31
+!s108 1778681720.000000
+!s107 ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_vevxpda.v|
+!s90 ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_vevxpda.v|-work|altera_mm_interconnect_1920|
+!i113 0
+R6
+R7
+vpipeline_intel_vvp_tpg_0_altera_mm_interconnect_1920_epi4vay
+Z10 !s110 1778681752
+!i10b 1
+!s100 go13:TlhKFjMC=3Md[KN@2
+I^8@3a09DR>mbD0Jl8V4lf2
+R0
+w1778655250
+8../../../ip/pipeline/pipeline_intel_vvp_tpg_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_tpg_0_altera_mm_interconnect_1920_epi4vay.v
+F../../../ip/pipeline/pipeline_intel_vvp_tpg_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_tpg_0_altera_mm_interconnect_1920_epi4vay.v
+!i122 14
+R3
+R4
+R5
+r1
+!s85 0
+31
+Z11 !s108 1778681752.000000
+!s107 ../../../ip/pipeline/pipeline_intel_vvp_tpg_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_tpg_0_altera_mm_interconnect_1920_epi4vay.v|
+!s90 ../../../ip/pipeline/pipeline_intel_vvp_tpg_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_tpg_0_altera_mm_interconnect_1920_epi4vay.v|-work|altera_mm_interconnect_1920|
+!i113 0
+R6
+R7
+vpipeline_intel_vvp_tpg_0_altera_mm_interconnect_1920_vevxpda
+R10
+!i10b 1
+!s100 53kNjfo9<KhnThImcS;8S3
+IUemEdz_Lco:@WiRBUCO_i0
+R0
+w1778655249
+8../../../ip/pipeline/pipeline_intel_vvp_tpg_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_tpg_0_altera_mm_interconnect_1920_vevxpda.v
+F../../../ip/pipeline/pipeline_intel_vvp_tpg_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_tpg_0_altera_mm_interconnect_1920_vevxpda.v
+!i122 15
 R3
 R4
 R5
@@ -92,52 +180,8 @@ r1
 !s85 0
 31
 R11
-!s107 ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_vevxpda.v|
-!s90 ../../../ip/pipeline/pipeline_intel_vvp_scaler_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_vevxpda.v|-work|altera_mm_interconnect_1920|
-!i113 0
-R7
-R8
-vpipeline_intel_vvp_tpg_0_altera_mm_interconnect_1920_epi4vay
-Z12 !s110 1778581231
-!i10b 1
-!s100 go13:TlhKFjMC=3Md[KN@2
-I^8@3a09DR>mbD0Jl8V4lf2
-R1
-Z13 w1778576059
-8../../../ip/pipeline/pipeline_intel_vvp_tpg_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_tpg_0_altera_mm_interconnect_1920_epi4vay.v
-F../../../ip/pipeline/pipeline_intel_vvp_tpg_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_tpg_0_altera_mm_interconnect_1920_epi4vay.v
-!i122 90
-R3
-R4
-R5
-r1
-!s85 0
-31
-Z14 !s108 1778581231.000000
-!s107 ../../../ip/pipeline/pipeline_intel_vvp_tpg_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_tpg_0_altera_mm_interconnect_1920_epi4vay.v|
-!s90 ../../../ip/pipeline/pipeline_intel_vvp_tpg_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_tpg_0_altera_mm_interconnect_1920_epi4vay.v|-work|altera_mm_interconnect_1920|
-!i113 0
-R7
-R8
-vpipeline_intel_vvp_tpg_0_altera_mm_interconnect_1920_vevxpda
-R12
-!i10b 1
-!s100 53kNjfo9<KhnThImcS;8S3
-IUemEdz_Lco:@WiRBUCO_i0
-R1
-R13
-8../../../ip/pipeline/pipeline_intel_vvp_tpg_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_tpg_0_altera_mm_interconnect_1920_vevxpda.v
-F../../../ip/pipeline/pipeline_intel_vvp_tpg_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_tpg_0_altera_mm_interconnect_1920_vevxpda.v
-!i122 91
-R3
-R4
-R5
-r1
-!s85 0
-31
-R14
 !s107 ../../../ip/pipeline/pipeline_intel_vvp_tpg_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_tpg_0_altera_mm_interconnect_1920_vevxpda.v|
 !s90 ../../../ip/pipeline/pipeline_intel_vvp_tpg_0/altera_mm_interconnect_1920/sim/pipeline_intel_vvp_tpg_0_altera_mm_interconnect_1920_vevxpda.v|-work|altera_mm_interconnect_1920|
 !i113 0
+R6
 R7
-R8

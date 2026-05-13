@@ -87,6 +87,27 @@ https://fpgasoftware.intel.com/eula.-->
                 <consumedSystemInfos/>
             </value>
         </entry>
+        <entry>
+            <key>intel_vvp_crs_0_av_mm_control_agent</key>
+            <value>
+                <connectionPointName>intel_vvp_crs_0_av_mm_control_agent</connectionPointName>
+                <suppliedSystemInfos/>
+                <consumedSystemInfos>
+                    <entry>
+                        <key>ADDRESS_MAP</key>
+                        <value>&lt;address-map&gt;&lt;slave name='intel_vvp_crs_0.av_mm_control_agent' start='0x0' end='0x200' datawidth='32' /&gt;&lt;/address-map&gt;</value>
+                    </entry>
+                    <entry>
+                        <key>ADDRESS_WIDTH</key>
+                        <value>9</value>
+                    </entry>
+                    <entry>
+                        <key>MAX_SLAVE_DATA_WIDTH</key>
+                        <value>32</value>
+                    </entry>
+                </consumedSystemInfos>
+            </value>
+        </entry>
     </connPtSystemInfos>
 </systemInfosDefinition>]]></parameter>
  <parameter name="systemScripts" value="" />
@@ -97,10 +118,22 @@ https://fpgasoftware.intel.com/eula.-->
  <interface name="clk" internal="clock_in.in_clk" type="clock" dir="end" />
  <interface
    name="intel_vvp_crs_0_av_mm_control_agent"
-   internal="intel_vvp_crs_0.av_mm_control_agent" />
+   internal="intel_vvp_crs_0.av_mm_control_agent"
+   type="avalon"
+   dir="end" />
+ <interface
+   name="intel_vvp_crs_0_axi4s_vid_in"
+   internal="intel_vvp_crs_0.axi4s_vid_in"
+   type="axi4stream"
+   dir="end" />
  <interface
    name="intel_vvp_crs_0_axi4s_vid_out"
    internal="intel_vvp_crs_0.axi4s_vid_out"
+   type="axi4stream"
+   dir="start" />
+ <interface
+   name="intel_vvp_tpg_0_axi4s_vid_out"
+   internal="intel_vvp_tpg_0.axi4s_vid_out"
    type="axi4stream"
    dir="start" />
  <interface name="reset" internal="reset_in.in_reset" type="reset" dir="end" />
@@ -447,7 +480,7 @@ https://fpgasoftware.intel.com/eula.-->
                         <name>axi4s_vid_in_tdata</name>
                         <role>tdata</role>
                         <direction>Input</direction>
-                        <width>16</width>
+                        <width>24</width>
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                         <terminationValue>0</terminationValue>
@@ -483,7 +516,7 @@ https://fpgasoftware.intel.com/eula.-->
                         <name>axi4s_vid_in_tuser</name>
                         <role>tuser</role>
                         <direction>Input</direction>
-                        <width>2</width>
+                        <width>3</width>
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                         <terminationValue>0</terminationValue>
@@ -501,7 +534,7 @@ https://fpgasoftware.intel.com/eula.-->
                         </entry>
                         <entry>
                             <key>intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES</key>
-                            <value>2</value>
+                            <value>3</value>
                         </entry>
                         <entry>
                             <key>intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL</key>
@@ -614,6 +647,315 @@ https://fpgasoftware.intel.com/eula.-->
                     </parameterValueMap>
                 </parameters>
             </interface>
+            <interface>
+                <name>av_mm_control_agent</name>
+                <type>avalon</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>av_mm_control_agent_address</name>
+                        <role>address</role>
+                        <direction>Input</direction>
+                        <width>7</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>av_mm_control_agent_write</name>
+                        <role>write</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>av_mm_control_agent_byteenable</name>
+                        <role>byteenable</role>
+                        <direction>Input</direction>
+                        <width>4</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>av_mm_control_agent_writedata</name>
+                        <role>writedata</role>
+                        <direction>Input</direction>
+                        <width>32</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>av_mm_control_agent_read</name>
+                        <role>read</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>av_mm_control_agent_readdata</name>
+                        <role>readdata</role>
+                        <direction>Output</direction>
+                        <width>32</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>av_mm_control_agent_readdatavalid</name>
+                        <role>readdatavalid</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>av_mm_control_agent_waitrequest</name>
+                        <role>waitrequest</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap>
+                        <entry>
+                            <key>embeddedsw.configuration.isFlash</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>embeddedsw.configuration.isMemoryDevice</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>embeddedsw.configuration.isNonVolatileStorage</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>embeddedsw.configuration.isPrintableDevice</key>
+                            <value>0</value>
+                        </entry>
+                    </assignmentValueMap>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>addressAlignment</key>
+                            <value>DYNAMIC</value>
+                        </entry>
+                        <entry>
+                            <key>addressGroup</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>addressSpan</key>
+                            <value>512</value>
+                        </entry>
+                        <entry>
+                            <key>addressUnits</key>
+                            <value>WORDS</value>
+                        </entry>
+                        <entry>
+                            <key>alwaysBurstMaxBurst</key>
+                            <value>true</value>
+                        </entry>
+                        <entry>
+                            <key>associatedClock</key>
+                            <value>main_clock</value>
+                        </entry>
+                        <entry>
+                            <key>associatedReset</key>
+                            <value>main_reset</value>
+                        </entry>
+                        <entry>
+                            <key>bitsPerSymbol</key>
+                            <value>8</value>
+                        </entry>
+                        <entry>
+                            <key>bridgedAddressOffset</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>bridgesToMaster</key>
+                        </entry>
+                        <entry>
+                            <key>burstOnBurstBoundariesOnly</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>burstcountUnits</key>
+                            <value>WORDS</value>
+                        </entry>
+                        <entry>
+                            <key>constantBurstBehavior</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>explicitAddressSpan</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>holdTime</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>interleaveBursts</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>isBigEndian</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>isFlash</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>isMemoryDevice</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>isNonVolatileStorage</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>linewrapBursts</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>maximumPendingReadTransactions</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>maximumPendingWriteTransactions</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>minimumReadLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>minimumResponseLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>minimumUninterruptedRunLength</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>printableDevice</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>readLatency</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>readWaitStates</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>readWaitTime</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>registerIncomingSignals</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>registerOutgoingSignals</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>setupTime</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>timingUnits</key>
+                            <value>Cycles</value>
+                        </entry>
+                        <entry>
+                            <key>transparentBridge</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>waitrequestAllowance</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>waitrequestTimeout</key>
+                            <value>1024</value>
+                        </entry>
+                        <entry>
+                            <key>wellBehavedWaitrequest</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>writeLatency</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>writeWaitStates</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>writeWaitTime</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>dfhFeatureGuid</key>
+                            <value>73038183313082697535983386706108874754</value>
+                        </entry>
+                        <entry>
+                            <key>dfhGroupId</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>dfhParameterId</key>
+                        </entry>
+                        <entry>
+                            <key>dfhParameterName</key>
+                        </entry>
+                        <entry>
+                            <key>dfhParameterVersion</key>
+                        </entry>
+                        <entry>
+                            <key>dfhParameterData</key>
+                        </entry>
+                        <entry>
+                            <key>dfhParameterDataLength</key>
+                        </entry>
+                        <entry>
+                            <key>dfhFeatureMajorVersion</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>dfhFeatureMinorVersion</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>dfhFeatureId</key>
+                            <value>35</value>
+                        </entry>
+                        <entry>
+                            <key>dfhFeatureType</key>
+                            <value>3</value>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
         </interfaces>
     </boundary>
     <originalModuleInfo>
@@ -657,7 +999,29 @@ https://fpgasoftware.intel.com/eula.-->
         </descriptors>
     </systemInfoParameterDescriptors>
     <systemInfos>
-        <connPtSystemInfos/>
+        <connPtSystemInfos>
+            <entry>
+                <key>av_mm_control_agent</key>
+                <value>
+                    <connectionPointName>av_mm_control_agent</connectionPointName>
+                    <suppliedSystemInfos>
+                        <entry>
+                            <key>ADDRESS_MAP</key>
+                            <value>&lt;address-map&gt;&lt;slave name='av_mm_control_agent' start='0x0' end='0x200' datawidth='32' /&gt;&lt;/address-map&gt;</value>
+                        </entry>
+                        <entry>
+                            <key>ADDRESS_WIDTH</key>
+                            <value>9</value>
+                        </entry>
+                        <entry>
+                            <key>MAX_SLAVE_DATA_WIDTH</key>
+                            <value>32</value>
+                        </entry>
+                    </suppliedSystemInfos>
+                    <consumedSystemInfos/>
+                </value>
+            </entry>
+        </connPtSystemInfos>
     </systemInfos>
 </componentDefinition>]]></parameter>
   <parameter name="cpuInfo" value="" />
@@ -737,7 +1101,7 @@ https://fpgasoftware.intel.com/eula.-->
                     <name>axi4s_vid_in_tdata</name>
                     <role>tdata</role>
                     <direction>Input</direction>
-                    <width>16</width>
+                    <width>24</width>
                     <lowerBound>0</lowerBound>
                     <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                     <terminationValue>0</terminationValue>
@@ -773,7 +1137,7 @@ https://fpgasoftware.intel.com/eula.-->
                     <name>axi4s_vid_in_tuser</name>
                     <role>tuser</role>
                     <direction>Input</direction>
-                    <width>2</width>
+                    <width>3</width>
                     <lowerBound>0</lowerBound>
                     <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                     <terminationValue>0</terminationValue>
@@ -791,7 +1155,7 @@ https://fpgasoftware.intel.com/eula.-->
                     </entry>
                     <entry>
                         <key>intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES</key>
-                        <value>2</value>
+                        <value>3</value>
                     </entry>
                     <entry>
                         <key>intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL</key>
@@ -900,6 +1264,315 @@ https://fpgasoftware.intel.com/eula.-->
                     <entry>
                         <key>associatedReset</key>
                         <value>main_reset</value>
+                    </entry>
+                </parameterValueMap>
+            </parameters>
+        </interface>
+        <interface>
+            <name>av_mm_control_agent</name>
+            <type>avalon</type>
+            <isStart>false</isStart>
+            <ports>
+                <port>
+                    <name>av_mm_control_agent_address</name>
+                    <role>address</role>
+                    <direction>Input</direction>
+                    <width>7</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>av_mm_control_agent_write</name>
+                    <role>write</role>
+                    <direction>Input</direction>
+                    <width>1</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>av_mm_control_agent_byteenable</name>
+                    <role>byteenable</role>
+                    <direction>Input</direction>
+                    <width>4</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>av_mm_control_agent_writedata</name>
+                    <role>writedata</role>
+                    <direction>Input</direction>
+                    <width>32</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>av_mm_control_agent_read</name>
+                    <role>read</role>
+                    <direction>Input</direction>
+                    <width>1</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>av_mm_control_agent_readdata</name>
+                    <role>readdata</role>
+                    <direction>Output</direction>
+                    <width>32</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>av_mm_control_agent_readdatavalid</name>
+                    <role>readdatavalid</role>
+                    <direction>Output</direction>
+                    <width>1</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>av_mm_control_agent_waitrequest</name>
+                    <role>waitrequest</role>
+                    <direction>Output</direction>
+                    <width>1</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+            </ports>
+            <assignments>
+                <assignmentValueMap>
+                    <entry>
+                        <key>embeddedsw.configuration.isFlash</key>
+                        <value>0</value>
+                    </entry>
+                    <entry>
+                        <key>embeddedsw.configuration.isMemoryDevice</key>
+                        <value>0</value>
+                    </entry>
+                    <entry>
+                        <key>embeddedsw.configuration.isNonVolatileStorage</key>
+                        <value>0</value>
+                    </entry>
+                    <entry>
+                        <key>embeddedsw.configuration.isPrintableDevice</key>
+                        <value>0</value>
+                    </entry>
+                </assignmentValueMap>
+            </assignments>
+            <parameters>
+                <parameterValueMap>
+                    <entry>
+                        <key>addressAlignment</key>
+                        <value>DYNAMIC</value>
+                    </entry>
+                    <entry>
+                        <key>addressGroup</key>
+                        <value>0</value>
+                    </entry>
+                    <entry>
+                        <key>addressSpan</key>
+                        <value>512</value>
+                    </entry>
+                    <entry>
+                        <key>addressUnits</key>
+                        <value>WORDS</value>
+                    </entry>
+                    <entry>
+                        <key>alwaysBurstMaxBurst</key>
+                        <value>true</value>
+                    </entry>
+                    <entry>
+                        <key>associatedClock</key>
+                        <value>main_clock</value>
+                    </entry>
+                    <entry>
+                        <key>associatedReset</key>
+                        <value>main_reset</value>
+                    </entry>
+                    <entry>
+                        <key>bitsPerSymbol</key>
+                        <value>8</value>
+                    </entry>
+                    <entry>
+                        <key>bridgedAddressOffset</key>
+                        <value>0</value>
+                    </entry>
+                    <entry>
+                        <key>bridgesToMaster</key>
+                    </entry>
+                    <entry>
+                        <key>burstOnBurstBoundariesOnly</key>
+                        <value>false</value>
+                    </entry>
+                    <entry>
+                        <key>burstcountUnits</key>
+                        <value>WORDS</value>
+                    </entry>
+                    <entry>
+                        <key>constantBurstBehavior</key>
+                        <value>false</value>
+                    </entry>
+                    <entry>
+                        <key>explicitAddressSpan</key>
+                        <value>0</value>
+                    </entry>
+                    <entry>
+                        <key>holdTime</key>
+                        <value>0</value>
+                    </entry>
+                    <entry>
+                        <key>interleaveBursts</key>
+                        <value>false</value>
+                    </entry>
+                    <entry>
+                        <key>isBigEndian</key>
+                        <value>false</value>
+                    </entry>
+                    <entry>
+                        <key>isFlash</key>
+                        <value>false</value>
+                    </entry>
+                    <entry>
+                        <key>isMemoryDevice</key>
+                        <value>false</value>
+                    </entry>
+                    <entry>
+                        <key>isNonVolatileStorage</key>
+                        <value>false</value>
+                    </entry>
+                    <entry>
+                        <key>linewrapBursts</key>
+                        <value>false</value>
+                    </entry>
+                    <entry>
+                        <key>maximumPendingReadTransactions</key>
+                        <value>1</value>
+                    </entry>
+                    <entry>
+                        <key>maximumPendingWriteTransactions</key>
+                        <value>0</value>
+                    </entry>
+                    <entry>
+                        <key>minimumReadLatency</key>
+                        <value>1</value>
+                    </entry>
+                    <entry>
+                        <key>minimumResponseLatency</key>
+                        <value>1</value>
+                    </entry>
+                    <entry>
+                        <key>minimumUninterruptedRunLength</key>
+                        <value>1</value>
+                    </entry>
+                    <entry>
+                        <key>prSafe</key>
+                        <value>false</value>
+                    </entry>
+                    <entry>
+                        <key>printableDevice</key>
+                        <value>false</value>
+                    </entry>
+                    <entry>
+                        <key>readLatency</key>
+                        <value>0</value>
+                    </entry>
+                    <entry>
+                        <key>readWaitStates</key>
+                        <value>0</value>
+                    </entry>
+                    <entry>
+                        <key>readWaitTime</key>
+                        <value>0</value>
+                    </entry>
+                    <entry>
+                        <key>registerIncomingSignals</key>
+                        <value>false</value>
+                    </entry>
+                    <entry>
+                        <key>registerOutgoingSignals</key>
+                        <value>false</value>
+                    </entry>
+                    <entry>
+                        <key>setupTime</key>
+                        <value>0</value>
+                    </entry>
+                    <entry>
+                        <key>timingUnits</key>
+                        <value>Cycles</value>
+                    </entry>
+                    <entry>
+                        <key>transparentBridge</key>
+                        <value>false</value>
+                    </entry>
+                    <entry>
+                        <key>waitrequestAllowance</key>
+                        <value>0</value>
+                    </entry>
+                    <entry>
+                        <key>waitrequestTimeout</key>
+                        <value>1024</value>
+                    </entry>
+                    <entry>
+                        <key>wellBehavedWaitrequest</key>
+                        <value>false</value>
+                    </entry>
+                    <entry>
+                        <key>writeLatency</key>
+                        <value>0</value>
+                    </entry>
+                    <entry>
+                        <key>writeWaitStates</key>
+                        <value>0</value>
+                    </entry>
+                    <entry>
+                        <key>writeWaitTime</key>
+                        <value>0</value>
+                    </entry>
+                    <entry>
+                        <key>dfhFeatureGuid</key>
+                        <value>73038183313082697535983386706108874754</value>
+                    </entry>
+                    <entry>
+                        <key>dfhGroupId</key>
+                        <value>0</value>
+                    </entry>
+                    <entry>
+                        <key>dfhParameterId</key>
+                    </entry>
+                    <entry>
+                        <key>dfhParameterName</key>
+                    </entry>
+                    <entry>
+                        <key>dfhParameterVersion</key>
+                    </entry>
+                    <entry>
+                        <key>dfhParameterData</key>
+                    </entry>
+                    <entry>
+                        <key>dfhParameterDataLength</key>
+                    </entry>
+                    <entry>
+                        <key>dfhFeatureMajorVersion</key>
+                        <value>0</value>
+                    </entry>
+                    <entry>
+                        <key>dfhFeatureMinorVersion</key>
+                        <value>0</value>
+                    </entry>
+                    <entry>
+                        <key>dfhFeatureId</key>
+                        <value>35</value>
+                    </entry>
+                    <entry>
+                        <key>dfhFeatureType</key>
+                        <value>3</value>
                     </entry>
                 </parameterValueMap>
             </parameters>
@@ -1034,7 +1707,7 @@ https://fpgasoftware.intel.com/eula.-->
                         <name>axi4s_vid_out_tdata</name>
                         <role>tdata</role>
                         <direction>Output</direction>
-                        <width>16</width>
+                        <width>24</width>
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                         <terminationValue>0</terminationValue>
@@ -1070,7 +1743,7 @@ https://fpgasoftware.intel.com/eula.-->
                         <name>axi4s_vid_out_tuser</name>
                         <role>tuser</role>
                         <direction>Output</direction>
-                        <width>2</width>
+                        <width>3</width>
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                         <terminationValue>0</terminationValue>
@@ -1088,7 +1761,7 @@ https://fpgasoftware.intel.com/eula.-->
                         </entry>
                         <entry>
                             <key>intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES</key>
-                            <value>2</value>
+                            <value>3</value>
                         </entry>
                         <entry>
                             <key>intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL</key>
@@ -1236,7 +1909,7 @@ https://fpgasoftware.intel.com/eula.-->
                     <name>axi4s_vid_out_tdata</name>
                     <role>tdata</role>
                     <direction>Output</direction>
-                    <width>16</width>
+                    <width>24</width>
                     <lowerBound>0</lowerBound>
                     <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                     <terminationValue>0</terminationValue>
@@ -1272,7 +1945,7 @@ https://fpgasoftware.intel.com/eula.-->
                     <name>axi4s_vid_out_tuser</name>
                     <role>tuser</role>
                     <direction>Output</direction>
-                    <width>2</width>
+                    <width>3</width>
                     <lowerBound>0</lowerBound>
                     <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                     <terminationValue>0</terminationValue>
@@ -1290,7 +1963,7 @@ https://fpgasoftware.intel.com/eula.-->
                     </entry>
                     <entry>
                         <key>intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES</key>
-                        <value>2</value>
+                        <value>3</value>
                     </entry>
                     <entry>
                         <key>intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL</key>
@@ -1665,11 +2338,6 @@ https://fpgasoftware.intel.com/eula.-->
   <parameter name="svInterfaceDefinition" value="" />
   <parameter name="transformParameters"><![CDATA[<transformParameterDescriptorDefinitionList/>]]></parameter>
  </module>
- <connection
-   kind="axi4stream"
-   version="25.1"
-   start="intel_vvp_tpg_0.axi4s_vid_out"
-   end="intel_vvp_crs_0.axi4s_vid_in" />
  <connection
    kind="clock"
    version="25.1"

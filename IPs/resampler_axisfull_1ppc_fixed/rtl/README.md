@@ -9,8 +9,8 @@ The checker is designed to operate on a **1 pixel per clock (1ppc)** streaming i
 ### Data Formatting
 In a 1ppc AXI4-Stream Video configuration:
 - **4:2:2 Input (TPG)**: Chroma components alternate. 
-  - **Even Pixels** (Cycle 0): Data contains `{U (Cb), Y}`
-  - **Odd Pixels** (Cycle 1): Data contains `{V (Cr), Y}`
+  - **Even Pixels** (Cycle 0): Data contains `{Y, U (Cb)}`
+  - **Odd Pixels** (Cycle 1): Data contains `{Y, V (Cr)}`
 - **4:4:4 Output (Resampler)**: Every pixel contains all three components: `{V, Y, U}`.
 
 ### Reference Model Synthesis
@@ -40,10 +40,10 @@ The checker actively monitors `tuser[1]` and ignores control packets. This preve
 | `reset_reset` | Input | 1 | Active-high synchronous reset |
 | `crs_out_tdata` | Input | 24 | 4:4:4 Video Output from Resampler (`{V, Y, U}`) |
 | `crs_out_tvalid` | Input | 1 | Valid signal from Resampler |
-| `crs_out_tuser` | Input | 3 | User signals from Resampler (`[0]` SOF, `[1]` Ctrl) |
-| `tpg_out_tdata` | Input | 16 | 4:2:2 Video Output from TPG (`{C, Y}`) |
+| `crs_out_tuser` | Input | 3 | User signals from Resampler (`[0]` SOF, `[1]` Ctrl, `[2]` forced to 0) |
+| `tpg_out_tdata` | Input | 24 | 4:2:2 Video Output from TPG (`{C, Y}`) |
 | `tpg_out_tvalid` | Input | 1 | Valid signal from TPG |
-| `tpg_out_tuser` | Input | 2 | User signals from TPG (`[0]` SOF, `[1]` Ctrl) |
+| `tpg_out_tuser` | Input | 3 | User signals from TPG (`[0]` SOF, `[1]` Ctrl, `[2]` forced to 0) |
 | `status_led` | Output | 1 | Goes HIGH when >10 pixels have successfully matched without errors. |
 
 ## Error Logging

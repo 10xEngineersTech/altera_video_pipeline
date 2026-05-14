@@ -26,7 +26,7 @@
           </parameter>
           <parameter>
             <name>CORE_COL_SPACE_0</name>
-            <value>2</value>
+            <value>3</value>
           </parameter>
           <parameter>
             <name>CORE_COL_SPACE_1</name>
@@ -230,7 +230,7 @@
           </parameter>
           <parameter>
             <name>OUTPUT_FORMAT</name>
-            <value>4.2.2</value>
+            <value>4.2.0</value>
           </parameter>
           <parameter>
             <name>PIPELINE_READY</name>
@@ -261,7 +261,7 @@
         <className>intel_vvp_tpg</className>
         <version>24.5.1</version>
         <name>intel_vvp_tpg_0</name>
-        <uniqueName>system_intel_vvp_tpg_0_intel_vvp_tpg_2451_7vnqmni</uniqueName>
+        <uniqueName>system_intel_vvp_tpg_0_intel_vvp_tpg_2451_ryspb4i</uniqueName>
         <nonce>0</nonce>
         <incidentConnections></incidentConnections>
         <path>system_intel_vvp_tpg_0.intel_vvp_tpg_0</path>
@@ -277,7 +277,7 @@
               </parameter>
               <parameter>
                 <name>NUMBER_OF_COLOR_PLANES</name>
-                <value>2</value>
+                <value>3</value>
               </parameter>
               <parameter>
                 <name>PIPELINE_READY</name>
@@ -289,7 +289,7 @@
               </parameter>
               <parameter>
                 <name>TPG_CS</name>
-                <value>YCbCr_422</value>
+                <value>YCbCr_420</value>
               </parameter>
             </parameters>
             <interconnectAssignments></interconnectAssignments>
@@ -650,7 +650,7 @@
               </parameter>
               <parameter>
                 <name>NUMBER_OF_COLOR_PLANES</name>
-                <value>2</value>
+                <value>3</value>
               </parameter>
               <parameter>
                 <name>PIPELINE_READY</name>
@@ -768,7 +768,7 @@
               </parameter>
               <parameter>
                 <name>CORE_COL_SPACE_0</name>
-                <value>2</value>
+                <value>3</value>
               </parameter>
               <parameter>
                 <name>CORE_COL_SPACE_1</name>

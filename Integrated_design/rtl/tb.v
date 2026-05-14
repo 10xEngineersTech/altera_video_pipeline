@@ -111,7 +111,7 @@ module tb();
 
         // Wait for the state machine to reach STATE_WORKING
         // In the real simulation, you'd watch the 'current_state' signal
-        wait(dut.current_state == 2'd2);
+        wait(dut.current_state == dut.ST_WORKING); // ST_WORKING = 5'd16
         $display("[%0t] Configuration Complete. System is now WORKING.", $time);
 
         // Turn on the sink (ready to receive video)

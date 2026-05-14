@@ -5,7 +5,7 @@
  version="1.0"
  fabric="QSYS">
  <!-- Format version 25.1.1 125 (Future versions may contain additional information.) -->
- <!-- 2026.04.30.16:38:29 -->
+ <!-- 2026.05.12.16:47:47 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
@@ -112,7 +112,7 @@
    name="intel_vvp_tpg_0"
    kind="intel_vvp_tpg"
    version="24.5.1"
-   entity="system_intel_vvp_tpg_0_intel_vvp_tpg_2451_7vnqmni"
+   entity="system_intel_vvp_tpg_0_intel_vvp_tpg_2451_ryspb4i"
    library="intel_vvp_tpg_2451"
    path="intel_vvp_tpg_0"
    hpath="intel_vvp_tpg_0"
@@ -145,7 +145,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="OUTPUT_FORMAT">
    <type>java.lang.String</type>
-   <value>4.2.2</value>
+   <value>4.2.0</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -369,7 +369,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CORE_COL_SPACE_0">
    <type>int</type>
-   <value>2</value>
+   <value>3</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -760,7 +760,7 @@ parameters are a RESULT of the module parameters. -->
    </assignment>
    <assignment>
     <name>intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES</name>
-    <value>2</value>
+    <value>3</value>
    </assignment>
    <assignment>
     <name>intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL</name>
@@ -808,7 +808,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>axi4s_vid_out_tdata</name>
     <direction>Output</direction>
-    <width>16</width>
+    <width>24</width>
     <role>tdata</role>
    </port>
    <port>
@@ -832,7 +832,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>axi4s_vid_out_tuser</name>
     <direction>Output</direction>
-    <width>2</width>
+    <width>3</width>
     <role>tuser</role>
    </port>
   </interface>

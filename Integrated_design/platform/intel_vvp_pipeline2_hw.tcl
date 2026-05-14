@@ -37,10 +37,11 @@ set_parameter_property COLOR_SPACE ALLOWED_RANGES {RGB YUV_444 YUV_422 YUV_420}
 # ---------------------------------------------------------------------------
 # GUI layout
 # ---------------------------------------------------------------------------
-set_module_property ICON_PATH "doc/pipeline_diagram.png"
+set module_dir [get_module_property MODULE_DIRECTORY]
 
-add_display_item "" diagram_note TEXT \
-    "Block diagram: doc/pipeline_diagram.png  |  Main: Clipper → Proto Conv → Scaler  |  Standalone: CRS, DIL  |  Control: MM Bridge (Clipper 0x0000, Scaler 0x0200)"
+add_display_item "" diagram_group group "Block Diagram"
+add_display_item diagram_group diagram_image TEXT \
+    "<html><img src=\"file:///${module_dir}/doc/pipeline_diagram.png\"/></html>"
 
 # ---------------------------------------------------------------------------
 # compose: instantiates and connects all sub-cores

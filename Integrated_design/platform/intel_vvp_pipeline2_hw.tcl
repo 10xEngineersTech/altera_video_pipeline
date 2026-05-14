@@ -34,14 +34,28 @@ add_parameter COLOR_SPACE STRING "YUV_422"
 set_parameter_property COLOR_SPACE DISPLAY_NAME   "Color Space"
 set_parameter_property COLOR_SPACE ALLOWED_RANGES {RGB YUV_444 YUV_422 YUV_420}
 
+
 # ---------------------------------------------------------------------------
 # GUI layout
 # ---------------------------------------------------------------------------
 set module_dir [get_module_property MODULE_DIRECTORY]
 
+proc open_diagram {} {}
+
 add_display_item "" diagram_group group "Block Diagram"
-add_display_item diagram_group diagram_image TEXT \
-    "<html><img src=\"file:///${module_dir}/doc/pipeline_diagram.png\"/></html>"
+add_display_item diagram_group diagram_image TEXT "<html><body>\
+<table border='0' cellpadding='8' cellspacing='0' width='100%'>\
+<tr>\
+<td width='90' valign='middle'><input type='radio' name='view' checked/> Full</td>\
+<td align='right' valign='middle'><img src='file:///${module_dir}/doc/pipeline_diagram_wide.png' width='580' height='80'/></td>\
+</tr>\
+<tr><td colspan='2' height='6'></td></tr>\
+<tr>\
+<td width='90' valign='middle'><input type='radio' name='view'/> Simplified</td>\
+<td align='right' valign='middle'><img src='file:///${module_dir}/doc/pipeline_diagram_wide.png' width='580' height='80'/></td>\
+</tr>\
+</table>\
+</body></html>"
 
 # ---------------------------------------------------------------------------
 # compose: instantiates and connects all sub-cores

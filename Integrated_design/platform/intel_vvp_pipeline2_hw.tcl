@@ -34,6 +34,10 @@ add_parameter COLOR_SPACE STRING "YUV_422"
 set_parameter_property COLOR_SPACE DISPLAY_NAME   "Color Space"
 set_parameter_property COLOR_SPACE ALLOWED_RANGES {RGB YUV_444 YUV_422 YUV_420}
 
+add_parameter AXIS_LITE_MODE INTEGER 0
+set_parameter_property AXIS_LITE_MODE DISPLAY_NAME  "AXI Stream Lite Mode"
+set_parameter_property AXIS_LITE_MODE DISPLAY_HINT  "boolean"
+
 
 # ---------------------------------------------------------------------------
 # GUI layout
@@ -42,7 +46,18 @@ set module_dir [get_module_property MODULE_DIRECTORY]
 
 proc open_diagram {} {}
 
+add_display_item "" general_tab group "General"
+set_display_item_property general_tab DISPLAY_HINT "tab"
+add_display_item general_tab BPS                    parameter
+add_display_item general_tab NUMBER_OF_COLOR_PLANES parameter
+add_display_item general_tab PIXELS_IN_PARALLEL     parameter
+add_display_item general_tab MAX_WIDTH              parameter
+add_display_item general_tab MAX_HEIGHT             parameter
+add_display_item general_tab COLOR_SPACE            parameter
+add_display_item general_tab AXIS_LITE_MODE         parameter
+
 add_display_item "" diagram_group group "Block Diagram"
+set_display_item_property diagram_group DISPLAY_HINT "tab"
 add_display_item diagram_group diagram_image TEXT "<html><body>\
 <table border='0' cellpadding='8' cellspacing='0' width='100%'>\
 <tr>\
@@ -52,6 +67,16 @@ add_display_item diagram_group diagram_image TEXT "<html><body>\
 <tr><td colspan='2' height='6'></td></tr>\
 <tr>\
 <td width='90' valign='middle'><input type='radio' name='view'/> Simplified</td>\
+<td align='right' valign='middle'><img src='file:///${module_dir}/doc/pipeline_diagram_wide.png' width='580' height='80'/></td>\
+</tr>\
+<tr><td colspan='2' height='6'></td></tr>\
+<tr>\
+<td width='90' valign='middle'><input type='radio' name='view'/> Option C</td>\
+<td align='right' valign='middle'><img src='file:///${module_dir}/doc/pipeline_diagram_wide.png' width='580' height='80'/></td>\
+</tr>\
+<tr><td colspan='2' height='6'></td></tr>\
+<tr>\
+<td width='90' valign='middle'><input type='radio' name='view'/> Option D</td>\
 <td align='right' valign='middle'><img src='file:///${module_dir}/doc/pipeline_diagram_wide.png' width='580' height='80'/></td>\
 </tr>\
 </table>\
@@ -68,6 +93,7 @@ proc compose {} {
     set mwidth  [get_parameter_value MAX_WIDTH]
     set mheight [get_parameter_value MAX_HEIGHT]
     set cs      [get_parameter_value COLOR_SPACE]
+    set lite    [get_parameter_value AXIS_LITE_MODE]
 
     # Derive per-IP color space settings from COLOR_SPACE parameter
     switch $cs {
@@ -138,7 +164,7 @@ proc compose {} {
     # Test Pattern Generator
     # -----------------------------------------------------------------------
     add_instance intel_vvp_tpg_0 intel_vvp_tpg 24.5.1
-    set_instance_parameter_value intel_vvp_tpg_0 EXTERNAL_MODE       0
+    set_instance_parameter_value intel_vvp_tpg_0 EXTERNAL_MODE       $lite
     set_instance_parameter_value intel_vvp_tpg_0 BPS                 $bps
     set_instance_parameter_value intel_vvp_tpg_0 PIXELS_IN_PARALLEL  $pip
     set_instance_parameter_value intel_vvp_tpg_0 OUTPUT_FORMAT       $tpg_format
@@ -192,7 +218,7 @@ proc compose {} {
     set_instance_parameter_value intel_vvp_clipper_0 RUNTIME_CONTROL        1
     set_instance_parameter_value intel_vvp_clipper_0 ENABLE_DEBUG           0
     set_instance_parameter_value intel_vvp_clipper_0 SEPARATE_SLAVE_CLOCK   0
-    set_instance_parameter_value intel_vvp_clipper_0 EXTERNAL_MODE          0
+    set_instance_parameter_value intel_vvp_clipper_0 EXTERNAL_MODE          $lite
 
     # -----------------------------------------------------------------------
     # Protocol Converter
@@ -267,7 +293,7 @@ proc compose {} {
     # Chroma Resampler (standalone)
     # -----------------------------------------------------------------------
     add_instance intel_vvp_crs_0 intel_vvp_crs 24.5.1
-    set_instance_parameter_value intel_vvp_crs_0 EXTERNAL_MODE            0
+    set_instance_parameter_value intel_vvp_crs_0 EXTERNAL_MODE            $lite
     set_instance_parameter_value intel_vvp_crs_0 PIPELINE_READY           0
     set_instance_parameter_value intel_vvp_crs_0 MAX_WIDTH                16384
     set_instance_parameter_value intel_vvp_crs_0 RUNTIME_CONTROL          0
@@ -299,7 +325,7 @@ proc compose {} {
     # Deinterlacer (standalone)
     # -----------------------------------------------------------------------
     add_instance intel_vvp_dil_0 intel_vvp_dil 24.5.1
-    set_instance_parameter_value intel_vvp_dil_0 EXTERNAL_MODE          0
+    set_instance_parameter_value intel_vvp_dil_0 EXTERNAL_MODE          $lite
     set_instance_parameter_value intel_vvp_dil_0 PIPELINE_READY         0
     set_instance_parameter_value intel_vvp_dil_0 BPS                    $bps
     set_instance_parameter_value intel_vvp_dil_0 NUMBER_OF_COLOR_PLANES $nplanes

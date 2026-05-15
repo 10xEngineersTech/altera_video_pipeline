@@ -50,3 +50,4 @@ set_global_assignment -name POWER_APPLY_THERMAL_MARGIN ADDITIONAL
 set_global_assignment -name BOARD default
 set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_intel_vvp_crs_0.ip
 set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_intel_vvp_dil_0.ip
+set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_intel_vvp_csc_0.ip

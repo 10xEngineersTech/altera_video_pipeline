@@ -41,10 +41,7 @@ set USER_DEFINED_ELAB_OPTIONS {{-voptargs="+acc"}}
 elab_debug
 
 # Add Waves (only useful if GUI opens, but harmless in command line)
-add wave /tb/dut/u_pipeline_inst/intel_vvp_tpg_0_axi4s_vid_out_*
-add wave /tb/dut/u_pipeline_inst/intel_vvp_clipper_0_axi4s_vid_out_*
-add wave /tb/dut/u_pipeline_inst/intel_vvp_clipper_0_av_mm_control_agent_*
-add wave /tb/dut/u_pipeline_inst/intel_vvp_scaler_0_av_mm_control_agent_*
+add wave /tb/dut/u_pipeline/intel_*
 add wave -r /*
 
 # Run simulation

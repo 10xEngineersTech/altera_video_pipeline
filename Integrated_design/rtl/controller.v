@@ -12,7 +12,8 @@ module frame_controller #(
     input  wire [2:0]  tuser,
     
     output wire         write_flag,
-    output reg         frame_done
+    output reg         frame_done,
+	 output reg         error
 );
 
     // Internal counters
@@ -40,7 +41,12 @@ module frame_controller #(
             frame_done         <= 1'b0;
 				sof 					 <= 1'b0;
         end else begin
-            if(start_of_frame) sof <= 1'b1;
+				error <= 1'b0;
+            if(start_of_frame) begin 
+					sof <= 1'b1;
+					if(~(line_count == 15'b0 && pixel_count == 15'b0))
+						error <= 1'b1;
+				end
             // Frame and Line Counting Logic
             if (transfer_active) begin
                 
@@ -52,9 +58,10 @@ module frame_controller #(
                         pixel_count <= 0;
                         if (line_count < (IMG_H - 1))
                             line_count <= line_count + 1;
-                        else begin
-                            // End of first frame reached
-                            frame_done <= 1'b1;
+                        else begin if(line_count == (IMG_H - 1) && pixel_count == (IMG_W - 1))
+									frame_done <= 1'b1;
+								else
+									error <= 1'b1;
                         end
                     end else begin
                         pixel_count <= pixel_count + 1;

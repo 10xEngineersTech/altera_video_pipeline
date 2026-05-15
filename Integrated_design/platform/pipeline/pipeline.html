@@ -67,7 +67,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </table>
   <table class="blueBar">
    <tr>
-    <td class="l">2026.05.13.11:54:43</td>
+    <td class="l">2026.05.15.15:42:58</td>
     <td class="r">Datasheet</td>
    </tr>
   </table>
@@ -89,6 +89,9 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <br/>&#160;&#160;
      <a href="#module_intel_vvp_crs_0"><b>intel_vvp_crs_0</b>
      </a> intel_vvp_crs 24.5.1
+     <br/>&#160;&#160;
+     <a href="#module_intel_vvp_csc_0"><b>intel_vvp_csc_0</b>
+     </a> intel_vvp_csc 24.5.1
      <br/>&#160;&#160;
      <a href="#module_intel_vvp_scaler_0"><b>intel_vvp_scaler_0</b>
      </a> intel_vvp_scaler 24.5.1
@@ -115,6 +118,15 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    <tr>
     <td class="slavemodule">&#160;
      <a href="#module_intel_vvp_crs_0"><b>intel_vvp_crs_0</b>
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td class="slaveb">av_mm_control_agent&#160;</td>
+   </tr>
+   <tr>
+    <td class="slavemodule">&#160;
+     <a href="#module_intel_vvp_csc_0"><b>intel_vvp_csc_0</b>
      </a>
     </td>
    </tr>
@@ -242,10 +254,100 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <table class="connectionboxes">
      <tr>
       <td class="neighbor" rowspan="2">
+       <a href="#module_intel_vvp_dil_0">intel_vvp_dil_0</a>
+      </td>
+      <td class="from">axi4s_vid_out&#160;&#160;</td>
+      <td class="main" rowspan="10">intel_vvp_crs_0</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;axi4s_vid_in</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
        <a href="#module_clock_in">clock_in</a>
       </td>
       <td class="from">out_clk&#160;&#160;</td>
-      <td class="main" rowspan="5">intel_vvp_crs_0</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;main_clock</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_reset_in">reset_in</a>
+      </td>
+      <td class="from">out_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;main_reset</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">axi4s_vid_out&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_intel_vvp_csc_0">intel_vvp_csc_0</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;axi4s_vid_in</td>
+     </tr>
+    </table>
+   </div>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>(none)</td>
+    </tr>
+   </table>
+  </div>
+  <a name="module_intel_vvp_csc_0"> </a>
+  <div>
+   <hr/>
+   <h2>intel_vvp_csc_0</h2>intel_vvp_csc v24.5.1
+   <br/>
+   <div class="greydiv">
+    <table class="connectionboxes">
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_intel_vvp_crs_0">intel_vvp_crs_0</a>
+      </td>
+      <td class="from">axi4s_vid_out&#160;&#160;</td>
+      <td class="main" rowspan="8">intel_vvp_csc_0</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;axi4s_vid_in</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_clock_in">clock_in</a>
+      </td>
+      <td class="from">out_clk&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;main_clock</td>
@@ -298,7 +400,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_clock_in">clock_in</a>
       </td>
       <td class="from">out_clk&#160;&#160;</td>
-      <td class="main" rowspan="5">intel_vvp_dil_0</td>
+      <td class="main" rowspan="7">intel_vvp_dil_0</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;main_clock</td>
@@ -314,6 +416,19 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      </tr>
      <tr>
       <td class="to">&#160;&#160;main_reset</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">axi4s_vid_out&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_intel_vvp_crs_0">intel_vvp_crs_0</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;axi4s_vid_in</td>
      </tr>
     </table>
    </div>
@@ -547,7 +662,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_clock_in">clock_in</a>
       </td>
       <td class="from">out_clk&#160;&#160;</td>
-      <td class="main" rowspan="19">reset_in</td>
+      <td class="main" rowspan="22">reset_in</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;clk</td>
@@ -645,6 +760,22 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td class="to">&#160;&#160;main_reset</td>
      </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">out_reset&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_intel_vvp_csc_0">intel_vvp_csc_0</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;main_reset</td>
+     </tr>
     </table>
    </div>
    <br/>
@@ -672,7 +803,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   <table class="blueBar">
    <tr>
     <td class="l">generation took 0.00 seconds</td>
-    <td class="r">rendering took 0.01 seconds</td>
+    <td class="r">rendering took 0.02 seconds</td>
    </tr>
   </table>
  </body>

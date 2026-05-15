@@ -1,0 +1,24 @@
+# system info color_space on 2026.05.14.19:08:40
+system_info:
+name,value
+DEVICE,10CX220YF780I5G
+DEVICE_FAMILY,Cyclone 10 GX
+GENERATION_ID,0
+#
+#
+# Files generated for color_space on 2026.05.14.19:08:40
+files:
+filepath,kind,attributes,module,is_top
+sim/color_space.v,VERILOG,CONTAINS_INLINE_CONFIGURATION,color_space,true
+altera_reset_controller_1924/sim/altera_reset_controller.v,VERILOG,,altera_reset_controller,false
+altera_reset_controller_1924/sim/altera_reset_synchronizer.v,VERILOG,,altera_reset_controller,false
+altera_reset_controller_1924/sim/altera_reset_controller.sdc,SDC_ENTITY,NO_SDC_PROMOTION,altera_reset_controller,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+color_space.clock_in,color_space_clock_in
+color_space.intel_vvp_csc_0,color_space_intel_vvp_csc_0
+color_space.intel_vvp_tpg_0,color_space_intel_vvp_tpg_0
+color_space.reset_in,color_space_reset_in
+color_space.rst_controller,altera_reset_controller

@@ -52,7 +52,7 @@ https://fpgasoftware.intel.com/eula.-->
    {
       datum _sortIndex
       {
-         value = "5";
+         value = "6";
          type = "int";
       }
    }
@@ -68,7 +68,7 @@ https://fpgasoftware.intel.com/eula.-->
    {
       datum _sortIndex
       {
-         value = "8";
+         value = "5";
          type = "int";
       }
    }
@@ -84,7 +84,7 @@ https://fpgasoftware.intel.com/eula.-->
    {
       datum _sortIndex
       {
-         value = "6";
+         value = "7";
          type = "int";
       }
    }
@@ -92,7 +92,7 @@ https://fpgasoftware.intel.com/eula.-->
    {
       datum _sortIndex
       {
-         value = "7";
+         value = "8";
          type = "int";
       }
    }
@@ -8524,10 +8524,6 @@ https://fpgasoftware.intel.com/eula.-->
       </altera:module>
     </altera:modules>
     <altera:connections>
-      <altera:connection altera:kind="axi4stream" altera:version="25.1" altera:start="intel_vvp_protocol_conv_0.axi4s_vid_out" altera:end="intel_vvp_scaler_0.axi4s_vid_in"></altera:connection>
-      <altera:connection altera:kind="axi4stream" altera:version="25.1" altera:start="intel_vvp_dil_0.axi4s_vid_out" altera:end="intel_vvp_crs_0.axi4s_vid_in"></altera:connection>
-      <altera:connection altera:kind="axi4stream" altera:version="25.1" altera:start="intel_vvp_clipper_0.axi4s_vid_out" altera:end="intel_vvp_protocol_conv_0.axi4s_vid_in"></altera:connection>
-      <altera:connection altera:kind="axi4stream" altera:version="25.1" altera:start="intel_vvp_crs_0.axi4s_vid_out" altera:end="intel_vvp_csc_0.axi4s_vid_in"></altera:connection>
       <altera:connection altera:kind="clock" altera:version="25.1" altera:start="clock_in.out_clk" altera:end="reset_in.clk"></altera:connection>
       <altera:connection altera:kind="clock" altera:version="25.1" altera:start="clock_in.out_clk" altera:end="intel_vvp_tpg_0.main_clock"></altera:connection>
       <altera:connection altera:kind="clock" altera:version="25.1" altera:start="clock_in.out_clk" altera:end="intel_vvp_clipper_0.main_clock"></altera:connection>
@@ -8553,11 +8549,19 @@ https://fpgasoftware.intel.com/eula.-->
       <altera:interface_mapping altera:name="clk" altera:internal="clock_in.in_clk" altera:type="clock" altera:dir="end"></altera:interface_mapping>
       <altera:interface_mapping altera:name="intel_vvp_clipper_0_av_mm_control_agent" altera:internal="intel_vvp_clipper_0.av_mm_control_agent" altera:type="avalon" altera:dir="end"></altera:interface_mapping>
       <altera:interface_mapping altera:name="intel_vvp_clipper_0_axi4s_vid_in" altera:internal="intel_vvp_clipper_0.axi4s_vid_in" altera:type="axi4stream" altera:dir="end"></altera:interface_mapping>
+      <altera:interface_mapping altera:name="intel_vvp_clipper_0_axi4s_vid_out" altera:internal="intel_vvp_clipper_0.axi4s_vid_out" altera:type="axi4stream" altera:dir="start"></altera:interface_mapping>
       <altera:interface_mapping altera:name="intel_vvp_crs_0_av_mm_control_agent" altera:internal="intel_vvp_crs_0.av_mm_control_agent" altera:type="avalon" altera:dir="end"></altera:interface_mapping>
+      <altera:interface_mapping altera:name="intel_vvp_crs_0_axi4s_vid_in" altera:internal="intel_vvp_crs_0.axi4s_vid_in" altera:type="axi4stream" altera:dir="end"></altera:interface_mapping>
+      <altera:interface_mapping altera:name="intel_vvp_crs_0_axi4s_vid_out" altera:internal="intel_vvp_crs_0.axi4s_vid_out" altera:type="axi4stream" altera:dir="start"></altera:interface_mapping>
       <altera:interface_mapping altera:name="intel_vvp_csc_0_av_mm_control_agent" altera:internal="intel_vvp_csc_0.av_mm_control_agent" altera:type="avalon" altera:dir="end"></altera:interface_mapping>
+      <altera:interface_mapping altera:name="intel_vvp_csc_0_axi4s_vid_in" altera:internal="intel_vvp_csc_0.axi4s_vid_in" altera:type="axi4stream" altera:dir="end"></altera:interface_mapping>
       <altera:interface_mapping altera:name="intel_vvp_csc_0_axi4s_vid_out" altera:internal="intel_vvp_csc_0.axi4s_vid_out" altera:type="axi4stream" altera:dir="start"></altera:interface_mapping>
       <altera:interface_mapping altera:name="intel_vvp_dil_0_axi4s_vid_in" altera:internal="intel_vvp_dil_0.axi4s_vid_in" altera:type="axi4stream" altera:dir="end"></altera:interface_mapping>
+      <altera:interface_mapping altera:name="intel_vvp_dil_0_axi4s_vid_out" altera:internal="intel_vvp_dil_0.axi4s_vid_out" altera:type="axi4stream" altera:dir="start"></altera:interface_mapping>
+      <altera:interface_mapping altera:name="intel_vvp_protocol_conv_0_axi4s_vid_in" altera:internal="intel_vvp_protocol_conv_0.axi4s_vid_in" altera:type="axi4stream" altera:dir="end"></altera:interface_mapping>
+      <altera:interface_mapping altera:name="intel_vvp_protocol_conv_0_axi4s_vid_out" altera:internal="intel_vvp_protocol_conv_0.axi4s_vid_out" altera:type="axi4stream" altera:dir="start"></altera:interface_mapping>
       <altera:interface_mapping altera:name="intel_vvp_scaler_0_av_mm_control_agent" altera:internal="intel_vvp_scaler_0.av_mm_control_agent" altera:type="avalon" altera:dir="end"></altera:interface_mapping>
+      <altera:interface_mapping altera:name="intel_vvp_scaler_0_axi4s_vid_in" altera:internal="intel_vvp_scaler_0.axi4s_vid_in" altera:type="axi4stream" altera:dir="end"></altera:interface_mapping>
       <altera:interface_mapping altera:name="intel_vvp_scaler_0_axi4s_vid_out" altera:internal="intel_vvp_scaler_0.axi4s_vid_out" altera:type="axi4stream" altera:dir="start"></altera:interface_mapping>
       <altera:interface_mapping altera:name="intel_vvp_tpg_0_av_mm_control_agent" altera:internal="intel_vvp_tpg_0.av_mm_control_agent" altera:type="avalon" altera:dir="end"></altera:interface_mapping>
       <altera:interface_mapping altera:name="intel_vvp_tpg_0_axi4s_vid_out" altera:internal="intel_vvp_tpg_0.axi4s_vid_out" altera:type="axi4stream" altera:dir="start"></altera:interface_mapping>

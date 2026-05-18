@@ -528,13 +528,10 @@ module top #(
 
     // TPG output wires (driven by pipeline)
     wire [15:0] tpg_out_tdata;
-	 wire [23:0] csr_csc_tdata;
-    wire        tpg_out_tvalid, 	csr_csc_tvalid;
-    wire        tpg_out_tready, 	csr_csc_tready;
-    wire        tpg_out_tlast, 	csr_csc_tlast;
+    wire        tpg_out_tvalid;
+    wire        tpg_out_tready;
+    wire        tpg_out_tlast;
     wire [1:0]  tpg_out_tuser;
-	 wire [2:0]  csr_csc_tuser;
-	 
 
     // DIL input: tvalid gated; tready fed back to TPG; tdata/tlast/tuser pass through.
     // tuser: DIL expects [2:0]; TPG produces [1:0] — pad MSB with 0.
@@ -546,6 +543,41 @@ module top #(
 
     assign tpg_out_tready = dil_in_tready & ready_to_start;
 
+    // Inter-IP wires
+    // DIL -> CRS
+    wire [23:0] dil_out_tdata;
+    wire        dil_out_tvalid;
+    wire        dil_out_tready;
+    wire        dil_out_tlast;
+    wire [2:0]  dil_out_tuser;
+
+    // CRS -> CSC
+    wire [23:0] crs_out_tdata;
+    wire        crs_out_tvalid;
+    wire        crs_out_tready;
+    wire        crs_out_tlast;
+    wire [2:0]  crs_out_tuser;
+
+    // CSC -> Clipper
+    wire [23:0] csc_out_tdata;
+    wire        csc_out_tvalid;
+    wire        csc_out_tready;
+    wire        csc_out_tlast;
+    wire [2:0]  csc_out_tuser;
+
+    // Clipper -> ProtocolConv
+    wire [23:0] clip_out_tdata;
+    wire        clip_out_tvalid;
+    wire        clip_out_tready;
+    wire        clip_out_tlast;
+    wire [2:0]  clip_out_tuser;
+
+    // ProtocolConv -> Scaler
+    wire [23:0] pc_out_tdata;
+    wire        pc_out_tvalid;
+    wire        pc_out_tready;
+    wire        pc_out_tlast;
+    wire [2:0]  pc_out_tuser;
 
     pipeline u_pipeline (
         .clk_clk     (clk),
@@ -565,6 +597,76 @@ module top #(
         .intel_vvp_dil_0_axi4s_vid_in_tready (dil_in_tready),
         .intel_vvp_dil_0_axi4s_vid_in_tlast  (dil_in_tlast),
         .intel_vvp_dil_0_axi4s_vid_in_tuser  (dil_in_tuser),
+
+        // ----- DIL AXI4-S output -----
+        .intel_vvp_dil_0_axi4s_vid_out_tdata  (dil_out_tdata),
+        .intel_vvp_dil_0_axi4s_vid_out_tvalid (dil_out_tvalid),
+        .intel_vvp_dil_0_axi4s_vid_out_tready (dil_out_tready),
+        .intel_vvp_dil_0_axi4s_vid_out_tlast  (dil_out_tlast),
+        .intel_vvp_dil_0_axi4s_vid_out_tuser  (dil_out_tuser),
+
+        // ----- CRS AXI4-S input -----
+        .intel_vvp_crs_0_axi4s_vid_in_tdata  (dil_out_tdata),
+        .intel_vvp_crs_0_axi4s_vid_in_tvalid (dil_out_tvalid),
+        .intel_vvp_crs_0_axi4s_vid_in_tready (dil_out_tready),
+        .intel_vvp_crs_0_axi4s_vid_in_tlast  (dil_out_tlast),
+        .intel_vvp_crs_0_axi4s_vid_in_tuser  (dil_out_tuser),
+
+        // ----- CRS AXI4-S output -----
+        .intel_vvp_crs_0_axi4s_vid_out_tdata  (crs_out_tdata),
+        .intel_vvp_crs_0_axi4s_vid_out_tvalid (crs_out_tvalid),
+        .intel_vvp_crs_0_axi4s_vid_out_tready (crs_out_tready),
+        .intel_vvp_crs_0_axi4s_vid_out_tlast  (crs_out_tlast),
+        .intel_vvp_crs_0_axi4s_vid_out_tuser  (crs_out_tuser),
+
+        // ----- CSC AXI4-S input -----
+        .intel_vvp_csc_0_axi4s_vid_in_tdata  (crs_out_tdata),
+        .intel_vvp_csc_0_axi4s_vid_in_tvalid (crs_out_tvalid),
+        .intel_vvp_csc_0_axi4s_vid_in_tready (crs_out_tready),
+        .intel_vvp_csc_0_axi4s_vid_in_tlast  (crs_out_tlast),
+        .intel_vvp_csc_0_axi4s_vid_in_tuser  (crs_out_tuser),
+
+        // ----- CSC AXI4-S output -----
+        .intel_vvp_csc_0_axi4s_vid_out_tdata  (csc_out_tdata),
+        .intel_vvp_csc_0_axi4s_vid_out_tvalid (csc_out_tvalid),
+        .intel_vvp_csc_0_axi4s_vid_out_tready (csc_out_tready | (current_state == ST_POLL_CSC)),
+        .intel_vvp_csc_0_axi4s_vid_out_tlast  (csc_out_tlast),
+        .intel_vvp_csc_0_axi4s_vid_out_tuser  (csc_out_tuser),
+
+        // ----- Clipper AXI4-S input -----
+        .intel_vvp_clipper_0_axi4s_vid_in_tdata  (csc_out_tdata),
+        .intel_vvp_clipper_0_axi4s_vid_in_tvalid (csc_out_tvalid),
+        .intel_vvp_clipper_0_axi4s_vid_in_tready (csc_out_tready),
+        .intel_vvp_clipper_0_axi4s_vid_in_tlast  (csc_out_tlast),
+        .intel_vvp_clipper_0_axi4s_vid_in_tuser  (csc_out_tuser),
+
+        // ----- Clipper AXI4-S output -----
+        .intel_vvp_clipper_0_axi4s_vid_out_tdata  (clip_out_tdata),
+        .intel_vvp_clipper_0_axi4s_vid_out_tvalid (clip_out_tvalid),
+        .intel_vvp_clipper_0_axi4s_vid_out_tready (clip_out_tready),
+        .intel_vvp_clipper_0_axi4s_vid_out_tlast  (clip_out_tlast),
+        .intel_vvp_clipper_0_axi4s_vid_out_tuser  (clip_out_tuser),
+
+        // ----- Protocol Converter AXI4-S input -----
+        .intel_vvp_protocol_conv_0_axi4s_vid_in_tdata  (clip_out_tdata),
+        .intel_vvp_protocol_conv_0_axi4s_vid_in_tvalid (clip_out_tvalid),
+        .intel_vvp_protocol_conv_0_axi4s_vid_in_tready (clip_out_tready),
+        .intel_vvp_protocol_conv_0_axi4s_vid_in_tlast  (clip_out_tlast),
+        .intel_vvp_protocol_conv_0_axi4s_vid_in_tuser  (clip_out_tuser),
+
+        // ----- Protocol Converter AXI4-S output -----
+        .intel_vvp_protocol_conv_0_axi4s_vid_out_tdata  (pc_out_tdata),
+        .intel_vvp_protocol_conv_0_axi4s_vid_out_tvalid (pc_out_tvalid),
+        .intel_vvp_protocol_conv_0_axi4s_vid_out_tready (pc_out_tready),
+        .intel_vvp_protocol_conv_0_axi4s_vid_out_tlast  (pc_out_tlast),
+        .intel_vvp_protocol_conv_0_axi4s_vid_out_tuser  (pc_out_tuser),
+
+        // ----- Scaler AXI4-S input -----
+        .intel_vvp_scaler_0_axi4s_vid_in_tdata  (pc_out_tdata),
+        .intel_vvp_scaler_0_axi4s_vid_in_tvalid (pc_out_tvalid),
+        .intel_vvp_scaler_0_axi4s_vid_in_tready (pc_out_tready),
+        .intel_vvp_scaler_0_axi4s_vid_in_tlast  (pc_out_tlast),
+        .intel_vvp_scaler_0_axi4s_vid_in_tuser  (pc_out_tuser),
 
         // ----- Scaler output -----
         .intel_vvp_scaler_0_axi4s_vid_out_tdata  (out_tdata),
@@ -602,18 +704,6 @@ module top #(
         .intel_vvp_crs_0_av_mm_control_agent_readdata      (),
         .intel_vvp_crs_0_av_mm_control_agent_readdatavalid (),
         .intel_vvp_crs_0_av_mm_control_agent_waitrequest   (crs_wait),
-		  
-		  .intel_vvp_csc_0_axi4s_vid_out_tdata  (csr_csc_tdata),
-        .intel_vvp_csc_0_axi4s_vid_out_tvalid (csr_csc_tvalid),
-        .intel_vvp_csc_0_axi4s_vid_out_tready (csr_csc_tready | (current_state == ST_POLL_CSC)),
-        .intel_vvp_csc_0_axi4s_vid_out_tlast  (csr_csc_tlast),
-        .intel_vvp_csc_0_axi4s_vid_out_tuser  (csr_csc_tuser),
-		  
-		  .intel_vvp_clipper_0_axi4s_vid_in_tdata  (csr_csc_tdata),
-        .intel_vvp_clipper_0_axi4s_vid_in_tvalid (csr_csc_tvalid),
-        .intel_vvp_clipper_0_axi4s_vid_in_tready (csr_csc_tready),
-        .intel_vvp_clipper_0_axi4s_vid_in_tlast  (csr_csc_tlast),
-        .intel_vvp_clipper_0_axi4s_vid_in_tuser  (csr_csc_tuser),
 
         // ----- CSC Avalon-MM control -----
         .intel_vvp_csc_0_av_mm_control_agent_address       (csc_addr_r),

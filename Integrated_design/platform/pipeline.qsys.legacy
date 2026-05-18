@@ -36,7 +36,7 @@ https://fpgasoftware.intel.com/eula.-->
    {
       datum _sortIndex
       {
-         value = "5";
+         value = "6";
          type = "int";
       }
    }
@@ -52,7 +52,7 @@ https://fpgasoftware.intel.com/eula.-->
    {
       datum _sortIndex
       {
-         value = "8";
+         value = "5";
          type = "int";
       }
    }
@@ -68,7 +68,7 @@ https://fpgasoftware.intel.com/eula.-->
    {
       datum _sortIndex
       {
-         value = "6";
+         value = "7";
          type = "int";
       }
    }
@@ -76,7 +76,7 @@ https://fpgasoftware.intel.com/eula.-->
    {
       datum _sortIndex
       {
-         value = "7";
+         value = "8";
          type = "int";
       }
    }
@@ -251,14 +251,34 @@ https://fpgasoftware.intel.com/eula.-->
    type="axi4stream"
    dir="end" />
  <interface
+   name="intel_vvp_clipper_0_axi4s_vid_out"
+   internal="intel_vvp_clipper_0.axi4s_vid_out"
+   type="axi4stream"
+   dir="start" />
+ <interface
    name="intel_vvp_crs_0_av_mm_control_agent"
    internal="intel_vvp_crs_0.av_mm_control_agent"
    type="avalon"
    dir="end" />
  <interface
+   name="intel_vvp_crs_0_axi4s_vid_in"
+   internal="intel_vvp_crs_0.axi4s_vid_in"
+   type="axi4stream"
+   dir="end" />
+ <interface
+   name="intel_vvp_crs_0_axi4s_vid_out"
+   internal="intel_vvp_crs_0.axi4s_vid_out"
+   type="axi4stream"
+   dir="start" />
+ <interface
    name="intel_vvp_csc_0_av_mm_control_agent"
    internal="intel_vvp_csc_0.av_mm_control_agent"
    type="avalon"
+   dir="end" />
+ <interface
+   name="intel_vvp_csc_0_axi4s_vid_in"
+   internal="intel_vvp_csc_0.axi4s_vid_in"
+   type="axi4stream"
    dir="end" />
  <interface
    name="intel_vvp_csc_0_axi4s_vid_out"
@@ -271,9 +291,29 @@ https://fpgasoftware.intel.com/eula.-->
    type="axi4stream"
    dir="end" />
  <interface
+   name="intel_vvp_dil_0_axi4s_vid_out"
+   internal="intel_vvp_dil_0.axi4s_vid_out"
+   type="axi4stream"
+   dir="start" />
+ <interface
+   name="intel_vvp_protocol_conv_0_axi4s_vid_in"
+   internal="intel_vvp_protocol_conv_0.axi4s_vid_in"
+   type="axi4stream"
+   dir="end" />
+ <interface
+   name="intel_vvp_protocol_conv_0_axi4s_vid_out"
+   internal="intel_vvp_protocol_conv_0.axi4s_vid_out"
+   type="axi4stream"
+   dir="start" />
+ <interface
    name="intel_vvp_scaler_0_av_mm_control_agent"
    internal="intel_vvp_scaler_0.av_mm_control_agent"
    type="avalon"
+   dir="end" />
+ <interface
+   name="intel_vvp_scaler_0_axi4s_vid_in"
+   internal="intel_vvp_scaler_0.axi4s_vid_in"
+   type="axi4stream"
    dir="end" />
  <interface
    name="intel_vvp_scaler_0_axi4s_vid_out"
@@ -7987,26 +8027,6 @@ https://fpgasoftware.intel.com/eula.-->
   <parameter name="svInterfaceDefinition" value="" />
   <parameter name="transformParameters"><![CDATA[<transformParameterDescriptorDefinitionList/>]]></parameter>
  </module>
- <connection
-   kind="axi4stream"
-   version="25.1"
-   start="intel_vvp_protocol_conv_0.axi4s_vid_out"
-   end="intel_vvp_scaler_0.axi4s_vid_in" />
- <connection
-   kind="axi4stream"
-   version="25.1"
-   start="intel_vvp_dil_0.axi4s_vid_out"
-   end="intel_vvp_crs_0.axi4s_vid_in" />
- <connection
-   kind="axi4stream"
-   version="25.1"
-   start="intel_vvp_clipper_0.axi4s_vid_out"
-   end="intel_vvp_protocol_conv_0.axi4s_vid_in" />
- <connection
-   kind="axi4stream"
-   version="25.1"
-   start="intel_vvp_crs_0.axi4s_vid_out"
-   end="intel_vvp_csc_0.axi4s_vid_in" />
  <connection
    kind="clock"
    version="25.1"

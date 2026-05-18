@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2026.05.15.15:42:58"
- outputDirectory="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/Integrated_design/platform/pipeline/">
+ date="2026.05.18.15:54:51"
+ outputDirectory="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/pipeline/">
  <perimeter>
   <parameter
      name="AUTO_GENERATION_ID"
@@ -122,6 +122,35 @@
        role="tuser"
        width="3" />
   </interface>
+  <interface name="intel_vvp_clipper_0_axi4s_vid_out" kind="axi4stream" start="1">
+   <property name="associatedClock" value="clk" />
+   <property name="associatedReset" value="reset" />
+   <port
+       name="intel_vvp_clipper_0_axi4s_vid_out_tdata"
+       direction="output"
+       role="tdata"
+       width="24" />
+   <port
+       name="intel_vvp_clipper_0_axi4s_vid_out_tvalid"
+       direction="output"
+       role="tvalid"
+       width="1" />
+   <port
+       name="intel_vvp_clipper_0_axi4s_vid_out_tready"
+       direction="input"
+       role="tready"
+       width="1" />
+   <port
+       name="intel_vvp_clipper_0_axi4s_vid_out_tlast"
+       direction="output"
+       role="tlast"
+       width="1" />
+   <port
+       name="intel_vvp_clipper_0_axi4s_vid_out_tuser"
+       direction="output"
+       role="tuser"
+       width="3" />
+  </interface>
   <interface
      name="intel_vvp_clipper_0_av_mm_control_agent"
      kind="avalon"
@@ -220,6 +249,64 @@
        role="waitrequest"
        width="1" />
   </interface>
+  <interface name="intel_vvp_crs_0_axi4s_vid_in" kind="axi4stream" start="0">
+   <property name="associatedClock" value="clk" />
+   <property name="associatedReset" value="reset" />
+   <port
+       name="intel_vvp_crs_0_axi4s_vid_in_tdata"
+       direction="input"
+       role="tdata"
+       width="24" />
+   <port
+       name="intel_vvp_crs_0_axi4s_vid_in_tvalid"
+       direction="input"
+       role="tvalid"
+       width="1" />
+   <port
+       name="intel_vvp_crs_0_axi4s_vid_in_tready"
+       direction="output"
+       role="tready"
+       width="1" />
+   <port
+       name="intel_vvp_crs_0_axi4s_vid_in_tlast"
+       direction="input"
+       role="tlast"
+       width="1" />
+   <port
+       name="intel_vvp_crs_0_axi4s_vid_in_tuser"
+       direction="input"
+       role="tuser"
+       width="3" />
+  </interface>
+  <interface name="intel_vvp_crs_0_axi4s_vid_out" kind="axi4stream" start="1">
+   <property name="associatedClock" value="clk" />
+   <property name="associatedReset" value="reset" />
+   <port
+       name="intel_vvp_crs_0_axi4s_vid_out_tdata"
+       direction="output"
+       role="tdata"
+       width="24" />
+   <port
+       name="intel_vvp_crs_0_axi4s_vid_out_tvalid"
+       direction="output"
+       role="tvalid"
+       width="1" />
+   <port
+       name="intel_vvp_crs_0_axi4s_vid_out_tready"
+       direction="input"
+       role="tready"
+       width="1" />
+   <port
+       name="intel_vvp_crs_0_axi4s_vid_out_tlast"
+       direction="output"
+       role="tlast"
+       width="1" />
+   <port
+       name="intel_vvp_crs_0_axi4s_vid_out_tuser"
+       direction="output"
+       role="tuser"
+       width="3" />
+  </interface>
   <interface name="intel_vvp_crs_0_av_mm_control_agent" kind="avalon" start="0">
    <property name="addressAlignment" value="DYNAMIC" />
    <property name="addressGroup" value="0" />
@@ -314,6 +401,35 @@
        direction="output"
        role="waitrequest"
        width="1" />
+  </interface>
+  <interface name="intel_vvp_csc_0_axi4s_vid_in" kind="axi4stream" start="0">
+   <property name="associatedClock" value="clk" />
+   <property name="associatedReset" value="reset" />
+   <port
+       name="intel_vvp_csc_0_axi4s_vid_in_tdata"
+       direction="input"
+       role="tdata"
+       width="24" />
+   <port
+       name="intel_vvp_csc_0_axi4s_vid_in_tvalid"
+       direction="input"
+       role="tvalid"
+       width="1" />
+   <port
+       name="intel_vvp_csc_0_axi4s_vid_in_tready"
+       direction="output"
+       role="tready"
+       width="1" />
+   <port
+       name="intel_vvp_csc_0_axi4s_vid_in_tlast"
+       direction="input"
+       role="tlast"
+       width="1" />
+   <port
+       name="intel_vvp_csc_0_axi4s_vid_in_tuser"
+       direction="input"
+       role="tuser"
+       width="3" />
   </interface>
   <interface name="intel_vvp_csc_0_axi4s_vid_out" kind="axi4stream" start="1">
    <property name="associatedClock" value="clk" />
@@ -464,6 +580,128 @@
        width="1" />
    <port
        name="intel_vvp_dil_0_axi4s_vid_in_tuser"
+       direction="input"
+       role="tuser"
+       width="3" />
+  </interface>
+  <interface name="intel_vvp_dil_0_axi4s_vid_out" kind="axi4stream" start="1">
+   <property name="associatedClock" value="clk" />
+   <property name="associatedReset" value="reset" />
+   <port
+       name="intel_vvp_dil_0_axi4s_vid_out_tdata"
+       direction="output"
+       role="tdata"
+       width="24" />
+   <port
+       name="intel_vvp_dil_0_axi4s_vid_out_tvalid"
+       direction="output"
+       role="tvalid"
+       width="1" />
+   <port
+       name="intel_vvp_dil_0_axi4s_vid_out_tready"
+       direction="input"
+       role="tready"
+       width="1" />
+   <port
+       name="intel_vvp_dil_0_axi4s_vid_out_tlast"
+       direction="output"
+       role="tlast"
+       width="1" />
+   <port
+       name="intel_vvp_dil_0_axi4s_vid_out_tuser"
+       direction="output"
+       role="tuser"
+       width="3" />
+  </interface>
+  <interface
+     name="intel_vvp_protocol_conv_0_axi4s_vid_in"
+     kind="axi4stream"
+     start="0">
+   <property name="associatedClock" value="clk" />
+   <property name="associatedReset" value="reset" />
+   <port
+       name="intel_vvp_protocol_conv_0_axi4s_vid_in_tdata"
+       direction="input"
+       role="tdata"
+       width="24" />
+   <port
+       name="intel_vvp_protocol_conv_0_axi4s_vid_in_tvalid"
+       direction="input"
+       role="tvalid"
+       width="1" />
+   <port
+       name="intel_vvp_protocol_conv_0_axi4s_vid_in_tready"
+       direction="output"
+       role="tready"
+       width="1" />
+   <port
+       name="intel_vvp_protocol_conv_0_axi4s_vid_in_tlast"
+       direction="input"
+       role="tlast"
+       width="1" />
+   <port
+       name="intel_vvp_protocol_conv_0_axi4s_vid_in_tuser"
+       direction="input"
+       role="tuser"
+       width="3" />
+  </interface>
+  <interface
+     name="intel_vvp_protocol_conv_0_axi4s_vid_out"
+     kind="axi4stream"
+     start="1">
+   <property name="associatedClock" value="clk" />
+   <property name="associatedReset" value="reset" />
+   <port
+       name="intel_vvp_protocol_conv_0_axi4s_vid_out_tdata"
+       direction="output"
+       role="tdata"
+       width="24" />
+   <port
+       name="intel_vvp_protocol_conv_0_axi4s_vid_out_tvalid"
+       direction="output"
+       role="tvalid"
+       width="1" />
+   <port
+       name="intel_vvp_protocol_conv_0_axi4s_vid_out_tready"
+       direction="input"
+       role="tready"
+       width="1" />
+   <port
+       name="intel_vvp_protocol_conv_0_axi4s_vid_out_tlast"
+       direction="output"
+       role="tlast"
+       width="1" />
+   <port
+       name="intel_vvp_protocol_conv_0_axi4s_vid_out_tuser"
+       direction="output"
+       role="tuser"
+       width="3" />
+  </interface>
+  <interface name="intel_vvp_scaler_0_axi4s_vid_in" kind="axi4stream" start="0">
+   <property name="associatedClock" value="clk" />
+   <property name="associatedReset" value="reset" />
+   <port
+       name="intel_vvp_scaler_0_axi4s_vid_in_tdata"
+       direction="input"
+       role="tdata"
+       width="24" />
+   <port
+       name="intel_vvp_scaler_0_axi4s_vid_in_tvalid"
+       direction="input"
+       role="tvalid"
+       width="1" />
+   <port
+       name="intel_vvp_scaler_0_axi4s_vid_in_tready"
+       direction="output"
+       role="tready"
+       width="1" />
+   <port
+       name="intel_vvp_scaler_0_axi4s_vid_in_tlast"
+       direction="input"
+       role="tlast"
+       width="1" />
+   <port
+       name="intel_vvp_scaler_0_axi4s_vid_in_tuser"
        direction="input"
        role="tuser"
        width="3" />
@@ -743,21 +981,21 @@
   <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="-1" />
   <generatedFiles>
    <file
-       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/Integrated_design/platform/pipeline/synth/pipeline.v"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/pipeline/synth/pipeline.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/Integrated_design/platform/pipeline/synth/pipeline.v"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/pipeline/synth/pipeline.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/Integrated_design/platform/pipeline.qsys" />
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/pipeline.qsys" />
   </sourceFiles>
   <childSourceFiles>
    <file
-       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/merlin/altera_reset_controller/altera_reset_controller_hw.tcl" />
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/merlin/altera_reset_controller/altera_reset_controller_hw.tcl" />
   </childSourceFiles>
   <messages>
    <message level="Info" culprit="pipeline">"Generating: pipeline"</message>
@@ -8691,29 +8929,29 @@
    name="altera_reset_controller">
   <generatedFiles>
    <file
-       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_controller.v"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_controller.v"
        attributes="" />
    <file
-       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_synchronizer.v"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_synchronizer.v"
        attributes="" />
    <file
-       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_controller.sdc"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_controller.sdc"
        attributes="NO_SDC_PROMOTION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_controller.v"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_controller.v"
        attributes="" />
    <file
-       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_synchronizer.v"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_synchronizer.v"
        attributes="" />
    <file
-       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_controller.sdc"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_controller.sdc"
        attributes="NO_SDC_PROMOTION" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/merlin/altera_reset_controller/altera_reset_controller_hw.tcl" />
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/merlin/altera_reset_controller/altera_reset_controller_hw.tcl" />
   </sourceFiles>
   <childSourceFiles/>
   <instantiator instantiator="pipeline" as="rst_controller" />

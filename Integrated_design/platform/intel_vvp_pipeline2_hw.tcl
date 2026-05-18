@@ -35,9 +35,213 @@ set_parameter_property COLOR_SPACE DISPLAY_NAME   "Color Space"
 set_parameter_property COLOR_SPACE ALLOWED_RANGES {RGB YUV_444 YUV_422 YUV_420}
 
 add_parameter AXIS_LITE_MODE INTEGER 0
-set_parameter_property AXIS_LITE_MODE DISPLAY_NAME  "AXI Stream Lite Mode"
+set_parameter_property AXIS_LITE_MODE DISPLAY_NAME  "Lite Mode"
 set_parameter_property AXIS_LITE_MODE DISPLAY_HINT  "boolean"
 
+# ---------------------------------------------------------------------------
+# Scaler Config — Scaling
+# ---------------------------------------------------------------------------
+add_parameter SC_ALGORITHM STRING "NEAREST_NEIGHBOUR"
+set_parameter_property SC_ALGORITHM DISPLAY_NAME   "Algorithm"
+set_parameter_property SC_ALGORITHM ALLOWED_RANGES {NEAREST_NEIGHBOUR BILINEAR BICUBIC LANCZOS_2 LANCZOS_3}
+
+add_parameter SC_EDGE_MIRROR STRING "REPLICATE"
+set_parameter_property SC_EDGE_MIRROR DISPLAY_NAME   "Edge Mirror"
+set_parameter_property SC_EDGE_MIRROR ALLOWED_RANGES {REPLICATE ZERO REFLECT WRAP}
+
+add_parameter SC_ENABLE_V INTEGER 1
+set_parameter_property SC_ENABLE_V DISPLAY_NAME "Enable Vertical Scaling"
+set_parameter_property SC_ENABLE_V DISPLAY_HINT "boolean"
+
+add_parameter SC_ENABLE_H INTEGER 1
+set_parameter_property SC_ENABLE_H DISPLAY_NAME "Enable Horizontal Scaling"
+set_parameter_property SC_ENABLE_H DISPLAY_HINT "boolean"
+
+add_parameter SC_NO_BLANKING INTEGER 0
+set_parameter_property SC_NO_BLANKING DISPLAY_NAME "No Blanking"
+set_parameter_property SC_NO_BLANKING DISPLAY_HINT "boolean"
+
+add_parameter SC_RUNTIME_LOAD INTEGER 1
+set_parameter_property SC_RUNTIME_LOAD DISPLAY_NAME "Runtime Load"
+set_parameter_property SC_RUNTIME_LOAD DISPLAY_HINT "boolean"
+
+add_parameter SC_MEM_INIT INTEGER 0
+set_parameter_property SC_MEM_INIT DISPLAY_NAME "Memory Initialization"
+set_parameter_property SC_MEM_INIT DISPLAY_HINT "boolean"
+
+# ---------------------------------------------------------------------------
+# Scaler Config — Vertical Scaling
+# ---------------------------------------------------------------------------
+add_parameter SC_V_TAPS INTEGER 4
+set_parameter_property SC_V_TAPS DISPLAY_NAME   "Vertical Taps"
+set_parameter_property SC_V_TAPS ALLOWED_RANGES {1 2 4 8 12}
+
+add_parameter SC_V_PHASES INTEGER 16
+set_parameter_property SC_V_PHASES DISPLAY_NAME   "Vertical Phases"
+set_parameter_property SC_V_PHASES ALLOWED_RANGES {1 2 4 8 16 32 64 128}
+
+add_parameter SC_V_BANKS INTEGER 1
+set_parameter_property SC_V_BANKS DISPLAY_NAME   "Vertical Banks"
+set_parameter_property SC_V_BANKS ALLOWED_RANGES {1 2 4 8 16}
+
+add_parameter SC_V_PARTIAL_SCALING INTEGER 0
+set_parameter_property SC_V_PARTIAL_SCALING DISPLAY_NAME "Partial Scaling"
+set_parameter_property SC_V_PARTIAL_SCALING DISPLAY_HINT "boolean"
+
+add_parameter SC_ENABLE_420_MIRROR INTEGER 0
+set_parameter_property SC_ENABLE_420_MIRROR DISPLAY_NAME "Enable 4:2:0 Mirror"
+set_parameter_property SC_ENABLE_420_MIRROR DISPLAY_HINT "boolean"
+
+add_parameter SC_V_COEFF_FUNCTION STRING "LANCZOS_2"
+set_parameter_property SC_V_COEFF_FUNCTION DISPLAY_NAME   "Coefficient Function"
+set_parameter_property SC_V_COEFF_FUNCTION ALLOWED_RANGES {FLAT BILINEAR BICUBIC LANCZOS_2 LANCZOS_3}
+
+add_parameter SC_V_COEFF_SIGNED INTEGER 1
+set_parameter_property SC_V_COEFF_SIGNED DISPLAY_NAME "Coefficients Signed"
+set_parameter_property SC_V_COEFF_SIGNED DISPLAY_HINT "boolean"
+
+add_parameter SC_V_COEFF_INT_BITS INTEGER 1
+set_parameter_property SC_V_COEFF_INT_BITS DISPLAY_NAME "Coeff Integer Bits"
+
+add_parameter SC_V_COEFF_FRAC_BITS INTEGER 6
+set_parameter_property SC_V_COEFF_FRAC_BITS DISPLAY_NAME "Coeff Fractional Bits"
+
+add_parameter SC_V_PRES_FRAC_BITS INTEGER 0
+set_parameter_property SC_V_PRES_FRAC_BITS DISPLAY_NAME "Prescale Fractional Bits"
+
+# ---------------------------------------------------------------------------
+# Scaler Config — Horizontal Scaling
+# ---------------------------------------------------------------------------
+add_parameter SC_H_TAPS INTEGER 4
+set_parameter_property SC_H_TAPS DISPLAY_NAME   "Horizontal Taps"
+set_parameter_property SC_H_TAPS ALLOWED_RANGES {1 2 4 8 12}
+
+add_parameter SC_H_PHASES INTEGER 16
+set_parameter_property SC_H_PHASES DISPLAY_NAME   "Horizontal Phases"
+set_parameter_property SC_H_PHASES ALLOWED_RANGES {1 2 4 8 16 32 64 128}
+
+add_parameter SC_H_BANKS INTEGER 1
+set_parameter_property SC_H_BANKS DISPLAY_NAME   "Horizontal Banks"
+set_parameter_property SC_H_BANKS ALLOWED_RANGES {1 2 4 8 16}
+
+add_parameter SC_H_PARTIAL_SCALING INTEGER 0
+set_parameter_property SC_H_PARTIAL_SCALING DISPLAY_NAME "Partial Scaling"
+set_parameter_property SC_H_PARTIAL_SCALING DISPLAY_HINT "boolean"
+
+add_parameter SC_HALF_RATE_420 INTEGER 0
+set_parameter_property SC_HALF_RATE_420 DISPLAY_NAME "Half Rate 4:2:0"
+set_parameter_property SC_HALF_RATE_420 DISPLAY_HINT "boolean"
+
+add_parameter SC_H_COEFF_FUNCTION STRING "LANCZOS_2"
+set_parameter_property SC_H_COEFF_FUNCTION DISPLAY_NAME   "Coefficient Function"
+set_parameter_property SC_H_COEFF_FUNCTION ALLOWED_RANGES {FLAT BILINEAR BICUBIC LANCZOS_2 LANCZOS_3}
+
+add_parameter SC_H_COEFF_SIGNED INTEGER 1
+set_parameter_property SC_H_COEFF_SIGNED DISPLAY_NAME "Coefficients Signed"
+set_parameter_property SC_H_COEFF_SIGNED DISPLAY_HINT "boolean"
+
+add_parameter SC_H_COEFF_INT_BITS INTEGER 1
+set_parameter_property SC_H_COEFF_INT_BITS DISPLAY_NAME "Coeff Integer Bits"
+
+add_parameter SC_H_COEFF_FRAC_BITS INTEGER 6
+set_parameter_property SC_H_COEFF_FRAC_BITS DISPLAY_NAME "Coeff Fractional Bits"
+
+# ---------------------------------------------------------------------------
+# Clipper Config — Clipping
+# ---------------------------------------------------------------------------
+add_parameter CL_CLIPPING_METHOD STRING "OFFSETS"
+set_parameter_property CL_CLIPPING_METHOD DISPLAY_NAME   "Clipping Method"
+set_parameter_property CL_CLIPPING_METHOD ALLOWED_RANGES {OFFSETS RECTANGLE}
+
+add_parameter CL_LEFT_OFFSET INTEGER 0
+set_parameter_property CL_LEFT_OFFSET DISPLAY_NAME "Left Offset"
+
+add_parameter CL_TOP_OFFSET INTEGER 0
+set_parameter_property CL_TOP_OFFSET DISPLAY_NAME "Top Offset"
+
+add_parameter CL_RIGHT_OFFSET INTEGER 0
+set_parameter_property CL_RIGHT_OFFSET DISPLAY_NAME "Right Offset"
+
+add_parameter CL_BOTTOM_OFFSET INTEGER 0
+set_parameter_property CL_BOTTOM_OFFSET DISPLAY_NAME "Bottom Offset"
+
+add_parameter CL_RECTANGLE_WIDTH INTEGER 1920
+set_parameter_property CL_RECTANGLE_WIDTH DISPLAY_NAME "Rectangle Width"
+
+add_parameter CL_RECTANGLE_HEIGHT INTEGER 1080
+set_parameter_property CL_RECTANGLE_HEIGHT DISPLAY_NAME "Rectangle Height"
+
+# ---------------------------------------------------------------------------
+# Chroma Resampler Config — Chroma Sampling
+# ---------------------------------------------------------------------------
+add_parameter CRS_MAX_WIDTH INTEGER 16384
+set_parameter_property CRS_MAX_WIDTH DISPLAY_NAME "Max Width"
+
+add_parameter CRS_SUPPORT_444_TO_422 INTEGER 0
+set_parameter_property CRS_SUPPORT_444_TO_422 DISPLAY_NAME "Support 4:4:4 to 4:2:2"
+set_parameter_property CRS_SUPPORT_444_TO_422 DISPLAY_HINT "boolean"
+
+add_parameter CRS_SUPPORT_444_TO_420 INTEGER 0
+set_parameter_property CRS_SUPPORT_444_TO_420 DISPLAY_NAME "Support 4:4:4 to 4:2:0"
+set_parameter_property CRS_SUPPORT_444_TO_420 DISPLAY_HINT "boolean"
+
+add_parameter CRS_SUPPORT_422_TO_444 INTEGER 1
+set_parameter_property CRS_SUPPORT_422_TO_444 DISPLAY_NAME "Support 4:2:2 to 4:4:4"
+set_parameter_property CRS_SUPPORT_422_TO_444 DISPLAY_HINT "boolean"
+
+add_parameter CRS_SUPPORT_422_TO_420 INTEGER 0
+set_parameter_property CRS_SUPPORT_422_TO_420 DISPLAY_NAME "Support 4:2:2 to 4:2:0"
+set_parameter_property CRS_SUPPORT_422_TO_420 DISPLAY_HINT "boolean"
+
+add_parameter CRS_SUPPORT_420_TO_422 INTEGER 0
+set_parameter_property CRS_SUPPORT_420_TO_422 DISPLAY_NAME "Support 4:2:0 to 4:2:2"
+set_parameter_property CRS_SUPPORT_420_TO_422 DISPLAY_HINT "boolean"
+
+add_parameter CRS_SUPPORT_420_TO_444 INTEGER 0
+set_parameter_property CRS_SUPPORT_420_TO_444 DISPLAY_NAME "Support 4:2:0 to 4:4:4"
+set_parameter_property CRS_SUPPORT_420_TO_444 DISPLAY_HINT "boolean"
+
+add_parameter CRS_SUPPORT_420_PASS INTEGER 0
+set_parameter_property CRS_SUPPORT_420_PASS DISPLAY_NAME "Support 4:2:0 Pass-through"
+set_parameter_property CRS_SUPPORT_420_PASS DISPLAY_HINT "boolean"
+
+add_parameter CRS_SUPPORT_422_PASS INTEGER 0
+set_parameter_property CRS_SUPPORT_422_PASS DISPLAY_NAME "Support 4:2:2 Pass-through"
+set_parameter_property CRS_SUPPORT_422_PASS DISPLAY_HINT "boolean"
+
+add_parameter CRS_SUPPORT_444_PASS INTEGER 0
+set_parameter_property CRS_SUPPORT_444_PASS DISPLAY_NAME "Support 4:4:4 Pass-through"
+set_parameter_property CRS_SUPPORT_444_PASS DISPLAY_HINT "boolean"
+
+# ---------------------------------------------------------------------------
+# Chroma Resampler Config — Horizontal Settings
+# ---------------------------------------------------------------------------
+add_parameter CRS_HORIZ_ALGORITHM STRING "NEAREST_NEIGHBOUR"
+set_parameter_property CRS_HORIZ_ALGORITHM DISPLAY_NAME   "Horizontal Algorithm"
+set_parameter_property CRS_HORIZ_ALGORITHM ALLOWED_RANGES {NEAREST_NEIGHBOUR BILINEAR}
+
+add_parameter CRS_HORIZ_CO_SITING STRING "LEFT"
+set_parameter_property CRS_HORIZ_CO_SITING DISPLAY_NAME   "Horizontal Co-Siting"
+set_parameter_property CRS_HORIZ_CO_SITING ALLOWED_RANGES {LEFT CENTER}
+
+add_parameter CRS_HORIZ_ENABLE_LUMA_ADAPT INTEGER 0
+set_parameter_property CRS_HORIZ_ENABLE_LUMA_ADAPT DISPLAY_NAME "Enable Horizontal Luma Adapt"
+set_parameter_property CRS_HORIZ_ENABLE_LUMA_ADAPT DISPLAY_HINT "boolean"
+
+# ---------------------------------------------------------------------------
+# Chroma Resampler Config — Vertical Settings
+# ---------------------------------------------------------------------------
+add_parameter CRS_VERT_ALGORITHM STRING "BILINEAR"
+set_parameter_property CRS_VERT_ALGORITHM DISPLAY_NAME   "Vertical Algorithm"
+set_parameter_property CRS_VERT_ALGORITHM ALLOWED_RANGES {NEAREST_NEIGHBOUR BILINEAR}
+
+add_parameter CRS_VERT_CO_SITING STRING "TOP"
+set_parameter_property CRS_VERT_CO_SITING DISPLAY_NAME   "Vertical Co-Siting"
+set_parameter_property CRS_VERT_CO_SITING ALLOWED_RANGES {TOP CENTER BOTTOM}
+
+add_parameter CRS_VERT_ENABLE_LUMA_ADAPT INTEGER 0
+set_parameter_property CRS_VERT_ENABLE_LUMA_ADAPT DISPLAY_NAME "Enable Vertical Luma Adapt"
+set_parameter_property CRS_VERT_ENABLE_LUMA_ADAPT DISPLAY_HINT "boolean"
 
 # ---------------------------------------------------------------------------
 # GUI layout
@@ -82,6 +286,78 @@ add_display_item diagram_group diagram_image TEXT "<html><body>\
 </table>\
 </body></html>"
 
+add_display_item "" scaler_tab group "Scaler Config"
+set_display_item_property scaler_tab DISPLAY_HINT "tab"
+
+add_display_item scaler_tab scaling_group group "Scaling"
+add_display_item scaling_group SC_ALGORITHM       parameter
+add_display_item scaling_group SC_EDGE_MIRROR     parameter
+add_display_item scaling_group SC_ENABLE_V        parameter
+add_display_item scaling_group SC_ENABLE_H        parameter
+add_display_item scaling_group SC_NO_BLANKING     parameter
+add_display_item scaling_group SC_RUNTIME_LOAD    parameter
+add_display_item scaling_group SC_MEM_INIT        parameter
+
+add_display_item scaler_tab vscaling_group group "Vertical Scaling"
+add_display_item vscaling_group SC_V_TAPS             parameter
+add_display_item vscaling_group SC_V_PHASES           parameter
+add_display_item vscaling_group SC_V_BANKS            parameter
+add_display_item vscaling_group SC_V_PARTIAL_SCALING  parameter
+add_display_item vscaling_group SC_ENABLE_420_MIRROR  parameter
+add_display_item vscaling_group SC_V_COEFF_FUNCTION   parameter
+add_display_item vscaling_group SC_V_COEFF_SIGNED     parameter
+add_display_item vscaling_group SC_V_COEFF_INT_BITS   parameter
+add_display_item vscaling_group SC_V_COEFF_FRAC_BITS  parameter
+add_display_item vscaling_group SC_V_PRES_FRAC_BITS   parameter
+
+add_display_item scaler_tab hscaling_group group "Horizontal Scaling"
+add_display_item hscaling_group SC_H_TAPS             parameter
+add_display_item hscaling_group SC_H_PHASES           parameter
+add_display_item hscaling_group SC_H_BANKS            parameter
+add_display_item hscaling_group SC_H_PARTIAL_SCALING  parameter
+add_display_item hscaling_group SC_HALF_RATE_420      parameter
+add_display_item hscaling_group SC_H_COEFF_FUNCTION   parameter
+add_display_item hscaling_group SC_H_COEFF_SIGNED     parameter
+add_display_item hscaling_group SC_H_COEFF_INT_BITS   parameter
+add_display_item hscaling_group SC_H_COEFF_FRAC_BITS  parameter
+
+add_display_item "" clipper_tab group "Clipper Config"
+set_display_item_property clipper_tab DISPLAY_HINT "tab"
+
+add_display_item clipper_tab clipping_group group "Clipping"
+add_display_item clipping_group CL_CLIPPING_METHOD  parameter
+add_display_item clipping_group CL_LEFT_OFFSET      parameter
+add_display_item clipping_group CL_TOP_OFFSET       parameter
+add_display_item clipping_group CL_RIGHT_OFFSET     parameter
+add_display_item clipping_group CL_BOTTOM_OFFSET    parameter
+add_display_item clipping_group CL_RECTANGLE_WIDTH  parameter
+add_display_item clipping_group CL_RECTANGLE_HEIGHT parameter
+
+add_display_item "" crs_tab group "Chroma Resampler Config"
+set_display_item_property crs_tab DISPLAY_HINT "tab"
+
+add_display_item crs_tab crs_sampling_group group "Chroma Sampling"
+add_display_item crs_sampling_group CRS_MAX_WIDTH          parameter
+add_display_item crs_sampling_group CRS_SUPPORT_444_TO_422 parameter
+add_display_item crs_sampling_group CRS_SUPPORT_444_TO_420 parameter
+add_display_item crs_sampling_group CRS_SUPPORT_422_TO_444 parameter
+add_display_item crs_sampling_group CRS_SUPPORT_422_TO_420 parameter
+add_display_item crs_sampling_group CRS_SUPPORT_420_TO_422 parameter
+add_display_item crs_sampling_group CRS_SUPPORT_420_TO_444 parameter
+add_display_item crs_sampling_group CRS_SUPPORT_420_PASS   parameter
+add_display_item crs_sampling_group CRS_SUPPORT_422_PASS   parameter
+add_display_item crs_sampling_group CRS_SUPPORT_444_PASS   parameter
+
+add_display_item crs_tab crs_horiz_group group "Horizontal Settings"
+add_display_item crs_horiz_group CRS_HORIZ_ALGORITHM         parameter
+add_display_item crs_horiz_group CRS_HORIZ_CO_SITING         parameter
+add_display_item crs_horiz_group CRS_HORIZ_ENABLE_LUMA_ADAPT parameter
+
+add_display_item crs_tab crs_vert_group group "Vertical Settings"
+add_display_item crs_vert_group CRS_VERT_ALGORITHM         parameter
+add_display_item crs_vert_group CRS_VERT_CO_SITING         parameter
+add_display_item crs_vert_group CRS_VERT_ENABLE_LUMA_ADAPT parameter
+
 # ---------------------------------------------------------------------------
 # compose: instantiates and connects all sub-cores
 # ---------------------------------------------------------------------------
@@ -94,6 +370,61 @@ proc compose {} {
     set mheight [get_parameter_value MAX_HEIGHT]
     set cs      [get_parameter_value COLOR_SPACE]
     set lite    [get_parameter_value AXIS_LITE_MODE]
+
+    # Clipper config parameters
+    set cl_method       [get_parameter_value CL_CLIPPING_METHOD]
+    set cl_left         [get_parameter_value CL_LEFT_OFFSET]
+    set cl_top          [get_parameter_value CL_TOP_OFFSET]
+    set cl_right        [get_parameter_value CL_RIGHT_OFFSET]
+    set cl_bottom       [get_parameter_value CL_BOTTOM_OFFSET]
+    set cl_rect_w       [get_parameter_value CL_RECTANGLE_WIDTH]
+    set cl_rect_h       [get_parameter_value CL_RECTANGLE_HEIGHT]
+
+    # CRS config parameters
+    set crs_max_w       [get_parameter_value CRS_MAX_WIDTH]
+    set crs_444_422     [get_parameter_value CRS_SUPPORT_444_TO_422]
+    set crs_444_420     [get_parameter_value CRS_SUPPORT_444_TO_420]
+    set crs_422_444     [get_parameter_value CRS_SUPPORT_422_TO_444]
+    set crs_422_420     [get_parameter_value CRS_SUPPORT_422_TO_420]
+    set crs_420_422     [get_parameter_value CRS_SUPPORT_420_TO_422]
+    set crs_420_444     [get_parameter_value CRS_SUPPORT_420_TO_444]
+    set crs_420_pass    [get_parameter_value CRS_SUPPORT_420_PASS]
+    set crs_422_pass    [get_parameter_value CRS_SUPPORT_422_PASS]
+    set crs_444_pass    [get_parameter_value CRS_SUPPORT_444_PASS]
+    set crs_h_alg       [get_parameter_value CRS_HORIZ_ALGORITHM]
+    set crs_h_siting    [get_parameter_value CRS_HORIZ_CO_SITING]
+    set crs_h_luma      [get_parameter_value CRS_HORIZ_ENABLE_LUMA_ADAPT]
+    set crs_v_alg       [get_parameter_value CRS_VERT_ALGORITHM]
+    set crs_v_siting    [get_parameter_value CRS_VERT_CO_SITING]
+    set crs_v_luma      [get_parameter_value CRS_VERT_ENABLE_LUMA_ADAPT]
+
+    # Scaler config parameters
+    set sc_algorithm      [get_parameter_value SC_ALGORITHM]
+    set sc_edge_mirror    [get_parameter_value SC_EDGE_MIRROR]
+    set sc_enable_v       [get_parameter_value SC_ENABLE_V]
+    set sc_enable_h       [get_parameter_value SC_ENABLE_H]
+    set sc_no_blanking    [get_parameter_value SC_NO_BLANKING]
+    set sc_runtime_load   [get_parameter_value SC_RUNTIME_LOAD]
+    set sc_mem_init       [get_parameter_value SC_MEM_INIT]
+    set sc_v_taps         [get_parameter_value SC_V_TAPS]
+    set sc_v_phases       [get_parameter_value SC_V_PHASES]
+    set sc_v_banks        [get_parameter_value SC_V_BANKS]
+    set sc_v_partial      [get_parameter_value SC_V_PARTIAL_SCALING]
+    set sc_420_mirror     [get_parameter_value SC_ENABLE_420_MIRROR]
+    set sc_v_coeff_fn     [get_parameter_value SC_V_COEFF_FUNCTION]
+    set sc_v_coeff_signed [get_parameter_value SC_V_COEFF_SIGNED]
+    set sc_v_coeff_int    [get_parameter_value SC_V_COEFF_INT_BITS]
+    set sc_v_coeff_frac   [get_parameter_value SC_V_COEFF_FRAC_BITS]
+    set sc_v_pres_frac    [get_parameter_value SC_V_PRES_FRAC_BITS]
+    set sc_h_taps         [get_parameter_value SC_H_TAPS]
+    set sc_h_phases       [get_parameter_value SC_H_PHASES]
+    set sc_h_banks        [get_parameter_value SC_H_BANKS]
+    set sc_h_partial      [get_parameter_value SC_H_PARTIAL_SCALING]
+    set sc_half_rate      [get_parameter_value SC_HALF_RATE_420]
+    set sc_h_coeff_fn     [get_parameter_value SC_H_COEFF_FUNCTION]
+    set sc_h_coeff_signed [get_parameter_value SC_H_COEFF_SIGNED]
+    set sc_h_coeff_int    [get_parameter_value SC_H_COEFF_INT_BITS]
+    set sc_h_coeff_frac   [get_parameter_value SC_H_COEFF_FRAC_BITS]
 
     # Derive per-IP color space settings from COLOR_SPACE parameter
     switch $cs {
@@ -208,13 +539,13 @@ proc compose {} {
     set_instance_parameter_value intel_vvp_clipper_0 BPS                    $bps
     set_instance_parameter_value intel_vvp_clipper_0 NUMBER_OF_COLOR_PLANES $nplanes
     set_instance_parameter_value intel_vvp_clipper_0 PIXELS_IN_PARALLEL     $pip
-    set_instance_parameter_value intel_vvp_clipper_0 CLIPPING_METHOD        OFFSETS
-    set_instance_parameter_value intel_vvp_clipper_0 LEFT_OFFSET            0
-    set_instance_parameter_value intel_vvp_clipper_0 TOP_OFFSET             0
-    set_instance_parameter_value intel_vvp_clipper_0 RIGHT_OFFSET           0
-    set_instance_parameter_value intel_vvp_clipper_0 BOTTOM_OFFSET          0
-    set_instance_parameter_value intel_vvp_clipper_0 RECTANGLE_WIDTH        1920
-    set_instance_parameter_value intel_vvp_clipper_0 RECTANGLE_HEIGHT       1080
+    set_instance_parameter_value intel_vvp_clipper_0 CLIPPING_METHOD        $cl_method
+    set_instance_parameter_value intel_vvp_clipper_0 LEFT_OFFSET            $cl_left
+    set_instance_parameter_value intel_vvp_clipper_0 TOP_OFFSET             $cl_top
+    set_instance_parameter_value intel_vvp_clipper_0 RIGHT_OFFSET           $cl_right
+    set_instance_parameter_value intel_vvp_clipper_0 BOTTOM_OFFSET          $cl_bottom
+    set_instance_parameter_value intel_vvp_clipper_0 RECTANGLE_WIDTH        $cl_rect_w
+    set_instance_parameter_value intel_vvp_clipper_0 RECTANGLE_HEIGHT       $cl_rect_h
     set_instance_parameter_value intel_vvp_clipper_0 RUNTIME_CONTROL        1
     set_instance_parameter_value intel_vvp_clipper_0 ENABLE_DEBUG           0
     set_instance_parameter_value intel_vvp_clipper_0 SEPARATE_SLAVE_CLOCK   0
@@ -246,7 +577,7 @@ proc compose {} {
     # Scaler
     # -----------------------------------------------------------------------
     add_instance intel_vvp_scaler_0 intel_vvp_scaler 24.5.1
-    set_instance_parameter_value intel_vvp_scaler_0 EXTERNAL_MODE        1
+    set_instance_parameter_value intel_vvp_scaler_0 EXTERNAL_MODE        $lite
     set_instance_parameter_value intel_vvp_scaler_0 PIPELINE_READY       0
     set_instance_parameter_value intel_vvp_scaler_0 BPS                  $bps
     set_instance_parameter_value intel_vvp_scaler_0 NUMBER_OF_COLOR_PLANES $nplanes
@@ -262,32 +593,32 @@ proc compose {} {
     set_instance_parameter_value intel_vvp_scaler_0 MAX_IN_WIDTH         $mwidth
     set_instance_parameter_value intel_vvp_scaler_0 MAX_OUT_WIDTH        $mwidth
     set_instance_parameter_value intel_vvp_scaler_0 OUTPUT_HEIGHT        $mheight
-    set_instance_parameter_value intel_vvp_scaler_0 NO_BLANKING          0
-    set_instance_parameter_value intel_vvp_scaler_0 RUNTIME_LOAD         1
-    set_instance_parameter_value intel_vvp_scaler_0 MEM_INIT             0
-    set_instance_parameter_value intel_vvp_scaler_0 ALGORITHM            NEAREST_NEIGHBOUR
-    set_instance_parameter_value intel_vvp_scaler_0 EDGE_MIRROR          REPLICATE
-    set_instance_parameter_value intel_vvp_scaler_0 ENABLE_V             1
-    set_instance_parameter_value intel_vvp_scaler_0 V_PARTIAL_SCALING    0
-    set_instance_parameter_value intel_vvp_scaler_0 ENABLE_420_MIRROR    0
-    set_instance_parameter_value intel_vvp_scaler_0 V_TAPS               4
-    set_instance_parameter_value intel_vvp_scaler_0 V_PHASES             16
-    set_instance_parameter_value intel_vvp_scaler_0 V_BANKS              1
-    set_instance_parameter_value intel_vvp_scaler_0 V_COEFF_SIGNED       1
-    set_instance_parameter_value intel_vvp_scaler_0 V_COEFF_INT_BITS     1
-    set_instance_parameter_value intel_vvp_scaler_0 V_COEFF_FRAC_BITS    6
-    set_instance_parameter_value intel_vvp_scaler_0 V_PRES_FRAC_BITS     0
-    set_instance_parameter_value intel_vvp_scaler_0 V_COEFF_FUNCTION     LANCZOS_2
-    set_instance_parameter_value intel_vvp_scaler_0 ENABLE_H             1
-    set_instance_parameter_value intel_vvp_scaler_0 H_PARTIAL_SCALING    0
-    set_instance_parameter_value intel_vvp_scaler_0 HALF_RATE_420        0
-    set_instance_parameter_value intel_vvp_scaler_0 H_TAPS               4
-    set_instance_parameter_value intel_vvp_scaler_0 H_PHASES             16
-    set_instance_parameter_value intel_vvp_scaler_0 H_BANKS              1
-    set_instance_parameter_value intel_vvp_scaler_0 H_COEFF_SIGNED       1
-    set_instance_parameter_value intel_vvp_scaler_0 H_COEFF_INT_BITS     1
-    set_instance_parameter_value intel_vvp_scaler_0 H_COEFF_FRAC_BITS    6
-    set_instance_parameter_value intel_vvp_scaler_0 H_COEFF_FUNCTION     LANCZOS_2
+    set_instance_parameter_value intel_vvp_scaler_0 NO_BLANKING          $sc_no_blanking
+    set_instance_parameter_value intel_vvp_scaler_0 RUNTIME_LOAD         $sc_runtime_load
+    set_instance_parameter_value intel_vvp_scaler_0 MEM_INIT             $sc_mem_init
+    set_instance_parameter_value intel_vvp_scaler_0 ALGORITHM            $sc_algorithm
+    set_instance_parameter_value intel_vvp_scaler_0 EDGE_MIRROR          $sc_edge_mirror
+    set_instance_parameter_value intel_vvp_scaler_0 ENABLE_V             $sc_enable_v
+    set_instance_parameter_value intel_vvp_scaler_0 V_PARTIAL_SCALING    $sc_v_partial
+    set_instance_parameter_value intel_vvp_scaler_0 ENABLE_420_MIRROR    $sc_420_mirror
+    set_instance_parameter_value intel_vvp_scaler_0 V_TAPS               $sc_v_taps
+    set_instance_parameter_value intel_vvp_scaler_0 V_PHASES             $sc_v_phases
+    set_instance_parameter_value intel_vvp_scaler_0 V_BANKS              $sc_v_banks
+    set_instance_parameter_value intel_vvp_scaler_0 V_COEFF_SIGNED       $sc_v_coeff_signed
+    set_instance_parameter_value intel_vvp_scaler_0 V_COEFF_INT_BITS     $sc_v_coeff_int
+    set_instance_parameter_value intel_vvp_scaler_0 V_COEFF_FRAC_BITS    $sc_v_coeff_frac
+    set_instance_parameter_value intel_vvp_scaler_0 V_PRES_FRAC_BITS     $sc_v_pres_frac
+    set_instance_parameter_value intel_vvp_scaler_0 V_COEFF_FUNCTION     $sc_v_coeff_fn
+    set_instance_parameter_value intel_vvp_scaler_0 ENABLE_H             $sc_enable_h
+    set_instance_parameter_value intel_vvp_scaler_0 H_PARTIAL_SCALING    $sc_h_partial
+    set_instance_parameter_value intel_vvp_scaler_0 HALF_RATE_420        $sc_half_rate
+    set_instance_parameter_value intel_vvp_scaler_0 H_TAPS               $sc_h_taps
+    set_instance_parameter_value intel_vvp_scaler_0 H_PHASES             $sc_h_phases
+    set_instance_parameter_value intel_vvp_scaler_0 H_BANKS              $sc_h_banks
+    set_instance_parameter_value intel_vvp_scaler_0 H_COEFF_SIGNED       $sc_h_coeff_signed
+    set_instance_parameter_value intel_vvp_scaler_0 H_COEFF_INT_BITS     $sc_h_coeff_int
+    set_instance_parameter_value intel_vvp_scaler_0 H_COEFF_FRAC_BITS    $sc_h_coeff_frac
+    set_instance_parameter_value intel_vvp_scaler_0 H_COEFF_FUNCTION     $sc_h_coeff_fn
 
     # -----------------------------------------------------------------------
     # Chroma Resampler (standalone)
@@ -295,7 +626,7 @@ proc compose {} {
     add_instance intel_vvp_crs_0 intel_vvp_crs 24.5.1
     set_instance_parameter_value intel_vvp_crs_0 EXTERNAL_MODE            $lite
     set_instance_parameter_value intel_vvp_crs_0 PIPELINE_READY           0
-    set_instance_parameter_value intel_vvp_crs_0 MAX_WIDTH                16384
+    set_instance_parameter_value intel_vvp_crs_0 MAX_WIDTH                $crs_max_w
     set_instance_parameter_value intel_vvp_crs_0 RUNTIME_CONTROL          0
     set_instance_parameter_value intel_vvp_crs_0 ENABLE_DEBUG             0
     set_instance_parameter_value intel_vvp_crs_0 P_UPDATE_CMD_SUPPORTED   0
@@ -304,21 +635,21 @@ proc compose {} {
     set_instance_parameter_value intel_vvp_crs_0 BPS                      $bps
     set_instance_parameter_value intel_vvp_crs_0 PIXELS_IN_PARALLEL_IN    $pip
     set_instance_parameter_value intel_vvp_crs_0 PIXELS_IN_PARALLEL_OUT   $pip
-    set_instance_parameter_value intel_vvp_crs_0 SUPPORT_444_TO_422       0
-    set_instance_parameter_value intel_vvp_crs_0 SUPPORT_444_TO_420       0
-    set_instance_parameter_value intel_vvp_crs_0 SUPPORT_422_TO_444       1
-    set_instance_parameter_value intel_vvp_crs_0 SUPPORT_422_TO_420       0
-    set_instance_parameter_value intel_vvp_crs_0 SUPPORT_420_TO_422       0
-    set_instance_parameter_value intel_vvp_crs_0 SUPPORT_420_TO_444       0
-    set_instance_parameter_value intel_vvp_crs_0 SUPPORT_420_PASS         0
-    set_instance_parameter_value intel_vvp_crs_0 SUPPORT_422_PASS         0
-    set_instance_parameter_value intel_vvp_crs_0 SUPPORT_444_PASS         0
-    set_instance_parameter_value intel_vvp_crs_0 HORIZ_ALGORITHM          NEAREST_NEIGHBOUR
-    set_instance_parameter_value intel_vvp_crs_0 HORIZ_CO_SITING          LEFT
-    set_instance_parameter_value intel_vvp_crs_0 HORIZ_ENABLE_LUMA_ADAPT  0
-    set_instance_parameter_value intel_vvp_crs_0 VERT_ALGORITHM           BILINEAR
-    set_instance_parameter_value intel_vvp_crs_0 VERT_CO_SITING           TOP
-    set_instance_parameter_value intel_vvp_crs_0 VERT_ENABLE_LUMA_ADAPT   0
+    set_instance_parameter_value intel_vvp_crs_0 SUPPORT_444_TO_422       $crs_444_422
+    set_instance_parameter_value intel_vvp_crs_0 SUPPORT_444_TO_420       $crs_444_420
+    set_instance_parameter_value intel_vvp_crs_0 SUPPORT_422_TO_444       $crs_422_444
+    set_instance_parameter_value intel_vvp_crs_0 SUPPORT_422_TO_420       $crs_422_420
+    set_instance_parameter_value intel_vvp_crs_0 SUPPORT_420_TO_422       $crs_420_422
+    set_instance_parameter_value intel_vvp_crs_0 SUPPORT_420_TO_444       $crs_420_444
+    set_instance_parameter_value intel_vvp_crs_0 SUPPORT_420_PASS         $crs_420_pass
+    set_instance_parameter_value intel_vvp_crs_0 SUPPORT_422_PASS         $crs_422_pass
+    set_instance_parameter_value intel_vvp_crs_0 SUPPORT_444_PASS         $crs_444_pass
+    set_instance_parameter_value intel_vvp_crs_0 HORIZ_ALGORITHM          $crs_h_alg
+    set_instance_parameter_value intel_vvp_crs_0 HORIZ_CO_SITING          $crs_h_siting
+    set_instance_parameter_value intel_vvp_crs_0 HORIZ_ENABLE_LUMA_ADAPT  $crs_h_luma
+    set_instance_parameter_value intel_vvp_crs_0 VERT_ALGORITHM           $crs_v_alg
+    set_instance_parameter_value intel_vvp_crs_0 VERT_CO_SITING           $crs_v_siting
+    set_instance_parameter_value intel_vvp_crs_0 VERT_ENABLE_LUMA_ADAPT   $crs_v_luma
     set_instance_parameter_value intel_vvp_crs_0 NO_BLANKING              0
 
     # -----------------------------------------------------------------------

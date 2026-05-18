@@ -28,30 +28,10 @@ module tb();
     wire        out_tlast;
     wire [2:0]  out_tuser;
     
-    wire frame_done1,frame_done2;
+    wire frame_done;
 
     // --- Simulation Constants ---
     localparam CLK_PERIOD = 10; // 100MHz
-    
-    // --- File Writer Sink ---
-    make_file #(
-        .IMG_H(IMG_HIGHT),
-        .IMG_W(IMG_WIDTH),
-        .IS_FULL(1),
-		  .FILE_NAME("../../../../app/tpg_data.txt")
-    ) tpg_out (
-        .clk        (clk),
-        .reset      (reset),
-        
-        // WIRED CORRECTLY TO THE DUT OUTPUTS
-        .tdata      (dut.tpg_tdata),
-        .tvalid     (dut.tpg_tvalid),
-        .tready     (dut.tpg_tready), 
-        .tlast      (dut.tpg_tlast),
-        .tuser      (dut.tpg_tuser),
-        
-        .frame_done (frame_done1)
-    );
 	 
 	 make_file #(
         .IMG_H(SCALER_OUT_H),
@@ -65,17 +45,17 @@ module tb();
         // WIRED CORRECTLY TO THE DUT OUTPUTS
         .tdata      (out_tdata),
         .tvalid     (out_tvalid),
-        .tready     (out_tready), 
+        .tready     (out_tready & (dut.ST_WORKING == dut.current_state)),
         .tlast      (out_tlast),
         .tuser      (out_tuser),
         
-        .frame_done (frame_done2)
+        .frame_done (frame_done)
     );
     
     // --- Instantiate the Top Module ---
     top #(
         .IMG_WIDTH(IMG_WIDTH),      // Smaller sizes for faster simulation
-        .IMG_HIGHT(IMG_HIGHT),
+        .IMG_HEIGHT(IMG_HIGHT),
 		  .IMG_COLOR(IMG_COLOR),
 		  .IMG_CR_SM(IMG_CR_SM),
         .IMG_L_OFF(IMG_L_OFF),
@@ -131,7 +111,7 @@ module tb();
         $display("[%0t] Captured data segments. Simulation passing.", $time);
         
         // Wait for the file writer to declare it's finished capturing a frame
-        wait(frame_done1 && frame_done2);
+        wait(frame_done);
         $display("[%0t] Frame successfully written to file.", $time);
         $finish;
     end

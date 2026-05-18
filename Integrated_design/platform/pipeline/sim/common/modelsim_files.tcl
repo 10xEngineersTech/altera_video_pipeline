@@ -1,3 +1,4 @@
+source [file join [file dirname [info script]] ./../../../ip/pipeline/pipeline_intel_vvp_csc_0/sim/common/modelsim_files.tcl]
 source [file join [file dirname [info script]] ./../../../ip/pipeline/pipeline_intel_vvp_scaler_0/sim/common/modelsim_files.tcl]
 source [file join [file dirname [info script]] ./../../../ip/pipeline/pipeline_reset_in/sim/common/modelsim_files.tcl]
 source [file join [file dirname [info script]] ./../../../ip/pipeline/pipeline_intel_vvp_clipper_0/sim/common/modelsim_files.tcl]
@@ -10,6 +11,7 @@ source [file join [file dirname [info script]] ./../../../ip/pipeline/pipeline_i
 namespace eval pipeline {
   proc get_design_libraries {} {
     set libraries [dict create]
+    set libraries [dict merge $libraries [pipeline_intel_vvp_csc_0::get_design_libraries]]
     set libraries [dict merge $libraries [pipeline_intel_vvp_scaler_0::get_design_libraries]]
     set libraries [dict merge $libraries [pipeline_reset_in::get_design_libraries]]
     set libraries [dict merge $libraries [pipeline_intel_vvp_clipper_0::get_design_libraries]]
@@ -25,6 +27,7 @@ namespace eval pipeline {
   
   proc get_memory_files {QSYS_SIMDIR QUARTUS_INSTALL_DIR} {
     set memory_files [list]
+    set memory_files [concat $memory_files [pipeline_intel_vvp_csc_0::get_memory_files "$QSYS_SIMDIR/../../ip/pipeline/pipeline_intel_vvp_csc_0/sim/" "$QUARTUS_INSTALL_DIR"]]
     set memory_files [concat $memory_files [pipeline_intel_vvp_scaler_0::get_memory_files "$QSYS_SIMDIR/../../ip/pipeline/pipeline_intel_vvp_scaler_0/sim/" "$QUARTUS_INSTALL_DIR"]]
     set memory_files [concat $memory_files [pipeline_reset_in::get_memory_files "$QSYS_SIMDIR/../../ip/pipeline/pipeline_reset_in/sim/" "$QUARTUS_INSTALL_DIR"]]
     set memory_files [concat $memory_files [pipeline_intel_vvp_clipper_0::get_memory_files "$QSYS_SIMDIR/../../ip/pipeline/pipeline_intel_vvp_clipper_0/sim/" "$QUARTUS_INSTALL_DIR"]]
@@ -38,6 +41,7 @@ namespace eval pipeline {
   
   proc get_common_design_files {USER_DEFINED_COMPILE_OPTIONS USER_DEFINED_VERILOG_COMPILE_OPTIONS USER_DEFINED_VHDL_COMPILE_OPTIONS QSYS_SIMDIR} {
     set design_files [dict create]
+    set design_files [dict merge $design_files [pipeline_intel_vvp_csc_0::get_common_design_files $USER_DEFINED_COMPILE_OPTIONS $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_VHDL_COMPILE_OPTIONS "$QSYS_SIMDIR/../../ip/pipeline/pipeline_intel_vvp_csc_0/sim/"]]
     set design_files [dict merge $design_files [pipeline_intel_vvp_scaler_0::get_common_design_files $USER_DEFINED_COMPILE_OPTIONS $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_VHDL_COMPILE_OPTIONS "$QSYS_SIMDIR/../../ip/pipeline/pipeline_intel_vvp_scaler_0/sim/"]]
     set design_files [dict merge $design_files [pipeline_reset_in::get_common_design_files $USER_DEFINED_COMPILE_OPTIONS $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_VHDL_COMPILE_OPTIONS "$QSYS_SIMDIR/../../ip/pipeline/pipeline_reset_in/sim/"]]
     set design_files [dict merge $design_files [pipeline_intel_vvp_clipper_0::get_common_design_files $USER_DEFINED_COMPILE_OPTIONS $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_VHDL_COMPILE_OPTIONS "$QSYS_SIMDIR/../../ip/pipeline/pipeline_intel_vvp_clipper_0/sim/"]]
@@ -51,6 +55,7 @@ namespace eval pipeline {
   
   proc get_design_files {USER_DEFINED_COMPILE_OPTIONS USER_DEFINED_VERILOG_COMPILE_OPTIONS USER_DEFINED_VHDL_COMPILE_OPTIONS QSYS_SIMDIR QUARTUS_INSTALL_DIR} {
     set design_files [list]
+    set design_files [concat $design_files [pipeline_intel_vvp_csc_0::get_design_files $USER_DEFINED_COMPILE_OPTIONS $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_VHDL_COMPILE_OPTIONS "$QSYS_SIMDIR/../../ip/pipeline/pipeline_intel_vvp_csc_0/sim/" "$QUARTUS_INSTALL_DIR"]]
     set design_files [concat $design_files [pipeline_intel_vvp_scaler_0::get_design_files $USER_DEFINED_COMPILE_OPTIONS $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_VHDL_COMPILE_OPTIONS "$QSYS_SIMDIR/../../ip/pipeline/pipeline_intel_vvp_scaler_0/sim/" "$QUARTUS_INSTALL_DIR"]]
     set design_files [concat $design_files [pipeline_reset_in::get_design_files $USER_DEFINED_COMPILE_OPTIONS $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_VHDL_COMPILE_OPTIONS "$QSYS_SIMDIR/../../ip/pipeline/pipeline_reset_in/sim/" "$QUARTUS_INSTALL_DIR"]]
     set design_files [concat $design_files [pipeline_intel_vvp_clipper_0::get_design_files $USER_DEFINED_COMPILE_OPTIONS $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_VHDL_COMPILE_OPTIONS "$QSYS_SIMDIR/../../ip/pipeline/pipeline_intel_vvp_clipper_0/sim/" "$QUARTUS_INSTALL_DIR"]]
@@ -77,6 +82,7 @@ namespace eval pipeline {
   
   proc get_elab_options {SIMULATOR_TOOL_BITNESS} {
     set ELAB_OPTIONS ""
+    append ELAB_OPTIONS [get_non_duplicate_elab_option $ELAB_OPTIONS [pipeline_intel_vvp_csc_0::get_elab_options $SIMULATOR_TOOL_BITNESS]]
     append ELAB_OPTIONS [get_non_duplicate_elab_option $ELAB_OPTIONS [pipeline_intel_vvp_scaler_0::get_elab_options $SIMULATOR_TOOL_BITNESS]]
     append ELAB_OPTIONS [get_non_duplicate_elab_option $ELAB_OPTIONS [pipeline_reset_in::get_elab_options $SIMULATOR_TOOL_BITNESS]]
     append ELAB_OPTIONS [get_non_duplicate_elab_option $ELAB_OPTIONS [pipeline_intel_vvp_clipper_0::get_elab_options $SIMULATOR_TOOL_BITNESS]]
@@ -94,6 +100,7 @@ namespace eval pipeline {
   
   proc get_sim_options {SIMULATOR_TOOL_BITNESS} {
     set SIM_OPTIONS ""
+    append SIM_OPTIONS [pipeline_intel_vvp_csc_0::get_sim_options $SIMULATOR_TOOL_BITNESS]
     append SIM_OPTIONS [pipeline_intel_vvp_scaler_0::get_sim_options $SIMULATOR_TOOL_BITNESS]
     append SIM_OPTIONS [pipeline_reset_in::get_sim_options $SIMULATOR_TOOL_BITNESS]
     append SIM_OPTIONS [pipeline_intel_vvp_clipper_0::get_sim_options $SIMULATOR_TOOL_BITNESS]
@@ -112,6 +119,7 @@ namespace eval pipeline {
   proc get_env_variables {SIMULATOR_TOOL_BITNESS} {
     set ENV_VARIABLES [dict create]
     set LD_LIBRARY_PATH [dict create]
+    set LD_LIBRARY_PATH [dict merge $LD_LIBRARY_PATH [dict get [pipeline_intel_vvp_csc_0::get_env_variables $SIMULATOR_TOOL_BITNESS] "LD_LIBRARY_PATH"]]
     set LD_LIBRARY_PATH [dict merge $LD_LIBRARY_PATH [dict get [pipeline_intel_vvp_scaler_0::get_env_variables $SIMULATOR_TOOL_BITNESS] "LD_LIBRARY_PATH"]]
     set LD_LIBRARY_PATH [dict merge $LD_LIBRARY_PATH [dict get [pipeline_reset_in::get_env_variables $SIMULATOR_TOOL_BITNESS] "LD_LIBRARY_PATH"]]
     set LD_LIBRARY_PATH [dict merge $LD_LIBRARY_PATH [dict get [pipeline_intel_vvp_clipper_0::get_env_variables $SIMULATOR_TOOL_BITNESS] "LD_LIBRARY_PATH"]]
@@ -140,6 +148,7 @@ namespace eval pipeline {
   } 
   proc get_dpi_libraries {QSYS_SIMDIR} {
     set libraries [dict create]
+    set libraries [dict merge $libraries [pipeline_intel_vvp_csc_0::get_dpi_libraries "$QSYS_SIMDIR/../../ip/pipeline/pipeline_intel_vvp_csc_0/sim/"]]
     set libraries [dict merge $libraries [pipeline_intel_vvp_scaler_0::get_dpi_libraries "$QSYS_SIMDIR/../../ip/pipeline/pipeline_intel_vvp_scaler_0/sim/"]]
     set libraries [dict merge $libraries [pipeline_reset_in::get_dpi_libraries "$QSYS_SIMDIR/../../ip/pipeline/pipeline_reset_in/sim/"]]
     set libraries [dict merge $libraries [pipeline_intel_vvp_clipper_0::get_dpi_libraries "$QSYS_SIMDIR/../../ip/pipeline/pipeline_intel_vvp_clipper_0/sim/"]]

@@ -18,7 +18,7 @@ module make_file #(
     output wire       frame_done
 );
 
-    wire write_flag;
+    wire write_flag, error;
 
     // --- Instantiate Frame Controller ---
     frame_controller #(
@@ -36,7 +36,8 @@ module make_file #(
         .tuser      (tuser),
 		  
         .frame_done (frame_done),
-        .write_flag (write_flag)
+        .write_flag (write_flag),
+		  .error		  (error)
     );
      
     integer fd;
@@ -71,6 +72,19 @@ module make_file #(
             // NOTE: Usually you don't put $stop inside a sub-module 
             // but it works if this is purely for a Testbench.
              
+        end
+    end
+	 
+	 always @(posedge clk) begin
+        if (error) begin
+            $display("Error %s. Closing file.", FILE_NAME);
+            $fclose(fd);
+				fd = $fopen(FILE_NAME, "w");
+				if (fd == 0) begin
+					$display("Error: Could not open file %s for writing.", FILE_NAME);
+					$finish;
+				end
+				$fwrite(fd, "%h ", tdata);
         end
     end
 

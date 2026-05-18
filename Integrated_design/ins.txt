@@ -1,0 +1,176 @@
+# Move to sim directory
+cd /home/lpt-10xe/Desktop/Github_atera_video_pipeline/Integrated_design/app/../platform/pipeline/sim/mentor
+
+# Setup and Compile IP
+set QUARTUS_INSTALL_DIR /mnt/ssd2/Quartus_Setup_Installation/quartus
+source msim_setup.tcl
+
+# Compile Device Libraries
+dev_com
+
+# Compile IP
+com
+
+# Compile RTL and TB
+vlog /home/lpt-10xe/Desktop/Github_atera_video_pipeline/Integrated_design/app/../rtl/tb.v
+vlog /home/lpt-10xe/Desktop/Github_atera_video_pipeline/Integrated_design/app/../rtl/top.v
+vlog /home/lpt-10xe/Desktop/Github_atera_video_pipeline/Integrated_design/app/../rtl/make_file.v
+vlog /home/lpt-10xe/Desktop/Github_atera_video_pipeline/Integrated_design/app/../rtl/controller.v
+
+# Elaborate
+set TOP_LEVEL_NAME work.tb
+set USER_DEFINED_ELAB_OPTIONS {-voptargs="+acc"}
+elab_debug
+
+add wave -position insertpoint  \
+sim:/tb/dut/clk \
+sim:/tb/dut/reset \
+sim:/tb/dut/out_tdata \
+sim:/tb/dut/out_tvalid \
+sim:/tb/dut/out_tready \
+sim:/tb/dut/out_tlast \
+sim:/tb/dut/out_tuser
+add wave -position insertpoint  \
+sim:/tb/dut/current_state \
+sim:/tb/dut/cfg_step \
+sim:/tb/dut/cycle_count
+add wave -position insertpoint  \
+sim:/tb/dut/u_pipeline/intel_vvp_tpg_0/axi4s_vid_out_tdata \
+sim:/tb/dut/u_pipeline/intel_vvp_tpg_0/axi4s_vid_out_tvalid \
+sim:/tb/dut/u_pipeline/intel_vvp_tpg_0/axi4s_vid_out_tready \
+sim:/tb/dut/u_pipeline/intel_vvp_tpg_0/axi4s_vid_out_tlast \
+sim:/tb/dut/u_pipeline/intel_vvp_tpg_0/axi4s_vid_out_tuser \
+sim:/tb/dut/u_pipeline/intel_vvp_tpg_0/av_mm_control_agent_address \
+sim:/tb/dut/u_pipeline/intel_vvp_tpg_0/av_mm_control_agent_write \
+sim:/tb/dut/u_pipeline/intel_vvp_tpg_0/av_mm_control_agent_byteenable \
+sim:/tb/dut/u_pipeline/intel_vvp_tpg_0/av_mm_control_agent_writedata \
+sim:/tb/dut/u_pipeline/intel_vvp_tpg_0/av_mm_control_agent_read \
+sim:/tb/dut/u_pipeline/intel_vvp_tpg_0/av_mm_control_agent_readdata \
+sim:/tb/dut/u_pipeline/intel_vvp_tpg_0/av_mm_control_agent_readdatavalid \
+sim:/tb/dut/u_pipeline/intel_vvp_tpg_0/av_mm_control_agent_waitrequest
+add wave -position insertpoint  \
+sim:/tb/dut/u_pipeline/intel_vvp_dil_0/axi4s_vid_in_tdata \
+sim:/tb/dut/u_pipeline/intel_vvp_dil_0/axi4s_vid_in_tvalid \
+sim:/tb/dut/u_pipeline/intel_vvp_dil_0/axi4s_vid_in_tready \
+sim:/tb/dut/u_pipeline/intel_vvp_dil_0/axi4s_vid_in_tlast \
+sim:/tb/dut/u_pipeline/intel_vvp_dil_0/axi4s_vid_in_tuser \
+sim:/tb/dut/u_pipeline/intel_vvp_dil_0/axi4s_vid_out_tdata \
+sim:/tb/dut/u_pipeline/intel_vvp_dil_0/axi4s_vid_out_tvalid \
+sim:/tb/dut/u_pipeline/intel_vvp_dil_0/axi4s_vid_out_tready \
+sim:/tb/dut/u_pipeline/intel_vvp_dil_0/axi4s_vid_out_tlast \
+sim:/tb/dut/u_pipeline/intel_vvp_dil_0/axi4s_vid_out_tuser
+add wave -position insertpoint  \
+sim:/tb/dut/u_pipeline/intel_vvp_crs_0/axi4s_vid_in_tdata \
+sim:/tb/dut/u_pipeline/intel_vvp_crs_0/axi4s_vid_in_tvalid \
+sim:/tb/dut/u_pipeline/intel_vvp_crs_0/axi4s_vid_in_tready \
+sim:/tb/dut/u_pipeline/intel_vvp_crs_0/axi4s_vid_in_tlast \
+sim:/tb/dut/u_pipeline/intel_vvp_crs_0/axi4s_vid_in_tuser \
+sim:/tb/dut/u_pipeline/intel_vvp_crs_0/axi4s_vid_out_tdata \
+sim:/tb/dut/u_pipeline/intel_vvp_crs_0/axi4s_vid_out_tvalid \
+sim:/tb/dut/u_pipeline/intel_vvp_crs_0/axi4s_vid_out_tready \
+sim:/tb/dut/u_pipeline/intel_vvp_crs_0/axi4s_vid_out_tlast \
+sim:/tb/dut/u_pipeline/intel_vvp_crs_0/axi4s_vid_out_tuser \
+sim:/tb/dut/u_pipeline/intel_vvp_crs_0/av_mm_control_agent_address \
+sim:/tb/dut/u_pipeline/intel_vvp_crs_0/av_mm_control_agent_write \
+sim:/tb/dut/u_pipeline/intel_vvp_crs_0/av_mm_control_agent_byteenable \
+sim:/tb/dut/u_pipeline/intel_vvp_crs_0/av_mm_control_agent_writedata \
+sim:/tb/dut/u_pipeline/intel_vvp_crs_0/av_mm_control_agent_read \
+sim:/tb/dut/u_pipeline/intel_vvp_crs_0/av_mm_control_agent_readdata \
+sim:/tb/dut/u_pipeline/intel_vvp_crs_0/av_mm_control_agent_readdatavalid \
+sim:/tb/dut/u_pipeline/intel_vvp_crs_0/av_mm_control_agent_waitrequest
+add wave -position insertpoint  \
+sim:/tb/dut/u_pipeline/intel_vvp_csc_0/axi4s_vid_in_tdata \
+sim:/tb/dut/u_pipeline/intel_vvp_csc_0/axi4s_vid_in_tvalid \
+sim:/tb/dut/u_pipeline/intel_vvp_csc_0/axi4s_vid_in_tready \
+sim:/tb/dut/u_pipeline/intel_vvp_csc_0/axi4s_vid_in_tlast \
+sim:/tb/dut/u_pipeline/intel_vvp_csc_0/axi4s_vid_in_tuser \
+sim:/tb/dut/u_pipeline/intel_vvp_csc_0/axi4s_vid_out_tdata \
+sim:/tb/dut/u_pipeline/intel_vvp_csc_0/axi4s_vid_out_tvalid \
+sim:/tb/dut/u_pipeline/intel_vvp_csc_0/axi4s_vid_out_tready \
+sim:/tb/dut/u_pipeline/intel_vvp_csc_0/axi4s_vid_out_tlast \
+sim:/tb/dut/u_pipeline/intel_vvp_csc_0/axi4s_vid_out_tuser \
+sim:/tb/dut/u_pipeline/intel_vvp_csc_0/av_mm_control_agent_address \
+sim:/tb/dut/u_pipeline/intel_vvp_csc_0/av_mm_control_agent_write \
+sim:/tb/dut/u_pipeline/intel_vvp_csc_0/av_mm_control_agent_byteenable \
+sim:/tb/dut/u_pipeline/intel_vvp_csc_0/av_mm_control_agent_writedata \
+sim:/tb/dut/u_pipeline/intel_vvp_csc_0/av_mm_control_agent_read \
+sim:/tb/dut/u_pipeline/intel_vvp_csc_0/av_mm_control_agent_readdata \
+sim:/tb/dut/u_pipeline/intel_vvp_csc_0/av_mm_control_agent_readdatavalid \
+sim:/tb/dut/u_pipeline/intel_vvp_csc_0/av_mm_control_agent_waitrequest
+add wave -position insertpoint  \
+sim:/tb/dut/u_pipeline/intel_vvp_clipper_0/axi4s_vid_in_tdata \
+sim:/tb/dut/u_pipeline/intel_vvp_clipper_0/axi4s_vid_in_tvalid \
+sim:/tb/dut/u_pipeline/intel_vvp_clipper_0/axi4s_vid_in_tready \
+sim:/tb/dut/u_pipeline/intel_vvp_clipper_0/axi4s_vid_in_tlast \
+sim:/tb/dut/u_pipeline/intel_vvp_clipper_0/axi4s_vid_in_tuser \
+sim:/tb/dut/u_pipeline/intel_vvp_clipper_0/axi4s_vid_out_tdata \
+sim:/tb/dut/u_pipeline/intel_vvp_clipper_0/axi4s_vid_out_tvalid \
+sim:/tb/dut/u_pipeline/intel_vvp_clipper_0/axi4s_vid_out_tready \
+sim:/tb/dut/u_pipeline/intel_vvp_clipper_0/axi4s_vid_out_tlast \
+sim:/tb/dut/u_pipeline/intel_vvp_clipper_0/axi4s_vid_out_tuser \
+sim:/tb/dut/u_pipeline/intel_vvp_clipper_0/av_mm_control_agent_address \
+sim:/tb/dut/u_pipeline/intel_vvp_clipper_0/av_mm_control_agent_write \
+sim:/tb/dut/u_pipeline/intel_vvp_clipper_0/av_mm_control_agent_byteenable \
+sim:/tb/dut/u_pipeline/intel_vvp_clipper_0/av_mm_control_agent_writedata \
+sim:/tb/dut/u_pipeline/intel_vvp_clipper_0/av_mm_control_agent_read \
+sim:/tb/dut/u_pipeline/intel_vvp_clipper_0/av_mm_control_agent_readdata \
+sim:/tb/dut/u_pipeline/intel_vvp_clipper_0/av_mm_control_agent_readdatavalid \
+sim:/tb/dut/u_pipeline/intel_vvp_clipper_0/av_mm_control_agent_waitrequest
+add wave -position insertpoint  \
+sim:/tb/dut/u_pipeline/intel_vvp_protocol_conv_0/axi4s_vid_in_tdata \
+sim:/tb/dut/u_pipeline/intel_vvp_protocol_conv_0/axi4s_vid_in_tvalid \
+sim:/tb/dut/u_pipeline/intel_vvp_protocol_conv_0/axi4s_vid_in_tready \
+sim:/tb/dut/u_pipeline/intel_vvp_protocol_conv_0/axi4s_vid_in_tlast \
+sim:/tb/dut/u_pipeline/intel_vvp_protocol_conv_0/axi4s_vid_in_tuser \
+sim:/tb/dut/u_pipeline/intel_vvp_protocol_conv_0/axi4s_vid_out_tdata \
+sim:/tb/dut/u_pipeline/intel_vvp_protocol_conv_0/axi4s_vid_out_tvalid \
+sim:/tb/dut/u_pipeline/intel_vvp_protocol_conv_0/axi4s_vid_out_tready \
+sim:/tb/dut/u_pipeline/intel_vvp_protocol_conv_0/axi4s_vid_out_tlast \
+sim:/tb/dut/u_pipeline/intel_vvp_protocol_conv_0/axi4s_vid_out_tuser
+add wave -position insertpoint  \
+sim:/tb/dut/u_pipeline/intel_vvp_scaler_0/axi4s_vid_in_tdata \
+sim:/tb/dut/u_pipeline/intel_vvp_scaler_0/axi4s_vid_in_tvalid \
+sim:/tb/dut/u_pipeline/intel_vvp_scaler_0/axi4s_vid_in_tready \
+sim:/tb/dut/u_pipeline/intel_vvp_scaler_0/axi4s_vid_in_tlast \
+sim:/tb/dut/u_pipeline/intel_vvp_scaler_0/axi4s_vid_in_tuser \
+sim:/tb/dut/u_pipeline/intel_vvp_scaler_0/axi4s_vid_out_tdata \
+sim:/tb/dut/u_pipeline/intel_vvp_scaler_0/axi4s_vid_out_tvalid \
+sim:/tb/dut/u_pipeline/intel_vvp_scaler_0/axi4s_vid_out_tready \
+sim:/tb/dut/u_pipeline/intel_vvp_scaler_0/axi4s_vid_out_tlast \
+sim:/tb/dut/u_pipeline/intel_vvp_scaler_0/axi4s_vid_out_tuser \
+sim:/tb/dut/u_pipeline/intel_vvp_scaler_0/av_mm_control_agent_address \
+sim:/tb/dut/u_pipeline/intel_vvp_scaler_0/av_mm_control_agent_write \
+sim:/tb/dut/u_pipeline/intel_vvp_scaler_0/av_mm_control_agent_byteenable \
+sim:/tb/dut/u_pipeline/intel_vvp_scaler_0/av_mm_control_agent_writedata \
+sim:/tb/dut/u_pipeline/intel_vvp_scaler_0/av_mm_control_agent_read \
+sim:/tb/dut/u_pipeline/intel_vvp_scaler_0/av_mm_control_agent_readdata \
+sim:/tb/dut/u_pipeline/intel_vvp_scaler_0/av_mm_control_agent_readdatavalid \
+sim:/tb/dut/u_pipeline/intel_vvp_scaler_0/av_mm_control_agent_waitrequest
+add wave -position insertpoint  \
+sim:/tb/tpg_out/clk \
+sim:/tb/tpg_out/reset \
+sim:/tb/tpg_out/tready \
+sim:/tb/tpg_out/tdata \
+sim:/tb/tpg_out/tvalid \
+sim:/tb/tpg_out/tlast \
+sim:/tb/tpg_out/tuser \
+sim:/tb/tpg_out/frame_done \
+sim:/tb/tpg_out/write_flag \
+sim:/tb/tpg_out/error \
+sim:/tb/tpg_out/fd \
+sim:/tb/tpg_out/check
+add wave -position insertpoint  \
+sim:/tb/scaler_out/clk \
+sim:/tb/scaler_out/reset \
+sim:/tb/scaler_out/tready \
+sim:/tb/scaler_out/tdata \
+sim:/tb/scaler_out/tvalid \
+sim:/tb/scaler_out/tlast \
+sim:/tb/scaler_out/tuser \
+sim:/tb/scaler_out/frame_done \
+sim:/tb/scaler_out/write_flag \
+sim:/tb/scaler_out/error \
+sim:/tb/scaler_out/fd \
+sim:/tb/scaler_out/check
+run -all
+

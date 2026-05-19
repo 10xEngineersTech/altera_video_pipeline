@@ -21,7 +21,7 @@ module pipeline_intel_vvp_tpg_0 (
 		output wire        av_mm_control_agent_waitrequest    //                    .waitrequest
 	);
 
-	pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_4vpyfvq intel_vvp_tpg_0 (
+	pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_quzqpfq intel_vvp_tpg_0 (
 		.main_clock_clk                    (main_clock_clk),                    //   input,   width = 1,          main_clock.clk
 		.main_reset_reset                  (main_reset_reset),                  //   input,   width = 1,          main_reset.reset
 		.axi4s_vid_out_tdata               (axi4s_vid_out_tdata),               //  output,  width = 24,       axi4s_vid_out.tdata

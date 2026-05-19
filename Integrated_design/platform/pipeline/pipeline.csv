@@ -1,4 +1,4 @@
-# system info pipeline on 2026.05.19.11:45:44
+# system info pipeline on 2026.05.19.17:37:57
 system_info:
 name,value
 DEVICE,10CX220YF780I5G
@@ -6,7 +6,7 @@ DEVICE_FAMILY,Cyclone 10 GX
 GENERATION_ID,0
 #
 #
-# Files generated for pipeline on 2026.05.19.11:45:44
+# Files generated for pipeline on 2026.05.19.17:37:57
 files:
 filepath,kind,attributes,module,is_top
 sim/pipeline.v,VERILOG,CONTAINS_INLINE_CONFIGURATION,pipeline,true
@@ -23,6 +23,7 @@ pipeline.intel_vvp_crs_0,pipeline_intel_vvp_crs_0
 pipeline.intel_vvp_csc_0,pipeline_intel_vvp_csc_0
 pipeline.intel_vvp_dil_0,pipeline_intel_vvp_dil_0
 pipeline.intel_vvp_protocol_conv_0,pipeline_intel_vvp_protocol_conv_0
+pipeline.intel_vvp_protocol_conv_1,pipeline_intel_vvp_protocol_conv_1
 pipeline.intel_vvp_scaler_0,pipeline_intel_vvp_scaler_0
 pipeline.intel_vvp_tpg_0,pipeline_intel_vvp_tpg_0
 pipeline.reset_in,pipeline_reset_in

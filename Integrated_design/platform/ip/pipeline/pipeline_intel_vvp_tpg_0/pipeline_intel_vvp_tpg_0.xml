@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2026.05.19.11:45:16"
+ date="2026.05.19.17:37:20"
  outputDirectory="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_tpg_0/">
  <perimeter>
   <parameter
@@ -245,7 +245,7 @@
   </childSourceFiles>
   <messages>
    <message level="Info" culprit="pipeline_intel_vvp_tpg_0">"Generating: pipeline_intel_vvp_tpg_0"</message>
-   <message level="Info" culprit="pipeline_intel_vvp_tpg_0">"Generating: pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_4vpyfvq"</message>
+   <message level="Info" culprit="pipeline_intel_vvp_tpg_0">"Generating: pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_quzqpfq"</message>
    <message level="Info" culprit="pipeline_intel_vvp_tpg_0">"Generating: intel_vvp_reset_sync"</message>
    <message level="Info" culprit="pipeline_intel_vvp_tpg_0">"Generating: intel_vvp_tpg_scheduler"</message>
    <message level="Info" culprit="pipeline_intel_vvp_tpg_0">"Generating: intel_vvp_output_interface_bridge"</message>
@@ -265,13 +265,13 @@
  <entity
    kind="intel_vvp_tpg"
    version="24.5.1"
-   name="pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_4vpyfvq">
+   name="pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_quzqpfq">
   <parameter name="FIXED_B_BACKGROUND" value="0" />
   <parameter name="AUTO_BOARD" value="default" />
   <parameter name="C_OMNI_CAP_ENABLED" value="0" />
   <parameter name="C_OMNI_CAP_IRQ_STATUS" value="0" />
   <parameter name="OUTPUT_FORMAT" value="4.4.4" />
-  <parameter name="FIXED_INTERLACE" value="8" />
+  <parameter name="FIXED_INTERLACE" value="0" />
   <parameter name="FIXED_WIDTH" value="32" />
   <parameter name="FIXED_FINE_FACTOR" value="256" />
   <parameter name="CORE_PATTERN_7" value="0" />
@@ -332,12 +332,12 @@
   <parameter name="FIXED_R_CR" value="16" />
   <generatedFiles>
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_tpg_0/intel_vvp_tpg_2451/synth/pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_4vpyfvq.v"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_tpg_0/intel_vvp_tpg_2451/synth/pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_quzqpfq.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_tpg_0/intel_vvp_tpg_2451/synth/pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_4vpyfvq.v"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_tpg_0/intel_vvp_tpg_2451/synth/pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_quzqpfq.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </childGeneratedFiles>
   <sourceFiles>
@@ -376,7 +376,7 @@
   </childSourceFiles>
   <instantiator instantiator="pipeline_intel_vvp_tpg_0" as="intel_vvp_tpg_0" />
   <messages>
-   <message level="Info" culprit="pipeline_intel_vvp_tpg_0">"Generating: pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_4vpyfvq"</message>
+   <message level="Info" culprit="pipeline_intel_vvp_tpg_0">"Generating: pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_quzqpfq"</message>
    <message level="Info" culprit="pipeline_intel_vvp_tpg_0">"Generating: intel_vvp_reset_sync"</message>
    <message level="Info" culprit="pipeline_intel_vvp_tpg_0">"Generating: intel_vvp_tpg_scheduler"</message>
    <message level="Info" culprit="pipeline_intel_vvp_tpg_0">"Generating: intel_vvp_output_interface_bridge"</message>
@@ -414,7 +414,7 @@
   </sourceFiles>
   <childSourceFiles/>
   <instantiator
-     instantiator="pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_4vpyfvq"
+     instantiator="pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_quzqpfq"
      as="main_rst_bridge" />
   <messages>
    <message level="Info" culprit="pipeline_intel_vvp_tpg_0">"Generating: intel_vvp_reset_sync"</message>
@@ -431,7 +431,7 @@
   <parameter name="SLAVE_ADDRESS_WIDTH" value="6" />
   <parameter name="ENABLE_DEBUG" value="0" />
   <parameter name="FIXED_G_Y" value="16" />
-  <parameter name="FIXED_INTERLACE" value="8" />
+  <parameter name="FIXED_INTERLACE" value="0" />
   <parameter name="EXTERNAL_MODE" value="0" />
   <parameter name="FIXED_SCALE_FACTOR" value="1" />
   <parameter name="FIXED_WIDTH" value="32" />
@@ -543,7 +543,7 @@
   </sourceFiles>
   <childSourceFiles/>
   <instantiator
-     instantiator="pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_4vpyfvq"
+     instantiator="pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_quzqpfq"
      as="scheduler" />
   <messages>
    <message level="Info" culprit="pipeline_intel_vvp_tpg_0">"Generating: intel_vvp_tpg_scheduler"</message>
@@ -592,7 +592,7 @@
   </sourceFiles>
   <childSourceFiles/>
   <instantiator
-     instantiator="pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_4vpyfvq"
+     instantiator="pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_quzqpfq"
      as="out_bridge" />
   <messages>
    <message level="Info" culprit="pipeline_intel_vvp_tpg_0">"Generating: intel_vvp_output_interface_bridge"</message>
@@ -671,7 +671,7 @@
   </sourceFiles>
   <childSourceFiles/>
   <instantiator
-     instantiator="pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_4vpyfvq"
+     instantiator="pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_quzqpfq"
      as="core_inst_0" />
   <messages>
    <message level="Info" culprit="pipeline_intel_vvp_tpg_0">"Generating: intel_vvp_tpg_bars_algo_comp"</message>
@@ -730,7 +730,7 @@
        path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/merlin/altera_merlin_slave_translator/altera_merlin_slave_translator_hw.tcl" />
   </childSourceFiles>
   <instantiator
-     instantiator="pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_4vpyfvq"
+     instantiator="pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_quzqpfq"
      as="slave_interface" />
   <messages>
    <message level="Info" culprit="pipeline_intel_vvp_tpg_0">"Generating: pipeline_intel_vvp_tpg_0_intel_vvp_slave_front_end_2441_witiuya"</message>
@@ -774,7 +774,7 @@
        path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/merlin/altera_merlin_slave_translator/altera_merlin_slave_translator_hw.tcl" />
   </childSourceFiles>
   <instantiator
-     instantiator="pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_4vpyfvq"
+     instantiator="pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_quzqpfq"
      as="mm_interconnect_0" />
   <messages>
    <message level="Info" culprit="pipeline_intel_vvp_tpg_0">"Generating: pipeline_intel_vvp_tpg_0_altera_mm_interconnect_1920_vevxpda"</message>

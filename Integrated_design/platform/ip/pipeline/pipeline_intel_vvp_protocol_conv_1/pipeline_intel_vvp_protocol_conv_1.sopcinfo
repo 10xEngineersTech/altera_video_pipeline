@@ -5,7 +5,7 @@
  version="1.0"
  fabric="QSYS">
  <!-- Format version 25.1.1 125 (Future versions may contain additional information.) -->
- <!-- 2026.05.19.17:37:56 -->
+ <!-- 2026.05.19.23:25:17 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
@@ -122,7 +122,7 @@
    name="intel_vvp_protocol_conv_1"
    kind="intel_vvp_protocol_conv"
    version="24.6.0"
-   entity="pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_xsgrh3i"
+   entity="pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_cq2b6jq"
    library="intel_vvp_protocol_conv_2460"
    path="intel_vvp_protocol_conv_1"
    hpath="intel_vvp_protocol_conv_1"
@@ -211,7 +211,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CLIP_LONG_FIELDS">
    <type>int</type>
-   <value>0</value>
+   <value>1</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>

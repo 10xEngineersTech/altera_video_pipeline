@@ -30,7 +30,7 @@
           </parameter>
           <parameter>
             <name>CLIP_LONG_FIELDS</name>
-            <value>0</value>
+            <value>1</value>
           </parameter>
           <parameter>
             <name>COLOR_SPACE</name>
@@ -145,12 +145,148 @@
         <className>intel_vvp_protocol_conv</className>
         <version>24.6.0</version>
         <name>intel_vvp_protocol_conv_1</name>
-        <uniqueName>pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_xsgrh3i</uniqueName>
+        <uniqueName>pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_cq2b6jq</uniqueName>
         <nonce>0</nonce>
         <incidentConnections></incidentConnections>
         <path>pipeline_intel_vvp_protocol_conv_1.intel_vvp_protocol_conv_1</path>
       </instanceData>
       <children>
+        <node>
+          <instanceKey xsi:type="xs:string">discard</instanceKey>
+          <instanceData xsi:type="data">
+            <parameters>
+              <parameter>
+                <name>BPS</name>
+                <value>8</value>
+              </parameter>
+              <parameter>
+                <name>NUMBER_OF_COLOR_PLANES</name>
+                <value>3</value>
+              </parameter>
+              <parameter>
+                <name>PIPELINE_READY</name>
+                <value>0</value>
+              </parameter>
+              <parameter>
+                <name>PIXELS_IN_PARALLEL</name>
+                <value>1</value>
+              </parameter>
+            </parameters>
+            <interconnectAssignments></interconnectAssignments>
+            <className>intel_vvp_packet_discard</className>
+            <version>24.4.0</version>
+            <name>discard</name>
+            <uniqueName>intel_vvp_packet_discard</uniqueName>
+            <fixedName>intel_vvp_packet_discard</fixedName>
+            <nonce>0</nonce>
+            <incidentConnections>
+              <incidentConnection>
+                <parameters>
+                  <parameter>
+                    <name>axiStreamingCrossbarTxSysInfo</name>
+                    <value></value>
+                  </parameter>
+                  <parameter>
+                    <name>axiStreamingCrossbarRxSysInfo</name>
+                    <value></value>
+                  </parameter>
+                </parameters>
+                <interconnectAssignments></interconnectAssignments>
+                <className>axi4stream</className>
+                <version>25.1</version>
+                <name>discard.axi_st_data_out/out_bridge.axi_st_data_in</name>
+                <end>out_bridge/axi_st_data_in</end>
+                <start>discard/axi_st_data_out</start>
+              </incidentConnection>
+              <incidentConnection>
+                <parameters>
+                  <parameter>
+                    <name>axiStreamingCrossbarTxSysInfo</name>
+                    <value></value>
+                  </parameter>
+                  <parameter>
+                    <name>axiStreamingCrossbarRxSysInfo</name>
+                    <value></value>
+                  </parameter>
+                </parameters>
+                <interconnectAssignments></interconnectAssignments>
+                <className>axi4stream</className>
+                <version>25.1</version>
+                <name>in_bridge.axi_st_data_out/discard.axi_st_data_in</name>
+                <end>discard/axi_st_data_in</end>
+                <start>in_bridge/axi_st_data_out</start>
+              </incidentConnection>
+              <incidentConnection>
+                <parameters>
+                  <parameter>
+                    <name>clockRateSysInfo</name>
+                    <value></value>
+                  </parameter>
+                  <parameter>
+                    <name>resetDomainSysInfo</name>
+                    <value>-1</value>
+                  </parameter>
+                  <parameter>
+                    <name>clockDomainSysInfo</name>
+                    <value>-1</value>
+                  </parameter>
+                  <parameter>
+                    <name>clockResetSysInfo</name>
+                    <value></value>
+                  </parameter>
+                </parameters>
+                <interconnectAssignments></interconnectAssignments>
+                <className>clock</className>
+                <version>25.1</version>
+                <name>main_clk_bridge.out_clk/discard.main_clock</name>
+                <end>discard/main_clock</end>
+                <start>main_clk_bridge/out_clk</start>
+              </incidentConnection>
+              <incidentConnection>
+                <parameters>
+                  <parameter>
+                    <name>resetDomainSysInfo</name>
+                    <value>-1</value>
+                  </parameter>
+                  <parameter>
+                    <name>clockDomainSysInfo</name>
+                    <value>-1</value>
+                  </parameter>
+                  <parameter>
+                    <name>clockResetSysInfo</name>
+                    <value></value>
+                  </parameter>
+                </parameters>
+                <interconnectAssignments></interconnectAssignments>
+                <className>reset</className>
+                <version>25.1</version>
+                <name>main_rst_bridge.out_reset/discard.main_reset</name>
+                <end>discard/main_reset</end>
+                <start>main_rst_bridge/out_reset</start>
+              </incidentConnection>
+              <incidentConnection>
+                <parameters>
+                  <parameter>
+                    <name>axiStreamingCrossbarTxSysInfo</name>
+                    <value></value>
+                  </parameter>
+                  <parameter>
+                    <name>axiStreamingCrossbarRxSysInfo</name>
+                    <value></value>
+                  </parameter>
+                </parameters>
+                <interconnectAssignments></interconnectAssignments>
+                <className>axi4stream</className>
+                <version>25.1</version>
+                <name>scheduler.axi_st_core_cmd/discard.axi_st_cmd</name>
+                <end>discard/axi_st_cmd</end>
+                <start>scheduler/axi_st_core_cmd</start>
+              </incidentConnection>
+            </incidentConnections>
+            <path>pipeline_intel_vvp_protocol_conv_1.intel_vvp_protocol_conv_1.discard</path>
+          </instanceData>
+          <children></children>
+        </node>
         <node>
           <instanceKey xsi:type="xs:string">in_bridge</instanceKey>
           <instanceData xsi:type="data">
@@ -216,8 +352,8 @@
                 <interconnectAssignments></interconnectAssignments>
                 <className>axi4stream</className>
                 <version>25.1</version>
-                <name>in_bridge.axi_st_data_out/out_bridge.axi_st_data_in</name>
-                <end>out_bridge/axi_st_data_in</end>
+                <name>in_bridge.axi_st_data_out/discard.axi_st_data_in</name>
+                <end>discard/axi_st_data_in</end>
                 <start>in_bridge/axi_st_data_out</start>
               </incidentConnection>
               <incidentConnection>
@@ -297,6 +433,32 @@
             <uniqueName>pipeline_intel_vvp_protocol_conv_1_altera_clock_bridge_1920_njakcna</uniqueName>
             <nonce>0</nonce>
             <incidentConnections>
+              <incidentConnection>
+                <parameters>
+                  <parameter>
+                    <name>clockRateSysInfo</name>
+                    <value></value>
+                  </parameter>
+                  <parameter>
+                    <name>resetDomainSysInfo</name>
+                    <value>-1</value>
+                  </parameter>
+                  <parameter>
+                    <name>clockDomainSysInfo</name>
+                    <value>-1</value>
+                  </parameter>
+                  <parameter>
+                    <name>clockResetSysInfo</name>
+                    <value></value>
+                  </parameter>
+                </parameters>
+                <interconnectAssignments></interconnectAssignments>
+                <className>clock</className>
+                <version>25.1</version>
+                <name>main_clk_bridge.out_clk/discard.main_clock</name>
+                <end>discard/main_clock</end>
+                <start>main_clk_bridge/out_clk</start>
+              </incidentConnection>
               <incidentConnection>
                 <parameters>
                   <parameter>
@@ -499,6 +661,28 @@
                 <name>main_clk_bridge.out_clk/main_rst_bridge.clk</name>
                 <end>main_rst_bridge/clk</end>
                 <start>main_clk_bridge/out_clk</start>
+              </incidentConnection>
+              <incidentConnection>
+                <parameters>
+                  <parameter>
+                    <name>resetDomainSysInfo</name>
+                    <value>-1</value>
+                  </parameter>
+                  <parameter>
+                    <name>clockDomainSysInfo</name>
+                    <value>-1</value>
+                  </parameter>
+                  <parameter>
+                    <name>clockResetSysInfo</name>
+                    <value></value>
+                  </parameter>
+                </parameters>
+                <interconnectAssignments></interconnectAssignments>
+                <className>reset</className>
+                <version>25.1</version>
+                <name>main_rst_bridge.out_reset/discard.main_reset</name>
+                <end>discard/main_reset</end>
+                <start>main_rst_bridge/out_reset</start>
               </incidentConnection>
               <incidentConnection>
                 <parameters>
@@ -1915,9 +2099,9 @@
                 <interconnectAssignments></interconnectAssignments>
                 <className>axi4stream</className>
                 <version>25.1</version>
-                <name>in_bridge.axi_st_data_out/out_bridge.axi_st_data_in</name>
+                <name>discard.axi_st_data_out/out_bridge.axi_st_data_in</name>
                 <end>out_bridge/axi_st_data_in</end>
-                <start>in_bridge/axi_st_data_out</start>
+                <start>discard/axi_st_data_out</start>
               </incidentConnection>
               <incidentConnection>
                 <parameters>
@@ -1996,7 +2180,7 @@
             <parameters>
               <parameter>
                 <name>CLIP_LONG_FIELDS</name>
-                <value>0</value>
+                <value>1</value>
               </parameter>
               <parameter>
                 <name>ENABLE_DEBUG</name>
@@ -2193,6 +2377,24 @@
                 <version>25.1</version>
                 <end>scheduler/av_mm_slave</end>
                 <start>mm_interconnect_0/scheduler_av_mm_slave</start>
+              </incidentConnection>
+              <incidentConnection>
+                <parameters>
+                  <parameter>
+                    <name>axiStreamingCrossbarTxSysInfo</name>
+                    <value></value>
+                  </parameter>
+                  <parameter>
+                    <name>axiStreamingCrossbarRxSysInfo</name>
+                    <value></value>
+                  </parameter>
+                </parameters>
+                <interconnectAssignments></interconnectAssignments>
+                <className>axi4stream</className>
+                <version>25.1</version>
+                <name>scheduler.axi_st_core_cmd/discard.axi_st_cmd</name>
+                <end>discard/axi_st_cmd</end>
+                <start>scheduler/axi_st_core_cmd</start>
               </incidentConnection>
               <incidentConnection>
                 <parameters>

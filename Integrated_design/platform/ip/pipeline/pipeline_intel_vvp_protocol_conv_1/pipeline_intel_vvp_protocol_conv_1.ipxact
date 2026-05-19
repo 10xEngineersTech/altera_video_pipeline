@@ -1052,6 +1052,54 @@
                 </ipxact:vendorExtensions>
             </ipxact:file>
             <ipxact:file>
+                <ipxact:name>intel_vvp_packet_discard_2440/synth/intel_mtm_common_pkg.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_protocol_conv_1</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_packet_discard_2440/synth/intel_vvp_common_pkg.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_protocol_conv_1</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_packet_discard_2440/synth/intel_vvp_utility_pkg.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_protocol_conv_1</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_packet_discard_2440/synth/intel_vvp_axi_pipeline_stage.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_protocol_conv_1</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_packet_discard_2440/synth/intel_vvp_axi_master.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_protocol_conv_1</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_packet_discard_2440/synth/src_hdl/intel_vvp_packet_discard.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_protocol_conv_1</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
                 <ipxact:name>intel_vvp_output_interface_bridge_2440/synth/intel_vvp_common_pkg.sv</ipxact:name>
                 <ipxact:fileType>systemVerilogSource</ipxact:fileType>
                 <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
@@ -1172,7 +1220,7 @@
                 </ipxact:vendorExtensions>
             </ipxact:file>
             <ipxact:file>
-                <ipxact:name>intel_vvp_protocol_conv_2460/synth/pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_xsgrh3i.v</ipxact:name>
+                <ipxact:name>intel_vvp_protocol_conv_2460/synth/pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_cq2b6jq.v</ipxact:name>
                 <ipxact:fileType>verilogSource</ipxact:fileType>
                 <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
                 <ipxact:vendorExtensions>

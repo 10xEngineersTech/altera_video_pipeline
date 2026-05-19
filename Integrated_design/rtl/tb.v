@@ -163,10 +163,21 @@ module tb();
         end
     endgenerate
 
+    // --- State trace (debug) ---
+    reg [4:0] last_state = 5'h1F;
+    always @(posedge clk) begin
+        if (!reset && dut.current_state !== last_state) begin
+            $display("[%0t] STATE %0d -> %0d  cfg_step=%0d", $time, last_state, dut.current_state, dut.cfg_step);
+            last_state <= dut.current_state;
+        end
+    end
+
     // --- Timeout Watchdog ---
     initial begin
         #(END_TIME);
-        $display("Error: Simulation Timeout!");
+        $display("Error: Simulation Timeout!  current_state=%0d cfg_step=%0d", dut.current_state, dut.cfg_step);
+        $display("  tpg_wait=%b clip_wait=%b scl_wait=%b crs_wait=%b csc_wait=%b pc1_wait=%b",
+                 dut.tpg_wait, dut.clip_wait, dut.scl_wait, dut.crs_wait, dut.csc_wait, dut.pc1_wait);
         $finish;
     end
 

@@ -281,6 +281,66 @@
    type="OTHER"
    library="intel_vvp_ext_to_int_scheduler_2460" />
  <file
+   path="intel_vvp_packet_discard_2440/sim/mentor/intel_vvp_axi_pipeline_stage.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_vvp_packet_discard_2440"
+   simulator="modelsim" />
+ <file
+   path="intel_vvp_packet_discard_2440/sim/aldec/intel_vvp_axi_pipeline_stage.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_vvp_packet_discard_2440"
+   simulator="riviera" />
+ <file
+   path="intel_vvp_packet_discard_2440/sim/cadence/intel_vvp_axi_pipeline_stage.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_vvp_packet_discard_2440"
+   simulator="ncsim" />
+ <file
+   path="intel_vvp_packet_discard_2440/sim/synopsys/intel_vvp_axi_pipeline_stage.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_vvp_packet_discard_2440"
+   simulator="vcs, vcsmx" />
+ <file
+   path="intel_vvp_packet_discard_2440/sim/mentor/intel_vvp_axi_master.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_vvp_packet_discard_2440"
+   simulator="modelsim" />
+ <file
+   path="intel_vvp_packet_discard_2440/sim/aldec/intel_vvp_axi_master.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_vvp_packet_discard_2440"
+   simulator="riviera" />
+ <file
+   path="intel_vvp_packet_discard_2440/sim/cadence/intel_vvp_axi_master.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_vvp_packet_discard_2440"
+   simulator="ncsim" />
+ <file
+   path="intel_vvp_packet_discard_2440/sim/synopsys/intel_vvp_axi_master.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_vvp_packet_discard_2440"
+   simulator="vcs, vcsmx" />
+ <file
+   path="intel_vvp_packet_discard_2440/sim/mentor/src_hdl/intel_vvp_packet_discard.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_vvp_packet_discard_2440"
+   simulator="modelsim" />
+ <file
+   path="intel_vvp_packet_discard_2440/sim/aldec/src_hdl/intel_vvp_packet_discard.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_vvp_packet_discard_2440"
+   simulator="riviera" />
+ <file
+   path="intel_vvp_packet_discard_2440/sim/cadence/src_hdl/intel_vvp_packet_discard.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_vvp_packet_discard_2440"
+   simulator="ncsim" />
+ <file
+   path="intel_vvp_packet_discard_2440/sim/synopsys/src_hdl/intel_vvp_packet_discard.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_vvp_packet_discard_2440"
+   simulator="vcs, vcsmx" />
+ <file
    path="intel_vvp_output_interface_bridge_2440/sim/mentor/intel_vvp_axi_pipeline_stage.sv"
    type="SYSTEM_VERILOG"
    library="intel_vvp_output_interface_bridge_2440"
@@ -428,7 +488,7 @@
    library="altera_mm_interconnect_1920"
    hasInlineConfiguration="true" />
  <file
-   path="intel_vvp_protocol_conv_2460/sim/pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_xsgrh3i.v"
+   path="intel_vvp_protocol_conv_2460/sim/pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_cq2b6jq.v"
    type="VERILOG"
    library="intel_vvp_protocol_conv_2460"
    hasInlineConfiguration="true" />

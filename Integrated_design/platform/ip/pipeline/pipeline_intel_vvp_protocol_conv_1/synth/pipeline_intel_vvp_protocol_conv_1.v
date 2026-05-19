@@ -26,7 +26,7 @@ module pipeline_intel_vvp_protocol_conv_1 (
 		output wire        av_mm_control_agent_waitrequest    //                    .waitrequest
 	);
 
-	pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_xsgrh3i intel_vvp_protocol_conv_1 (
+	pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_cq2b6jq intel_vvp_protocol_conv_1 (
 		.main_clock_clk                    (main_clock_clk),                    //   input,   width = 1,          main_clock.clk
 		.main_reset_reset                  (main_reset_reset),                  //   input,   width = 1,          main_reset.reset
 		.axi4s_vid_in_tdata                (axi4s_vid_in_tdata),                //   input,  width = 24,        axi4s_vid_in.tdata

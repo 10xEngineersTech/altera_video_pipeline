@@ -42,10 +42,10 @@ class ImageViewerWindow(Gtk.Window):
         content_panes = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
         main_box.pack_start(content_panes, True, True, 0)
 
-        # Sidebar
+        # ---- Sidebar ----
         sidebar = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=15)
         sidebar.get_style_context().add_class("sidebar")
-        sidebar.set_size_request(300, -1)
+        sidebar.set_size_request(310, -1)
         content_panes.pack_start(sidebar, False, False, 0)
 
         sidebar_title = Gtk.Label(label="Parameters")
@@ -53,28 +53,56 @@ class ImageViewerWindow(Gtk.Window):
         sidebar.pack_start(sidebar_title, False, False, 10)
 
         # --- Input Source Selector ---
-        src_group_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
-        src_group_box.get_style_context().add_class("param-group")
-        src_label = Gtk.Label(label="Input Source")
-        src_label.set_xalign(0)
-        src_label.get_style_context().add_class("group-label")
-        src_group_box.pack_start(src_label, False, False, 0)
+        src_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+        src_box.get_style_context().add_class("param-group")
+        src_lbl = Gtk.Label(label="Input Source")
+        src_lbl.set_xalign(0)
+        src_lbl.get_style_context().add_class("group-label")
+        src_box.pack_start(src_lbl, False, False, 0)
 
         self.radio_tpg   = Gtk.RadioButton.new_with_label(None, "TPG (Test Pattern Generator)")
-        self.radio_image = Gtk.RadioButton.new_with_label_from_widget(self.radio_tpg, "Image File (image.png)")
+        self.radio_image = Gtk.RadioButton.new_with_label_from_widget(
+            self.radio_tpg, "Image File (image.png)")
         self.radio_tpg.get_style_context().add_class("src-radio")
         self.radio_image.get_style_context().add_class("src-radio")
-        src_group_box.pack_start(self.radio_tpg,   False, False, 0)
-        src_group_box.pack_start(self.radio_image, False, False, 0)
-        sidebar.pack_start(src_group_box, False, False, 0)
+        src_box.pack_start(self.radio_tpg,   False, False, 0)
+        src_box.pack_start(self.radio_image, False, False, 0)
 
-        # Configuration Groups
+        # Small hint shown when image source is active
+        self.img_dim_hint = Gtk.Label(label="")
+        self.img_dim_hint.set_xalign(0)
+        self.img_dim_hint.get_style_context().add_class("dim-hint")
+        src_box.pack_start(self.img_dim_hint, False, False, 0)
+
+        sidebar.pack_start(src_box, False, False, 0)
+
+        # Connect toggle handler AFTER both radios exist
+        self.radio_image.connect("toggled", self._on_source_toggled)
+
+        # --- Input Resolution (auto-locked when image source is selected) ---
         self.params = {}
-        self.add_param_group(sidebar, "Test Pattern Generator / Image Size", [
-            ("Width",  "tpg_w", 640),
-            ("Height", "tpg_h", 480)
-        ])
+        res_group = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+        res_group.get_style_context().add_class("param-group")
+        self.res_group_label = Gtk.Label(label="Input Resolution")
+        self.res_group_label.set_xalign(0)
+        self.res_group_label.get_style_context().add_class("group-label")
+        res_group.pack_start(self.res_group_label, False, False, 0)
 
+        for name, key, default in [("Width", "tpg_w", 640), ("Height", "tpg_h", 480)]:
+            hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+            lbl  = Gtk.Label(label=name)
+            lbl.set_xalign(0)
+            hbox.pack_start(lbl, True, True, 0)
+            adj  = Gtk.Adjustment(value=default, lower=1, upper=8192, step_increment=1)
+            spin = Gtk.SpinButton(adjustment=adj, climb_rate=1, digits=0)
+            spin.set_width_chars(6)
+            hbox.pack_end(spin, False, False, 0)
+            self.params[key] = spin
+            res_group.pack_start(hbox, False, False, 0)
+
+        sidebar.pack_start(res_group, False, False, 0)
+
+        # --- Other parameter groups ---
         self.add_param_group(sidebar, "Clipper Offsets", [
             ("Top Offset",    "clip_top",    0),
             ("Bottom Offset", "clip_bottom", 0),
@@ -98,7 +126,7 @@ class ImageViewerWindow(Gtk.Window):
         apply_btn.connect("clicked", self.on_apply_clicked)
         sidebar.pack_end(apply_btn, False, False, 20)
 
-        # Viewer Area
+        # ---- Viewer Area ----
         viewer_container = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=20)
         viewer_container.set_margin_top(30)
         viewer_container.set_margin_bottom(30)
@@ -117,51 +145,100 @@ class ImageViewerWindow(Gtk.Window):
             if os.path.exists(image_path):
                 pixbuf = GdkPixbuf.Pixbuf.new_from_file(image_path)
                 self.image_widget.set_from_pixbuf(pixbuf)
-                self.info_label = Gtk.Label(label=f"Buffer: {pixbuf.get_width()}x{pixbuf.get_height()}")
+                self.info_label = Gtk.Label(
+                    label=f"Buffer: {pixbuf.get_width()}x{pixbuf.get_height()}")
             else:
-                self.info_label = Gtk.Label(label="No image found. Run pipeline to generate.")
+                self.info_label = Gtk.Label(
+                    label="No image found. Run pipeline to generate.")
             self.info_label.get_style_context().add_class("info-text")
             viewer_container.pack_start(self.info_label, False, False, 0)
         except Exception as e:
             err = Gtk.Label(label=f"Load Error: {e}")
             self.image_container.pack_start(err, True, True, 0)
 
+    # -------------------------------------------------------------------------
+    # Helpers
+    # -------------------------------------------------------------------------
+
     def add_param_group(self, parent, title, fields):
         group_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
         group_box.get_style_context().add_class("param-group")
-
         label = Gtk.Label(label=title)
         label.set_xalign(0)
         label.get_style_context().add_class("group-label")
         group_box.pack_start(label, False, False, 0)
-
         for name, key, default in fields:
             hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
             field_label = Gtk.Label(label=name)
             field_label.set_xalign(0)
             hbox.pack_start(field_label, True, True, 0)
-
-            adj = Gtk.Adjustment(value=default, lower=0, upper=8192, step_increment=1)
+            adj  = Gtk.Adjustment(value=default, lower=0, upper=8192, step_increment=1)
             spin = Gtk.SpinButton(adjustment=adj, climb_rate=1, digits=0)
             spin.set_width_chars(6)
             hbox.pack_end(spin, False, False, 0)
-
             self.params[key] = spin
             group_box.pack_start(hbox, False, False, 0)
-
         parent.pack_start(group_box, False, False, 0)
 
+    def _get_image_dims(self):
+        """Return (width, height) of image.png using GdkPixbuf, or (None, None)."""
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        img_path = os.path.join(base_dir, "image.png")
+        try:
+            pixbuf = GdkPixbuf.Pixbuf.new_from_file(img_path)
+            return pixbuf.get_width(), pixbuf.get_height()
+        except Exception:
+            return None, None
+
+    # -------------------------------------------------------------------------
+    # Signal handlers
+    # -------------------------------------------------------------------------
+
+    def _on_source_toggled(self, widget):
+        """Called when the 'Image File' radio button changes state."""
+        use_image = self.radio_image.get_active()
+        if use_image:
+            w, h = self._get_image_dims()
+            if w is not None:
+                self.params['tpg_w'].set_value(w)
+                self.params['tpg_h'].set_value(h)
+                self.img_dim_hint.set_text(f"  image.png detected: {w} x {h}")
+                self.res_group_label.set_text("Input Resolution  (from image.png)")
+            else:
+                self.img_dim_hint.set_text("  Warning: image.png not found!")
+                self.res_group_label.set_text("Input Resolution  (image.png MISSING)")
+            # Lock spinners — dimensions are dictated by the image file
+            self.params['tpg_w'].set_sensitive(False)
+            self.params['tpg_h'].set_sensitive(False)
+        else:
+            # Restore free editing
+            self.params['tpg_w'].set_sensitive(True)
+            self.params['tpg_h'].set_sensitive(True)
+            self.img_dim_hint.set_text("")
+            self.res_group_label.set_text("Input Resolution")
+
     def on_apply_clicked(self, widget):
-        is_debugging   = self.debug_checkbox.get_active()
-        use_image      = self.radio_image.get_active()  # True = image.png, False = TPG
-        values         = {k: v.get_value_as_int() for k, v in self.params.items()}
-        base_dir       = os.path.dirname(os.path.abspath(__file__))
+        is_debugging = self.debug_checkbox.get_active()
+        use_image    = self.radio_image.get_active()
+        values       = {k: v.get_value_as_int() for k, v in self.params.items()}
+        base_dir     = os.path.dirname(os.path.abspath(__file__))
 
         config_path        = os.path.join(base_dir, "pipeline_config.txt")
         vh_path            = os.path.join(base_dir, "configuration.vh")
         run_project_script = os.path.join(base_dir, "runProject.py")
         hex_to_png_script  = os.path.join(base_dir, "hex_to_png.py")
         png_to_hex_script  = os.path.join(base_dir, "png_to_hex.py")
+
+        # When image source is active, use the actual image dimensions —
+        # the spinners are locked to show them, but we read GdkPixbuf directly
+        # to be authoritative.
+        if use_image:
+            img_w, img_h = self._get_image_dims()
+            if img_w is None:
+                self.status_badge.set_text("ERROR: image.png not found")
+                return
+            values['tpg_w'] = img_w
+            values['tpg_h'] = img_h
 
         try:
             # 1. Write text config
@@ -187,18 +264,25 @@ class ImageViewerWindow(Gtk.Window):
 
             def run_pipeline():
                 try:
-                    # When image source is selected, convert image.png to hex first
                     if use_image:
-                        self.set_badge_text("CONVERTING IMAGE...")
-                        subprocess.run(
-                            ["python3", png_to_hex_script,
-                             str(values['tpg_w']), str(values['tpg_h'])],
-                            check=True
+                        GLib.idle_add(self.status_badge.set_text, "CONVERTING IMAGE...")
+                        # png_to_hex uses native image resolution — no resize
+                        result = subprocess.run(
+                            ["python3", png_to_hex_script],
+                            capture_output=True, text=True, check=True
                         )
+                        # Log the detected dimensions from stdout
+                        for line in result.stdout.splitlines():
+                            if line.startswith("SUCCESS"):
+                                print(f"[PNG→HEX] {line}")
 
-                    subprocess.run(["python3", run_project_script, str(is_debugging)], check=True)
+                    GLib.idle_add(self.status_badge.set_text, "SIMULATING...")
+                    subprocess.run(
+                        ["python3", run_project_script, str(is_debugging)],
+                        check=True
+                    )
                     subprocess.run(["python3", hex_to_png_script], check=True)
-                    GLib.idle_add(self.update_badge_finished, use_image)
+                    GLib.idle_add(self.update_badge_finished, use_image, values)
                 except Exception as e:
                     print(f"Pipeline Error: {e}")
                     GLib.idle_add(self.update_badge_error)
@@ -210,13 +294,9 @@ class ImageViewerWindow(Gtk.Window):
         except Exception as e:
             print(f"Save Error: {e}")
 
-    def set_badge_text(self, text):
-        GLib.idle_add(self.status_badge.set_text, text)
-
-    def update_badge_finished(self, used_image):
+    def update_badge_finished(self, used_image, values):
         self.status_badge.set_text("IMAGE READY")
         self.status_badge.get_style_context().add_class("success-badge")
-
         try:
             base_dir    = os.path.dirname(os.path.abspath(__file__))
             result_path = os.path.join(base_dir, "result.png")
@@ -225,9 +305,11 @@ class ImageViewerWindow(Gtk.Window):
             if os.path.exists(result_path):
                 pixbuf = GdkPixbuf.Pixbuf.new_from_file(result_path)
                 self.image_widget.set_from_pixbuf(pixbuf)
-                src_tag = "image.png" if used_image else "TPG"
+                src_tag = (f"image.png ({values['tpg_w']}x{values['tpg_h']})"
+                           if used_image else "TPG")
                 self.info_label.set_text(
-                    f"Source: {src_tag} | Buffer: {pixbuf.get_width()}x{pixbuf.get_height()}"
+                    f"Source: {src_tag}  →  "
+                    f"Output: {pixbuf.get_width()}x{pixbuf.get_height()}"
                 )
         except Exception as e:
             print(f"UI Refresh Error: {e}")
@@ -237,33 +319,44 @@ class ImageViewerWindow(Gtk.Window):
         self.status_badge.set_text("PIPELINE FAILED")
         return False
 
+    # -------------------------------------------------------------------------
+    # Styling
+    # -------------------------------------------------------------------------
+
     def apply_styling(self):
         style_provider = Gtk.CssProvider()
         css = """
             window { background-color: #0f172a; }
-            .header-bar { background-color: #1e293b; padding: 15px 0; border-bottom: 2px solid #334155; }
+            .header-bar { background-color: #1e293b; padding: 15px 0;
+                          border-bottom: 2px solid #334155; }
             .header-title { color: #f8fafc; font-size: 20px; font-weight: 800; }
-            .status-badge { background-color: #0ea5e9; color: white; padding: 4px 12px; border-radius: 100px; font-size: 11px; font-weight: bold; }
+            .status-badge { background-color: #0ea5e9; color: white;
+                            padding: 4px 12px; border-radius: 100px;
+                            font-size: 11px; font-weight: bold; }
             .success-badge { background-color: #10b981; }
-            .sidebar { background-color: #1e293b; border-right: 1px solid #334155; padding: 20px; }
+            .sidebar { background-color: #1e293b; border-right: 1px solid #334155;
+                       padding: 20px; }
             .sidebar-title { color: #94a3b8; font-size: 12px; font-weight: 700; }
-            .param-group { color: #94a3b8; background-color: rgba(255,255,255,0.03); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); }
-            .group-label { color: #38bdf8; font-weight: 700; font-size: 13px; margin-bottom: 5px; }
+            .param-group { color: #94a3b8; background-color: rgba(255,255,255,0.03);
+                           padding: 15px; border-radius: 12px;
+                           border: 1px solid rgba(255,255,255,0.05); }
+            .group-label { color: #38bdf8; font-weight: 700; font-size: 13px;
+                           margin-bottom: 5px; }
             .src-radio label { color: #cbd5e1; font-size: 13px; }
+            .dim-hint { color: #86efac; font-size: 11px; font-style: italic; }
             button.apply-button {
-                background-image: none;
-                background-color: #10b981;
-                border-radius: 8px;
-                padding: 12px;
-                margin-top: 10px;
-                border: none;
-                box-shadow: none;
+                background-image: none; background-color: #10b981;
+                border-radius: 8px; padding: 12px; margin-top: 10px;
+                border: none; box-shadow: none;
             }
             button.apply-button label { color: #000000; font-weight: 800; }
             button.apply-button:hover { background-color: #34d399; }
             .debug-checkbox label { color: #cbd5e1; font-size: 13px; }
-            spinbutton { background-color: #0f172a; color: white; border: 1px solid #334155; border-radius: 6px; }
-            .image-container { background-color: #020617; border-radius: 16px; padding: 15px; border: 1px solid #334155; }
+            spinbutton { background-color: #0f172a; color: white;
+                         border: 1px solid #334155; border-radius: 6px; }
+            spinbutton:disabled { color: #475569; }
+            .image-container { background-color: #020617; border-radius: 16px;
+                               padding: 15px; border: 1px solid #334155; }
             .info-text { color: #64748b; font-size: 12px; }
         """
         style_provider.load_from_data(css.encode())

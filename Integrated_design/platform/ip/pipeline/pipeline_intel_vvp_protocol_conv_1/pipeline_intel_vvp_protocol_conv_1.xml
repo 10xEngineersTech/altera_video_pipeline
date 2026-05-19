@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2026.05.19.17:37:56"
+ date="2026.05.19.23:25:17"
  outputDirectory="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_1/">
  <perimeter>
   <parameter
@@ -230,6 +230,8 @@
    <file
        path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/protocol_conv/intel_vvp_ext_to_int_scheduler/intel_vvp_ext_to_int_scheduler_hw.tcl" />
    <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/packet_utils/intel_vvp_packet_discard/intel_vvp_packet_discard_hw.tcl" />
+   <file
        path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/in_out_bridges/intel_vvp_output_interface_bridge/intel_vvp_output_interface_bridge_hw.tcl" />
    <file
        path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/mm_agent/intel_vvp_slave_front_end/intel_vvp_slave_front_end_hw.tcl" />
@@ -254,10 +256,11 @@
   </childSourceFiles>
   <messages>
    <message level="Info" culprit="pipeline_intel_vvp_protocol_conv_1">"Generating: pipeline_intel_vvp_protocol_conv_1"</message>
-   <message level="Info" culprit="pipeline_intel_vvp_protocol_conv_1">"Generating: pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_xsgrh3i"</message>
+   <message level="Info" culprit="pipeline_intel_vvp_protocol_conv_1">"Generating: pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_cq2b6jq"</message>
    <message level="Info" culprit="pipeline_intel_vvp_protocol_conv_1">"Generating: intel_vvp_reset_sync"</message>
    <message level="Info" culprit="pipeline_intel_vvp_protocol_conv_1">"Generating: intel_vvp_input_interface_bridge"</message>
    <message level="Info" culprit="pipeline_intel_vvp_protocol_conv_1">"Generating: intel_vvp_ext_to_int_scheduler"</message>
+   <message level="Info" culprit="pipeline_intel_vvp_protocol_conv_1">"Generating: intel_vvp_packet_discard"</message>
    <message level="Info" culprit="pipeline_intel_vvp_protocol_conv_1">"Generating: intel_vvp_output_interface_bridge"</message>
    <message level="Info" culprit="pipeline_intel_vvp_protocol_conv_1">"Generating: pipeline_intel_vvp_protocol_conv_1_intel_vvp_slave_front_end_2441_i4nwqui"</message>
    <message level="Info" culprit="pipeline_intel_vvp_protocol_conv_1">"Generating: intel_vvp_reset_bridge"</message>
@@ -274,7 +277,7 @@
  <entity
    kind="intel_vvp_protocol_conv"
    version="24.6.0"
-   name="pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_xsgrh3i">
+   name="pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_cq2b6jq">
   <parameter name="VVP_USER_SUPPORT" value="NONE_ALLOWED" />
   <parameter name="CHROMA_SITING" value="TOP_LEFT" />
   <parameter name="RUNTIME_CONTROL" value="0" />
@@ -309,15 +312,15 @@
   <parameter name="C_OMNI_CAP_ID_COMPONENT" value="0" />
   <parameter name="SLAVE_PROTOCOL" value="Avalon" />
   <parameter name="C_OMNI_CAP_SIZE" value="0" />
-  <parameter name="CLIP_LONG_FIELDS" value="0" />
+  <parameter name="CLIP_LONG_FIELDS" value="1" />
   <generatedFiles>
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_1/intel_vvp_protocol_conv_2460/synth/pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_xsgrh3i.v"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_1/intel_vvp_protocol_conv_2460/synth/pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_cq2b6jq.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_1/intel_vvp_protocol_conv_2460/synth/pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_xsgrh3i.v"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_1/intel_vvp_protocol_conv_2460/synth/pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_cq2b6jq.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </childGeneratedFiles>
   <sourceFiles>
@@ -331,6 +334,8 @@
        path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/in_out_bridges/intel_vvp_input_interface_bridge/intel_vvp_input_interface_bridge_hw.tcl" />
    <file
        path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/protocol_conv/intel_vvp_ext_to_int_scheduler/intel_vvp_ext_to_int_scheduler_hw.tcl" />
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/packet_utils/intel_vvp_packet_discard/intel_vvp_packet_discard_hw.tcl" />
    <file
        path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/in_out_bridges/intel_vvp_output_interface_bridge/intel_vvp_output_interface_bridge_hw.tcl" />
    <file
@@ -358,10 +363,11 @@
      instantiator="pipeline_intel_vvp_protocol_conv_1"
      as="intel_vvp_protocol_conv_1" />
   <messages>
-   <message level="Info" culprit="pipeline_intel_vvp_protocol_conv_1">"Generating: pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_xsgrh3i"</message>
+   <message level="Info" culprit="pipeline_intel_vvp_protocol_conv_1">"Generating: pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_cq2b6jq"</message>
    <message level="Info" culprit="pipeline_intel_vvp_protocol_conv_1">"Generating: intel_vvp_reset_sync"</message>
    <message level="Info" culprit="pipeline_intel_vvp_protocol_conv_1">"Generating: intel_vvp_input_interface_bridge"</message>
    <message level="Info" culprit="pipeline_intel_vvp_protocol_conv_1">"Generating: intel_vvp_ext_to_int_scheduler"</message>
+   <message level="Info" culprit="pipeline_intel_vvp_protocol_conv_1">"Generating: intel_vvp_packet_discard"</message>
    <message level="Info" culprit="pipeline_intel_vvp_protocol_conv_1">"Generating: intel_vvp_output_interface_bridge"</message>
    <message level="Info" culprit="pipeline_intel_vvp_protocol_conv_1">"Generating: pipeline_intel_vvp_protocol_conv_1_intel_vvp_slave_front_end_2441_i4nwqui"</message>
    <message level="Info" culprit="pipeline_intel_vvp_protocol_conv_1">"Generating: intel_vvp_reset_bridge"</message>
@@ -396,7 +402,7 @@
   </sourceFiles>
   <childSourceFiles/>
   <instantiator
-     instantiator="pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_xsgrh3i"
+     instantiator="pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_cq2b6jq"
      as="main_rst_bridge" />
   <messages>
    <message level="Info" culprit="pipeline_intel_vvp_protocol_conv_1">"Generating: intel_vvp_reset_sync"</message>
@@ -445,7 +451,7 @@
   </sourceFiles>
   <childSourceFiles/>
   <instantiator
-     instantiator="pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_xsgrh3i"
+     instantiator="pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_cq2b6jq"
      as="in_bridge" />
   <messages>
    <message level="Info" culprit="pipeline_intel_vvp_protocol_conv_1">"Generating: intel_vvp_input_interface_bridge"</message>
@@ -460,7 +466,7 @@
   <parameter name="SLAVE_ADDRESS_WIDTH" value="5" />
   <parameter name="ENABLE_DEBUG" value="0" />
   <parameter name="ENABLE_TIMEOUT" value="0" />
-  <parameter name="CLIP_LONG_FIELDS" value="0" />
+  <parameter name="CLIP_LONG_FIELDS" value="1" />
   <generatedFiles>
    <file
        path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_1/intel_vvp_ext_to_int_scheduler_2460/synth/intel_mtm_common_pkg.sv"
@@ -531,10 +537,70 @@
   </sourceFiles>
   <childSourceFiles/>
   <instantiator
-     instantiator="pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_xsgrh3i"
+     instantiator="pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_cq2b6jq"
      as="scheduler" />
   <messages>
    <message level="Info" culprit="pipeline_intel_vvp_protocol_conv_1">"Generating: intel_vvp_ext_to_int_scheduler"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="intel_vvp_packet_discard"
+   version="24.4.0"
+   name="intel_vvp_packet_discard">
+  <parameter name="BPS" value="8" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="NUMBER_OF_COLOR_PLANES" value="3" />
+  <parameter name="PIXELS_IN_PARALLEL" value="1" />
+  <generatedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_1/intel_vvp_packet_discard_2440/synth/intel_mtm_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_1/intel_vvp_packet_discard_2440/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_1/intel_vvp_packet_discard_2440/synth/intel_vvp_utility_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_1/intel_vvp_packet_discard_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_1/intel_vvp_packet_discard_2440/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_1/intel_vvp_packet_discard_2440/synth/src_hdl/intel_vvp_packet_discard.sv"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_1/intel_vvp_packet_discard_2440/synth/intel_mtm_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_1/intel_vvp_packet_discard_2440/synth/intel_vvp_common_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_1/intel_vvp_packet_discard_2440/synth/intel_vvp_utility_pkg.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_1/intel_vvp_packet_discard_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_1/intel_vvp_packet_discard_2440/synth/intel_vvp_axi_master.sv"
+       attributes="" />
+   <file
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_1/intel_vvp_packet_discard_2440/synth/src_hdl/intel_vvp_packet_discard.sv"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/packet_utils/intel_vvp_packet_discard/intel_vvp_packet_discard_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_cq2b6jq"
+     as="discard" />
+  <messages>
+   <message level="Info" culprit="pipeline_intel_vvp_protocol_conv_1">"Generating: intel_vvp_packet_discard"</message>
   </messages>
  </entity>
  <entity
@@ -580,7 +646,7 @@
   </sourceFiles>
   <childSourceFiles/>
   <instantiator
-     instantiator="pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_xsgrh3i"
+     instantiator="pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_cq2b6jq"
      as="out_bridge" />
   <messages>
    <message level="Info" culprit="pipeline_intel_vvp_protocol_conv_1">"Generating: intel_vvp_output_interface_bridge"</message>
@@ -637,7 +703,7 @@
        path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/merlin/altera_merlin_slave_translator/altera_merlin_slave_translator_hw.tcl" />
   </childSourceFiles>
   <instantiator
-     instantiator="pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_xsgrh3i"
+     instantiator="pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_cq2b6jq"
      as="slave_interface" />
   <messages>
    <message level="Info" culprit="pipeline_intel_vvp_protocol_conv_1">"Generating: pipeline_intel_vvp_protocol_conv_1_intel_vvp_slave_front_end_2441_i4nwqui"</message>
@@ -681,7 +747,7 @@
        path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/merlin/altera_merlin_slave_translator/altera_merlin_slave_translator_hw.tcl" />
   </childSourceFiles>
   <instantiator
-     instantiator="pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_xsgrh3i"
+     instantiator="pipeline_intel_vvp_protocol_conv_1_intel_vvp_protocol_conv_2460_cq2b6jq"
      as="mm_interconnect_0" />
   <messages>
    <message level="Info" culprit="pipeline_intel_vvp_protocol_conv_1">"Generating: pipeline_intel_vvp_protocol_conv_1_altera_mm_interconnect_1920_fcggkmy"</message>

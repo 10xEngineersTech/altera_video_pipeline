@@ -97,11 +97,11 @@ module pipeline (
 		output wire [31:0] intel_vvp_scaler_0_av_mm_control_agent_readdata,       //                                        .readdata
 		output wire        intel_vvp_scaler_0_av_mm_control_agent_readdatavalid,  //                                        .readdatavalid
 		output wire        intel_vvp_scaler_0_av_mm_control_agent_waitrequest,    //                                        .waitrequest
-		output wire [15:0] intel_vvp_tpg_0_axi4s_vid_out_tdata,                   //           intel_vvp_tpg_0_axi4s_vid_out.tdata
+		output wire [23:0] intel_vvp_tpg_0_axi4s_vid_out_tdata,                   //           intel_vvp_tpg_0_axi4s_vid_out.tdata
 		output wire        intel_vvp_tpg_0_axi4s_vid_out_tvalid,                  //                                        .tvalid
 		input  wire        intel_vvp_tpg_0_axi4s_vid_out_tready,                  //                                        .tready
 		output wire        intel_vvp_tpg_0_axi4s_vid_out_tlast,                   //                                        .tlast
-		output wire [1:0]  intel_vvp_tpg_0_axi4s_vid_out_tuser,                   //                                        .tuser
+		output wire [2:0]  intel_vvp_tpg_0_axi4s_vid_out_tuser,                   //                                        .tuser
 		input  wire [6:0]  intel_vvp_tpg_0_av_mm_control_agent_address,           //     intel_vvp_tpg_0_av_mm_control_agent.address
 		input  wire        intel_vvp_tpg_0_av_mm_control_agent_write,             //                                        .write
 		input  wire [3:0]  intel_vvp_tpg_0_av_mm_control_agent_byteenable,        //                                        .byteenable
@@ -247,11 +247,11 @@ module pipeline (
 	pipeline_intel_vvp_tpg_0 intel_vvp_tpg_0 (
 		.main_clock_clk                    (clock_in_out_clk_clk),                              //   input,   width = 1,          main_clock.clk
 		.main_reset_reset                  (rst_controller_reset_out_reset),                    //   input,   width = 1,          main_reset.reset
-		.axi4s_vid_out_tdata               (intel_vvp_tpg_0_axi4s_vid_out_tdata),               //  output,  width = 16,       axi4s_vid_out.tdata
+		.axi4s_vid_out_tdata               (intel_vvp_tpg_0_axi4s_vid_out_tdata),               //  output,  width = 24,       axi4s_vid_out.tdata
 		.axi4s_vid_out_tvalid              (intel_vvp_tpg_0_axi4s_vid_out_tvalid),              //  output,   width = 1,                    .tvalid
 		.axi4s_vid_out_tready              (intel_vvp_tpg_0_axi4s_vid_out_tready),              //   input,   width = 1,                    .tready
 		.axi4s_vid_out_tlast               (intel_vvp_tpg_0_axi4s_vid_out_tlast),               //  output,   width = 1,                    .tlast
-		.axi4s_vid_out_tuser               (intel_vvp_tpg_0_axi4s_vid_out_tuser),               //  output,   width = 2,                    .tuser
+		.axi4s_vid_out_tuser               (intel_vvp_tpg_0_axi4s_vid_out_tuser),               //  output,   width = 3,                    .tuser
 		.av_mm_control_agent_address       (intel_vvp_tpg_0_av_mm_control_agent_address),       //   input,   width = 7, av_mm_control_agent.address
 		.av_mm_control_agent_write         (intel_vvp_tpg_0_av_mm_control_agent_write),         //   input,   width = 1,                    .write
 		.av_mm_control_agent_byteenable    (intel_vvp_tpg_0_av_mm_control_agent_byteenable),    //   input,   width = 4,                    .byteenable

@@ -58,7 +58,7 @@ module top #(
 
     // Color Space Converter (CSC)
     parameter [2:0]  CSC_MODE        = 3'd0,
-    parameter [31:0] CSC_COLOR_SPACE = 32'd1
+    parameter [31:0] CSC_COLOR_SPACE = 32'd0  // 0=RGB (kIntelVvpCsRgb)
 )(
     input  wire        clk,
     input  wire        reset,
@@ -84,7 +84,7 @@ module top #(
     // --- TPG ---
     localparam [6:0] TPG_ADDR_WIDTH     = 7'h48;
     localparam [6:0] TPG_ADDR_HEIGHT    = 7'h49;
-    localparam [6:0] TPG_ADDR_INTERLACE = 7'h4A;
+    localparam [6:0] TPG_ADDR_INTERLACE = 7'h4A;  // IMG_INFO_INTERLACE: byte 0x0128, values 0-7 = progressive
     localparam [6:0] TPG_ADDR_STATUS    = 7'h50;
     localparam [6:0] TPG_ADDR_CONTROL   = 7'h52;
     localparam [6:0] TPG_ADDR_COMMIT    = 7'h53;
@@ -527,19 +527,18 @@ module top #(
 	 //assign ready_to_start = 1'b1;
 
     // TPG output wires (driven by pipeline)
-    wire [15:0] tpg_out_tdata;
+    wire [23:0] tpg_out_tdata;
     wire        tpg_out_tvalid;
     wire        tpg_out_tready;
     wire        tpg_out_tlast;
-    wire [1:0]  tpg_out_tuser;
+    wire [2:0]  tpg_out_tuser;
 
     // DIL input: tvalid gated; tready fed back to TPG; tdata/tlast/tuser pass through.
-    // tuser: DIL expects [2:0]; TPG produces [1:0] — pad MSB with 0.
-    wire [23:0] dil_in_tdata  = {8'h00, tpg_out_tdata};
+    wire [23:0] dil_in_tdata  = tpg_out_tdata;
     wire        dil_in_tvalid = tpg_out_tvalid & ready_to_start;
     wire        dil_in_tready;                          // driven by pipeline DIL port
     wire        dil_in_tlast  = tpg_out_tlast;
-    wire [2:0]  dil_in_tuser  = {1'b0, tpg_out_tuser};
+    wire [2:0]  dil_in_tuser  = tpg_out_tuser;
 
     assign tpg_out_tready = dil_in_tready & ready_to_start;
 

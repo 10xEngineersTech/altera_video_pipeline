@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="pipeline" kind="pipeline" version="1.0" fabric="QSYS">
  <!-- Format version 25.1.1 125 (Future versions may contain additional information.) -->
- <!-- 2026.05.18.15:54:51 -->
+ <!-- 2026.05.19.11:45:50 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
@@ -11499,7 +11499,7 @@ the requested settings for a module instance. -->
                         <name>axi4s_vid_out_tdata</name>
                         <role>tdata</role>
                         <direction>Output</direction>
-                        <width>16</width>
+                        <width>24</width>
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                         <terminationValue>0</terminationValue>
@@ -11535,7 +11535,7 @@ the requested settings for a module instance. -->
                         <name>axi4s_vid_out_tuser</name>
                         <role>tuser</role>
                         <direction>Output</direction>
-                        <width>2</width>
+                        <width>3</width>
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                         <terminationValue>0</terminationValue>
@@ -11553,7 +11553,7 @@ the requested settings for a module instance. -->
                         </entry>
                         <entry>
                             <key>intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES</key>
-                            <value>2</value>
+                            <value>3</value>
                         </entry>
                         <entry>
                             <key>intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL</key>
@@ -12096,7 +12096,7 @@ the requested settings for a module instance. -->
                     <name>axi4s_vid_out_tdata</name>
                     <role>tdata</role>
                     <direction>Output</direction>
-                    <width>16</width>
+                    <width>24</width>
                     <lowerBound>0</lowerBound>
                     <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                     <terminationValue>0</terminationValue>
@@ -12132,7 +12132,7 @@ the requested settings for a module instance. -->
                     <name>axi4s_vid_out_tuser</name>
                     <role>tuser</role>
                     <direction>Output</direction>
-                    <width>2</width>
+                    <width>3</width>
                     <lowerBound>0</lowerBound>
                     <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                     <terminationValue>0</terminationValue>
@@ -12150,7 +12150,7 @@ the requested settings for a module instance. -->
                     </entry>
                     <entry>
                         <key>intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES</key>
-                        <value>2</value>
+                        <value>3</value>
                     </entry>
                     <entry>
                         <key>intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL</key>
@@ -12718,7 +12718,7 @@ parameters are a RESULT of the module parameters. -->
    </assignment>
    <assignment>
     <name>intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES</name>
-    <value>2</value>
+    <value>3</value>
    </assignment>
    <assignment>
     <name>intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL</name>
@@ -12766,7 +12766,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>axi4s_vid_out_tdata</name>
     <direction>Output</direction>
-    <width>16</width>
+    <width>24</width>
     <role>tdata</role>
    </port>
    <port>
@@ -12790,7 +12790,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>axi4s_vid_out_tuser</name>
     <direction>Output</direction>
-    <width>2</width>
+    <width>3</width>
     <role>tuser</role>
    </port>
   </interface>

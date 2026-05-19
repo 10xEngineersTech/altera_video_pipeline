@@ -26,7 +26,7 @@
           </parameter>
           <parameter>
             <name>CORE_COL_SPACE_0</name>
-            <value>2</value>
+            <value>0</value>
           </parameter>
           <parameter>
             <name>CORE_COL_SPACE_1</name>
@@ -230,7 +230,7 @@
           </parameter>
           <parameter>
             <name>OUTPUT_FORMAT</name>
-            <value>4.2.2</value>
+            <value>4.4.4</value>
           </parameter>
           <parameter>
             <name>PIPELINE_READY</name>
@@ -261,7 +261,7 @@
         <className>intel_vvp_tpg</className>
         <version>24.5.1</version>
         <name>intel_vvp_tpg_0</name>
-        <uniqueName>pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_zx4ptwy</uniqueName>
+        <uniqueName>pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_4vpyfvq</uniqueName>
         <nonce>0</nonce>
         <incidentConnections></incidentConnections>
         <path>pipeline_intel_vvp_tpg_0.intel_vvp_tpg_0</path>
@@ -277,7 +277,7 @@
               </parameter>
               <parameter>
                 <name>NUMBER_OF_COLOR_PLANES</name>
-                <value>2</value>
+                <value>3</value>
               </parameter>
               <parameter>
                 <name>PIPELINE_READY</name>
@@ -289,7 +289,7 @@
               </parameter>
               <parameter>
                 <name>TPG_CS</name>
-                <value>YCbCr_422</value>
+                <value>RGB_444</value>
               </parameter>
             </parameters>
             <interconnectAssignments></interconnectAssignments>
@@ -1998,7 +1998,7 @@
               </parameter>
               <parameter>
                 <name>NUMBER_OF_COLOR_PLANES</name>
-                <value>2</value>
+                <value>3</value>
               </parameter>
               <parameter>
                 <name>PIPELINE_READY</name>
@@ -2116,7 +2116,7 @@
               </parameter>
               <parameter>
                 <name>CORE_COL_SPACE_0</name>
-                <value>2</value>
+                <value>0</value>
               </parameter>
               <parameter>
                 <name>CORE_COL_SPACE_1</name>
@@ -2523,7 +2523,7 @@
               </parameter>
               <parameter>
                 <name>P_PARAM_LIST</name>
-                <value>0,0,1,0,8,1,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0</value>
+                <value>0,0,1,0,8,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</value>
               </parameter>
               <parameter>
                 <name>P_VERSION_NUMBER</name>
@@ -2546,7 +2546,7 @@
             <className>intel_vvp_slave_front_end</className>
             <version>24.4.1</version>
             <name>slave_interface</name>
-            <uniqueName>pipeline_intel_vvp_tpg_0_intel_vvp_slave_front_end_2441_ceceg2i</uniqueName>
+            <uniqueName>pipeline_intel_vvp_tpg_0_intel_vvp_slave_front_end_2441_witiuya</uniqueName>
             <nonce>0</nonce>
             <incidentConnections>
               <incidentConnection>
@@ -4385,7 +4385,7 @@
                   </parameter>
                   <parameter>
                     <name>P_PARAM_LIST</name>
-                    <value>0,0,1,0,8,1,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0</value>
+                    <value>0,0,1,0,8,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</value>
                   </parameter>
                   <parameter>
                     <name>P_VERSION_NUMBER</name>
@@ -4400,7 +4400,7 @@
                 <className>intel_vvp_ro_reg_servicer</className>
                 <version>24.4.1</version>
                 <name>ro_reg</name>
-                <uniqueName>pipeline_intel_vvp_tpg_0_intel_vvp_ro_reg_servicer_2441_fggycsa</uniqueName>
+                <uniqueName>pipeline_intel_vvp_tpg_0_intel_vvp_ro_reg_servicer_2441_xz5geqq</uniqueName>
                 <nonce>0</nonce>
                 <incidentConnections>
                   <incidentConnection>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2026.05.19.23:25:25"
- outputDirectory="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/pipeline/">
+ date="2026.05.20.13:02:36"
+ outputDirectory="/mnt/ssd2/hamza/Integrated_design/platform/pipeline/">
  <perimeter>
   <parameter
      name="AUTO_GENERATION_ID"
@@ -1152,17 +1152,16 @@
   <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="-1" />
   <generatedFiles>
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/pipeline/synth/pipeline.v"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/pipeline/synth/pipeline.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/pipeline/synth/pipeline.v"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/pipeline/synth/pipeline.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </childGeneratedFiles>
   <sourceFiles>
-   <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/pipeline.qsys" />
+   <file path="/mnt/ssd2/hamza/Integrated_design/platform/pipeline.qsys" />
   </sourceFiles>
   <childSourceFiles>
    <file
@@ -10354,24 +10353,24 @@
    name="altera_reset_controller">
   <generatedFiles>
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_controller.v"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_controller.v"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_synchronizer.v"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_synchronizer.v"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_controller.sdc"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_controller.sdc"
        attributes="NO_SDC_PROMOTION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_controller.v"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_controller.v"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_synchronizer.v"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_synchronizer.v"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_controller.sdc"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_controller.sdc"
        attributes="NO_SDC_PROMOTION" />
   </childGeneratedFiles>
   <sourceFiles>

@@ -6,11 +6,11 @@
 module pipeline_intel_vvp_tpg_0 (
 		input  wire        main_clock_clk,                    //          main_clock.clk,          Clock Input
 		input  wire        main_reset_reset,                  //          main_reset.reset
-		output wire [15:0] axi4s_vid_out_tdata,               //       axi4s_vid_out.tdata
+		output wire [23:0] axi4s_vid_out_tdata,               //       axi4s_vid_out.tdata
 		output wire        axi4s_vid_out_tvalid,              //                    .tvalid
 		input  wire        axi4s_vid_out_tready,              //                    .tready
 		output wire        axi4s_vid_out_tlast,               //                    .tlast
-		output wire [1:0]  axi4s_vid_out_tuser,               //                    .tuser
+		output wire [2:0]  axi4s_vid_out_tuser,               //                    .tuser
 		input  wire [6:0]  av_mm_control_agent_address,       // av_mm_control_agent.address
 		input  wire        av_mm_control_agent_write,         //                    .write
 		input  wire [3:0]  av_mm_control_agent_byteenable,    //                    .byteenable
@@ -21,14 +21,14 @@ module pipeline_intel_vvp_tpg_0 (
 		output wire        av_mm_control_agent_waitrequest    //                    .waitrequest
 	);
 
-	pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_zx4ptwy intel_vvp_tpg_0 (
+	pipeline_intel_vvp_tpg_0_intel_vvp_tpg_2451_quzqpfq intel_vvp_tpg_0 (
 		.main_clock_clk                    (main_clock_clk),                    //   input,   width = 1,          main_clock.clk
 		.main_reset_reset                  (main_reset_reset),                  //   input,   width = 1,          main_reset.reset
-		.axi4s_vid_out_tdata               (axi4s_vid_out_tdata),               //  output,  width = 16,       axi4s_vid_out.tdata
+		.axi4s_vid_out_tdata               (axi4s_vid_out_tdata),               //  output,  width = 24,       axi4s_vid_out.tdata
 		.axi4s_vid_out_tvalid              (axi4s_vid_out_tvalid),              //  output,   width = 1,                    .tvalid
 		.axi4s_vid_out_tready              (axi4s_vid_out_tready),              //   input,   width = 1,                    .tready
 		.axi4s_vid_out_tlast               (axi4s_vid_out_tlast),               //  output,   width = 1,                    .tlast
-		.axi4s_vid_out_tuser               (axi4s_vid_out_tuser),               //  output,   width = 2,                    .tuser
+		.axi4s_vid_out_tuser               (axi4s_vid_out_tuser),               //  output,   width = 3,                    .tuser
 		.av_mm_control_agent_address       (av_mm_control_agent_address),       //   input,   width = 7, av_mm_control_agent.address
 		.av_mm_control_agent_write         (av_mm_control_agent_write),         //   input,   width = 1,                    .write
 		.av_mm_control_agent_byteenable    (av_mm_control_agent_byteenable),    //   input,   width = 4,                    .byteenable

@@ -1,9 +1,10 @@
 debug_mode = False
-tpg_w = 60
-tpg_h = 60
-clip_top = 8
-clip_bottom = 8
-clip_left = 8
+input_source = image
+tpg_w = 640
+tpg_h = 480
+clip_top = 0
+clip_bottom = 0
+clip_left = 0
 clip_right = 0
-scale_w = 24
-scale_h = 24
+scale_w = 640
+scale_h = 480

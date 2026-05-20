@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2026.05.18.15:54:44"
- outputDirectory="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/">
+ date="2026.05.20.13:01:45"
+ outputDirectory="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/">
  <perimeter>
   <parameter
      name="AUTO_GENERATION_ID"
@@ -106,17 +106,17 @@
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
   <generatedFiles>
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/synth/pipeline_intel_vvp_protocol_conv_0.v"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/synth/pipeline_intel_vvp_protocol_conv_0.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/synth/pipeline_intel_vvp_protocol_conv_0.v"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/synth/pipeline_intel_vvp_protocol_conv_0.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0.ip" />
+       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0.ip" />
   </sourceFiles>
   <childSourceFiles>
    <file
@@ -177,12 +177,12 @@
   <parameter name="CLIP_LONG_FIELDS" value="0" />
   <generatedFiles>
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_protocol_conv_2460/synth/pipeline_intel_vvp_protocol_conv_0_intel_vvp_protocol_conv_2460_ydxwruq.v"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_protocol_conv_2460/synth/pipeline_intel_vvp_protocol_conv_0_intel_vvp_protocol_conv_2460_ydxwruq.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_protocol_conv_2460/synth/pipeline_intel_vvp_protocol_conv_0_intel_vvp_protocol_conv_2460_ydxwruq.v"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_protocol_conv_2460/synth/pipeline_intel_vvp_protocol_conv_0_intel_vvp_protocol_conv_2460_ydxwruq.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </childGeneratedFiles>
   <sourceFiles>
@@ -214,12 +214,12 @@
   <parameter name="SYNC_LEN" value="3" />
   <generatedFiles>
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_reset_sync_2440/synth/src_hdl/intel_vvp_reset_sync.sv"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_reset_sync_2440/synth/src_hdl/intel_vvp_reset_sync.sv"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_reset_sync_2440/synth/src_hdl/intel_vvp_reset_sync.sv"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_reset_sync_2440/synth/src_hdl/intel_vvp_reset_sync.sv"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
@@ -244,30 +244,30 @@
   <parameter name="PIXELS_IN_PARALLEL" value="1" />
   <generatedFiles>
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/intel_vvp_common_pkg.sv"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/intel_vvp_axi_master.sv"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/intel_vvp_axi_master.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/src_hdl/intel_vvp_int_to_ext_bridge.sv"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/src_hdl/intel_vvp_int_to_ext_bridge.sv"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/intel_vvp_common_pkg.sv"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/intel_vvp_axi_master.sv"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/intel_vvp_axi_master.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/src_hdl/intel_vvp_int_to_ext_bridge.sv"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/src_hdl/intel_vvp_int_to_ext_bridge.sv"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
@@ -293,30 +293,30 @@
   <parameter name="PIXELS_IN_PARALLEL" value="1" />
   <generatedFiles>
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/src_hdl/intel_vvp_output_interface_bridge.sv"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/src_hdl/intel_vvp_output_interface_bridge.sv"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/src_hdl/intel_vvp_output_interface_bridge.sv"
+       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/src_hdl/intel_vvp_output_interface_bridge.sv"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>

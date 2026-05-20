@@ -163,7 +163,7 @@ https://fpgasoftware.intel.com/eula.-->
             </ipxact:parameter>
             <ipxact:parameter parameterId="intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES" type="string">
               <ipxact:name>intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES</ipxact:name>
-              <ipxact:value>2</ipxact:value>
+              <ipxact:value>3</ipxact:value>
             </ipxact:parameter>
             <ipxact:parameter parameterId="intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL" type="string">
               <ipxact:name>intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL</ipxact:name>
@@ -595,7 +595,7 @@ https://fpgasoftware.intel.com/eula.-->
           <ipxact:vectors>
             <ipxact:vector>
               <ipxact:left>0</ipxact:left>
-              <ipxact:right>15</ipxact:right>
+              <ipxact:right>23</ipxact:right>
             </ipxact:vector>
           </ipxact:vectors>
           <ipxact:wireTypeDefs>
@@ -652,7 +652,7 @@ https://fpgasoftware.intel.com/eula.-->
           <ipxact:vectors>
             <ipxact:vector>
               <ipxact:left>0</ipxact:left>
-              <ipxact:right>1</ipxact:right>
+              <ipxact:right>2</ipxact:right>
             </ipxact:vector>
           </ipxact:vectors>
           <ipxact:wireTypeDefs>
@@ -816,7 +816,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="OUTPUT_FORMAT" type="string">
           <ipxact:name>OUTPUT_FORMAT</ipxact:name>
           <ipxact:displayName>Output format</ipxact:displayName>
-          <ipxact:value>4.2.2</ipxact:value>
+          <ipxact:value>4.4.4</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="RUNTIME_CONTROL" type="int">
           <ipxact:name>RUNTIME_CONTROL</ipxact:name>
@@ -881,7 +881,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="FIXED_INTERLACE" type="int">
           <ipxact:name>FIXED_INTERLACE</ipxact:name>
           <ipxact:displayName>Fixed interlacing</ipxact:displayName>
-          <ipxact:value>8</ipxact:value>
+          <ipxact:value>0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="FIXED_BARS_MODE" type="int">
           <ipxact:name>FIXED_BARS_MODE</ipxact:name>
@@ -956,7 +956,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="CORE_COL_SPACE_0" type="int">
           <ipxact:name>CORE_COL_SPACE_0</ipxact:name>
           <ipxact:displayName>Core 0 colour space</ipxact:displayName>
-          <ipxact:value>2</ipxact:value>
+          <ipxact:value>0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="CORE_PATTERN_0" type="int">
           <ipxact:name>CORE_PATTERN_0</ipxact:name>
@@ -1240,7 +1240,7 @@ https://fpgasoftware.intel.com/eula.-->
                     &lt;name&gt;axi4s_vid_out_tdata&lt;/name&gt;
                     &lt;role&gt;tdata&lt;/role&gt;
                     &lt;direction&gt;Output&lt;/direction&gt;
-                    &lt;width&gt;16&lt;/width&gt;
+                    &lt;width&gt;24&lt;/width&gt;
                     &lt;lowerBound&gt;0&lt;/lowerBound&gt;
                     &lt;vhdlType&gt;STD_LOGIC_VECTOR&lt;/vhdlType&gt;
                     &lt;terminationValue&gt;0&lt;/terminationValue&gt;
@@ -1276,7 +1276,7 @@ https://fpgasoftware.intel.com/eula.-->
                     &lt;name&gt;axi4s_vid_out_tuser&lt;/name&gt;
                     &lt;role&gt;tuser&lt;/role&gt;
                     &lt;direction&gt;Output&lt;/direction&gt;
-                    &lt;width&gt;2&lt;/width&gt;
+                    &lt;width&gt;3&lt;/width&gt;
                     &lt;lowerBound&gt;0&lt;/lowerBound&gt;
                     &lt;vhdlType&gt;STD_LOGIC_VECTOR&lt;/vhdlType&gt;
                     &lt;terminationValue&gt;0&lt;/terminationValue&gt;
@@ -1294,7 +1294,7 @@ https://fpgasoftware.intel.com/eula.-->
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES&lt;/key&gt;
-                        &lt;value&gt;2&lt;/value&gt;
+                        &lt;value&gt;3&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL&lt;/key&gt;

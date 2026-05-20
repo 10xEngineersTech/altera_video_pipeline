@@ -141,20 +141,13 @@ class ImageViewerWindow(Gtk.Window):
         self.image_widget = Gtk.Image()
         self.image_container.pack_start(self.image_widget, True, True, 0)
 
-        try:
-            if os.path.exists(image_path):
-                pixbuf = GdkPixbuf.Pixbuf.new_from_file(image_path)
-                self.image_widget.set_from_pixbuf(pixbuf)
-                self.info_label = Gtk.Label(
-                    label=f"Buffer: {pixbuf.get_width()}x{pixbuf.get_height()}")
-            else:
-                self.info_label = Gtk.Label(
-                    label="No image found. Run pipeline to generate.")
-            self.info_label.get_style_context().add_class("info-text")
-            viewer_container.pack_start(self.info_label, False, False, 0)
-        except Exception as e:
-            err = Gtk.Label(label=f"Load Error: {e}")
-            self.image_container.pack_start(err, True, True, 0)
+        self.info_label = Gtk.Label(label="")
+        self.info_label.get_style_context().add_class("info-text")
+        viewer_container.pack_start(self.info_label, False, False, 0)
+
+        # Show the image that matches the currently selected source
+        # (TPG is the default at startup → tpg.png).
+        self._show_source_image(self.radio_image.get_active())
 
     # -------------------------------------------------------------------------
     # Helpers
@@ -216,6 +209,28 @@ class ImageViewerWindow(Gtk.Window):
             self.params['tpg_h'].set_sensitive(True)
             self.img_dim_hint.set_text("")
             self.res_group_label.set_text("Input Resolution")
+
+        # Always update the displayed image to match the selected source
+        self._show_source_image(use_image)
+
+    def _show_source_image(self, use_image):
+        """Display tpg.png for TPG source, image.png for image source."""
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        fname    = "image.png" if use_image else "tpg.png"
+        path     = os.path.join(base_dir, fname)
+        try:
+            if os.path.exists(path):
+                pixbuf = GdkPixbuf.Pixbuf.new_from_file(path)
+                self.image_widget.set_from_pixbuf(pixbuf)
+                if hasattr(self, "info_label"):
+                    self.info_label.set_text(
+                        f"Source: {fname}  ({pixbuf.get_width()}x{pixbuf.get_height()})"
+                    )
+            else:
+                if hasattr(self, "info_label"):
+                    self.info_label.set_text(f"{fname} not found in app folder.")
+        except Exception as e:
+            print(f"Image load error: {e}")
 
     def on_apply_clicked(self, widget):
         is_debugging = self.debug_checkbox.get_active()
@@ -297,22 +312,9 @@ class ImageViewerWindow(Gtk.Window):
     def update_badge_finished(self, used_image, values):
         self.status_badge.set_text("IMAGE READY")
         self.status_badge.get_style_context().add_class("success-badge")
-        try:
-            base_dir    = os.path.dirname(os.path.abspath(__file__))
-            result_path = os.path.join(base_dir, "result.png")
-            if not os.path.exists(result_path):
-                result_path = os.path.join(base_dir, "tpg.png")
-            if os.path.exists(result_path):
-                pixbuf = GdkPixbuf.Pixbuf.new_from_file(result_path)
-                self.image_widget.set_from_pixbuf(pixbuf)
-                src_tag = (f"image.png ({values['tpg_w']}x{values['tpg_h']})"
-                           if used_image else "TPG")
-                self.info_label.set_text(
-                    f"Source: {src_tag}  →  "
-                    f"Output: {pixbuf.get_width()}x{pixbuf.get_height()}"
-                )
-        except Exception as e:
-            print(f"UI Refresh Error: {e}")
+        # Always show the source image that matches the active selection:
+        # image.png for image source, tpg.png for TPG source.
+        self._show_source_image(used_image)
         return False
 
     def update_badge_error(self):
@@ -367,9 +369,8 @@ class ImageViewerWindow(Gtk.Window):
 
 if __name__ == "__main__":
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    img_path = os.path.join(current_dir, "result.png")
-    if not os.path.exists(img_path):
-        img_path = os.path.join(current_dir, "tpg.png")
+    # Default startup image follows the default-selected source (TPG → tpg.png).
+    img_path = os.path.join(current_dir, "tpg.png")
     if len(sys.argv) > 1:
         img_path = sys.argv[1]
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2026.05.20.13:01:13"
- outputDirectory="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_clock_in/">
+ date="2026.05.21.12:42:05"
+ outputDirectory="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_clock_in/">
  <perimeter>
   <parameter
      name="AUTO_GENERATION_ID"
@@ -84,17 +84,17 @@
   <parameter name="AUTO_IN_CLK_CLOCK_DOMAIN" value="-1" />
   <generatedFiles>
    <file
-       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_clock_in/synth/pipeline_clock_in.v"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_clock_in/synth/pipeline_clock_in.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_clock_in/synth/pipeline_clock_in.v"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_clock_in/synth/pipeline_clock_in.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_clock_in.ip" />
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_clock_in.ip" />
   </sourceFiles>
   <childSourceFiles/>
   <messages>

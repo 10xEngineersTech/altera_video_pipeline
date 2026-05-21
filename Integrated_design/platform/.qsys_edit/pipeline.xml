@@ -842,7 +842,6 @@
 									<id>ccontrol center</id>
 									<root>true</root>
 									<content delegate="SplitDockStationFactory">
-										<fullscreen id="3"/>
 										<fullscreen-action>false</fullscreen-action>
 										<node nodeId="1666155457333" orientation="VERTICAL" divider="0.5">
 											<leaf id="-1" nodeId="1666155457331">
@@ -915,7 +914,7 @@
 													<node nodeId="1372710005727" orientation="HORIZONTAL" divider="0.6089835265090964">
 														<node nodeId="1372710005733" orientation="VERTICAL" divider="0.75">
 															<node nodeId="1447440146313" orientation="VERTICAL" divider="0.8664563617245006">
-																<leaf id="0" nodeId="1372710005735">
+																<leaf id="1" nodeId="1372710005735">
 																	<placeholders>
 																		<placeholder>dock.single.Exported\ Interfaces</placeholder>
 																		<placeholder>dock.single.Connections</placeholder>
@@ -951,7 +950,7 @@
 																		</entry>
 																	</placeholder-map>
 																</leaf>
-																<leaf id="2" nodeId="1372710005745">
+																<leaf id="0" nodeId="1372710005745">
 																	<placeholders>
 																		<placeholder>dock.single.System\ Messages</placeholder>
 																		<placeholder>dock.single.Task\ Messages</placeholder>
@@ -985,8 +984,8 @@
 															</leaf>
 														</node>
 														<node nodeId="1389812802503" orientation="VERTICAL" divider="0.6704331450094162">
-															<node nodeId="1447440896024" orientation="VERTICAL" divider="0.54932502596054">
-																<leaf id="3" nodeId="1389812800464">
+															<node nodeId="1447440896024" orientation="VERTICAL" divider="0.6348373557187827">
+																<leaf id="2" nodeId="1389812800464">
 																	<placeholders>
 																		<placeholder>dock.single.Export\ HDL\ Parameters</placeholder>
 																		<placeholder>dock.single.Component\ Instantiation</placeholder>
@@ -1003,13 +1002,6 @@
 																		<format>dock.PlaceholderList</format>
 																		<entry>
 																			<key shared="false">
-																				<placeholder>dock.single.System\ Info</placeholder>
-																			</key>
-																			<item key="convert" type="b">true</item>
-																			<item key="convert-keys" type="a"/>
-																		</entry>
-																		<entry>
-																			<key shared="false">
 																				<placeholder>dock.single.Component\ Instantiation</placeholder>
 																			</key>
 																			<item key="convert" type="b">true</item>
@@ -1017,7 +1009,7 @@
 																		</entry>
 																	</placeholder-map>
 																</leaf>
-																<leaf id="1" nodeId="1447440896022">
+																<leaf id="3" nodeId="1447440896022">
 																	<placeholders>
 																		<placeholder>dock.single.Packages</placeholder>
 																		<placeholder>dock.single.Presets</placeholder>
@@ -1052,6 +1044,65 @@
 								</layout>
 							</adjacent>
 							<children ignore="false">
+								<child>
+									<layout factory="delegate_StackDockStationFactory">
+										<selected>0</selected>
+										<placeholders>
+											<version>0</version>
+											<format>dock.PlaceholderList</format>
+											<entry>
+												<key shared="false">
+													<placeholder>dock.single.System\ Messages</placeholder>
+												</key>
+												<item key="convert" type="b">true</item>
+												<item key="convert-keys" type="a">
+													<item type="s">index</item>
+													<item type="s">id</item>
+													<item type="s">placeholder</item>
+												</item>
+												<item key="dock.index" type="i">0</item>
+												<item key="dock.id" type="i">0</item>
+												<item key="dock.placeholder" type="s">dock.single.System\ Messages</item>
+											</entry>
+											<entry>
+												<key shared="false">
+													<placeholder>dock.single.Generation\ Messages</placeholder>
+												</key>
+												<item key="convert" type="b">true</item>
+												<item key="convert-keys" type="a">
+													<item type="s">index</item>
+													<item type="s">id</item>
+													<item type="s">placeholder</item>
+												</item>
+												<item key="dock.index" type="i">1</item>
+												<item key="dock.id" type="i">1</item>
+												<item key="dock.placeholder" type="s">dock.single.Generation\ Messages</item>
+											</entry>
+										</placeholders>
+									</layout>
+									<children ignore="false">
+										<child>
+											<layout factory="predefined" placeholder="dock.single.System\ Messages">
+												<replacement id="dockablesingle System Messages"/>
+												<delegate id="delegate_ccontrol backup factory id">
+													<id>System Messages</id>
+													<area/>
+												</delegate>
+											</layout>
+											<children ignore="false"/>
+										</child>
+										<child>
+											<layout factory="predefined" placeholder="dock.single.Generation\ Messages">
+												<replacement id="dockablesingle Generation Messages"/>
+												<delegate id="delegate_ccontrol backup factory id">
+													<id>Generation Messages</id>
+													<area/>
+												</delegate>
+											</layout>
+											<children ignore="false"/>
+										</child>
+									</children>
+								</child>
 								<child>
 									<layout factory="delegate_StackDockStationFactory">
 										<selected>0</selected>
@@ -1210,75 +1261,6 @@
 									</children>
 								</child>
 								<child>
-									<layout factory="predefined" placeholder="dock.single.Presets">
-										<replacement id="dockablesingle Presets"/>
-										<delegate id="delegate_ccontrol backup factory id">
-											<id>Presets</id>
-											<area/>
-										</delegate>
-									</layout>
-									<children ignore="false"/>
-								</child>
-								<child>
-									<layout factory="delegate_StackDockStationFactory">
-										<selected>0</selected>
-										<placeholders>
-											<version>0</version>
-											<format>dock.PlaceholderList</format>
-											<entry>
-												<key shared="false">
-													<placeholder>dock.single.System\ Messages</placeholder>
-												</key>
-												<item key="convert" type="b">true</item>
-												<item key="convert-keys" type="a">
-													<item type="s">index</item>
-													<item type="s">id</item>
-													<item type="s">placeholder</item>
-												</item>
-												<item key="dock.index" type="i">0</item>
-												<item key="dock.id" type="i">0</item>
-												<item key="dock.placeholder" type="s">dock.single.System\ Messages</item>
-											</entry>
-											<entry>
-												<key shared="false">
-													<placeholder>dock.single.Generation\ Messages</placeholder>
-												</key>
-												<item key="convert" type="b">true</item>
-												<item key="convert-keys" type="a">
-													<item type="s">index</item>
-													<item type="s">id</item>
-													<item type="s">placeholder</item>
-												</item>
-												<item key="dock.index" type="i">1</item>
-												<item key="dock.id" type="i">1</item>
-												<item key="dock.placeholder" type="s">dock.single.Generation\ Messages</item>
-											</entry>
-										</placeholders>
-									</layout>
-									<children ignore="false">
-										<child>
-											<layout factory="predefined" placeholder="dock.single.System\ Messages">
-												<replacement id="dockablesingle System Messages"/>
-												<delegate id="delegate_ccontrol backup factory id">
-													<id>System Messages</id>
-													<area/>
-												</delegate>
-											</layout>
-											<children ignore="false"/>
-										</child>
-										<child>
-											<layout factory="predefined" placeholder="dock.single.Generation\ Messages">
-												<replacement id="dockablesingle Generation Messages"/>
-												<delegate id="delegate_ccontrol backup factory id">
-													<id>Generation Messages</id>
-													<area/>
-												</delegate>
-											</layout>
-											<children ignore="false"/>
-										</child>
-									</children>
-								</child>
-								<child>
 									<layout factory="delegate_StackDockStationFactory">
 										<selected>0</selected>
 										<placeholders>
@@ -1404,6 +1386,16 @@
 											<children ignore="false"/>
 										</child>
 									</children>
+								</child>
+								<child>
+									<layout factory="predefined" placeholder="dock.single.Presets">
+										<replacement id="dockablesingle Presets"/>
+										<delegate id="delegate_ccontrol backup factory id">
+											<id>Presets</id>
+											<area/>
+										</delegate>
+									</layout>
+									<children ignore="false"/>
 								</child>
 								<child>
 									<layout factory="delegate_StackDockStationFactory">
@@ -2424,10 +2416,10 @@
 								</property>
 							</properties>
 						</entry>
-						<entry id="single System Info" current="dock.mode.maximized">
+						<entry id="single System Info" current="dock.mode.normal">
 							<history>
-								<mode>dock.mode.normal</mode>
 								<mode>dock.mode.maximized</mode>
+								<mode>dock.mode.normal</mode>
 							</history>
 							<properties>
 								<property id="dock.mode.maximized">
@@ -2741,11 +2733,11 @@
 								</property>
 							</properties>
 						</entry>
-						<entry id="single Parameters" current="dock.mode.maximized">
+						<entry id="single Parameters" current="dock.mode.normal">
 							<history>
 								<mode>dock.mode.minimized</mode>
-								<mode>dock.mode.normal</mode>
 								<mode>dock.mode.maximized</mode>
+								<mode>dock.mode.normal</mode>
 							</history>
 							<properties>
 								<property id="dock.mode.maximized">
@@ -2839,10 +2831,10 @@
 								</property>
 							</properties>
 						</entry>
-						<entry id="single Component Instantiation" current="dock.mode.maximized">
+						<entry id="single Component Instantiation" current="dock.mode.normal">
 							<history>
-								<mode>dock.mode.normal</mode>
 								<mode>dock.mode.maximized</mode>
+								<mode>dock.mode.normal</mode>
 							</history>
 							<properties>
 								<property id="dock.mode.maximized">
@@ -2993,10 +2985,10 @@
 								</property>
 							</properties>
 						</entry>
-						<entry id="single Domains" current="dock.mode.maximized">
+						<entry id="single Domains" current="dock.mode.normal">
 							<history>
-								<mode>dock.mode.normal</mode>
 								<mode>dock.mode.maximized</mode>
+								<mode>dock.mode.normal</mode>
 							</history>
 							<properties>
 								<property id="dock.mode.maximized">
@@ -3277,29 +3269,7 @@
 						</entry>
 					</dockables>
 					<modes>
-						<entry id="dock.mode.maximized">
-							<maximized>
-								<item id="ccontrol center">
-									<mode>dock.mode.normal</mode>
-									<location>
-										<mode>dock.mode.normal</mode>
-										<root>ccontrol center</root>
-										<applicationDefined>false</applicationDefined>
-										<location>
-											<property factory="SplitDockPathProperty">
-												<node location="BOTTOM" size="0.5" id="1666155457333"/>
-												<node location="BOTTOM" size="0.5" id="1511909107828"/>
-												<node location="RIGHT" size="0.7883628066172276" id="1372710005721"/>
-												<node location="RIGHT" size="0.3910164734909036" id="1372710005727"/>
-												<node location="TOP" size="0.6704331450094162" id="1389812802503"/>
-												<node location="TOP" size="0.54932502596054" id="1447440896024"/>
-												<leaf id="1389812800464"/>
-											</property>
-										</location>
-									</location>
-								</item>
-							</maximized>
-						</entry>
+						<entry id="dock.mode.maximized"/>
 					</modes>
 				</modes>
 			</current>

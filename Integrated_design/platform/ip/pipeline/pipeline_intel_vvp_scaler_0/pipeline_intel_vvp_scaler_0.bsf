@@ -75,8 +75,8 @@ on the Quartus Prime software download page.
 	(port
 		(pt 0 326)
 		(input)
-		(text "av_mm_control_agent_address[6..0]" (rect 0 0 149 12)(font "SansSerif" (font_size 8)))
-		(text "av_mm_control_agent_address[6..0]" (rect 4 315 202 326)(font "SansSerif" (font_size 8)))
+		(text "av_mm_control_agent_address[7..0]" (rect 0 0 149 12)(font "SansSerif" (font_size 8)))
+		(text "av_mm_control_agent_address[7..0]" (rect 4 315 202 326)(font "SansSerif" (font_size 8)))
 		(line (pt 0 326)(pt 204 326)(line_width 3))
 	)
 	(port

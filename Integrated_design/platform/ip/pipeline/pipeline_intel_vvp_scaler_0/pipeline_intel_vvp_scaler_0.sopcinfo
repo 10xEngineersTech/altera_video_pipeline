@@ -5,7 +5,7 @@
  version="1.0"
  fabric="QSYS">
  <!-- Format version 25.1.1 125 (Future versions may contain additional information.) -->
- <!-- 2026.05.20.13:02:20 -->
+ <!-- 2026.05.21.12:41:43 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
@@ -122,7 +122,7 @@
    name="intel_vvp_scaler_0"
    kind="intel_vvp_scaler"
    version="24.5.1"
-   entity="pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_z7wmuia"
+   entity="pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_t4an5sa"
    library="intel_vvp_scaler_2451"
    path="intel_vvp_scaler_0"
    hpath="intel_vvp_scaler_0"
@@ -179,7 +179,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="ENABLE_422">
    <type>int</type>
-   <value>0</value>
+   <value>1</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -187,7 +187,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="ENABLE_420">
    <type>int</type>
-   <value>0</value>
+   <value>1</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -277,7 +277,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>1</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -285,13 +285,13 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>0</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
   <parameter name="ALGORITHM">
    <type>java.lang.String</type>
-   <value>NEAREST_NEIGHBOUR</value>
+   <value>POLYPHASE</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -301,7 +301,7 @@ the requested settings for a module instance. -->
    <type>java.lang.String</type>
    <value>REPLICATE</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -325,7 +325,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>0</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -333,7 +333,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>4</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -341,7 +341,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>16</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -349,7 +349,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>1</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -357,7 +357,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>1</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -365,7 +365,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>1</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -373,7 +373,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>6</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -381,7 +381,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>0</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -421,7 +421,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>0</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -429,7 +429,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>4</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -437,7 +437,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>16</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -445,7 +445,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>1</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -453,7 +453,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>1</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -461,7 +461,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>1</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -469,7 +469,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>6</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -958,7 +958,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="addressSpan">
     <type>java.math.BigInteger</type>
-    <value>512</value>
+    <value>1024</value>
     <derived>true</derived>
     <enabled>true</enabled>
     <visible>false</visible>
@@ -1381,12 +1381,12 @@ parameters are a RESULT of the module parameters. -->
     <valid>true</valid>
    </parameter>
    <type>avalon</type>
-   <span>512</span>
+   <span>1024</span>
    <isStart>false</isStart>
    <port>
     <name>av_mm_control_agent_address</name>
     <direction>Input</direction>
-    <width>7</width>
+    <width>8</width>
     <role>address</role>
    </port>
    <port>

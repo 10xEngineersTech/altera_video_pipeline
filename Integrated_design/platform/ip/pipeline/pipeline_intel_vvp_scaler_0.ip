@@ -356,7 +356,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="addressSpan" type="string">
           <ipxact:name>addressSpan</ipxact:name>
           <ipxact:displayName>Address span</ipxact:displayName>
-          <ipxact:value>512</ipxact:value>
+          <ipxact:value>1024</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="addressUnits" type="string">
           <ipxact:name>addressUnits</ipxact:name>
@@ -835,7 +835,7 @@ https://fpgasoftware.intel.com/eula.-->
           <ipxact:vectors>
             <ipxact:vector>
               <ipxact:left>0</ipxact:left>
-              <ipxact:right>6</ipxact:right>
+              <ipxact:right>7</ipxact:right>
             </ipxact:vector>
           </ipxact:vectors>
           <ipxact:wireTypeDefs>
@@ -996,12 +996,12 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="ENABLE_422" type="int">
           <ipxact:name>ENABLE_422</ipxact:name>
           <ipxact:displayName>422 chroma sampling</ipxact:displayName>
-          <ipxact:value>0</ipxact:value>
+          <ipxact:value>1</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="ENABLE_420" type="int">
           <ipxact:name>ENABLE_420</ipxact:name>
           <ipxact:displayName>420 chroma sampling</ipxact:displayName>
-          <ipxact:value>0</ipxact:value>
+          <ipxact:value>1</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="RUNTIME_CONTROL" type="int">
           <ipxact:name>RUNTIME_CONTROL</ipxact:name>
@@ -1066,7 +1066,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="ALGORITHM" type="string">
           <ipxact:name>ALGORITHM</ipxact:name>
           <ipxact:displayName>Scaling algorithm</ipxact:displayName>
-          <ipxact:value>NEAREST_NEIGHBOUR</ipxact:value>
+          <ipxact:value>POLYPHASE</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="EDGE_MIRROR" type="string">
           <ipxact:name>EDGE_MIRROR</ipxact:name>
@@ -1571,7 +1571,7 @@ https://fpgasoftware.intel.com/eula.-->
                     &lt;name&gt;av_mm_control_agent_address&lt;/name&gt;
                     &lt;role&gt;address&lt;/role&gt;
                     &lt;direction&gt;Input&lt;/direction&gt;
-                    &lt;width&gt;7&lt;/width&gt;
+                    &lt;width&gt;8&lt;/width&gt;
                     &lt;lowerBound&gt;0&lt;/lowerBound&gt;
                     &lt;vhdlType&gt;STD_LOGIC_VECTOR&lt;/vhdlType&gt;
                     &lt;terminationValue&gt;0&lt;/terminationValue&gt;
@@ -1672,7 +1672,7 @@ https://fpgasoftware.intel.com/eula.-->
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;addressSpan&lt;/key&gt;
-                        &lt;value&gt;512&lt;/value&gt;
+                        &lt;value&gt;1024&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;addressUnits&lt;/key&gt;
@@ -1887,11 +1887,11 @@ https://fpgasoftware.intel.com/eula.-->
                 &lt;consumedSystemInfos&gt;
                     &lt;entry&gt;
                         &lt;key&gt;ADDRESS_MAP&lt;/key&gt;
-                        &lt;value&gt;&amp;lt;address-map&amp;gt;&amp;lt;slave name='av_mm_control_agent' start='0x0' end='0x200' datawidth='32' /&amp;gt;&amp;lt;/address-map&amp;gt;&lt;/value&gt;
+                        &lt;value&gt;&amp;lt;address-map&amp;gt;&amp;lt;slave name='av_mm_control_agent' start='0x0' end='0x400' datawidth='32' /&amp;gt;&amp;lt;/address-map&amp;gt;&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;ADDRESS_WIDTH&lt;/key&gt;
-                        &lt;value&gt;9&lt;/value&gt;
+                        &lt;value&gt;10&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;MAX_SLAVE_DATA_WIDTH&lt;/key&gt;

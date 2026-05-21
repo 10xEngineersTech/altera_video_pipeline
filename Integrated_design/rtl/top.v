@@ -7,35 +7,34 @@
 //   TPG → DIL → CRS → CSC → Clipper → ProtocolConv → Scaler
 //
 // External AXI4-S ports on pipeline.v:
-//   TPG out → (gated here) → DIL in   (TPG and DIL are NOT internally connected
-//                                       in pipeline.v; this top bridges them)
+//   TPG out → (gated here) → DIL in
 //   OUT : intel_vvp_scaler_0_axi4s_vid_out
 //
-// Each IP has its own dedicated Avalon-MM control port exposed at top level.
+// Control-bus topology (UG-20344 §5):
+//   • TPG and protocol_conv_1 each expose their own Avalon-MM control agent
+//     port at the pipeline boundary (unchanged).
+//   • Clipper / Scaler / CRS / CSC are now reached through an Avalon Memory
+//     Mapped Pipeline Bridge ("mm_bridge_0") instantiated inside pipeline.qsys.
+//     Only the bridge's slave port (mm_bridge_0_s0) is exposed externally.
 //
-// Configuration order:
-//   1. TPG    — set resolution, pattern, commit, enable
-//   2. Clipper — set input size, color space, subsampling, offsets, commit
-//   3. Scaler  — set input/output sizes
-//   4. CRS     — set output mode, commit
-//   5. CSC     — write coefficients, commit, poll status
-//   6. WORKING — all IPs live
+// Bridge slave port (mm_bridge_0_s0):
+//   • 11-bit byte address, 32-bit data, burstcount=1
+//   • Address map (per pipeline.html, §Connections):
+//        0x000–0x1FF  →  Scaler   (intel_vvp_scaler_0.av_mm_control_agent)
+//        0x200–0x3FF  →  Clipper  (intel_vvp_clipper_0.av_mm_control_agent)
+//        0x400–0x5FF  →  CRS      (intel_vvp_crs_0.av_mm_control_agent)
+//        0x600–0x7FF  →  CSC      (intel_vvp_csc_0.av_mm_control_agent)
+//   • Per-IP register addresses come from UG-20344 Table 7 as BYTE offsets
+//     (e.g. IMG_INFO_WIDTH=0x0120). They are simply ORed with the slave base.
 //
-// Parameters:
-//   IMG_WIDTH / IMG_HEIGHT  — TPG / Clipper input frame size
-//   IMG_COLOR               — Clipper color-space register value
-//   IMG_CR_SM               — Clipper chroma-subsampling register value
-//   IMG_L/T/R/B_OFF         — Clipper crop offsets
-//   SCALER_OUT_W/H          — Scaler output resolution
-//   CRS_OUTPUT_MODE         — Resampler output: 2=YUV422, 3=YUV444
-//   CSC_MODE                — Coefficient set (see below)
-//       0 = Passthrough (RGB → RGB)
-//       1 = RGB → YCbCr HD (BT.709)
-//       2 = YCbCr HD → RGB
-//       3 = RGB → YCbCr SD (BT.601)
-//       4 = YCbCr SD → RGB
-//   CSC_COLOR_SPACE         — Value written to CSC OUT_CS register
-//                             (only used when CSC_MODE == 0)
+// Configuration order (unchanged):
+//   1. TPG     — set resolution, pattern, commit, enable        (own port)
+//   2. Clipper — set input size, color space, subsampling, …    (bridge)
+//   3. Scaler  — set input/output sizes                          (bridge)
+//   4. CRS     — set output mode, commit                         (bridge)
+//   5. CSC     — write coefficients, commit, poll status         (bridge)
+//   6. PC1     — image-source dims/control (only if INPUT_SEL=1) (own port)
+//   7. WORKING — all IPs live
 // =============================================================================
 
 module top #(
@@ -88,41 +87,72 @@ module top #(
     localparam [31:0] SCALER_IN_H = IMG_HEIGHT - IMG_T_OFF - IMG_B_OFF;
 
     // =========================================================================
-    // Register addresses
+    // Bridge address map — base byte address of each slave on mm_bridge_0.m0
+    // (pipeline.html, §Connections). Each slave occupies 0x200 bytes.
+    // =========================================================================
+    localparam [10:0] SCL_BASE  = 11'h000;
+    localparam [10:0] CLIP_BASE = 11'h200;
+    localparam [10:0] CRS_BASE  = 11'h400;
+    localparam [10:0] CSC_BASE  = 11'h600;
+
+    // =========================================================================
+    // Per-IP register addresses
+    //
+    // TPG and PC1 still use 7-bit word-addressed Avalon ports (no bridge).
+    // Clip/Scaler/CRS/CSC are reached over the bridge as BYTE offsets
+    // (UG-20344 Table 7). Word_addr<<2 gives the byte offset, then we OR
+    // with the slave's base.
     // =========================================================================
 
-    // --- TPG ---
+    // --- TPG (own port, 7-bit word address) ---
     localparam [6:0] TPG_ADDR_WIDTH     = 7'h48;
     localparam [6:0] TPG_ADDR_HEIGHT    = 7'h49;
-    localparam [6:0] TPG_ADDR_INTERLACE = 7'h4A;  // IMG_INFO_INTERLACE: byte 0x0128, values 0-7 = progressive
+    localparam [6:0] TPG_ADDR_INTERLACE = 7'h4A;
     localparam [6:0] TPG_ADDR_STATUS    = 7'h50;
     localparam [6:0] TPG_ADDR_CONTROL   = 7'h52;
     localparam [6:0] TPG_ADDR_COMMIT    = 7'h53;
     localparam [6:0] TPG_ADDR_PATTERN   = 7'h54;
     localparam [6:0] TPG_ADDR_BAR_SEL   = 7'h5A;
 
-    // --- Clipper ---
-    localparam [6:0] CLIP_IN_WIDTH_ADDR  = 7'h48;
-    localparam [6:0] CLIP_IN_HEIGHT_ADDR = 7'h49;
-    localparam [6:0] CLIP_IN_COLOR_ADDR  = 7'h4C;
-    localparam [6:0] CLIP_IN_SUBSAMPLING = 7'h4D;
-    localparam [6:0] CLIP_COMMIT_ADDR    = 7'h51;
-    localparam [6:0] CLIP_LEFT_OFF_ADDR  = 7'h52;
-    localparam [6:0] CLIP_TOP_OFF_ADDR   = 7'h53;
-    localparam [6:0] CLIP_RIGHT_OFF_ADDR = 7'h54;
-    localparam [6:0] CLIP_BOT_OFF_ADDR   = 7'h55;
+    // --- Clipper (bridge, byte address) ---
+    localparam [10:0] CLIP_IN_WIDTH   = CLIP_BASE | 11'h120; // word 0x48
+    localparam [10:0] CLIP_IN_HEIGHT  = CLIP_BASE | 11'h124; // word 0x49
+    localparam [10:0] CLIP_IN_COLOR   = CLIP_BASE | 11'h130; // word 0x4C
+    localparam [10:0] CLIP_IN_SUBSAMP = CLIP_BASE | 11'h134; // word 0x4D
+    localparam [10:0] CLIP_COMMIT     = CLIP_BASE | 11'h144; // word 0x51
+    localparam [10:0] CLIP_LEFT_OFF   = CLIP_BASE | 11'h148; // word 0x52
+    localparam [10:0] CLIP_TOP_OFF    = CLIP_BASE | 11'h14C; // word 0x53
+    localparam [10:0] CLIP_RIGHT_OFF  = CLIP_BASE | 11'h150; // word 0x54
+    localparam [10:0] CLIP_BOT_OFF    = CLIP_BASE | 11'h154; // word 0x55
 
-    // --- Scaler ---
-    localparam [6:0] SCL_IN_WIDTH_ADDR   = 7'h48;
-    localparam [6:0] SCL_IN_HEIGHT_ADDR  = 7'h49;
-    localparam [6:0] SCL_OUT_WIDTH_ADDR  = 7'h52;
-    localparam [6:0] SCL_OUT_HEIGHT_ADDR = 7'h53;
+    // --- Scaler (bridge, byte address) ---
+    localparam [10:0] SCL_IN_WIDTH    = SCL_BASE  | 11'h120; // word 0x48
+    localparam [10:0] SCL_IN_HEIGHT   = SCL_BASE  | 11'h124; // word 0x49
+    localparam [10:0] SCL_OUT_WIDTH   = SCL_BASE  | 11'h148; // word 0x52
+    localparam [10:0] SCL_OUT_HEIGHT  = SCL_BASE  | 11'h14C; // word 0x53
 
-    // --- CRS (Resampler) ---
-    localparam [6:0] CRS_OUTPUT_MODE_ADDR = 7'h52;
-    localparam [6:0] CRS_COMMIT_ADDR      = 7'h51;
+    // --- CRS (bridge, byte address) ---
+    localparam [10:0] CRS_OUTPUT_MODE_ADDR = CRS_BASE | 11'h148; // word 0x52
+    localparam [10:0] CRS_COMMIT_ADDR      = CRS_BASE | 11'h144; // word 0x51
 
-    // --- Protocol Converter 1 (Lite→Full, image source) ---
+    // --- CSC (bridge, byte address) ---
+    localparam [10:0] CSC_STATUS     = CSC_BASE | 11'h140; // word 0x50
+    localparam [10:0] CSC_COMMIT     = CSC_BASE | 11'h144; // word 0x51
+    localparam [10:0] CSC_COEFF_A0   = CSC_BASE | 11'h148; // word 0x52
+    localparam [10:0] CSC_COEFF_B0   = CSC_BASE | 11'h14C; // word 0x53
+    localparam [10:0] CSC_COEFF_C0   = CSC_BASE | 11'h150; // word 0x54
+    localparam [10:0] CSC_COEFF_A1   = CSC_BASE | 11'h154; // word 0x55
+    localparam [10:0] CSC_COEFF_B1   = CSC_BASE | 11'h158; // word 0x56
+    localparam [10:0] CSC_COEFF_C1   = CSC_BASE | 11'h15C; // word 0x57
+    localparam [10:0] CSC_COEFF_A2   = CSC_BASE | 11'h160; // word 0x58
+    localparam [10:0] CSC_COEFF_B2   = CSC_BASE | 11'h164; // word 0x59
+    localparam [10:0] CSC_COEFF_C2   = CSC_BASE | 11'h168; // word 0x5A
+    localparam [10:0] CSC_SUMMAND_S0 = CSC_BASE | 11'h16C; // word 0x5B
+    localparam [10:0] CSC_SUMMAND_S1 = CSC_BASE | 11'h170; // word 0x5C
+    localparam [10:0] CSC_SUMMAND_S2 = CSC_BASE | 11'h174; // word 0x5D
+    localparam [10:0] CSC_OUT_CS     = CSC_BASE | 11'h178; // word 0x5E
+
+    // --- Protocol Converter 1 (own port, 7-bit word address) ---
     localparam [6:0] PC1_ADDR_WIDTH       = 7'h48;
     localparam [6:0] PC1_ADDR_HEIGHT      = 7'h49;
     localparam [6:0] PC1_ADDR_INTERLACE   = 7'h4A;
@@ -130,31 +160,13 @@ module top #(
     localparam [6:0] PC1_ADDR_SUBSAMPLING = 7'h4D;
     localparam [6:0] PC1_ADDR_CTRL        = 7'h55;
 
-    // --- CSC (Color Space Converter) — word-addressed ---
-    // Full byte address = word_addr << 2; base of CSC block = 0x0140
-    localparam [8:0] ADDR_CSC_STATUS     = 9'h50;
-    localparam [8:0] ADDR_CSC_COMMIT     = 9'h51;
-    localparam [8:0] ADDR_CSC_COEFF_A0   = 9'h52;
-    localparam [8:0] ADDR_CSC_COEFF_B0   = 9'h53;
-    localparam [8:0] ADDR_CSC_COEFF_C0   = 9'h54;
-    localparam [8:0] ADDR_CSC_COEFF_A1   = 9'h55;
-    localparam [8:0] ADDR_CSC_COEFF_B1   = 9'h56;
-    localparam [8:0] ADDR_CSC_COEFF_C1   = 9'h57;
-    localparam [8:0] ADDR_CSC_COEFF_A2   = 9'h58;
-    localparam [8:0] ADDR_CSC_COEFF_B2   = 9'h59;
-    localparam [8:0] ADDR_CSC_COEFF_C2   = 9'h5A;
-    localparam [8:0] ADDR_CSC_SUMMAND_S0 = 9'h5B;
-    localparam [8:0] ADDR_CSC_SUMMAND_S1 = 9'h5C;
-    localparam [8:0] ADDR_CSC_SUMMAND_S2 = 9'h5D;
-    localparam [8:0] ADDR_CSC_OUT_CS     = 9'h5E;
-
     // =========================================================================
     // State encoding
     // =========================================================================
     localparam [4:0]
         ST_IDLE          = 5'd0,
 
-        // TPG
+        // TPG (own Avalon port)
         ST_TPG_CTRL_1    = 5'd1,
         ST_TPG_WR_INTL   = 5'd2,
         ST_TPG_WR_W      = 5'd3,
@@ -168,7 +180,7 @@ module top #(
         ST_TPG_IP_RST    = 5'd11,
         ST_TPG_CTRL_3    = 5'd12,
 
-        // Clipper / Scaler / CRS / CSC
+        // Clipper / Scaler / CRS / CSC (via mm_bridge_0)
         ST_CONFIG_CLIP   = 5'd13,
         ST_CONFIG_SCL    = 5'd14,
         ST_CONFIG_CRS    = 5'd15,
@@ -177,7 +189,7 @@ module top #(
 
         ST_WORKING       = 5'd18,
 
-        // Protocol Converter 1 config (runs after ST_POLL_CSC when INPUT_SEL=1)
+        // Protocol Converter 1 config (own Avalon port, INPUT_SEL=1 only)
         ST_CONFIG_PC1    = 5'd19;
 
     // =========================================================================
@@ -237,28 +249,24 @@ module top #(
     reg [3:0]  cfg_step;
     reg [7:0]  cycle_count;
 
-    // Per-IP write buses (each IP has its own port on the new pipeline)
+    // TPG and PC1 keep their own Avalon-MM control ports (unchanged in qsys).
     reg [6:0]  tpg_addr;   reg        tpg_write,  tpg_read;   reg [31:0] tpg_wdata;
-    reg [6:0]  clip_addr;  reg        clip_write;              reg [31:0] clip_wdata;
-    reg [6:0]  scl_addr;   reg        scl_write;               reg [31:0] scl_wdata;
-    reg [6:0]  crs_addr;   reg        crs_write;               reg [31:0] crs_wdata;
-    reg [6:0]  csc_addr_r; reg        csc_write,  csc_read_r;  reg [31:0] csc_wdata;
-    reg [6:0]  pc1_addr;   reg        pc1_write;               reg [31:0] pc1_wdata;
-    // Note: CSC address bus is 7-bit wide on the pipeline port (av_mm_control_agent)
-    // but the CSC register map uses 9-bit word addresses; the lower 7 bits are
-    // sufficient for all registers used here (max addr = 0x5E = 7'h5E).
+    reg [6:0]  pc1_addr;   reg        pc1_write;              reg [31:0] pc1_wdata;
+
+    // Single bridge master into mm_bridge_0_s0 (drives clipper/scaler/crs/csc).
+    reg [10:0] bridge_addr;
+    reg [31:0] bridge_wdata;
+    reg        bridge_write;
+    reg        bridge_read;
 
     // Avalon-MM response wires
     wire [31:0] tpg_readdata;
     wire        tpg_readdatavalid;
     wire        tpg_wait;
-    wire        clip_wait;
-    wire        scl_wait;
-    wire        crs_wait;
     wire        pc1_wait;
-    wire [31:0] csc_readdata;
-    wire        csc_readdatavalid;
-    wire        csc_wait;
+    wire [31:0] bridge_readdata;
+    wire        bridge_readdatavalid;
+    wire        bridge_wait;
 
     // =========================================================================
     // Configuration State Machine
@@ -268,12 +276,9 @@ module top #(
             current_state <= ST_IDLE;
             tpg_write     <= 1'b0;
             tpg_read      <= 1'b0;
-            clip_write    <= 1'b0;
-            scl_write     <= 1'b0;
-            crs_write     <= 1'b0;
-            csc_write     <= 1'b0;
-            csc_read_r    <= 1'b0;
             pc1_write     <= 1'b0;
+            bridge_write  <= 1'b0;
+            bridge_read   <= 1'b0;
             cfg_step      <= 4'd0;
             cycle_count   <= 8'h0;
         end else begin
@@ -283,7 +288,7 @@ module top #(
                 ST_IDLE: current_state <= ST_TPG_CTRL_1;
 
                 // ══════════════════════════════════════════════════════════════════
-                // TPG configuration
+                // TPG configuration (own Avalon port)
                 // ══════════════════════════════════════════════════════════════════
                 ST_TPG_CTRL_1: begin
                     tpg_write <= 1'b1;
@@ -395,47 +400,45 @@ module top #(
                     if (!tpg_wait) begin
                         tpg_write     <= 1'b0;
                         cfg_step      <= 4'd0;
-                        // Pre-load Clipper step 0 (HEIGHT/IMG_HEIGHT) so addr/data
-                        // are stable on the very first clock of ST_CONFIG_CLIP.
-                        clip_addr     <= CLIP_IN_HEIGHT_ADDR;
-                        clip_wdata    <= IMG_HEIGHT;
+                        // Pre-load Clipper step 0 (HEIGHT/IMG_HEIGHT) onto bridge.
+                        bridge_addr   <= CLIP_IN_HEIGHT;
+                        bridge_wdata  <= IMG_HEIGHT;
                         current_state <= ST_CONFIG_CLIP;
                     end
                 end
 
                 // ══════════════════════════════════════════════════════════════════
-                // Clipper configuration
+                // Clipper configuration (via mm_bridge_0)
                 //
                 // Avalon-MM rule: addr/data MUST be stable whenever waitrequest=1.
-                // Pattern: predecessor pre-loads step 0. We only advance and
-                // re-load when the current transaction is accepted
-                // (clip_write=1 AND clip_wait=0). On the very first clock of this
-                // state clip_write is still 0 (non-blocking takes effect next
-                // cycle), so the guard prevents a spurious advance.
+                // Pre-loader pattern: predecessor sets step 0. We only advance and
+                // re-load when the current transaction is accepted (bridge_write=1
+                // AND bridge_wait=0). On the very first clock of this state
+                // bridge_write is still 0 (non-blocking takes effect next cycle),
+                // so the guard prevents a spurious advance.
                 // ══════════════════════════════════════════════════════════════════
                 ST_CONFIG_CLIP: begin
-                    clip_write <= 1'b1;
-                    if (clip_write && !clip_wait) begin
+                    bridge_write <= 1'b1;
+                    if (bridge_write && !bridge_wait) begin
                         if (cfg_step == 4'd8) begin
-                            clip_write    <= 1'b0;
+                            bridge_write  <= 1'b0;
                             cfg_step      <= 4'd0;
                             // Pre-load Scaler step 0.
-                            scl_addr      <= SCL_IN_WIDTH_ADDR;
-                            scl_wdata     <= SCALER_IN_W;
+                            bridge_addr   <= SCL_IN_WIDTH;
+                            bridge_wdata  <= SCALER_IN_W;
                             current_state <= ST_CONFIG_SCL;
                         end else begin
                             cfg_step <= cfg_step + 1'b1;
-                            // Pre-load the NEXT transaction atomically with
-                            // accepting the current one.
+                            // Pre-load the NEXT clipper transaction atomically.
                             case (cfg_step + 1'b1)
-                                4'd1: begin clip_addr <= CLIP_IN_WIDTH_ADDR;   clip_wdata <= IMG_WIDTH;  end
-                                4'd2: begin clip_addr <= CLIP_IN_COLOR_ADDR;   clip_wdata <= IMG_COLOR;  end
-                                4'd3: begin clip_addr <= CLIP_IN_SUBSAMPLING;  clip_wdata <= IMG_CR_SM;  end
-                                4'd4: begin clip_addr <= CLIP_LEFT_OFF_ADDR;   clip_wdata <= IMG_L_OFF;  end
-                                4'd5: begin clip_addr <= CLIP_TOP_OFF_ADDR;    clip_wdata <= IMG_T_OFF;  end
-                                4'd6: begin clip_addr <= CLIP_RIGHT_OFF_ADDR;  clip_wdata <= IMG_R_OFF;  end
-                                4'd7: begin clip_addr <= CLIP_BOT_OFF_ADDR;    clip_wdata <= IMG_B_OFF;  end
-                                4'd8: begin clip_addr <= CLIP_COMMIT_ADDR;     clip_wdata <= 32'h1;      end
+                                4'd1: begin bridge_addr <= CLIP_IN_WIDTH;   bridge_wdata <= IMG_WIDTH; end
+                                4'd2: begin bridge_addr <= CLIP_IN_COLOR;   bridge_wdata <= IMG_COLOR; end
+                                4'd3: begin bridge_addr <= CLIP_IN_SUBSAMP; bridge_wdata <= IMG_CR_SM; end
+                                4'd4: begin bridge_addr <= CLIP_LEFT_OFF;   bridge_wdata <= IMG_L_OFF; end
+                                4'd5: begin bridge_addr <= CLIP_TOP_OFF;    bridge_wdata <= IMG_T_OFF; end
+                                4'd6: begin bridge_addr <= CLIP_RIGHT_OFF;  bridge_wdata <= IMG_R_OFF; end
+                                4'd7: begin bridge_addr <= CLIP_BOT_OFF;    bridge_wdata <= IMG_B_OFF; end
+                                4'd8: begin bridge_addr <= CLIP_COMMIT;     bridge_wdata <= 32'h1;     end
                                 default: ;
                             endcase
                         end
@@ -443,24 +446,24 @@ module top #(
                 end
 
                 // ══════════════════════════════════════════════════════════════════
-                // Scaler configuration
+                // Scaler configuration (via mm_bridge_0)
                 // ══════════════════════════════════════════════════════════════════
                 ST_CONFIG_SCL: begin
-                    scl_write <= 1'b1;
-                    if (scl_write && !scl_wait) begin
+                    bridge_write <= 1'b1;
+                    if (bridge_write && !bridge_wait) begin
                         if (cfg_step == 4'd3) begin
-                            scl_write     <= 1'b0;
+                            bridge_write  <= 1'b0;
                             cfg_step      <= 4'd0;
                             // Pre-load CRS step 0.
-                            crs_addr      <= CRS_OUTPUT_MODE_ADDR;
-                            crs_wdata     <= CRS_OUTPUT_MODE;
+                            bridge_addr   <= CRS_OUTPUT_MODE_ADDR;
+                            bridge_wdata  <= CRS_OUTPUT_MODE;
                             current_state <= ST_CONFIG_CRS;
                         end else begin
                             cfg_step <= cfg_step + 1'b1;
                             case (cfg_step + 1'b1)
-                                4'd1: begin scl_addr <= SCL_IN_HEIGHT_ADDR;  scl_wdata <= SCALER_IN_H;  end
-                                4'd2: begin scl_addr <= SCL_OUT_WIDTH_ADDR;  scl_wdata <= SCALER_OUT_W; end
-                                4'd3: begin scl_addr <= SCL_OUT_HEIGHT_ADDR; scl_wdata <= SCALER_OUT_H; end
+                                4'd1: begin bridge_addr <= SCL_IN_HEIGHT;  bridge_wdata <= SCALER_IN_H; end
+                                4'd2: begin bridge_addr <= SCL_OUT_WIDTH;  bridge_wdata <= SCALER_OUT_W; end
+                                4'd3: begin bridge_addr <= SCL_OUT_HEIGHT; bridge_wdata <= SCALER_OUT_H; end
                                 default: ;
                             endcase
                         end
@@ -468,24 +471,22 @@ module top #(
                 end
 
                 // ══════════════════════════════════════════════════════════════════
-                // CRS (Resampler) configuration
+                // CRS (Resampler) configuration (via mm_bridge_0)
                 // ══════════════════════════════════════════════════════════════════
                 ST_CONFIG_CRS: begin
-                    crs_write <= 1'b1;
-                    if (crs_write && !crs_wait) begin
+                    bridge_write <= 1'b1;
+                    if (bridge_write && !bridge_wait) begin
                         if (cfg_step == 4'd1) begin
-                            crs_write     <= 1'b0;
+                            bridge_write  <= 1'b0;
                             cfg_step      <= 4'd0;
-                            // Pre-load the first CSC transaction so addr/data are
-                            // stable on the very first clock of ST_CONFIG_CSC,
-                            // before csc_write is even asserted.
-                            csc_addr_r    <= ADDR_CSC_COEFF_A0[6:0];
-                            csc_wdata     <= csc_a0;
+                            // Pre-load first CSC transaction (COEFF_A0).
+                            bridge_addr   <= CSC_COEFF_A0;
+                            bridge_wdata  <= csc_a0;
                             current_state <= ST_CONFIG_CSC;
                         end else begin
                             cfg_step <= cfg_step + 1'b1;
                             case (cfg_step + 1'b1)
-                                4'd1: begin crs_addr <= CRS_COMMIT_ADDR; crs_wdata <= 32'h1; end
+                                4'd1: begin bridge_addr <= CRS_COMMIT_ADDR; bridge_wdata <= 32'h1; end
                                 default: ;
                             endcase
                         end
@@ -493,31 +494,19 @@ module top #(
                 end
 
                 // ══════════════════════════════════════════════════════════════════
-                // CSC configuration  (12 coefficient/summand registers + OUT_CS + COMMIT)
-                //
-                // Avalon-MM rule: addr/data MUST be stable whenever waitrequest=1.
-                // Fix: only update csc_addr_r/csc_wdata when the current transaction
-                // is accepted (csc_write=1 AND csc_wait=0).  The first transaction
-                // (step 0 = COEFF_A0) is pre-loaded by ST_CONFIG_CRS before we
-                // arrive here, so it is already stable on clock 0 of this state.
+                // CSC configuration (12 coefficient/summand registers + OUT_CS + COMMIT)
                 // ══════════════════════════════════════════════════════════════════
                 ST_CONFIG_CSC: begin
-                    csc_write <= 1'b1;
-                    // Guard on csc_write: on the very first clock of this state
-                    // csc_write is still 0 (it takes effect next cycle), so we
-                    // skip the advance until the write is actually asserted.
-                    if (csc_write && !csc_wait) begin
+                    bridge_write <= 1'b1;
+                    if (bridge_write && !bridge_wait) begin
                         if (cfg_step == 4'd13) begin
-                            csc_write     <= 1'b0;
-                            cfg_step      <= 4'd0;
-                            // For INPUT_SEL=1 (image source) skip ST_POLL_CSC:
-                            // the CSC "pending register updates" bit only clears
-                            // at the next frame boundary after COMMIT, but no data
-                            // flows until PC1 is configured and the testbench is
-                            // released at ST_WORKING. Go straight to PC1 config;
-                            // the CSC's new coefficients apply automatically to
-                            // the first frame that arrives (which is fine since
-                            // that IS the first frame boundary after COMMIT).
+                            bridge_write <= 1'b0;
+                            cfg_step     <= 4'd0;
+                            // INPUT_SEL=1: skip ST_POLL_CSC. The CSC "pending
+                            // register updates" bit only clears at the next frame
+                            // boundary after COMMIT, but no data flows until PC1
+                            // is configured and the testbench releases data at
+                            // ST_WORKING. Go straight to PC1 config.
                             if (INPUT_SEL) begin
                                 pc1_addr      <= PC1_ADDR_WIDTH;
                                 pc1_wdata     <= IMG_WIDTH;
@@ -527,23 +516,20 @@ module top #(
                             end
                         end else begin
                             cfg_step <= cfg_step + 1'b1;
-                            // Pre-load the NEXT transaction simultaneously with
-                            // accepting the current one, so addr/data are stable
-                            // before the slave can re-assert waitrequest.
                             case (cfg_step + 1'b1)
-                                4'd1:  begin csc_addr_r <= ADDR_CSC_COEFF_A1[6:0];   csc_wdata <= csc_a1;       end
-                                4'd2:  begin csc_addr_r <= ADDR_CSC_COEFF_A2[6:0];   csc_wdata <= csc_a2;       end
-                                4'd3:  begin csc_addr_r <= ADDR_CSC_COEFF_B0[6:0];   csc_wdata <= csc_b0;       end
-                                4'd4:  begin csc_addr_r <= ADDR_CSC_COEFF_B1[6:0];   csc_wdata <= csc_b1;       end
-                                4'd5:  begin csc_addr_r <= ADDR_CSC_COEFF_B2[6:0];   csc_wdata <= csc_b2;       end
-                                4'd6:  begin csc_addr_r <= ADDR_CSC_COEFF_C0[6:0];   csc_wdata <= csc_c0;       end
-                                4'd7:  begin csc_addr_r <= ADDR_CSC_COEFF_C1[6:0];   csc_wdata <= csc_c1;       end
-                                4'd8:  begin csc_addr_r <= ADDR_CSC_COEFF_C2[6:0];   csc_wdata <= csc_c2;       end
-                                4'd9:  begin csc_addr_r <= ADDR_CSC_SUMMAND_S0[6:0]; csc_wdata <= csc_s0;       end
-                                4'd10: begin csc_addr_r <= ADDR_CSC_SUMMAND_S1[6:0]; csc_wdata <= csc_s1;       end
-                                4'd11: begin csc_addr_r <= ADDR_CSC_SUMMAND_S2[6:0]; csc_wdata <= csc_s2;       end
-                                4'd12: begin csc_addr_r <= ADDR_CSC_OUT_CS[6:0];     csc_wdata <= csc_out_cs;   end
-                                4'd13: begin csc_addr_r <= ADDR_CSC_COMMIT[6:0];     csc_wdata <= 32'hFFFFFFFF; end
+                                4'd1:  begin bridge_addr <= CSC_COEFF_A1;   bridge_wdata <= csc_a1;     end
+                                4'd2:  begin bridge_addr <= CSC_COEFF_A2;   bridge_wdata <= csc_a2;     end
+                                4'd3:  begin bridge_addr <= CSC_COEFF_B0;   bridge_wdata <= csc_b0;     end
+                                4'd4:  begin bridge_addr <= CSC_COEFF_B1;   bridge_wdata <= csc_b1;     end
+                                4'd5:  begin bridge_addr <= CSC_COEFF_B2;   bridge_wdata <= csc_b2;     end
+                                4'd6:  begin bridge_addr <= CSC_COEFF_C0;   bridge_wdata <= csc_c0;     end
+                                4'd7:  begin bridge_addr <= CSC_COEFF_C1;   bridge_wdata <= csc_c1;     end
+                                4'd8:  begin bridge_addr <= CSC_COEFF_C2;   bridge_wdata <= csc_c2;     end
+                                4'd9:  begin bridge_addr <= CSC_SUMMAND_S0; bridge_wdata <= csc_s0;     end
+                                4'd10: begin bridge_addr <= CSC_SUMMAND_S1; bridge_wdata <= csc_s1;     end
+                                4'd11: begin bridge_addr <= CSC_SUMMAND_S2; bridge_wdata <= csc_s2;     end
+                                4'd12: begin bridge_addr <= CSC_OUT_CS;     bridge_wdata <= csc_out_cs; end
+                                4'd13: begin bridge_addr <= CSC_COMMIT;     bridge_wdata <= 32'hFFFFFFFF; end
                                 default: ;
                             endcase
                         end
@@ -551,24 +537,26 @@ module top #(
                 end
 
                 // ══════════════════════════════════════════════════════════════════
-                // Poll CSC status until commit is absorbed
+                // Poll CSC STATUS register over the bridge until commit absorbed
                 // ══════════════════════════════════════════════════════════════════
                 ST_POLL_CSC: begin
                     if (cfg_step == 4'd0) begin
-                        csc_read_r  <= 1'b1;
-                        csc_addr_r  <= ADDR_CSC_STATUS[6:0];
-                        if (!csc_wait) begin
-                            csc_read_r <= 1'b0;
-                            cfg_step   <= 4'd1;
+                        // Guard with `bridge_read &&` so the de-assert only
+                        // fires once the read is actually in flight. The
+                        // pipeline bridge holds waitrequest=0 when idle, so
+                        // without this guard the two non-blocking assignments
+                        // to bridge_read collapse to 0 and no read is issued.
+                        bridge_read  <= 1'b1;
+                        bridge_addr  <= CSC_STATUS;
+                        if (bridge_read && !bridge_wait) begin
+                            bridge_read <= 1'b0;
+                            cfg_step    <= 4'd1;
                         end
                     end else begin
-                        if (csc_readdatavalid) begin
+                        if (bridge_readdatavalid) begin
                             cfg_step <= 4'd0;
-                            if (csc_readdata[1] == 1'b0) begin
+                            if (bridge_readdata[1] == 1'b0) begin
                                 if (INPUT_SEL) begin
-                                    // Pre-load first PC1 transaction so addr/data
-                                    // are stable on the very first clock of
-                                    // ST_CONFIG_PC1, before pc1_write is asserted.
                                     pc1_addr      <= PC1_ADDR_WIDTH;
                                     pc1_wdata     <= IMG_WIDTH;
                                     current_state <= ST_CONFIG_PC1;
@@ -585,27 +573,16 @@ module top #(
                 // All IPs configured — pipeline running
                 // ══════════════════════════════════════════════════════════════════
                 ST_WORKING: begin
-                    tpg_write  <= 1'b0; tpg_read   <= 1'b0;
-                    clip_write <= 1'b0;
-                    scl_write  <= 1'b0;
-                    crs_write  <= 1'b0;
-                    csc_write  <= 1'b0; csc_read_r <= 1'b0;
-                    pc1_write  <= 1'b0;
+                    tpg_write    <= 1'b0; tpg_read <= 1'b0;
+                    pc1_write    <= 1'b0;
+                    bridge_write <= 1'b0; bridge_read <= 1'b0;
                 end
 
                 // ══════════════════════════════════════════════════════════════════
-                // Protocol Converter 1 config (image source, only when INPUT_SEL=1)
-                // Register map (word addresses):
-                //   0x48 = IMG_INFO_WIDTH, 0x49 = HEIGHT, 0x4A = INTERLACE,
-                //   0x4C = COLORSPACE, 0x4D = SUBSAMPLING, 0x55 = CTRL (bit0=start)
-                //
-                // Avalon-MM rule: addr/data MUST be stable whenever waitrequest=1.
-                // Pattern: ST_POLL_CSC pre-loads step 0 (WIDTH/IMG_WIDTH) so it is
-                // stable on clock 0 of this state. Then only advance and re-load
-                // when the current transaction is accepted (pc1_write=1 AND
-                // pc1_wait=0). On the very first clock here pc1_write is still 0
-                // (non-blocking takes effect next cycle), so the guard prevents
-                // a spurious advance.
+                // Protocol Converter 1 config (own Avalon port, INPUT_SEL=1 only)
+                // Register map (7-bit word addresses):
+                //   0x48 WIDTH, 0x49 HEIGHT, 0x4A INTERLACE,
+                //   0x4C COLORSPACE, 0x4D SUBSAMPLING, 0x55 CTRL (bit0=start)
                 // ══════════════════════════════════════════════════════════════════
                 ST_CONFIG_PC1: begin
                     pc1_write <= 1'b1;
@@ -616,13 +593,11 @@ module top #(
                             current_state <= ST_WORKING;
                         end else begin
                             cfg_step <= cfg_step + 1'b1;
-                            // Pre-load the NEXT transaction atomically with
-                            // accepting the current one.
                             case (cfg_step + 1'b1)
                                 4'd1: begin pc1_addr <= PC1_ADDR_HEIGHT;      pc1_wdata <= IMG_HEIGHT; end
                                 4'd2: begin pc1_addr <= PC1_ADDR_INTERLACE;   pc1_wdata <= 32'h0;      end
                                 4'd3: begin pc1_addr <= PC1_ADDR_COLORSPACE;  pc1_wdata <= 32'h0;      end
-                                // SubSa code: 0=4:2:0, 2=4:2:2, 3=4:4:4 (per user guide enum)
+                                // SubSa code: 0=4:2:0, 2=4:2:2, 3=4:4:4
                                 4'd4: begin pc1_addr <= PC1_ADDR_SUBSAMPLING; pc1_wdata <= 32'h3;      end
                                 4'd5: begin pc1_addr <= PC1_ADDR_CTRL;        pc1_wdata <= 32'h1;      end
                                 default: ;
@@ -640,84 +615,58 @@ module top #(
     // =========================================================================
     // Input source mux → DIL
     // =========================================================================
-    // INPUT_SEL=0: TPG output gated to DIL (original path)
-    // INPUT_SEL=1: protocol_conv_1 output (image.png) gated to DIL (new path)
-    // In both cases data is held until IPs downstream of DIL are configured.
+    // INPUT_SEL=0: TPG output gated to DIL
+    // INPUT_SEL=1: protocol_conv_1 output (image.png) gated to DIL
 
     wire ready_to_start = (current_state >= ST_CONFIG_CSC);
 
-    // TPG output wires (driven by pipeline; always running)
     wire [23:0] tpg_out_tdata;
     wire        tpg_out_tvalid;
     wire        tpg_out_tlast;
     wire [2:0]  tpg_out_tuser;
 
-    // PC1 output wires (protocol_conv_1 output; driven by pipeline)
     wire [23:0] pc1_out_tdata;
     wire        pc1_out_tvalid;
     wire        pc1_out_tlast;
     wire [2:0]  pc1_out_tuser;
 
-    // DIL input: mux between TPG (INPUT_SEL=0) and PC1 (INPUT_SEL=1)
     wire [23:0] dil_in_tdata  = INPUT_SEL ? pc1_out_tdata  : tpg_out_tdata;
     wire        dil_in_tvalid = (INPUT_SEL ? pc1_out_tvalid : tpg_out_tvalid) & ready_to_start;
-    wire        dil_in_tready;                          // driven by pipeline DIL port
+    wire        dil_in_tready;
     wire        dil_in_tlast  = INPUT_SEL ? pc1_out_tlast  : tpg_out_tlast;
     wire [2:0]  dil_in_tuser  = INPUT_SEL ? pc1_out_tuser  : tpg_out_tuser;
 
-    // Back-pressure: when INPUT_SEL=1 drain the TPG so it never stalls;
-    // PC1 output gets DIL back-pressure gated by ready_to_start.
+    // Drain TPG when image source is selected.
     wire tpg_out_tready = INPUT_SEL ? 1'b1 : (dil_in_tready & ready_to_start);
 
-    // Inter-IP wires
-    // DIL -> CRS
-    wire [23:0] dil_out_tdata;
-    wire        dil_out_tvalid;
-    wire        dil_out_tready;
-    wire        dil_out_tlast;
-    wire [2:0]  dil_out_tuser;
+    // Inter-IP AXIS wires
+    wire [23:0] dil_out_tdata;  wire dil_out_tvalid; wire dil_out_tready;
+    wire        dil_out_tlast;  wire [2:0] dil_out_tuser;
 
-    // CRS -> CSC
-    wire [23:0] crs_out_tdata;
-    wire        crs_out_tvalid;
-    wire        crs_out_tready;
-    wire        crs_out_tlast;
-    wire [2:0]  crs_out_tuser;
+    wire [23:0] crs_out_tdata;  wire crs_out_tvalid; wire crs_out_tready;
+    wire        crs_out_tlast;  wire [2:0] crs_out_tuser;
 
-    // CSC -> Clipper
-    wire [23:0] csc_out_tdata;
-    wire        csc_out_tvalid;
-    wire        csc_out_tready;
-    wire        csc_out_tlast;
-    wire [2:0]  csc_out_tuser;
+    wire [23:0] csc_out_tdata;  wire csc_out_tvalid; wire csc_out_tready;
+    wire        csc_out_tlast;  wire [2:0] csc_out_tuser;
 
-    // Clipper -> ProtocolConv
-    wire [23:0] clip_out_tdata;
-    wire        clip_out_tvalid;
-    wire        clip_out_tready;
-    wire        clip_out_tlast;
-    wire [2:0]  clip_out_tuser;
+    wire [23:0] clip_out_tdata; wire clip_out_tvalid; wire clip_out_tready;
+    wire        clip_out_tlast; wire [2:0] clip_out_tuser;
 
-    // ProtocolConv -> Scaler
-    wire [23:0] pc_out_tdata;
-    wire        pc_out_tvalid;
-    wire        pc_out_tready;
-    wire        pc_out_tlast;
-    wire [2:0]  pc_out_tuser;
+    wire [23:0] pc_out_tdata;   wire pc_out_tvalid;  wire pc_out_tready;
+    wire        pc_out_tlast;   wire [2:0] pc_out_tuser;
 
     pipeline u_pipeline (
         .clk_clk     (clk),
         .reset_reset (reset),
 
-        // ----- TPG AXI4-S output (16-bit, 2-bit tuser) -----
-        // Captured into tpg_out_* wires; gated & bridged to DIL input below.
+        // ----- TPG AXI4-S output -----
         .intel_vvp_tpg_0_axi4s_vid_out_tdata  (tpg_out_tdata),
         .intel_vvp_tpg_0_axi4s_vid_out_tvalid (tpg_out_tvalid),
         .intel_vvp_tpg_0_axi4s_vid_out_tready (tpg_out_tready),
         .intel_vvp_tpg_0_axi4s_vid_out_tlast  (tpg_out_tlast),
         .intel_vvp_tpg_0_axi4s_vid_out_tuser  (tpg_out_tuser),
 
-        // ----- DIL AXI4-S input — fed from gated TPG output -----
+        // ----- DIL AXI4-S input -----
         .intel_vvp_dil_0_axi4s_vid_in_tdata  (dil_in_tdata),
         .intel_vvp_dil_0_axi4s_vid_in_tvalid (dil_in_tvalid),
         .intel_vvp_dil_0_axi4s_vid_in_tready (dil_in_tready),
@@ -753,6 +702,7 @@ module top #(
         .intel_vvp_csc_0_axi4s_vid_in_tuser  (crs_out_tuser),
 
         // ----- CSC AXI4-S output -----
+        // Force-drain CSC during ST_POLL_CSC so it doesn't stall the status read.
         .intel_vvp_csc_0_axi4s_vid_out_tdata  (csc_out_tdata),
         .intel_vvp_csc_0_axi4s_vid_out_tvalid (csc_out_tvalid),
         .intel_vvp_csc_0_axi4s_vid_out_tready (csc_out_tready | (current_state == ST_POLL_CSC)),
@@ -773,35 +723,33 @@ module top #(
         .intel_vvp_clipper_0_axi4s_vid_out_tlast  (clip_out_tlast),
         .intel_vvp_clipper_0_axi4s_vid_out_tuser  (clip_out_tuser),
 
-        // ----- Protocol Converter 0 AXI4-S input (Clipper → PC0) -----
+        // ----- Protocol Converter 0 AXI4-S (Clipper → Scaler) -----
         .intel_vvp_protocol_conv_0_axi4s_vid_in_tdata  (clip_out_tdata),
         .intel_vvp_protocol_conv_0_axi4s_vid_in_tvalid (clip_out_tvalid),
         .intel_vvp_protocol_conv_0_axi4s_vid_in_tready (clip_out_tready),
         .intel_vvp_protocol_conv_0_axi4s_vid_in_tlast  (clip_out_tlast),
         .intel_vvp_protocol_conv_0_axi4s_vid_in_tuser  (clip_out_tuser),
 
-        // ----- Protocol Converter 0 AXI4-S output (PC0 → Scaler) -----
         .intel_vvp_protocol_conv_0_axi4s_vid_out_tdata  (pc_out_tdata),
         .intel_vvp_protocol_conv_0_axi4s_vid_out_tvalid (pc_out_tvalid),
         .intel_vvp_protocol_conv_0_axi4s_vid_out_tready (pc_out_tready),
         .intel_vvp_protocol_conv_0_axi4s_vid_out_tlast  (pc_out_tlast),
         .intel_vvp_protocol_conv_0_axi4s_vid_out_tuser  (pc_out_tuser),
 
-        // ----- Protocol Converter 1 AXI4-S input (image source → PC1) -----
+        // ----- Protocol Converter 1 AXI4-S (image source → DIL mux) -----
         .intel_vvp_protocol_conv_1_axi4s_vid_in_tdata  (pc1_in_tdata),
         .intel_vvp_protocol_conv_1_axi4s_vid_in_tvalid (pc1_in_tvalid),
         .intel_vvp_protocol_conv_1_axi4s_vid_in_tready (pc1_in_tready),
         .intel_vvp_protocol_conv_1_axi4s_vid_in_tlast  (pc1_in_tlast),
         .intel_vvp_protocol_conv_1_axi4s_vid_in_tuser  (pc1_in_tuser),
 
-        // ----- Protocol Converter 1 AXI4-S output (PC1 → DIL mux) -----
         .intel_vvp_protocol_conv_1_axi4s_vid_out_tdata  (pc1_out_tdata),
         .intel_vvp_protocol_conv_1_axi4s_vid_out_tvalid (pc1_out_tvalid),
         .intel_vvp_protocol_conv_1_axi4s_vid_out_tready (INPUT_SEL ? (dil_in_tready & ready_to_start) : 1'b1),
         .intel_vvp_protocol_conv_1_axi4s_vid_out_tlast  (pc1_out_tlast),
         .intel_vvp_protocol_conv_1_axi4s_vid_out_tuser  (pc1_out_tuser),
 
-        // ----- Protocol Converter 1 Avalon-MM control -----
+        // ----- Protocol Converter 1 Avalon-MM control (own port) -----
         .intel_vvp_protocol_conv_1_av_mm_control_agent_address       (pc1_addr),
         .intel_vvp_protocol_conv_1_av_mm_control_agent_write         (pc1_write),
         .intel_vvp_protocol_conv_1_av_mm_control_agent_read          (1'b0),
@@ -818,14 +766,14 @@ module top #(
         .intel_vvp_scaler_0_axi4s_vid_in_tlast  (pc_out_tlast),
         .intel_vvp_scaler_0_axi4s_vid_in_tuser  (pc_out_tuser),
 
-        // ----- Scaler output -----
+        // ----- Scaler AXI4-S output -----
         .intel_vvp_scaler_0_axi4s_vid_out_tdata  (out_tdata),
         .intel_vvp_scaler_0_axi4s_vid_out_tvalid (out_tvalid),
         .intel_vvp_scaler_0_axi4s_vid_out_tready (out_tready),
         .intel_vvp_scaler_0_axi4s_vid_out_tlast  (out_tlast),
         .intel_vvp_scaler_0_axi4s_vid_out_tuser  (out_tuser),
 
-        // ----- TPG Avalon-MM control -----
+        // ----- TPG Avalon-MM control (own port) -----
         .intel_vvp_tpg_0_av_mm_control_agent_address       (tpg_addr),
         .intel_vvp_tpg_0_av_mm_control_agent_write         (tpg_write),
         .intel_vvp_tpg_0_av_mm_control_agent_read          (tpg_read),
@@ -835,45 +783,17 @@ module top #(
         .intel_vvp_tpg_0_av_mm_control_agent_readdatavalid (tpg_readdatavalid),
         .intel_vvp_tpg_0_av_mm_control_agent_waitrequest   (tpg_wait),
 
-        // ----- Clipper Avalon-MM control -----
-        .intel_vvp_clipper_0_av_mm_control_agent_address       (clip_addr),
-        .intel_vvp_clipper_0_av_mm_control_agent_write         (clip_write),
-        .intel_vvp_clipper_0_av_mm_control_agent_read          (1'b0),
-        .intel_vvp_clipper_0_av_mm_control_agent_byteenable    (4'hF),
-        .intel_vvp_clipper_0_av_mm_control_agent_writedata     (clip_wdata),
-        .intel_vvp_clipper_0_av_mm_control_agent_readdata      (),
-        .intel_vvp_clipper_0_av_mm_control_agent_readdatavalid (),
-        .intel_vvp_clipper_0_av_mm_control_agent_waitrequest   (clip_wait),
-
-        // ----- CRS Avalon-MM control -----
-        .intel_vvp_crs_0_av_mm_control_agent_address       (crs_addr),
-        .intel_vvp_crs_0_av_mm_control_agent_write         (crs_write),
-        .intel_vvp_crs_0_av_mm_control_agent_read          (1'b0),
-        .intel_vvp_crs_0_av_mm_control_agent_byteenable    (4'hF),
-        .intel_vvp_crs_0_av_mm_control_agent_writedata     (crs_wdata),
-        .intel_vvp_crs_0_av_mm_control_agent_readdata      (),
-        .intel_vvp_crs_0_av_mm_control_agent_readdatavalid (),
-        .intel_vvp_crs_0_av_mm_control_agent_waitrequest   (crs_wait),
-
-        // ----- CSC Avalon-MM control -----
-        .intel_vvp_csc_0_av_mm_control_agent_address       (csc_addr_r),
-        .intel_vvp_csc_0_av_mm_control_agent_write         (csc_write),
-        .intel_vvp_csc_0_av_mm_control_agent_read          (csc_read_r),
-        .intel_vvp_csc_0_av_mm_control_agent_byteenable    (4'hF),
-        .intel_vvp_csc_0_av_mm_control_agent_writedata     (csc_wdata),
-        .intel_vvp_csc_0_av_mm_control_agent_readdata      (csc_readdata),
-        .intel_vvp_csc_0_av_mm_control_agent_readdatavalid (csc_readdatavalid),
-        .intel_vvp_csc_0_av_mm_control_agent_waitrequest   (csc_wait),
-
-        // ----- Scaler Avalon-MM control -----
-        .intel_vvp_scaler_0_av_mm_control_agent_address       (scl_addr),
-        .intel_vvp_scaler_0_av_mm_control_agent_write         (scl_write),
-        .intel_vvp_scaler_0_av_mm_control_agent_read          (1'b0),
-        .intel_vvp_scaler_0_av_mm_control_agent_byteenable    (4'hF),
-        .intel_vvp_scaler_0_av_mm_control_agent_writedata     (scl_wdata),
-        .intel_vvp_scaler_0_av_mm_control_agent_readdata      (),
-        .intel_vvp_scaler_0_av_mm_control_agent_readdatavalid (),
-        .intel_vvp_scaler_0_av_mm_control_agent_waitrequest   (scl_wait)
+        // ----- Avalon-MM Pipeline Bridge slave (drives clipper/scaler/crs/csc) -----
+        .mm_bridge_0_s0_address       (bridge_addr),
+        .mm_bridge_0_s0_write         (bridge_write),
+        .mm_bridge_0_s0_read          (bridge_read),
+        .mm_bridge_0_s0_byteenable    (4'hF),
+        .mm_bridge_0_s0_writedata     (bridge_wdata),
+        .mm_bridge_0_s0_burstcount    (1'b1),
+        .mm_bridge_0_s0_debugaccess   (1'b0),
+        .mm_bridge_0_s0_readdata      (bridge_readdata),
+        .mm_bridge_0_s0_readdatavalid (bridge_readdatavalid),
+        .mm_bridge_0_s0_waitrequest   (bridge_wait)
     );
 
 endmodule

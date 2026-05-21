@@ -176,8 +176,10 @@ module tb();
     initial begin
         #(END_TIME);
         $display("Error: Simulation Timeout!  current_state=%0d cfg_step=%0d", dut.current_state, dut.cfg_step);
-        $display("  tpg_wait=%b clip_wait=%b scl_wait=%b crs_wait=%b csc_wait=%b pc1_wait=%b",
-                 dut.tpg_wait, dut.clip_wait, dut.scl_wait, dut.crs_wait, dut.csc_wait, dut.pc1_wait);
+        //$display("  tpg_wait=%b clip_wait=%b scl_wait=%b crs_wait=%b csc_wait=%b pc1_wait=%b",
+          //   dut.tpg_wait, dut.clip_wait, dut.scl_wait, dut.crs_wait, dut.csc_wait, dut.pc1_wait);
+          $display("  tpg_wait=%b mm_wait=%b pc1_wait=%b",
+         		dut.tpg_wait, dut.mm_waitrequest, dut.pc1_wait);
         $finish;
     end
 

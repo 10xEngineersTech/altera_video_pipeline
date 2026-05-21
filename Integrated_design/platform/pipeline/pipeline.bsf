@@ -413,8 +413,8 @@ on the Quartus Prime software download page.
 	(port
 		(pt 0 2076)
 		(input)
-		(text "intel_vvp_scaler_0_av_mm_control_agent_address[7..0]" (rect 0 0 232 12)(font "SansSerif" (font_size 8)))
-		(text "intel_vvp_scaler_0_av_mm_control_agent_address[7..0]" (rect 4 2065 316 2076)(font "SansSerif" (font_size 8)))
+		(text "intel_vvp_scaler_0_av_mm_control_agent_address[6..0]" (rect 0 0 232 12)(font "SansSerif" (font_size 8)))
+		(text "intel_vvp_scaler_0_av_mm_control_agent_address[6..0]" (rect 4 2065 316 2076)(font "SansSerif" (font_size 8)))
 		(line (pt 0 2076)(pt 340 2076)(line_width 3))
 	)
 	(port

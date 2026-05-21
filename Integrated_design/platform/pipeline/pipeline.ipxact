@@ -2851,7 +2851,7 @@
                 <ipxact:parameter parameterId="addressSpan" type="string">
                     <ipxact:name>addressSpan</ipxact:name>
                     <ipxact:displayName>Address span</ipxact:displayName>
-                    <ipxact:value>1024</ipxact:value>
+                    <ipxact:value>512</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="addressUnits" type="string">
                     <ipxact:name>addressUnits</ipxact:name>
@@ -5140,7 +5140,7 @@
                     <ipxact:vectors>
                         <ipxact:vector>
                             <ipxact:left>0</ipxact:left>
-                            <ipxact:right>7</ipxact:right>
+                            <ipxact:right>6</ipxact:right>
                         </ipxact:vector>
                     </ipxact:vectors>
                     <ipxact:wireTypeDefs>

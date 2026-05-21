@@ -16,7 +16,7 @@ module pipeline_intel_vvp_scaler_0 (
 		input  wire        axi4s_vid_out_tready,              //                    .tready
 		output wire        axi4s_vid_out_tlast,               //                    .tlast
 		output wire [2:0]  axi4s_vid_out_tuser,               //                    .tuser
-		input  wire [7:0]  av_mm_control_agent_address,       // av_mm_control_agent.address
+		input  wire [6:0]  av_mm_control_agent_address,       // av_mm_control_agent.address
 		input  wire        av_mm_control_agent_write,         //                    .write
 		input  wire [3:0]  av_mm_control_agent_byteenable,    //                    .byteenable
 		input  wire [31:0] av_mm_control_agent_writedata,     //                    .writedata
@@ -26,7 +26,7 @@ module pipeline_intel_vvp_scaler_0 (
 		output wire        av_mm_control_agent_waitrequest    //                    .waitrequest
 	);
 
-	pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_t4an5sa intel_vvp_scaler_0 (
+	pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_s5qlaoq intel_vvp_scaler_0 (
 		.main_clock_clk                    (main_clock_clk),                    //   input,   width = 1,          main_clock.clk
 		.main_reset_reset                  (main_reset_reset),                  //   input,   width = 1,          main_reset.reset
 		.axi4s_vid_in_tdata                (axi4s_vid_in_tdata),                //   input,  width = 24,        axi4s_vid_in.tdata
@@ -39,7 +39,7 @@ module pipeline_intel_vvp_scaler_0 (
 		.axi4s_vid_out_tready              (axi4s_vid_out_tready),              //   input,   width = 1,                    .tready
 		.axi4s_vid_out_tlast               (axi4s_vid_out_tlast),               //  output,   width = 1,                    .tlast
 		.axi4s_vid_out_tuser               (axi4s_vid_out_tuser),               //  output,   width = 3,                    .tuser
-		.av_mm_control_agent_address       (av_mm_control_agent_address),       //   input,   width = 8, av_mm_control_agent.address
+		.av_mm_control_agent_address       (av_mm_control_agent_address),       //   input,   width = 7, av_mm_control_agent.address
 		.av_mm_control_agent_write         (av_mm_control_agent_write),         //   input,   width = 1,                    .write
 		.av_mm_control_agent_byteenable    (av_mm_control_agent_byteenable),    //   input,   width = 4,                    .byteenable
 		.av_mm_control_agent_writedata     (av_mm_control_agent_writedata),     //   input,  width = 32,                    .writedata

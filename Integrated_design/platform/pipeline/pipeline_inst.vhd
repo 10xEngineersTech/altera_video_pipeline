@@ -103,7 +103,7 @@
 			intel_vvp_scaler_0_axi4s_vid_out_tready                     : in  std_logic                     := 'X';             -- tready
 			intel_vvp_scaler_0_axi4s_vid_out_tlast                      : out std_logic;                                        -- tlast
 			intel_vvp_scaler_0_axi4s_vid_out_tuser                      : out std_logic_vector(2 downto 0);                     -- tuser
-			intel_vvp_scaler_0_av_mm_control_agent_address              : in  std_logic_vector(7 downto 0)  := (others => 'X'); -- address
+			intel_vvp_scaler_0_av_mm_control_agent_address              : in  std_logic_vector(6 downto 0)  := (others => 'X'); -- address
 			intel_vvp_scaler_0_av_mm_control_agent_write                : in  std_logic                     := 'X';             -- write
 			intel_vvp_scaler_0_av_mm_control_agent_byteenable           : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
 			intel_vvp_scaler_0_av_mm_control_agent_writedata            : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata

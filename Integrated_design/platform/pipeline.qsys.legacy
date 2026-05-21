@@ -227,11 +227,11 @@ https://fpgasoftware.intel.com/eula.-->
                 <consumedSystemInfos>
                     <entry>
                         <key>ADDRESS_MAP</key>
-                        <value>&lt;address-map&gt;&lt;slave name='intel_vvp_scaler_0.av_mm_control_agent' start='0x0' end='0x400' datawidth='32' /&gt;&lt;/address-map&gt;</value>
+                        <value>&lt;address-map&gt;&lt;slave name='intel_vvp_scaler_0.av_mm_control_agent' start='0x0' end='0x200' datawidth='32' /&gt;&lt;/address-map&gt;</value>
                     </entry>
                     <entry>
                         <key>ADDRESS_WIDTH</key>
-                        <value>10</value>
+                        <value>9</value>
                     </entry>
                     <entry>
                         <key>MAX_SLAVE_DATA_WIDTH</key>
@@ -6976,7 +6976,7 @@ https://fpgasoftware.intel.com/eula.-->
                         <name>av_mm_control_agent_address</name>
                         <role>address</role>
                         <direction>Input</direction>
-                        <width>8</width>
+                        <width>7</width>
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                         <terminationValue>0</terminationValue>
@@ -7077,7 +7077,7 @@ https://fpgasoftware.intel.com/eula.-->
                         </entry>
                         <entry>
                             <key>addressSpan</key>
-                            <value>1024</value>
+                            <value>512</value>
                         </entry>
                         <entry>
                             <key>addressUnits</key>
@@ -7327,11 +7327,11 @@ https://fpgasoftware.intel.com/eula.-->
                     <suppliedSystemInfos>
                         <entry>
                             <key>ADDRESS_MAP</key>
-                            <value>&lt;address-map&gt;&lt;slave name='av_mm_control_agent' start='0x0' end='0x400' datawidth='32' /&gt;&lt;/address-map&gt;</value>
+                            <value>&lt;address-map&gt;&lt;slave name='av_mm_control_agent' start='0x0' end='0x200' datawidth='32' /&gt;&lt;/address-map&gt;</value>
                         </entry>
                         <entry>
                             <key>ADDRESS_WIDTH</key>
-                            <value>10</value>
+                            <value>9</value>
                         </entry>
                         <entry>
                             <key>MAX_SLAVE_DATA_WIDTH</key>
@@ -7597,7 +7597,7 @@ https://fpgasoftware.intel.com/eula.-->
                     <name>av_mm_control_agent_address</name>
                     <role>address</role>
                     <direction>Input</direction>
-                    <width>8</width>
+                    <width>7</width>
                     <lowerBound>0</lowerBound>
                     <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                     <terminationValue>0</terminationValue>
@@ -7698,7 +7698,7 @@ https://fpgasoftware.intel.com/eula.-->
                     </entry>
                     <entry>
                         <key>addressSpan</key>
-                        <value>1024</value>
+                        <value>512</value>
                     </entry>
                     <entry>
                         <key>addressUnits</key>

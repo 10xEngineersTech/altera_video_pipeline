@@ -12,7 +12,7 @@
 			axi4s_vid_out_tready              : in  std_logic                     := 'X';             -- tready
 			axi4s_vid_out_tlast               : out std_logic;                                        -- tlast
 			axi4s_vid_out_tuser               : out std_logic_vector(2 downto 0);                     -- tuser
-			av_mm_control_agent_address       : in  std_logic_vector(7 downto 0)  := (others => 'X'); -- address
+			av_mm_control_agent_address       : in  std_logic_vector(6 downto 0)  := (others => 'X'); -- address
 			av_mm_control_agent_write         : in  std_logic                     := 'X';             -- write
 			av_mm_control_agent_byteenable    : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
 			av_mm_control_agent_writedata     : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata

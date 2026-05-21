@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="pipeline" kind="pipeline" version="1.0" fabric="QSYS">
  <!-- Format version 25.1.1 125 (Future versions may contain additional information.) -->
- <!-- 2026.05.21.12:42:35 -->
+ <!-- 2026.05.21.17:54:07 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
@@ -11691,7 +11691,7 @@ the requested settings for a module instance. -->
                         <name>av_mm_control_agent_address</name>
                         <role>address</role>
                         <direction>Input</direction>
-                        <width>8</width>
+                        <width>7</width>
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                         <terminationValue>0</terminationValue>
@@ -11792,7 +11792,7 @@ the requested settings for a module instance. -->
                         </entry>
                         <entry>
                             <key>addressSpan</key>
-                            <value>1024</value>
+                            <value>512</value>
                         </entry>
                         <entry>
                             <key>addressUnits</key>
@@ -12042,11 +12042,11 @@ the requested settings for a module instance. -->
                     <suppliedSystemInfos>
                         <entry>
                             <key>ADDRESS_MAP</key>
-                            <value>&lt;address-map&gt;&lt;slave name='av_mm_control_agent' start='0x0' end='0x400' datawidth='32' /&gt;&lt;/address-map&gt;</value>
+                            <value>&lt;address-map&gt;&lt;slave name='av_mm_control_agent' start='0x0' end='0x200' datawidth='32' /&gt;&lt;/address-map&gt;</value>
                         </entry>
                         <entry>
                             <key>ADDRESS_WIDTH</key>
-                            <value>10</value>
+                            <value>9</value>
                         </entry>
                         <entry>
                             <key>MAX_SLAVE_DATA_WIDTH</key>
@@ -12376,7 +12376,7 @@ the requested settings for a module instance. -->
                     <name>av_mm_control_agent_address</name>
                     <role>address</role>
                     <direction>Input</direction>
-                    <width>8</width>
+                    <width>7</width>
                     <lowerBound>0</lowerBound>
                     <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                     <terminationValue>0</terminationValue>
@@ -12477,7 +12477,7 @@ the requested settings for a module instance. -->
                     </entry>
                     <entry>
                         <key>addressSpan</key>
-                        <value>1024</value>
+                        <value>512</value>
                     </entry>
                     <entry>
                         <key>addressUnits</key>
@@ -13114,7 +13114,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="addressSpan">
     <type>java.math.BigInteger</type>
-    <value>1024</value>
+    <value>512</value>
     <derived>true</derived>
     <enabled>true</enabled>
     <visible>false</visible>
@@ -13537,12 +13537,12 @@ parameters are a RESULT of the module parameters. -->
     <valid>true</valid>
    </parameter>
    <type>avalon</type>
-   <span>1024</span>
+   <span>512</span>
    <isStart>false</isStart>
    <port>
     <name>av_mm_control_agent_address</name>
     <direction>Input</direction>
-    <width>8</width>
+    <width>7</width>
     <role>address</role>
    </port>
    <port>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2026.05.20.13:01:45"
- outputDirectory="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/">
+ date="2026.05.22.15:04:45"
+ outputDirectory="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/">
  <perimeter>
   <parameter
      name="AUTO_GENERATION_ID"
@@ -106,27 +106,27 @@
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
   <generatedFiles>
    <file
-       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/synth/pipeline_intel_vvp_protocol_conv_0.v"
+       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/synth/pipeline_intel_vvp_protocol_conv_0.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/synth/pipeline_intel_vvp_protocol_conv_0.v"
+       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/synth/pipeline_intel_vvp_protocol_conv_0.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0.ip" />
+       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0.ip" />
   </sourceFiles>
   <childSourceFiles>
    <file
-       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/protocol_conv/intel_vvp_protocol_conv/intel_vvp_protocol_conv_hw.tcl" />
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/cores/vvp/protocol_conv/intel_vvp_protocol_conv/intel_vvp_protocol_conv_hw.tcl" />
    <file
-       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/resets/intel_vvp_reset_sync/intel_vvp_reset_sync_hw.tcl" />
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/components/resets/intel_vvp_reset_sync/intel_vvp_reset_sync_hw.tcl" />
    <file
-       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/protocol_conv/intel_vvp_int_to_ext_bridge/intel_vvp_int_to_ext_bridge_hw.tcl" />
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/cores/vvp/protocol_conv/intel_vvp_int_to_ext_bridge/intel_vvp_int_to_ext_bridge_hw.tcl" />
    <file
-       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/in_out_bridges/intel_vvp_output_interface_bridge/intel_vvp_output_interface_bridge_hw.tcl" />
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/components/in_out_bridges/intel_vvp_output_interface_bridge/intel_vvp_output_interface_bridge_hw.tcl" />
   </childSourceFiles>
   <messages>
    <message level="Info" culprit="pipeline_intel_vvp_protocol_conv_0">"Generating: pipeline_intel_vvp_protocol_conv_0"</message>
@@ -177,25 +177,25 @@
   <parameter name="CLIP_LONG_FIELDS" value="0" />
   <generatedFiles>
    <file
-       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_protocol_conv_2460/synth/pipeline_intel_vvp_protocol_conv_0_intel_vvp_protocol_conv_2460_ydxwruq.v"
+       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_protocol_conv_2460/synth/pipeline_intel_vvp_protocol_conv_0_intel_vvp_protocol_conv_2460_ydxwruq.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_protocol_conv_2460/synth/pipeline_intel_vvp_protocol_conv_0_intel_vvp_protocol_conv_2460_ydxwruq.v"
+       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_protocol_conv_2460/synth/pipeline_intel_vvp_protocol_conv_0_intel_vvp_protocol_conv_2460_ydxwruq.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/protocol_conv/intel_vvp_protocol_conv/intel_vvp_protocol_conv_hw.tcl" />
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/cores/vvp/protocol_conv/intel_vvp_protocol_conv/intel_vvp_protocol_conv_hw.tcl" />
   </sourceFiles>
   <childSourceFiles>
    <file
-       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/resets/intel_vvp_reset_sync/intel_vvp_reset_sync_hw.tcl" />
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/components/resets/intel_vvp_reset_sync/intel_vvp_reset_sync_hw.tcl" />
    <file
-       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/protocol_conv/intel_vvp_int_to_ext_bridge/intel_vvp_int_to_ext_bridge_hw.tcl" />
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/cores/vvp/protocol_conv/intel_vvp_int_to_ext_bridge/intel_vvp_int_to_ext_bridge_hw.tcl" />
    <file
-       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/in_out_bridges/intel_vvp_output_interface_bridge/intel_vvp_output_interface_bridge_hw.tcl" />
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/components/in_out_bridges/intel_vvp_output_interface_bridge/intel_vvp_output_interface_bridge_hw.tcl" />
   </childSourceFiles>
   <instantiator
      instantiator="pipeline_intel_vvp_protocol_conv_0"
@@ -214,17 +214,17 @@
   <parameter name="SYNC_LEN" value="3" />
   <generatedFiles>
    <file
-       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_reset_sync_2440/synth/src_hdl/intel_vvp_reset_sync.sv"
+       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_reset_sync_2440/synth/src_hdl/intel_vvp_reset_sync.sv"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_reset_sync_2440/synth/src_hdl/intel_vvp_reset_sync.sv"
+       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_reset_sync_2440/synth/src_hdl/intel_vvp_reset_sync.sv"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/resets/intel_vvp_reset_sync/intel_vvp_reset_sync_hw.tcl" />
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/components/resets/intel_vvp_reset_sync/intel_vvp_reset_sync_hw.tcl" />
   </sourceFiles>
   <childSourceFiles/>
   <instantiator
@@ -244,35 +244,35 @@
   <parameter name="PIXELS_IN_PARALLEL" value="1" />
   <generatedFiles>
    <file
-       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/intel_vvp_axi_master.sv"
+       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/intel_vvp_axi_master.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/src_hdl/intel_vvp_int_to_ext_bridge.sv"
+       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/src_hdl/intel_vvp_int_to_ext_bridge.sv"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/intel_vvp_axi_master.sv"
+       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/intel_vvp_axi_master.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/src_hdl/intel_vvp_int_to_ext_bridge.sv"
+       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_int_to_ext_bridge_2460/synth/src_hdl/intel_vvp_int_to_ext_bridge.sv"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/cores/vvp/protocol_conv/intel_vvp_int_to_ext_bridge/intel_vvp_int_to_ext_bridge_hw.tcl" />
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/cores/vvp/protocol_conv/intel_vvp_int_to_ext_bridge/intel_vvp_int_to_ext_bridge_hw.tcl" />
   </sourceFiles>
   <childSourceFiles/>
   <instantiator
@@ -293,35 +293,35 @@
   <parameter name="PIXELS_IN_PARALLEL" value="1" />
   <generatedFiles>
    <file
-       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
+       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/src_hdl/intel_vvp_output_interface_bridge.sv"
+       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/src_hdl/intel_vvp_output_interface_bridge.sv"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
+       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/src_hdl/intel_vvp_output_interface_bridge.sv"
+       path="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/src_hdl/intel_vvp_output_interface_bridge.sv"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/mtm/components/in_out_bridges/intel_vvp_output_interface_bridge/intel_vvp_output_interface_bridge_hw.tcl" />
+       path="/home/lpt-10xe/intel_FPGA_pro/25.1.1/ip/altera/mtm/components/in_out_bridges/intel_vvp_output_interface_bridge/intel_vvp_output_interface_bridge_hw.tcl" />
   </sourceFiles>
   <childSourceFiles/>
   <instantiator

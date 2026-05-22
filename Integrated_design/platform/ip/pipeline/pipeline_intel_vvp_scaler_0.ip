@@ -996,12 +996,12 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="ENABLE_422" type="int">
           <ipxact:name>ENABLE_422</ipxact:name>
           <ipxact:displayName>422 chroma sampling</ipxact:displayName>
-          <ipxact:value>0</ipxact:value>
+          <ipxact:value>1</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="ENABLE_420" type="int">
           <ipxact:name>ENABLE_420</ipxact:name>
           <ipxact:displayName>420 chroma sampling</ipxact:displayName>
-          <ipxact:value>0</ipxact:value>
+          <ipxact:value>1</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="RUNTIME_CONTROL" type="int">
           <ipxact:name>RUNTIME_CONTROL</ipxact:name>

@@ -42,8 +42,8 @@ module top #(
     // Frame geometry
     parameter [31:0] IMG_WIDTH      = 32'd1920,
     parameter [31:0] IMG_HEIGHT     = 32'd1080,
-    parameter [31:0] IMG_COLOR      = 32'd1,     // Clipper: color space
-    parameter [31:0] IMG_CR_SM      = 32'd1,     // Clipper: chroma sampling
+    parameter [31:0] IMG_COLOR      = 32'd1,
+    parameter [31:0] IMG_CR_SM      = 32'd1,
     parameter [31:0] IMG_L_OFF      = 32'd4,
     parameter [31:0] IMG_T_OFF      = 32'd4,
     parameter [31:0] IMG_R_OFF      = 32'd4,
@@ -57,8 +57,8 @@ module top #(
     parameter [31:0] CRS_OUTPUT_MODE = 32'd3,    // 2=YUV422, 3=YUV444
 
     // Color Space Converter (CSC)
-    parameter [2:0]  CSC_MODE        = 3'd0,
-    parameter [31:0] CSC_COLOR_SPACE = 32'd0,  // 0=RGB (kIntelVvpCsRgb)
+    parameter [2:0]  CSC_MODE        = 3'd1,
+    parameter [31:0] CSC_COLOR_SPACE = 32'd1,  // 0=RGB (kIntelVvpCsRgb)
 
     // Input source select: 0=TPG, 1=image.png via protocol_conv_1
     parameter [0:0]  INPUT_SEL       = 1'b0
@@ -102,10 +102,6 @@ module top #(
     localparam [6:0] TPG_ADDR_BAR_SEL   = 7'h5A;
 
     // --- Clipper ---
-    localparam [6:0] CLIP_IN_WIDTH_ADDR  = 7'h48;
-    localparam [6:0] CLIP_IN_HEIGHT_ADDR = 7'h49;
-    localparam [6:0] CLIP_IN_COLOR_ADDR  = 7'h4C;
-    localparam [6:0] CLIP_IN_SUBSAMPLING = 7'h4D;
     localparam [6:0] CLIP_COMMIT_ADDR    = 7'h51;
     localparam [6:0] CLIP_LEFT_OFF_ADDR  = 7'h52;
     localparam [6:0] CLIP_TOP_OFF_ADDR   = 7'h53;
@@ -397,8 +393,8 @@ module top #(
                         cfg_step      <= 4'd0;
                         // Pre-load Clipper step 0 (HEIGHT/IMG_HEIGHT) so addr/data
                         // are stable on the very first clock of ST_CONFIG_CLIP.
-                        clip_addr     <= CLIP_IN_HEIGHT_ADDR;
-                        clip_wdata    <= IMG_HEIGHT;
+                        clip_addr     <= CLIP_LEFT_OFF_ADDR;
+                        clip_wdata    <= IMG_L_OFF;
                         current_state <= ST_CONFIG_CLIP;
                     end
                 end
@@ -416,7 +412,7 @@ module top #(
                 ST_CONFIG_CLIP: begin
                     clip_write <= 1'b1;
                     if (clip_write && !clip_wait) begin
-                        if (cfg_step == 4'd8) begin
+                        if (cfg_step == 4'd4) begin
                             clip_write    <= 1'b0;
                             cfg_step      <= 4'd0;
                             // Pre-load Scaler step 0.
@@ -428,14 +424,10 @@ module top #(
                             // Pre-load the NEXT transaction atomically with
                             // accepting the current one.
                             case (cfg_step + 1'b1)
-                                4'd1: begin clip_addr <= CLIP_IN_WIDTH_ADDR;   clip_wdata <= IMG_WIDTH;  end
-                                4'd2: begin clip_addr <= CLIP_IN_COLOR_ADDR;   clip_wdata <= IMG_COLOR;  end
-                                4'd3: begin clip_addr <= CLIP_IN_SUBSAMPLING;  clip_wdata <= IMG_CR_SM;  end
-                                4'd4: begin clip_addr <= CLIP_LEFT_OFF_ADDR;   clip_wdata <= IMG_L_OFF;  end
-                                4'd5: begin clip_addr <= CLIP_TOP_OFF_ADDR;    clip_wdata <= IMG_T_OFF;  end
-                                4'd6: begin clip_addr <= CLIP_RIGHT_OFF_ADDR;  clip_wdata <= IMG_R_OFF;  end
-                                4'd7: begin clip_addr <= CLIP_BOT_OFF_ADDR;    clip_wdata <= IMG_B_OFF;  end
-                                4'd8: begin clip_addr <= CLIP_COMMIT_ADDR;     clip_wdata <= 32'h1;      end
+                                4'd1: begin clip_addr <= CLIP_TOP_OFF_ADDR;    clip_wdata <= IMG_T_OFF;  end
+                                4'd2: begin clip_addr <= CLIP_RIGHT_OFF_ADDR;  clip_wdata <= IMG_R_OFF;  end
+                                4'd3: begin clip_addr <= CLIP_BOT_OFF_ADDR;    clip_wdata <= IMG_B_OFF;  end
+                                4'd4: begin clip_addr <= CLIP_COMMIT_ADDR;     clip_wdata <= 32'h1;      end
                                 default: ;
                             endcase
                         end

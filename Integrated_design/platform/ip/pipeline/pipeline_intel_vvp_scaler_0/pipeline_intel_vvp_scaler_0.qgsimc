@@ -78,7 +78,7 @@
           </parameter>
           <parameter>
             <name>ENABLE_420</name>
-            <value>0</value>
+            <value>1</value>
           </parameter>
           <parameter>
             <name>ENABLE_420_MIRROR</name>
@@ -86,7 +86,7 @@
           </parameter>
           <parameter>
             <name>ENABLE_422</name>
-            <value>0</value>
+            <value>1</value>
           </parameter>
           <parameter>
             <name>ENABLE_444</name>
@@ -253,7 +253,7 @@
         <className>intel_vvp_scaler</className>
         <version>24.5.1</version>
         <name>intel_vvp_scaler_0</name>
-        <uniqueName>pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_z7wmuia</uniqueName>
+        <uniqueName>pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_sz4iszy</uniqueName>
         <nonce>0</nonce>
         <incidentConnections></incidentConnections>
         <path>pipeline_intel_vvp_scaler_0.intel_vvp_scaler_0</path>
@@ -281,11 +281,11 @@
               </parameter>
               <parameter>
                 <name>ENABLE_420</name>
-                <value>0</value>
+                <value>1</value>
               </parameter>
               <parameter>
                 <name>ENABLE_422</name>
-                <value>0</value>
+                <value>1</value>
               </parameter>
               <parameter>
                 <name>ENABLE_444</name>
@@ -376,7 +376,7 @@
             <className>intel_vvp_scaler_h_macro</className>
             <version>24.5.1</version>
             <name>h_algo_comp</name>
-            <uniqueName>pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_7xdsdlq</uniqueName>
+            <uniqueName>pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_56htcma</uniqueName>
             <nonce>0</nonce>
             <incidentConnections>
               <incidentConnection>
@@ -411,9 +411,9 @@
                 <interconnectAssignments></interconnectAssignments>
                 <className>axi4stream</className>
                 <version>25.1</version>
-                <name>line_buffer.axi_st_data_out/h_algo_comp.axi_st_data_in</name>
+                <name>line_select.axi_st_data_out/h_algo_comp.axi_st_data_in</name>
                 <end>h_algo_comp/axi_st_data_in</end>
-                <start>line_buffer/axi_st_data_out</start>
+                <start>line_select/axi_st_data_out</start>
               </incidentConnection>
               <incidentConnection>
                 <parameters>
@@ -486,16 +486,661 @@
           </instanceData>
           <children>
             <node>
+              <instanceKey xsi:type="xs:string">chroma_algo_comp</instanceKey>
+              <instanceData xsi:type="data">
+                <parameters>
+                  <parameter>
+                    <name>ALGORITHM</name>
+                    <value>NEAREST_NEIGHBOUR</value>
+                  </parameter>
+                  <parameter>
+                    <name>BPS_IN</name>
+                    <value>8</value>
+                  </parameter>
+                  <parameter>
+                    <name>BPS_OUT</name>
+                    <value>8</value>
+                  </parameter>
+                  <parameter>
+                    <name>COEFF_FRAC_BITS</name>
+                    <value>6</value>
+                  </parameter>
+                  <parameter>
+                    <name>COEFF_FUNCTION</name>
+                    <value>LANCZOS_2</value>
+                  </parameter>
+                  <parameter>
+                    <name>COEFF_INT_BITS</name>
+                    <value>1</value>
+                  </parameter>
+                  <parameter>
+                    <name>COEFF_SIGNED</name>
+                    <value>1</value>
+                  </parameter>
+                  <parameter>
+                    <name>DEVICE_FAMILY</name>
+                    <value>Cyclone 10 GX</value>
+                  </parameter>
+                  <parameter>
+                    <name>EDGE_MIRROR</name>
+                    <value>0</value>
+                  </parameter>
+                  <parameter>
+                    <name>FRAC_BITS_IN</name>
+                    <value>0</value>
+                  </parameter>
+                  <parameter>
+                    <name>INIT_FILE</name>
+                    <value>&lt;enter file name (including full path)&gt;</value>
+                  </parameter>
+                  <parameter>
+                    <name>MEM_INIT</name>
+                    <value>0</value>
+                  </parameter>
+                  <parameter>
+                    <name>NUMBER_OF_COLOR_PLANES</name>
+                    <value>2</value>
+                  </parameter>
+                  <parameter>
+                    <name>NUM_BANKS</name>
+                    <value>1</value>
+                  </parameter>
+                  <parameter>
+                    <name>NUM_PHASES</name>
+                    <value>16</value>
+                  </parameter>
+                  <parameter>
+                    <name>NUM_TAPS</name>
+                    <value>4</value>
+                  </parameter>
+                  <parameter>
+                    <name>PARTIAL_IMAGE_SCALING</name>
+                    <value>0</value>
+                  </parameter>
+                  <parameter>
+                    <name>PIPELINE_READY</name>
+                    <value>0</value>
+                  </parameter>
+                  <parameter>
+                    <name>PIXELS_IN_PARALLEL</name>
+                    <value>1</value>
+                  </parameter>
+                  <parameter>
+                    <name>RUNTIME_LOAD</name>
+                    <value>0</value>
+                  </parameter>
+                  <parameter>
+                    <name>SCALER_MAX_WIDTH</name>
+                    <value>16383</value>
+                  </parameter>
+                  <parameter>
+                    <name>SIGNED_IN</name>
+                    <value>0</value>
+                  </parameter>
+                </parameters>
+                <interconnectAssignments></interconnectAssignments>
+                <className>intel_vvp_horiz_scaler_algo_comp</className>
+                <version>24.5.1</version>
+                <name>chroma_algo_comp</name>
+                <uniqueName>pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_k6tfmgy</uniqueName>
+                <nonce>0</nonce>
+                <incidentConnections>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>chroma_algo_comp.axi_st_data_out/chroma_sp_down.axi_st_data_in</name>
+                    <end>chroma_sp_down/axi_st_data_in</end>
+                    <start>chroma_algo_comp/axi_st_data_out</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>chroma_sp_up.axi_st_data_out/chroma_algo_comp.axi_st_data_in</name>
+                    <end>chroma_algo_comp/axi_st_data_in</end>
+                    <start>chroma_sp_up/axi_st_data_out</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>in_cmd.axi_st_cmd_chroma_core/chroma_algo_comp.axi_st_cmd</name>
+                    <end>chroma_algo_comp/axi_st_cmd</end>
+                    <start>in_cmd/axi_st_cmd_chroma_core</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>clockRateSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>clock</className>
+                    <version>25.1</version>
+                    <name>main_clk_bridge.out_clk/chroma_algo_comp.main_clock</name>
+                    <end>chroma_algo_comp/main_clock</end>
+                    <start>main_clk_bridge/out_clk</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>reset</className>
+                    <version>25.1</version>
+                    <name>main_rst_bridge.out_reset/chroma_algo_comp.main_reset</name>
+                    <end>chroma_algo_comp/main_reset</end>
+                    <start>main_rst_bridge/out_reset</start>
+                  </incidentConnection>
+                </incidentConnections>
+                <path>pipeline_intel_vvp_scaler_0.intel_vvp_scaler_0.h_algo_comp.chroma_algo_comp</path>
+              </instanceData>
+              <children></children>
+            </node>
+            <node>
+              <instanceKey xsi:type="xs:string">chroma_fifo</instanceKey>
+              <instanceData xsi:type="data">
+                <parameters>
+                  <parameter>
+                    <name>BPS</name>
+                    <value>8</value>
+                  </parameter>
+                  <parameter>
+                    <name>DATA_WIDTH</name>
+                    <value>16</value>
+                  </parameter>
+                  <parameter>
+                    <name>DEVICE_FAMILY</name>
+                    <value>Cyclone 10 GX</value>
+                  </parameter>
+                  <parameter>
+                    <name>DUAL_CLOCK</name>
+                    <value>0</value>
+                  </parameter>
+                  <parameter>
+                    <name>FIFO_DEPTH</name>
+                    <value>8192</value>
+                  </parameter>
+                  <parameter>
+                    <name>INTERFACE_TYPE</name>
+                    <value>DATA</value>
+                  </parameter>
+                  <parameter>
+                    <name>NUMBER_OF_COLOR_PLANES</name>
+                    <value>2</value>
+                  </parameter>
+                  <parameter>
+                    <name>PIPELINE_READY</name>
+                    <value>0</value>
+                  </parameter>
+                  <parameter>
+                    <name>PIXELS_IN_PARALLEL</name>
+                    <value>1</value>
+                  </parameter>
+                  <parameter>
+                    <name>RAM_BLOCK_TYPE</name>
+                    <value>AUTO</value>
+                  </parameter>
+                  <parameter>
+                    <name>READY_HOLD_ON_RESET</name>
+                    <value>0</value>
+                  </parameter>
+                  <parameter>
+                    <name>USER_KEEP_BITS</name>
+                    <value>2</value>
+                  </parameter>
+                </parameters>
+                <interconnectAssignments></interconnectAssignments>
+                <className>intel_vvp_fifo_core</className>
+                <version>24.4.0</version>
+                <name>chroma_fifo</name>
+                <uniqueName>intel_vvp_fifo_core</uniqueName>
+                <fixedName>intel_vvp_fifo_core</fixedName>
+                <nonce>0</nonce>
+                <incidentConnections>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>chroma_fifo.axi_st_dout/out_switch.axi_st_chroma</name>
+                    <end>out_switch/axi_st_chroma</end>
+                    <start>chroma_fifo/axi_st_dout</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>chroma_sp_down.axi_st_data_out/chroma_fifo.axi_st_din</name>
+                    <end>chroma_fifo/axi_st_din</end>
+                    <start>chroma_sp_down/axi_st_data_out</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>clockRateSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>clock</className>
+                    <version>25.1</version>
+                    <name>main_clk_bridge.out_clk/chroma_fifo.main_clock</name>
+                    <end>chroma_fifo/main_clock</end>
+                    <start>main_clk_bridge/out_clk</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>reset</className>
+                    <version>25.1</version>
+                    <name>main_rst_bridge.out_reset/chroma_fifo.main_reset</name>
+                    <end>chroma_fifo/main_reset</end>
+                    <start>main_rst_bridge/out_reset</start>
+                  </incidentConnection>
+                </incidentConnections>
+                <path>pipeline_intel_vvp_scaler_0.intel_vvp_scaler_0.h_algo_comp.chroma_fifo</path>
+              </instanceData>
+              <children></children>
+            </node>
+            <node>
+              <instanceKey xsi:type="xs:string">chroma_sp_down</instanceKey>
+              <instanceData xsi:type="data">
+                <parameters>
+                  <parameter>
+                    <name>BPS</name>
+                    <value>8</value>
+                  </parameter>
+                  <parameter>
+                    <name>ENABLE_420</name>
+                    <value>1</value>
+                  </parameter>
+                  <parameter>
+                    <name>ENABLE_444</name>
+                    <value>1</value>
+                  </parameter>
+                  <parameter>
+                    <name>PIPELINE_READY</name>
+                    <value>0</value>
+                  </parameter>
+                  <parameter>
+                    <name>PIXELS_IN_PARALLEL</name>
+                    <value>1</value>
+                  </parameter>
+                  <parameter>
+                    <name>UP_CONVERT</name>
+                    <value>0</value>
+                  </parameter>
+                </parameters>
+                <interconnectAssignments></interconnectAssignments>
+                <className>intel_vvp_scaler_seq_par_chroma</className>
+                <version>24.5.1</version>
+                <name>chroma_sp_down</name>
+                <uniqueName>intel_vvp_scaler_seq_par_chroma</uniqueName>
+                <fixedName>intel_vvp_scaler_seq_par_chroma</fixedName>
+                <nonce>0</nonce>
+                <incidentConnections>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>chroma_algo_comp.axi_st_data_out/chroma_sp_down.axi_st_data_in</name>
+                    <end>chroma_sp_down/axi_st_data_in</end>
+                    <start>chroma_algo_comp/axi_st_data_out</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>chroma_sp_down.axi_st_data_out/chroma_fifo.axi_st_din</name>
+                    <end>chroma_fifo/axi_st_din</end>
+                    <start>chroma_sp_down/axi_st_data_out</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>in_cmd.axi_st_cmd_chroma_seq_par_down/chroma_sp_down.axi_st_cmd</name>
+                    <end>chroma_sp_down/axi_st_cmd</end>
+                    <start>in_cmd/axi_st_cmd_chroma_seq_par_down</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>clockRateSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>clock</className>
+                    <version>25.1</version>
+                    <name>main_clk_bridge.out_clk/chroma_sp_down.main_clock</name>
+                    <end>chroma_sp_down/main_clock</end>
+                    <start>main_clk_bridge/out_clk</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>reset</className>
+                    <version>25.1</version>
+                    <name>main_rst_bridge.out_reset/chroma_sp_down.main_reset</name>
+                    <end>chroma_sp_down/main_reset</end>
+                    <start>main_rst_bridge/out_reset</start>
+                  </incidentConnection>
+                </incidentConnections>
+                <path>pipeline_intel_vvp_scaler_0.intel_vvp_scaler_0.h_algo_comp.chroma_sp_down</path>
+              </instanceData>
+              <children></children>
+            </node>
+            <node>
+              <instanceKey xsi:type="xs:string">chroma_sp_up</instanceKey>
+              <instanceData xsi:type="data">
+                <parameters>
+                  <parameter>
+                    <name>BPS</name>
+                    <value>8</value>
+                  </parameter>
+                  <parameter>
+                    <name>ENABLE_420</name>
+                    <value>1</value>
+                  </parameter>
+                  <parameter>
+                    <name>ENABLE_444</name>
+                    <value>1</value>
+                  </parameter>
+                  <parameter>
+                    <name>PIPELINE_READY</name>
+                    <value>0</value>
+                  </parameter>
+                  <parameter>
+                    <name>PIXELS_IN_PARALLEL</name>
+                    <value>1</value>
+                  </parameter>
+                  <parameter>
+                    <name>UP_CONVERT</name>
+                    <value>1</value>
+                  </parameter>
+                </parameters>
+                <interconnectAssignments></interconnectAssignments>
+                <className>intel_vvp_scaler_seq_par_chroma</className>
+                <version>24.5.1</version>
+                <name>chroma_sp_up</name>
+                <uniqueName>intel_vvp_scaler_seq_par_chroma</uniqueName>
+                <fixedName>intel_vvp_scaler_seq_par_chroma</fixedName>
+                <nonce>0</nonce>
+                <incidentConnections>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>chroma_sp_up.axi_st_data_out/chroma_algo_comp.axi_st_data_in</name>
+                    <end>chroma_algo_comp/axi_st_data_in</end>
+                    <start>chroma_sp_up/axi_st_data_out</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>in_cmd.axi_st_cmd_chroma_seq_par_up/chroma_sp_up.axi_st_cmd</name>
+                    <end>chroma_sp_up/axi_st_cmd</end>
+                    <start>in_cmd/axi_st_cmd_chroma_seq_par_up</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>in_split.axi_st_chroma_out/chroma_sp_up.axi_st_data_in</name>
+                    <end>chroma_sp_up/axi_st_data_in</end>
+                    <start>in_split/axi_st_chroma_out</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>clockRateSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>clock</className>
+                    <version>25.1</version>
+                    <name>main_clk_bridge.out_clk/chroma_sp_up.main_clock</name>
+                    <end>chroma_sp_up/main_clock</end>
+                    <start>main_clk_bridge/out_clk</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>reset</className>
+                    <version>25.1</version>
+                    <name>main_rst_bridge.out_reset/chroma_sp_up.main_reset</name>
+                    <end>chroma_sp_up/main_reset</end>
+                    <start>main_rst_bridge/out_reset</start>
+                  </incidentConnection>
+                </incidentConnections>
+                <path>pipeline_intel_vvp_scaler_0.intel_vvp_scaler_0.h_algo_comp.chroma_sp_up</path>
+              </instanceData>
+              <children></children>
+            </node>
+            <node>
               <instanceKey xsi:type="xs:string">in_cmd</instanceKey>
               <instanceData xsi:type="data">
                 <parameters>
                   <parameter>
                     <name>ENABLE_420</name>
-                    <value>0</value>
+                    <value>1</value>
                   </parameter>
                   <parameter>
                     <name>ENABLE_422</name>
-                    <value>0</value>
+                    <value>1</value>
                   </parameter>
                   <parameter>
                     <name>ENABLE_444</name>
@@ -528,9 +1173,135 @@
                     <interconnectAssignments></interconnectAssignments>
                     <className>axi4stream</className>
                     <version>25.1</version>
+                    <name>in_cmd.axi_st_cmd_chroma_core/chroma_algo_comp.axi_st_cmd</name>
+                    <end>chroma_algo_comp/axi_st_cmd</end>
+                    <start>in_cmd/axi_st_cmd_chroma_core</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>in_cmd.axi_st_cmd_chroma_seq_par_down/chroma_sp_down.axi_st_cmd</name>
+                    <end>chroma_sp_down/axi_st_cmd</end>
+                    <start>in_cmd/axi_st_cmd_chroma_seq_par_down</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>in_cmd.axi_st_cmd_chroma_seq_par_up/chroma_sp_up.axi_st_cmd</name>
+                    <end>chroma_sp_up/axi_st_cmd</end>
+                    <start>in_cmd/axi_st_cmd_chroma_seq_par_up</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
                     <name>in_cmd.axi_st_cmd_luma_core/luma_algo_comp.axi_st_cmd</name>
                     <end>luma_algo_comp/axi_st_cmd</end>
                     <start>in_cmd/axi_st_cmd_luma_core</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>in_cmd.axi_st_cmd_luma_seq_par_down/luma_sp_down.axi_st_cmd</name>
+                    <end>luma_sp_down/axi_st_cmd</end>
+                    <start>in_cmd/axi_st_cmd_luma_seq_par_down</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>in_cmd.axi_st_cmd_luma_seq_par_up/luma_sp_up.axi_st_cmd</name>
+                    <end>luma_sp_up/axi_st_cmd</end>
+                    <start>in_cmd/axi_st_cmd_luma_seq_par_up</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>in_cmd.axi_st_cmd_luma_split/in_split.axi_st_cmd</name>
+                    <end>in_split/axi_st_cmd</end>
+                    <start>in_cmd/axi_st_cmd_luma_split</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>in_cmd.axi_st_cmd_output_switch/out_switch.axi_st_cmd</name>
+                    <end>out_switch/axi_st_cmd</end>
+                    <start>in_cmd/axi_st_cmd_output_switch</start>
                   </incidentConnection>
                   <incidentConnection>
                     <parameters>
@@ -582,6 +1353,150 @@
                   </incidentConnection>
                 </incidentConnections>
                 <path>pipeline_intel_vvp_scaler_0.intel_vvp_scaler_0.h_algo_comp.in_cmd</path>
+              </instanceData>
+              <children></children>
+            </node>
+            <node>
+              <instanceKey xsi:type="xs:string">in_split</instanceKey>
+              <instanceData xsi:type="data">
+                <parameters>
+                  <parameter>
+                    <name>BPS</name>
+                    <value>8</value>
+                  </parameter>
+                  <parameter>
+                    <name>ENABLE_420</name>
+                    <value>1</value>
+                  </parameter>
+                  <parameter>
+                    <name>ENABLE_422</name>
+                    <value>1</value>
+                  </parameter>
+                  <parameter>
+                    <name>ENABLE_444</name>
+                    <value>1</value>
+                  </parameter>
+                  <parameter>
+                    <name>PIPELINE_READY</name>
+                    <value>0</value>
+                  </parameter>
+                  <parameter>
+                    <name>PIXELS_IN_PARALLEL</name>
+                    <value>1</value>
+                  </parameter>
+                </parameters>
+                <interconnectAssignments></interconnectAssignments>
+                <className>intel_vvp_scaler_luma_split</className>
+                <version>24.5.1</version>
+                <name>in_split</name>
+                <uniqueName>intel_vvp_scaler_luma_split</uniqueName>
+                <fixedName>intel_vvp_scaler_luma_split</fixedName>
+                <nonce>0</nonce>
+                <incidentConnections>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>in_cmd.axi_st_cmd_luma_split/in_split.axi_st_cmd</name>
+                    <end>in_split/axi_st_cmd</end>
+                    <start>in_cmd/axi_st_cmd_luma_split</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>in_split.axi_st_chroma_out/chroma_sp_up.axi_st_data_in</name>
+                    <end>chroma_sp_up/axi_st_data_in</end>
+                    <start>in_split/axi_st_chroma_out</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>in_split.axi_st_luma_out/luma_sp_up.axi_st_data_in</name>
+                    <end>luma_sp_up/axi_st_data_in</end>
+                    <start>in_split/axi_st_luma_out</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>clockRateSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>clock</className>
+                    <version>25.1</version>
+                    <name>main_clk_bridge.out_clk/in_split.main_clock</name>
+                    <end>in_split/main_clock</end>
+                    <start>main_clk_bridge/out_clk</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>reset</className>
+                    <version>25.1</version>
+                    <name>main_rst_bridge.out_reset/in_split.main_reset</name>
+                    <end>in_split/main_reset</end>
+                    <start>main_rst_bridge/out_reset</start>
+                  </incidentConnection>
+                </incidentConnections>
+                <path>pipeline_intel_vvp_scaler_0.intel_vvp_scaler_0.h_algo_comp.in_split</path>
               </instanceData>
               <children></children>
             </node>
@@ -639,7 +1554,7 @@
                   </parameter>
                   <parameter>
                     <name>NUMBER_OF_COLOR_PLANES</name>
-                    <value>3</value>
+                    <value>1</value>
                   </parameter>
                   <parameter>
                     <name>NUM_BANKS</name>
@@ -663,7 +1578,7 @@
                   </parameter>
                   <parameter>
                     <name>PIXELS_IN_PARALLEL</name>
-                    <value>1</value>
+                    <value>2</value>
                   </parameter>
                   <parameter>
                     <name>RUNTIME_LOAD</name>
@@ -682,7 +1597,7 @@
                 <className>intel_vvp_horiz_scaler_algo_comp</className>
                 <version>24.5.1</version>
                 <name>luma_algo_comp</name>
-                <uniqueName>pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_npk6mki</uniqueName>
+                <uniqueName>pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_4l3vvxi</uniqueName>
                 <nonce>0</nonce>
                 <incidentConnections>
                   <incidentConnection>
@@ -702,6 +1617,42 @@
                     <name>in_cmd.axi_st_cmd_luma_core/luma_algo_comp.axi_st_cmd</name>
                     <end>luma_algo_comp/axi_st_cmd</end>
                     <start>in_cmd/axi_st_cmd_luma_core</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>luma_algo_comp.axi_st_data_out/luma_sp_down.axi_st_data_in</name>
+                    <end>luma_sp_down/axi_st_data_in</end>
+                    <start>luma_algo_comp/axi_st_data_out</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>luma_sp_up.axi_st_data_out/luma_algo_comp.axi_st_data_in</name>
+                    <end>luma_algo_comp/axi_st_data_in</end>
+                    <start>luma_sp_up/axi_st_data_out</start>
                   </incidentConnection>
                   <incidentConnection>
                     <parameters>
@@ -757,6 +1708,294 @@
               <children></children>
             </node>
             <node>
+              <instanceKey xsi:type="xs:string">luma_sp_down</instanceKey>
+              <instanceData xsi:type="data">
+                <parameters>
+                  <parameter>
+                    <name>BPS</name>
+                    <value>8</value>
+                  </parameter>
+                  <parameter>
+                    <name>ENABLE_CMD</name>
+                    <value>1</value>
+                  </parameter>
+                  <parameter>
+                    <name>HALF_RATE_420</name>
+                    <value>0</value>
+                  </parameter>
+                  <parameter>
+                    <name>PIPELINE_READY</name>
+                    <value>0</value>
+                  </parameter>
+                  <parameter>
+                    <name>PIXELS_IN_PARALLEL</name>
+                    <value>1</value>
+                  </parameter>
+                  <parameter>
+                    <name>UP_CONVERT</name>
+                    <value>0</value>
+                  </parameter>
+                </parameters>
+                <interconnectAssignments></interconnectAssignments>
+                <className>intel_vvp_scaler_seq_par_luma</className>
+                <version>24.5.1</version>
+                <name>luma_sp_down</name>
+                <uniqueName>intel_vvp_scaler_seq_par_luma</uniqueName>
+                <fixedName>intel_vvp_scaler_seq_par_luma</fixedName>
+                <nonce>0</nonce>
+                <incidentConnections>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>in_cmd.axi_st_cmd_luma_seq_par_down/luma_sp_down.axi_st_cmd</name>
+                    <end>luma_sp_down/axi_st_cmd</end>
+                    <start>in_cmd/axi_st_cmd_luma_seq_par_down</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>luma_algo_comp.axi_st_data_out/luma_sp_down.axi_st_data_in</name>
+                    <end>luma_sp_down/axi_st_data_in</end>
+                    <start>luma_algo_comp/axi_st_data_out</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>luma_sp_down.axi_st_data_out/out_switch.axi_st_luma</name>
+                    <end>out_switch/axi_st_luma</end>
+                    <start>luma_sp_down/axi_st_data_out</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>clockRateSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>clock</className>
+                    <version>25.1</version>
+                    <name>main_clk_bridge.out_clk/luma_sp_down.main_clock</name>
+                    <end>luma_sp_down/main_clock</end>
+                    <start>main_clk_bridge/out_clk</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>reset</className>
+                    <version>25.1</version>
+                    <name>main_rst_bridge.out_reset/luma_sp_down.main_reset</name>
+                    <end>luma_sp_down/main_reset</end>
+                    <start>main_rst_bridge/out_reset</start>
+                  </incidentConnection>
+                </incidentConnections>
+                <path>pipeline_intel_vvp_scaler_0.intel_vvp_scaler_0.h_algo_comp.luma_sp_down</path>
+              </instanceData>
+              <children></children>
+            </node>
+            <node>
+              <instanceKey xsi:type="xs:string">luma_sp_up</instanceKey>
+              <instanceData xsi:type="data">
+                <parameters>
+                  <parameter>
+                    <name>BPS</name>
+                    <value>8</value>
+                  </parameter>
+                  <parameter>
+                    <name>ENABLE_CMD</name>
+                    <value>1</value>
+                  </parameter>
+                  <parameter>
+                    <name>HALF_RATE_420</name>
+                    <value>0</value>
+                  </parameter>
+                  <parameter>
+                    <name>PIPELINE_READY</name>
+                    <value>0</value>
+                  </parameter>
+                  <parameter>
+                    <name>PIXELS_IN_PARALLEL</name>
+                    <value>1</value>
+                  </parameter>
+                  <parameter>
+                    <name>UP_CONVERT</name>
+                    <value>1</value>
+                  </parameter>
+                </parameters>
+                <interconnectAssignments></interconnectAssignments>
+                <className>intel_vvp_scaler_seq_par_luma</className>
+                <version>24.5.1</version>
+                <name>luma_sp_up</name>
+                <uniqueName>intel_vvp_scaler_seq_par_luma</uniqueName>
+                <fixedName>intel_vvp_scaler_seq_par_luma</fixedName>
+                <nonce>0</nonce>
+                <incidentConnections>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>in_cmd.axi_st_cmd_luma_seq_par_up/luma_sp_up.axi_st_cmd</name>
+                    <end>luma_sp_up/axi_st_cmd</end>
+                    <start>in_cmd/axi_st_cmd_luma_seq_par_up</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>in_split.axi_st_luma_out/luma_sp_up.axi_st_data_in</name>
+                    <end>luma_sp_up/axi_st_data_in</end>
+                    <start>in_split/axi_st_luma_out</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>luma_sp_up.axi_st_data_out/luma_algo_comp.axi_st_data_in</name>
+                    <end>luma_algo_comp/axi_st_data_in</end>
+                    <start>luma_sp_up/axi_st_data_out</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>clockRateSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>clock</className>
+                    <version>25.1</version>
+                    <name>main_clk_bridge.out_clk/luma_sp_up.main_clock</name>
+                    <end>luma_sp_up/main_clock</end>
+                    <start>main_clk_bridge/out_clk</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>reset</className>
+                    <version>25.1</version>
+                    <name>main_rst_bridge.out_reset/luma_sp_up.main_reset</name>
+                    <end>luma_sp_up/main_reset</end>
+                    <start>main_rst_bridge/out_reset</start>
+                  </incidentConnection>
+                </incidentConnections>
+                <path>pipeline_intel_vvp_scaler_0.intel_vvp_scaler_0.h_algo_comp.luma_sp_up</path>
+              </instanceData>
+              <children></children>
+            </node>
+            <node>
               <instanceKey xsi:type="xs:string">main_clk_bridge</instanceKey>
               <instanceData xsi:type="data">
                 <parameters>
@@ -802,8 +2041,138 @@
                     <interconnectAssignments></interconnectAssignments>
                     <className>clock</className>
                     <version>25.1</version>
+                    <name>main_clk_bridge.out_clk/chroma_algo_comp.main_clock</name>
+                    <end>chroma_algo_comp/main_clock</end>
+                    <start>main_clk_bridge/out_clk</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>clockRateSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>clock</className>
+                    <version>25.1</version>
+                    <name>main_clk_bridge.out_clk/chroma_fifo.main_clock</name>
+                    <end>chroma_fifo/main_clock</end>
+                    <start>main_clk_bridge/out_clk</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>clockRateSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>clock</className>
+                    <version>25.1</version>
+                    <name>main_clk_bridge.out_clk/chroma_sp_down.main_clock</name>
+                    <end>chroma_sp_down/main_clock</end>
+                    <start>main_clk_bridge/out_clk</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>clockRateSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>clock</className>
+                    <version>25.1</version>
+                    <name>main_clk_bridge.out_clk/chroma_sp_up.main_clock</name>
+                    <end>chroma_sp_up/main_clock</end>
+                    <start>main_clk_bridge/out_clk</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>clockRateSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>clock</className>
+                    <version>25.1</version>
                     <name>main_clk_bridge.out_clk/in_cmd.main_clock</name>
                     <end>in_cmd/main_clock</end>
+                    <start>main_clk_bridge/out_clk</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>clockRateSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>clock</className>
+                    <version>25.1</version>
+                    <name>main_clk_bridge.out_clk/in_split.main_clock</name>
+                    <end>in_split/main_clock</end>
                     <start>main_clk_bridge/out_clk</start>
                   </incidentConnection>
                   <incidentConnection>
@@ -854,8 +2223,86 @@
                     <interconnectAssignments></interconnectAssignments>
                     <className>clock</className>
                     <version>25.1</version>
+                    <name>main_clk_bridge.out_clk/luma_sp_down.main_clock</name>
+                    <end>luma_sp_down/main_clock</end>
+                    <start>main_clk_bridge/out_clk</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>clockRateSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>clock</className>
+                    <version>25.1</version>
+                    <name>main_clk_bridge.out_clk/luma_sp_up.main_clock</name>
+                    <end>luma_sp_up/main_clock</end>
+                    <start>main_clk_bridge/out_clk</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>clockRateSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>clock</className>
+                    <version>25.1</version>
                     <name>main_clk_bridge.out_clk/main_rst_bridge.clk</name>
                     <end>main_rst_bridge/clk</end>
+                    <start>main_clk_bridge/out_clk</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>clockRateSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>clock</className>
+                    <version>25.1</version>
+                    <name>main_clk_bridge.out_clk/out_switch.main_clock</name>
+                    <end>out_switch/main_clock</end>
                     <start>main_clk_bridge/out_clk</start>
                   </incidentConnection>
                 </incidentConnections>
@@ -919,8 +2366,118 @@
                     <interconnectAssignments></interconnectAssignments>
                     <className>reset</className>
                     <version>25.1</version>
+                    <name>main_rst_bridge.out_reset/chroma_algo_comp.main_reset</name>
+                    <end>chroma_algo_comp/main_reset</end>
+                    <start>main_rst_bridge/out_reset</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>reset</className>
+                    <version>25.1</version>
+                    <name>main_rst_bridge.out_reset/chroma_fifo.main_reset</name>
+                    <end>chroma_fifo/main_reset</end>
+                    <start>main_rst_bridge/out_reset</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>reset</className>
+                    <version>25.1</version>
+                    <name>main_rst_bridge.out_reset/chroma_sp_down.main_reset</name>
+                    <end>chroma_sp_down/main_reset</end>
+                    <start>main_rst_bridge/out_reset</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>reset</className>
+                    <version>25.1</version>
+                    <name>main_rst_bridge.out_reset/chroma_sp_up.main_reset</name>
+                    <end>chroma_sp_up/main_reset</end>
+                    <start>main_rst_bridge/out_reset</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>reset</className>
+                    <version>25.1</version>
                     <name>main_rst_bridge.out_reset/in_cmd.main_reset</name>
                     <end>in_cmd/main_reset</end>
+                    <start>main_rst_bridge/out_reset</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>reset</className>
+                    <version>25.1</version>
+                    <name>main_rst_bridge.out_reset/in_split.main_reset</name>
+                    <end>in_split/main_reset</end>
                     <start>main_rst_bridge/out_reset</start>
                   </incidentConnection>
                   <incidentConnection>
@@ -945,8 +2502,218 @@
                     <end>luma_algo_comp/main_reset</end>
                     <start>main_rst_bridge/out_reset</start>
                   </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>reset</className>
+                    <version>25.1</version>
+                    <name>main_rst_bridge.out_reset/luma_sp_down.main_reset</name>
+                    <end>luma_sp_down/main_reset</end>
+                    <start>main_rst_bridge/out_reset</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>reset</className>
+                    <version>25.1</version>
+                    <name>main_rst_bridge.out_reset/luma_sp_up.main_reset</name>
+                    <end>luma_sp_up/main_reset</end>
+                    <start>main_rst_bridge/out_reset</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>reset</className>
+                    <version>25.1</version>
+                    <name>main_rst_bridge.out_reset/out_switch.main_reset</name>
+                    <end>out_switch/main_reset</end>
+                    <start>main_rst_bridge/out_reset</start>
+                  </incidentConnection>
                 </incidentConnections>
                 <path>pipeline_intel_vvp_scaler_0.intel_vvp_scaler_0.h_algo_comp.main_rst_bridge</path>
+              </instanceData>
+              <children></children>
+            </node>
+            <node>
+              <instanceKey xsi:type="xs:string">out_switch</instanceKey>
+              <instanceData xsi:type="data">
+                <parameters>
+                  <parameter>
+                    <name>BPS</name>
+                    <value>8</value>
+                  </parameter>
+                  <parameter>
+                    <name>ENABLE_420</name>
+                    <value>1</value>
+                  </parameter>
+                  <parameter>
+                    <name>ENABLE_422</name>
+                    <value>1</value>
+                  </parameter>
+                  <parameter>
+                    <name>ENABLE_444</name>
+                    <value>1</value>
+                  </parameter>
+                  <parameter>
+                    <name>PIPELINE_READY</name>
+                    <value>0</value>
+                  </parameter>
+                  <parameter>
+                    <name>PIXELS_IN_PARALLEL</name>
+                    <value>1</value>
+                  </parameter>
+                </parameters>
+                <interconnectAssignments></interconnectAssignments>
+                <className>intel_vvp_scaler_output_switch</className>
+                <version>24.5.1</version>
+                <name>out_switch</name>
+                <uniqueName>intel_vvp_scaler_output_switch</uniqueName>
+                <fixedName>intel_vvp_scaler_output_switch</fixedName>
+                <nonce>0</nonce>
+                <incidentConnections>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>chroma_fifo.axi_st_dout/out_switch.axi_st_chroma</name>
+                    <end>out_switch/axi_st_chroma</end>
+                    <start>chroma_fifo/axi_st_dout</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>in_cmd.axi_st_cmd_output_switch/out_switch.axi_st_cmd</name>
+                    <end>out_switch/axi_st_cmd</end>
+                    <start>in_cmd/axi_st_cmd_output_switch</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>axiStreamingCrossbarTxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>axiStreamingCrossbarRxSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>axi4stream</className>
+                    <version>25.1</version>
+                    <name>luma_sp_down.axi_st_data_out/out_switch.axi_st_luma</name>
+                    <end>out_switch/axi_st_luma</end>
+                    <start>luma_sp_down/axi_st_data_out</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>clockRateSysInfo</name>
+                        <value></value>
+                      </parameter>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>clock</className>
+                    <version>25.1</version>
+                    <name>main_clk_bridge.out_clk/out_switch.main_clock</name>
+                    <end>out_switch/main_clock</end>
+                    <start>main_clk_bridge/out_clk</start>
+                  </incidentConnection>
+                  <incidentConnection>
+                    <parameters>
+                      <parameter>
+                        <name>resetDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockDomainSysInfo</name>
+                        <value>-1</value>
+                      </parameter>
+                      <parameter>
+                        <name>clockResetSysInfo</name>
+                        <value></value>
+                      </parameter>
+                    </parameters>
+                    <interconnectAssignments></interconnectAssignments>
+                    <className>reset</className>
+                    <version>25.1</version>
+                    <name>main_rst_bridge.out_reset/out_switch.main_reset</name>
+                    <end>out_switch/main_reset</end>
+                    <start>main_rst_bridge/out_reset</start>
+                  </incidentConnection>
+                </incidentConnections>
+                <path>pipeline_intel_vvp_scaler_0.intel_vvp_scaler_0.h_algo_comp.out_switch</path>
               </instanceData>
               <children></children>
             </node>
@@ -1108,7 +2875,7 @@
               </parameter>
               <parameter>
                 <name>NUM_LINES</name>
-                <value>1</value>
+                <value>2</value>
               </parameter>
               <parameter>
                 <name>PIPELINE_READY</name>
@@ -1159,8 +2926,8 @@
                 <interconnectAssignments></interconnectAssignments>
                 <className>axi4stream</className>
                 <version>25.1</version>
-                <name>line_buffer.axi_st_data_out/h_algo_comp.axi_st_data_in</name>
-                <end>h_algo_comp/axi_st_data_in</end>
+                <name>line_buffer.axi_st_data_out/line_select.axi_st_data_in</name>
+                <end>line_select/axi_st_data_in</end>
                 <start>line_buffer/axi_st_data_out</start>
               </incidentConnection>
               <incidentConnection>
@@ -1249,6 +3016,146 @@
               </incidentConnection>
             </incidentConnections>
             <path>pipeline_intel_vvp_scaler_0.intel_vvp_scaler_0.line_buffer</path>
+          </instanceData>
+          <children></children>
+        </node>
+        <node>
+          <instanceKey xsi:type="xs:string">line_select</instanceKey>
+          <instanceData xsi:type="data">
+            <parameters>
+              <parameter>
+                <name>BPS</name>
+                <value>8</value>
+              </parameter>
+              <parameter>
+                <name>DO_MIRROR</name>
+                <value>0</value>
+              </parameter>
+              <parameter>
+                <name>PIPELINE_READY</name>
+                <value>0</value>
+              </parameter>
+              <parameter>
+                <name>PIXELS_IN_PARALLEL</name>
+                <value>1</value>
+              </parameter>
+              <parameter>
+                <name>V_TAPS</name>
+                <value>1</value>
+              </parameter>
+            </parameters>
+            <interconnectAssignments></interconnectAssignments>
+            <className>intel_vvp_scaler_line_select</className>
+            <version>24.5.1</version>
+            <name>line_select</name>
+            <uniqueName>intel_vvp_scaler_line_select</uniqueName>
+            <fixedName>intel_vvp_scaler_line_select</fixedName>
+            <nonce>0</nonce>
+            <incidentConnections>
+              <incidentConnection>
+                <parameters>
+                  <parameter>
+                    <name>axiStreamingCrossbarTxSysInfo</name>
+                    <value></value>
+                  </parameter>
+                  <parameter>
+                    <name>axiStreamingCrossbarRxSysInfo</name>
+                    <value></value>
+                  </parameter>
+                </parameters>
+                <interconnectAssignments></interconnectAssignments>
+                <className>axi4stream</className>
+                <version>25.1</version>
+                <name>line_buffer.axi_st_data_out/line_select.axi_st_data_in</name>
+                <end>line_select/axi_st_data_in</end>
+                <start>line_buffer/axi_st_data_out</start>
+              </incidentConnection>
+              <incidentConnection>
+                <parameters>
+                  <parameter>
+                    <name>axiStreamingCrossbarTxSysInfo</name>
+                    <value></value>
+                  </parameter>
+                  <parameter>
+                    <name>axiStreamingCrossbarRxSysInfo</name>
+                    <value></value>
+                  </parameter>
+                </parameters>
+                <interconnectAssignments></interconnectAssignments>
+                <className>axi4stream</className>
+                <version>25.1</version>
+                <name>line_select.axi_st_data_out/h_algo_comp.axi_st_data_in</name>
+                <end>h_algo_comp/axi_st_data_in</end>
+                <start>line_select/axi_st_data_out</start>
+              </incidentConnection>
+              <incidentConnection>
+                <parameters>
+                  <parameter>
+                    <name>clockRateSysInfo</name>
+                    <value></value>
+                  </parameter>
+                  <parameter>
+                    <name>resetDomainSysInfo</name>
+                    <value>-1</value>
+                  </parameter>
+                  <parameter>
+                    <name>clockDomainSysInfo</name>
+                    <value>-1</value>
+                  </parameter>
+                  <parameter>
+                    <name>clockResetSysInfo</name>
+                    <value></value>
+                  </parameter>
+                </parameters>
+                <interconnectAssignments></interconnectAssignments>
+                <className>clock</className>
+                <version>25.1</version>
+                <name>main_clk_bridge.out_clk/line_select.main_clock</name>
+                <end>line_select/main_clock</end>
+                <start>main_clk_bridge/out_clk</start>
+              </incidentConnection>
+              <incidentConnection>
+                <parameters>
+                  <parameter>
+                    <name>resetDomainSysInfo</name>
+                    <value>-1</value>
+                  </parameter>
+                  <parameter>
+                    <name>clockDomainSysInfo</name>
+                    <value>-1</value>
+                  </parameter>
+                  <parameter>
+                    <name>clockResetSysInfo</name>
+                    <value></value>
+                  </parameter>
+                </parameters>
+                <interconnectAssignments></interconnectAssignments>
+                <className>reset</className>
+                <version>25.1</version>
+                <name>main_rst_bridge.out_reset/line_select.main_reset</name>
+                <end>line_select/main_reset</end>
+                <start>main_rst_bridge/out_reset</start>
+              </incidentConnection>
+              <incidentConnection>
+                <parameters>
+                  <parameter>
+                    <name>axiStreamingCrossbarTxSysInfo</name>
+                    <value></value>
+                  </parameter>
+                  <parameter>
+                    <name>axiStreamingCrossbarRxSysInfo</name>
+                    <value></value>
+                  </parameter>
+                </parameters>
+                <interconnectAssignments></interconnectAssignments>
+                <className>axi4stream</className>
+                <version>25.1</version>
+                <name>scheduler.axi_st_ls_cmd/line_select.axi_st_cmd</name>
+                <end>line_select/axi_st_cmd</end>
+                <start>scheduler/axi_st_ls_cmd</start>
+              </incidentConnection>
+            </incidentConnections>
+            <path>pipeline_intel_vvp_scaler_0.intel_vvp_scaler_0.line_select</path>
           </instanceData>
           <children></children>
         </node>
@@ -1352,6 +3259,32 @@
                 <version>25.1</version>
                 <name>main_clk_bridge.out_clk/line_buffer.main_clock</name>
                 <end>line_buffer/main_clock</end>
+                <start>main_clk_bridge/out_clk</start>
+              </incidentConnection>
+              <incidentConnection>
+                <parameters>
+                  <parameter>
+                    <name>clockRateSysInfo</name>
+                    <value></value>
+                  </parameter>
+                  <parameter>
+                    <name>resetDomainSysInfo</name>
+                    <value>-1</value>
+                  </parameter>
+                  <parameter>
+                    <name>clockDomainSysInfo</name>
+                    <value>-1</value>
+                  </parameter>
+                  <parameter>
+                    <name>clockResetSysInfo</name>
+                    <value></value>
+                  </parameter>
+                </parameters>
+                <interconnectAssignments></interconnectAssignments>
+                <className>clock</className>
+                <version>25.1</version>
+                <name>main_clk_bridge.out_clk/line_select.main_clock</name>
+                <end>line_select/main_clock</end>
                 <start>main_clk_bridge/out_clk</start>
               </incidentConnection>
               <incidentConnection>
@@ -1595,6 +3528,28 @@
                 <version>25.1</version>
                 <name>main_rst_bridge.out_reset/line_buffer.main_reset</name>
                 <end>line_buffer/main_reset</end>
+                <start>main_rst_bridge/out_reset</start>
+              </incidentConnection>
+              <incidentConnection>
+                <parameters>
+                  <parameter>
+                    <name>resetDomainSysInfo</name>
+                    <value>-1</value>
+                  </parameter>
+                  <parameter>
+                    <name>clockDomainSysInfo</name>
+                    <value>-1</value>
+                  </parameter>
+                  <parameter>
+                    <name>clockResetSysInfo</name>
+                    <value></value>
+                  </parameter>
+                </parameters>
+                <interconnectAssignments></interconnectAssignments>
+                <className>reset</className>
+                <version>25.1</version>
+                <name>main_rst_bridge.out_reset/line_select.main_reset</name>
+                <end>line_select/main_reset</end>
                 <start>main_rst_bridge/out_reset</start>
               </incidentConnection>
               <incidentConnection>
@@ -3071,7 +5026,7 @@
             <parameters>
               <parameter>
                 <name>ENABLE_420</name>
-                <value>0</value>
+                <value>1</value>
               </parameter>
               <parameter>
                 <name>ENABLE_420_MIRROR</name>
@@ -3079,7 +5034,7 @@
               </parameter>
               <parameter>
                 <name>ENABLE_422</name>
-                <value>0</value>
+                <value>1</value>
               </parameter>
               <parameter>
                 <name>ENABLE_444</name>
@@ -3416,6 +5371,24 @@
                 <name>scheduler.axi_st_lb_cmd/line_buffer.axi_st_cmd</name>
                 <end>line_buffer/axi_st_cmd</end>
                 <start>scheduler/axi_st_lb_cmd</start>
+              </incidentConnection>
+              <incidentConnection>
+                <parameters>
+                  <parameter>
+                    <name>axiStreamingCrossbarTxSysInfo</name>
+                    <value></value>
+                  </parameter>
+                  <parameter>
+                    <name>axiStreamingCrossbarRxSysInfo</name>
+                    <value></value>
+                  </parameter>
+                </parameters>
+                <interconnectAssignments></interconnectAssignments>
+                <className>axi4stream</className>
+                <version>25.1</version>
+                <name>scheduler.axi_st_ls_cmd/line_select.axi_st_cmd</name>
+                <end>line_select/axi_st_cmd</end>
+                <start>scheduler/axi_st_ls_cmd</start>
               </incidentConnection>
             </incidentConnections>
             <path>pipeline_intel_vvp_scaler_0.intel_vvp_scaler_0.scheduler</path>

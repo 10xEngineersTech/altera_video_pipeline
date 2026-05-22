@@ -30,7 +30,7 @@ dev_com
 com
 
 # Compile RTL and TB
-vlog {os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'rtl', 'mm_bridge.v')}
+#vlog {os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'rtl', 'mm_bridge.v')}
 vlog {os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'rtl', 'tb.v')}
 vlog {os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'rtl', 'top.v')}
 vlog {os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'rtl', 'make_file.v')}

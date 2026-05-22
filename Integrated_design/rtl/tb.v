@@ -102,12 +102,16 @@ module tb();
 
         wait(dut.current_state == dut.ST_WORKING);
         $display("[%0t] Configuration Complete. System is now WORKING.", $time);
+        $display("s0_addr=%h s0_write=%b s0_wdata=%h s0_wait=%b",
+        dut.s0_address, dut.s0_write, dut.s0_writedata, dut.s0_waitrequest);
 
         @(posedge clk);
         out_tready = 1;
 
         wait(out_tvalid && out_tuser[0]);
         $display("[%0t] First Start of Frame (SOF) detected!", $time);
+        $display("out_tdata=%h out_tvalid=%b out_tready=%b",
+        out_tdata, out_tvalid, out_tready);
 
         repeat(5) begin
             wait(out_tvalid && out_tlast);
@@ -178,8 +182,8 @@ module tb();
         $display("Error: Simulation Timeout!  current_state=%0d cfg_step=%0d", dut.current_state, dut.cfg_step);
         //$display("  tpg_wait=%b clip_wait=%b scl_wait=%b crs_wait=%b csc_wait=%b pc1_wait=%b",
           //   dut.tpg_wait, dut.clip_wait, dut.scl_wait, dut.crs_wait, dut.csc_wait, dut.pc1_wait);
-          $display("  tpg_wait=%b mm_wait=%b pc1_wait=%b",
-         		dut.tpg_wait, dut.mm_waitrequest, dut.pc1_wait);
+          $display("  tpg_wait=%b s0_wait=%b pc1_wait=%b",
+         		dut.tpg_wait, dut.s0_waitrequest, dut.pc1_wait);
         $finish;
     end
 

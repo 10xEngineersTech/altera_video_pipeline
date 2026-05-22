@@ -1,18 +1,31 @@
 `timescale 1 ps / 1 ps
 
 // =============================================================================
-// top.v  ?  Pipeline Top-Level Controller (Unified MM Bridge version)
+// top.v  ?  Pipeline Top-Level Controller (Platform Designer MM Bridge version)
 //
 // Pipeline topology (all internal to pipeline.v):
 //   TPG ? DIL ? CRS ? CSC ? Clipper ? PC0 ? Scaler
 //
-// Unified MM Bridge address map (bits [8:7] select slave):
-//   0x000 - 0x07F  ?  Clipper
-//   0x080 - 0x0FF  ?  Scaler
-//   0x100 - 0x17F  ?  CRS
-//   0x180 - 0x1FF  ?  CSC
+// Unified MM Bridge:
+//   Platform Designer's mm_bridge_0 exposes a single Avalon-MM slave port
+//   's0' (11-bit address) that internally routes to all 4 pipeline IPs:
 //
-// TPG and PC1 keep their own dedicated Avalon-MM ports (outside pipeline).
+//   s0 address map (byte addresses):
+//     CRS     ? 0x0000 - 0x01FF   (word addr << 2)
+//     CSC     ? 0x0200 - 0x03FF
+//     Scaler  ? 0x0400 - 0x05FF
+//     Clipper ? 0x0600 - 0x07FF
+//
+//   TPG and PC1 retain dedicated Avalon-MM ports (not connected to mm_bridge).
+//
+// Configuration order:
+//   1. TPG     ? dedicated port
+//   2. Clipper ? via s0
+//   3. Scaler  ? via s0
+//   4. CRS     ? via s0
+//   5. CSC     ? via s0, then poll status (TPG mode only)
+//   6. PC1     ? dedicated port (INPUT_SEL=1 only)
+//   7. WORKING ? pipeline live
 // =============================================================================
 
 module top #(
@@ -26,7 +39,7 @@ module top #(
     parameter [31:0] IMG_B_OFF       = 32'd4,
     parameter [31:0] SCALER_OUT_W    = 32'd1280,
     parameter [31:0] SCALER_OUT_H    = 32'd720,
-    parameter [31:0] CRS_OUTPUT_MODE = 32'd3,    // 2=YUV422, 3=YUV444
+    parameter [31:0] CRS_OUTPUT_MODE = 32'd3,
     parameter [2:0]  CSC_MODE        = 3'd0,
     parameter [31:0] CSC_COLOR_SPACE = 32'd0,
     parameter [0:0]  INPUT_SEL       = 1'b0
@@ -54,52 +67,56 @@ module top #(
     localparam [31:0] SCALER_IN_H = IMG_HEIGHT - IMG_T_OFF - IMG_B_OFF;
 
     // =========================================================================
-    // Unified MM bridge ? base addresses (bits [8:7] = slave select)
+    // s0 base addresses (byte addresses from Platform Designer address map)
     // =========================================================================
-    localparam [8:0] CLIP_BASE = 9'h000;
-    localparam [8:0] SCL_BASE  = 9'h080;
-    localparam [8:0] CRS_BASE  = 9'h100;
-    localparam [8:0] CSC_BASE  = 9'h180;
+    localparam [10:0] CRS_BASE  = 11'h000;
+    localparam [10:0] CSC_BASE  = 11'h200;
+    localparam [10:0] SCL_BASE  = 11'h400;
+    localparam [10:0] CLIP_BASE = 11'h600;
 
-    // --- Clipper register offsets ---
-    localparam [6:0] CLIP_IN_WIDTH     = 7'h48;
-    localparam [6:0] CLIP_IN_HEIGHT    = 7'h49;
-    localparam [6:0] CLIP_IN_COLOR     = 7'h4C;
-    localparam [6:0] CLIP_IN_SUBSAMPLE = 7'h4D;
-    localparam [6:0] CLIP_COMMIT       = 7'h51;
-    localparam [6:0] CLIP_LEFT_OFF     = 7'h52;
-    localparam [6:0] CLIP_TOP_OFF      = 7'h53;
-    localparam [6:0] CLIP_RIGHT_OFF    = 7'h54;
-    localparam [6:0] CLIP_BOT_OFF      = 7'h55;
+    // =========================================================================
+    // Per-IP register byte offsets (word_addr << 2)
+    // =========================================================================
 
-    // --- Scaler register offsets ---
-    localparam [6:0] SCL_IN_WIDTH      = 7'h48;
-    localparam [6:0] SCL_IN_HEIGHT     = 7'h49;
-    localparam [6:0] SCL_OUT_WIDTH     = 7'h52;
-    localparam [6:0] SCL_OUT_HEIGHT    = 7'h53;
+    // --- Clipper ---
+    localparam [8:0] CLIP_IN_HEIGHT    = 9'h49 << 2;   // 0x124
+    localparam [8:0] CLIP_IN_WIDTH     = 9'h48 << 2;   // 0x120
+    localparam [8:0] CLIP_IN_COLOR     = 9'h4C << 2;   // 0x130
+    localparam [8:0] CLIP_IN_SUBSAMPLE = 9'h4D << 2;   // 0x134
+    localparam [8:0] CLIP_COMMIT       = 9'h51 << 2;   // 0x144
+    localparam [8:0] CLIP_LEFT_OFF     = 9'h52 << 2;   // 0x148
+    localparam [8:0] CLIP_TOP_OFF      = 9'h53 << 2;   // 0x14C
+    localparam [8:0] CLIP_RIGHT_OFF    = 9'h54 << 2;   // 0x150
+    localparam [8:0] CLIP_BOT_OFF      = 9'h55 << 2;   // 0x154
 
-    // --- CRS register offsets ---
-    localparam [6:0] CRS_OUT_MODE      = 7'h52;
-    localparam [6:0] CRS_COMMIT        = 7'h51;
+    // --- Scaler ---
+    localparam [8:0] SCL_IN_WIDTH      = 9'h48 << 2;   // 0x120
+    localparam [8:0] SCL_IN_HEIGHT     = 9'h49 << 2;   // 0x124
+    localparam [8:0] SCL_OUT_WIDTH     = 9'h52 << 2;   // 0x148
+    localparam [8:0] SCL_OUT_HEIGHT    = 9'h53 << 2;   // 0x14C
 
-    // --- CSC register offsets ---
-    localparam [6:0] CSC_STATUS        = 7'h50;
-    localparam [6:0] CSC_COMMIT        = 7'h51;
-    localparam [6:0] CSC_COEFF_A0      = 7'h52;
-    localparam [6:0] CSC_COEFF_A1      = 7'h53;
-    localparam [6:0] CSC_COEFF_A2      = 7'h54;
-    localparam [6:0] CSC_COEFF_B0      = 7'h55;
-    localparam [6:0] CSC_COEFF_B1      = 7'h56;
-    localparam [6:0] CSC_COEFF_B2      = 7'h57;
-    localparam [6:0] CSC_COEFF_C0      = 7'h58;
-    localparam [6:0] CSC_COEFF_C1      = 7'h59;
-    localparam [6:0] CSC_COEFF_C2      = 7'h5A;
-    localparam [6:0] CSC_SUMMAND_S0    = 7'h5B;
-    localparam [6:0] CSC_SUMMAND_S1    = 7'h5C;
-    localparam [6:0] CSC_SUMMAND_S2    = 7'h5D;
-    localparam [6:0] CSC_OUT_CS        = 7'h5E;
+    // --- CRS ---
+    localparam [8:0] CRS_OUT_MODE      = 9'h52 << 2;   // 0x148
+    localparam [8:0] CRS_COMMIT        = 9'h51 << 2;   // 0x144
 
-    // --- TPG register addresses (dedicated port) ---
+    // --- CSC ---
+    localparam [8:0] CSC_STATUS        = 9'h50 << 2;   // 0x140
+    localparam [8:0] CSC_COMMIT        = 9'h51 << 2;   // 0x144
+    localparam [8:0] CSC_COEFF_A0      = 9'h52 << 2;   // 0x148
+    localparam [8:0] CSC_COEFF_A1      = 9'h53 << 2;
+    localparam [8:0] CSC_COEFF_A2      = 9'h54 << 2;
+    localparam [8:0] CSC_COEFF_B0      = 9'h55 << 2;
+    localparam [8:0] CSC_COEFF_B1      = 9'h56 << 2;
+    localparam [8:0] CSC_COEFF_B2      = 9'h57 << 2;
+    localparam [8:0] CSC_COEFF_C0      = 9'h58 << 2;
+    localparam [8:0] CSC_COEFF_C1      = 9'h59 << 2;
+    localparam [8:0] CSC_COEFF_C2      = 9'h5A << 2;
+    localparam [8:0] CSC_SUMMAND_S0    = 9'h5B << 2;
+    localparam [8:0] CSC_SUMMAND_S1    = 9'h5C << 2;
+    localparam [8:0] CSC_SUMMAND_S2    = 9'h5D << 2;
+    localparam [8:0] CSC_OUT_CS        = 9'h5E << 2;
+
+    // --- TPG dedicated register addresses (word addresses) ---
     localparam [6:0] TPG_ADDR_WIDTH     = 7'h48;
     localparam [6:0] TPG_ADDR_HEIGHT    = 7'h49;
     localparam [6:0] TPG_ADDR_INTERLACE = 7'h4A;
@@ -109,7 +126,7 @@ module top #(
     localparam [6:0] TPG_ADDR_PATTERN   = 7'h54;
     localparam [6:0] TPG_ADDR_BAR_SEL   = 7'h5A;
 
-    // --- PC1 register addresses (dedicated port) ---
+    // --- PC1 dedicated register addresses (word addresses) ---
     localparam [6:0] PC1_ADDR_WIDTH       = 7'h48;
     localparam [6:0] PC1_ADDR_HEIGHT      = 7'h49;
     localparam [6:0] PC1_ADDR_INTERLACE   = 7'h4A;
@@ -118,7 +135,7 @@ module top #(
     localparam [6:0] PC1_ADDR_CTRL        = 7'h55;
 
     // =========================================================================
-    // State encoding
+    // State encoding ? identical to original
     // =========================================================================
     localparam [4:0]
         ST_IDLE          = 5'd0,
@@ -186,19 +203,22 @@ module top #(
                                     (CSC_MODE==3'd0) ? CSC_COLOR_SPACE : 32'd0;
 
     // =========================================================================
-    // Unified MM bus registers (single master driving mm_bridge)
+    // State / control registers
     // =========================================================================
-    reg  [8:0]  mm_address;
-    reg         mm_write;
-    reg         mm_read;
-    reg  [31:0] mm_writedata;
-    wire [31:0] mm_readdata;
-    wire        mm_readdatavalid;
-    wire        mm_waitrequest;
+    reg [4:0]  current_state;
+    reg [3:0]  cfg_step;
+    reg [7:0]  cycle_count;
 
-    // =========================================================================
-    // TPG dedicated Avalon-MM registers
-    // =========================================================================
+    // --- s0 unified MM bus (Platform Designer mm_bridge) ---
+    reg  [10:0] s0_address;
+    reg         s0_write;
+    reg         s0_read;
+    reg  [31:0] s0_writedata;
+    wire [31:0] s0_readdata;
+    wire        s0_readdatavalid;
+    wire        s0_waitrequest;
+
+    // --- TPG dedicated port ---
     reg  [6:0]  tpg_addr;
     reg         tpg_write, tpg_read;
     reg  [31:0] tpg_wdata;
@@ -206,101 +226,20 @@ module top #(
     wire        tpg_readdatavalid;
     wire        tpg_wait;
 
-    // =========================================================================
-    // PC1 dedicated Avalon-MM registers
-    // =========================================================================
+    // --- PC1 dedicated port ---
     reg  [6:0]  pc1_addr;
     reg         pc1_write;
     reg  [31:0] pc1_wdata;
     wire        pc1_wait;
 
     // =========================================================================
-    // mm_bridge slave-side wires (bridge ? pipeline ports)
-    // =========================================================================
-    wire [6:0]  clip_address;
-    wire        clip_write_w, clip_read_w;
-    wire [31:0] clip_writedata, clip_readdata;
-    wire        clip_readdatavalid, clip_waitrequest;
-
-    wire [6:0]  scl_address;
-    wire        scl_write_w, scl_read_w;
-    wire [31:0] scl_writedata, scl_readdata;
-    wire        scl_readdatavalid, scl_waitrequest;
-
-    wire [6:0]  crs_address;
-    wire        crs_write_w, crs_read_w;
-    wire [31:0] crs_writedata, crs_readdata;
-    wire        crs_readdatavalid, crs_waitrequest;
-
-    wire [6:0]  csc_address;
-    wire        csc_write_w, csc_read_w;
-    wire [31:0] csc_writedata, csc_readdata;
-    wire        csc_readdatavalid, csc_waitrequest;
-
-    // =========================================================================
-    // mm_bridge instantiation
-    // =========================================================================
-    mm_bridge u_mm_bridge (
-        .clk                  (clk),
-        .reset                (reset),
-        .master_address       (mm_address),
-        .master_write         (mm_write),
-        .master_read          (mm_read),
-        .master_byteenable    (4'hF),
-        .master_writedata     (mm_writedata),
-        .master_readdata      (mm_readdata),
-        .master_readdatavalid (mm_readdatavalid),
-        .master_waitrequest   (mm_waitrequest),
-
-        .clip_address         (clip_address),
-        .clip_write           (clip_write_w),
-        .clip_read            (clip_read_w),
-        .clip_byteenable      (),
-        .clip_writedata       (clip_writedata),
-        .clip_readdata        (clip_readdata),
-        .clip_readdatavalid   (clip_readdatavalid),
-        .clip_waitrequest     (clip_waitrequest),
-
-        .scl_address          (scl_address),
-        .scl_write            (scl_write_w),
-        .scl_read             (scl_read_w),
-        .scl_byteenable       (),
-        .scl_writedata        (scl_writedata),
-        .scl_readdata         (scl_readdata),
-        .scl_readdatavalid    (scl_readdatavalid),
-        .scl_waitrequest      (scl_waitrequest),
-
-        .crs_address          (crs_address),
-        .crs_write            (crs_write_w),
-        .crs_read             (crs_read_w),
-        .crs_byteenable       (),
-        .crs_writedata        (crs_writedata),
-        .crs_readdata         (crs_readdata),
-        .crs_readdatavalid    (crs_readdatavalid),
-        .crs_waitrequest      (crs_waitrequest),
-
-        .csc_address          (csc_address),
-        .csc_write            (csc_write_w),
-        .csc_read             (csc_read_w),
-        .csc_byteenable       (),
-        .csc_writedata        (csc_writedata),
-        .csc_readdata         (csc_readdata),
-        .csc_readdatavalid    (csc_readdatavalid),
-        .csc_waitrequest      (csc_waitrequest)
-    );
-
-    // =========================================================================
     // Configuration State Machine
     // =========================================================================
-    reg [3:0] cfg_step;
-    reg [7:0] cycle_count;
-    reg [4:0] current_state;
-
     always @(posedge clk or posedge reset) begin
         if (reset) begin
             current_state <= ST_IDLE;
-            mm_write      <= 1'b0;
-            mm_read       <= 1'b0;
+            s0_write      <= 1'b0;
+            s0_read       <= 1'b0;
             tpg_write     <= 1'b0;
             tpg_read      <= 1'b0;
             pc1_write     <= 1'b0;
@@ -312,7 +251,7 @@ module top #(
                 ST_IDLE: current_state <= ST_TPG_CTRL_1;
 
                 // ==============================================================
-                // TPG configuration ? dedicated port, unchanged from original
+                // TPG ? dedicated port, same as original
                 // ==============================================================
                 ST_TPG_CTRL_1: begin
                     tpg_write <= 1'b1; tpg_addr <= TPG_ADDR_CONTROL; tpg_wdata <= 32'h0;
@@ -363,37 +302,37 @@ module top #(
                 ST_TPG_CTRL_3: begin
                     tpg_write <= 1'b1; tpg_addr <= TPG_ADDR_CONTROL; tpg_wdata <= 32'h1;
                     if (!tpg_wait) begin
-                        tpg_write     <= 1'b0;
-                        cfg_step      <= 4'd0;
-                        mm_address    <= CLIP_BASE | CLIP_IN_HEIGHT;
-                        mm_writedata  <= IMG_HEIGHT;
+                        tpg_write    <= 1'b0;
+                        cfg_step     <= 4'd0;
+                        s0_address   <= CLIP_BASE | CLIP_IN_HEIGHT;
+                        s0_writedata <= IMG_HEIGHT;
                         current_state <= ST_CONFIG_CLIP;
                     end
                 end
 
                 // ==============================================================
-                // Clipper ? 9 writes via unified mm_bridge
+                // Clipper ? 9 writes via s0
                 // ==============================================================
                 ST_CONFIG_CLIP: begin
-                    mm_write <= 1'b1;
-                    if (mm_write && !mm_waitrequest) begin
+                    s0_write <= 1'b1;
+                    if (s0_write && !s0_waitrequest) begin
                         if (cfg_step == 4'd8) begin
-                            mm_write      <= 1'b0;
+                            s0_write      <= 1'b0;
                             cfg_step      <= 4'd0;
-                            mm_address    <= SCL_BASE | SCL_IN_WIDTH;
-                            mm_writedata  <= SCALER_IN_W;
+                            s0_address    <= SCL_BASE | SCL_IN_WIDTH;
+                            s0_writedata  <= SCALER_IN_W;
                             current_state <= ST_CONFIG_SCL;
                         end else begin
                             cfg_step <= cfg_step + 1'b1;
                             case (cfg_step + 1'b1)
-                                4'd1: begin mm_address <= CLIP_BASE | CLIP_IN_WIDTH;     mm_writedata <= IMG_WIDTH;   end
-                                4'd2: begin mm_address <= CLIP_BASE | CLIP_IN_COLOR;     mm_writedata <= IMG_COLOR;   end
-                                4'd3: begin mm_address <= CLIP_BASE | CLIP_IN_SUBSAMPLE; mm_writedata <= IMG_CR_SM;   end
-                                4'd4: begin mm_address <= CLIP_BASE | CLIP_LEFT_OFF;     mm_writedata <= IMG_L_OFF;   end
-                                4'd5: begin mm_address <= CLIP_BASE | CLIP_TOP_OFF;      mm_writedata <= IMG_T_OFF;   end
-                                4'd6: begin mm_address <= CLIP_BASE | CLIP_RIGHT_OFF;    mm_writedata <= IMG_R_OFF;   end
-                                4'd7: begin mm_address <= CLIP_BASE | CLIP_BOT_OFF;      mm_writedata <= IMG_B_OFF;   end
-                                4'd8: begin mm_address <= CLIP_BASE | CLIP_COMMIT;       mm_writedata <= 32'h1;       end
+                                4'd1: begin s0_address <= CLIP_BASE | CLIP_IN_WIDTH;     s0_writedata <= IMG_WIDTH;  end
+                                4'd2: begin s0_address <= CLIP_BASE | CLIP_IN_COLOR;     s0_writedata <= IMG_COLOR;  end
+                                4'd3: begin s0_address <= CLIP_BASE | CLIP_IN_SUBSAMPLE; s0_writedata <= IMG_CR_SM;  end
+                                4'd4: begin s0_address <= CLIP_BASE | CLIP_LEFT_OFF;     s0_writedata <= IMG_L_OFF;  end
+                                4'd5: begin s0_address <= CLIP_BASE | CLIP_TOP_OFF;      s0_writedata <= IMG_T_OFF;  end
+                                4'd6: begin s0_address <= CLIP_BASE | CLIP_RIGHT_OFF;    s0_writedata <= IMG_R_OFF;  end
+                                4'd7: begin s0_address <= CLIP_BASE | CLIP_BOT_OFF;      s0_writedata <= IMG_B_OFF;  end
+                                4'd8: begin s0_address <= CLIP_BASE | CLIP_COMMIT;       s0_writedata <= 32'h1;      end
                                 default: ;
                             endcase
                         end
@@ -401,23 +340,23 @@ module top #(
                 end
 
                 // ==============================================================
-                // Scaler ? 4 writes via unified mm_bridge
+                // Scaler ? 4 writes via s0
                 // ==============================================================
                 ST_CONFIG_SCL: begin
-                    mm_write <= 1'b1;
-                    if (mm_write && !mm_waitrequest) begin
+                    s0_write <= 1'b1;
+                    if (s0_write && !s0_waitrequest) begin
                         if (cfg_step == 4'd3) begin
-                            mm_write      <= 1'b0;
+                            s0_write      <= 1'b0;
                             cfg_step      <= 4'd0;
-                            mm_address    <= CRS_BASE | CRS_OUT_MODE;
-                            mm_writedata  <= CRS_OUTPUT_MODE;
+                            s0_address    <= CRS_BASE | CRS_OUT_MODE;
+                            s0_writedata  <= CRS_OUTPUT_MODE;
                             current_state <= ST_CONFIG_CRS;
                         end else begin
                             cfg_step <= cfg_step + 1'b1;
                             case (cfg_step + 1'b1)
-                                4'd1: begin mm_address <= SCL_BASE | SCL_IN_HEIGHT;  mm_writedata <= SCALER_IN_H;  end
-                                4'd2: begin mm_address <= SCL_BASE | SCL_OUT_WIDTH;  mm_writedata <= SCALER_OUT_W; end
-                                4'd3: begin mm_address <= SCL_BASE | SCL_OUT_HEIGHT; mm_writedata <= SCALER_OUT_H; end
+                                4'd1: begin s0_address <= SCL_BASE | SCL_IN_HEIGHT;  s0_writedata <= SCALER_IN_H;  end
+                                4'd2: begin s0_address <= SCL_BASE | SCL_OUT_WIDTH;  s0_writedata <= SCALER_OUT_W; end
+                                4'd3: begin s0_address <= SCL_BASE | SCL_OUT_HEIGHT; s0_writedata <= SCALER_OUT_H; end
                                 default: ;
                             endcase
                         end
@@ -425,21 +364,21 @@ module top #(
                 end
 
                 // ==============================================================
-                // CRS ? 2 writes via unified mm_bridge
+                // CRS ? 2 writes via s0
                 // ==============================================================
                 ST_CONFIG_CRS: begin
-                    mm_write <= 1'b1;
-                    if (mm_write && !mm_waitrequest) begin
+                    s0_write <= 1'b1;
+                    if (s0_write && !s0_waitrequest) begin
                         if (cfg_step == 4'd1) begin
-                            mm_write      <= 1'b0;
+                            s0_write      <= 1'b0;
                             cfg_step      <= 4'd0;
-                            mm_address    <= CSC_BASE | CSC_COEFF_A0;
-                            mm_writedata  <= csc_a0;
+                            s0_address    <= CSC_BASE | CSC_COEFF_A0;
+                            s0_writedata  <= csc_a0;
                             current_state <= ST_CONFIG_CSC;
                         end else begin
                             cfg_step <= cfg_step + 1'b1;
                             case (cfg_step + 1'b1)
-                                4'd1: begin mm_address <= CRS_BASE | CRS_COMMIT; mm_writedata <= 32'h1; end
+                                4'd1: begin s0_address <= CRS_BASE | CRS_COMMIT; s0_writedata <= 32'h1; end
                                 default: ;
                             endcase
                         end
@@ -447,38 +386,38 @@ module top #(
                 end
 
                 // ==============================================================
-                // CSC ? 14 writes via unified mm_bridge
+                // CSC ? 14 writes via s0
                 // ==============================================================
                 ST_CONFIG_CSC: begin
-                    mm_write <= 1'b1;
-                    if (mm_write && !mm_waitrequest) begin
+                    s0_write <= 1'b1;
+                    if (s0_write && !s0_waitrequest) begin
                         if (cfg_step == 4'd13) begin
-                            mm_write      <= 1'b0;
-                            cfg_step      <= 4'd0;
-                            //current_state <= ST_POLL_CSC;
-                               if (INPUT_SEL) begin
-       			 pc1_addr      <= PC1_ADDR_WIDTH;
-        			pc1_wdata     <= IMG_WIDTH;
-        			current_state <= ST_CONFIG_PC1;
-    				end else begin
-        			current_state <= ST_POLL_CSC;
-    				end
+                            s0_write  <= 1'b0;
+                            cfg_step  <= 4'd0;
+                            if (INPUT_SEL) begin
+                                pc1_addr      <= PC1_ADDR_WIDTH;
+                                pc1_wdata     <= IMG_WIDTH;
+                                current_state <= ST_CONFIG_PC1;
+                            end else begin
+                                //current_state <= ST_POLL_CSC;
+                                  current_state <= ST_WORKING;
+                            end
                         end else begin
                             cfg_step <= cfg_step + 1'b1;
                             case (cfg_step + 1'b1)
-                                4'd1:  begin mm_address <= CSC_BASE | CSC_COEFF_A1;   mm_writedata <= csc_a1;       end
-                                4'd2:  begin mm_address <= CSC_BASE | CSC_COEFF_A2;   mm_writedata <= csc_a2;       end
-                                4'd3:  begin mm_address <= CSC_BASE | CSC_COEFF_B0;   mm_writedata <= csc_b0;       end
-                                4'd4:  begin mm_address <= CSC_BASE | CSC_COEFF_B1;   mm_writedata <= csc_b1;       end
-                                4'd5:  begin mm_address <= CSC_BASE | CSC_COEFF_B2;   mm_writedata <= csc_b2;       end
-                                4'd6:  begin mm_address <= CSC_BASE | CSC_COEFF_C0;   mm_writedata <= csc_c0;       end
-                                4'd7:  begin mm_address <= CSC_BASE | CSC_COEFF_C1;   mm_writedata <= csc_c1;       end
-                                4'd8:  begin mm_address <= CSC_BASE | CSC_COEFF_C2;   mm_writedata <= csc_c2;       end
-                                4'd9:  begin mm_address <= CSC_BASE | CSC_SUMMAND_S0; mm_writedata <= csc_s0;       end
-                                4'd10: begin mm_address <= CSC_BASE | CSC_SUMMAND_S1; mm_writedata <= csc_s1;       end
-                                4'd11: begin mm_address <= CSC_BASE | CSC_SUMMAND_S2; mm_writedata <= csc_s2;       end
-                                4'd12: begin mm_address <= CSC_BASE | CSC_OUT_CS;     mm_writedata <= csc_out_cs;   end
-                                4'd13: begin mm_address <= CSC_BASE | CSC_COMMIT;     mm_writedata <= 32'hFFFFFFFF; end
+                                4'd1:  begin s0_address <= CSC_BASE | CSC_COEFF_A1;   s0_writedata <= csc_a1;       end
+                                4'd2:  begin s0_address <= CSC_BASE | CSC_COEFF_A2;   s0_writedata <= csc_a2;       end
+                                4'd3:  begin s0_address <= CSC_BASE | CSC_COEFF_B0;   s0_writedata <= csc_b0;       end
+                                4'd4:  begin s0_address <= CSC_BASE | CSC_COEFF_B1;   s0_writedata <= csc_b1;       end
+                                4'd5:  begin s0_address <= CSC_BASE | CSC_COEFF_B2;   s0_writedata <= csc_b2;       end
+                                4'd6:  begin s0_address <= CSC_BASE | CSC_COEFF_C0;   s0_writedata <= csc_c0;       end
+                                4'd7:  begin s0_address <= CSC_BASE | CSC_COEFF_C1;   s0_writedata <= csc_c1;       end
+                                4'd8:  begin s0_address <= CSC_BASE | CSC_COEFF_C2;   s0_writedata <= csc_c2;       end
+                                4'd9:  begin s0_address <= CSC_BASE | CSC_SUMMAND_S0; s0_writedata <= csc_s0;       end
+                                4'd10: begin s0_address <= CSC_BASE | CSC_SUMMAND_S1; s0_writedata <= csc_s1;       end
+                                4'd11: begin s0_address <= CSC_BASE | CSC_SUMMAND_S2; s0_writedata <= csc_s2;       end
+                                4'd12: begin s0_address <= CSC_BASE | CSC_OUT_CS;     s0_writedata <= csc_out_cs;   end
+                                4'd13: begin s0_address <= CSC_BASE | CSC_COMMIT;     s0_writedata <= 32'hFFFFFFFF; end
                                 default: ;
                             endcase
                         end
@@ -486,28 +425,21 @@ module top #(
                 end
 
                 // ==============================================================
-                // Poll CSC STATUS bit[1] until 0 (commit absorbed)
+                // Poll CSC STATUS bit[1] until 0 ? TPG mode only
                 // ==============================================================
                 ST_POLL_CSC: begin
                     if (cfg_step == 4'd0) begin
-                        mm_read    <= 1'b1;
-                        mm_address <= CSC_BASE | CSC_STATUS;
-                        if (!mm_waitrequest) begin
-                            mm_read  <= 1'b0;
+                        s0_read    <= 1'b1;
+                        s0_address <= CSC_BASE | CSC_STATUS;
+                        if (!s0_waitrequest) begin
+                            s0_read  <= 1'b0;
                             cfg_step <= 4'd1;
                         end
                     end else begin
-                        if (mm_readdatavalid) begin
+                        if (s0_readdatavalid) begin
                             cfg_step <= 4'd0;
-                            if (mm_readdata[1] == 1'b0) begin
-                                if (INPUT_SEL) begin
-                                    pc1_addr      <= PC1_ADDR_WIDTH;
-                                    pc1_wdata     <= IMG_WIDTH;
-                                    current_state <= ST_CONFIG_PC1;
-                                end else begin
-                                    current_state <= ST_WORKING;
-                                end
-                            end
+                            if (s0_readdata[1] == 1'b0)
+                                current_state <= ST_WORKING;
                             // else re-poll
                         end
                     end
@@ -539,7 +471,7 @@ module top #(
 
                 // ==============================================================
                 ST_WORKING: begin
-                    mm_write  <= 1'b0; mm_read   <= 1'b0;
+                    s0_write  <= 1'b0; s0_read   <= 1'b0;
                     tpg_write <= 1'b0; tpg_read  <= 1'b0;
                     pc1_write <= 1'b0;
                 end
@@ -553,8 +485,9 @@ module top #(
     // =========================================================================
     // Data gate
     // =========================================================================
-    //wire ready_to_start = (current_state >= ST_CONFIG_CSC);
-    wire ready_to_start = INPUT_SEL ? (current_state == ST_WORKING) : (current_state >= ST_CONFIG_CSC);
+    //wire ready_to_start = INPUT_SEL ? (current_state == ST_WORKING)
+       //                             : (current_state >= ST_CONFIG_CSC);
+    wire ready_to_start = (current_state == ST_WORKING);
     wire [23:0] tpg_out_tdata;  wire tpg_out_tvalid, tpg_out_tlast; wire [2:0] tpg_out_tuser;
     wire [23:0] pc1_out_tdata;  wire pc1_out_tvalid, pc1_out_tlast; wire [2:0] pc1_out_tuser;
 
@@ -573,24 +506,27 @@ module top #(
     wire [23:0] pc_out_tdata;   wire pc_out_tvalid,   pc_out_tready,   pc_out_tlast;   wire [2:0] pc_out_tuser;
 
     // =========================================================================
-    // Pipeline instantiation ? identical to original top.v
+    // Pipeline instantiation
     // =========================================================================
     pipeline u_pipeline (
         .clk_clk     (clk),
         .reset_reset (reset),
 
+        // TPG output
         .intel_vvp_tpg_0_axi4s_vid_out_tdata  (tpg_out_tdata),
         .intel_vvp_tpg_0_axi4s_vid_out_tvalid (tpg_out_tvalid),
         .intel_vvp_tpg_0_axi4s_vid_out_tready (tpg_out_tready),
         .intel_vvp_tpg_0_axi4s_vid_out_tlast  (tpg_out_tlast),
         .intel_vvp_tpg_0_axi4s_vid_out_tuser  (tpg_out_tuser),
 
+        // DIL input
         .intel_vvp_dil_0_axi4s_vid_in_tdata   (dil_in_tdata),
         .intel_vvp_dil_0_axi4s_vid_in_tvalid  (dil_in_tvalid),
         .intel_vvp_dil_0_axi4s_vid_in_tready  (dil_in_tready),
         .intel_vvp_dil_0_axi4s_vid_in_tlast   (dil_in_tlast),
         .intel_vvp_dil_0_axi4s_vid_in_tuser   (dil_in_tuser),
 
+        // DIL output ? CRS input
         .intel_vvp_dil_0_axi4s_vid_out_tdata  (dil_out_tdata),
         .intel_vvp_dil_0_axi4s_vid_out_tvalid (dil_out_tvalid),
         .intel_vvp_dil_0_axi4s_vid_out_tready (dil_out_tready),
@@ -603,6 +539,7 @@ module top #(
         .intel_vvp_crs_0_axi4s_vid_in_tlast   (dil_out_tlast),
         .intel_vvp_crs_0_axi4s_vid_in_tuser   (dil_out_tuser),
 
+        // CRS output ? CSC input
         .intel_vvp_crs_0_axi4s_vid_out_tdata  (crs_out_tdata),
         .intel_vvp_crs_0_axi4s_vid_out_tvalid (crs_out_tvalid),
         .intel_vvp_crs_0_axi4s_vid_out_tready (crs_out_tready),
@@ -615,6 +552,7 @@ module top #(
         .intel_vvp_csc_0_axi4s_vid_in_tlast   (crs_out_tlast),
         .intel_vvp_csc_0_axi4s_vid_in_tuser   (crs_out_tuser),
 
+        // CSC output ? Clipper input
         .intel_vvp_csc_0_axi4s_vid_out_tdata  (csc_out_tdata),
         .intel_vvp_csc_0_axi4s_vid_out_tvalid (csc_out_tvalid),
         .intel_vvp_csc_0_axi4s_vid_out_tready (csc_out_tready | (current_state == ST_POLL_CSC)),
@@ -627,6 +565,7 @@ module top #(
         .intel_vvp_clipper_0_axi4s_vid_in_tlast   (csc_out_tlast),
         .intel_vvp_clipper_0_axi4s_vid_in_tuser   (csc_out_tuser),
 
+        // Clipper output ? PC0 ? Scaler
         .intel_vvp_clipper_0_axi4s_vid_out_tdata  (clip_out_tdata),
         .intel_vvp_clipper_0_axi4s_vid_out_tvalid (clip_out_tvalid),
         .intel_vvp_clipper_0_axi4s_vid_out_tready (clip_out_tready),
@@ -657,7 +596,7 @@ module top #(
         .intel_vvp_scaler_0_axi4s_vid_out_tlast  (out_tlast),
         .intel_vvp_scaler_0_axi4s_vid_out_tuser  (out_tuser),
 
-        // TPG Avalon-MM ? dedicated port
+        // TPG Avalon-MM ? dedicated
         .intel_vvp_tpg_0_av_mm_control_agent_address       (tpg_addr),
         .intel_vvp_tpg_0_av_mm_control_agent_write         (tpg_write),
         .intel_vvp_tpg_0_av_mm_control_agent_read          (tpg_read),
@@ -667,47 +606,7 @@ module top #(
         .intel_vvp_tpg_0_av_mm_control_agent_readdatavalid (tpg_readdatavalid),
         .intel_vvp_tpg_0_av_mm_control_agent_waitrequest   (tpg_wait),
 
-        // Clipper Avalon-MM ? via mm_bridge
-        .intel_vvp_clipper_0_av_mm_control_agent_address       (clip_address),
-        .intel_vvp_clipper_0_av_mm_control_agent_write         (clip_write_w),
-        .intel_vvp_clipper_0_av_mm_control_agent_read          (clip_read_w),
-        .intel_vvp_clipper_0_av_mm_control_agent_byteenable    (4'hF),
-        .intel_vvp_clipper_0_av_mm_control_agent_writedata     (clip_writedata),
-        .intel_vvp_clipper_0_av_mm_control_agent_readdata      (clip_readdata),
-        .intel_vvp_clipper_0_av_mm_control_agent_readdatavalid (clip_readdatavalid),
-        .intel_vvp_clipper_0_av_mm_control_agent_waitrequest   (clip_waitrequest),
-
-        // CRS Avalon-MM ? via mm_bridge
-        .intel_vvp_crs_0_av_mm_control_agent_address       (crs_address),
-        .intel_vvp_crs_0_av_mm_control_agent_write         (crs_write_w),
-        .intel_vvp_crs_0_av_mm_control_agent_read          (crs_read_w),
-        .intel_vvp_crs_0_av_mm_control_agent_byteenable    (4'hF),
-        .intel_vvp_crs_0_av_mm_control_agent_writedata     (crs_writedata),
-        .intel_vvp_crs_0_av_mm_control_agent_readdata      (crs_readdata),
-        .intel_vvp_crs_0_av_mm_control_agent_readdatavalid (crs_readdatavalid),
-        .intel_vvp_crs_0_av_mm_control_agent_waitrequest   (crs_waitrequest),
-
-        // CSC Avalon-MM ? via mm_bridge
-        .intel_vvp_csc_0_av_mm_control_agent_address       (csc_address),
-        .intel_vvp_csc_0_av_mm_control_agent_write         (csc_write_w),
-        .intel_vvp_csc_0_av_mm_control_agent_read          (csc_read_w),
-        .intel_vvp_csc_0_av_mm_control_agent_byteenable    (4'hF),
-        .intel_vvp_csc_0_av_mm_control_agent_writedata     (csc_writedata),
-        .intel_vvp_csc_0_av_mm_control_agent_readdata      (csc_readdata),
-        .intel_vvp_csc_0_av_mm_control_agent_readdatavalid (csc_readdatavalid),
-        .intel_vvp_csc_0_av_mm_control_agent_waitrequest   (csc_waitrequest),
-
-        // Scaler Avalon-MM ? via mm_bridge
-        .intel_vvp_scaler_0_av_mm_control_agent_address       (scl_address),
-        .intel_vvp_scaler_0_av_mm_control_agent_write         (scl_write_w),
-        .intel_vvp_scaler_0_av_mm_control_agent_read          (scl_read_w),
-        .intel_vvp_scaler_0_av_mm_control_agent_byteenable    (4'hF),
-        .intel_vvp_scaler_0_av_mm_control_agent_writedata     (scl_writedata),
-        .intel_vvp_scaler_0_av_mm_control_agent_readdata      (scl_readdata),
-        .intel_vvp_scaler_0_av_mm_control_agent_readdatavalid (scl_readdatavalid),
-        .intel_vvp_scaler_0_av_mm_control_agent_waitrequest   (scl_waitrequest),
-
-        // PC1 Avalon-MM ? dedicated port
+        // PC1 Avalon-MM ? dedicated
         .intel_vvp_protocol_conv_1_axi4s_vid_in_tdata  (pc1_in_tdata),
         .intel_vvp_protocol_conv_1_axi4s_vid_in_tvalid (pc1_in_tvalid),
         .intel_vvp_protocol_conv_1_axi4s_vid_in_tready (pc1_in_tready),
@@ -727,7 +626,19 @@ module top #(
         .intel_vvp_protocol_conv_1_av_mm_control_agent_writedata     (pc1_wdata),
         .intel_vvp_protocol_conv_1_av_mm_control_agent_readdata      (),
         .intel_vvp_protocol_conv_1_av_mm_control_agent_readdatavalid (),
-        .intel_vvp_protocol_conv_1_av_mm_control_agent_waitrequest   (pc1_wait)
+        .intel_vvp_protocol_conv_1_av_mm_control_agent_waitrequest   (pc1_wait),
+
+        // s0 ? unified MM bridge (Platform Designer mm_bridge_0)
+        .s0_address      (s0_address),
+        .s0_write        (s0_write),
+        .s0_read         (s0_read),
+        .s0_writedata    (s0_writedata),
+        .s0_readdata     (s0_readdata),
+        .s0_readdatavalid(s0_readdatavalid),
+        .s0_waitrequest  (s0_waitrequest),
+        .s0_byteenable   (4'hF),
+        .s0_burstcount   (1'b1),
+        .s0_debugaccess  (1'b0)
     );
 
 endmodule

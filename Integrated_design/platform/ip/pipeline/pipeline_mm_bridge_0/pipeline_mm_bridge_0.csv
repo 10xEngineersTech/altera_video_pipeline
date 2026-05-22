@@ -1,0 +1,20 @@
+# system info pipeline_mm_bridge_0 on 2026.05.21.17:14:21
+system_info:
+name,value
+DEVICE,10CX220YF780I5G
+DEVICE_FAMILY,Cyclone 10 GX
+GENERATION_ID,0
+#
+#
+# Files generated for pipeline_mm_bridge_0 on 2026.05.21.17:14:21
+files:
+filepath,kind,attributes,module,is_top
+sim/pipeline_mm_bridge_0.v,VERILOG,CONTAINS_INLINE_CONFIGURATION,pipeline_mm_bridge_0,true
+altera_avalon_mm_bridge_2010/sim/pipeline_mm_bridge_0_altera_avalon_mm_bridge_2010_tex5a4i.v,VERILOG,,pipeline_mm_bridge_0_altera_avalon_mm_bridge_2010_tex5a4i,false
+altera_avalon_mm_bridge_2010/sim/altera_merlin_waitrequest_adapter.v,VERILOG,,pipeline_mm_bridge_0_altera_avalon_mm_bridge_2010_tex5a4i,false
+altera_avalon_mm_bridge_2010/sim/altera_avalon_sc_fifo.v,VERILOG,,pipeline_mm_bridge_0_altera_avalon_mm_bridge_2010_tex5a4i,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+pipeline_mm_bridge_0.mm_bridge_0,pipeline_mm_bridge_0_altera_avalon_mm_bridge_2010_tex5a4i

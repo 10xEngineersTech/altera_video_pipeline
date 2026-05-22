@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file
+   path="altera_avalon_mm_bridge_2010/sim/pipeline_mm_bridge_0_altera_avalon_mm_bridge_2010_tex5a4i.v"
+   type="VERILOG"
+   library="altera_avalon_mm_bridge_2010" />
+ <file
+   path="altera_avalon_mm_bridge_2010/sim/altera_merlin_waitrequest_adapter.v"
+   type="VERILOG"
+   library="altera_avalon_mm_bridge_2010" />
+ <file
+   path="altera_avalon_mm_bridge_2010/sim/altera_avalon_sc_fifo.v"
+   type="VERILOG"
+   library="altera_avalon_mm_bridge_2010" />
+ <file
+   path="sim/pipeline_mm_bridge_0.v"
+   type="VERILOG"
+   library="pipeline_mm_bridge_0"
+   hasInlineConfiguration="true" />
+ <topLevel name="pipeline_mm_bridge_0.pipeline_mm_bridge_0" />
+ <deviceFamily name="cyclone10gx" />
+ <device name="10CX220YF780I5G" />
+</simPackage>

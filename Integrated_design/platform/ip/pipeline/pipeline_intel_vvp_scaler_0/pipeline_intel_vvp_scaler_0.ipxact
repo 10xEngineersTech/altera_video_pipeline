@@ -1228,6 +1228,254 @@
                 </ipxact:vendorExtensions>
             </ipxact:file>
             <ipxact:file>
+                <ipxact:name>intel_vvp_vert_scaler_algo_comp_2451/synth/intel_mtm_common_pkg.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_common_pkg.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_scaler_pkg.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_add_tree.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_mult.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_2_mult_add.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_3_mult_add.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_4_mult_add.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_mult_add.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_pipelined_mux.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_edge_pad.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_mirror.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_axi_zero_pad.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_axi_zero_strip.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_axi_pipeline_stage.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_axi_master.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_vert_scaler_algo_comp_2451/synth/src_hdl/intel_vvp_vert_scaler_algo_comp_bl.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_vert_scaler_algo_comp_2451/synth/src_hdl/intel_vvp_vert_scaler_algo_comp_coeff.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_vert_scaler_algo_comp_2451/synth/src_hdl/intel_vvp_vert_scaler_algo_comp.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_vert_scaler_algo_comp_2451/synth/src_hdl/intel_vvp_vert_scaler_algo_comp_meminit.qip</ipxact:name>
+                <ipxact:fileType>unknown</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_vert_scaler_algo_comp_2451/synth/src_hdl/intel_vvp_vert_scaler_algo_comp.ocp</ipxact:name>
+                <ipxact:fileType>unknown</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_vert_scaler_algo_comp_2451/synth/pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ahpctzi.v</ipxact:name>
+                <ipxact:fileType>verilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_vert_scaler_algo_comp_2451/synth/src_hdl/pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ahpctzi_coeff.mif</ipxact:name>
+                <ipxact:fileType user="MIF">user</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_round_sat_algo_comp_2450/synth/intel_mtm_common_pkg.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_round_sat_algo_comp_2450/synth/intel_vvp_common_pkg.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_round_sat_algo_comp_2450/synth/intel_vvp_round_sat.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_round_sat_algo_comp_2450/synth/intel_vvp_axi_zero_pad.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_round_sat_algo_comp_2450/synth/intel_vvp_axi_zero_strip.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_round_sat_algo_comp_2450/synth/intel_vvp_axi_pipeline_stage.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_round_sat_algo_comp_2450/synth/intel_vvp_axi_master.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_round_sat_algo_comp_2450/synth/src_hdl/intel_vvp_round_sat_algo_comp.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
                 <ipxact:name>intel_vvp_reset_bridge_2440/synth/src_hdl/intel_vvp_reset_bridge.sv</ipxact:name>
                 <ipxact:fileType>systemVerilogSource</ipxact:fileType>
                 <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
@@ -1652,7 +1900,7 @@
                 </ipxact:vendorExtensions>
             </ipxact:file>
             <ipxact:file>
-                <ipxact:name>intel_vvp_horiz_scaler_algo_comp_2451/synth/pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_npk6mki.v</ipxact:name>
+                <ipxact:name>intel_vvp_horiz_scaler_algo_comp_2451/synth/pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_rubpkpq.v</ipxact:name>
                 <ipxact:fileType>verilogSource</ipxact:fileType>
                 <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
                 <ipxact:vendorExtensions>
@@ -1660,7 +1908,15 @@
                 </ipxact:vendorExtensions>
             </ipxact:file>
             <ipxact:file>
-                <ipxact:name>intel_vvp_scaler_h_macro_2451/synth/pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_7xdsdlq.v</ipxact:name>
+                <ipxact:name>intel_vvp_horiz_scaler_algo_comp_2451/synth/src_hdl/pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_rubpkpq_coeff.mif</ipxact:name>
+                <ipxact:fileType user="MIF">user</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline_intel_vvp_scaler_0</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>intel_vvp_scaler_h_macro_2451/synth/pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_cmv7q4q.v</ipxact:name>
                 <ipxact:fileType>verilogSource</ipxact:fileType>
                 <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
                 <ipxact:vendorExtensions>
@@ -1684,7 +1940,7 @@
                 </ipxact:vendorExtensions>
             </ipxact:file>
             <ipxact:file>
-                <ipxact:name>intel_vvp_ro_reg_servicer_2441/synth/pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_shbm2aq.sv</ipxact:name>
+                <ipxact:name>intel_vvp_ro_reg_servicer_2441/synth/pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_ahjqq6i.sv</ipxact:name>
                 <ipxact:fileType>systemVerilogSource</ipxact:fileType>
                 <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
                 <ipxact:vendorExtensions>
@@ -1732,7 +1988,7 @@
                 </ipxact:vendorExtensions>
             </ipxact:file>
             <ipxact:file>
-                <ipxact:name>intel_vvp_slave_front_end_2441/synth/pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_5acy5eq.v</ipxact:name>
+                <ipxact:name>intel_vvp_slave_front_end_2441/synth/pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_p3fkffy.v</ipxact:name>
                 <ipxact:fileType>verilogSource</ipxact:fileType>
                 <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
                 <ipxact:vendorExtensions>
@@ -1748,7 +2004,7 @@
                 </ipxact:vendorExtensions>
             </ipxact:file>
             <ipxact:file>
-                <ipxact:name>intel_vvp_scaler_2451/synth/pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_z7wmuia.v</ipxact:name>
+                <ipxact:name>intel_vvp_scaler_2451/synth/pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_s5qlaoq.v</ipxact:name>
                 <ipxact:fileType>verilogSource</ipxact:fileType>
                 <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
                 <ipxact:vendorExtensions>

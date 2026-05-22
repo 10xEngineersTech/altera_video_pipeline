@@ -986,6 +986,8 @@ https://fpgasoftware.intel.com/eula.-->
       </ipxact:parameters>
     </altera:altera_system_parameters>
     <altera:altera_interface_boundary>
+      <altera:interface_mapping altera:name="av_mm_mem_read_host" altera:internal="intel_vvp_dil_0.av_mm_mem_read_host"></altera:interface_mapping>
+      <altera:interface_mapping altera:name="av_mm_mem_write_host" altera:internal="intel_vvp_dil_0.av_mm_mem_write_host"></altera:interface_mapping>
       <altera:interface_mapping altera:name="axi4s_vid_in" altera:internal="intel_vvp_dil_0.axi4s_vid_in" altera:type="axi4stream" altera:dir="end">
         <altera:port_mapping altera:name="axi4s_vid_in_tdata" altera:internal="axi4s_vid_in_tdata"></altera:port_mapping>
         <altera:port_mapping altera:name="axi4s_vid_in_tlast" altera:internal="axi4s_vid_in_tlast"></altera:port_mapping>
@@ -1006,6 +1008,8 @@ https://fpgasoftware.intel.com/eula.-->
       <altera:interface_mapping altera:name="main_reset" altera:internal="intel_vvp_dil_0.main_reset" altera:type="reset" altera:dir="end">
         <altera:port_mapping altera:name="main_reset_reset" altera:internal="main_reset_reset"></altera:port_mapping>
       </altera:interface_mapping>
+      <altera:interface_mapping altera:name="mem_clock" altera:internal="intel_vvp_dil_0.mem_clock"></altera:interface_mapping>
+      <altera:interface_mapping altera:name="mem_reset" altera:internal="intel_vvp_dil_0.mem_reset"></altera:interface_mapping>
     </altera:altera_interface_boundary>
     <altera:altera_has_warnings>false</altera:altera_has_warnings>
     <altera:altera_has_errors>false</altera:altera_has_errors>

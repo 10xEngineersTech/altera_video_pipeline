@@ -1056,17 +1056,17 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="RUNTIME_LOAD" type="int">
           <ipxact:name>RUNTIME_LOAD</ipxact:name>
           <ipxact:displayName>Update coefficients at runtime</ipxact:displayName>
-          <ipxact:value>1</ipxact:value>
+          <ipxact:value>0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="MEM_INIT" type="int">
           <ipxact:name>MEM_INIT</ipxact:name>
           <ipxact:displayName>Initialise coefficients at startup</ipxact:displayName>
-          <ipxact:value>0</ipxact:value>
+          <ipxact:value>1</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="ALGORITHM" type="string">
           <ipxact:name>ALGORITHM</ipxact:name>
           <ipxact:displayName>Scaling algorithm</ipxact:displayName>
-          <ipxact:value>NEAREST_NEIGHBOUR</ipxact:value>
+          <ipxact:value>POLYPHASE</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="EDGE_MIRROR" type="string">
           <ipxact:name>EDGE_MIRROR</ipxact:name>
@@ -1091,12 +1091,12 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="V_TAPS" type="int">
           <ipxact:name>V_TAPS</ipxact:name>
           <ipxact:displayName>Number of vertical taps</ipxact:displayName>
-          <ipxact:value>4</ipxact:value>
+          <ipxact:value>6</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="V_PHASES" type="int">
           <ipxact:name>V_PHASES</ipxact:name>
           <ipxact:displayName>Number of vertical phases</ipxact:displayName>
-          <ipxact:value>16</ipxact:value>
+          <ipxact:value>64</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="V_BANKS" type="int">
           <ipxact:name>V_BANKS</ipxact:name>
@@ -1151,12 +1151,12 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="H_TAPS" type="int">
           <ipxact:name>H_TAPS</ipxact:name>
           <ipxact:displayName>Number of horizontal taps</ipxact:displayName>
-          <ipxact:value>4</ipxact:value>
+          <ipxact:value>6</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="H_PHASES" type="int">
           <ipxact:name>H_PHASES</ipxact:name>
           <ipxact:displayName>Number of horizontal phases</ipxact:displayName>
-          <ipxact:value>16</ipxact:value>
+          <ipxact:value>64</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="H_BANKS" type="int">
           <ipxact:name>H_BANKS</ipxact:name>

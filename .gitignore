@@ -1,0 +1,37 @@
+# Generated Platform Designer files
+Integrated_design/platform/pipeline/
+Integrated_design/platform/ip/pipeline/pipeline_clock_in/
+Integrated_design/platform/ip/pipeline/pipeline_reset_in/
+Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_tpg_0/
+Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/
+Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_pipeline2_0/
+Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_tpg_1/
+Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0.ip
+Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_1.ip
+Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_tpg_1.ip
+Integrated_design/platform/.qsys_edit/
+Integrated_design/platform/pipeline.qsys.legacy
+
+# Deleted old flat IP files (no longer needed)
+Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_clipper_0.ip
+Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_crs_0.ip
+Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_csc_0.ip
+Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_dil_0.ip
+Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_1.ip
+Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_scaler_0.ip
+
+# Simulation outputs
+Integrated_design/platform/pipeline/sim/mentor/libraries/
+Integrated_design/platform/pipeline/sim/mentor/modelsim.ini
+Integrated_design/platform/pipeline/sim/mentor/run_sim.do
+Integrated_design/platform/pipeline/sim/mentor/vsim.wlf
+Integrated_design/platform/pipeline/sim/mentor/*.mif
+Integrated_design/platform/pipeline/sim/mentor/*.ver
+Integrated_design/app/sc_data.txt
+Integrated_design/app/result.png
+Integrated_design/app/tpg.png
+Integrated_design/app/transcript
+
+# Quartus generated
+Integrated_design/quartus/qdb/
+Integrated_design/quartus/system.qsf

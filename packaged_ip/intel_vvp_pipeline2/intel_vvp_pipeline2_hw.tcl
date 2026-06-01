@@ -1067,7 +1067,7 @@ proc compose {} {
     set_instance_parameter_value reset_in SYNC_RESET        0
     add_connection clock_in.out_clk reset_in.clk
  
-    # ?? MM bridge (byte addressed, 11-bit = 2KB = covers 5 IPs � 512B) ????
+    # ?? MM bridge (byte addressed, 11-bit = 2KB = covers 5 IPs ? 512B) ????
     if {$need_mm} {
         add_instance mm_bridge_0 altera_avalon_mm_bridge 20.1.0
         set_instance_parameter_value mm_bridge_0 DATA_WIDTH            32

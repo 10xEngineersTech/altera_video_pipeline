@@ -558,7 +558,6 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:fileSetRef>
           <ipxact:localName>QUARTUS_SYNTH</ipxact:localName>
         </ipxact:fileSetRef>
-        <ipxact:parameters></ipxact:parameters>
       </ipxact:componentInstantiation>
     </ipxact:instantiations>
     <ipxact:ports>
@@ -566,7 +565,6 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:name>main_clock_clk</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -579,7 +577,6 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:name>main_reset_reset</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -610,7 +607,6 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:name>axi4s_vid_out_tvalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -623,7 +619,6 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:name>axi4s_vid_out_tready</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -636,7 +631,6 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:name>axi4s_vid_out_tlast</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -685,7 +679,6 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:name>av_mm_control_agent_write</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -734,7 +727,6 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:name>av_mm_control_agent_read</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -765,7 +757,6 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:name>av_mm_control_agent_readdatavalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -778,7 +769,6 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:name>av_mm_control_agent_waitrequest</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -856,12 +846,12 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="FIXED_WIDTH" type="int">
           <ipxact:name>FIXED_WIDTH</ipxact:name>
           <ipxact:displayName>Fixed frame width</ipxact:displayName>
-          <ipxact:value>32</ipxact:value>
+          <ipxact:value>16384</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="FIXED_HEIGHT" type="int">
           <ipxact:name>FIXED_HEIGHT</ipxact:name>
           <ipxact:displayName>Fixed frame height</ipxact:displayName>
-          <ipxact:value>32</ipxact:value>
+          <ipxact:value>16384</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="FIXED_R_CR" type="int">
           <ipxact:name>FIXED_R_CR</ipxact:name>
@@ -1142,17 +1132,6 @@ https://fpgasoftware.intel.com/eula.-->
           <ipxact:displayName>bonusData</ipxact:displayName>
           <ipxact:value>bonusData 
 {
-   element $system
-   {
-      datum _originalDeviceFamily
-      {
-         value = "Cyclone 10 GX";
-         type = "String";
-      }
-   }
-   element intel_vvp_tpg_0
-   {
-   }
 }
 </ipxact:value>
         </ipxact:parameter>

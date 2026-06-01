@@ -1,13 +1,27 @@
 `timescale 1 ns / 1 ps
 
 module tb();
+    `include "../app/configuration.vh"
 
-    localparam IMG_WIDTH    = 640;
-    localparam IMG_HEIGHT   = 480;
-    localparam SCALER_OUT_W = 64;
-    localparam SCALER_OUT_H = 48;
-    localparam CLK_PERIOD   = 10;
-    localparam END_TIME     = IMG_WIDTH * IMG_HEIGHT * 500;
+    // ?? Parameters from configuration.vh ?????????????????????????????????????
+    localparam IMG_WIDTH    = TPG_WIDTH;
+    localparam IMG_HEIGHT   = TPG_HEIGHT;
+    localparam IMG_COLOR    = 32'd0;
+    localparam IMG_CR_SM    = 32'd3;
+    localparam IMG_L_OFF    = CLIPPER_LEFT;
+    localparam IMG_T_OFF    = CLIPPER_TOP;
+    localparam IMG_R_OFF    = CLIPPER_RIGHT;
+    localparam IMG_B_OFF    = CLIPPER_BOTTOM;
+    localparam SCALER_OUT_W = SCALER_WIDTH;
+    localparam SCALER_OUT_H = SCALER_HEIGHT;
+    localparam TOPOLOGY     = "SCALER_ONLY";
+
+    // END_TIME: use whichever is larger ? input or output frame
+    localparam [63:0] END_TIME = (SCALER_HEIGHT * SCALER_WIDTH < TPG_WIDTH * TPG_HEIGHT) ?
+                          TPG_WIDTH * TPG_HEIGHT * 500 :
+                          SCALER_HEIGHT * SCALER_WIDTH * 500;
+
+    localparam CLK_PERIOD = 10; // 100MHz
 
     // ?? Clock and Reset ???????????????????????????????????????????????????????
     reg clk   = 0;
@@ -22,19 +36,19 @@ module tb();
     wire [2:0]  out_tuser;
     wire        frame_done;
 
-    // ?? AXI4-S Lite image input ???????????????????????????????????????????????
-    reg  [23:0] img_tdata  = 24'h0;
-    reg         img_tvalid = 1'b0;
-    wire        img_tready;
-    reg         img_tlast  = 1'b0;
-    reg  [2:0]  img_tuser  = 3'b0;
+    // ?? PC1 image input signals ???????????????????????????????????????????????
+    reg  [23:0] pc1_in_tdata  = 24'h0;
+    reg         pc1_in_tvalid = 1'b0;
+    wire        pc1_in_tready;
+    reg         pc1_in_tlast  = 1'b0;
+    reg  [2:0]  pc1_in_tuser  = 3'b000;
 
     // ?? Capture output ????????????????????????????????????????????????????????
     make_file #(
         .IMG_H    (SCALER_OUT_H),
         .IMG_W    (SCALER_OUT_W),
         .IS_FULL  (0),
-        .FILE_NAME("/mnt/ssd2/Izaan/altera_video_pipeline/Integrated_design/app/sc_data.txt")
+        .FILE_NAME("../../../../app/sc_data.txt")
     ) scaler_out (
         .clk        (clk),
         .reset      (reset),
@@ -48,23 +62,31 @@ module tb();
 
     // ?? DUT ???????????????????????????????????????????????????????????????????
     top #(
+        .TOPOLOGY    (TOPOLOGY),
+        .INPUT_SEL   (INPUT_SEL),
         .IMG_WIDTH   (IMG_WIDTH),
         .IMG_HEIGHT  (IMG_HEIGHT),
+        .IMG_COLOR   (IMG_COLOR),
+        .IMG_CR_SM   (IMG_CR_SM),
+        .IMG_L_OFF   (IMG_L_OFF),
+        .IMG_T_OFF   (IMG_T_OFF),
+        .IMG_R_OFF   (IMG_R_OFF),
+        .IMG_B_OFF   (IMG_B_OFF),
         .SCALER_OUT_W(SCALER_OUT_W),
         .SCALER_OUT_H(SCALER_OUT_H)
     ) dut (
-        .clk        (clk),
-        .reset      (reset),
-        .out_tdata  (out_tdata),
-        .out_tvalid (out_tvalid),
-        .out_tready (out_tready),
-        .out_tlast  (out_tlast),
-        .out_tuser  (out_tuser),
-        .img_tdata  (img_tdata),
-        .img_tvalid (img_tvalid),
-        .img_tready (img_tready),
-        .img_tlast  (img_tlast),
-        .img_tuser  (img_tuser)
+        .clk          (clk),
+        .reset        (reset),
+        .out_tdata    (out_tdata),
+        .out_tvalid   (out_tvalid),
+        .out_tready   (out_tready),
+        .out_tlast    (out_tlast),
+        .out_tuser    (out_tuser),
+        .pc1_in_tdata (pc1_in_tdata),
+        .pc1_in_tvalid(pc1_in_tvalid),
+        .pc1_in_tready(pc1_in_tready),
+        .pc1_in_tlast (pc1_in_tlast),
+        .pc1_in_tuser (pc1_in_tuser)
     );
 
     // ?? Stimulus ??????????????????????????????????????????????????????????????
@@ -79,50 +101,54 @@ module tb();
 
         @(posedge clk);
         out_tready = 1;
-    end
 
-    // ?? Image hex player ??????????????????????????????????????????????????????
-    reg [23:0] img_mem [0 : IMG_WIDTH * IMG_HEIGHT - 1];
-    integer px, py;
-
-    initial begin
-        $readmemh("/mnt/ssd2/Izaan/altera_video_pipeline/Integrated_design/app/image_data.txt",
-                  img_mem);
-        $display("[IMG] Image loaded (%0dx%0d).", IMG_WIDTH, IMG_HEIGHT);
-
-        wait(dut.current_state == dut.ST_WORKING);
-        repeat(5) @(posedge clk);
-
-        $display("[IMG] Sending image...");
-        @(posedge clk); #1;
-
-        for (py = 0; py < IMG_HEIGHT; py = py + 1) begin
-            for (px = 0; px < IMG_WIDTH; px = px + 1) begin
-                img_tdata  = img_mem[py * IMG_WIDTH + px];
-                img_tvalid = 1'b1;
-                // SOF on first pixel of first line
-                img_tuser  = (px == 0 && py == 0) ? 3'b001 : 3'b000;
-                // EOL on last pixel of each line
-                img_tlast  = (px == IMG_WIDTH - 1) ? 1'b1 : 1'b0;
-
-                @(posedge clk);
-                while (!img_tready) @(posedge clk);
-                #1;
-            end
-        end
-
-        img_tvalid = 1'b0;
-        img_tlast  = 1'b0;
-        img_tuser  = 3'b0;
-        $display("[IMG] Image sent.");
+        wait(out_tvalid && out_tuser[0]);
+        $display("[%0t] SOF detected.", $time);
 
         wait(frame_done);
         $display("[%0t] Frame written to sc_data.txt.", $time);
         $finish;
     end
 
+    // ?? Image hex player (INPUT_SEL=1 only) ??????????????????????????????????
+    generate
+        if (INPUT_SEL == 1'b1) begin : gen_img
+            reg [23:0] img_mem [0 : TPG_WIDTH * TPG_HEIGHT - 1];
+            integer px, py;
+
+            initial begin
+                $readmemh("../../../../app/image_data.txt", img_mem);
+                $display("[IMG] Image loaded (%0dx%0d).", TPG_WIDTH, TPG_HEIGHT);
+
+                wait(dut.current_state == dut.ST_WORKING);
+                repeat(5) @(posedge clk);
+
+                $display("[IMG] Sending image...");
+                @(posedge clk); #1;
+
+                for (py = 0; py < TPG_HEIGHT; py = py + 1) begin
+                    for (px = 0; px < TPG_WIDTH; px = px + 1) begin
+                        pc1_in_tdata  = img_mem[py * TPG_WIDTH + px];
+                        pc1_in_tvalid = 1'b1;
+                        pc1_in_tuser  = (px == 0 && py == 0) ? 3'b001 : 3'b000;
+                        pc1_in_tlast  = (px == TPG_WIDTH - 1) ? 1'b1 : 1'b0;
+
+                        @(posedge clk);
+                        while (!pc1_in_tready) @(posedge clk);
+                        #1;
+                    end
+                end
+
+                pc1_in_tvalid = 1'b0;
+                pc1_in_tlast  = 1'b0;
+                pc1_in_tuser  = 3'b000;
+                $display("[IMG] Image sent.");
+            end
+        end
+    endgenerate
+
     // ?? State trace ???????????????????????????????????????????????????????????
-    reg [3:0] last_state = 4'hF;
+    reg [4:0] last_state = 5'h1F;
     always @(posedge clk) begin
         if (!reset && dut.current_state !== last_state) begin
             $display("[%0t] STATE %0d->%0d cfg_step=%0d",

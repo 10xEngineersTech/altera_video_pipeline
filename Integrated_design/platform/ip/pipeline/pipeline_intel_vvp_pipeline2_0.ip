@@ -1423,12 +1423,12 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="CL_OUTPUT_WIDTH" type="int">
           <ipxact:name>CL_OUTPUT_WIDTH</ipxact:name>
           <ipxact:displayName>Output width</ipxact:displayName>
-          <ipxact:value>1920</ipxact:value>
+          <ipxact:value>640</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="CL_OUTPUT_HEIGHT" type="int">
           <ipxact:name>CL_OUTPUT_HEIGHT</ipxact:name>
           <ipxact:displayName>Output height</ipxact:displayName>
-          <ipxact:value>1080</ipxact:value>
+          <ipxact:value>480</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="PC0_ENABLE_YCBCR_SWAP" type="int">
           <ipxact:name>PC0_ENABLE_YCBCR_SWAP</ipxact:name>
@@ -1448,12 +1448,12 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="PC0_COLOR_SPACE" type="string">
           <ipxact:name>PC0_COLOR_SPACE</ipxact:name>
           <ipxact:displayName>Video color space</ipxact:displayName>
-          <ipxact:value>YCbCr</ipxact:value>
+          <ipxact:value>RGB</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="PC0_CHROMA_SAMPLING" type="string">
           <ipxact:name>PC0_CHROMA_SAMPLING</ipxact:name>
           <ipxact:displayName>Video chroma sampling</ipxact:displayName>
-          <ipxact:value>422</ipxact:value>
+          <ipxact:value>444</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="PC0_CHROMA_SITING" type="string">
           <ipxact:name>PC0_CHROMA_SITING</ipxact:name>
@@ -1528,12 +1528,12 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="SC_MAX_OUT_WIDTH" type="int">
           <ipxact:name>SC_MAX_OUT_WIDTH</ipxact:name>
           <ipxact:displayName>Maximum output field width</ipxact:displayName>
-          <ipxact:value>640</ipxact:value>
+          <ipxact:value>800</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SC_OUTPUT_HEIGHT" type="int">
           <ipxact:name>SC_OUTPUT_HEIGHT</ipxact:name>
           <ipxact:displayName>Output picture height (when MM off)</ipxact:displayName>
-          <ipxact:value>480</ipxact:value>
+          <ipxact:value>600</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SC_RUNTIME_CONTROL" type="int">
           <ipxact:name>SC_RUNTIME_CONTROL</ipxact:name>

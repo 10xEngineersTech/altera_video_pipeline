@@ -5,7 +5,7 @@
  version="1.0"
  fabric="QSYS">
  <!-- Format version 25.1.1 125 (Future versions may contain additional information.) -->
- <!-- 2026.05.22.15:05:09 -->
+ <!-- 2026.05.29.16:33:30 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
@@ -122,7 +122,7 @@
    name="intel_vvp_scaler_0"
    kind="intel_vvp_scaler"
    version="24.5.1"
-   entity="pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_sz4iszy"
+   entity="pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_txgpqga"
    library="intel_vvp_scaler_2451"
    path="intel_vvp_scaler_0"
    hpath="intel_vvp_scaler_0"
@@ -155,7 +155,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="NUMBER_OF_COLOR_PLANES">
    <type>int</type>
-   <value>3</value>
+   <value>2</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -171,7 +171,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="ENABLE_444">
    <type>int</type>
-   <value>1</value>
+   <value>0</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -187,7 +187,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="ENABLE_420">
    <type>int</type>
-   <value>1</value>
+   <value>0</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -421,7 +421,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>0</value>
    <derived>false</derived>
-   <enabled>true</enabled>
+   <enabled>false</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -754,7 +754,7 @@ parameters are a RESULT of the module parameters. -->
    </assignment>
    <assignment>
     <name>intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES</name>
-    <value>3</value>
+    <value>2</value>
    </assignment>
    <assignment>
     <name>intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL</name>
@@ -802,7 +802,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>axi4s_vid_in_tdata</name>
     <direction>Input</direction>
-    <width>24</width>
+    <width>16</width>
     <role>tdata</role>
    </port>
    <port>
@@ -826,7 +826,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>axi4s_vid_in_tuser</name>
     <direction>Input</direction>
-    <width>3</width>
+    <width>2</width>
     <role>tuser</role>
    </port>
   </interface>
@@ -844,7 +844,7 @@ parameters are a RESULT of the module parameters. -->
    </assignment>
    <assignment>
     <name>intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES</name>
-    <value>3</value>
+    <value>2</value>
    </assignment>
    <assignment>
     <name>intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL</name>
@@ -892,7 +892,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>axi4s_vid_out_tdata</name>
     <direction>Output</direction>
-    <width>24</width>
+    <width>16</width>
     <role>tdata</role>
    </port>
    <port>
@@ -916,7 +916,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>axi4s_vid_out_tuser</name>
     <direction>Output</direction>
-    <width>3</width>
+    <width>2</width>
     <role>tuser</role>
    </port>
   </interface>

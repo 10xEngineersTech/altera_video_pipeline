@@ -12,48 +12,48 @@ Z0 d/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Int
 valtera_reset_controller
 Z1 !s106 Intel
 2../../altera_reset_controller_1924/sim/altera_reset_controller.v
-Z2 !s110 1779444932
+!s110 1780062555
 !i10b 1
 !s100 DBkVS>o?79=N51TDO7j7[2
 IA;n?HT9:PB1@5^0E>j14C1
 R0
-Z3 w1779444311
+Z2 w1780054414
 8../../altera_reset_controller_1924/sim/altera_reset_controller.v
 F../../altera_reset_controller_1924/sim/altera_reset_controller.v
-!i122 4
+!i122 16
 L0 41 324
-Z4 VDg1SIo80bB@j0V0VzS_@n1
-Z5 OL;L;2025.1;82
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+Z4 OL;L;2025.1;82
 r1
 !s85 0
 31
-Z6 !s108 1779444932.000000
+Z5 !s108 1780062555.000000
 !s107 ../../altera_reset_controller_1924/sim/altera_reset_controller.v|
 !s90 -reportprogress|300|../../altera_reset_controller_1924/sim/altera_reset_controller.v|-work|altera_reset_controller_1924|
 !i113 0
-Z7 o-work altera_reset_controller_1924 -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-Z8 tCvgOpt 0
+Z6 o-work altera_reset_controller_1924 -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z7 tCvgOpt 0
 valtera_reset_synchronizer
 R1
 2../../altera_reset_controller_1924/sim/altera_reset_synchronizer.v
-R2
+!s110 1780062556
 !i10b 1
 !s100 gRTPP6UHcn9gYP88mFbmQ1
 I@_aTLc:VBaac`XoQiUK8>3
 R0
-R3
+R2
 8../../altera_reset_controller_1924/sim/altera_reset_synchronizer.v
 F../../altera_reset_controller_1924/sim/altera_reset_synchronizer.v
-!i122 5
+!i122 17
 L0 23 63
+R3
 R4
-R5
 r1
 !s85 0
 31
-R6
+R5
 !s107 ../../altera_reset_controller_1924/sim/altera_reset_synchronizer.v|
 !s90 -reportprogress|300|../../altera_reset_controller_1924/sim/altera_reset_synchronizer.v|-work|altera_reset_controller_1924|
 !i113 0
+R6
 R7
-R8

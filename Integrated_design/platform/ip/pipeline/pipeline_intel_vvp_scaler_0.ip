@@ -163,7 +163,7 @@ https://fpgasoftware.intel.com/eula.-->
             </ipxact:parameter>
             <ipxact:parameter parameterId="intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES" type="string">
               <ipxact:name>intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES</ipxact:name>
-              <ipxact:value>3</ipxact:value>
+              <ipxact:value>2</ipxact:value>
             </ipxact:parameter>
             <ipxact:parameter parameterId="intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL" type="string">
               <ipxact:name>intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL</ipxact:name>
@@ -253,7 +253,7 @@ https://fpgasoftware.intel.com/eula.-->
             </ipxact:parameter>
             <ipxact:parameter parameterId="intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES" type="string">
               <ipxact:name>intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES</ipxact:name>
-              <ipxact:value>3</ipxact:value>
+              <ipxact:value>2</ipxact:value>
             </ipxact:parameter>
             <ipxact:parameter parameterId="intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL" type="string">
               <ipxact:name>intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL</ipxact:name>
@@ -685,7 +685,7 @@ https://fpgasoftware.intel.com/eula.-->
           <ipxact:vectors>
             <ipxact:vector>
               <ipxact:left>0</ipxact:left>
-              <ipxact:right>23</ipxact:right>
+              <ipxact:right>15</ipxact:right>
             </ipxact:vector>
           </ipxact:vectors>
           <ipxact:wireTypeDefs>
@@ -742,7 +742,7 @@ https://fpgasoftware.intel.com/eula.-->
           <ipxact:vectors>
             <ipxact:vector>
               <ipxact:left>0</ipxact:left>
-              <ipxact:right>2</ipxact:right>
+              <ipxact:right>1</ipxact:right>
             </ipxact:vector>
           </ipxact:vectors>
           <ipxact:wireTypeDefs>
@@ -760,7 +760,7 @@ https://fpgasoftware.intel.com/eula.-->
           <ipxact:vectors>
             <ipxact:vector>
               <ipxact:left>0</ipxact:left>
-              <ipxact:right>23</ipxact:right>
+              <ipxact:right>15</ipxact:right>
             </ipxact:vector>
           </ipxact:vectors>
           <ipxact:wireTypeDefs>
@@ -817,7 +817,7 @@ https://fpgasoftware.intel.com/eula.-->
           <ipxact:vectors>
             <ipxact:vector>
               <ipxact:left>0</ipxact:left>
-              <ipxact:right>2</ipxact:right>
+              <ipxact:right>1</ipxact:right>
             </ipxact:vector>
           </ipxact:vectors>
           <ipxact:wireTypeDefs>
@@ -981,7 +981,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="NUMBER_OF_COLOR_PLANES" type="int">
           <ipxact:name>NUMBER_OF_COLOR_PLANES</ipxact:name>
           <ipxact:displayName>Number of color planes</ipxact:displayName>
-          <ipxact:value>3</ipxact:value>
+          <ipxact:value>2</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="PIXELS_IN_PARALLEL" type="int">
           <ipxact:name>PIXELS_IN_PARALLEL</ipxact:name>
@@ -991,7 +991,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="ENABLE_444" type="int">
           <ipxact:name>ENABLE_444</ipxact:name>
           <ipxact:displayName>444 chroma sampling </ipxact:displayName>
-          <ipxact:value>1</ipxact:value>
+          <ipxact:value>0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="ENABLE_422" type="int">
           <ipxact:name>ENABLE_422</ipxact:name>
@@ -1001,7 +1001,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="ENABLE_420" type="int">
           <ipxact:name>ENABLE_420</ipxact:name>
           <ipxact:displayName>420 chroma sampling</ipxact:displayName>
-          <ipxact:value>1</ipxact:value>
+          <ipxact:value>0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="RUNTIME_CONTROL" type="int">
           <ipxact:name>RUNTIME_CONTROL</ipxact:name>
@@ -1395,7 +1395,7 @@ https://fpgasoftware.intel.com/eula.-->
                     &lt;name&gt;axi4s_vid_in_tdata&lt;/name&gt;
                     &lt;role&gt;tdata&lt;/role&gt;
                     &lt;direction&gt;Input&lt;/direction&gt;
-                    &lt;width&gt;24&lt;/width&gt;
+                    &lt;width&gt;16&lt;/width&gt;
                     &lt;lowerBound&gt;0&lt;/lowerBound&gt;
                     &lt;vhdlType&gt;STD_LOGIC_VECTOR&lt;/vhdlType&gt;
                     &lt;terminationValue&gt;0&lt;/terminationValue&gt;
@@ -1431,7 +1431,7 @@ https://fpgasoftware.intel.com/eula.-->
                     &lt;name&gt;axi4s_vid_in_tuser&lt;/name&gt;
                     &lt;role&gt;tuser&lt;/role&gt;
                     &lt;direction&gt;Input&lt;/direction&gt;
-                    &lt;width&gt;3&lt;/width&gt;
+                    &lt;width&gt;2&lt;/width&gt;
                     &lt;lowerBound&gt;0&lt;/lowerBound&gt;
                     &lt;vhdlType&gt;STD_LOGIC_VECTOR&lt;/vhdlType&gt;
                     &lt;terminationValue&gt;0&lt;/terminationValue&gt;
@@ -1449,7 +1449,7 @@ https://fpgasoftware.intel.com/eula.-->
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES&lt;/key&gt;
-                        &lt;value&gt;3&lt;/value&gt;
+                        &lt;value&gt;2&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL&lt;/key&gt;
@@ -1483,7 +1483,7 @@ https://fpgasoftware.intel.com/eula.-->
                     &lt;name&gt;axi4s_vid_out_tdata&lt;/name&gt;
                     &lt;role&gt;tdata&lt;/role&gt;
                     &lt;direction&gt;Output&lt;/direction&gt;
-                    &lt;width&gt;24&lt;/width&gt;
+                    &lt;width&gt;16&lt;/width&gt;
                     &lt;lowerBound&gt;0&lt;/lowerBound&gt;
                     &lt;vhdlType&gt;STD_LOGIC_VECTOR&lt;/vhdlType&gt;
                     &lt;terminationValue&gt;0&lt;/terminationValue&gt;
@@ -1519,7 +1519,7 @@ https://fpgasoftware.intel.com/eula.-->
                     &lt;name&gt;axi4s_vid_out_tuser&lt;/name&gt;
                     &lt;role&gt;tuser&lt;/role&gt;
                     &lt;direction&gt;Output&lt;/direction&gt;
-                    &lt;width&gt;3&lt;/width&gt;
+                    &lt;width&gt;2&lt;/width&gt;
                     &lt;lowerBound&gt;0&lt;/lowerBound&gt;
                     &lt;vhdlType&gt;STD_LOGIC_VECTOR&lt;/vhdlType&gt;
                     &lt;terminationValue&gt;0&lt;/terminationValue&gt;
@@ -1537,7 +1537,7 @@ https://fpgasoftware.intel.com/eula.-->
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES&lt;/key&gt;
-                        &lt;value&gt;3&lt;/value&gt;
+                        &lt;value&gt;2&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL&lt;/key&gt;

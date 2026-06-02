@@ -49,7 +49,8 @@ module tb();
         .clk        (clk),
         .reset      (reset),
 
-        .tdata      (out_tdata),
+        //.tdata      ({0'b0,out_tdata[23:0]}),
+		  .tdata      (out_tdata),
         .tvalid     (out_tvalid),
         .tready     (out_tready & (dut.ST_WORKING == dut.current_state)),
         .tlast      (out_tlast),

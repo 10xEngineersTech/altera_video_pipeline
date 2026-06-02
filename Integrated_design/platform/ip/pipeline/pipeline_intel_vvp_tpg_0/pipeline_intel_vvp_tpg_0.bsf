@@ -82,8 +82,8 @@ on the Quartus Prime software download page.
 	(port
 		(pt 504 76)
 		(output)
-		(text "axi4s_vid_out_tdata[23..0]" (rect 0 0 106 12)(font "SansSerif" (font_size 8)))
-		(text "axi4s_vid_out_tdata[23..0]" (rect 378 65 534 76)(font "SansSerif" (font_size 8)))
+		(text "axi4s_vid_out_tdata[15..0]" (rect 0 0 105 12)(font "SansSerif" (font_size 8)))
+		(text "axi4s_vid_out_tdata[15..0]" (rect 380 65 536 76)(font "SansSerif" (font_size 8)))
 		(line (pt 504 76)(pt 306 76)(line_width 3))
 	)
 	(port
@@ -103,8 +103,8 @@ on the Quartus Prime software download page.
 	(port
 		(pt 504 176)
 		(output)
-		(text "axi4s_vid_out_tuser[2..0]" (rect 0 0 102 12)(font "SansSerif" (font_size 8)))
-		(text "axi4s_vid_out_tuser[2..0]" (rect 383 165 533 176)(font "SansSerif" (font_size 8)))
+		(text "axi4s_vid_out_tuser[1..0]" (rect 0 0 101 12)(font "SansSerif" (font_size 8)))
+		(text "axi4s_vid_out_tuser[1..0]" (rect 385 165 535 176)(font "SansSerif" (font_size 8)))
 		(line (pt 504 176)(pt 306 176)(line_width 3))
 	)
 	(port

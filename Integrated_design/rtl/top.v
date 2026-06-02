@@ -43,7 +43,8 @@ module top #(
     parameter [31:0] IMG_WIDTH      = 32'd1920,
     parameter [31:0] IMG_HEIGHT     = 32'd1080,
     parameter [31:0] IMG_COLOR      = 32'd1,
-    parameter [31:0] IMG_CR_SM      = 32'd1,
+    parameter [31:0] IMG_CR_SM      = 32'd2,
+    parameter [31:0] IMG_INTER      = 32'd8,
     parameter [31:0] IMG_L_OFF      = 32'd4,
     parameter [31:0] IMG_T_OFF      = 32'd4,
     parameter [31:0] IMG_R_OFF      = 32'd4,
@@ -57,7 +58,7 @@ module top #(
     parameter [31:0] CRS_OUTPUT_MODE = 32'd3,    // 2=YUV422, 3=YUV444
 
     // Color Space Converter (CSC)
-    parameter [2:0]  CSC_MODE        = 3'd1,
+    parameter [2:0]  CSC_MODE        = 3'd0,
     parameter [31:0] CSC_COLOR_SPACE = 32'd1,  // 0=RGB (kIntelVvpCsRgb)
 
     // Input source select: 0=TPG, 1=image.png via protocol_conv_1
@@ -294,7 +295,7 @@ module top #(
                 ST_TPG_WR_INTL: begin
                     tpg_write <= 1'b1;
                     tpg_addr  <= TPG_ADDR_INTERLACE;
-                    tpg_wdata <= 32'h0;
+                    tpg_wdata <= IMG_INTER;
                     if (!tpg_wait) begin
                         tpg_write     <= 1'b0;
                         current_state <= ST_TPG_WR_W;
@@ -334,7 +335,7 @@ module top #(
                 ST_TPG_WR_PAT_S: begin
                     tpg_write <= 1'b1;
                     tpg_addr  <= TPG_ADDR_PATTERN;
-                    tpg_wdata <= 32'd0;
+                    tpg_wdata <= 32'd1;
                     if (!tpg_wait) begin
                         tpg_write     <= 1'b0;
                         current_state <= ST_TPG_WR_CMT;
@@ -639,7 +640,7 @@ module top #(
     wire ready_to_start = (current_state >= ST_CONFIG_CSC);
 
     // TPG output wires (driven by pipeline; always running)
-    wire [23:0] tpg_out_tdata;
+    wire [15:0] tpg_out_tdata;
     wire        tpg_out_tvalid;
     wire        tpg_out_tlast;
     wire [2:0]  tpg_out_tuser;
@@ -648,14 +649,14 @@ module top #(
     wire [23:0] pc1_out_tdata;
     wire        pc1_out_tvalid;
     wire        pc1_out_tlast;
-    wire [2:0]  pc1_out_tuser;
+    wire [1:0]  pc1_out_tuser;
 
     // DIL input: mux between TPG (INPUT_SEL=0) and PC1 (INPUT_SEL=1)
-    wire [23:0] dil_in_tdata  = INPUT_SEL ? pc1_out_tdata  : tpg_out_tdata;
+    wire [23:0] dil_in_tdata  = INPUT_SEL ? pc1_out_tdata  : {8'b0,tpg_out_tdata};
     wire        dil_in_tvalid = (INPUT_SEL ? pc1_out_tvalid : tpg_out_tvalid) & ready_to_start;
     wire        dil_in_tready;                          // driven by pipeline DIL port
     wire        dil_in_tlast  = INPUT_SEL ? pc1_out_tlast  : tpg_out_tlast;
-    wire [2:0]  dil_in_tuser  = INPUT_SEL ? pc1_out_tuser  : tpg_out_tuser;
+    wire [2:0]  dil_in_tuser  = INPUT_SEL ? pc1_out_tuser  : {1'b0,tpg_out_tuser};
 
     // Back-pressure: when INPUT_SEL=1 drain the TPG so it never stalls;
     // PC1 output gets DIL back-pressure gated by ready_to_start.

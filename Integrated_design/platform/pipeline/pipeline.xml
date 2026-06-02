@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2026.05.22.15:05:17"
+ date="2026.05.29.16:33:41"
  outputDirectory="/home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/platform/pipeline/">
  <perimeter>
   <parameter
@@ -852,7 +852,7 @@
        name="intel_vvp_scaler_0_axi4s_vid_in_tdata"
        direction="input"
        role="tdata"
-       width="24" />
+       width="16" />
    <port
        name="intel_vvp_scaler_0_axi4s_vid_in_tvalid"
        direction="input"
@@ -872,7 +872,7 @@
        name="intel_vvp_scaler_0_axi4s_vid_in_tuser"
        direction="input"
        role="tuser"
-       width="3" />
+       width="2" />
   </interface>
   <interface name="intel_vvp_scaler_0_axi4s_vid_out" kind="axi4stream" start="1">
    <property name="associatedClock" value="clk" />
@@ -881,7 +881,7 @@
        name="intel_vvp_scaler_0_axi4s_vid_out_tdata"
        direction="output"
        role="tdata"
-       width="24" />
+       width="16" />
    <port
        name="intel_vvp_scaler_0_axi4s_vid_out_tvalid"
        direction="output"
@@ -901,7 +901,7 @@
        name="intel_vvp_scaler_0_axi4s_vid_out_tuser"
        direction="output"
        role="tuser"
-       width="3" />
+       width="2" />
   </interface>
   <interface name="intel_vvp_scaler_0_av_mm_control_agent" kind="avalon" start="0">
    <property name="addressAlignment" value="DYNAMIC" />
@@ -1005,7 +1005,7 @@
        name="intel_vvp_tpg_0_axi4s_vid_out_tdata"
        direction="output"
        role="tdata"
-       width="24" />
+       width="16" />
    <port
        name="intel_vvp_tpg_0_axi4s_vid_out_tvalid"
        direction="output"
@@ -1025,7 +1025,7 @@
        name="intel_vvp_tpg_0_axi4s_vid_out_tuser"
        direction="output"
        role="tuser"
-       width="3" />
+       width="2" />
   </interface>
   <interface name="intel_vvp_tpg_0_av_mm_control_agent" kind="avalon" start="0">
    <property name="addressAlignment" value="DYNAMIC" />
@@ -7783,7 +7783,7 @@
                     &lt;name&gt;axi4s_vid_in_tdata&lt;/name&gt;
                     &lt;role&gt;tdata&lt;/role&gt;
                     &lt;direction&gt;Input&lt;/direction&gt;
-                    &lt;width&gt;24&lt;/width&gt;
+                    &lt;width&gt;16&lt;/width&gt;
                     &lt;lowerBound&gt;0&lt;/lowerBound&gt;
                     &lt;vhdlType&gt;STD_LOGIC_VECTOR&lt;/vhdlType&gt;
                     &lt;terminationValue&gt;0&lt;/terminationValue&gt;
@@ -7819,7 +7819,7 @@
                     &lt;name&gt;axi4s_vid_in_tuser&lt;/name&gt;
                     &lt;role&gt;tuser&lt;/role&gt;
                     &lt;direction&gt;Input&lt;/direction&gt;
-                    &lt;width&gt;3&lt;/width&gt;
+                    &lt;width&gt;2&lt;/width&gt;
                     &lt;lowerBound&gt;0&lt;/lowerBound&gt;
                     &lt;vhdlType&gt;STD_LOGIC_VECTOR&lt;/vhdlType&gt;
                     &lt;terminationValue&gt;0&lt;/terminationValue&gt;
@@ -7837,7 +7837,7 @@
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES&lt;/key&gt;
-                        &lt;value&gt;3&lt;/value&gt;
+                        &lt;value&gt;2&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL&lt;/key&gt;
@@ -7871,7 +7871,7 @@
                     &lt;name&gt;axi4s_vid_out_tdata&lt;/name&gt;
                     &lt;role&gt;tdata&lt;/role&gt;
                     &lt;direction&gt;Output&lt;/direction&gt;
-                    &lt;width&gt;24&lt;/width&gt;
+                    &lt;width&gt;16&lt;/width&gt;
                     &lt;lowerBound&gt;0&lt;/lowerBound&gt;
                     &lt;vhdlType&gt;STD_LOGIC_VECTOR&lt;/vhdlType&gt;
                     &lt;terminationValue&gt;0&lt;/terminationValue&gt;
@@ -7907,7 +7907,7 @@
                     &lt;name&gt;axi4s_vid_out_tuser&lt;/name&gt;
                     &lt;role&gt;tuser&lt;/role&gt;
                     &lt;direction&gt;Output&lt;/direction&gt;
-                    &lt;width&gt;3&lt;/width&gt;
+                    &lt;width&gt;2&lt;/width&gt;
                     &lt;lowerBound&gt;0&lt;/lowerBound&gt;
                     &lt;vhdlType&gt;STD_LOGIC_VECTOR&lt;/vhdlType&gt;
                     &lt;terminationValue&gt;0&lt;/terminationValue&gt;
@@ -7925,7 +7925,7 @@
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES&lt;/key&gt;
-                        &lt;value&gt;3&lt;/value&gt;
+                        &lt;value&gt;2&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL&lt;/key&gt;
@@ -8341,7 +8341,7 @@
                         &lt;name&gt;axi4s_vid_in_tdata&lt;/name&gt;
                         &lt;role&gt;tdata&lt;/role&gt;
                         &lt;direction&gt;Input&lt;/direction&gt;
-                        &lt;width&gt;24&lt;/width&gt;
+                        &lt;width&gt;16&lt;/width&gt;
                         &lt;lowerBound&gt;0&lt;/lowerBound&gt;
                         &lt;vhdlType&gt;STD_LOGIC_VECTOR&lt;/vhdlType&gt;
                         &lt;terminationValue&gt;0&lt;/terminationValue&gt;
@@ -8377,7 +8377,7 @@
                         &lt;name&gt;axi4s_vid_in_tuser&lt;/name&gt;
                         &lt;role&gt;tuser&lt;/role&gt;
                         &lt;direction&gt;Input&lt;/direction&gt;
-                        &lt;width&gt;3&lt;/width&gt;
+                        &lt;width&gt;2&lt;/width&gt;
                         &lt;lowerBound&gt;0&lt;/lowerBound&gt;
                         &lt;vhdlType&gt;STD_LOGIC_VECTOR&lt;/vhdlType&gt;
                         &lt;terminationValue&gt;0&lt;/terminationValue&gt;
@@ -8395,7 +8395,7 @@
                         &lt;/entry&gt;
                         &lt;entry&gt;
                             &lt;key&gt;intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES&lt;/key&gt;
-                            &lt;value&gt;3&lt;/value&gt;
+                            &lt;value&gt;2&lt;/value&gt;
                         &lt;/entry&gt;
                         &lt;entry&gt;
                             &lt;key&gt;intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL&lt;/key&gt;
@@ -8429,7 +8429,7 @@
                         &lt;name&gt;axi4s_vid_out_tdata&lt;/name&gt;
                         &lt;role&gt;tdata&lt;/role&gt;
                         &lt;direction&gt;Output&lt;/direction&gt;
-                        &lt;width&gt;24&lt;/width&gt;
+                        &lt;width&gt;16&lt;/width&gt;
                         &lt;lowerBound&gt;0&lt;/lowerBound&gt;
                         &lt;vhdlType&gt;STD_LOGIC_VECTOR&lt;/vhdlType&gt;
                         &lt;terminationValue&gt;0&lt;/terminationValue&gt;
@@ -8465,7 +8465,7 @@
                         &lt;name&gt;axi4s_vid_out_tuser&lt;/name&gt;
                         &lt;role&gt;tuser&lt;/role&gt;
                         &lt;direction&gt;Output&lt;/direction&gt;
-                        &lt;width&gt;3&lt;/width&gt;
+                        &lt;width&gt;2&lt;/width&gt;
                         &lt;lowerBound&gt;0&lt;/lowerBound&gt;
                         &lt;vhdlType&gt;STD_LOGIC_VECTOR&lt;/vhdlType&gt;
                         &lt;terminationValue&gt;0&lt;/terminationValue&gt;
@@ -8483,7 +8483,7 @@
                         &lt;/entry&gt;
                         &lt;entry&gt;
                             &lt;key&gt;intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES&lt;/key&gt;
-                            &lt;value&gt;3&lt;/value&gt;
+                            &lt;value&gt;2&lt;/value&gt;
                         &lt;/entry&gt;
                         &lt;entry&gt;
                             &lt;key&gt;intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL&lt;/key&gt;
@@ -9034,7 +9034,7 @@
                     &lt;name&gt;axi4s_vid_out_tdata&lt;/name&gt;
                     &lt;role&gt;tdata&lt;/role&gt;
                     &lt;direction&gt;Output&lt;/direction&gt;
-                    &lt;width&gt;24&lt;/width&gt;
+                    &lt;width&gt;16&lt;/width&gt;
                     &lt;lowerBound&gt;0&lt;/lowerBound&gt;
                     &lt;vhdlType&gt;STD_LOGIC_VECTOR&lt;/vhdlType&gt;
                     &lt;terminationValue&gt;0&lt;/terminationValue&gt;
@@ -9070,7 +9070,7 @@
                     &lt;name&gt;axi4s_vid_out_tuser&lt;/name&gt;
                     &lt;role&gt;tuser&lt;/role&gt;
                     &lt;direction&gt;Output&lt;/direction&gt;
-                    &lt;width&gt;3&lt;/width&gt;
+                    &lt;width&gt;2&lt;/width&gt;
                     &lt;lowerBound&gt;0&lt;/lowerBound&gt;
                     &lt;vhdlType&gt;STD_LOGIC_VECTOR&lt;/vhdlType&gt;
                     &lt;terminationValue&gt;0&lt;/terminationValue&gt;
@@ -9088,7 +9088,7 @@
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES&lt;/key&gt;
-                        &lt;value&gt;3&lt;/value&gt;
+                        &lt;value&gt;2&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL&lt;/key&gt;
@@ -9504,7 +9504,7 @@
                         &lt;name&gt;axi4s_vid_out_tdata&lt;/name&gt;
                         &lt;role&gt;tdata&lt;/role&gt;
                         &lt;direction&gt;Output&lt;/direction&gt;
-                        &lt;width&gt;24&lt;/width&gt;
+                        &lt;width&gt;16&lt;/width&gt;
                         &lt;lowerBound&gt;0&lt;/lowerBound&gt;
                         &lt;vhdlType&gt;STD_LOGIC_VECTOR&lt;/vhdlType&gt;
                         &lt;terminationValue&gt;0&lt;/terminationValue&gt;
@@ -9540,7 +9540,7 @@
                         &lt;name&gt;axi4s_vid_out_tuser&lt;/name&gt;
                         &lt;role&gt;tuser&lt;/role&gt;
                         &lt;direction&gt;Output&lt;/direction&gt;
-                        &lt;width&gt;3&lt;/width&gt;
+                        &lt;width&gt;2&lt;/width&gt;
                         &lt;lowerBound&gt;0&lt;/lowerBound&gt;
                         &lt;vhdlType&gt;STD_LOGIC_VECTOR&lt;/vhdlType&gt;
                         &lt;terminationValue&gt;0&lt;/terminationValue&gt;
@@ -9558,7 +9558,7 @@
                         &lt;/entry&gt;
                         &lt;entry&gt;
                             &lt;key&gt;intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES&lt;/key&gt;
-                            &lt;value&gt;3&lt;/value&gt;
+                            &lt;value&gt;2&lt;/value&gt;
                         &lt;/entry&gt;
                         &lt;entry&gt;
                             &lt;key&gt;intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL&lt;/key&gt;

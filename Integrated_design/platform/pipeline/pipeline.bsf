@@ -379,8 +379,8 @@ on the Quartus Prime software download page.
 	(port
 		(pt 0 1926)
 		(input)
-		(text "intel_vvp_scaler_0_axi4s_vid_in_tdata[23..0]" (rect 0 0 182 12)(font "SansSerif" (font_size 8)))
-		(text "intel_vvp_scaler_0_axi4s_vid_in_tdata[23..0]" (rect 4 1915 268 1926)(font "SansSerif" (font_size 8)))
+		(text "intel_vvp_scaler_0_axi4s_vid_in_tdata[15..0]" (rect 0 0 181 12)(font "SansSerif" (font_size 8)))
+		(text "intel_vvp_scaler_0_axi4s_vid_in_tdata[15..0]" (rect 4 1915 268 1926)(font "SansSerif" (font_size 8)))
 		(line (pt 0 1926)(pt 340 1926)(line_width 3))
 	)
 	(port
@@ -400,8 +400,8 @@ on the Quartus Prime software download page.
 	(port
 		(pt 0 2026)
 		(input)
-		(text "intel_vvp_scaler_0_axi4s_vid_in_tuser[2..0]" (rect 0 0 179 12)(font "SansSerif" (font_size 8)))
-		(text "intel_vvp_scaler_0_axi4s_vid_in_tuser[2..0]" (rect 4 2015 262 2026)(font "SansSerif" (font_size 8)))
+		(text "intel_vvp_scaler_0_axi4s_vid_in_tuser[1..0]" (rect 0 0 178 12)(font "SansSerif" (font_size 8)))
+		(text "intel_vvp_scaler_0_axi4s_vid_in_tuser[1..0]" (rect 4 2015 262 2026)(font "SansSerif" (font_size 8)))
 		(line (pt 0 2026)(pt 340 2026)(line_width 3))
 	)
 	(port
@@ -779,8 +779,8 @@ on the Quartus Prime software download page.
 	(port
 		(pt 776 976)
 		(output)
-		(text "intel_vvp_scaler_0_axi4s_vid_out_tdata[23..0]" (rect 0 0 188 12)(font "SansSerif" (font_size 8)))
-		(text "intel_vvp_scaler_0_axi4s_vid_out_tdata[23..0]" (rect 549 965 819 976)(font "SansSerif" (font_size 8)))
+		(text "intel_vvp_scaler_0_axi4s_vid_out_tdata[15..0]" (rect 0 0 187 12)(font "SansSerif" (font_size 8)))
+		(text "intel_vvp_scaler_0_axi4s_vid_out_tdata[15..0]" (rect 551 965 821 976)(font "SansSerif" (font_size 8)))
 		(line (pt 776 976)(pt 442 976)(line_width 3))
 	)
 	(port
@@ -800,8 +800,8 @@ on the Quartus Prime software download page.
 	(port
 		(pt 776 1076)
 		(output)
-		(text "intel_vvp_scaler_0_axi4s_vid_out_tuser[2..0]" (rect 0 0 185 12)(font "SansSerif" (font_size 8)))
-		(text "intel_vvp_scaler_0_axi4s_vid_out_tuser[2..0]" (rect 554 1065 818 1076)(font "SansSerif" (font_size 8)))
+		(text "intel_vvp_scaler_0_axi4s_vid_out_tuser[1..0]" (rect 0 0 184 12)(font "SansSerif" (font_size 8)))
+		(text "intel_vvp_scaler_0_axi4s_vid_out_tuser[1..0]" (rect 556 1065 820 1076)(font "SansSerif" (font_size 8)))
 		(line (pt 776 1076)(pt 442 1076)(line_width 3))
 	)
 	(port
@@ -825,8 +825,8 @@ on the Quartus Prime software download page.
 	(port
 		(pt 776 1126)
 		(output)
-		(text "intel_vvp_tpg_0_axi4s_vid_out_tdata[23..0]" (rect 0 0 177 12)(font "SansSerif" (font_size 8)))
-		(text "intel_vvp_tpg_0_axi4s_vid_out_tdata[23..0]" (rect 564 1115 816 1126)(font "SansSerif" (font_size 8)))
+		(text "intel_vvp_tpg_0_axi4s_vid_out_tdata[15..0]" (rect 0 0 175 12)(font "SansSerif" (font_size 8)))
+		(text "intel_vvp_tpg_0_axi4s_vid_out_tdata[15..0]" (rect 566 1115 818 1126)(font "SansSerif" (font_size 8)))
 		(line (pt 776 1126)(pt 442 1126)(line_width 3))
 	)
 	(port
@@ -846,8 +846,8 @@ on the Quartus Prime software download page.
 	(port
 		(pt 776 1226)
 		(output)
-		(text "intel_vvp_tpg_0_axi4s_vid_out_tuser[2..0]" (rect 0 0 173 12)(font "SansSerif" (font_size 8)))
-		(text "intel_vvp_tpg_0_axi4s_vid_out_tuser[2..0]" (rect 569 1215 815 1226)(font "SansSerif" (font_size 8)))
+		(text "intel_vvp_tpg_0_axi4s_vid_out_tuser[1..0]" (rect 0 0 172 12)(font "SansSerif" (font_size 8)))
+		(text "intel_vvp_tpg_0_axi4s_vid_out_tuser[1..0]" (rect 571 1215 817 1226)(font "SansSerif" (font_size 8)))
 		(line (pt 776 1226)(pt 442 1226)(line_width 3))
 	)
 	(port

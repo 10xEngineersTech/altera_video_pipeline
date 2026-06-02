@@ -42,7 +42,7 @@ elab_debug
 
 # Add Waves (only useful if GUI opens, but harmless in command line)
 add wave /tb/dut/u_pipeline/intel_*
-add wave -r /*
+add wave /tb/dut/*
 
 # Run simulation
 run -all

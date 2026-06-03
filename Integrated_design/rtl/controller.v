@@ -69,7 +69,7 @@ module frame_controller #(
 
     // write_flag: capture pixel when handshake active, inside frame,
     // not done, within bounds, not a metapacket
-    assign write_flag = frame_active &&
+    assign write_flag = (frame_active || start_of_frame) && !frame_done &&
                         (pixel_count < IMG_W) &&
                         (line_count  < IMG_H);
 

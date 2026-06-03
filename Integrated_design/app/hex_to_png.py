@@ -11,7 +11,7 @@ def load_config(config_file):
     cfg = {}
     if not os.path.exists(config_file):
         print(f"Warning: Configuration file {config_file} not found. Using defaults.")
-        return {"scale_w": 64, "scale_h": 64} # Fallback defaults
+        return {"scale_w": 640, "scale_h": 480} # Fallback defaults
 
     with open(config_file, 'r') as f:
         for line in f:
@@ -57,7 +57,7 @@ def convert_hex_rgb_to_png(input_file, output_file, width, height):
     while len(raw_list) < width * height:
         raw_list.append([0, 0, 0])  # black pixel
 
-    # 3. Create BGR NumPy array and save directly ?? no color conversion needed
+    # 3. Create BGR NumPy array and save directly ? no color conversion needed
     bgr_np = np.array(raw_list, dtype=np.uint8).reshape((height, width, 3))
     cv2.imwrite(output_file, bgr_np)
     print(f"Success! RGB image saved as {output_file}")
@@ -69,8 +69,8 @@ if __name__ == "__main__":
     CONFIG_FILE = os.path.join(base_dir, "pipeline_config.txt")
     params = load_config(CONFIG_FILE)
 
-    WIDTH  = params.get('scale_w', 64)
-    HEIGHT = params.get('scale_h', 64)
+    WIDTH  = params.get('scale_w', 640)
+    HEIGHT = params.get('scale_h', 480)
 
     INPUT_TXT  = os.path.join(base_dir, "sc_data.txt")
     OUTPUT_IMG = os.path.join(base_dir, "result.png")

@@ -55,7 +55,7 @@
 // =============================================================================
 
 module top #(
-    parameter        TOPOLOGY        = "CSC_ONLY",
+    parameter        TOPOLOGY        = "FULL",
     parameter [0:0]  INPUT_SEL       = 1'b0,
 
     parameter [31:0] IMG_WIDTH       = 32'd640,
@@ -73,11 +73,11 @@ module top #(
     parameter [31:0] SCALER_OUT_H    = 32'd480,
 
     // CRS output mode: 0=420, 2=422, 3=444
-    parameter [31:0] CRS_OUTPUT_MODE = 32'd2,
+    parameter [31:0] CRS_OUTPUT_MODE = 32'd3,
 
     // CSC mode: 0=passthrough, 1=RGB->YCbCrHD, 2=YCbCrHD->RGB,
     //           3=RGB->YCbCrSD, 4=YCbCrSD->RGB
-    parameter [2:0]  CSC_MODE        = 3'd0,
+    parameter [2:0]  CSC_MODE        = 3'd2,
     parameter [31:0] CSC_COLOR_SPACE = 32'd0
 )(
     input  wire        clk,
@@ -145,13 +145,18 @@ module top #(
     localparam [11:0] CSC_OUT_CS      = CSC_BASE | 12'h178;  // 0x578
 
     // --- CLIPPER base = 0x600 ---
-    // IMG_INFO_* (0x620-0x634) are READ-ONLY in Full protocol mode - do not write
+    // In Full protocol mode IMG_INFO_* are RO for CRS/CSC.
+    // But for Clipper, the flat design writes these to set expected input dims.
     localparam [11:0] CLIP_BASE       = 12'h600;
-    localparam [11:0] CLIP_COMMIT     = CLIP_BASE | 12'h144;  // 0x644
-    localparam [11:0] CLIP_LEFT       = CLIP_BASE | 12'h148;  // 0x648
-    localparam [11:0] CLIP_TOP        = CLIP_BASE | 12'h14C;  // 0x64C
-    localparam [11:0] CLIP_R_OR_W     = CLIP_BASE | 12'h150;  // 0x650 RIGHT or CLIP_WIDTH
-    localparam [11:0] CLIP_B_OR_H     = CLIP_BASE | 12'h154;  // 0x654 BOTTOM or CLIP_HEIGHT
+    localparam [11:0] CLIP_IN_HEIGHT  = CLIP_BASE | 12'h124;  // 0x724 IMG_INFO_HEIGHT (write in Lite, needed by clipper)
+    localparam [11:0] CLIP_IN_WIDTH   = CLIP_BASE | 12'h120;  // 0x720 IMG_INFO_WIDTH
+    localparam [11:0] CLIP_IN_COLOR   = CLIP_BASE | 12'h130;  // 0x730 IMG_INFO_COLORSPACE
+    localparam [11:0] CLIP_IN_SUBSAMP = CLIP_BASE | 12'h134;  // 0x734 IMG_INFO_SUBSAMPLING
+    localparam [11:0] CLIP_COMMIT     = CLIP_BASE | 12'h144;  // 0x744
+    localparam [11:0] CLIP_LEFT       = CLIP_BASE | 12'h148;  // 0x748
+    localparam [11:0] CLIP_TOP        = CLIP_BASE | 12'h14C;  // 0x74C
+    localparam [11:0] CLIP_R_OR_W     = CLIP_BASE | 12'h150;  // 0x750 RIGHT or CLIP_WIDTH
+    localparam [11:0] CLIP_B_OR_H     = CLIP_BASE | 12'h154;  // 0x754 BOTTOM or CLIP_HEIGHT
 
     // --- SCALER base = 0x800 (Lite mode) ---
     localparam [11:0] SCL_BASE        = 12'h800;
@@ -293,6 +298,15 @@ module top #(
                 // RECTANGLE: 0x650=CLIP_WIDTH,   0x654=CLIP_HEIGHT
                 // OFFSETS:   0x650=RIGHT_OFFSET, 0x654=BOTTOM_OFFSET
                 // --------------------------------------------------------------
+                // CLIPPER: exact register write order from working flat design
+                // Step 0: LEFT (preloaded in ST_IDLE)
+                // Step 1: TOP
+                // Step 2: RIGHT  (offset from right edge, 0 = no clip)
+                // Step 3: BOTTOM (offset from bottom edge, 0 = no clip)
+                // Step 4: COMMIT
+                // Note: uses OFFSETS registers always - clipper calculates
+                // output dims from input dims minus offsets automatically.
+                // --------------------------------------------------------------
                 ST_CONFIG_CLIP: begin
                     bridge_write <= 1'b1;
                     if (bridge_write && !bridge_wait) begin
@@ -305,22 +319,10 @@ module top #(
                         end else begin
                             cfg_step <= cfg_step + 1'b1;
                             case (cfg_step + 1'b1)
-                                4'd1: begin
-                                    bridge_addr  <= CLIP_TOP;
-                                    bridge_wdata <= IMG_T_OFF;
-                                end
-                                4'd2: begin
-                                    bridge_addr  <= CLIP_R_OR_W;
-                                    bridge_wdata <= (CLIP_METHOD=="RECTANGLE") ? CLIP_OUT_W : IMG_R_OFF;
-                                end
-                                4'd3: begin
-                                    bridge_addr  <= CLIP_B_OR_H;
-                                    bridge_wdata <= (CLIP_METHOD=="RECTANGLE") ? CLIP_OUT_H : IMG_B_OFF;
-                                end
-                                4'd4: begin
-                                    bridge_addr  <= CLIP_COMMIT;
-                                    bridge_wdata <= 32'h1;
-                                end
+                                4'd1: begin bridge_addr <= CLIP_TOP;    bridge_wdata <= IMG_T_OFF;  end
+                                4'd2: begin bridge_addr <= CLIP_R_OR_W; bridge_wdata <= IMG_R_OFF; end
+                                4'd3: begin bridge_addr <= CLIP_B_OR_H; bridge_wdata <= IMG_B_OFF; end
+                                4'd4: begin bridge_addr <= CLIP_COMMIT; bridge_wdata <= 32'h1;      end
                                 default: ;
                             endcase
                         end

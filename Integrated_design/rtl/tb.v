@@ -20,7 +20,7 @@ module tb();
     // =========================================================================
     // Change these per test
     // =========================================================================
-    localparam TOPOLOGY    = "CSC_ONLY";   // FULL/SCALER_ONLY/CSC_ONLY/CRS_ONLY/CRS_CSC/CLIP_SCL/DIL_ONLY
+    localparam TOPOLOGY    = "FULL";   // FULL/SCALER_ONLY/CSC_ONLY/CRS_ONLY/CRS_CSC/CLIP_SCL/DIL_ONLY
     localparam CLIP_METHOD = "RECTANGLE";  // "RECTANGLE" or "OFFSETS"
 
     // =========================================================================

@@ -81,6 +81,17 @@ module top #(
     localparam DO_CSC  = (TOPOLOGY=="FULL"||TOPOLOGY=="CSC_ONLY"||TOPOLOGY=="CRS_CSC") ? 1 : 0;
     localparam DO_PC1  = (INPUT_SEL==1'b1) ? 1 : 0;
 
+	 
+	 // --- TPG (own port, 7-bit word address) ---
+    localparam [6:0] TPG_ADDR_WIDTH     = 7'h48;
+    localparam [6:0] TPG_ADDR_HEIGHT    = 7'h49;
+    localparam [6:0] TPG_ADDR_INTERLACE = 7'h4A;
+    localparam [6:0] TPG_ADDR_STATUS    = 7'h50;
+    localparam [6:0] TPG_ADDR_CONTROL   = 7'h52;
+    localparam [6:0] TPG_ADDR_COMMIT    = 7'h53;
+    localparam [6:0] TPG_ADDR_PATTERN   = 7'h54;
+    localparam [6:0] TPG_ADDR_BAR_SEL   = 7'h5A;
+	 
     // =========================================================================
     // Derived constants
     // =========================================================================
@@ -153,7 +164,21 @@ module top #(
         ST_CONFIG_CSC  = 5'd4,
         ST_POLL_CSC    = 5'd5,
         ST_CONFIG_PC1  = 5'd6,
-        ST_WORKING     = 5'd7;
+        ST_WORKING     = 5'd7,
+		  
+		  // TPG (own Avalon port)
+        ST_TPG_CTRL_1    = 5'd8,
+        ST_TPG_WR_INTL   = 5'd9,
+        ST_TPG_WR_W      = 5'd10,
+        ST_TPG_WR_H      = 5'd11,
+        ST_TPG_WR_PAT_T  = 5'd12,
+        ST_TPG_WR_PAT_S  = 5'd13,
+        ST_TPG_WR_CMT    = 5'd14,
+        ST_TPG_CTRL_2    = 5'd15,
+        ST_TPG_POLL_ISS  = 5'd16,
+        ST_TPG_POLL_W    = 5'd17,
+        ST_TPG_IP_RST    = 5'd18,
+        ST_TPG_CTRL_3    = 5'd19;
 
     // =========================================================================
     // CSC coefficient ROMs
@@ -215,6 +240,11 @@ module top #(
     wire        bridge_readdatavalid;
     wire        bridge_wait;
 
+	 reg [6:0]  tpg_addr;   reg        tpg_write,  tpg_read;   reg [31:0] tpg_wdata;
+	 wire [31:0] tpg_readdata;
+    wire        tpg_readdatavalid;
+    wire        tpg_wait;
+	 
     // =========================================================================
     // FSM task: transition to next active config state
     // =========================================================================
@@ -223,16 +253,132 @@ module top #(
 
     always @(posedge clk or posedge reset) begin
         if (reset) begin
-            current_state <= ST_IDLE;
+            current_state <= ST_TPG_CTRL_1;
             pc1_write    <= 1'b0;
             bridge_write <= 1'b0;
             bridge_read  <= 1'b0;
             cfg_step     <= 4'd0;
         end else begin
             case (current_state)
+				
+                
+					 ST_TPG_CTRL_1: begin
+                    tpg_write <= 1'b1;
+                    tpg_addr  <= TPG_ADDR_CONTROL;
+                    tpg_wdata <= 32'h0;
+                    if (!tpg_wait) begin
+                        tpg_write     <= 1'b0;
+                        current_state <= ST_TPG_WR_INTL;
+                    end
+                end
 
-                // ?? IDLE: jump to first needed config state ???????????????????
-                ST_IDLE: begin
+                ST_TPG_WR_INTL: begin
+                    tpg_write <= 1'b1;
+                    tpg_addr  <= TPG_ADDR_INTERLACE;
+                    tpg_wdata <= 32'h0;
+                    if (!tpg_wait) begin
+                        tpg_write     <= 1'b0;
+                        current_state <= ST_TPG_WR_W;
+                    end
+                end
+
+                ST_TPG_WR_W: begin
+                    tpg_write <= 1'b1;
+                    tpg_addr  <= TPG_ADDR_WIDTH;
+                    tpg_wdata <= IMG_WIDTH;
+                    if (!tpg_wait) begin
+                        tpg_write     <= 1'b0;
+                        current_state <= ST_TPG_WR_H;
+                    end
+                end
+
+                ST_TPG_WR_H: begin
+                    tpg_write <= 1'b1;
+                    tpg_addr  <= TPG_ADDR_HEIGHT;
+                    tpg_wdata <= IMG_HEIGHT;
+                    if (!tpg_wait) begin
+                        tpg_write     <= 1'b0;
+                        current_state <= ST_TPG_WR_PAT_T;
+                    end
+                end
+
+                ST_TPG_WR_PAT_T: begin
+                    tpg_write <= 1'b1;
+                    tpg_addr  <= TPG_ADDR_BAR_SEL;
+                    tpg_wdata <= 32'h0;
+                    if (!tpg_wait) begin
+                        tpg_write     <= 1'b0;
+                        current_state <= ST_TPG_WR_PAT_S;
+                    end
+                end
+
+                ST_TPG_WR_PAT_S: begin
+                    tpg_write <= 1'b1;
+                    tpg_addr  <= TPG_ADDR_PATTERN;
+                    tpg_wdata <= 32'd0;
+                    if (!tpg_wait) begin
+                        tpg_write     <= 1'b0;
+                        current_state <= ST_TPG_WR_CMT;
+                    end
+                end
+
+                ST_TPG_WR_CMT: begin
+                    tpg_write <= 1'b1;
+                    tpg_addr  <= TPG_ADDR_COMMIT;
+                    tpg_wdata <= 32'h1;
+                    if (!tpg_wait) begin
+                        tpg_write     <= 1'b0;
+                        current_state <= ST_TPG_CTRL_2;
+                    end
+                end
+
+                ST_TPG_CTRL_2: begin
+                    tpg_write <= 1'b1;
+                    tpg_addr  <= TPG_ADDR_CONTROL;
+                    tpg_wdata <= 32'h1;
+                    if (!tpg_wait) begin
+                        tpg_write     <= 1'b0;
+                        current_state <= ST_TPG_POLL_ISS;
+                    end
+                end
+
+                ST_TPG_POLL_ISS: begin
+                    tpg_read <= 1'b1;
+                    tpg_addr <= TPG_ADDR_STATUS;
+                    if (!tpg_wait) begin
+                        tpg_read      <= 1'b0;
+                        current_state <= ST_TPG_POLL_W;
+                    end
+                end
+
+                ST_TPG_POLL_W: begin
+                    if (tpg_readdatavalid) begin
+                        if (tpg_readdata[1] == 1'b0)
+                            current_state <= ST_TPG_IP_RST;
+                        else
+                            current_state <= ST_TPG_POLL_ISS;
+                    end
+                end
+
+                ST_TPG_IP_RST: begin
+                    cfg_step <= cfg_step + 1'b1;
+                    if (cfg_step == 8'h07) current_state <= ST_TPG_CTRL_3;
+                end
+
+                ST_TPG_CTRL_3: begin
+                    tpg_write <= 1'b1;
+                    tpg_addr  <= TPG_ADDR_CONTROL;
+                    tpg_wdata <= 32'h1;
+                    if (!tpg_wait) begin
+                        tpg_write     <= 1'b0;
+                        cfg_step      <= 4'd0;
+                        current_state <= ST_IDLE;
+                    end
+                end
+
+					 // ?? IDLE: jump to first needed config state ???????????????????
+					 
+					 ST_IDLE: begin
                     cfg_step <= 4'd0;
                     if (DO_CLIP) begin
                         bridge_addr  <= CLIP_LEFT;
@@ -476,6 +622,8 @@ module top #(
     wire        vid_in_tlast  = INPUT_SEL ? pc1_tlast  : tpg_tlast;
     wire [2:0]  vid_in_tuser  = INPUT_SEL ? pc1_tuser  : tpg_tuser;
 
+	 
+	 
     // Drain TPG when image mode, drain PC1 when TPG mode
     assign tpg_tready = INPUT_SEL ? 1'b1 : (vid_in_tready & ready_to_start);
     assign pc1_tready = INPUT_SEL ? (vid_in_tready & ready_to_start) : 1'b1;
@@ -542,7 +690,16 @@ module top #(
         .intel_vvp_tpg_1_axi4s_vid_out_tvalid (tpg_tvalid),
         .intel_vvp_tpg_1_axi4s_vid_out_tready (tpg_tready),
         .intel_vvp_tpg_1_axi4s_vid_out_tlast  (tpg_tlast),
-        .intel_vvp_tpg_1_axi4s_vid_out_tuser  (tpg_tuser)
+        .intel_vvp_tpg_1_axi4s_vid_out_tuser  (tpg_tuser),
+		  
+		  .intel_vvp_tpg_1_av_mm_control_agent_address       (tpg_addr),
+        .intel_vvp_tpg_1_av_mm_control_agent_write         (tpg_write),
+        .intel_vvp_tpg_1_av_mm_control_agent_read          (tpg_read),
+        .intel_vvp_tpg_1_av_mm_control_agent_byteenable    (4'hF),
+        .intel_vvp_tpg_1_av_mm_control_agent_writedata     (tpg_wdata),
+        .intel_vvp_tpg_1_av_mm_control_agent_readdata      (tpg_readdata),
+        .intel_vvp_tpg_1_av_mm_control_agent_readdatavalid (tpg_readdatavalid),
+        .intel_vvp_tpg_1_av_mm_control_agent_waitrequest   (tpg_wait)
     );
 
 endmodule

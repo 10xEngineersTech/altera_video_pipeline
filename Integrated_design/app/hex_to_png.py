@@ -57,7 +57,7 @@ def convert_hex_rgb_to_png(input_file, output_file, width, height):
     while len(raw_list) < width * height:
         raw_list.append([0, 0, 0])  # black pixel
 
-    # 3. Create BGR NumPy array and save directly — no color conversion needed
+    # 3. Create BGR NumPy array and save directly ?? no color conversion needed
     bgr_np = np.array(raw_list, dtype=np.uint8).reshape((height, width, 3))
     cv2.imwrite(output_file, bgr_np)
     print(f"Success! RGB image saved as {output_file}")

@@ -1,3 +1,5 @@
+`timescale 1 ns / 1 ps
+
 module frame_controller #(
     parameter IMG_H   = 1080,
     parameter IMG_W   = 1920,
@@ -10,72 +12,65 @@ module frame_controller #(
     input  wire        ready,
     input  wire        last,
     input  wire [2:0]  tuser,
-    
-    output wire         write_flag,
+
+    output wire        write_flag,
     output reg         frame_done,
-	 output reg         error
+    output reg         error
 );
 
-    // Internal counters
-    reg [15:0] pixel_count; // Horizontal index
-    reg [15:0] line_count;  // Vertical index
-    wire        first_frame_active;
-	 reg 			 sof;
-	 
-    // A transaction occurs only when valid and ready are both high
-    wire transfer_active;
-	 assign transfer_active = tvalid && ready;
-	 
-    // Logic to detect the start of a frame (SOF)
-    // In AXI-Stream Video, tuser[0] typically marks the first pixel of a frame
-    wire start_of_frame;
-	 
-	 assign start_of_frame = (IS_FULL==1) ? transfer_active && tuser[0] & ~tuser[1] : transfer_active && tuser[0];
-	 
-	 assign first_frame_active = (transfer_active && ~frame_done && (start_of_frame || sof)) ? 1'b1 : 1'b0;
-	 
+    reg [15:0] pixel_count;
+    reg [15:0] line_count;
+    reg        sof;
+
+    // Transaction handshake
+    wire transfer_active = tvalid && ready;
+
+    // SOF detection
+    // Full mode: tuser[0]=SOF, tuser[1]=metapacket (skip metapackets)
+    // Lite mode: tuser[0]=SOF
+    wire is_metapacket  = (IS_FULL == 1) && tuser[1];
+    wire start_of_frame = transfer_active && tuser[0] && !is_metapacket;
+
+    // Active when inside a valid frame (not a metapacket)
+    wire frame_active = transfer_active && sof && !frame_done && !is_metapacket;
+
     always @(posedge clk or posedge reset) begin
         if (reset) begin
-            pixel_count        <= 0;
-            line_count         <= 0;
-            frame_done         <= 1'b0;
-				sof 					 <= 1'b0;
+            pixel_count <= 0;
+            line_count  <= 0;
+            frame_done  <= 1'b0;
+            sof         <= 1'b0;
+            error       <= 1'b0;
         end else begin
-				error <= 1'b0;
-            if(start_of_frame) begin 
-					sof <= 1'b1;
-					if(~(line_count == 15'b0 && pixel_count == 15'b0))
-						error <= 1'b1;
-				end
-            // Frame and Line Counting Logic
-            if (transfer_active) begin
-                
-                if (start_of_frame) begin
-                    pixel_count        <= 1;
-                    line_count         <= 0;
-                end else begin
-                    if (last) begin // tlast marks end of a line
-                        pixel_count <= 0;
-                        if (line_count < (IMG_H - 1))
-                            line_count <= line_count + 1;
-                        else begin if(line_count == (IMG_H - 1) && pixel_count == (IMG_W - 1))
-									frame_done <= 1'b1;
-								else
-									error <= 1'b1;
-                        end
+            error <= 1'b0;
+
+            if (start_of_frame) begin
+                // Auto-reset on every SOF - handles flush frames cleanly.
+                // pixel_count=0 so SOF pixel IS captured by write_flag.
+                sof         <= 1'b1;
+                frame_done  <= 1'b0;
+                pixel_count <= 0;
+                line_count  <= 0;
+            end else if (frame_active) begin
+                if (last) begin
+                    pixel_count <= 0;
+                    if (line_count == (IMG_H - 1)) begin
+                        frame_done <= 1'b1;
+                        sof        <= 1'b0;
                     end else begin
-                        pixel_count <= pixel_count + 1;
+                        line_count <= line_count + 1;
                     end
+                end else begin
+                    pixel_count <= pixel_count + 1;
                 end
             end
-            
         end
     end
-	 
-	 // write_flag Logic
-    // High only if: Handshake occurs, within dimensions, 
-    // during first frame, and NOT a metapacket (tuser[1] check)
-	 assign write_flag = (transfer_active && first_frame_active 
-	&& !frame_done && (pixel_count < IMG_W) && (line_count < IMG_H)) ? 1'b1 : 1'b0;
+
+    // write_flag: capture pixel when handshake active, inside frame,
+    // not done, within bounds, not a metapacket
+    assign write_flag = frame_active &&
+                        (pixel_count < IMG_W) &&
+                        (line_count  < IMG_H);
 
 endmodule

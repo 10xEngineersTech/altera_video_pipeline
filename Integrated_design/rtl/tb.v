@@ -14,7 +14,7 @@ module tb();
     localparam IMG_B_OFF    = CLIPPER_BOTTOM;
     localparam SCALER_OUT_W = SCALER_WIDTH;
     localparam SCALER_OUT_H = SCALER_HEIGHT;
-    localparam TOPOLOGY     = "SCALER_ONLY";
+    localparam TOPOLOGY     = "CLIP_SCL";
 
     // END_TIME: use whichever is larger ? input or output frame
     localparam [63:0] END_TIME = (SCALER_HEIGHT * SCALER_WIDTH < TPG_WIDTH * TPG_HEIGHT) ?

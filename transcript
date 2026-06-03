@@ -1,0 +1,14 @@
+# do /home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/app/../platform/pipeline/sim/mentor/run_sim.do
+# reading modelsim.ini
+# /mnt/ssd2/Quartus_Setup_Installation/quartus
+# ** Error: couldn't read file "./../common/./../../../ip/pipeline/pipeline_intel_vvp_tpg_1/sim/common/modelsim_files.tcl": no such file or directory
+# Error in macro /home/lpt-10xe/Desktop/Github_atera_video_pipeline/altera_video_pipeline/Integrated_design/app/../platform/pipeline/sim/mentor/run_sim.do line 7
+# couldn't read file "./../common/./../../../ip/pipeline/pipeline_intel_vvp_tpg_1/sim/common/modelsim_files.tcl": no such file or directory
+#     while executing
+# "source [file join [file dirname [info script]] ./../../../ip/pipeline/pipeline_intel_vvp_tpg_1/sim/common/modelsim_files.tcl]"
+#     (file "./..//common/modelsim_files.tcl" line 1)
+#     invoked from within
+# "source $QSYS_SIMDIR/common/modelsim_files.tcl"
+#     (file "msim_setup.tcl" line 165)
+#     invoked from within
+# "source msim_setup.tcl"

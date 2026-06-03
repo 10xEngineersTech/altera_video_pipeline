@@ -3990,9 +3990,9 @@ https://fpgasoftware.intel.com/eula.-->
     <altera:altera_interface_boundary>
       <altera:interface_mapping altera:name="av_mm_control_agent" altera:internal="intel_vvp_protocol_conv_0.av_mm_control_agent" altera:type="avalon" altera:dir="end"></altera:interface_mapping>
       <altera:interface_mapping altera:name="axi4s_vid_in" altera:internal="intel_vvp_protocol_conv_0.axi4s_vid_in" altera:type="axi4stream" altera:dir="end"></altera:interface_mapping>
-      <altera:interface_mapping altera:name="axi4s_vid_out" altera:internal="intel_vvp_tpg_1.axi4s_vid_out" altera:type="axi4stream" altera:dir="start"></altera:interface_mapping>
       <altera:interface_mapping altera:name="axi4s_vid_out_1" altera:internal="intel_vvp_protocol_conv_0.axi4s_vid_out" altera:type="axi4stream" altera:dir="start"></altera:interface_mapping>
       <altera:interface_mapping altera:name="clk" altera:internal="clock_in.in_clk" altera:type="clock" altera:dir="end"></altera:interface_mapping>
+      <altera:interface_mapping altera:name="intel_vvp_tpg_1_axi4s_vid_out" altera:internal="intel_vvp_tpg_1.axi4s_vid_out" altera:type="axi4stream" altera:dir="start"></altera:interface_mapping>
       <altera:interface_mapping altera:name="m_axis_video_out" altera:internal="intel_vvp_pipeline2_0.m_axis_video_out" altera:type="axi4stream" altera:dir="start"></altera:interface_mapping>
       <altera:interface_mapping altera:name="reset" altera:internal="reset_in.in_reset" altera:type="reset" altera:dir="end"></altera:interface_mapping>
       <altera:interface_mapping altera:name="s0" altera:internal="intel_vvp_pipeline2_0.s0" altera:type="avalon" altera:dir="end"></altera:interface_mapping>

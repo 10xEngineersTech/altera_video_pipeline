@@ -101,6 +101,9 @@ module top #(
     localparam [11:0] CLIP_COMMIT = CLIP_BASE | 12'h144;
     localparam [11:0] CLIP_LEFT   = CLIP_BASE | 12'h148;
     localparam [11:0] CLIP_TOP    = CLIP_BASE | 12'h14C;
+    localparam [11:0] CLIP_RIGHT  = CLIP_BASE | 12'h150;
+    localparam [11:0] CLIP_BOTTOM = CLIP_BASE | 12'h154;
+	 
     localparam [11:0] CLIP_WIDTH  = CLIP_BASE | 12'h150;
     localparam [11:0] CLIP_HEIGHT = CLIP_BASE | 12'h154;
 
@@ -259,8 +262,8 @@ module top #(
                 // ?? Clipper ???????????????????????????????????????????????????
                 // Step 0: LEFT (preloaded)
                 // Step 1: TOP
-                // Step 2: CLIP_WIDTH
-                // Step 3: CLIP_HEIGHT
+                // Step 2: RIGHT
+                // Step 3: BOTTOM
                 // Step 4: COMMIT
                 ST_CONFIG_CLIP: begin
                     bridge_write <= 1'b1;
@@ -275,8 +278,8 @@ module top #(
                             cfg_step <= cfg_step + 1'b1;
                             case (cfg_step + 1'b1)
                                 4'd1: begin bridge_addr<=CLIP_TOP;    bridge_wdata<=IMG_T_OFF;  end
-                                4'd2: begin bridge_addr<=CLIP_WIDTH;  bridge_wdata<=CLIP_OUT_W; end
-                                4'd3: begin bridge_addr<=CLIP_HEIGHT; bridge_wdata<=CLIP_OUT_H; end
+                                4'd2: begin bridge_addr<=CLIP_RIGHT;  bridge_wdata<=IMG_R_OFF; end
+                                4'd3: begin bridge_addr<=CLIP_BOTTOM; bridge_wdata<=IMG_B_OFF; end
                                 4'd4: begin bridge_addr<=CLIP_COMMIT; bridge_wdata<=32'h1;      end
                                 default:;
                             endcase
@@ -535,11 +538,11 @@ module top #(
         .av_mm_control_agent_waitrequest   (pc1_wait),
 
         // TPG video output ? mux
-        .axi4s_vid_out_tdata  (tpg_tdata),
-        .axi4s_vid_out_tvalid (tpg_tvalid),
-        .axi4s_vid_out_tready (tpg_tready),
-        .axi4s_vid_out_tlast  (tpg_tlast),
-        .axi4s_vid_out_tuser  (tpg_tuser)
+        .intel_vvp_tpg_1_axi4s_vid_out_tdata  (tpg_tdata),
+        .intel_vvp_tpg_1_axi4s_vid_out_tvalid (tpg_tvalid),
+        .intel_vvp_tpg_1_axi4s_vid_out_tready (tpg_tready),
+        .intel_vvp_tpg_1_axi4s_vid_out_tlast  (tpg_tlast),
+        .intel_vvp_tpg_1_axi4s_vid_out_tuser  (tpg_tuser)
     );
 
 endmodule

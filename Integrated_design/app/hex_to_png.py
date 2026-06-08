@@ -4,9 +4,9 @@ import numpy as np
 import os
 import sys
 
-# ─────────────────────────────────────────────────────────────────────────────
+# =============================================================================
 # Config Loader
-# ─────────────────────────────────────────────────────────────────────────────
+# =============================================================================
 def load_config(config_file):
     cfg = {}
     if not os.path.exists(config_file):
@@ -15,7 +15,7 @@ def load_config(config_file):
     with open(config_file, 'r') as f:
         for line in f:
             if '=' in line:
-                name, value = line.split('=')
+                name, value = line.split('=', 1)
                 val_str = value.strip()
                 if val_str.lower() == 'true':
                     cfg[name.strip()] = True
@@ -28,15 +28,14 @@ def load_config(config_file):
                         cfg[name.strip()] = val_str
     return cfg
 
-# ─────────────────────────────────────────────────────────────────────────────
+# =============================================================================
 # Shared Utilities
-# ─────────────────────────────────────────────────────────────────────────────
+# =============================================================================
 def is_valid_hex(word):
-    """Return False if the word contains Verilog 'x' or 'z' unknown values."""
     return not any(c in word.lower() for c in ('x', 'z'))
 
 def ycbcr_to_rgb(y, cb, cr):
-    """BT.601 full-range YCbCr → clipped RGB tuple."""
+    """BT.601 full-range YCbCr -> clipped RGB tuple."""
     cb -= 128
     cr -= 128
     r = y + 1.402    * cr
@@ -47,40 +46,30 @@ def ycbcr_to_rgb(y, cb, cr):
             max(0, min(255, int(b))))
 
 def load_and_clean(filename):
-    """
-    Load hex words from file, skip x/z words.
-    Handles any whitespace layout (one word per line OR many per line).
-    """
     try:
         with open(filename, 'r') as f:
-            raw = f.read().split()       # split on ALL whitespace
+            raw = f.read().split()
     except FileNotFoundError:
         print(f"Error: {filename} not found.")
         sys.exit(1)
-
     valid   = [w for w in raw if is_valid_hex(w)]
     skipped = len(raw) - len(valid)
     if skipped:
         print(f"  Skipped {skipped} invalid (x/z) words.")
-
     print(f"  Found {len(valid)} pixel words.")
     return valid
 
-# ─────────────────────────────────────────────────────────────────────────────
+# =============================================================================
 # Conversion Functions
-# ─────────────────────────────────────────────────────────────────────────────
+# =============================================================================
 def convert_rgb(input_file, output_file, width, height):
     """
     RGB packed: tdata[23:0] = { R[7:0], G[7:0], B[7:0] }
+    Used for: SCALER_ONLY, CLIP_SCL, FULL/CSC with RGB output
     """
     pixel_words = load_and_clean(input_file)
     total       = width * height
-
-    if len(pixel_words) < total:
-        print(f"  Warning: only {len(pixel_words)} pixels found, "
-              f"expected {total}. Padding with black.")
-
-    raw_list = []
+    raw_list    = []
     for i in range(total):
         if i < len(pixel_words):
             h = pixel_words[i].zfill(6)
@@ -89,8 +78,7 @@ def convert_rgb(input_file, output_file, width, height):
             b = int(h[4:6], 16)
         else:
             r, g, b = 0, 0, 0
-        raw_list.append([b, g, r])       # OpenCV uses BGR order
-
+        raw_list.append([b, g, r])
     bgr = np.array(raw_list, dtype=np.uint8).reshape((height, width, 3))
     cv2.imwrite(output_file, bgr)
     print(f"  Saved {output_file}  ({width}x{height})")
@@ -98,27 +86,21 @@ def convert_rgb(input_file, output_file, width, height):
 
 def convert_yuv444(input_file, output_file, width, height):
     """
-    YUV444 packed: tdata[23:0] = { Y[7:0], U[7:0], V[7:0] }
-    One full chroma sample per pixel — no interpolation needed.
+    YUV444 packed: tdata[23:0] = { Cr[7:0], Y[7:0], Cb[7:0] }
+    Used for: CRS 444 output, CSC YCbCr output
     """
     pixel_words = load_and_clean(input_file)
     total       = width * height
-
-    if len(pixel_words) < total:
-        print(f"  Warning: only {len(pixel_words)} pixels found, "
-              f"expected {total}. Padding with black.")
-
-    pixels = []
+    pixels      = []
     for i in range(total):
         if i < len(pixel_words):
             val = int(pixel_words[i], 16)
-            v   = (val >> 16) & 0xFF
+            cr  = (val >> 16) & 0xFF
             y   = (val >>  8) & 0xFF
-            u   =  val        & 0xFF
-            pixels.append(ycbcr_to_rgb(y, u, v))
+            cb  =  val        & 0xFF
+            pixels.append(ycbcr_to_rgb(y, cb, cr))
         else:
             pixels.append((0, 0, 0))
-
     bgr_list = [[b, g, r] for r, g, b in pixels]
     bgr      = np.array(bgr_list, dtype=np.uint8).reshape((height, width, 3))
     cv2.imwrite(output_file, bgr)
@@ -128,44 +110,32 @@ def convert_yuv444(input_file, output_file, width, height):
 def convert_yuv422(input_file, output_file, width, height):
     """
     YUV422 1PPC:
-      Even pixels: { 8'b0, Y[7:0], U[7:0] }
-      Odd  pixels: { 8'b0, Y[7:0], V[7:0] }
-    Two pixels share one chroma pair.
+      Even pixels: { 8'b0, Y[7:0], Cb[7:0] }
+      Odd  pixels: { 8'b0, Y[7:0], Cr[7:0] }
+    Used for: CRS 422 output
     """
     pixel_words = load_and_clean(input_file)
     total       = width * height
     pixels      = []
-
     for i in range(0, len(pixel_words), 2):
         if len(pixels) >= total:
             break
-
         if i + 1 >= len(pixel_words):
-            # Lone trailing pixel — pad Cr with neutral 128
             val0 = int(pixel_words[i], 16)
             y0   = (val0 >> 8) & 0xFF
-            u0   =  val0       & 0xFF
-            pixels.append(ycbcr_to_rgb(y0, u0, 128))
+            cb   =  val0       & 0xFF
+            pixels.append(ycbcr_to_rgb(y0, cb, 128))
             break
-
-        # Even pixel: { 0, Y0, Cb }
         val0 = int(pixel_words[i],   16)
         y0   = (val0 >> 8) & 0xFF
-        u0   =  val0       & 0xFF
-
-        # Odd pixel: { 0, Y1, Cr }
+        cb   =  val0       & 0xFF
         val1 = int(pixel_words[i+1], 16)
         y1   = (val1 >> 8) & 0xFF
-        v0   =  val1       & 0xFF
-
-        pixels.append(ycbcr_to_rgb(y0, u0, v0))
-        pixels.append(ycbcr_to_rgb(y1, u0, v0))
-
+        cr   =  val1       & 0xFF
+        pixels.append(ycbcr_to_rgb(y0, cb, cr))
+        pixels.append(ycbcr_to_rgb(y1, cb, cr))
     if len(pixels) < total:
-        print(f"  Warning: only {len(pixels)} pixels reconstructed, "
-              f"expected {total}. Padding with black.")
         pixels += [(0, 0, 0)] * (total - len(pixels))
-
     pixels   = pixels[:total]
     bgr_list = [[b, g, r] for r, g, b in pixels]
     bgr      = np.array(bgr_list, dtype=np.uint8).reshape((height, width, 3))
@@ -175,75 +145,82 @@ def convert_yuv422(input_file, output_file, width, height):
 
 def convert_yuv420(input_file, output_file, width, height):
     """
-    YUV420: Y plane (W*H words) followed by interleaved UV plane (W/2 * H/2 words).
-      Y  words : { 16'b0, Y[7:0] }
-      UV words : { 8'b0,  U[7:0], V[7:0] }  (one UV pair covers a 2x2 block)
+    Intel VVP 420 passthrough interleaved packing:
+      Every pixel word: { Cr_or_Cb[7:0], Y[7:0], Cr_or_Cb[7:0] }
+      Even lines: { Cb[7:0], Y[7:0], Cb[7:0] }  -> Cb line
+      Odd  lines: { Cr[7:0], Y[7:0], Cr[7:0] }  -> Cr line
+
+    To reconstruct full YCbCr per pixel:
+      - Y  from current pixel word (bits 15:8)
+      - Cb from even line, same column (bits 7:0)
+      - Cr from odd  line, same column (bits 7:0)
+    Pair even+odd lines to get full color for both rows.
     """
     pixel_words = load_and_clean(input_file)
     total       = width * height
-    uv_count    = (width // 2) * (height // 2)
 
-    if len(pixel_words) < total:
-        print(f"  Warning: only {len(pixel_words)} words found, "
-              f"expected at least {total}. Padding with black.")
-
-    # ── Y plane ──────────────────────────────────────────────────────────────
-    y_words = pixel_words[:total]
-    y_plane = [int(w, 16) & 0xFF for w in y_words]
-    while len(y_plane) < total:
-        y_plane.append(0)
-
-    # ── UV plane ─────────────────────────────────────────────────────────────
-    uv_words = pixel_words[total: total + uv_count]
-    uv_plane = []
-    for w in uv_words:
-        val = int(w, 16)
-        u   = (val >> 8) & 0xFF
-        v   =  val       & 0xFF
-        uv_plane.append((u, v))
-    while len(uv_plane) < uv_count:
-        uv_plane.append((128, 128))
-
-    # ── Reconstruct pixels ───────────────────────────────────────────────────
-    pixels = []
+    # Reshape into lines
+    lines = []
     for row in range(height):
-        for col in range(width):
-            y_idx  =  row         * width        + col
-            uv_idx = (row // 2)   * (width // 2) + (col // 2)
-            y      = y_plane[y_idx]
-            u, v   = uv_plane[uv_idx]
-            pixels.append(ycbcr_to_rgb(y, u, v))
+        start = row * width
+        end   = start + width
+        line  = pixel_words[start:end] if end <= len(pixel_words) else \
+                pixel_words[start:] + ['808080'] * (width - len(pixel_words[start:]))
+        lines.append(line)
 
+    # Intel VVP 420 field-based stream:
+    #   Field 0 (even rows): lines 0  .. height//2 - 1  -> pixel rows 0,2,4,...
+    #   Field 1 (odd  rows): lines height//2 .. height-1 -> pixel rows 1,3,5,...
+    #   Within each field, lines alternate: Cb line, Cr line, Cb line, Cr line
+    #   Each Cb/Cr pair reconstructs one pixel row of the field
+    #
+    # Total output: width x height pixels (full frame)
+
+    field0 = lines[:height // 2]   # even field: rows 0,2,4,...
+    field1 = lines[height // 2:]   # odd  field: rows 1,3,5,...
+
+    def reconstruct_field(field_lines, width):
+        """Reconstruct pixels from alternating Cb/Cr lines in one field."""
+        result = []
+        for row in range(0, len(field_lines), 2):
+            cb_line = field_lines[row]
+            cr_line = field_lines[row+1] if row+1 < len(field_lines) else field_lines[row]
+            for col in range(width):
+                val_cb = int(cb_line[col], 16)
+                val_cr = int(cr_line[col], 16)
+                y  = (val_cb >> 8) & 0xFF
+                cb =  val_cb       & 0xFF
+                cr =  val_cr       & 0xFF
+                result.append(ycbcr_to_rgb(y, cb, cr))
+        return result
+
+    even_pixels = reconstruct_field(field0, width)  # rows 0,2,4,...
+    odd_pixels  = reconstruct_field(field1, width)  # rows 1,3,5,...
+
+    # Interleave even and odd field rows to reconstruct full frame
+    rows_per_field = len(even_pixels) // width
+    pixels = []
+    for r in range(rows_per_field):
+        start = r * width
+        end   = start + width
+        pixels.extend(even_pixels[start:end])  # even row
+        if r < len(odd_pixels) // width:
+            pixels.extend(odd_pixels[start:end])  # odd row
+
+    out_h    = len(pixels) // width
+    total_px = width * out_h
+    if len(pixels) < total_px:
+        pixels += [(0, 0, 0)] * (total_px - len(pixels))
+    pixels   = pixels[:total_px]
     bgr_list = [[b, g, r] for r, g, b in pixels]
-    bgr      = np.array(bgr_list, dtype=np.uint8).reshape((height, width, 3))
+    bgr      = np.array(bgr_list, dtype=np.uint8).reshape((out_h, width, 3))
     cv2.imwrite(output_file, bgr)
-    print(f"  Saved {output_file}  ({width}x{height})")
+    print(f"  Saved {output_file}  ({width}x{out_h})")
 
-# ─────────────────────────────────────────────────────────────────────────────
-# User Format Prompt
-# ─────────────────────────────────────────────────────────────────────────────
-def ask_format():
-    """Keep asking until a valid format choice (0–3) is entered."""
-    menu = (
-        "\nSelect input format:\n"
-        "  0 = RGB\n"
-        "  1 = YUV444\n"
-        "  2 = YUV422\n"
-        "  3 = YUV420\n"
-        "Choice: "
-    )
-    while True:
-        try:
-            choice = int(input(menu).strip())
-            if choice in (0, 1, 2, 3):
-                return choice
-            print("  Invalid choice. Please enter 0, 1, 2, or 3.")
-        except ValueError:
-            print("  Invalid input. Please enter a number.")
 
-# ─────────────────────────────────────────────────────────────────────────────
+# =============================================================================
 # Main
-# ─────────────────────────────────────────────────────────────────────────────
+# =============================================================================
 if __name__ == "__main__":
     base_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -255,12 +232,29 @@ if __name__ == "__main__":
     INPUT_TXT  = os.path.join(base_dir, "sc_data.txt")
     OUTPUT_IMG = os.path.join(base_dir, "result.png")
 
-    print(f"Config loaded  →  Width={WIDTH}, Height={HEIGHT}")
-    print(f"Input file     →  {INPUT_TXT}")
+    print(f"Config loaded  -  Width={WIDTH}, Height={HEIGHT}")
+    print(f"Input file     -  {INPUT_TXT}")
 
+    menu = (
+        "\nSelect output format (format of sc_data.txt):\n"
+        "  0 = RGB    (CSC->RGB, SCALER_ONLY, CLIP_SCL, FULL)\n"
+        "  1 = YUV444 (CRS 444 output, CSC YCbCr output)\n"
+        "  2 = YUV422 (CRS 422 output)\n"
+        "  3 = YUV420 (CRS 420 passthrough)\n"
+        "Choice: "
+    )
     fmt_names = {0: "RGB", 1: "YUV444", 2: "YUV422", 3: "YUV420"}
-    fmt       = ask_format()
-    print(f"\nConverting {fmt_names[fmt]} → PNG ...")
+
+    while True:
+        try:
+            fmt = int(input(menu).strip())
+            if fmt in (0, 1, 2, 3):
+                break
+            print("  Invalid. Enter 0-3.")
+        except ValueError:
+            print("  Invalid. Enter a number.")
+
+    print(f"\nConverting {fmt_names[fmt]} -> PNG ...")
 
     if   fmt == 0: convert_rgb   (INPUT_TXT, OUTPUT_IMG, WIDTH, HEIGHT)
     elif fmt == 1: convert_yuv444(INPUT_TXT, OUTPUT_IMG, WIDTH, HEIGHT)

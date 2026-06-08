@@ -1008,7 +1008,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="TOPOLOGY" type="string">
           <ipxact:name>TOPOLOGY</ipxact:name>
           <ipxact:displayName>Video processing mode</ipxact:displayName>
-          <ipxact:value>CLIP_SCL</ipxact:value>
+          <ipxact:value>SCALER_ONLY</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="BPS" type="int">
           <ipxact:name>BPS</ipxact:name>
@@ -1043,7 +1043,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="DIL_BOB_MODE" type="string">
           <ipxact:name>DIL_BOB_MODE</ipxact:name>
           <ipxact:displayName>Bob deinterlacing mode</ipxact:displayName>
-          <ipxact:value>DEINTERLACE_F0_AND_F1</ipxact:value>
+          <ipxact:value>DEINTERLACE_F0_ONLY</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="DIL_MAX_WIDTH" type="int">
           <ipxact:name>DIL_MAX_WIDTH</ipxact:name>
@@ -1143,27 +1143,27 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="CRS_SUPPORT_420_PASS" type="int">
           <ipxact:name>CRS_SUPPORT_420_PASS</ipxact:name>
           <ipxact:displayName>4:2:0 passthrough</ipxact:displayName>
-          <ipxact:value>0</ipxact:value>
+          <ipxact:value>1</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="CRS_SUPPORT_420_TO_422" type="int">
           <ipxact:name>CRS_SUPPORT_420_TO_422</ipxact:name>
           <ipxact:displayName>4:2:0 to 4:2:2 conversion</ipxact:displayName>
-          <ipxact:value>0</ipxact:value>
+          <ipxact:value>1</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="CRS_SUPPORT_420_TO_444" type="int">
           <ipxact:name>CRS_SUPPORT_420_TO_444</ipxact:name>
           <ipxact:displayName>4:2:0 to 4:4:4 conversion</ipxact:displayName>
-          <ipxact:value>0</ipxact:value>
+          <ipxact:value>1</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="CRS_SUPPORT_422_PASS" type="int">
           <ipxact:name>CRS_SUPPORT_422_PASS</ipxact:name>
           <ipxact:displayName>4:2:2 passthrough</ipxact:displayName>
-          <ipxact:value>0</ipxact:value>
+          <ipxact:value>1</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="CRS_SUPPORT_422_TO_420" type="int">
           <ipxact:name>CRS_SUPPORT_422_TO_420</ipxact:name>
           <ipxact:displayName>4:2:2 to 4:2:0 conversion</ipxact:displayName>
-          <ipxact:value>0</ipxact:value>
+          <ipxact:value>1</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="CRS_SUPPORT_422_TO_444" type="int">
           <ipxact:name>CRS_SUPPORT_422_TO_444</ipxact:name>
@@ -1178,7 +1178,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="CRS_SUPPORT_444_TO_420" type="int">
           <ipxact:name>CRS_SUPPORT_444_TO_420</ipxact:name>
           <ipxact:displayName>4:4:4 to 4:2:0 conversion</ipxact:displayName>
-          <ipxact:value>0</ipxact:value>
+          <ipxact:value>1</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="CRS_SUPPORT_444_TO_422" type="int">
           <ipxact:name>CRS_SUPPORT_444_TO_422</ipxact:name>
@@ -1188,7 +1188,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="CRS_HORIZ_ALGORITHM" type="string">
           <ipxact:name>CRS_HORIZ_ALGORITHM</ipxact:name>
           <ipxact:displayName>Horizontal resampling algorithm</ipxact:displayName>
-          <ipxact:value>BILINEAR</ipxact:value>
+          <ipxact:value>NEAREST_NEIGHBOUR</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="CRS_HORIZ_CO_SITING" type="string">
           <ipxact:name>CRS_HORIZ_CO_SITING</ipxact:name>
@@ -1203,7 +1203,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="CRS_VERT_ALGORITHM" type="string">
           <ipxact:name>CRS_VERT_ALGORITHM</ipxact:name>
           <ipxact:displayName>Vertical resampling algorithm</ipxact:displayName>
-          <ipxact:value>BILINEAR</ipxact:value>
+          <ipxact:value>NEAREST_NEIGHBOUR</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="CRS_VERT_CO_SITING" type="string">
           <ipxact:name>CRS_VERT_CO_SITING</ipxact:name>
@@ -1253,12 +1253,12 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="CSC_COLOR_SPACE_OUT" type="string">
           <ipxact:name>CSC_COLOR_SPACE_OUT</ipxact:name>
           <ipxact:displayName>Output color space</ipxact:displayName>
-          <ipxact:value>YCbCr</ipxact:value>
+          <ipxact:value>RGB</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="CSC_COEFF_FRAC_BITS" type="int">
           <ipxact:name>CSC_COEFF_FRAC_BITS</ipxact:name>
           <ipxact:displayName>Coefficient and summand fractional bits</ipxact:displayName>
-          <ipxact:value>12</ipxact:value>
+          <ipxact:value>21</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="CSC_COEFF_SIGNED" type="int">
           <ipxact:name>CSC_COEFF_SIGNED</ipxact:name>
@@ -1268,7 +1268,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="CSC_COEFF_INT_BITS" type="int">
           <ipxact:name>CSC_COEFF_INT_BITS</ipxact:name>
           <ipxact:displayName>Coefficient integer bits</ipxact:displayName>
-          <ipxact:value>2</ipxact:value>
+          <ipxact:value>10</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="CSC_SUMMAND_SIGNED" type="int">
           <ipxact:name>CSC_SUMMAND_SIGNED</ipxact:name>
@@ -1278,7 +1278,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="CSC_SUMMAND_INT_BITS" type="int">
           <ipxact:name>CSC_SUMMAND_INT_BITS</ipxact:name>
           <ipxact:displayName>Summand integer bits</ipxact:displayName>
-          <ipxact:value>8</ipxact:value>
+          <ipxact:value>10</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="CSC_BIN_PT_SHIFT" type="int">
           <ipxact:name>CSC_BIN_PT_SHIFT</ipxact:name>
@@ -1353,7 +1353,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="CSC_RUNTIME_CONTROL" type="int">
           <ipxact:name>CSC_RUNTIME_CONTROL</ipxact:name>
           <ipxact:displayName>Memory-mapped control interface</ipxact:displayName>
-          <ipxact:value>0</ipxact:value>
+          <ipxact:value>1</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="CSC_SEPARATE_SLAVE_CLOCK" type="int">
           <ipxact:name>CSC_SEPARATE_SLAVE_CLOCK</ipxact:name>
@@ -1423,12 +1423,12 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="CL_OUTPUT_WIDTH" type="int">
           <ipxact:name>CL_OUTPUT_WIDTH</ipxact:name>
           <ipxact:displayName>Output width</ipxact:displayName>
-          <ipxact:value>640</ipxact:value>
+          <ipxact:value>8</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="CL_OUTPUT_HEIGHT" type="int">
           <ipxact:name>CL_OUTPUT_HEIGHT</ipxact:name>
           <ipxact:displayName>Output height</ipxact:displayName>
-          <ipxact:value>480</ipxact:value>
+          <ipxact:value>8</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="PC0_ENABLE_YCBCR_SWAP" type="int">
           <ipxact:name>PC0_ENABLE_YCBCR_SWAP</ipxact:name>
@@ -1448,7 +1448,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="PC0_COLOR_SPACE" type="string">
           <ipxact:name>PC0_COLOR_SPACE</ipxact:name>
           <ipxact:displayName>Video color space</ipxact:displayName>
-          <ipxact:value>YCbCr</ipxact:value>
+          <ipxact:value>RGB</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="PC0_CHROMA_SAMPLING" type="string">
           <ipxact:name>PC0_CHROMA_SAMPLING</ipxact:name>
@@ -1528,12 +1528,12 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="SC_MAX_OUT_WIDTH" type="int">
           <ipxact:name>SC_MAX_OUT_WIDTH</ipxact:name>
           <ipxact:displayName>Maximum output field width</ipxact:displayName>
-          <ipxact:value>800</ipxact:value>
+          <ipxact:value>4200</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SC_OUTPUT_HEIGHT" type="int">
           <ipxact:name>SC_OUTPUT_HEIGHT</ipxact:name>
           <ipxact:displayName>Output picture height (when MM off)</ipxact:displayName>
-          <ipxact:value>600</ipxact:value>
+          <ipxact:value>2200</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SC_RUNTIME_CONTROL" type="int">
           <ipxact:name>SC_RUNTIME_CONTROL</ipxact:name>
@@ -1558,7 +1558,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="SC_ALGORITHM" type="string">
           <ipxact:name>SC_ALGORITHM</ipxact:name>
           <ipxact:displayName>Scaling algorithm</ipxact:displayName>
-          <ipxact:value>NEAREST_NEIGHBOUR</ipxact:value>
+          <ipxact:value>POLYPHASE</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SC_EDGE_MIRROR" type="string">
           <ipxact:name>SC_EDGE_MIRROR</ipxact:name>
@@ -1598,7 +1598,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="SC_V_PHASES" type="int">
           <ipxact:name>SC_V_PHASES</ipxact:name>
           <ipxact:displayName>Number of vertical phases</ipxact:displayName>
-          <ipxact:value>16</ipxact:value>
+          <ipxact:value>64</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SC_V_BANKS" type="int">
           <ipxact:name>SC_V_BANKS</ipxact:name>
@@ -1658,7 +1658,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="SC_H_PHASES" type="int">
           <ipxact:name>SC_H_PHASES</ipxact:name>
           <ipxact:displayName>Number of horizontal phases</ipxact:displayName>
-          <ipxact:value>16</ipxact:value>
+          <ipxact:value>64</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SC_H_BANKS" type="int">
           <ipxact:name>SC_H_BANKS</ipxact:name>

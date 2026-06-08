@@ -55,7 +55,7 @@
 // =============================================================================
 
 module top #(
-    parameter        TOPOLOGY        = "FULL",
+    parameter        TOPOLOGY        = "CRS_ONLY",
     parameter [0:0]  INPUT_SEL       = 1'b0,
 
     parameter [31:0] IMG_WIDTH       = 32'd640,
@@ -73,11 +73,11 @@ module top #(
     parameter [31:0] SCALER_OUT_H    = 32'd480,
 
     // CRS output mode: 0=420, 2=422, 3=444
-    parameter [31:0] CRS_OUTPUT_MODE = 32'd3,
+    parameter [31:0] CRS_OUTPUT_MODE =                          32'd2,
 
     // CSC mode: 0=passthrough, 1=RGB->YCbCrHD, 2=YCbCrHD->RGB,
     //           3=RGB->YCbCrSD, 4=YCbCrSD->RGB
-    parameter [2:0]  CSC_MODE        = 3'd2,
+    parameter [2:0]  CSC_MODE        =                          3'd0,
     parameter [31:0] CSC_COLOR_SPACE = 32'd0
 )(
     input  wire        clk,
@@ -527,7 +527,8 @@ module top #(
             // TPG + CSC: start at ST_CONFIG_CSC (first frame absorbs commit)
             assign ready_to_start = (current_state >= ST_CONFIG_CSC);
         end else if (DO_SCL) begin : gen_rts_scl
-            assign ready_to_start = (current_state >= ST_CONFIG_SCL);
+           // assign ready_to_start = (current_state >= ST_CONFIG_SCL);
+            assign ready_to_start = (current_state == ST_WORKING);
         end else if (DO_CRS) begin : gen_rts_crs
             assign ready_to_start = (current_state >= ST_CONFIG_CRS);
         end else begin : gen_rts_default
@@ -536,13 +537,16 @@ module top #(
     endgenerate
 
     // =========================================================================
-    // Video wires (all 24-bit/3-bit - TPG configured for 444 YCbCr)
+    // Video wires
+    // TPG 422 YCbCr 1PPC: tdata=16-bit, tuser=2-bit
+    // Pipeline input/output: 24-bit/3-bit
+    // TPG tdata zero-extended to 24-bit for pipeline input
     // =========================================================================
-    wire [23:0] tpg_tdata;
+    wire [23:0] tpg_tdata;   // 16-bit for 422 1PPC
     wire        tpg_tvalid;
     wire        tpg_tready;
     wire        tpg_tlast;
-    wire [2:0]  tpg_tuser;
+    wire [2:0]  tpg_tuser;   // 2-bit for 422
 
     wire [23:0] pc1_tdata;
     wire        pc1_tvalid;
@@ -552,6 +556,7 @@ module top #(
 
     wire        vid_in_tready;
 
+    // Zero-extend TPG to match pipeline input port width
     wire [23:0] vid_in_tdata  = INPUT_SEL ? pc1_tdata  : tpg_tdata;
     wire        vid_in_tvalid = (INPUT_SEL ? pc1_tvalid : tpg_tvalid) & ready_to_start;
     wire        vid_in_tlast  = INPUT_SEL ? pc1_tlast  : tpg_tlast;

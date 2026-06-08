@@ -20,7 +20,7 @@ module tb();
     // =========================================================================
     // Change these per test
     // =========================================================================
-    localparam TOPOLOGY    = "FULL";   // FULL/SCALER_ONLY/CSC_ONLY/CRS_ONLY/CRS_CSC/CLIP_SCL/DIL_ONLY
+    localparam TOPOLOGY    = "CRS_ONLY";   // FULL/SCALER_ONLY/CSC_ONLY/CRS_ONLY/CRS_CSC/CLIP_SCL/DIL_ONLY
     localparam CLIP_METHOD = "RECTANGLE";  // "RECTANGLE" or "OFFSETS"
 
     // =========================================================================
@@ -42,7 +42,9 @@ module tb();
     localparam HAS_PC0 = HAS_SCL;
 
     localparam CAP_W   = HAS_SCL ? SCALER_OUT_W : IMG_WIDTH;
-    localparam CAP_H   = HAS_SCL ? SCALER_OUT_H : IMG_HEIGHT;
+    //localparam CAP_H   = HAS_SCL ? SCALER_OUT_H : IMG_HEIGHT;
+    //localparam CAP_H = HAS_SCL ? SCALER_OUT_H : IMG_HEIGHT * 3 / 2;
+    localparam CAP_H = HAS_SCL ? SCALER_OUT_H : IMG_HEIGHT;
     localparam IS_FULL = HAS_PC0 ? 0 : 1;
 
     localparam [63:0] END_TIME = (CAP_H * CAP_W > TPG_WIDTH * TPG_HEIGHT) ?
@@ -64,6 +66,8 @@ module tb();
     wire        out_tlast;
     wire [2:0]  out_tuser;
     wire        frame_done;
+    wire 	frame_done1;
+    wire	frame_done2;
 
     reg  [23:0] pc1_in_tdata  = 24'h0;
     reg         pc1_in_tvalid = 1'b0;
@@ -90,9 +94,29 @@ module tb();
         .tready    (out_tready & (dut.current_state == dut.ST_WORKING)),
         .tlast     (out_tlast),
         .tuser     (out_tuser),
-        .frame_done(frame_done)
+        .frame_done(frame_done1)
     );
-
+    // =========================================================================
+    // Output capture
+    // frame_controller auto-resets on every SOF so no special gating needed.
+    // It will capture whichever complete frame arrives first after ST_WORKING.
+    // =========================================================================
+    make_file #(
+        .IMG_H    (CAP_H),
+        .IMG_W    (CAP_W),
+        .IS_FULL  (IS_FULL),
+        //.FILE_NAME("../../../../app/crs_yuv422.txt")
+        .FILE_NAME("../../../../app/tpg_data.txt")
+    ) tpg_out (
+        .clk       (clk),
+        .reset     (reset),
+        .tdata     (dut.tpg_tdata),
+        .tvalid    (dut.tpg_tvalid),
+        .tready    (dut.tpg_tready & (dut.current_state == dut.ST_WORKING)),
+        .tlast     (dut.tpg_tlast),
+        .tuser     (dut.tpg_tuser),
+        .frame_done(frame_done2)
+    );
     // =========================================================================
     // DUT
     // =========================================================================
@@ -122,6 +146,7 @@ module tb();
         .pc1_in_tlast (pc1_in_tlast),
         .pc1_in_tuser (pc1_in_tuser)
     );
+    assign	frame_done = frame_done1 & frame_done2;
 
     // =========================================================================
     // Stimulus

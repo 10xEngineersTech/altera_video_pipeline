@@ -239,9 +239,10 @@ class ImageViewerWindow(Gtk.Window):
         crs_lbl.get_style_context().add_class("group-label")
         self.crs_group_box.pack_start(crs_lbl, False, False, 0)
         self.crs_combo = Gtk.ComboBoxText()
-        self.crs_combo.append_text("2 ? 4:2:2 output")
-        self.crs_combo.append_text("3 ? 4:4:4 output")
-        self.crs_combo.set_active(1)  # default 444
+        self.crs_combo.append_text("0 - 4:2:0 output")
+        self.crs_combo.append_text("2 - 4:2:2 output")
+        self.crs_combo.append_text("3 - 4:4:4 output")
+        self.crs_combo.set_active(2)  # default 444
         self.crs_group_box.pack_start(self.crs_combo, False, False, 0)
         sidebar.pack_start(self.crs_group_box, False, False, 0)
 
@@ -253,7 +254,7 @@ class ImageViewerWindow(Gtk.Window):
         csc_lbl.get_style_context().add_class("group-label")
         self.csc_group_box.pack_start(csc_lbl, False, False, 0)
         self.csc_combo = Gtk.ComboBoxText()
-        self.csc_combo.append_text("0 ? Passthrough")
+        self.csc_combo.append_text("0 - Passthrough")
         self.csc_combo.append_text("1 ? RGB ? YCbCr HD (BT.709)")
         self.csc_combo.append_text("2 ? YCbCr HD ? RGB")
         self.csc_combo.append_text("3 ? RGB ? YCbCr SD (BT.601)")
@@ -292,6 +293,10 @@ class ImageViewerWindow(Gtk.Window):
         self.info_label.get_style_context().add_class("info-text")
         viewer_container.pack_start(self.info_label, False, False, 0)
 
+        # Auto-sync scaler dims with input dims for non-scaler topologies
+        self.params["tpg_w"].connect("value-changed", self._on_input_res_changed)
+        self.params["tpg_h"].connect("value-changed", self._on_input_res_changed)
+
         # Initial UI state
         self._update_topology_ui()
         self._show_source_image(self.radio_image.get_active())
@@ -306,9 +311,17 @@ class ImageViewerWindow(Gtk.Window):
         self.topo_desc.set_text(TOPOLOGY_META[topo]["desc"])
         self._update_topology_ui()
 
+    def _on_input_res_changed(self, widget):
+        # If current topology has no scaler, keep scaler spinners in sync
+        meta = TOPOLOGY_META[self._get_topology()]
+        if not meta["scl"] and "scale_w" in self.params:
+            self.params["scale_w"].set_value(self.params["tpg_w"].get_value())
+            self.params["scale_h"].set_value(self.params["tpg_h"].get_value())
+
     def _get_crs_mode(self):
-        # Returns 2 or 3
-        return 2 if self.crs_combo.get_active() == 0 else 3
+        # Returns 0, 2, or 3
+        idx = self.crs_combo.get_active()
+        return [0, 2, 3][idx] if idx >= 0 else 3
 
     def _get_csc_mode(self):
         return self.csc_combo.get_active()  # 0-4
@@ -328,6 +341,11 @@ class ImageViewerWindow(Gtk.Window):
             self.crs_combo.set_sensitive(meta["crs"])
         if hasattr(self, 'csc_combo'):
             self.csc_combo.set_sensitive(meta["csc"])
+        # When no scaler: auto-set scaler spinners to match input resolution
+        # so user sees the actual output dimensions even though they're grayed out
+        if not meta["scl"] and "scale_w" in self.params and "tpg_w" in self.params:
+            self.params["scale_w"].set_value(self.params["tpg_w"].get_value())
+            self.params["scale_h"].set_value(self.params["tpg_h"].get_value())
 
     # ?? Presets ???????????????????????????????????????????????????????????????
 
@@ -395,7 +413,8 @@ class ImageViewerWindow(Gtk.Window):
 
         # Restore CRS mode
         crs = data.get("crs_mode", 3)
-        self.crs_combo.set_active(0 if crs == 2 else 1)
+        crs_map = {0: 0, 2: 1, 3: 2}
+        self.crs_combo.set_active(crs_map.get(crs, 2))
 
         # Restore CSC mode
         csc = data.get("csc_mode", 0)
@@ -459,6 +478,11 @@ class ImageViewerWindow(Gtk.Window):
         tb_path  = os.path.join(rtl_dir, "tb.v")
         top_path = os.path.join(rtl_dir, "top.v")
 
+        # Debug - print resolved paths
+        print(f"[PATCH] tb_path  = {tb_path}  exists={os.path.exists(tb_path)}")
+        print(f"[PATCH] top_path = {top_path}  exists={os.path.exists(top_path)}")
+        print(f"[PATCH] topology={topology} csc_mode={csc_mode} crs_mode={crs_mode}")
+
         # Patch tb.v: localparam TOPOLOGY = "...";
         if os.path.exists(tb_path):
             with open(tb_path) as f:
@@ -519,13 +543,28 @@ class ImageViewerWindow(Gtk.Window):
             # 1. Patch topology, CSC mode, CRS mode in RTL files
             self._patch_topology_in_rtl(topology, self._get_csc_mode(), self._get_crs_mode())
 
-            # 2. Write pipeline_config.txt
+            # 2. Compute correct output dimensions based on topology
+            meta = TOPOLOGY_META[topology]
+            if meta["scl"]:
+                out_w = values["scale_w"]
+                out_h = values["scale_h"]
+            else:
+                # No scaler - output dims = input dims
+                out_w = values["tpg_w"]
+                out_h = values["tpg_h"]
+
+            # Write pipeline_config.txt
             with open(config_path, "w") as f:
                 f.write(f"debug_mode = {is_debugging}\n")
                 f.write(f"input_source = {'image' if use_image else 'tpg'}\n")
                 f.write(f"topology = {topology}\n")
                 for k, v in values.items():
-                    f.write(f"{k} = {v}\n")
+                    if k not in ("scale_w", "scale_h"):
+                        f.write(f"{k} = {v}\n")
+                # Always write correct output dims for hex_to_png.py
+                # For non-scaler modes this = input dims, for scaler modes = scaler output
+                f.write(f"scale_w = {out_w}\n")
+                f.write(f"scale_h = {out_h}\n")
 
             # 3. Write configuration.vh
             with open(vh_path, "w") as f:
@@ -538,8 +577,8 @@ class ImageViewerWindow(Gtk.Window):
                 f.write(f"parameter CLIPPER_BOTTOM  = {values['clip_bottom']};\n")
                 f.write(f"parameter CLIPPER_LEFT    = {values['clip_left']};\n")
                 f.write(f"parameter CLIPPER_RIGHT   = {values['clip_right']};\n")
-                f.write(f"parameter SCALER_WIDTH    = {values['scale_w']};\n")
-                f.write(f"parameter SCALER_HEIGHT   = {values['scale_h']};\n")
+                f.write(f"parameter SCALER_WIDTH    = {out_w};\n")
+                f.write(f"parameter SCALER_HEIGHT   = {out_h};\n")
 
             def run_pipeline():
                 try:

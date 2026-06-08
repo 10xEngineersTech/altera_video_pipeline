@@ -41,7 +41,7 @@ set USER_DEFINED_ELAB_OPTIONS {{-voptargs="+acc"}}
 elab_debug
 
 # Add Waves (only useful if GUI opens, but harmless in command line)
-add wave /tb/dut/u_pipeline/intel_*
+add wave /tb/dut/*
 add wave -r /*
 
 # Run simulation

@@ -1008,7 +1008,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="TOPOLOGY" type="string">
           <ipxact:name>TOPOLOGY</ipxact:name>
           <ipxact:displayName>Video processing mode</ipxact:displayName>
-          <ipxact:value>CLIP_SCL</ipxact:value>
+          <ipxact:value>CRS_ONLY</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="BPS" type="int">
           <ipxact:name>BPS</ipxact:name>
@@ -1188,7 +1188,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="CRS_HORIZ_ALGORITHM" type="string">
           <ipxact:name>CRS_HORIZ_ALGORITHM</ipxact:name>
           <ipxact:displayName>Horizontal resampling algorithm</ipxact:displayName>
-          <ipxact:value>BILINEAR</ipxact:value>
+          <ipxact:value>NEAREST_NEIGHBOUR</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="CRS_HORIZ_CO_SITING" type="string">
           <ipxact:name>CRS_HORIZ_CO_SITING</ipxact:name>
@@ -1203,7 +1203,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="CRS_VERT_ALGORITHM" type="string">
           <ipxact:name>CRS_VERT_ALGORITHM</ipxact:name>
           <ipxact:displayName>Vertical resampling algorithm</ipxact:displayName>
-          <ipxact:value>BILINEAR</ipxact:value>
+          <ipxact:value>NEAREST_NEIGHBOUR</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="CRS_VERT_CO_SITING" type="string">
           <ipxact:name>CRS_VERT_CO_SITING</ipxact:name>
@@ -1528,12 +1528,12 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="SC_MAX_OUT_WIDTH" type="int">
           <ipxact:name>SC_MAX_OUT_WIDTH</ipxact:name>
           <ipxact:displayName>Maximum output field width</ipxact:displayName>
-          <ipxact:value>32</ipxact:value>
+          <ipxact:value>1080</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SC_OUTPUT_HEIGHT" type="int">
           <ipxact:name>SC_OUTPUT_HEIGHT</ipxact:name>
           <ipxact:displayName>Output picture height (when MM off)</ipxact:displayName>
-          <ipxact:value>18</ipxact:value>
+          <ipxact:value>720</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SC_RUNTIME_CONTROL" type="int">
           <ipxact:name>SC_RUNTIME_CONTROL</ipxact:name>
@@ -1558,7 +1558,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="SC_ALGORITHM" type="string">
           <ipxact:name>SC_ALGORITHM</ipxact:name>
           <ipxact:displayName>Scaling algorithm</ipxact:displayName>
-          <ipxact:value>POLYPHASE</ipxact:value>
+          <ipxact:value>NEAREST_NEIGHBOUR</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SC_EDGE_MIRROR" type="string">
           <ipxact:name>SC_EDGE_MIRROR</ipxact:name>

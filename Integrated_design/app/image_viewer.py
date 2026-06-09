@@ -254,11 +254,11 @@ class ImageViewerWindow(Gtk.Window):
         csc_lbl.get_style_context().add_class("group-label")
         self.csc_group_box.pack_start(csc_lbl, False, False, 0)
         self.csc_combo = Gtk.ComboBoxText()
-        self.csc_combo.append_text("0 - Passthrough")
-        self.csc_combo.append_text("1 ? RGB ? YCbCr HD (BT.709)")
-        self.csc_combo.append_text("2 ? YCbCr HD ? RGB")
-        self.csc_combo.append_text("3 ? RGB ? YCbCr SD (BT.601)")
-        self.csc_combo.append_text("4 ? YCbCr SD ? RGB")
+        self.csc_combo.append_text("0: Passthrough")
+        self.csc_combo.append_text("1: RGB -> YCbCr HD (BT.709)")
+        self.csc_combo.append_text("2: YCbCr HD -> RGB")
+        self.csc_combo.append_text("3: RGB -> YCbCr SD (BT.601)")
+        self.csc_combo.append_text("4: YCbCr SD -> RGB")
         self.csc_combo.set_active(0)  # default passthrough
         self.csc_group_box.pack_start(self.csc_combo, False, False, 0)
         sidebar.pack_start(self.csc_group_box, False, False, 0)
@@ -351,6 +351,27 @@ class ImageViewerWindow(Gtk.Window):
         # Datapath color planes: 3 for RGB/4:4:4, 2 for 4:2:2/4:2:0.
         # Must match the generated pipeline IP's NUMBER_OF_COLOR_PLANES.
         return 2 if self._get_tpg_colorspace() in (2, 3) else 3
+
+    def _get_output_format(self):
+        # Decode format of the pipeline OUTPUT (what sc_data.txt holds):
+        #   0=RGB, 1=YUV444, 2=YUV422, 3=YUV420
+        # This is NOT the TPG input colorspace: CSC swaps RGB<->YCbCr and CRS
+        # changes chroma subsampling, so the output can differ from the input.
+        # Data-plane order is CRS -> CSC, and CSC works in 4:4:4, so CSC has the
+        # final say on colorspace.
+        meta = TOPOLOGY_META[self._get_topology()]
+        fmt = self._get_tpg_colorspace()           # input colorspace
+        if meta["crs"]:
+            crs = self._get_crs_mode()             # 0=420, 2=422, 3=444
+            fmt = {3: 1, 2: 2, 0: 3}.get(crs, 1)   # YCbCr at that subsampling
+        if meta["csc"]:
+            mode = self._get_csc_mode()
+            if mode in (1, 3):                     # RGB -> YCbCr (4:4:4)
+                fmt = 1
+            elif mode in (2, 4):                   # YCbCr -> RGB
+                fmt = 0
+            # mode 0 (passthrough): keep current fmt
+        return fmt
 
     def _update_topology_ui(self):
         topo = self._get_topology()
@@ -604,6 +625,8 @@ class ImageViewerWindow(Gtk.Window):
                 f.write(f"tpg_colorspace = {self._get_tpg_colorspace()}\n")
                 # Datapath color planes (3 for RGB/444, 2 for 422/420)
                 f.write(f"vid_planes = {self._get_vid_planes()}\n")
+                # Actual pipeline OUTPUT format for the decoder (after CSC/CRS)
+                f.write(f"output_format = {self._get_output_format()}\n")
 
             # 3. Write configuration.vh
             with open(vh_path, "w") as f:

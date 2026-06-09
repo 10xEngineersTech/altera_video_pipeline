@@ -247,11 +247,17 @@ if __name__ == "__main__":
 
     fmt_names = {0: "RGB", 1: "YUV444", 2: "YUV422", 3: "YUV420"}
 
-    # Prefer the format recorded by the GUI; fall back to interactive menu.
+    # Prefer the actual pipeline OUTPUT format (after CSC/CRS). Fall back to the
+    # TPG input colorspace (correct only when no CSC/CRS changes it), then to the
+    # interactive menu.
+    of = params.get('output_format', None)
     cs = params.get('tpg_colorspace', None)
-    if isinstance(cs, int) and cs in (0, 1, 2, 3):
+    if isinstance(of, int) and of in (0, 1, 2, 3):
+        fmt = of
+        print(f"Output format from config: {fmt_names[fmt]} (output_format={of})")
+    elif isinstance(cs, int) and cs in (0, 1, 2, 3):
         fmt = cs
-        print(f"Format from config: {fmt_names[fmt]} (tpg_colorspace={cs})")
+        print(f"Format from config (input colorspace fallback): {fmt_names[fmt]}")
     else:
         menu = (
             "\nSelect output format (format of sc_data.txt):\n"

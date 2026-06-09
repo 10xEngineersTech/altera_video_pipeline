@@ -1196,7 +1196,6 @@ proc compose {} {
         set_instance_parameter_value intel_vvp_csc_0 BPS_IN                     [get_parameter_value CSC_BPS_IN]
         set_instance_parameter_value intel_vvp_csc_0 BPS_OUT                    [get_parameter_value CSC_BPS_OUT]
         set_instance_parameter_value intel_vvp_csc_0 PIXELS_IN_PARALLEL         $pip
-        set_instance_parameter_value intel_vvp_csc_0 NUMBER_OF_COLOR_PLANES $npl
         set_instance_parameter_value intel_vvp_csc_0 OUTPUT_COLORSPACE          0
         set_instance_parameter_value intel_vvp_csc_0 COEF_SUM_FRACTION_BITS     [get_parameter_value CSC_COEFF_FRAC_BITS]
         set_instance_parameter_value intel_vvp_csc_0 COEFFICIENT_SIGNED         [get_parameter_value CSC_COEFF_SIGNED]

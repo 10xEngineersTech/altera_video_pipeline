@@ -347,6 +347,11 @@ class ImageViewerWindow(Gtk.Window):
         idx = self.tpg_cs_combo.get_active()
         return idx if idx >= 0 else 1
 
+    def _get_vid_planes(self):
+        # Datapath color planes: 3 for RGB/4:4:4, 2 for 4:2:2/4:2:0.
+        # Must match the generated pipeline IP's NUMBER_OF_COLOR_PLANES.
+        return 2 if self._get_tpg_colorspace() in (2, 3) else 3
+
     def _update_topology_ui(self):
         topo = self._get_topology()
         meta = TOPOLOGY_META[topo]
@@ -597,6 +602,8 @@ class ImageViewerWindow(Gtk.Window):
                 f.write(f"scale_h = {out_h}\n")
                 # TPG color space: 0=RGB, 1=YUV444, 2=YUV422, 3=YUV420
                 f.write(f"tpg_colorspace = {self._get_tpg_colorspace()}\n")
+                # Datapath color planes (3 for RGB/444, 2 for 422/420)
+                f.write(f"vid_planes = {self._get_vid_planes()}\n")
 
             # 3. Write configuration.vh
             with open(vh_path, "w") as f:
@@ -612,6 +619,7 @@ class ImageViewerWindow(Gtk.Window):
                 f.write(f"parameter SCALER_WIDTH    = {out_w};\n")
                 f.write(f"parameter SCALER_HEIGHT   = {out_h};\n")
                 f.write(f"parameter TPG_COLORSPACE  = {self._get_tpg_colorspace()};\n")
+                f.write(f"parameter VID_PLANES      = {self._get_vid_planes()};\n")
 
             def run_pipeline():
                 try:

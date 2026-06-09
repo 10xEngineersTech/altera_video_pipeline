@@ -71,16 +71,20 @@ module top #(
     parameter [31:0] SCALER_OUT_H    = 32'd480,
 
     // CRS output mode: 0=420, 2=422, 3=444
-    parameter [31:0] CRS_OUTPUT_MODE =                                                         32'd3,
+    parameter [31:0] CRS_OUTPUT_MODE =                                                                     32'd3,
 
     // CSC mode: 0=passthrough, 1=RGB->YCbCrHD, 2=YCbCrHD->RGB,
     //           3=RGB->YCbCrSD, 4=YCbCrSD->RGB
-    parameter [2:0]  CSC_MODE =                                3'd0,
+    parameter [2:0]  CSC_MODE =                                            3'd0,
     parameter [31:0] CSC_COLOR_SPACE = 32'd2,
 	 
 	 
 	 parameter [31:0] TPG_MODE = 32'd1,
-	 parameter [31:0] TPG_INTERLACED = 32'd0
+	 parameter [31:0] TPG_INTERLACED = 32'd0,
+
+    // Number of color planes on the scaler datapath (must match the generated
+    // pipeline IP's NUMBER_OF_COLOR_PLANES): 3 for RGB/4:4:4, 2 for 4:2:2/4:2:0.
+    parameter [31:0] VID_PLANES = 32'd3
 )(
     input  wire        clk,
     input  wire        reset,
@@ -99,8 +103,8 @@ module top #(
     input  wire [2:0]  pc1_in_tuser
 );
 
-    wire ch;
-	 assign ch = (TPG_MODE == 32'd2)? 1 : 0;
+    // Video datapath width = color planes * 8 bits/sample (16 or 24).
+    localparam VID_BITS = VID_PLANES * 8;
 	 // =========================================================================
     // Topology flags
     // =========================================================================
@@ -676,7 +680,7 @@ module top #(
         end else if (DO_SCL) begin : gen_rts_scl
             assign ready_to_start = (current_state == ST_WORKING);
         end else if (DO_CRS) begin : gen_rts_crs
-            assign ready_to_start = (current_state == ST_CONFIG_CRS);
+            assign ready_to_start = (current_state == ST_WORKING);
         end else begin : gen_rts_default
             assign ready_to_start = (current_state == ST_WORKING);
         end
@@ -698,11 +702,21 @@ module top #(
     wire [2:0]  pc1_tuser;
 
     wire        vid_in_tready;
-	 
-    wire [23:0] vid_in_tdata  = INPUT_SEL ? pc1_tdata  : ch ? {8'b0,tpg_tdata[15:0]} : tpg_tdata ;
+
+    // Width-generalized video mux. TPG and PC1 sources are always 24-bit; for
+    // 2-plane formats (4:2:2 / 4:2:0) the meaningful samples occupy the low 16
+    // bits, so a single low-slice to VID_BITS handles every format with no
+    // per-format special case (this also fixes 4:2:0, which the old ch hack
+    // only handled for 4:2:2).
+    wire [23:0] vid_in_tdata  = INPUT_SEL ? pc1_tdata  : tpg_tdata;
     wire        vid_in_tvalid = (INPUT_SEL ? pc1_tvalid : tpg_tvalid) & ready_to_start;
     wire        vid_in_tlast  = INPUT_SEL ? pc1_tlast  : tpg_tlast;
-    wire [2:0]  vid_in_tuser  = INPUT_SEL ? pc1_tuser  : ch ? {1'b0,tpg_tuser[1:0]} : tpg_tuser;
+    wire [2:0]  vid_in_tuser  = INPUT_SEL ? pc1_tuser  : tpg_tuser;
+
+    // IP-facing datapath (VID_BITS wide) <-> fixed 24-bit module interface.
+    wire [VID_BITS-1:0] pl_in_tdata  = vid_in_tdata[VID_BITS-1:0];
+    wire [VID_BITS-1:0] pl_out_tdata;
+    assign out_tdata = pl_out_tdata;   // narrower RHS zero-extends to [23:0]
 
     assign tpg_tready = INPUT_SEL ? 1'b1 : (vid_in_tready & ready_to_start);
     assign pc1_tready = INPUT_SEL ? (vid_in_tready & ready_to_start) : 1'b1;
@@ -726,13 +740,13 @@ module top #(
         .s0_readdatavalid (bridge_readdatavalid),
         .s0_waitrequest   (bridge_wait),
 
-        .s_axis_video_in_tdata  (vid_in_tdata),
+        .s_axis_video_in_tdata  (pl_in_tdata),
         .s_axis_video_in_tvalid (vid_in_tvalid),
         .s_axis_video_in_tready (vid_in_tready),
         .s_axis_video_in_tlast  (vid_in_tlast),
         .s_axis_video_in_tuser  (vid_in_tuser),
 
-        .m_axis_video_out_tdata  (out_tdata),
+        .m_axis_video_out_tdata  (pl_out_tdata),
         .m_axis_video_out_tvalid (out_tvalid),
         .m_axis_video_out_tready (out_tready),
         .m_axis_video_out_tlast  (out_tlast),

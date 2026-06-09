@@ -107,7 +107,8 @@ module tb();
         .IMG_B_OFF   (IMG_B_OFF),
         .SCALER_OUT_W(SCALER_OUT_W),
         .SCALER_OUT_H(SCALER_OUT_H),
-        .TPG_MODE    (TPG_COLORSPACE)
+        .TPG_MODE    (TPG_COLORSPACE),
+        .VID_PLANES  (VID_PLANES)
     ) dut (
         .clk          (clk),
         .reset        (reset),

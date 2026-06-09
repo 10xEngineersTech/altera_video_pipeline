@@ -31,6 +31,10 @@ def load_config(config_file):
 # =============================================================================
 # Shared Utilities
 # =============================================================================
+# Number of meaningful low hex digits per captured word (VID_PLANES*2).
+# Set from config in __main__; None = keep the whole word.
+MEANINGFUL_NIBBLES = None
+
 def is_valid_hex(word):
     return not any(c in word.lower() for c in ('x', 'z'))
 
@@ -52,6 +56,12 @@ def load_and_clean(filename):
     except FileNotFoundError:
         print(f"Error: {filename} not found.")
         sys.exit(1)
+    # Keep only the meaningful low nibbles. On a 2-plane (16-bit) datapath the
+    # capture bus is still 24-bit, so the undriven high byte shows up as x/z;
+    # trimming first prevents those words from being discarded as invalid.
+    if MEANINGFUL_NIBBLES:
+        raw = [w[-MEANINGFUL_NIBBLES:] if len(w) >= MEANINGFUL_NIBBLES else w
+               for w in raw]
     valid   = [w for w in raw if is_valid_hex(w)]
     skipped = len(raw) - len(valid)
     if skipped:
@@ -235,26 +245,39 @@ if __name__ == "__main__":
     print(f"Config loaded  -  Width={WIDTH}, Height={HEIGHT}")
     print(f"Input file     -  {INPUT_TXT}")
 
-    menu = (
-        "\nSelect output format (format of sc_data.txt):\n"
-        "  0 = RGB    (CSC->RGB, SCALER_ONLY, CLIP_SCL, FULL)\n"
-        "  1 = YUV444 (CRS 444 output, CSC YCbCr output)\n"
-        "  2 = YUV422 (CRS 422 output)\n"
-        "  3 = YUV420 (CRS 420 passthrough)\n"
-        "Choice: "
-    )
     fmt_names = {0: "RGB", 1: "YUV444", 2: "YUV422", 3: "YUV420"}
 
-    while True:
-        try:
-            fmt = int(input(menu).strip())
-            if fmt in (0, 1, 2, 3):
-                break
-            print("  Invalid. Enter 0-3.")
-        except ValueError:
-            print("  Invalid. Enter a number.")
+    # Prefer the format recorded by the GUI; fall back to interactive menu.
+    cs = params.get('tpg_colorspace', None)
+    if isinstance(cs, int) and cs in (0, 1, 2, 3):
+        fmt = cs
+        print(f"Format from config: {fmt_names[fmt]} (tpg_colorspace={cs})")
+    else:
+        menu = (
+            "\nSelect output format (format of sc_data.txt):\n"
+            "  0 = RGB    (CSC->RGB, SCALER_ONLY, CLIP_SCL, FULL)\n"
+            "  1 = YUV444 (CRS 444 output, CSC YCbCr output)\n"
+            "  2 = YUV422 (CRS 422 output)\n"
+            "  3 = YUV420 (CRS 420 passthrough)\n"
+            "Choice: "
+        )
+        while True:
+            try:
+                fmt = int(input(menu).strip())
+                if fmt in (0, 1, 2, 3):
+                    break
+                print("  Invalid. Enter 0-3.")
+            except ValueError:
+                print("  Invalid. Enter a number.")
 
-    print(f"\nConverting {fmt_names[fmt]} -> PNG ...")
+    # Meaningful low nibbles = color planes * 2. Use vid_planes if present,
+    # else derive from the format (2 planes for 4:2:2/4:2:0, 3 otherwise).
+    planes = params.get('vid_planes', None)
+    if not isinstance(planes, int) or planes not in (2, 3):
+        planes = 2 if fmt in (2, 3) else 3
+    MEANINGFUL_NIBBLES = planes * 2
+
+    print(f"\nConverting {fmt_names[fmt]} ({planes} planes) -> PNG ...")
 
     if   fmt == 0: convert_rgb   (INPUT_TXT, OUTPUT_IMG, WIDTH, HEIGHT)
     elif fmt == 1: convert_yuv444(INPUT_TXT, OUTPUT_IMG, WIDTH, HEIGHT)

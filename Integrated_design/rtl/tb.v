@@ -20,7 +20,7 @@ module tb();
     // =========================================================================
     // Change these per test
     // =========================================================================
-    localparam TOPOLOGY    = "SCALER_ONLY";   // FULL/SCALER_ONLY/CSC_ONLY/CRS_ONLY/CRS_CSC/CLIP_SCL/DIL_ONLY
+    localparam TOPOLOGY    = "CLIP_SCL";   // FULL/SCALER_ONLY/CSC_ONLY/CRS_ONLY/CRS_CSC/CLIP_SCL/DIL_ONLY
 
     // =========================================================================
     // Geometry from configuration.vh
@@ -106,7 +106,8 @@ module tb();
         .IMG_R_OFF   (IMG_R_OFF),
         .IMG_B_OFF   (IMG_B_OFF),
         .SCALER_OUT_W(SCALER_OUT_W),
-        .SCALER_OUT_H(SCALER_OUT_H)
+        .SCALER_OUT_H(SCALER_OUT_H),
+        .TPG_MODE    (TPG_COLORSPACE)
     ) dut (
         .clk          (clk),
         .reset        (reset),

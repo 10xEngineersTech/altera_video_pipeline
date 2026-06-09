@@ -263,6 +263,22 @@ class ImageViewerWindow(Gtk.Window):
         self.csc_group_box.pack_start(self.csc_combo, False, False, 0)
         sidebar.pack_start(self.csc_group_box, False, False, 0)
 
+        # ?? TPG Color Space ???????????????????????????????????????????????????
+        self.tpg_cs_group_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+        self.tpg_cs_group_box.get_style_context().add_class("param-group")
+        tpg_cs_lbl = Gtk.Label(label="TPG Color Space")
+        tpg_cs_lbl.set_xalign(0)
+        tpg_cs_lbl.get_style_context().add_class("group-label")
+        self.tpg_cs_group_box.pack_start(tpg_cs_lbl, False, False, 0)
+        self.tpg_cs_combo = Gtk.ComboBoxText()
+        self.tpg_cs_combo.append_text("0 - RGB")
+        self.tpg_cs_combo.append_text("1 - YUV 4:4:4")
+        self.tpg_cs_combo.append_text("2 - YUV 4:2:2")
+        self.tpg_cs_combo.append_text("3 - YUV 4:2:0")
+        self.tpg_cs_combo.set_active(1)  # default YUV 4:4:4
+        self.tpg_cs_group_box.pack_start(self.tpg_cs_combo, False, False, 0)
+        sidebar.pack_start(self.tpg_cs_group_box, False, False, 0)
+
         # Debug checkbox
         self.debug_checkbox = Gtk.CheckButton(label="Enable Debugging Mode")
         self.debug_checkbox.get_style_context().add_class("debug-checkbox")
@@ -326,6 +342,11 @@ class ImageViewerWindow(Gtk.Window):
     def _get_csc_mode(self):
         return self.csc_combo.get_active()  # 0-4
 
+    def _get_tpg_colorspace(self):
+        # 0=RGB, 1=YUV444, 2=YUV422, 3=YUV420 (combo index == value)
+        idx = self.tpg_cs_combo.get_active()
+        return idx if idx >= 0 else 1
+
     def _update_topology_ui(self):
         topo = self._get_topology()
         meta = TOPOLOGY_META[topo]
@@ -374,6 +395,7 @@ class ImageViewerWindow(Gtk.Window):
             "debug":     self.debug_checkbox.get_active(),
             "crs_mode":  self._get_crs_mode(),
             "csc_mode":  self._get_csc_mode(),
+            "tpg_cs":    self._get_tpg_colorspace(),
         }
         with open(self._preset_path(name), "w") as f:
             json.dump(data, f, indent=2)
@@ -421,6 +443,11 @@ class ImageViewerWindow(Gtk.Window):
         if 0 <= csc <= 4:
             self.csc_combo.set_active(csc)
 
+        # Restore TPG color space
+        tpg_cs = data.get("tpg_cs", 1)
+        if 0 <= tpg_cs <= 3:
+            self.tpg_cs_combo.set_active(tpg_cs)
+
         self.status_badge.set_text(f"Loaded: {name}")
 
     # ?? Source toggle ?????????????????????????????????????????????????????????
@@ -452,6 +479,9 @@ class ImageViewerWindow(Gtk.Window):
             self.params['tpg_h'].set_sensitive(True)
             self.img_dim_hint.set_text("")
             self.res_group_label.set_text("Input Resolution")
+        # TPG color space only applies to the TPG input path
+        if hasattr(self, "tpg_cs_combo"):
+            self.tpg_cs_combo.set_sensitive(not use_image)
         self._show_source_image(use_image)
 
     def _show_source_image(self, use_image):
@@ -565,6 +595,8 @@ class ImageViewerWindow(Gtk.Window):
                 # For non-scaler modes this = input dims, for scaler modes = scaler output
                 f.write(f"scale_w = {out_w}\n")
                 f.write(f"scale_h = {out_h}\n")
+                # TPG color space: 0=RGB, 1=YUV444, 2=YUV422, 3=YUV420
+                f.write(f"tpg_colorspace = {self._get_tpg_colorspace()}\n")
 
             # 3. Write configuration.vh
             with open(vh_path, "w") as f:
@@ -579,6 +611,7 @@ class ImageViewerWindow(Gtk.Window):
                 f.write(f"parameter CLIPPER_RIGHT   = {values['clip_right']};\n")
                 f.write(f"parameter SCALER_WIDTH    = {out_w};\n")
                 f.write(f"parameter SCALER_HEIGHT   = {out_h};\n")
+                f.write(f"parameter TPG_COLORSPACE  = {self._get_tpg_colorspace()};\n")
 
             def run_pipeline():
                 try:

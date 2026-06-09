@@ -20,7 +20,7 @@ module tb();
     // =========================================================================
     // Change these per test
     // =========================================================================
-    localparam TOPOLOGY    = "SCALER_ONLY";   // FULL/SCALER_ONLY/CSC_ONLY/CRS_ONLY/CRS_CSC/CLIP_SCL/DIL_ONLY
+    localparam TOPOLOGY    = "CRS_ONLY";   // FULL/SCALER_ONLY/CSC_ONLY/CRS_ONLY/CRS_CSC/CLIP_SCL/DIL_ONLY
 
     // =========================================================================
     // Geometry from configuration.vh

@@ -1,0 +1,14 @@
+debug_mode = False
+input_source = tpg
+topology = FULL
+tpg_w = 32
+tpg_h = 32
+clip_top = 4
+clip_bottom = 4
+clip_left = 8
+clip_right = 8
+scale_w = 64
+scale_h = 64
+tpg_colorspace = 1
+vid_planes = 3
+output_format = 1

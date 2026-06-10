@@ -1075,6 +1075,7 @@ proc compose {} {
         DIL_ONLY    { set do_dil 1; set do_crs 0; set do_csc 0; set do_clip 0; set do_pc0 0; set do_scl 0 }
         default     { set do_dil 0; set do_crs 0; set do_csc 0; set do_clip 0; set do_pc0 0; set do_scl 0 }
     }
+    set npl_out [expr {$do_crs ? 3 : $npl}]
 
     # -- Determine if MM bridge needed ---------------------------------------
     set need_mm [expr {
@@ -1128,7 +1129,7 @@ proc compose {} {
         add_instance intel_vvp_dil_0 intel_vvp_dil 24.5.1
         set_instance_parameter_value intel_vvp_dil_0 EXTERNAL_MODE          [get_parameter_value DIL_EXTERNAL_MODE]
         set_instance_parameter_value intel_vvp_dil_0 BPS                    $bps
-        set_instance_parameter_value intel_vvp_dil_0 NUMBER_OF_COLOR_PLANES $npl
+        set_instance_parameter_value intel_vvp_dil_0 NUMBER_OF_COLOR_PLANES $npl_out
         set_instance_parameter_value intel_vvp_dil_0 PIXELS_IN_PARALLEL     $pip
         set_instance_parameter_value intel_vvp_dil_0 MAX_WIDTH              [get_parameter_value DIL_MAX_WIDTH]
         set_instance_parameter_value intel_vvp_dil_0 DIL_MODE               [get_parameter_value DIL_MODE]
@@ -1196,7 +1197,6 @@ proc compose {} {
         set_instance_parameter_value intel_vvp_csc_0 BPS_IN                     [get_parameter_value CSC_BPS_IN]
         set_instance_parameter_value intel_vvp_csc_0 BPS_OUT                    [get_parameter_value CSC_BPS_OUT]
         set_instance_parameter_value intel_vvp_csc_0 PIXELS_IN_PARALLEL         $pip
-        set_instance_parameter_value intel_vvp_csc_0 NUMBER_OF_COLOR_PLANES $npl
         set_instance_parameter_value intel_vvp_csc_0 OUTPUT_COLORSPACE          0
         set_instance_parameter_value intel_vvp_csc_0 COEF_SUM_FRACTION_BITS     [get_parameter_value CSC_COEFF_FRAC_BITS]
         set_instance_parameter_value intel_vvp_csc_0 COEFFICIENT_SIGNED         [get_parameter_value CSC_COEFF_SIGNED]
@@ -1220,7 +1220,7 @@ proc compose {} {
     if {$do_clip} {
         add_instance intel_vvp_clipper_0 intel_vvp_clipper 24.5.1
         set_instance_parameter_value intel_vvp_clipper_0 BPS                    $bps
-        set_instance_parameter_value intel_vvp_clipper_0 NUMBER_OF_COLOR_PLANES $npl
+        set_instance_parameter_value intel_vvp_clipper_0 NUMBER_OF_COLOR_PLANES $npl_out
         set_instance_parameter_value intel_vvp_clipper_0 PIXELS_IN_PARALLEL     $pip
         set_instance_parameter_value intel_vvp_clipper_0 EXTERNAL_MODE          [get_parameter_value CL_EXTERNAL_MODE]
         set_instance_parameter_value intel_vvp_clipper_0 RUNTIME_CONTROL        [get_parameter_value CL_RUNTIME_CONTROL]
@@ -1244,7 +1244,7 @@ proc compose {} {
     if {$do_pc0} {
         add_instance intel_vvp_protocol_conv_0 intel_vvp_protocol_conv 24.6.0
         set_instance_parameter_value intel_vvp_protocol_conv_0 BPS                    $bps
-        set_instance_parameter_value intel_vvp_protocol_conv_0 NUMBER_OF_COLOR_PLANES $npl
+        set_instance_parameter_value intel_vvp_protocol_conv_0 NUMBER_OF_COLOR_PLANES $npl_out
         set_instance_parameter_value intel_vvp_protocol_conv_0 PIXELS_IN_PARALLEL     $pip
         set_instance_parameter_value intel_vvp_protocol_conv_0 INPUT_MODE             "INTERNAL"
         set_instance_parameter_value intel_vvp_protocol_conv_0 OUTPUT_MODE            "EXTERNAL"
@@ -1269,11 +1269,11 @@ proc compose {} {
         add_instance intel_vvp_scaler_0 intel_vvp_scaler 24.5.1
         set_instance_parameter_value intel_vvp_scaler_0 EXTERNAL_MODE          [get_parameter_value SC_EXTERNAL_MODE]
         set_instance_parameter_value intel_vvp_scaler_0 BPS                    $bps
-        set_instance_parameter_value intel_vvp_scaler_0 NUMBER_OF_COLOR_PLANES $npl
+        set_instance_parameter_value intel_vvp_scaler_0 NUMBER_OF_COLOR_PLANES $npl_out
         set_instance_parameter_value intel_vvp_scaler_0 PIXELS_IN_PARALLEL     $pip
-        set_instance_parameter_value intel_vvp_scaler_0 ENABLE_444             [get_parameter_value SC_ENABLE_444]
-        set_instance_parameter_value intel_vvp_scaler_0 ENABLE_422             [get_parameter_value SC_ENABLE_422]
-        set_instance_parameter_value intel_vvp_scaler_0 ENABLE_420             [get_parameter_value SC_ENABLE_420]
+        set_instance_parameter_value intel_vvp_scaler_0 ENABLE_444             [expr {$do_crs ? 1 : [get_parameter_value SC_ENABLE_444]}]
+        set_instance_parameter_value intel_vvp_scaler_0 ENABLE_422             [expr {$do_crs ? 0 : [get_parameter_value SC_ENABLE_422]}]
+        set_instance_parameter_value intel_vvp_scaler_0 ENABLE_420             [expr {$do_crs ? 0 : [get_parameter_value SC_ENABLE_420]}]
         set_instance_parameter_value intel_vvp_scaler_0 NO_BLANKING            [get_parameter_value SC_NO_BLANKING]
         set_instance_parameter_value intel_vvp_scaler_0 MAX_IN_WIDTH           [get_parameter_value SC_MAX_IN_WIDTH]
         set_instance_parameter_value intel_vvp_scaler_0 MAX_OUT_WIDTH          [get_parameter_value SC_MAX_OUT_WIDTH]

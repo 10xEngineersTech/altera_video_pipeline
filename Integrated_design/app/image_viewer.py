@@ -254,14 +254,30 @@ class ImageViewerWindow(Gtk.Window):
         csc_lbl.get_style_context().add_class("group-label")
         self.csc_group_box.pack_start(csc_lbl, False, False, 0)
         self.csc_combo = Gtk.ComboBoxText()
-        self.csc_combo.append_text("0 - Passthrough")
-        self.csc_combo.append_text("1 ? RGB ? YCbCr HD (BT.709)")
-        self.csc_combo.append_text("2 ? YCbCr HD ? RGB")
-        self.csc_combo.append_text("3 ? RGB ? YCbCr SD (BT.601)")
-        self.csc_combo.append_text("4 ? YCbCr SD ? RGB")
+        self.csc_combo.append_text("0: Passthrough")
+        self.csc_combo.append_text("1: RGB -> YCbCr HD (BT.709)")
+        self.csc_combo.append_text("2: YCbCr HD -> RGB")
+        self.csc_combo.append_text("3: RGB -> YCbCr SD (BT.601)")
+        self.csc_combo.append_text("4: YCbCr SD -> RGB")
         self.csc_combo.set_active(0)  # default passthrough
         self.csc_group_box.pack_start(self.csc_combo, False, False, 0)
         sidebar.pack_start(self.csc_group_box, False, False, 0)
+
+        # ?? TPG Color Space ???????????????????????????????????????????????????
+        self.tpg_cs_group_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+        self.tpg_cs_group_box.get_style_context().add_class("param-group")
+        tpg_cs_lbl = Gtk.Label(label="TPG Color Space")
+        tpg_cs_lbl.set_xalign(0)
+        tpg_cs_lbl.get_style_context().add_class("group-label")
+        self.tpg_cs_group_box.pack_start(tpg_cs_lbl, False, False, 0)
+        self.tpg_cs_combo = Gtk.ComboBoxText()
+        self.tpg_cs_combo.append_text("0 - RGB")
+        self.tpg_cs_combo.append_text("1 - YUV 4:4:4")
+        self.tpg_cs_combo.append_text("2 - YUV 4:2:2")
+        self.tpg_cs_combo.append_text("3 - YUV 4:2:0")
+        self.tpg_cs_combo.set_active(1)  # default YUV 4:4:4
+        self.tpg_cs_group_box.pack_start(self.tpg_cs_combo, False, False, 0)
+        sidebar.pack_start(self.tpg_cs_group_box, False, False, 0)
 
         # Debug checkbox
         self.debug_checkbox = Gtk.CheckButton(label="Enable Debugging Mode")
@@ -326,6 +342,37 @@ class ImageViewerWindow(Gtk.Window):
     def _get_csc_mode(self):
         return self.csc_combo.get_active()  # 0-4
 
+    def _get_tpg_colorspace(self):
+        # 0=RGB, 1=YUV444, 2=YUV422, 3=YUV420 (combo index == value)
+        idx = self.tpg_cs_combo.get_active()
+        return idx if idx >= 0 else 1
+
+    def _get_vid_planes(self):
+        # Datapath color planes: 3 for RGB/4:4:4, 2 for 4:2:2/4:2:0.
+        # Must match the generated pipeline IP's NUMBER_OF_COLOR_PLANES.
+        return 2 if self._get_tpg_colorspace() in (2, 3) else 3
+
+    def _get_output_format(self):
+        # Decode format of the pipeline OUTPUT (what sc_data.txt holds):
+        #   0=RGB, 1=YUV444, 2=YUV422, 3=YUV420
+        # This is NOT the TPG input colorspace: CSC swaps RGB<->YCbCr and CRS
+        # changes chroma subsampling, so the output can differ from the input.
+        # Data-plane order is CRS -> CSC, and CSC works in 4:4:4, so CSC has the
+        # final say on colorspace.
+        meta = TOPOLOGY_META[self._get_topology()]
+        fmt = self._get_tpg_colorspace()           # input colorspace
+        if meta["crs"]:
+            crs = self._get_crs_mode()             # 0=420, 2=422, 3=444
+            fmt = {3: 1, 2: 2, 0: 3}.get(crs, 1)   # YCbCr at that subsampling
+        if meta["csc"]:
+            mode = self._get_csc_mode()
+            if mode in (1, 3):                     # RGB -> YCbCr (4:4:4)
+                fmt = 1
+            elif mode in (2, 4):                   # YCbCr -> RGB
+                fmt = 0
+            # mode 0 (passthrough): keep current fmt
+        return fmt
+
     def _update_topology_ui(self):
         topo = self._get_topology()
         meta = TOPOLOGY_META[topo]
@@ -374,6 +421,7 @@ class ImageViewerWindow(Gtk.Window):
             "debug":     self.debug_checkbox.get_active(),
             "crs_mode":  self._get_crs_mode(),
             "csc_mode":  self._get_csc_mode(),
+            "tpg_cs":    self._get_tpg_colorspace(),
         }
         with open(self._preset_path(name), "w") as f:
             json.dump(data, f, indent=2)
@@ -421,6 +469,11 @@ class ImageViewerWindow(Gtk.Window):
         if 0 <= csc <= 4:
             self.csc_combo.set_active(csc)
 
+        # Restore TPG color space
+        tpg_cs = data.get("tpg_cs", 1)
+        if 0 <= tpg_cs <= 3:
+            self.tpg_cs_combo.set_active(tpg_cs)
+
         self.status_badge.set_text(f"Loaded: {name}")
 
     # ?? Source toggle ?????????????????????????????????????????????????????????
@@ -452,6 +505,9 @@ class ImageViewerWindow(Gtk.Window):
             self.params['tpg_h'].set_sensitive(True)
             self.img_dim_hint.set_text("")
             self.res_group_label.set_text("Input Resolution")
+        # TPG color space only applies to the TPG input path
+        if hasattr(self, "tpg_cs_combo"):
+            self.tpg_cs_combo.set_sensitive(not use_image)
         self._show_source_image(use_image)
 
     def _show_source_image(self, use_image):
@@ -565,6 +621,12 @@ class ImageViewerWindow(Gtk.Window):
                 # For non-scaler modes this = input dims, for scaler modes = scaler output
                 f.write(f"scale_w = {out_w}\n")
                 f.write(f"scale_h = {out_h}\n")
+                # TPG color space: 0=RGB, 1=YUV444, 2=YUV422, 3=YUV420
+                f.write(f"tpg_colorspace = {self._get_tpg_colorspace()}\n")
+                # Datapath color planes (3 for RGB/444, 2 for 422/420)
+                f.write(f"vid_planes = {self._get_vid_planes()}\n")
+                # Actual pipeline OUTPUT format for the decoder (after CSC/CRS)
+                f.write(f"output_format = {self._get_output_format()}\n")
 
             # 3. Write configuration.vh
             with open(vh_path, "w") as f:
@@ -579,6 +641,8 @@ class ImageViewerWindow(Gtk.Window):
                 f.write(f"parameter CLIPPER_RIGHT   = {values['clip_right']};\n")
                 f.write(f"parameter SCALER_WIDTH    = {out_w};\n")
                 f.write(f"parameter SCALER_HEIGHT   = {out_h};\n")
+                f.write(f"parameter TPG_COLORSPACE  = {self._get_tpg_colorspace()};\n")
+                f.write(f"parameter VID_PLANES      = {self._get_vid_planes()};\n")
 
             def run_pipeline():
                 try:

@@ -579,6 +579,11 @@ class ImageViewerWindow(Gtk.Window):
                 f.write(f"parameter CLIPPER_RIGHT   = {values['clip_right']};\n")
                 f.write(f"parameter SCALER_WIDTH    = {out_w};\n")
                 f.write(f"parameter SCALER_HEIGHT   = {out_h};\n")
+                f.write(f"parameter CRS_OUTPUT_MODE = {self._get_crs_mode()};\n")
+                f.write(f"parameter CSC_MODE        = {self._get_csc_mode()};\n")
+                f.write(f"parameter TPG_MODE        = 1;\n")
+                f.write(f"parameter TPG_TDATA_W     = 24;\n")
+                f.write(f"parameter TPG_TUSER_W     = 3;\n")
 
             def run_pipeline():
                 try:

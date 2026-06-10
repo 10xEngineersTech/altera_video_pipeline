@@ -20,7 +20,7 @@ module tb();
     // =========================================================================
     // Change these per test
     // =========================================================================
-    localparam TOPOLOGY    = "CRS_ONLY";   // FULL/SCALER_ONLY/CSC_ONLY/CRS_ONLY/CRS_CSC/CLIP_SCL/DIL_ONLY
+    localparam TOPOLOGY    = "CSC_ONLY";   // FULL/SCALER_ONLY/CSC_ONLY/CRS_ONLY/CRS_CSC/CLIP_SCL/DIL_ONLY
 
     // =========================================================================
     // Geometry from configuration.vh
@@ -31,8 +31,13 @@ module tb();
     localparam IMG_T_OFF    = CLIPPER_TOP;
     localparam IMG_R_OFF    = CLIPPER_RIGHT;
     localparam IMG_B_OFF    = CLIPPER_BOTTOM;
-    localparam SCALER_OUT_W = SCALER_WIDTH;
-    localparam SCALER_OUT_H = SCALER_HEIGHT;
+    localparam SCALER_OUT_W    = SCALER_WIDTH;
+    localparam SCALER_OUT_H    = SCALER_HEIGHT;
+    localparam CRS_OUT_MODE_LC = CRS_OUTPUT_MODE;
+    localparam CSC_MODE_LC     = CSC_MODE;
+    localparam TPG_MODE_LC     = TPG_MODE;
+    localparam TPG_TDATA_W_LC  = TPG_TDATA_W;
+    localparam TPG_TUSER_W_LC  = TPG_TUSER_W;
 
     // =========================================================================
     // Topology-derived constants
@@ -69,7 +74,12 @@ module tb();
     wire        pc1_in_tready;
     reg         pc1_in_tlast  = 1'b0;
     reg  [2:0]  pc1_in_tuser  = 3'b000;
-
+         reg capture_en = 0;
+	always @(posedge clk) begin
+    	if (!capture_en && out_tvalid && out_tuser[0] && 
+        dut.current_state == dut.ST_WORKING)
+        capture_en <= 1;
+		end
     // =========================================================================
     // Output capture
     // frame_controller auto-resets on every SOF so no special gating needed.
@@ -86,7 +96,7 @@ module tb();
         .reset     (reset),
         .tdata     (out_tdata),
         .tvalid    (out_tvalid),
-        .tready    (out_tready & (dut.current_state == dut.ST_WORKING)),
+        .tready    (out_tready & (dut.current_state == dut.ST_WORKING) & capture_en),
         .tlast     (out_tlast),
         .tuser     (out_tuser),
         .frame_done(frame_done)
@@ -97,16 +107,19 @@ module tb();
     // DUT
     // =========================================================================
     top #(
-        .TOPOLOGY    (TOPOLOGY),
-        .INPUT_SEL   (INPUT_SEL),
-        .IMG_WIDTH   (IMG_WIDTH),
-        .IMG_HEIGHT  (IMG_HEIGHT),
-        .IMG_L_OFF   (IMG_L_OFF),
-        .IMG_T_OFF   (IMG_T_OFF),
-        .IMG_R_OFF   (IMG_R_OFF),
-        .IMG_B_OFF   (IMG_B_OFF),
-        .SCALER_OUT_W(SCALER_OUT_W),
-        .SCALER_OUT_H(SCALER_OUT_H)
+        .TOPOLOGY        (TOPOLOGY),
+        .INPUT_SEL       (INPUT_SEL),
+        .IMG_WIDTH       (IMG_WIDTH),
+        .IMG_HEIGHT      (IMG_HEIGHT),
+        .IMG_L_OFF       (IMG_L_OFF),
+        .IMG_T_OFF       (IMG_T_OFF),
+        .IMG_R_OFF       (IMG_R_OFF),
+        .IMG_B_OFF       (IMG_B_OFF),
+        .SCALER_OUT_W    (SCALER_OUT_W),
+        .SCALER_OUT_H    (SCALER_OUT_H),
+        .TPG_TDATA_W     (TPG_TDATA_W_LC),
+        .TPG_TUSER_W     (TPG_TUSER_W_LC)
+
     ) dut (
         .clk          (clk),
         .reset        (reset),
@@ -128,7 +141,7 @@ module tb();
     initial begin
         reset      = 1;
         out_tready = 0;
-        repeat(10) @(posedge clk);
+        repeat(500) @(posedge clk);
         reset = 0;
         $display("[%0t] Reset released.", $time);
 
@@ -144,9 +157,13 @@ module tb();
 
         // Wait for first clean SOF after ST_WORKING.
         // frame_controller auto-resets on this SOF and captures the frame.
-        wait(out_tvalid && out_tuser[0]);
-        $display("[%0t] SOF detected - capturing frame.", $time);
-
+        //wait(out_tvalid && out_tuser[0]);
+        //$display("[%0t] SOF detected - capturing frame.", $time);
+	// Skip first frame - CRS needs one flush frame after COMMIT
+	wait(out_tvalid && out_tuser[0]);
+	wait(!out_tuser[0]);  // wait for end of first frame
+	wait(out_tvalid && out_tuser[0]);  // wait for second SOF
+	$display("[%0t] SOF detected - capturing frame.", $time);
         wait(frame_done);
         $display("[%0t] Frame written to sc_data.txt.", $time);
         $finish;
@@ -200,6 +217,10 @@ module tb();
             $display("[%0t] STATE %0d->%0d cfg_step=%0d",
                      $time, last_state, dut.current_state, dut.cfg_step);
             last_state <= dut.current_state;
+        end
+        if (!reset && dut.bridge_write && !dut.bridge_wait) begin
+            $display("[%0t] BRIDGE WRITE addr=%h data=%h",
+                     $time, dut.bridge_addr, dut.bridge_wdata);
         end
     end
 

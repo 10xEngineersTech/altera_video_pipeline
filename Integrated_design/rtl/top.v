@@ -59,7 +59,7 @@
 // =============================================================================
 
 module top #(
-    parameter        TOPOLOGY        = "CRS_ONLY",
+    parameter        TOPOLOGY        = "CSC_ONLY",
     parameter [0:0]  INPUT_SEL       = 1'b0,
 
     parameter [31:0] IMG_WIDTH       = 32'd640,
@@ -75,15 +75,15 @@ module top #(
     parameter [31:0] SCALER_OUT_H    = 32'd480,
 
     // CRS output mode: 0=420, 2=422, 3=444
-    parameter [31:0] CRS_OUTPUT_MODE =   32'd2,
+    parameter [31:0] CRS_OUTPUT_MODE =                                         32'd3,
 
     // CSC mode: 0=passthrough, 1=RGB->YCbCrHD, 2=YCbCrHD->RGB,
     //           3=RGB->YCbCrSD, 4=YCbCrSD->RGB
-    parameter [2:0]  CSC_MODE        =   3'd0,
+    parameter [2:0]  CSC_MODE        =                                         3'd1,
     parameter [31:0] CSC_COLOR_SPACE = 32'd2,
 
     // TPG runtime configuration
-    parameter [31:0] TPG_MODE        = 32'd3,   // pattern: 0=solid,1=colorbars,etc
+    parameter [31:0] TPG_MODE        = 32'd1,   // pattern: 0=solid,1=colorbars,etc
     parameter [31:0] TPG_INTERLACED  = 32'd0,   // 0=progressive, 1=interlaced
 
     // TPG port widths ? must match pipeline.v after regeneration
@@ -95,10 +95,12 @@ module top #(
     input  wire        clk,
     input  wire        reset,
 
+    //output wire [15:0] out_tdata, (enable when doind scaler only 422 and also tuser disable 23:0 and 1:0)
     output wire [23:0] out_tdata,
     output wire        out_tvalid,
     input  wire        out_tready,
     output wire        out_tlast,
+    //output wire [1:0]  out_tuser,
     output wire [2:0]  out_tuser,
 
     // PC1 image input (used when INPUT_SEL=1)
@@ -653,12 +655,14 @@ module top #(
     // TPG_TDATA_W=16/TPG_TUSER_W=2 for 422
     // Upper bits zero-extended to match 24-bit/3-bit pipeline input
     // =========================================================================
-    wire [TPG_TDATA_W-1:0] tpg_tdata;
+   // wire [TPG_TDATA_W-1:0] tpg_tdata;
+  wire [23:0]	           tpg_tdata;
+      
     wire                   tpg_tvalid;
     wire                   tpg_tready;
     wire                   tpg_tlast;
-    wire [TPG_TUSER_W-1:0] tpg_tuser;
-
+    //wire [TPG_TUSER_W-1:0] tpg_tuser;
+	wire [2:0]  		tpg_tuser;
     wire [23:0] pc1_tdata;
     wire        pc1_tvalid;
     wire        pc1_tready;
@@ -667,11 +671,18 @@ module top #(
 
     wire        vid_in_tready;
 
-    wire [23:0] vid_in_tdata  = INPUT_SEL ? pc1_tdata  : {{(24-TPG_TDATA_W){1'b0}}, tpg_tdata};
+    //wire [23:0] vid_in_tdata  = INPUT_SEL ? pc1_tdata  : {{(24-TPG_TDATA_W){1'b0}}, tpg_tdata};
+     //wire [23:0] vid_in_tdata = INPUT_SEL ? pc1_tdata : {{8{1'b0}}, tpg_tdata};
+    //wire [23:0] vid_in_tdata = INPUT_SEL ? pc1_tdata : {8'h00, tpg_tdata[7:0], tpg_tdata[15:8]};
+    wire [23:0] vid_in_tdata = INPUT_SEL ? pc1_tdata : tpg_tdata;
+     //wire [23:0] vid_in_tdata = INPUT_SEL ? pc1_tdata : {{8{1'b0}}, tpg_tdata};
+     //wire [15:0] vid_in_tdata = INPUT_SEL ? pc1_tdata[15:0] : tpg_tdata;(scaler 422)
     wire        vid_in_tvalid = (INPUT_SEL ? pc1_tvalid : tpg_tvalid) & ready_to_start;
     wire        vid_in_tlast  = INPUT_SEL ? pc1_tlast  : tpg_tlast;
-    wire [2:0]  vid_in_tuser  = INPUT_SEL ? pc1_tuser  : {{(3-TPG_TUSER_W){1'b0}}, tpg_tuser};
-
+    //wire [2:0]  vid_in_tuser  = INPUT_SEL ? pc1_tuser  : {{(3-TPG_TUSER_W){1'b0}}, tpg_tuser};
+	 wire [2:0]  vid_in_tuser = INPUT_SEL ? pc1_tuser : tpg_tuser;
+	 
+	//wire [1:0] vid_in_tuser = INPUT_SEL ? pc1_tuser[1:0] : tpg_tuser;(422 scaler)
     assign tpg_tready = INPUT_SEL ? 1'b1 : (vid_in_tready & ready_to_start);
     assign pc1_tready = INPUT_SEL ? (vid_in_tready & ready_to_start) : 1'b1;
 

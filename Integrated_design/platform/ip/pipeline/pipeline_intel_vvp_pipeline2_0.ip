@@ -1008,7 +1008,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="TOPOLOGY" type="string">
           <ipxact:name>TOPOLOGY</ipxact:name>
           <ipxact:displayName>Video processing mode</ipxact:displayName>
-          <ipxact:value>CSC_ONLY</ipxact:value>
+          <ipxact:value>CRS_ONLY</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="BPS" type="int">
           <ipxact:name>BPS</ipxact:name>

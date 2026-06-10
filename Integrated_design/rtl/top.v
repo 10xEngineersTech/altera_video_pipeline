@@ -55,7 +55,7 @@
 // =============================================================================
 
 module top #(
-    parameter        TOPOLOGY        = "CSC_ONLY",
+    parameter        TOPOLOGY        = "CRS_ONLY",
     parameter [0:0]  INPUT_SEL       = 1'b0,
 
     parameter [31:0] IMG_WIDTH       = 32'd640,
@@ -71,11 +71,11 @@ module top #(
     parameter [31:0] SCALER_OUT_H    = 32'd480,
 
     // CRS output mode: 0=420, 2=422, 3=444
-    parameter [31:0] CRS_OUTPUT_MODE =                                                                              32'd3,
+    parameter [31:0] CRS_OUTPUT_MODE =                                 32'd2,
 
     // CSC mode: 0=passthrough, 1=RGB->YCbCrHD, 2=YCbCrHD->RGB,
     //           3=RGB->YCbCrSD, 4=YCbCrSD->RGB
-    parameter [2:0]  CSC_MODE =                                                     3'd1,
+    parameter [2:0]  CSC_MODE =                                 3'd2,
     parameter [31:0] CSC_COLOR_SPACE = 32'd2,
 	 
 	 
@@ -103,8 +103,7 @@ module top #(
     input  wire [2:0]  pc1_in_tuser
 );
 
-    // Video datapath width = color planes * 8 bits/sample (16 or 24).
-    localparam VID_BITS = VID_PLANES * 8;
+    
 	 // =========================================================================
     // Topology flags
     // =========================================================================
@@ -131,8 +130,10 @@ module top #(
 
     // --- CRS base = 0x200 ---
     localparam [11:0] CRS_BASE        = 12'h200;
+    localparam [11:0] CRS_STATUS_ADDR = CRS_BASE | 12'h140;  // 0x340
     localparam [11:0] CRS_COMMIT_ADDR = CRS_BASE | 12'h144;  // 0x344
     localparam [11:0] CRS_OUT_MODE    = CRS_BASE | 12'h148;  // 0x348
+
 
     // --- CSC base = 0x400 ---
     localparam [11:0] CSC_BASE        = 12'h400;
@@ -191,28 +192,29 @@ module top #(
     // State encoding
     // =========================================================================
     localparam [4:0]
-        ST_IDLE        = 5'd0,
-        ST_CONFIG_CLIP = 5'd1,
-        ST_CONFIG_SCL  = 5'd2,
-        ST_CONFIG_CRS  = 5'd3,
-        ST_CONFIG_CSC  = 5'd4,
-        ST_POLL_CSC    = 5'd5,
-        ST_CONFIG_PC1  = 5'd6,
-        ST_WORKING     = 5'd7,
+        ST_IDLE        = 5'd20,
+        ST_CONFIG_CLIP = 5'd21,
+        ST_CONFIG_SCL  = 5'd22,
+        ST_CONFIG_CRS  = 5'd23,
+        ST_POLL_CRS    = 5'd24,
+        ST_CONFIG_CSC  = 5'd25,
+        ST_POLL_CSC    = 5'd26,
+        ST_CONFIG_PC1  = 5'd27,
+        ST_WORKING     = 5'd28,
 		  
 		  // TPG (own Avalon port)
-        ST_TPG_CTRL_1    = 5'd11,
-        ST_TPG_WR_INTL   = 5'd12,
-        ST_TPG_WR_W      = 5'd13,
-        ST_TPG_WR_H      = 5'd14,
-        ST_TPG_WR_PAT_T  = 5'd15,
-        ST_TPG_WR_PAT_S  = 5'd16,
-        ST_TPG_WR_CMT    = 5'd17,
-        ST_TPG_CTRL_2    = 5'd18,
-        ST_TPG_POLL_ISS  = 5'd19,
-        ST_TPG_POLL_W    = 5'd20,
-        ST_TPG_IP_RST    = 5'd21,
-        ST_TPG_CTRL_3    = 5'd22;
+        ST_TPG_CTRL_1    = 5'd0,
+        ST_TPG_WR_INTL   = 5'd1,
+        ST_TPG_WR_W      = 5'd2,
+        ST_TPG_WR_H      = 5'd3,
+        ST_TPG_WR_PAT_T  = 5'd4,
+        ST_TPG_WR_PAT_S  = 5'd5,
+        ST_TPG_WR_CMT    = 5'd6,
+        ST_TPG_CTRL_2    = 5'd7,
+        ST_TPG_POLL_ISS  = 5'd8,
+        ST_TPG_POLL_W    = 5'd9,
+        ST_TPG_IP_RST    = 5'd10,
+        ST_TPG_CTRL_3    = 5'd11;
 
     // =========================================================================
     // CSC coefficient ROMs
@@ -531,17 +533,7 @@ module top #(
                         if (cfg_step == 4'd1) begin
                             bridge_write  <= 1'b0;
                             cfg_step      <= 4'd0;
-                            if (DO_CSC) begin
-                                bridge_addr   <= CSC_COEFF_A0;
-                                bridge_wdata  <= csc_a0;
-                                current_state <= ST_CONFIG_CSC;
-                            end else if (DO_PC1) begin
-                                pc1_addr      <= PC1_ADDR_WIDTH;
-                                pc1_wdata     <= IMG_WIDTH;
-                                current_state <= ST_CONFIG_PC1;
-                            end else begin
-                                current_state <= ST_WORKING;
-                            end
+                            current_state <= ST_POLL_CRS;
                         end else begin
                             cfg_step <= cfg_step + 1'b1;
                             case (cfg_step + 1'b1)
@@ -552,6 +544,35 @@ module top #(
                     end
                 end
 
+					 ST_POLL_CRS: begin
+                    if (cfg_step == 4'd0) begin
+                        bridge_read <= 1'b1;
+                        bridge_addr <= CRS_STATUS_ADDR;
+                        if (bridge_read && !bridge_wait) begin
+                            bridge_read <= 1'b0;
+                            cfg_step    <= 4'd1;
+                        end
+                    end else begin
+                        if (bridge_readdatavalid) begin
+                            cfg_step <= 4'd0;
+                            if (bridge_readdata[1] == 1'b0) begin
+										  if (DO_CSC) begin
+												bridge_addr   <= CSC_COEFF_A0;
+												bridge_wdata  <= csc_a0;
+												current_state <= ST_CONFIG_CSC;
+										  end else if (DO_PC1) begin
+												pc1_addr      <= PC1_ADDR_WIDTH;
+												pc1_wdata     <= IMG_WIDTH;
+												current_state <= ST_CONFIG_PC1;
+										  end else begin
+												current_state <= ST_WORKING;
+										  end
+                            end
+                            // else: pending still set, re-poll
+                        end
+                    end
+                end
+					 
                 // --------------------------------------------------------------
                 // CSC: write A0 B0 C0 A1 B1 C1 A2 B2 C2 S0 S1 S2 OUT_CS COMMIT
                 // By the time we get here (TPG mode), TPG data is already
@@ -679,8 +700,8 @@ module top #(
             assign ready_to_start = (current_state >= ST_CONFIG_CSC);
         end else if (DO_SCL) begin : gen_rts_scl
             assign ready_to_start = (current_state == ST_WORKING);
-        end else if (DO_CRS) begin : gen_rts_crs
-            assign ready_to_start = (current_state == ST_WORKING);
+		  end else if (DO_CRS) begin : gen_rts_crs
+            assign ready_to_start = (current_state >= ST_CONFIG_CRS);
         end else begin : gen_rts_default
             assign ready_to_start = (current_state == ST_WORKING);
         end
@@ -708,15 +729,15 @@ module top #(
     // bits, so a single low-slice to VID_BITS handles every format with no
     // per-format special case (this also fixes 4:2:0, which the old ch hack
     // only handled for 4:2:2).
-    wire [23:0] vid_in_tdata  = INPUT_SEL ? pc1_tdata  : tpg_tdata;
+    wire [23:0] vid_in_tdata  = INPUT_SEL  ? pc1_tdata  : (TPG_MODE == 32'd2) ? {8'b0,tpg_tdata[15:0]} : tpg_tdata;
     wire        vid_in_tvalid = (INPUT_SEL ? pc1_tvalid : tpg_tvalid) & ready_to_start;
-    wire        vid_in_tlast  = INPUT_SEL ? pc1_tlast  : tpg_tlast;
-    wire [2:0]  vid_in_tuser  = INPUT_SEL ? pc1_tuser  : tpg_tuser;
-
-    // IP-facing datapath (VID_BITS wide) <-> fixed 24-bit module interface.
-    wire [VID_BITS-1:0] pl_in_tdata  = vid_in_tdata[VID_BITS-1:0];
-    wire [VID_BITS-1:0] pl_out_tdata;
-    assign out_tdata = pl_out_tdata;   // narrower RHS zero-extends to [23:0]
+    wire        vid_in_tlast  = INPUT_SEL  ? pc1_tlast  : tpg_tlast;
+    wire [2:0]  vid_in_tuser  = INPUT_SEL  ? pc1_tuser  : (TPG_MODE == 32'd2) ? {1'b0,tpg_tuser[1:0]} : tpg_tuser;
+	 
+//	 // Video datapath width = color planes * 8 bits/sample (16 or 24).
+//    localparam VID_BITS = (CRS_OUTPUT_MODE == 32'd2) ? 32'd15 : 32'd23;
+//    wire [VID_BITS:0] pl_out_tdata;
+//    assign out_tdata = pl_out_tdata;   // narrower RHS zero-extends to [23:0]
 
     assign tpg_tready = INPUT_SEL ? 1'b1 : (vid_in_tready & ready_to_start);
     assign pc1_tready = INPUT_SEL ? (vid_in_tready & ready_to_start) : 1'b1;
@@ -740,13 +761,13 @@ module top #(
         .s0_readdatavalid (bridge_readdatavalid),
         .s0_waitrequest   (bridge_wait),
 
-        .s_axis_video_in_tdata  (pl_in_tdata),
+        .s_axis_video_in_tdata  (vid_in_tdata),
         .s_axis_video_in_tvalid (vid_in_tvalid),
         .s_axis_video_in_tready (vid_in_tready),
         .s_axis_video_in_tlast  (vid_in_tlast),
         .s_axis_video_in_tuser  (vid_in_tuser),
 
-        .m_axis_video_out_tdata  (pl_out_tdata),
+        .m_axis_video_out_tdata  (out_tdata),
         .m_axis_video_out_tvalid (out_tvalid),
         .m_axis_video_out_tready (out_tready),
         .m_axis_video_out_tlast  (out_tlast),

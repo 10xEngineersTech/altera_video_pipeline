@@ -49,8 +49,10 @@ module frame_controller #(
                 // pixel_count=0 so SOF pixel IS captured by write_flag.
                 sof         <= 1'b1;
                 frame_done  <= 1'b0;
-                pixel_count <= 0;
-                line_count  <= 0;
+					 pixel_count <= 0;
+					 line_count  <= 0;
+					 
+					 if(pixel_count != 0 || line_count != 0) error <= 1'b1;
             end else if (frame_active) begin
                 if (last) begin
                     pixel_count <= 0;

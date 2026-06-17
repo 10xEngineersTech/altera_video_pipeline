@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file
+   path="system/simulation/submodules/altera_reset_controller.v"
+   type="VERILOG"
+   library="rst_controller" />
+ <file
+   path="system/simulation/submodules/altera_reset_synchronizer.v"
+   type="VERILOG"
+   library="rst_controller" />
+ <file
+   path="system/simulation/submodules/altera_reset_controller.sdc"
+   type="SDC"
+   library="rst_controller" />
+ <file
+   path="system/simulation/submodules/system_alt_vip_crs_0.vo"
+   type="VERILOG"
+   library="alt_vip_crs_0" />
+ <file
+   path="system/simulation/submodules/tta_x_blank_mem.hex"
+   type="HEX"
+   library="alt_vip_tpg_0" />
+ <file
+   path="system/simulation/submodules/system_alt_vip_tpg_0.vo"
+   type="VERILOG"
+   library="alt_vip_tpg_0" />
+ <file path="system/simulation/system.v" type="VERILOG" />
+ <topLevel name="system" />
+ <deviceFamily name="cycloneii" />
+</simPackage>

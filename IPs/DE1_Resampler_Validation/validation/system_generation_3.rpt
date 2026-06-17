@@ -1,0 +1,200 @@
+Info: Starting: Create testbench Qsys system
+Info: /mnt/ssd2/validation/system/testbench/system.ipx
+Info: ip-generate --project-directory=/mnt/ssd2/validation/ --output-directory=/mnt/ssd2/validation/ --report-file=sopcinfo:/mnt/ssd2/validation/system.sopcinfo --report-file=html:/mnt/ssd2/validation/system.html --system-info=DEVICE_FAMILY="Cyclone II" --system-info=DEVICE=EP2C20F484C7 --system-info=DEVICE_SPEEDGRADE=7 --component-file=/mnt/ssd2/validation/system.qsys
+Progress: Loading validation/system.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 13.0]
+Progress: Parameterizing module clk_0
+Progress: Adding alt_vip_tpg_0 [alt_vip_tpg 13.0]
+Progress: Parameterizing module alt_vip_tpg_0
+Progress: Adding alt_vip_crs_0 [alt_vip_crs 13.0]
+Progress: Parameterizing module alt_vip_crs_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: ip-generate succeeded.
+Info: Loading component library for testbench.
+Progress: 
+Progress: 
+Progress: 
+Progress: (1) searching /mnt/ssd2/Quartus13Web/quartus/sopc_builder/bin/root_components.ipx (ipx file)
+Info: Reading index /mnt/ssd2/Quartus13Web/quartus/sopc_builder/bin/root_components.ipx
+Info: /mnt/ssd2/Quartus13Web/quartus/sopc_builder/bin/root_components.ipx: Loading now from components.ipx
+Info: Reading index /mnt/ssd2/Quartus13Web/quartus/sopc_builder/bin/ip_component_categories.ipx
+Info: /mnt/ssd2/Quartus13Web/quartus/sopc_builder/bin/ip_component_categories.ipx described 0 plugins, 0 paths, in 0.02 seconds
+Info: /mnt/ssd2/Quartus13Web/quartus/sopc_builder/bin/ip_component_categories.ipx matched 1 files in 0.02 seconds
+Info: Reading index /mnt/ssd2/Quartus13Web/ip/altera/altera_components.ipx
+Info: /mnt/ssd2/Quartus13Web/ip/altera/altera_components.ipx described 848 plugins, 0 paths, in 0.17 seconds
+Info: /mnt/ssd2/Quartus13Web/ip/**/* matched 97 files in 0.17 seconds
+Info: /home/hamza/.altera.quartus/ip/13.0sp1/**/* matched 0 files in 0.00 seconds
+Info: /mnt/ssd2/validation/system/testbench/ip/**/* matched 0 files in 0.00 seconds
+Info: Reading index /mnt/ssd2/validation/system/testbench/system.ipx
+Progress: Loading validation/system.qsys
+Info: /mnt/ssd2/validation/* matched 19 files in 0.00 seconds
+Info: /mnt/ssd2/validation/ip/**/* matched 0 files in 0.00 seconds
+Info: /mnt/ssd2/validation/*/* matched 290 files in 0.01 seconds
+Info: /mnt/ssd2/validation/system/testbench/system.ipx described 0 plugins, 3 paths, in 0.02 seconds
+Progress: Loading testbench/system_tb.qsys
+Info: /mnt/ssd2/validation/system/testbench/* matched 2 files in 0.02 seconds
+Info: /mnt/ssd2/validation/system/testbench/*/* matched 0 files in 0.00 seconds
+Info: Reading index /mnt/ssd2/Quartus13Web/quartus/sopc_builder/builtin.ipx
+Info: /mnt/ssd2/Quartus13Web/quartus/sopc_builder/builtin.ipx described 103 plugins, 0 paths, in 0.04 seconds
+Info: /mnt/ssd2/Quartus13Web/quartus/sopc_builder/**/* matched 10 files in 0.04 seconds
+Info: Reading index /mnt/ssd2/Quartus13Web/quartus/common/librarian/factories/index.ipx
+Info: /mnt/ssd2/Quartus13Web/quartus/common/librarian/factories/index.ipx described 151 plugins, 0 paths, in 0.02 seconds
+Info: /mnt/ssd2/Quartus13Web/quartus/common/librarian/factories/**/* matched 4 files in 0.02 seconds
+Info: /mnt/ssd2/Quartus13Web/quartus/sopc_builder/bin/$IP_IPX_PATH matched 1 files in 0.00 seconds
+Info: /mnt/ssd2/Quartus13Web/quartus/sopc_builder/bin/root_components.ipx described 0 plugins, 9 paths, in 0.27 seconds
+Info: /mnt/ssd2/Quartus13Web/quartus/sopc_builder/bin/root_components.ipx matched 1 files in 0.27 seconds
+Progress: 
+Progress: 
+Progress: 
+Info: Loading presets
+Progress: Loading presets
+Info: Running script /mnt/ssd2/Quartus13Web/quartus/sopc_builder/bin/tbgen.tcl
+Info: acds::register_package_version 12.1
+Info: send_message Info TB_Gen: QSYS Testbench Generator Rev: $Revision: #2 $
+Info: TB_Gen: QSYS Testbench Generator Rev: $Revision: #2 $
+Info: get_module_property NAME
+Info: send_message Info TB_Gen: System design is: system
+Info: TB_Gen: System design is: system
+Info: get_interfaces 
+Info: get_connections 
+Info: get_interface_property clk EXPORT_OF
+Info: get_instance_property clk_0 CLASS_NAME
+Info: get_instance_assignment clk_0 testbench.partner.map.clk_in
+Info: get_interface_property reset EXPORT_OF
+Info: get_instance_property clk_0 CLASS_NAME
+Info: get_instance_assignment clk_0 testbench.partner.map.clk_in_reset
+Info: get_interface_property alt_vip_crs_0_dout EXPORT_OF
+Info: get_instance_property alt_vip_crs_0 CLASS_NAME
+Info: get_instance_assignment alt_vip_crs_0 testbench.partner.map.dout
+Info: get_interface_property alt_vip_tpg_0_dout EXPORT_OF
+Info: get_instance_property alt_vip_tpg_0 CLASS_NAME
+Info: get_instance_assignment alt_vip_tpg_0 testbench.partner.map.dout
+Info: get_interface_property alt_vip_crs_0_din EXPORT_OF
+Info: get_instance_property alt_vip_crs_0 CLASS_NAME
+Info: get_instance_assignment alt_vip_crs_0 testbench.partner.map.din
+Info: send_message Info TB_Gen: Creating testbench system : system_tb with clock and reset BFMs
+Info: TB_Gen: Creating testbench system : system_tb with clock and reset BFMs
+Info: create_system system_tb
+Info: add_instance system_inst system 
+Info: set_use_testbench_naming_pattern true
+Info: get_instance_interfaces system_inst
+Info: get_instance_interface_property system_inst clk CLASS_NAME
+Info: get_instance_interface_property system_inst reset CLASS_NAME
+Info: get_instance_interface_property system_inst alt_vip_crs_0_dout CLASS_NAME
+Info: get_instance_interface_property system_inst alt_vip_tpg_0_dout CLASS_NAME
+Info: get_instance_interface_property system_inst alt_vip_crs_0_din CLASS_NAME
+Info: get_instance_interface_property system_inst clk CLASS_NAME
+Info: send_message Info TB_Gen: clock_sink found: clk
+Info: TB_Gen: clock_sink found: clk
+Info: get_instance_interface_property system_inst clk CLASS_NAME
+Info: add_instance system_inst_clk_bfm altera_avalon_clock_source 
+Info: get_instance_property system_inst_clk_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value system_inst clk clockRate
+Info: set_instance_parameter_value system_inst_clk_bfm CLOCK_RATE 50000000.0
+Info: set_instance_parameter_value system_inst_clk_bfm CLOCK_UNIT 1
+Info: get_instance_property system_inst_clk_bfm CLASS_NAME
+Info: get_instance_interface_property system_inst clk CLASS_NAME
+Info: get_instance_interfaces system_inst_clk_bfm
+Info: get_instance_interface_property system_inst_clk_bfm clk CLASS_NAME
+Info: add_connection system_inst_clk_bfm.clk system_inst.clk
+Info: get_instance_interface_property system_inst reset CLASS_NAME
+Info: send_message Info TB_Gen: reset_sink found: reset
+Info: TB_Gen: reset_sink found: reset
+Info: get_instance_interface_property system_inst reset CLASS_NAME
+Info: add_instance system_inst_reset_bfm altera_avalon_reset_source 
+Info: get_instance_property system_inst_reset_bfm CLASS_NAME
+Info: get_instance_interface_ports system_inst reset
+Info: get_instance_interface_port_property system_inst reset reset_reset_n ROLE
+Info: set_instance_parameter_value system_inst_reset_bfm ASSERT_HIGH_RESET 0
+Info: set_instance_parameter_value system_inst_reset_bfm INITIAL_RESET_CYCLES 50
+Info: get_instance_property system_inst_reset_bfm CLASS_NAME
+Info: get_instance_interfaces system_inst_reset_bfm
+Info: get_instance_interface_property system_inst_reset_bfm reset CLASS_NAME
+Info: get_instance_interface_property system_inst_reset_bfm clk CLASS_NAME
+Info: get_instance_property system_inst_reset_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value system_inst reset associatedClock
+Info: get_instance_interfaces system_inst_clk_bfm
+Info: get_instance_interface_property system_inst_clk_bfm clk CLASS_NAME
+Info: send_message Warning TB_Gen: system_inst_reset_bfm is not associated to any clock; connecting system_inst_reset_bfm to 'system_inst_clk_bfm.clk'
+Warning: TB_Gen: system_inst_reset_bfm is not associated to any clock; connecting system_inst_reset_bfm to 'system_inst_clk_bfm.clk'
+Info: add_connection system_inst_clk_bfm.clk system_inst_reset_bfm.clk
+Info: get_instance_interface_property system_inst reset CLASS_NAME
+Info: get_instance_interfaces system_inst_reset_bfm
+Info: get_instance_interface_property system_inst_reset_bfm reset CLASS_NAME
+Info: get_instance_interface_property system_inst_reset_bfm clk CLASS_NAME
+Info: add_connection system_inst_reset_bfm.reset system_inst.reset
+Info: send_message Info TB_Gen: Saving testbench system: system_tb.qsys
+Info: TB_Gen: Saving testbench system: system_tb.qsys
+Info: save_system system_tb.qsys
+Info: send_message Info TB_Gen: TBGEN SUCCESSFUL
+Info: TB_Gen: TBGEN SUCCESSFUL
+Info: Testbench system: /mnt/ssd2/validation/system/testbench/system_tb.qsys
+Info: Done
+Info: Finished: Create testbench Qsys system
+Info: Starting: Create block symbol file (.bsf)
+Info: ip-generate --project-directory=/mnt/ssd2/validation/ --output-directory=/mnt/ssd2/validation/system/ --report-file=bsf:/mnt/ssd2/validation/system.bsf --system-info=DEVICE_FAMILY="Cyclone II" --system-info=DEVICE=EP2C20F484C7 --system-info=DEVICE_SPEEDGRADE=7 --component-file=/mnt/ssd2/validation/system.qsys
+Progress: Loading validation/system.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 13.0]
+Progress: Parameterizing module clk_0
+Progress: Adding alt_vip_tpg_0 [alt_vip_tpg 13.0]
+Progress: Parameterizing module alt_vip_tpg_0
+Progress: Adding alt_vip_crs_0 [alt_vip_crs 13.0]
+Progress: Parameterizing module alt_vip_crs_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: ip-generate --project-directory=/mnt/ssd2/validation/ --output-directory=/mnt/ssd2/validation/system/synthesis/ --file-set=QUARTUS_SYNTH --report-file=sopcinfo:/mnt/ssd2/validation/system.sopcinfo --report-file=html:/mnt/ssd2/validation/system.html --report-file=qip:/mnt/ssd2/validation/system/synthesis/system.qip --report-file=cmp:/mnt/ssd2/validation/system.cmp --report-file=svd --system-info=DEVICE_FAMILY="Cyclone II" --system-info=DEVICE=EP2C20F484C7 --system-info=DEVICE_SPEEDGRADE=7 --component-file=/mnt/ssd2/validation/system.qsys --language=VERILOG
+Progress: Loading validation/system.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 13.0]
+Progress: Parameterizing module clk_0
+Progress: Adding alt_vip_tpg_0 [alt_vip_tpg 13.0]
+Progress: Parameterizing module alt_vip_tpg_0
+Progress: Adding alt_vip_crs_0 [alt_vip_crs 13.0]
+Progress: Parameterizing module alt_vip_crs_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: system: Generating system "system" for QUARTUS_SYNTH
+Info: pipeline_bridge_swap_transform: After transform: 3 modules, 4 connections
+Info: No custom instruction connections, skipping transform 
+Info: No Avalon connections, skipping transform 
+Info: merlin_translator_transform: After transform: 3 modules, 4 connections
+Info: reset_adaptation_transform: After transform: 4 modules, 6 connections
+Info: merlin_mm_transform: After transform: 4 modules, 6 connections
+Info: alt_vip_tpg_0: "system" instantiated alt_vip_tpg "alt_vip_tpg_0"
+Info: alt_vip_crs_0: "system" instantiated alt_vip_crs "alt_vip_crs_0"
+Info: rst_controller: "system" instantiated altera_reset_controller "rst_controller"
+Info: bar_pattern_width_counter_au_sload_muxinst: "alt_vip_tpg_0" instantiated alt_cusp_muxbin2 "bar_pattern_width_counter_au_sload_muxinst"
+Info: bar_pattern_width_counter_au: "alt_vip_tpg_0" instantiated alt_au "bar_pattern_width_counter_au"
+Info: dout_wdata_muxinst: "alt_vip_tpg_0" instantiated alt_cusp_muxhot16 "dout_wdata_muxinst"
+Info: dout: "alt_vip_tpg_0" instantiated alt_avalon_st_output "dout"
+Info: Reusing file /mnt/ssd2/validation/system/synthesis/submodules/alt_cusp130_package.vhd
+Info: pc: "alt_vip_tpg_0" instantiated alt_pc "pc"
+Info: Reusing file /mnt/ssd2/validation/system/synthesis/submodules/alt_cusp130_package.vhd
+Info: values_c1_id_829_line366: "alt_vip_tpg_0" instantiated alt_mem "values_c1_id_829_line366"
+Info: Reusing file /mnt/ssd2/validation/system/synthesis/submodules/alt_cusp130_package.vhd
+Info: values_c1_id_829_line366_lua: "alt_vip_tpg_0" instantiated alt_lu "values_c1_id_829_line366_lua"
+Info: Reusing file /mnt/ssd2/validation/system/synthesis/submodules/alt_cusp130_package.vhd
+Info: fu_id_1349_line414_74: "alt_vip_tpg_0" instantiated alt_cmp "fu_id_1349_line414_74"
+Info: Reusing file /mnt/ssd2/validation/system/synthesis/submodules/alt_cusp130_package.vhd
+Info: write_wire_1_comb_id_1557: "alt_vip_tpg_0" instantiated alt_reg "write_wire_1_comb_id_1557"
+Info: Reusing file /mnt/ssd2/validation/system/synthesis/submodules/alt_cusp130_package.vhd
+Info: clocksource: "alt_vip_tpg_0" instantiated alt_cusp_testbench_clock "clocksource"
+Info: Reusing file /mnt/ssd2/validation/system/synthesis/submodules/alt_cusp130_package.vhd
+Info: din: "alt_vip_crs_0" instantiated alt_avalon_st_input "din"
+Info: Reusing file /mnt/ssd2/validation/system/synthesis/submodules/alt_cusp130_package.vhd
+Info: system: Done system" with 15 modules, 213 files, 12404736 bytes
+Info: ip-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

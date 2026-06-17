@@ -1,0 +1,25 @@
+# system info system on 2026.06.17.09:27:53
+system_info:
+name,value
+DEVICE,EP2C20F484C7
+DEVICE_FAMILY,Cyclone II
+GENERATION_ID,1781670443
+#
+#
+# Files generated for system on 2026.06.17.09:27:53
+files:
+filepath,kind,attributes,module,is_top
+system/simulation/system.v,VERILOG,,system,true
+system/simulation/submodules/tta_x_blank_mem.hex,HEX,,system_alt_vip_tpg_0,false
+system/simulation/submodules/system_alt_vip_tpg_0.vo,VERILOG,,system_alt_vip_tpg_0,false
+system/simulation/submodules/system_alt_vip_crs_0.vo,VERILOG,,system_alt_vip_crs_0,false
+system/simulation/submodules/altera_reset_controller.v,VERILOG,,altera_reset_controller,false
+system/simulation/submodules/altera_reset_synchronizer.v,VERILOG,,altera_reset_controller,false
+system/simulation/submodules/altera_reset_controller.sdc,SDC,,altera_reset_controller,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+system.alt_vip_tpg_0,system_alt_vip_tpg_0
+system.alt_vip_crs_0,system_alt_vip_crs_0
+system.rst_controller,altera_reset_controller

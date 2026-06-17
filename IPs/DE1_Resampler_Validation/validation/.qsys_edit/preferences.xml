@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+ <debug showDebugMenu="0" />
+ <systemtable>
+  <columns>
+   <connections preferredWidth="79" />
+   <irq preferredWidth="34" />
+  </columns>
+ </systemtable>
+ <clocktable>
+  <columns>
+   <clockname preferredWidth="507" />
+   <clocksource preferredWidth="507" />
+   <frequency preferredWidth="488" />
+  </columns>
+ </clocktable>
+ <library
+   expandedCategories="Library/DSP/Video and Image Processing,Library,Project,Library/DSP" />
+ <window width="1940" height="1071" x="-10" y="19" />
+ <generation
+   simulation="VERILOG"
+   testbench_system="SIMPLE"
+   testbench_simulation="VERILOG" />
+</preferences>

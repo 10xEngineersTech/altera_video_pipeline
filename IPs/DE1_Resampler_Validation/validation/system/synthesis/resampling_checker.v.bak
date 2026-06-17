@@ -1,0 +1,127 @@
+`timescale 1 ps / 1 ps
+
+//------------------------------------------------------------------------------
+// resampling_checker
+//
+// Wraps the Platform Designer "system" (TPG -> Chroma Resampler) and verifies
+// the 4:2:2 -> 4:4:4 conversion.
+//
+// IMPORTANT: exporting BOTH the TPG dout and the CRS din in Qsys severed the
+// internal TPG->CRS link.  This wrapper now closes that loop in RTL:
+//     TPG dout  --->  CRS din   (loopback)
+//                 \-> tap for the expected-value model
+//     CRS dout  --->  compare
+//------------------------------------------------------------------------------
+module resampling_checker(
+    input  wire        clk_clk,       // Clock
+    output wire        status_led     // Status LED: 1 = resampler output matches model
+);
+
+    wire reset_reset = 1'b0;          // Reset (active high), tied off
+
+    //--------------------------------------------------------------------------
+    // Channel byte-order mapping  --  VERIFY against the VIP Mega-function UG.
+    // Altera Avalon-ST Video packs symbol 0 in the LSBs.  If your build uses the
+    // opposite order, change ONLY these localparams.
+    //--------------------------------------------------------------------------
+    // 16-bit 4:2:2 input  = {symbol1, symbol0}
+    //   symbol0 (LSB) = luma, symbol1 (MSB) = chroma (Cb/Cr, alternating)
+    // 24-bit 4:4:4 output = {Cr, Cb, Y}  (Y in LSBs, then Cb, then Cr)
+    //--------------------------------------------------------------------------
+
+    //--------------------------------------------------------------------------
+    // Interconnect / tap nets
+    //--------------------------------------------------------------------------
+    wire [15:0] tpg_data;
+    wire        tpg_valid;
+    wire        tpg_sop;
+    wire        tpg_eop;
+    wire        tpg_ready;            // CRS din_ready -> TPG dout_ready
+
+    // ----- CRS 4:4:4 output -----
+    wire [23:0] crs_dout_data;        // 24-bit (3 channels x 8 bps)
+    wire        crs_dout_valid;
+    wire        crs_dout_startofpacket;
+    wire        crs_dout_endofpacket;
+    wire        crs_dout_ready;
+
+    assign crs_dout_ready = 1'b1;     // always ready
+
+    //--------------------------------------------------------------------------
+    // DUT instance: feed CRS din from TPG dout (the loopback Qsys used to do
+    // internally), and bring both ends out for observation.
+    //--------------------------------------------------------------------------
+    system dut (
+        .clk_clk(clk_clk),
+        .reset_reset_n(!reset_reset),
+
+        // --- TPG source (out of system) ---
+        .alt_vip_tpg_0_dout_data(tpg_data),
+        .alt_vip_tpg_0_dout_valid(tpg_valid),
+        .alt_vip_tpg_0_dout_startofpacket(tpg_sop),
+        .alt_vip_tpg_0_dout_endofpacket(tpg_eop),
+        .alt_vip_tpg_0_dout_ready(tpg_ready),
+
+        // --- CRS sink (into system) -- driven by the TPG source above ---
+        .alt_vip_crs_0_din_data(tpg_data),
+        .alt_vip_crs_0_din_valid(tpg_valid),
+        .alt_vip_crs_0_din_startofpacket(tpg_sop),
+        .alt_vip_crs_0_din_endofpacket(tpg_eop),
+        .alt_vip_crs_0_din_ready(tpg_ready),
+
+        // --- CRS source (out of system) ---
+        .alt_vip_crs_0_dout_data(crs_dout_data),
+        .alt_vip_crs_0_dout_valid(crs_dout_valid),
+        .alt_vip_crs_0_dout_startofpacket(crs_dout_startofpacket),
+        .alt_vip_crs_0_dout_endofpacket(crs_dout_endofpacket),
+        .alt_vip_crs_0_dout_ready(crs_dout_ready)
+    );
+
+    //--------------------------------------------------------------------------
+    // Expected-value model: reconstruct the 4:4:4 word from the 4:2:2 stream.
+    //
+    // 4:2:2 carries one luma + one chroma per beat; the chroma alternates
+    // Cb, Cr, Cb, Cr ... starting at Cb on the first sample of a packet.
+    // With nearest-neighbour 4:2:2->4:4:4 each output pixel pairs the current
+    // luma with the most recently seen Cb and Cr.  Within the TPG colour bars
+    // Y/Cb/Cr are constant across a bar, so holding the last Cb and last Cr and
+    // combining with the current luma reproduces the expected 4:4:4 word.
+    //--------------------------------------------------------------------------
+    wire [7:0] in_luma   = tpg_data[7:0];    // symbol 0
+    wire [7:0] in_chroma = tpg_data[15:8];   // symbol 1 (Cb or Cr)
+
+    reg [7:0] y_reg  = 8'd0;
+    reg [7:0] cb_reg = 8'd0;
+    reg [7:0] cr_reg = 8'd0;
+    reg       chroma_phase = 1'b0;           // 0 => current chroma is Cb, 1 => Cr
+
+    always @(posedge clk_clk) begin
+        if (reset_reset) begin
+            y_reg        <= 8'd0;
+            cb_reg       <= 8'd0;
+            cr_reg       <= 8'd0;
+            chroma_phase <= 1'b0;
+        end else if (tpg_valid) begin
+            y_reg <= in_luma;
+            if (chroma_phase == 1'b0)
+                cb_reg <= in_chroma;
+            else
+                cr_reg <= in_chroma;
+
+            // Re-align phase to the start of each packet, else toggle.
+            if (tpg_sop)
+                chroma_phase <= 1'b1;        // next chroma after the first (Cb) is Cr
+            else
+                chroma_phase <= ~chroma_phase;
+        end
+    end
+
+    // Expected 4:4:4 word: {Cr, Cb, Y}
+    wire [23:0] expected_444 = {cr_reg, cb_reg, y_reg};
+
+    //--------------------------------------------------------------------------
+    // Status LED: high while the resampler output matches the model.
+    //--------------------------------------------------------------------------
+    assign status_led = crs_dout_valid && (crs_dout_data == expected_444);
+
+endmodule

@@ -1,0 +1,202 @@
+Info: Starting: Create simulation model
+Info: ip-generate --project-directory=/mnt/ssd2/validation/ --output-directory=/mnt/ssd2/validation/system/simulation/ --file-set=SIM_VERILOG --report-file=sopcinfo:/mnt/ssd2/validation/system.sopcinfo --report-file=html:/mnt/ssd2/validation/system.html --report-file=sip:/mnt/ssd2/validation/system/simulation/system.sip --report-file=csv:/mnt/ssd2/validation/system.csv --report-file=spd:/mnt/ssd2/validation/system.spd --report-file=cmp:/mnt/ssd2/validation/system.cmp --system-info=DEVICE_FAMILY="Cyclone II" --system-info=DEVICE=EP2C20F484C7 --system-info=DEVICE_SPEEDGRADE=7 --component-file=/mnt/ssd2/validation/system.qsys
+Progress: Loading validation/system.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 13.0]
+Progress: Parameterizing module clk_0
+Progress: Adding alt_vip_tpg_0 [alt_vip_tpg 13.0]
+Progress: Parameterizing module alt_vip_tpg_0
+Progress: Adding alt_vip_crs_0 [alt_vip_crs 13.0]
+Progress: Parameterizing module alt_vip_crs_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Warning: system.alt_vip_crs_0.din: alt_vip_crs_0.din must be connected to an Avalon-ST source
+Info: system: Generating system "system" for SIM_VERILOG
+Info: pipeline_bridge_swap_transform: After transform: 3 modules, 4 connections
+Info: No custom instruction connections, skipping transform 
+Info: No Avalon connections, skipping transform 
+Info: merlin_translator_transform: After transform: 3 modules, 4 connections
+Info: reset_adaptation_transform: After transform: 4 modules, 6 connections
+Info: merlin_mm_transform: After transform: 4 modules, 6 connections
+Info: Info: *******************************************************************
+Info: Info: Running Quartus II 32-bit Shell
+Info:     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+Info:     Info: Your use of Altera Corporation's design tools, logic functions 
+Info:     Info: and other software and tools, and its AMPP partner logic 
+Info:     Info: functions, and any output files from any of the foregoing 
+Info:     Info: (including device programming or simulation files), and any 
+Info:     Info: associated documentation or information are expressly subject 
+Info:     Info: to the terms and conditions of the Altera Program License 
+Info:     Info: Subscription Agreement, Altera MegaCore Function License 
+Info:     Info: Agreement, or other applicable license agreement, including, 
+Info:     Info: without limitation, that your use is for the sole purpose of 
+Info:     Info: programming logic devices manufactured by Altera and sold by 
+Info:     Info: Altera or its authorized distributors.  Please refer to the 
+Info:     Info: applicable agreement for further details.
+Info:     Info: Processing started: Tue Jun 16 18:25:44 2026
+Info: Info: Command: quartus_sh -t sopc_sim_setup.tcl
+Info: Info (125061): Changed top-level design entity name to "system_alt_vip_tpg_0"
+Info: Info (23030): Evaluation of Tcl script sopc_sim_setup.tcl was successful
+Info: Info: Quartus II 32-bit Shell was successful. 0 errors, 0 warnings
+Info:     Info: Peak virtual memory: 132 megabytes
+Info:     Info: Processing ended: Tue Jun 16 18:25:45 2026
+Info:     Info: Elapsed time: 00:00:01
+Info:     Info: Total CPU time (on all processors): 00:00:00
+Info: Generating simulation model system_alt_vip_tpg_0.vo
+Info: Info: *******************************************************************
+Info: Info: Running Quartus II 32-bit Analysis & Synthesis
+Info:     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+Info:     Info: Your use of Altera Corporation's design tools, logic functions 
+Info:     Info: and other software and tools, and its AMPP partner logic 
+Info:     Info: functions, and any output files from any of the foregoing 
+Info:     Info: (including device programming or simulation files), and any 
+Info:     Info: associated documentation or information are expressly subject 
+Info:     Info: to the terms and conditions of the Altera Program License 
+Info:     Info: Subscription Agreement, Altera MegaCore Function License 
+Info:     Info: Agreement, or other applicable license agreement, including, 
+Info:     Info: without limitation, that your use is for the sole purpose of 
+Info:     Info: programming logic devices manufactured by Altera and sold by 
+Info:     Info: Altera or its authorized distributors.  Please refer to the 
+Info:     Info: applicable agreement for further details.
+Info:     Info: Processing started: Tue Jun 16 18:25:47 2026
+Info: Info: Command: quartus_map sopc_sim --ini=disable_check_quartus_compatibility_qsys_only=on --simgen --simgen_parameter=CBX_HDL_LANGUAGE=VERILOG,CBX_FILE=system_alt_vip_tpg_0.vo,CBX_OUTPUT_DIRECTORY=/tmp/cuspgenerate93836056847045022.gen
+Info: Warning (20028): Parallel compilation is not licensed and has been disabled
+Info: Info (12021): Found 2 design units, including 1 entities, in source file system_alt_vip_tpg_0.vhd
+Info:     Info (12022): Found design unit 1: system_alt_vip_tpg_0-rtl
+Info:     Info (12023): Found entity 1: system_alt_vip_tpg_0
+Info: Info (12021): Found 2 design units, including 1 entities, in source file system_alt_vip_tpg_0_tb.vhd
+Info:     Info (12022): Found design unit 1: system_alt_vip_tpg_0_tb-rtl
+Info:     Info (12023): Found entity 1: system_alt_vip_tpg_0_tb
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_muxbin2.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_muxbin2-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_muxbin2
+Info: Info (12021): Found 2 design units, including 0 entities, in source file alt_cusp130_package.vhd
+Info:     Info (12022): Found design unit 1: ALT_CUSP130_PACKAGE (altera)
+Info:     Info (12022): Found design unit 2: ALT_CUSP130_PACKAGE-body
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_au.vhd
+Info:     Info (12022): Found design unit 1: ALT_CUSP130_AU-rtl
+Info:     Info (12023): Found entity 1: ALT_CUSP130_AU
+Info: Info (12021): Found 4 design units, including 2 entities, in source file alt_cusp130_addsubcarry.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_asc_carrypropagator-WYSI
+Info:     Info (12022): Found design unit 2: alt_cusp130_addsubcarry-RTL
+Info:     Info (12023): Found entity 1: alt_cusp130_asc_carrypropagator
+Info:     Info (12023): Found entity 2: alt_cusp130_addsubcarry
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_muxhot16.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_muxhot16-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_muxhot16
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_avalon_st_output.vhd
+Info:     Info (12022): Found design unit 1: ALT_CUSP130_AVALON_ST_OUTPUT-rtl
+Info:     Info (12023): Found entity 1: ALT_CUSP130_AVALON_ST_OUTPUT
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_atlantic_reporter.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_atlantic_reporter-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_atlantic_reporter
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_pc.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_pc-syn
+Info:     Info (12023): Found entity 1: alt_cusp130_pc
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_mem.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_mem-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_mem
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_lu.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_lu-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_lu
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_cmp.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_cmp-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_cmp
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_reg.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_reg-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_reg
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_clock_reset.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_clock_reset-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_clock_reset
+Info: Info (12127): Elaborating entity "system_alt_vip_tpg_0" for the top level hierarchy
+Info: Info (12128): Elaborating entity "alt_cusp130_muxbin2" for hierarchy "alt_cusp130_muxbin2:bar_pattern_width_counter_au_sload_muxinst"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AU" for hierarchy "ALT_CUSP130_AU:bar_pattern_width_counter_au"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AU" for hierarchy "ALT_CUSP130_AU:bar_counter_au"
+Info: Info (12128): Elaborating entity "alt_cusp130_muxhot16" for hierarchy "alt_cusp130_muxhot16:dout_wdata_muxinst"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AVALON_ST_OUTPUT" for hierarchy "ALT_CUSP130_AVALON_ST_OUTPUT:dout"
+Info: Info (12128): Elaborating entity "alt_cusp130_muxhot16" for hierarchy "alt_cusp130_muxhot16:pc_usenextpc_trigger_muxinst"
+Info: Info (12128): Elaborating entity "alt_cusp130_pc" for hierarchy "alt_cusp130_pc:pc"
+Info: Warning (10296): VHDL warning at alt_cusp130_pc.vhd(30): ignored assignment of value to null range
+Info: Info (12128): Elaborating entity "LPM_COUNTER" for hierarchy "alt_cusp130_pc:pc|LPM_COUNTER:\d2:lpm_counter_component"
+Info: Info (12130): Elaborated megafunction instantiation "alt_cusp130_pc:pc|LPM_COUNTER:\d2:lpm_counter_component"
+Info: Info (12133): Instantiated megafunction "alt_cusp130_pc:pc|LPM_COUNTER:\d2:lpm_counter_component" with the following parameter:
+Info:     Info (12134): Parameter "LPM_WIDTH" = "6"
+Info:     Info (12134): Parameter "LPM_MODULUS" = "0"
+Info:     Info (12134): Parameter "LPM_DIRECTION" = "UP"
+Info:     Info (12134): Parameter "LPM_AVALUE" = "0"
+Info:     Info (12134): Parameter "LPM_SVALUE" = "UNUSED"
+Info:     Info (12134): Parameter "LPM_PVALUE" = "UNUSED"
+Info:     Info (12134): Parameter "LPM_TYPE" = "LPM_COUNTER"
+Info:     Info (12134): Parameter "LPM_HINT" = "UNUSED"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AU" for hierarchy "ALT_CUSP130_AU:fu_id_734_id_826"
+Info: Info (12128): Elaborating entity "alt_cusp130_mem" for hierarchy "alt_cusp130_mem:values_c1_id_829_line366"
+Info: Warning (10296): VHDL warning at alt_cusp130_mem.vhd(31): ignored assignment of value to null range
+Info: Warning (10036): Verilog HDL or VHDL warning at alt_cusp130_mem.vhd(131): object "Caddress_stall_int" assigned a value but never read
+Info: Info (12128): Elaborating entity "altsyncram" for hierarchy "alt_cusp130_mem:values_c1_id_829_line366|altsyncram:\non_stratix_gen:mode_auto_gen:dual_port_gen:latency2_gen:altsyncram_component"
+Info: Info (12130): Elaborated megafunction instantiation "alt_cusp130_mem:values_c1_id_829_line366|altsyncram:\non_stratix_gen:mode_auto_gen:dual_port_gen:latency2_gen:altsyncram_component"
+Info: Info (12133): Instantiated megafunction "alt_cusp130_mem:values_c1_id_829_line366|altsyncram:\non_stratix_gen:mode_auto_gen:dual_port_gen:latency2_gen:altsyncram_component" with the following parameter:
+Info:     Info (12134): Parameter "IMPLEMENT_IN_LES" = "OFF"
+Info:     Info (12134): Parameter "OPERATION_MODE" = "BIDIR_DUAL_PORT"
+Info:     Info (12134): Parameter "WIDTH_A" = "8"
+Info:     Info (12134): Parameter "WIDTHAD_A" = "3"
+Info:     Info (12134): Parameter "NUMWORDS_A" = "8"
+Info:     Info (12134): Parameter "OUTDATA_REG_A" = "CLOCK0"
+Info:     Info (12134): Parameter "WIDTH_B" = "8"
+Info:     Info (12134): Parameter "WIDTHAD_B" = "3"
+Info:     Info (12134): Parameter "NUMWORDS_B" = "8"
+Info:     Info (12134): Parameter "RDCONTROL_REG_B" = "CLOCK0"
+Info:     Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+Info:     Info (12134): Parameter "OUTDATA_REG_B" = "CLOCK0"
+Info:     Info (12134): Parameter "INDATA_REG_B" = "CLOCK0"
+Info:     Info (12134): Parameter "WRCONTROL_WRADDRESS_REG_B" = "CLOCK0"
+Info:     Info (12134): Parameter "BYTEENA_REG_B" = "CLOCK0"
+Info:     Info (12134): Parameter "CLOCK_ENABLE_INPUT_A" = "NORMAL"
+Info:     Info (12134): Parameter "CLOCK_ENABLE_OUTPUT_A" = "NORMAL"
+Info:     Info (12134): Parameter "CLOCK_ENABLE_INPUT_B" = "NORMAL"
+Info:     Info (12134): Parameter "CLOCK_ENABLE_OUTPUT_B" = "NORMAL"
+Info:     Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+Info:     Info (12134): Parameter "RAM_BLOCK_TYPE" = "AUTO"
+Info:     Info (12134): Parameter "INIT_FILE" = "UNUSED"
+Info:     Info (12134): Parameter "INIT_FILE_LAYOUT" = "UNUSED"
+Info:     Info (12134): Parameter "MAXIMUM_DEPTH" = "0"
+Info:     Info (12134): Parameter "INTENDED_DEVICE_FAMILY" = "STRATIX"
+Info:     Info (12134): Parameter "LPM_HINT" = "UNUSED"
+Info:     Info (12134): Parameter "LPM_TYPE" = "ALTSYNCRAM"
+Info: Info (12128): Elaborating entity "alt_cusp130_muxbin2" for hierarchy "alt_cusp130_muxbin2:values_c1_id_829_line366_lua_b_muxinst"
+Info: Info (12128): Elaborating entity "alt_cusp130_lu" for hierarchy "alt_cusp130_lu:values_c1_id_829_line366_lua"
+Info: Info (12128): Elaborating entity "alt_cusp130_mem" for hierarchy "alt_cusp130_mem:values_c2_id_840_line367"
+Info: Warning (10296): VHDL warning at alt_cusp130_mem.vhd(31): ignored assignment of value to null range
+Info: Warning (10036): Verilog HDL or VHDL warning at alt_cusp130_mem.vhd(131): object "Caddress_stall_int" assigned a value but never read
+Info: Info (12128): Elaborating entity "alt_cusp130_lu" for hierarchy "alt_cusp130_lu:values_c2_id_840_line367_lua"
+Info: Info (12128): Elaborating entity "alt_cusp130_mem" for hierarchy "alt_cusp130_mem:values_c3_id_850_line368"
+Info: Warning (10296): VHDL warning at alt_cusp130_mem.vhd(31): ignored assignment of value to null range
+Info: Warning (10036): Verilog HDL or VHDL warning at alt_cusp130_mem.vhd(131): object "Caddress_stall_int" assigned a value but never read
+Info: Info (12128): Elaborating entity "alt_cusp130_lu" for hierarchy "alt_cusp130_lu:values_c3_id_850_line368_lua"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AU" for hierarchy "ALT_CUSP130_AU:fu_id_722_id_860"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AU" for hierarchy "ALT_CUSP130_AU:fu_id_728_id_863"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AU" for hierarchy "ALT_CUSP130_AU:fu_id_716_id_866"
+Info: Info (12128): Elaborating entity "alt_cusp130_cmp" for hierarchy "alt_cusp130_cmp:fu_id_1349_line414_74"
+Info: Info (12128): Elaborating entity "alt_cusp130_cmp" for hierarchy "alt_cusp130_cmp:fu_id_1400_line418_69"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:write_wire_1_comb_id_1557"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:write_wire_3_comb_id_1560"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:write_wire_5_comb_id_1563"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:write_wire_7_comb_id_1566"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:write_wire_8_comb_id_1569"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:bar_pattern_width_counter_equal_zero_0_comb_id_1572"
+Info: Info (281010): Generating sgate simulator netlist using Simgen
+Info: SIMGEN_PROGRESS Start of Model generation -- 0% complete
+Info: SIMGEN_PROGRESS Phase 1 : Internal Objects created -- 25% complete
+Info: SIMGEN_PROGRESS Phase 2 : Connections between internal objects made -- 60% complete
+Info: SIMGEN_PROGRESS Phase 3 : Netlist generated -- 100% complete
+Info: Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 8 warnings
+Info:     Info: Peak virtual memory: 386 megabytes
+Info:     Info: Processing ended: Tue Jun 16 18:25:55 2026
+Info:     Info: Elapsed time: 00:00:08
+Info:     Info: Total CPU time (on all processors): 00:00:08
+Info: alt_vip_tpg_0: "system" instantiated alt_vip_tpg "alt_vip_tpg_0"
+Error: Generation stopped, 2 or more modules remaining
+Info: system: Done system" with 4 modules, 3 files, 74887 bytes
+Error: ip-generate failed with exit code 1: 1 Error, 1 Warning
+Info: Stopping: Create simulation model

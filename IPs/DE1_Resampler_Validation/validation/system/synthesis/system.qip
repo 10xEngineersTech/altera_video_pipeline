@@ -1,0 +1,41 @@
+set_global_assignment -entity "system" -library "system" -name IP_TOOL_NAME "Qsys"
+set_global_assignment -entity "system" -library "system" -name IP_TOOL_VERSION "13.0sp1"
+set_global_assignment -entity "system" -library "system" -name IP_TOOL_ENV "Qsys"
+set_global_assignment -library "system" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../system.sopcinfo"]
+set_instance_assignment -entity "system" -library "system" -name SLD_INFO "QSYS_NAME system HAS_SOPCINFO 1 GENERATION_ID 1781670511"
+set_global_assignment -library "system" -name MISC_FILE [file join $::quartus(qip_path) "../../system.cmp"]
+set_global_assignment -name SYNTHESIS_ONLY_QIP ON
+set_global_assignment -library "system" -name MISC_FILE [file join $::quartus(qip_path) "../../system.qsys"]
+
+set_global_assignment -library "system" -name VERILOG_FILE [file join $::quartus(qip_path) "system.v"]
+set_global_assignment -library "system" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_reset_controller.v"]
+set_global_assignment -library "system" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_reset_synchronizer.v"]
+set_global_assignment -library "system" -name SDC_FILE [file join $::quartus(qip_path) "submodules/altera_reset_controller.sdc"]
+set_global_assignment -library "system" -name SOURCE_FILE [file join $::quartus(qip_path) "submodules/system_alt_vip_crs_0.ocp"]
+set_global_assignment -library "system" -name SOURCE_FILE [file join $::quartus(qip_path) "submodules/system_alt_vip_crs_0_h_resampling_h_resampling.trace"]
+set_global_assignment -library "system" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/system_alt_vip_crs_0.vhd"]
+set_global_assignment -library "system" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/system_alt_vip_crs_0_tb.vhd"]
+set_global_assignment -library "system" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/alt_cusp130_package.vhd"]
+set_global_assignment -library "system" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/alt_cusp130_clock_reset.vhd"]
+set_global_assignment -library "system" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/alt_cusp130_cmp.vhd"]
+set_global_assignment -library "system" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/alt_cusp130_au.vhd"]
+set_global_assignment -library "system" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/alt_cusp130_addsubcarry.vhd"]
+set_global_assignment -library "system" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/alt_cusp130_pc.vhd"]
+set_global_assignment -library "system" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/alt_cusp130_avalon_st_output.vhd"]
+set_global_assignment -library "system" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/alt_cusp130_atlantic_reporter.vhd"]
+set_global_assignment -library "system" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/alt_cusp130_muxfast4.vhd"]
+set_global_assignment -library "system" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/alt_cusp130_avalon_st_input.vhd"]
+set_global_assignment -library "system" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/alt_cusp130_muxhot16.vhd"]
+set_global_assignment -library "system" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/alt_cusp130_reg.vhd"]
+set_global_assignment -library "system" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/alt_cusp130_muxbin2.vhd"]
+set_global_assignment -library "system" -name SOURCE_FILE [file join $::quartus(qip_path) "submodules/system_alt_vip_tpg_0.ocp"]
+set_global_assignment -library "system" -name SOURCE_FILE [file join $::quartus(qip_path) "submodules/system_alt_vip_tpg_0_behaviour_behaviour.trace"]
+set_global_assignment -library "system" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/system_alt_vip_tpg_0.vhd"]
+set_global_assignment -library "system" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/system_alt_vip_tpg_0_tb.vhd"]
+set_global_assignment -library "system" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/alt_cusp130_lu.vhd"]
+set_global_assignment -library "system" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/alt_cusp130_mem.vhd"]
+set_global_assignment -library "system" -name SOURCE_FILE [file join $::quartus(qip_path) "submodules/tta_x_blank_mem.hex"]
+
+set_global_assignment -entity "altera_reset_controller" -library "system" -name IP_TOOL_NAME "altera_reset_controller"
+set_global_assignment -entity "altera_reset_controller" -library "system" -name IP_TOOL_VERSION "13.0"
+set_global_assignment -entity "altera_reset_controller" -library "system" -name IP_TOOL_ENV "Qsys"

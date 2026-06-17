@@ -1,0 +1,68 @@
+`timescale 1 ps / 1 ps
+
+//------------------------------------------------------------------------------
+// testbench
+//
+// Drives a free-running clock into resampling_checker and observes the
+// status_led output (1 = resampler output matches the expected-value model).
+//------------------------------------------------------------------------------
+module testbench;
+
+    // Clock period: 10 ns = 10000 ps (100 MHz)
+    localparam CLK_PERIOD = 10000;
+
+    // Simulation length (clock cycles)
+    localparam SIM_CYCLES = 10000;
+
+    reg  clk    = 1'b0;
+    wire status;
+
+    //--------------------------------------------------------------------------
+    // DUT: resampling_checker -- clock in, status out
+    //--------------------------------------------------------------------------
+    resampling_checker dut (
+        .clk_clk    (clk),
+        .status_led (status)
+    );
+
+    //--------------------------------------------------------------------------
+    // Clock generation
+    //--------------------------------------------------------------------------
+    always #(CLK_PERIOD/2) clk = ~clk;
+
+    //--------------------------------------------------------------------------
+    // Monitor status and finish
+    //--------------------------------------------------------------------------
+    integer cycle  = 0;
+    integer fails  = 0;
+
+    initial begin
+        $dumpfile("testbench.vcd");
+        $dumpvars(0, testbench);
+    end
+
+    always @(posedge clk) begin
+        cycle = cycle + 1;
+
+        // After an initial settling window, flag any cycle the checker
+        // reports a mismatch.
+        if (cycle > 10 && status !== 1'b1) begin
+            fails = fails + 1;
+            if (fails <= 20)
+                $display("[%0t] MISMATCH at cycle %0d: status = %b",
+                         $time, cycle, status);
+        end
+
+        if (cycle >= SIM_CYCLES) begin
+            $display("----------------------------------------------------");
+            if (fails == 0)
+                $display("PASS: status_led held high for %0d cycles.",
+                         SIM_CYCLES - 10);
+            else
+                $display("FAIL: %0d mismatch cycle(s) observed.", fails);
+            $display("----------------------------------------------------");
+            $finish;
+        end
+    end
+
+endmodule

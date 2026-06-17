@@ -1,0 +1,967 @@
+Info: Starting: Create simulation model
+Info: ip-generate --project-directory=/mnt/ssd2/validation/ --output-directory=/mnt/ssd2/validation/system/simulation/ --file-set=SIM_VERILOG --report-file=sopcinfo:/mnt/ssd2/validation/system.sopcinfo --report-file=html:/mnt/ssd2/validation/system.html --report-file=sip:/mnt/ssd2/validation/system/simulation/system.sip --report-file=csv:/mnt/ssd2/validation/system.csv --report-file=spd:/mnt/ssd2/validation/system.spd --report-file=cmp:/mnt/ssd2/validation/system.cmp --system-info=DEVICE_FAMILY="Cyclone II" --system-info=DEVICE=EP2C20F484C7 --system-info=DEVICE_SPEEDGRADE=7 --component-file=/mnt/ssd2/validation/system.qsys
+Progress: Loading validation/system.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 13.0]
+Progress: Parameterizing module clk_0
+Progress: Adding alt_vip_tpg_0 [alt_vip_tpg 13.0]
+Progress: Parameterizing module alt_vip_tpg_0
+Progress: Adding alt_vip_crs_0 [alt_vip_crs 13.0]
+Progress: Parameterizing module alt_vip_crs_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: system: Generating system "system" for SIM_VERILOG
+Info: pipeline_bridge_swap_transform: After transform: 3 modules, 4 connections
+Info: No custom instruction connections, skipping transform 
+Info: No Avalon connections, skipping transform 
+Info: merlin_translator_transform: After transform: 3 modules, 4 connections
+Info: reset_adaptation_transform: After transform: 4 modules, 6 connections
+Info: merlin_mm_transform: After transform: 4 modules, 6 connections
+Info: Info: *******************************************************************
+Info: Info: Running Quartus II 32-bit Shell
+Info:     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+Info:     Info: Your use of Altera Corporation's design tools, logic functions 
+Info:     Info: and other software and tools, and its AMPP partner logic 
+Info:     Info: functions, and any output files from any of the foregoing 
+Info:     Info: (including device programming or simulation files), and any 
+Info:     Info: associated documentation or information are expressly subject 
+Info:     Info: to the terms and conditions of the Altera Program License 
+Info:     Info: Subscription Agreement, Altera MegaCore Function License 
+Info:     Info: Agreement, or other applicable license agreement, including, 
+Info:     Info: without limitation, that your use is for the sole purpose of 
+Info:     Info: programming logic devices manufactured by Altera and sold by 
+Info:     Info: Altera or its authorized distributors.  Please refer to the 
+Info:     Info: applicable agreement for further details.
+Info:     Info: Processing started: Wed Jun 17 09:27:29 2026
+Info: Info: Command: quartus_sh -t sopc_sim_setup.tcl
+Info: Info (125061): Changed top-level design entity name to "system_alt_vip_tpg_0"
+Info: Info (23030): Evaluation of Tcl script sopc_sim_setup.tcl was successful
+Info: Info: Quartus II 32-bit Shell was successful. 0 errors, 0 warnings
+Info:     Info: Peak virtual memory: 132 megabytes
+Info:     Info: Processing ended: Wed Jun 17 09:27:29 2026
+Info:     Info: Elapsed time: 00:00:00
+Info:     Info: Total CPU time (on all processors): 00:00:00
+Info: Generating simulation model system_alt_vip_tpg_0.vo
+Info: Info: *******************************************************************
+Info: Info: Running Quartus II 32-bit Analysis & Synthesis
+Info:     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+Info:     Info: Your use of Altera Corporation's design tools, logic functions 
+Info:     Info: and other software and tools, and its AMPP partner logic 
+Info:     Info: functions, and any output files from any of the foregoing 
+Info:     Info: (including device programming or simulation files), and any 
+Info:     Info: associated documentation or information are expressly subject 
+Info:     Info: to the terms and conditions of the Altera Program License 
+Info:     Info: Subscription Agreement, Altera MegaCore Function License 
+Info:     Info: Agreement, or other applicable license agreement, including, 
+Info:     Info: without limitation, that your use is for the sole purpose of 
+Info:     Info: programming logic devices manufactured by Altera and sold by 
+Info:     Info: Altera or its authorized distributors.  Please refer to the 
+Info:     Info: applicable agreement for further details.
+Info:     Info: Processing started: Wed Jun 17 09:27:31 2026
+Info: Info: Command: quartus_map sopc_sim --ini=disable_check_quartus_compatibility_qsys_only=on --simgen --simgen_parameter=CBX_HDL_LANGUAGE=VERILOG,CBX_FILE=system_alt_vip_tpg_0.vo,CBX_OUTPUT_DIRECTORY=/tmp/cuspgenerate3054795954066368582.gen
+Info: Warning (20028): Parallel compilation is not licensed and has been disabled
+Info: Info (12021): Found 2 design units, including 1 entities, in source file system_alt_vip_tpg_0.vhd
+Info:     Info (12022): Found design unit 1: system_alt_vip_tpg_0-rtl
+Info:     Info (12023): Found entity 1: system_alt_vip_tpg_0
+Info: Info (12021): Found 2 design units, including 1 entities, in source file system_alt_vip_tpg_0_tb.vhd
+Info:     Info (12022): Found design unit 1: system_alt_vip_tpg_0_tb-rtl
+Info:     Info (12023): Found entity 1: system_alt_vip_tpg_0_tb
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_muxbin2.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_muxbin2-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_muxbin2
+Info: Info (12021): Found 2 design units, including 0 entities, in source file alt_cusp130_package.vhd
+Info:     Info (12022): Found design unit 1: ALT_CUSP130_PACKAGE (altera)
+Info:     Info (12022): Found design unit 2: ALT_CUSP130_PACKAGE-body
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_au.vhd
+Info:     Info (12022): Found design unit 1: ALT_CUSP130_AU-rtl
+Info:     Info (12023): Found entity 1: ALT_CUSP130_AU
+Info: Info (12021): Found 4 design units, including 2 entities, in source file alt_cusp130_addsubcarry.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_asc_carrypropagator-WYSI
+Info:     Info (12022): Found design unit 2: alt_cusp130_addsubcarry-RTL
+Info:     Info (12023): Found entity 1: alt_cusp130_asc_carrypropagator
+Info:     Info (12023): Found entity 2: alt_cusp130_addsubcarry
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_muxhot16.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_muxhot16-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_muxhot16
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_avalon_st_output.vhd
+Info:     Info (12022): Found design unit 1: ALT_CUSP130_AVALON_ST_OUTPUT-rtl
+Info:     Info (12023): Found entity 1: ALT_CUSP130_AVALON_ST_OUTPUT
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_atlantic_reporter.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_atlantic_reporter-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_atlantic_reporter
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_pc.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_pc-syn
+Info:     Info (12023): Found entity 1: alt_cusp130_pc
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_mem.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_mem-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_mem
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_lu.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_lu-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_lu
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_cmp.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_cmp-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_cmp
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_reg.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_reg-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_reg
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_clock_reset.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_clock_reset-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_clock_reset
+Info: Info (12127): Elaborating entity "system_alt_vip_tpg_0" for the top level hierarchy
+Info: Info (12128): Elaborating entity "alt_cusp130_muxbin2" for hierarchy "alt_cusp130_muxbin2:bar_pattern_width_counter_au_sload_muxinst"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AU" for hierarchy "ALT_CUSP130_AU:bar_pattern_width_counter_au"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AU" for hierarchy "ALT_CUSP130_AU:bar_counter_au"
+Info: Info (12128): Elaborating entity "alt_cusp130_muxhot16" for hierarchy "alt_cusp130_muxhot16:dout_wdata_muxinst"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AVALON_ST_OUTPUT" for hierarchy "ALT_CUSP130_AVALON_ST_OUTPUT:dout"
+Info: Info (12128): Elaborating entity "alt_cusp130_muxhot16" for hierarchy "alt_cusp130_muxhot16:pc_usenextpc_trigger_muxinst"
+Info: Info (12128): Elaborating entity "alt_cusp130_pc" for hierarchy "alt_cusp130_pc:pc"
+Info: Warning (10296): VHDL warning at alt_cusp130_pc.vhd(30): ignored assignment of value to null range
+Info: Info (12128): Elaborating entity "LPM_COUNTER" for hierarchy "alt_cusp130_pc:pc|LPM_COUNTER:\d2:lpm_counter_component"
+Info: Info (12130): Elaborated megafunction instantiation "alt_cusp130_pc:pc|LPM_COUNTER:\d2:lpm_counter_component"
+Info: Info (12133): Instantiated megafunction "alt_cusp130_pc:pc|LPM_COUNTER:\d2:lpm_counter_component" with the following parameter:
+Info:     Info (12134): Parameter "LPM_WIDTH" = "6"
+Info:     Info (12134): Parameter "LPM_MODULUS" = "0"
+Info:     Info (12134): Parameter "LPM_DIRECTION" = "UP"
+Info:     Info (12134): Parameter "LPM_AVALUE" = "0"
+Info:     Info (12134): Parameter "LPM_SVALUE" = "UNUSED"
+Info:     Info (12134): Parameter "LPM_PVALUE" = "UNUSED"
+Info:     Info (12134): Parameter "LPM_TYPE" = "LPM_COUNTER"
+Info:     Info (12134): Parameter "LPM_HINT" = "UNUSED"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AU" for hierarchy "ALT_CUSP130_AU:fu_id_697_id_789"
+Info: Info (12128): Elaborating entity "alt_cusp130_mem" for hierarchy "alt_cusp130_mem:values_c1_id_792_line366"
+Info: Warning (10296): VHDL warning at alt_cusp130_mem.vhd(31): ignored assignment of value to null range
+Info: Warning (10036): Verilog HDL or VHDL warning at alt_cusp130_mem.vhd(131): object "Caddress_stall_int" assigned a value but never read
+Info: Info (12128): Elaborating entity "altsyncram" for hierarchy "alt_cusp130_mem:values_c1_id_792_line366|altsyncram:\non_stratix_gen:mode_auto_gen:dual_port_gen:latency2_gen:altsyncram_component"
+Info: Info (12130): Elaborated megafunction instantiation "alt_cusp130_mem:values_c1_id_792_line366|altsyncram:\non_stratix_gen:mode_auto_gen:dual_port_gen:latency2_gen:altsyncram_component"
+Info: Info (12133): Instantiated megafunction "alt_cusp130_mem:values_c1_id_792_line366|altsyncram:\non_stratix_gen:mode_auto_gen:dual_port_gen:latency2_gen:altsyncram_component" with the following parameter:
+Info:     Info (12134): Parameter "IMPLEMENT_IN_LES" = "OFF"
+Info:     Info (12134): Parameter "OPERATION_MODE" = "BIDIR_DUAL_PORT"
+Info:     Info (12134): Parameter "WIDTH_A" = "8"
+Info:     Info (12134): Parameter "WIDTHAD_A" = "3"
+Info:     Info (12134): Parameter "NUMWORDS_A" = "8"
+Info:     Info (12134): Parameter "OUTDATA_REG_A" = "CLOCK0"
+Info:     Info (12134): Parameter "WIDTH_B" = "8"
+Info:     Info (12134): Parameter "WIDTHAD_B" = "3"
+Info:     Info (12134): Parameter "NUMWORDS_B" = "8"
+Info:     Info (12134): Parameter "RDCONTROL_REG_B" = "CLOCK0"
+Info:     Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+Info:     Info (12134): Parameter "OUTDATA_REG_B" = "CLOCK0"
+Info:     Info (12134): Parameter "INDATA_REG_B" = "CLOCK0"
+Info:     Info (12134): Parameter "WRCONTROL_WRADDRESS_REG_B" = "CLOCK0"
+Info:     Info (12134): Parameter "BYTEENA_REG_B" = "CLOCK0"
+Info:     Info (12134): Parameter "CLOCK_ENABLE_INPUT_A" = "NORMAL"
+Info:     Info (12134): Parameter "CLOCK_ENABLE_OUTPUT_A" = "NORMAL"
+Info:     Info (12134): Parameter "CLOCK_ENABLE_INPUT_B" = "NORMAL"
+Info:     Info (12134): Parameter "CLOCK_ENABLE_OUTPUT_B" = "NORMAL"
+Info:     Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+Info:     Info (12134): Parameter "RAM_BLOCK_TYPE" = "AUTO"
+Info:     Info (12134): Parameter "INIT_FILE" = "UNUSED"
+Info:     Info (12134): Parameter "INIT_FILE_LAYOUT" = "UNUSED"
+Info:     Info (12134): Parameter "MAXIMUM_DEPTH" = "0"
+Info:     Info (12134): Parameter "INTENDED_DEVICE_FAMILY" = "STRATIX"
+Info:     Info (12134): Parameter "LPM_HINT" = "UNUSED"
+Info:     Info (12134): Parameter "LPM_TYPE" = "ALTSYNCRAM"
+Info: Info (12128): Elaborating entity "alt_cusp130_muxbin2" for hierarchy "alt_cusp130_muxbin2:values_c1_id_792_line366_lua_b_muxinst"
+Info: Info (12128): Elaborating entity "alt_cusp130_lu" for hierarchy "alt_cusp130_lu:values_c1_id_792_line366_lua"
+Info: Info (12128): Elaborating entity "alt_cusp130_mem" for hierarchy "alt_cusp130_mem:values_c2_id_802_line367"
+Info: Warning (10296): VHDL warning at alt_cusp130_mem.vhd(31): ignored assignment of value to null range
+Info: Warning (10036): Verilog HDL or VHDL warning at alt_cusp130_mem.vhd(131): object "Caddress_stall_int" assigned a value but never read
+Info: Info (12128): Elaborating entity "alt_cusp130_lu" for hierarchy "alt_cusp130_lu:values_c2_id_802_line367_lua"
+Info: Info (12128): Elaborating entity "alt_cusp130_mem" for hierarchy "alt_cusp130_mem:values_c3_id_812_line368"
+Info: Warning (10296): VHDL warning at alt_cusp130_mem.vhd(31): ignored assignment of value to null range
+Info: Warning (10036): Verilog HDL or VHDL warning at alt_cusp130_mem.vhd(131): object "Caddress_stall_int" assigned a value but never read
+Info: Info (12128): Elaborating entity "alt_cusp130_lu" for hierarchy "alt_cusp130_lu:values_c3_id_812_line368_lua"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AU" for hierarchy "ALT_CUSP130_AU:fu_id_685_id_822"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AU" for hierarchy "ALT_CUSP130_AU:fu_id_691_id_825"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AU" for hierarchy "ALT_CUSP130_AU:fu_id_679_id_828"
+Info: Info (12128): Elaborating entity "alt_cusp130_cmp" for hierarchy "alt_cusp130_cmp:fu_id_1382_line414_74"
+Info: Info (12128): Elaborating entity "alt_cusp130_cmp" for hierarchy "alt_cusp130_cmp:fu_id_1440_line418_69"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:write_wire_0_comb_id_1590"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:write_wire_1_comb_id_1593"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:write_wire_2_comb_id_1596"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:write_wire_3_comb_id_1599"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:write_wire_4_comb_id_1602"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:write_wire_5_comb_id_1605"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:write_wire_6_comb_id_1608"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:write_wire_7_comb_id_1611"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:write_wire_8_comb_id_1614"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:bar_pattern_width_counter_equal_zero_0_comb_id_1617"
+Info: Info (281010): Generating sgate simulator netlist using Simgen
+Info: SIMGEN_PROGRESS Start of Model generation -- 0% complete
+Info: SIMGEN_PROGRESS Phase 1 : Internal Objects created -- 25% complete
+Info: SIMGEN_PROGRESS Phase 2 : Connections between internal objects made -- 60% complete
+Info: SIMGEN_PROGRESS Phase 3 : Netlist generated -- 100% complete
+Info: Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 8 warnings
+Info:     Info: Peak virtual memory: 389 megabytes
+Info:     Info: Processing ended: Wed Jun 17 09:27:39 2026
+Info:     Info: Elapsed time: 00:00:08
+Info:     Info: Total CPU time (on all processors): 00:00:07
+Info: alt_vip_tpg_0: "system" instantiated alt_vip_tpg "alt_vip_tpg_0"
+Info: Info: *******************************************************************
+Info: Info: Running Quartus II 32-bit Shell
+Info:     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+Info:     Info: Your use of Altera Corporation's design tools, logic functions 
+Info:     Info: and other software and tools, and its AMPP partner logic 
+Info:     Info: functions, and any output files from any of the foregoing 
+Info:     Info: (including device programming or simulation files), and any 
+Info:     Info: associated documentation or information are expressly subject 
+Info:     Info: to the terms and conditions of the Altera Program License 
+Info:     Info: Subscription Agreement, Altera MegaCore Function License 
+Info:     Info: Agreement, or other applicable license agreement, including, 
+Info:     Info: without limitation, that your use is for the sole purpose of 
+Info:     Info: programming logic devices manufactured by Altera and sold by 
+Info:     Info: Altera or its authorized distributors.  Please refer to the 
+Info:     Info: applicable agreement for further details.
+Info:     Info: Processing started: Wed Jun 17 09:27:43 2026
+Info: Info: Command: quartus_sh -t sopc_sim_setup.tcl
+Info: Info (125061): Changed top-level design entity name to "system_alt_vip_crs_0"
+Info: Info (23030): Evaluation of Tcl script sopc_sim_setup.tcl was successful
+Info: Info: Quartus II 32-bit Shell was successful. 0 errors, 0 warnings
+Info:     Info: Peak virtual memory: 132 megabytes
+Info:     Info: Processing ended: Wed Jun 17 09:27:44 2026
+Info:     Info: Elapsed time: 00:00:01
+Info:     Info: Total CPU time (on all processors): 00:00:00
+Info: Generating simulation model system_alt_vip_crs_0.vo
+Info: Info: *******************************************************************
+Info: Info: Running Quartus II 32-bit Analysis & Synthesis
+Info:     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+Info:     Info: Your use of Altera Corporation's design tools, logic functions 
+Info:     Info: and other software and tools, and its AMPP partner logic 
+Info:     Info: functions, and any output files from any of the foregoing 
+Info:     Info: (including device programming or simulation files), and any 
+Info:     Info: associated documentation or information are expressly subject 
+Info:     Info: to the terms and conditions of the Altera Program License 
+Info:     Info: Subscription Agreement, Altera MegaCore Function License 
+Info:     Info: Agreement, or other applicable license agreement, including, 
+Info:     Info: without limitation, that your use is for the sole purpose of 
+Info:     Info: programming logic devices manufactured by Altera and sold by 
+Info:     Info: Altera or its authorized distributors.  Please refer to the 
+Info:     Info: applicable agreement for further details.
+Info:     Info: Processing started: Wed Jun 17 09:27:46 2026
+Info: Info: Command: quartus_map sopc_sim --ini=disable_check_quartus_compatibility_qsys_only=on --simgen --simgen_parameter=CBX_HDL_LANGUAGE=VERILOG,CBX_FILE=system_alt_vip_crs_0.vo,CBX_OUTPUT_DIRECTORY=/tmp/cuspgenerate5576261548623845853.gen
+Info: Warning (20028): Parallel compilation is not licensed and has been disabled
+Info: Info (12021): Found 2 design units, including 1 entities, in source file system_alt_vip_crs_0.vhd
+Info:     Info (12022): Found design unit 1: system_alt_vip_crs_0-rtl
+Info:     Info (12023): Found entity 1: system_alt_vip_crs_0
+Info: Info (12021): Found 2 design units, including 1 entities, in source file system_alt_vip_crs_0_tb.vhd
+Info:     Info (12022): Found design unit 1: system_alt_vip_crs_0_tb-rtl
+Info:     Info (12023): Found entity 1: system_alt_vip_crs_0_tb
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_muxbin2.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_muxbin2-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_muxbin2
+Info: Info (12021): Found 2 design units, including 0 entities, in source file alt_cusp130_package.vhd
+Info:     Info (12022): Found design unit 1: ALT_CUSP130_PACKAGE (altera)
+Info:     Info (12022): Found design unit 2: ALT_CUSP130_PACKAGE-body
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_reg.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_reg-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_reg
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_muxhot16.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_muxhot16-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_muxhot16
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_avalon_st_input.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_avalon_st_input-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_avalon_st_input
+Info: Info (12021): Found 4 design units, including 2 entities, in source file alt_cusp130_muxfast4.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_muxfast4_i-rtl
+Info:     Info (12022): Found design unit 2: alt_cusp130_muxfast4-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_muxfast4_i
+Info:     Info (12023): Found entity 2: alt_cusp130_muxfast4
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_avalon_st_output.vhd
+Info:     Info (12022): Found design unit 1: ALT_CUSP130_AVALON_ST_OUTPUT-rtl
+Info:     Info (12023): Found entity 1: ALT_CUSP130_AVALON_ST_OUTPUT
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_atlantic_reporter.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_atlantic_reporter-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_atlantic_reporter
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_pc.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_pc-syn
+Info:     Info (12023): Found entity 1: alt_cusp130_pc
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_au.vhd
+Info:     Info (12022): Found design unit 1: ALT_CUSP130_AU-rtl
+Info:     Info (12023): Found entity 1: ALT_CUSP130_AU
+Info: Info (12021): Found 4 design units, including 2 entities, in source file alt_cusp130_addsubcarry.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_asc_carrypropagator-WYSI
+Info:     Info (12022): Found design unit 2: alt_cusp130_addsubcarry-RTL
+Info:     Info (12023): Found entity 1: alt_cusp130_asc_carrypropagator
+Info:     Info (12023): Found entity 2: alt_cusp130_addsubcarry
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_cmp.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_cmp-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_cmp
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_clock_reset.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_clock_reset-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_clock_reset
+Info: Info (12127): Elaborating entity "system_alt_vip_crs_0" for the top level hierarchy
+Info: Info (12128): Elaborating entity "alt_cusp130_muxbin2" for hierarchy "alt_cusp130_muxbin2:justread_reg_enable_muxinst"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:justread_reg"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:widthfromcontrolpacket_reg"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:height_reg"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:ispreviousendpacket_reg"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:isendpacket_reg"
+Info: Info (12128): Elaborating entity "alt_cusp130_muxhot16" for hierarchy "alt_cusp130_muxhot16:din_takeb_trigger_muxinst"
+Info: Info (12128): Elaborating entity "alt_cusp130_avalon_st_input" for hierarchy "alt_cusp130_avalon_st_input:din"
+Info: Info (12128): Elaborating entity "alt_cusp130_muxhot16" for hierarchy "alt_cusp130_muxhot16:dout_takeb_trigger_muxinst"
+Info: Info (12128): Elaborating entity "alt_cusp130_muxfast4" for hierarchy "alt_cusp130_muxfast4:dout_wdata_muxinst"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AVALON_ST_OUTPUT" for hierarchy "ALT_CUSP130_AVALON_ST_OUTPUT:dout"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:packetdimensions_reg"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:packetdimensions_reg_24"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:packetdimensions_reg_242"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:packetdimensions_reg_243"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:inputs_reg"
+Info: Info (12128): Elaborating entity "alt_cusp130_muxhot16" for hierarchy "alt_cusp130_muxhot16:pc_usenextpc_trigger_muxinst"
+Info: Info (12128): Elaborating entity "alt_cusp130_pc" for hierarchy "alt_cusp130_pc:pc"
+Info: Warning (10296): VHDL warning at alt_cusp130_pc.vhd(30): ignored assignment of value to null range
+Info: Info (12128): Elaborating entity "LPM_COUNTER" for hierarchy "alt_cusp130_pc:pc|LPM_COUNTER:\d2:lpm_counter_component"
+Info: Info (12130): Elaborated megafunction instantiation "alt_cusp130_pc:pc|LPM_COUNTER:\d2:lpm_counter_component"
+Info: Info (12133): Instantiated megafunction "alt_cusp130_pc:pc|LPM_COUNTER:\d2:lpm_counter_component" with the following parameter:
+Info:     Info (12134): Parameter "LPM_WIDTH" = "7"
+Info:     Info (12134): Parameter "LPM_MODULUS" = "0"
+Info:     Info (12134): Parameter "LPM_DIRECTION" = "UP"
+Info:     Info (12134): Parameter "LPM_AVALUE" = "0"
+Info:     Info (12134): Parameter "LPM_SVALUE" = "UNUSED"
+Info:     Info (12134): Parameter "LPM_PVALUE" = "UNUSED"
+Info:     Info (12134): Parameter "LPM_TYPE" = "LPM_COUNTER"
+Info:     Info (12134): Parameter "LPM_HINT" = "UNUSED"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:headertype_0_id_1484_line46"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:isnotimagedata_0_id_1486_line83"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:iscontrolpacket_0_id_1488_line217"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:width_0_id_1490_line98"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AU" for hierarchy "ALT_CUSP130_AU:j_id_1492_line383"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:is_last_row_0_id_1495_line384"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AU" for hierarchy "ALT_CUSP130_AU:i_cpy_id_1497_line389"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AU" for hierarchy "ALT_CUSP130_AU:i_id_1500_line382"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:is_last_col_0_id_1503_line388"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:eop_0_id_1505_line377"
+Info: Info (12128): Elaborating entity "alt_cusp130_cmp" for hierarchy "alt_cusp130_cmp:fu_id_1675_line224_49"
+Info: Info (12128): Elaborating entity "alt_cusp130_cmp" for hierarchy "alt_cusp130_cmp:fu_id_1705_line235_50"
+Info: Info (12128): Elaborating entity "alt_cusp130_cmp" for hierarchy "alt_cusp130_cmp:fu_id_1765_line387_29"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AU" for hierarchy "ALT_CUSP130_AU:fu_id_1844_line387_29"
+Info: Info (12128): Elaborating entity "alt_cusp130_cmp" for hierarchy "alt_cusp130_cmp:fu_id_1913_line390_27"
+Info: Info (12128): Elaborating entity "alt_cusp130_cmp" for hierarchy "alt_cusp130_cmp:fu_id_1989_line397_37"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AU" for hierarchy "ALT_CUSP130_AU:fu_id_2068_line397_37"
+Info: Info (12128): Elaborating entity "alt_cusp130_cmp" for hierarchy "alt_cusp130_cmp:fu_id_2153_line390_27"
+Info: Info (281010): Generating sgate simulator netlist using Simgen
+Info: SIMGEN_PROGRESS Start of Model generation -- 0% complete
+Info: SIMGEN_PROGRESS Phase 1 : Internal Objects created -- 25% complete
+Info: SIMGEN_PROGRESS Phase 2 : Connections between internal objects made -- 60% complete
+Info: SIMGEN_PROGRESS Phase 3 : Netlist generated -- 100% complete
+Info: Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 2 warnings
+Info:     Info: Peak virtual memory: 377 megabytes
+Info:     Info: Processing ended: Wed Jun 17 09:27:53 2026
+Info:     Info: Elapsed time: 00:00:07
+Info:     Info: Total CPU time (on all processors): 00:00:07
+Info: alt_vip_crs_0: "system" instantiated alt_vip_crs "alt_vip_crs_0"
+Info: rst_controller: "system" instantiated altera_reset_controller "rst_controller"
+Info: system: Done system" with 4 modules, 7 files, 174953 bytes
+Info: ip-generate succeeded.
+Info: Finished: Create simulation model
+Info: Starting: Create Modelsim Project.
+Info: sim-script-gen --spd=/mnt/ssd2/validation/system.spd --output-directory=/mnt/ssd2/validation/system/simulation/
+Info: Doing: ip-make-simscript --spd=/mnt/ssd2/validation/system.spd --output-directory=/mnt/ssd2/validation/system/simulation/
+Info: Generating the following file(s) for MODELSIM simulator in /mnt/ssd2/validation/system/simulation/ directory:
+Info: 	mentor/msim_setup.tcl
+Info: Generating the following file(s) for VCS simulator in /mnt/ssd2/validation/system/simulation/ directory:
+Info: 	synopsys/vcs/vcs_setup.sh
+Info: Generating the following file(s) for VCSMX simulator in /mnt/ssd2/validation/system/simulation/ directory:
+Info: 	synopsys/vcsmx/synopsys_sim.setup
+Info: 	synopsys/vcsmx/vcsmx_setup.sh
+Info: Generating the following file(s) for NCSIM simulator in /mnt/ssd2/validation/system/simulation/ directory:
+Info: 	cadence/cds.lib
+Info: 	cadence/hdl.var
+Info: 	cadence/ncsim_setup.sh
+Info: 	3 .cds.lib files in cadence/cds_libs/ directory
+Info: Generating the following file(s) for RIVIERAPRO simulator in /mnt/ssd2/validation/system/simulation/ directory:
+Info: 	aldec/rivierapro_setup.tcl
+Info: Finished: Create Modelsim Project.
+Info: 
+Info: Starting: Create testbench Qsys system
+Info: /mnt/ssd2/validation/system/testbench/system.ipx
+Info: ip-generate --project-directory=/mnt/ssd2/validation/ --output-directory=/mnt/ssd2/validation/ --report-file=sopcinfo:/mnt/ssd2/validation/system.sopcinfo --report-file=html:/mnt/ssd2/validation/system.html --system-info=DEVICE_FAMILY="Cyclone II" --system-info=DEVICE=EP2C20F484C7 --system-info=DEVICE_SPEEDGRADE=7 --component-file=/mnt/ssd2/validation/system.qsys
+Progress: Loading validation/system.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 13.0]
+Progress: Parameterizing module clk_0
+Progress: Adding alt_vip_tpg_0 [alt_vip_tpg 13.0]
+Progress: Parameterizing module alt_vip_tpg_0
+Progress: Adding alt_vip_crs_0 [alt_vip_crs 13.0]
+Progress: Parameterizing module alt_vip_crs_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: ip-generate succeeded.
+Info: Loading component library for testbench.
+Progress: 
+Progress: 
+Progress: 
+Progress: (1) searching /mnt/ssd2/Quartus13Web/quartus/sopc_builder/bin/root_components.ipx (ipx file)
+Info: Reading index /mnt/ssd2/Quartus13Web/quartus/sopc_builder/bin/root_components.ipx
+Info: /mnt/ssd2/Quartus13Web/quartus/sopc_builder/bin/root_components.ipx: Loading now from components.ipx
+Info: Reading index /mnt/ssd2/Quartus13Web/quartus/sopc_builder/bin/ip_component_categories.ipx
+Info: /mnt/ssd2/Quartus13Web/quartus/sopc_builder/bin/ip_component_categories.ipx described 0 plugins, 0 paths, in 0.03 seconds
+Info: /mnt/ssd2/Quartus13Web/quartus/sopc_builder/bin/ip_component_categories.ipx matched 1 files in 0.03 seconds
+Info: Reading index /mnt/ssd2/Quartus13Web/ip/altera/altera_components.ipx
+Info: /mnt/ssd2/Quartus13Web/ip/altera/altera_components.ipx described 848 plugins, 0 paths, in 0.20 seconds
+Info: /mnt/ssd2/Quartus13Web/ip/**/* matched 97 files in 0.21 seconds
+Info: /home/hamzaaziz/.altera.quartus/ip/13.0sp1/**/* matched 0 files in 0.00 seconds
+Info: /mnt/ssd2/validation/system/testbench/ip/**/* matched 0 files in 0.00 seconds
+Info: Reading index /mnt/ssd2/validation/system/testbench/system.ipx
+Progress: Loading validation/system.qsys
+Info: /mnt/ssd2/validation/* matched 24 files in 0.00 seconds
+Info: /mnt/ssd2/validation/ip/**/* matched 0 files in 0.00 seconds
+Info: /mnt/ssd2/validation/*/* matched 261 files in 0.01 seconds
+Info: /mnt/ssd2/validation/system/testbench/system.ipx described 0 plugins, 3 paths, in 0.01 seconds
+Progress: Loading testbench/system_tb.qsys
+Info: /mnt/ssd2/validation/system/testbench/* matched 8 files in 0.01 seconds
+Info: /mnt/ssd2/validation/system/testbench/*/* matched 9 files in 0.00 seconds
+Info: Reading index /mnt/ssd2/Quartus13Web/quartus/sopc_builder/builtin.ipx
+Info: /mnt/ssd2/Quartus13Web/quartus/sopc_builder/builtin.ipx described 103 plugins, 0 paths, in 0.02 seconds
+Info: /mnt/ssd2/Quartus13Web/quartus/sopc_builder/**/* matched 10 files in 0.02 seconds
+Info: Reading index /mnt/ssd2/Quartus13Web/quartus/common/librarian/factories/index.ipx
+Info: /mnt/ssd2/Quartus13Web/quartus/common/librarian/factories/index.ipx described 151 plugins, 0 paths, in 0.02 seconds
+Info: /mnt/ssd2/Quartus13Web/quartus/common/librarian/factories/**/* matched 4 files in 0.02 seconds
+Info: /mnt/ssd2/Quartus13Web/quartus/sopc_builder/bin/$IP_IPX_PATH matched 1 files in 0.00 seconds
+Info: /mnt/ssd2/Quartus13Web/quartus/sopc_builder/bin/root_components.ipx described 0 plugins, 9 paths, in 0.30 seconds
+Info: /mnt/ssd2/Quartus13Web/quartus/sopc_builder/bin/root_components.ipx matched 1 files in 0.30 seconds
+Progress: 
+Progress: 
+Progress: 
+Info: Loading presets
+Progress: Loading presets
+Info: Running script /mnt/ssd2/Quartus13Web/quartus/sopc_builder/bin/tbgen.tcl
+Info: acds::register_package_version 12.1
+Info: send_message Info TB_Gen: QSYS Testbench Generator Rev: $Revision: #2 $
+Info: TB_Gen: QSYS Testbench Generator Rev: $Revision: #2 $
+Info: get_module_property NAME
+Info: send_message Info TB_Gen: System design is: system
+Info: TB_Gen: System design is: system
+Info: get_interfaces 
+Info: get_connections 
+Info: get_interface_property clk EXPORT_OF
+Info: get_instance_property clk_0 CLASS_NAME
+Info: get_instance_assignment clk_0 testbench.partner.map.clk_in
+Info: get_interface_property reset EXPORT_OF
+Info: get_instance_property clk_0 CLASS_NAME
+Info: get_instance_assignment clk_0 testbench.partner.map.clk_in_reset
+Info: get_interface_property alt_vip_crs_0_dout EXPORT_OF
+Info: get_instance_property alt_vip_crs_0 CLASS_NAME
+Info: get_instance_assignment alt_vip_crs_0 testbench.partner.map.dout
+Info: get_interface_property alt_vip_tpg_0_dout EXPORT_OF
+Info: get_instance_property alt_vip_tpg_0 CLASS_NAME
+Info: get_instance_assignment alt_vip_tpg_0 testbench.partner.map.dout
+Info: get_interface_property alt_vip_crs_0_din EXPORT_OF
+Info: get_instance_property alt_vip_crs_0 CLASS_NAME
+Info: get_instance_assignment alt_vip_crs_0 testbench.partner.map.din
+Info: send_message Info TB_Gen: Creating testbench system : system_tb with clock and reset BFMs
+Info: TB_Gen: Creating testbench system : system_tb with clock and reset BFMs
+Info: create_system system_tb
+Info: add_instance system_inst system 
+Info: set_use_testbench_naming_pattern true
+Info: get_instance_interfaces system_inst
+Info: get_instance_interface_property system_inst clk CLASS_NAME
+Info: get_instance_interface_property system_inst reset CLASS_NAME
+Info: get_instance_interface_property system_inst alt_vip_crs_0_dout CLASS_NAME
+Info: get_instance_interface_property system_inst alt_vip_tpg_0_dout CLASS_NAME
+Info: get_instance_interface_property system_inst alt_vip_crs_0_din CLASS_NAME
+Info: get_instance_interface_property system_inst clk CLASS_NAME
+Info: send_message Info TB_Gen: clock_sink found: clk
+Info: TB_Gen: clock_sink found: clk
+Info: get_instance_interface_property system_inst clk CLASS_NAME
+Info: add_instance system_inst_clk_bfm altera_avalon_clock_source 
+Info: get_instance_property system_inst_clk_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value system_inst clk clockRate
+Info: set_instance_parameter_value system_inst_clk_bfm CLOCK_RATE 50000000.0
+Info: set_instance_parameter_value system_inst_clk_bfm CLOCK_UNIT 1
+Info: get_instance_property system_inst_clk_bfm CLASS_NAME
+Info: get_instance_interface_property system_inst clk CLASS_NAME
+Info: get_instance_interfaces system_inst_clk_bfm
+Info: get_instance_interface_property system_inst_clk_bfm clk CLASS_NAME
+Info: add_connection system_inst_clk_bfm.clk system_inst.clk
+Info: get_instance_interface_property system_inst reset CLASS_NAME
+Info: send_message Info TB_Gen: reset_sink found: reset
+Info: TB_Gen: reset_sink found: reset
+Info: get_instance_interface_property system_inst reset CLASS_NAME
+Info: add_instance system_inst_reset_bfm altera_avalon_reset_source 
+Info: get_instance_property system_inst_reset_bfm CLASS_NAME
+Info: get_instance_interface_ports system_inst reset
+Info: get_instance_interface_port_property system_inst reset reset_reset_n ROLE
+Info: set_instance_parameter_value system_inst_reset_bfm ASSERT_HIGH_RESET 0
+Info: set_instance_parameter_value system_inst_reset_bfm INITIAL_RESET_CYCLES 50
+Info: get_instance_property system_inst_reset_bfm CLASS_NAME
+Info: get_instance_interfaces system_inst_reset_bfm
+Info: get_instance_interface_property system_inst_reset_bfm reset CLASS_NAME
+Info: get_instance_interface_property system_inst_reset_bfm clk CLASS_NAME
+Info: get_instance_property system_inst_reset_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value system_inst reset associatedClock
+Info: get_instance_interfaces system_inst_clk_bfm
+Info: get_instance_interface_property system_inst_clk_bfm clk CLASS_NAME
+Info: send_message Warning TB_Gen: system_inst_reset_bfm is not associated to any clock; connecting system_inst_reset_bfm to 'system_inst_clk_bfm.clk'
+Warning: TB_Gen: system_inst_reset_bfm is not associated to any clock; connecting system_inst_reset_bfm to 'system_inst_clk_bfm.clk'
+Info: add_connection system_inst_clk_bfm.clk system_inst_reset_bfm.clk
+Info: get_instance_interface_property system_inst reset CLASS_NAME
+Info: get_instance_interfaces system_inst_reset_bfm
+Info: get_instance_interface_property system_inst_reset_bfm reset CLASS_NAME
+Info: get_instance_interface_property system_inst_reset_bfm clk CLASS_NAME
+Info: add_connection system_inst_reset_bfm.reset system_inst.reset
+Info: send_message Info TB_Gen: Saving testbench system: system_tb.qsys
+Info: TB_Gen: Saving testbench system: system_tb.qsys
+Info: save_system system_tb.qsys
+Info: send_message Info TB_Gen: TBGEN SUCCESSFUL
+Info: TB_Gen: TBGEN SUCCESSFUL
+Info: Testbench system: /mnt/ssd2/validation/system/testbench/system_tb.qsys
+Info: Done
+Info: ip-generate --project-directory=/mnt/ssd2/validation/system/testbench/ --output-directory=/mnt/ssd2/validation/system/testbench/system_tb/simulation/ --file-set=SIM_VERILOG --report-file=html:/mnt/ssd2/validation/system/testbench/system_tb.html --system-info=DEVICE_FAMILY="Cyclone II" --system-info=DEVICE=EP2C20F484C7 --system-info=DEVICE_SPEEDGRADE=7 --component-file=/mnt/ssd2/validation/system/testbench/system_tb.qsys --report-file=csv:/mnt/ssd2/validation/system_tb.csv --report-file=spd:/mnt/ssd2/validation/system_tb.spd
+Progress: Loading testbench/system_tb.qsys
+Progress: Reading input file
+Progress: Adding system_inst [system 1.0]
+Progress: Parameterizing module system_inst
+Progress: Adding system_inst_clk_bfm [altera_avalon_clock_source 13.0]
+Progress: Parameterizing module system_inst_clk_bfm
+Progress: Adding system_inst_reset_bfm [altera_avalon_reset_source 13.0]
+Progress: Parameterizing module system_inst_reset_bfm
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: system_tb.system_inst_clk_bfm: Elaborate: altera_clock_source
+Info: system_tb.system_inst_clk_bfm:            $Revision: #1 $
+Info: system_tb.system_inst_clk_bfm:            $Date: 2013/03/07 $
+Info: system_tb.system_inst_reset_bfm: Elaborate: altera_reset_source
+Info: system_tb.system_inst_reset_bfm:            $Revision: #1 $
+Info: system_tb.system_inst_reset_bfm:            $Date: 2013/03/07 $
+Info: system_tb.system_inst_reset_bfm: Reset is negatively asserted.
+Warning: system_tb.system_inst.alt_vip_crs_0_dout: system_inst.alt_vip_crs_0_dout must be connected to an Avalon-ST sink
+Warning: system_tb.system_inst.alt_vip_tpg_0_dout: system_inst.alt_vip_tpg_0_dout must be connected to an Avalon-ST sink
+Warning: system_tb.system_inst.alt_vip_crs_0_din: system_inst.alt_vip_crs_0_din must be connected to an Avalon-ST source
+Info: system_tb: Generating system_tb "system_tb" for SIM_VERILOG
+Info: pipeline_bridge_swap_transform: After transform: 3 modules, 3 connections
+Info: No custom instruction connections, skipping transform 
+Info: No Avalon connections, skipping transform 
+Info: merlin_translator_transform: After transform: 3 modules, 3 connections
+Info: pipeline_bridge_swap_transform: After transform: 3 modules, 4 connections
+Info: No custom instruction connections, skipping transform 
+Info: No Avalon connections, skipping transform 
+Info: merlin_translator_transform: After transform: 3 modules, 4 connections
+Info: reset_adaptation_transform: After transform: 4 modules, 6 connections
+Info: merlin_mm_transform: After transform: 4 modules, 6 connections
+Info: system_inst: "system_tb" instantiated system "system_inst"
+Info: system_inst_clk_bfm: "system_tb" instantiated altera_avalon_clock_source "system_inst_clk_bfm"
+Info: system_inst_reset_bfm: "system_tb" instantiated altera_avalon_reset_source "system_inst_reset_bfm"
+Info: Reusing file /mnt/ssd2/validation/system/testbench/system_tb/simulation/submodules/verbosity_pkg.sv
+Info: Info: *******************************************************************
+Info: Info: Running Quartus II 32-bit Shell
+Info:     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+Info:     Info: Your use of Altera Corporation's design tools, logic functions 
+Info:     Info: and other software and tools, and its AMPP partner logic 
+Info:     Info: functions, and any output files from any of the foregoing 
+Info:     Info: (including device programming or simulation files), and any 
+Info:     Info: associated documentation or information are expressly subject 
+Info:     Info: to the terms and conditions of the Altera Program License 
+Info:     Info: Subscription Agreement, Altera MegaCore Function License 
+Info:     Info: Agreement, or other applicable license agreement, including, 
+Info:     Info: without limitation, that your use is for the sole purpose of 
+Info:     Info: programming logic devices manufactured by Altera and sold by 
+Info:     Info: Altera or its authorized distributors.  Please refer to the 
+Info:     Info: applicable agreement for further details.
+Info:     Info: Processing started: Wed Jun 17 09:28:06 2026
+Info: Info: Command: quartus_sh -t sopc_sim_setup.tcl
+Info: Info (125061): Changed top-level design entity name to "system_alt_vip_tpg_0"
+Info: Info (23030): Evaluation of Tcl script sopc_sim_setup.tcl was successful
+Info: Info: Quartus II 32-bit Shell was successful. 0 errors, 0 warnings
+Info:     Info: Peak virtual memory: 132 megabytes
+Info:     Info: Processing ended: Wed Jun 17 09:28:06 2026
+Info:     Info: Elapsed time: 00:00:00
+Info:     Info: Total CPU time (on all processors): 00:00:00
+Info: Generating simulation model system_alt_vip_tpg_0.vo
+Info: Info: *******************************************************************
+Info: Info: Running Quartus II 32-bit Analysis & Synthesis
+Info:     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+Info:     Info: Your use of Altera Corporation's design tools, logic functions 
+Info:     Info: and other software and tools, and its AMPP partner logic 
+Info:     Info: functions, and any output files from any of the foregoing 
+Info:     Info: (including device programming or simulation files), and any 
+Info:     Info: associated documentation or information are expressly subject 
+Info:     Info: to the terms and conditions of the Altera Program License 
+Info:     Info: Subscription Agreement, Altera MegaCore Function License 
+Info:     Info: Agreement, or other applicable license agreement, including, 
+Info:     Info: without limitation, that your use is for the sole purpose of 
+Info:     Info: programming logic devices manufactured by Altera and sold by 
+Info:     Info: Altera or its authorized distributors.  Please refer to the 
+Info:     Info: applicable agreement for further details.
+Info:     Info: Processing started: Wed Jun 17 09:28:09 2026
+Info: Info: Command: quartus_map sopc_sim --ini=disable_check_quartus_compatibility_qsys_only=on --simgen --simgen_parameter=CBX_HDL_LANGUAGE=VERILOG,CBX_FILE=system_alt_vip_tpg_0.vo,CBX_OUTPUT_DIRECTORY=/tmp/cuspgenerate6576577167405969470.gen
+Info: Warning (20028): Parallel compilation is not licensed and has been disabled
+Info: Info (12021): Found 2 design units, including 1 entities, in source file system_alt_vip_tpg_0.vhd
+Info:     Info (12022): Found design unit 1: system_alt_vip_tpg_0-rtl
+Info:     Info (12023): Found entity 1: system_alt_vip_tpg_0
+Info: Info (12021): Found 2 design units, including 1 entities, in source file system_alt_vip_tpg_0_tb.vhd
+Info:     Info (12022): Found design unit 1: system_alt_vip_tpg_0_tb-rtl
+Info:     Info (12023): Found entity 1: system_alt_vip_tpg_0_tb
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_muxbin2.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_muxbin2-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_muxbin2
+Info: Info (12021): Found 2 design units, including 0 entities, in source file alt_cusp130_package.vhd
+Info:     Info (12022): Found design unit 1: ALT_CUSP130_PACKAGE (altera)
+Info:     Info (12022): Found design unit 2: ALT_CUSP130_PACKAGE-body
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_au.vhd
+Info:     Info (12022): Found design unit 1: ALT_CUSP130_AU-rtl
+Info:     Info (12023): Found entity 1: ALT_CUSP130_AU
+Info: Info (12021): Found 4 design units, including 2 entities, in source file alt_cusp130_addsubcarry.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_asc_carrypropagator-WYSI
+Info:     Info (12022): Found design unit 2: alt_cusp130_addsubcarry-RTL
+Info:     Info (12023): Found entity 1: alt_cusp130_asc_carrypropagator
+Info:     Info (12023): Found entity 2: alt_cusp130_addsubcarry
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_muxhot16.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_muxhot16-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_muxhot16
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_avalon_st_output.vhd
+Info:     Info (12022): Found design unit 1: ALT_CUSP130_AVALON_ST_OUTPUT-rtl
+Info:     Info (12023): Found entity 1: ALT_CUSP130_AVALON_ST_OUTPUT
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_atlantic_reporter.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_atlantic_reporter-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_atlantic_reporter
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_pc.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_pc-syn
+Info:     Info (12023): Found entity 1: alt_cusp130_pc
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_mem.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_mem-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_mem
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_lu.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_lu-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_lu
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_cmp.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_cmp-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_cmp
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_reg.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_reg-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_reg
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_clock_reset.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_clock_reset-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_clock_reset
+Info: Info (12127): Elaborating entity "system_alt_vip_tpg_0" for the top level hierarchy
+Info: Info (12128): Elaborating entity "alt_cusp130_muxbin2" for hierarchy "alt_cusp130_muxbin2:bar_pattern_width_counter_au_sload_muxinst"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AU" for hierarchy "ALT_CUSP130_AU:bar_pattern_width_counter_au"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AU" for hierarchy "ALT_CUSP130_AU:bar_counter_au"
+Info: Info (12128): Elaborating entity "alt_cusp130_muxhot16" for hierarchy "alt_cusp130_muxhot16:dout_wdata_muxinst"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AVALON_ST_OUTPUT" for hierarchy "ALT_CUSP130_AVALON_ST_OUTPUT:dout"
+Info: Info (12128): Elaborating entity "alt_cusp130_muxhot16" for hierarchy "alt_cusp130_muxhot16:pc_usenextpc_trigger_muxinst"
+Info: Info (12128): Elaborating entity "alt_cusp130_pc" for hierarchy "alt_cusp130_pc:pc"
+Info: Warning (10296): VHDL warning at alt_cusp130_pc.vhd(30): ignored assignment of value to null range
+Info: Info (12128): Elaborating entity "LPM_COUNTER" for hierarchy "alt_cusp130_pc:pc|LPM_COUNTER:\d2:lpm_counter_component"
+Info: Info (12130): Elaborated megafunction instantiation "alt_cusp130_pc:pc|LPM_COUNTER:\d2:lpm_counter_component"
+Info: Info (12133): Instantiated megafunction "alt_cusp130_pc:pc|LPM_COUNTER:\d2:lpm_counter_component" with the following parameter:
+Info:     Info (12134): Parameter "LPM_WIDTH" = "6"
+Info:     Info (12134): Parameter "LPM_MODULUS" = "0"
+Info:     Info (12134): Parameter "LPM_DIRECTION" = "UP"
+Info:     Info (12134): Parameter "LPM_AVALUE" = "0"
+Info:     Info (12134): Parameter "LPM_SVALUE" = "UNUSED"
+Info:     Info (12134): Parameter "LPM_PVALUE" = "UNUSED"
+Info:     Info (12134): Parameter "LPM_TYPE" = "LPM_COUNTER"
+Info:     Info (12134): Parameter "LPM_HINT" = "UNUSED"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AU" for hierarchy "ALT_CUSP130_AU:fu_id_697_id_789"
+Info: Info (12128): Elaborating entity "alt_cusp130_mem" for hierarchy "alt_cusp130_mem:values_c1_id_792_line366"
+Info: Warning (10296): VHDL warning at alt_cusp130_mem.vhd(31): ignored assignment of value to null range
+Info: Warning (10036): Verilog HDL or VHDL warning at alt_cusp130_mem.vhd(131): object "Caddress_stall_int" assigned a value but never read
+Info: Info (12128): Elaborating entity "altsyncram" for hierarchy "alt_cusp130_mem:values_c1_id_792_line366|altsyncram:\non_stratix_gen:mode_auto_gen:dual_port_gen:latency2_gen:altsyncram_component"
+Info: Info (12130): Elaborated megafunction instantiation "alt_cusp130_mem:values_c1_id_792_line366|altsyncram:\non_stratix_gen:mode_auto_gen:dual_port_gen:latency2_gen:altsyncram_component"
+Info: Info (12133): Instantiated megafunction "alt_cusp130_mem:values_c1_id_792_line366|altsyncram:\non_stratix_gen:mode_auto_gen:dual_port_gen:latency2_gen:altsyncram_component" with the following parameter:
+Info:     Info (12134): Parameter "IMPLEMENT_IN_LES" = "OFF"
+Info:     Info (12134): Parameter "OPERATION_MODE" = "BIDIR_DUAL_PORT"
+Info:     Info (12134): Parameter "WIDTH_A" = "8"
+Info:     Info (12134): Parameter "WIDTHAD_A" = "3"
+Info:     Info (12134): Parameter "NUMWORDS_A" = "8"
+Info:     Info (12134): Parameter "OUTDATA_REG_A" = "CLOCK0"
+Info:     Info (12134): Parameter "WIDTH_B" = "8"
+Info:     Info (12134): Parameter "WIDTHAD_B" = "3"
+Info:     Info (12134): Parameter "NUMWORDS_B" = "8"
+Info:     Info (12134): Parameter "RDCONTROL_REG_B" = "CLOCK0"
+Info:     Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+Info:     Info (12134): Parameter "OUTDATA_REG_B" = "CLOCK0"
+Info:     Info (12134): Parameter "INDATA_REG_B" = "CLOCK0"
+Info:     Info (12134): Parameter "WRCONTROL_WRADDRESS_REG_B" = "CLOCK0"
+Info:     Info (12134): Parameter "BYTEENA_REG_B" = "CLOCK0"
+Info:     Info (12134): Parameter "CLOCK_ENABLE_INPUT_A" = "NORMAL"
+Info:     Info (12134): Parameter "CLOCK_ENABLE_OUTPUT_A" = "NORMAL"
+Info:     Info (12134): Parameter "CLOCK_ENABLE_INPUT_B" = "NORMAL"
+Info:     Info (12134): Parameter "CLOCK_ENABLE_OUTPUT_B" = "NORMAL"
+Info:     Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+Info:     Info (12134): Parameter "RAM_BLOCK_TYPE" = "AUTO"
+Info:     Info (12134): Parameter "INIT_FILE" = "UNUSED"
+Info:     Info (12134): Parameter "INIT_FILE_LAYOUT" = "UNUSED"
+Info:     Info (12134): Parameter "MAXIMUM_DEPTH" = "0"
+Info:     Info (12134): Parameter "INTENDED_DEVICE_FAMILY" = "STRATIX"
+Info:     Info (12134): Parameter "LPM_HINT" = "UNUSED"
+Info:     Info (12134): Parameter "LPM_TYPE" = "ALTSYNCRAM"
+Info: Info (12128): Elaborating entity "alt_cusp130_muxbin2" for hierarchy "alt_cusp130_muxbin2:values_c1_id_792_line366_lua_b_muxinst"
+Info: Info (12128): Elaborating entity "alt_cusp130_lu" for hierarchy "alt_cusp130_lu:values_c1_id_792_line366_lua"
+Info: Info (12128): Elaborating entity "alt_cusp130_mem" for hierarchy "alt_cusp130_mem:values_c2_id_802_line367"
+Info: Warning (10296): VHDL warning at alt_cusp130_mem.vhd(31): ignored assignment of value to null range
+Info: Warning (10036): Verilog HDL or VHDL warning at alt_cusp130_mem.vhd(131): object "Caddress_stall_int" assigned a value but never read
+Info: Info (12128): Elaborating entity "alt_cusp130_lu" for hierarchy "alt_cusp130_lu:values_c2_id_802_line367_lua"
+Info: Info (12128): Elaborating entity "alt_cusp130_mem" for hierarchy "alt_cusp130_mem:values_c3_id_812_line368"
+Info: Warning (10296): VHDL warning at alt_cusp130_mem.vhd(31): ignored assignment of value to null range
+Info: Warning (10036): Verilog HDL or VHDL warning at alt_cusp130_mem.vhd(131): object "Caddress_stall_int" assigned a value but never read
+Info: Info (12128): Elaborating entity "alt_cusp130_lu" for hierarchy "alt_cusp130_lu:values_c3_id_812_line368_lua"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AU" for hierarchy "ALT_CUSP130_AU:fu_id_685_id_822"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AU" for hierarchy "ALT_CUSP130_AU:fu_id_691_id_825"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AU" for hierarchy "ALT_CUSP130_AU:fu_id_679_id_828"
+Info: Info (12128): Elaborating entity "alt_cusp130_cmp" for hierarchy "alt_cusp130_cmp:fu_id_1382_line414_74"
+Info: Info (12128): Elaborating entity "alt_cusp130_cmp" for hierarchy "alt_cusp130_cmp:fu_id_1440_line418_69"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:write_wire_0_comb_id_1590"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:write_wire_1_comb_id_1593"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:write_wire_2_comb_id_1596"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:write_wire_3_comb_id_1599"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:write_wire_4_comb_id_1602"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:write_wire_5_comb_id_1605"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:write_wire_6_comb_id_1608"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:write_wire_7_comb_id_1611"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:write_wire_8_comb_id_1614"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:bar_pattern_width_counter_equal_zero_0_comb_id_1617"
+Info: Info (281010): Generating sgate simulator netlist using Simgen
+Info: SIMGEN_PROGRESS Start of Model generation -- 0% complete
+Info: SIMGEN_PROGRESS Phase 1 : Internal Objects created -- 25% complete
+Info: SIMGEN_PROGRESS Phase 2 : Connections between internal objects made -- 60% complete
+Info: SIMGEN_PROGRESS Phase 3 : Netlist generated -- 100% complete
+Info: Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 8 warnings
+Info:     Info: Peak virtual memory: 389 megabytes
+Info:     Info: Processing ended: Wed Jun 17 09:28:16 2026
+Info:     Info: Elapsed time: 00:00:07
+Info:     Info: Total CPU time (on all processors): 00:00:07
+Info: alt_vip_tpg_0: "system_inst" instantiated alt_vip_tpg "alt_vip_tpg_0"
+Info: Info: *******************************************************************
+Info: Info: Running Quartus II 32-bit Shell
+Info:     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+Info:     Info: Your use of Altera Corporation's design tools, logic functions 
+Info:     Info: and other software and tools, and its AMPP partner logic 
+Info:     Info: functions, and any output files from any of the foregoing 
+Info:     Info: (including device programming or simulation files), and any 
+Info:     Info: associated documentation or information are expressly subject 
+Info:     Info: to the terms and conditions of the Altera Program License 
+Info:     Info: Subscription Agreement, Altera MegaCore Function License 
+Info:     Info: Agreement, or other applicable license agreement, including, 
+Info:     Info: without limitation, that your use is for the sole purpose of 
+Info:     Info: programming logic devices manufactured by Altera and sold by 
+Info:     Info: Altera or its authorized distributors.  Please refer to the 
+Info:     Info: applicable agreement for further details.
+Info:     Info: Processing started: Wed Jun 17 09:28:20 2026
+Info: Info: Command: quartus_sh -t sopc_sim_setup.tcl
+Info: Info (125061): Changed top-level design entity name to "system_alt_vip_crs_0"
+Info: Info (23030): Evaluation of Tcl script sopc_sim_setup.tcl was successful
+Info: Info: Quartus II 32-bit Shell was successful. 0 errors, 0 warnings
+Info:     Info: Peak virtual memory: 132 megabytes
+Info:     Info: Processing ended: Wed Jun 17 09:28:20 2026
+Info:     Info: Elapsed time: 00:00:00
+Info:     Info: Total CPU time (on all processors): 00:00:00
+Info: Generating simulation model system_alt_vip_crs_0.vo
+Info: Info: *******************************************************************
+Info: Info: Running Quartus II 32-bit Analysis & Synthesis
+Info:     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+Info:     Info: Your use of Altera Corporation's design tools, logic functions 
+Info:     Info: and other software and tools, and its AMPP partner logic 
+Info:     Info: functions, and any output files from any of the foregoing 
+Info:     Info: (including device programming or simulation files), and any 
+Info:     Info: associated documentation or information are expressly subject 
+Info:     Info: to the terms and conditions of the Altera Program License 
+Info:     Info: Subscription Agreement, Altera MegaCore Function License 
+Info:     Info: Agreement, or other applicable license agreement, including, 
+Info:     Info: without limitation, that your use is for the sole purpose of 
+Info:     Info: programming logic devices manufactured by Altera and sold by 
+Info:     Info: Altera or its authorized distributors.  Please refer to the 
+Info:     Info: applicable agreement for further details.
+Info:     Info: Processing started: Wed Jun 17 09:28:23 2026
+Info: Info: Command: quartus_map sopc_sim --ini=disable_check_quartus_compatibility_qsys_only=on --simgen --simgen_parameter=CBX_HDL_LANGUAGE=VERILOG,CBX_FILE=system_alt_vip_crs_0.vo,CBX_OUTPUT_DIRECTORY=/tmp/cuspgenerate7384519722490185533.gen
+Info: Warning (20028): Parallel compilation is not licensed and has been disabled
+Info: Info (12021): Found 2 design units, including 1 entities, in source file system_alt_vip_crs_0.vhd
+Info:     Info (12022): Found design unit 1: system_alt_vip_crs_0-rtl
+Info:     Info (12023): Found entity 1: system_alt_vip_crs_0
+Info: Info (12021): Found 2 design units, including 1 entities, in source file system_alt_vip_crs_0_tb.vhd
+Info:     Info (12022): Found design unit 1: system_alt_vip_crs_0_tb-rtl
+Info:     Info (12023): Found entity 1: system_alt_vip_crs_0_tb
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_muxbin2.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_muxbin2-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_muxbin2
+Info: Info (12021): Found 2 design units, including 0 entities, in source file alt_cusp130_package.vhd
+Info:     Info (12022): Found design unit 1: ALT_CUSP130_PACKAGE (altera)
+Info:     Info (12022): Found design unit 2: ALT_CUSP130_PACKAGE-body
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_reg.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_reg-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_reg
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_muxhot16.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_muxhot16-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_muxhot16
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_avalon_st_input.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_avalon_st_input-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_avalon_st_input
+Info: Info (12021): Found 4 design units, including 2 entities, in source file alt_cusp130_muxfast4.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_muxfast4_i-rtl
+Info:     Info (12022): Found design unit 2: alt_cusp130_muxfast4-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_muxfast4_i
+Info:     Info (12023): Found entity 2: alt_cusp130_muxfast4
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_avalon_st_output.vhd
+Info:     Info (12022): Found design unit 1: ALT_CUSP130_AVALON_ST_OUTPUT-rtl
+Info:     Info (12023): Found entity 1: ALT_CUSP130_AVALON_ST_OUTPUT
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_atlantic_reporter.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_atlantic_reporter-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_atlantic_reporter
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_pc.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_pc-syn
+Info:     Info (12023): Found entity 1: alt_cusp130_pc
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_au.vhd
+Info:     Info (12022): Found design unit 1: ALT_CUSP130_AU-rtl
+Info:     Info (12023): Found entity 1: ALT_CUSP130_AU
+Info: Info (12021): Found 4 design units, including 2 entities, in source file alt_cusp130_addsubcarry.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_asc_carrypropagator-WYSI
+Info:     Info (12022): Found design unit 2: alt_cusp130_addsubcarry-RTL
+Info:     Info (12023): Found entity 1: alt_cusp130_asc_carrypropagator
+Info:     Info (12023): Found entity 2: alt_cusp130_addsubcarry
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_cmp.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_cmp-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_cmp
+Info: Info (12021): Found 2 design units, including 1 entities, in source file alt_cusp130_clock_reset.vhd
+Info:     Info (12022): Found design unit 1: alt_cusp130_clock_reset-rtl
+Info:     Info (12023): Found entity 1: alt_cusp130_clock_reset
+Info: Info (12127): Elaborating entity "system_alt_vip_crs_0" for the top level hierarchy
+Info: Info (12128): Elaborating entity "alt_cusp130_muxbin2" for hierarchy "alt_cusp130_muxbin2:justread_reg_enable_muxinst"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:justread_reg"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:widthfromcontrolpacket_reg"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:height_reg"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:ispreviousendpacket_reg"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:isendpacket_reg"
+Info: Info (12128): Elaborating entity "alt_cusp130_muxhot16" for hierarchy "alt_cusp130_muxhot16:din_takeb_trigger_muxinst"
+Info: Info (12128): Elaborating entity "alt_cusp130_avalon_st_input" for hierarchy "alt_cusp130_avalon_st_input:din"
+Info: Info (12128): Elaborating entity "alt_cusp130_muxhot16" for hierarchy "alt_cusp130_muxhot16:dout_takeb_trigger_muxinst"
+Info: Info (12128): Elaborating entity "alt_cusp130_muxfast4" for hierarchy "alt_cusp130_muxfast4:dout_wdata_muxinst"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AVALON_ST_OUTPUT" for hierarchy "ALT_CUSP130_AVALON_ST_OUTPUT:dout"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:packetdimensions_reg"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:packetdimensions_reg_24"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:packetdimensions_reg_242"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:packetdimensions_reg_243"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:inputs_reg"
+Info: Info (12128): Elaborating entity "alt_cusp130_muxhot16" for hierarchy "alt_cusp130_muxhot16:pc_usenextpc_trigger_muxinst"
+Info: Info (12128): Elaborating entity "alt_cusp130_pc" for hierarchy "alt_cusp130_pc:pc"
+Info: Warning (10296): VHDL warning at alt_cusp130_pc.vhd(30): ignored assignment of value to null range
+Info: Info (12128): Elaborating entity "LPM_COUNTER" for hierarchy "alt_cusp130_pc:pc|LPM_COUNTER:\d2:lpm_counter_component"
+Info: Info (12130): Elaborated megafunction instantiation "alt_cusp130_pc:pc|LPM_COUNTER:\d2:lpm_counter_component"
+Info: Info (12133): Instantiated megafunction "alt_cusp130_pc:pc|LPM_COUNTER:\d2:lpm_counter_component" with the following parameter:
+Info:     Info (12134): Parameter "LPM_WIDTH" = "7"
+Info:     Info (12134): Parameter "LPM_MODULUS" = "0"
+Info:     Info (12134): Parameter "LPM_DIRECTION" = "UP"
+Info:     Info (12134): Parameter "LPM_AVALUE" = "0"
+Info:     Info (12134): Parameter "LPM_SVALUE" = "UNUSED"
+Info:     Info (12134): Parameter "LPM_PVALUE" = "UNUSED"
+Info:     Info (12134): Parameter "LPM_TYPE" = "LPM_COUNTER"
+Info:     Info (12134): Parameter "LPM_HINT" = "UNUSED"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:headertype_0_id_1484_line46"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:isnotimagedata_0_id_1486_line83"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:iscontrolpacket_0_id_1488_line217"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:width_0_id_1490_line98"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AU" for hierarchy "ALT_CUSP130_AU:j_id_1492_line383"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:is_last_row_0_id_1495_line384"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AU" for hierarchy "ALT_CUSP130_AU:i_cpy_id_1497_line389"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AU" for hierarchy "ALT_CUSP130_AU:i_id_1500_line382"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:is_last_col_0_id_1503_line388"
+Info: Info (12128): Elaborating entity "alt_cusp130_reg" for hierarchy "alt_cusp130_reg:eop_0_id_1505_line377"
+Info: Info (12128): Elaborating entity "alt_cusp130_cmp" for hierarchy "alt_cusp130_cmp:fu_id_1675_line224_49"
+Info: Info (12128): Elaborating entity "alt_cusp130_cmp" for hierarchy "alt_cusp130_cmp:fu_id_1705_line235_50"
+Info: Info (12128): Elaborating entity "alt_cusp130_cmp" for hierarchy "alt_cusp130_cmp:fu_id_1765_line387_29"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AU" for hierarchy "ALT_CUSP130_AU:fu_id_1844_line387_29"
+Info: Info (12128): Elaborating entity "alt_cusp130_cmp" for hierarchy "alt_cusp130_cmp:fu_id_1913_line390_27"
+Info: Info (12128): Elaborating entity "alt_cusp130_cmp" for hierarchy "alt_cusp130_cmp:fu_id_1989_line397_37"
+Info: Info (12128): Elaborating entity "ALT_CUSP130_AU" for hierarchy "ALT_CUSP130_AU:fu_id_2068_line397_37"
+Info: Info (12128): Elaborating entity "alt_cusp130_cmp" for hierarchy "alt_cusp130_cmp:fu_id_2153_line390_27"
+Info: Info (281010): Generating sgate simulator netlist using Simgen
+Info: SIMGEN_PROGRESS Start of Model generation -- 0% complete
+Info: SIMGEN_PROGRESS Phase 1 : Internal Objects created -- 25% complete
+Info: SIMGEN_PROGRESS Phase 2 : Connections between internal objects made -- 60% complete
+Info: SIMGEN_PROGRESS Phase 3 : Netlist generated -- 100% complete
+Info: Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 2 warnings
+Info:     Info: Peak virtual memory: 381 megabytes
+Info:     Info: Processing ended: Wed Jun 17 09:28:29 2026
+Info:     Info: Elapsed time: 00:00:06
+Info:     Info: Total CPU time (on all processors): 00:00:07
+Info: alt_vip_crs_0: "system_inst" instantiated alt_vip_crs "alt_vip_crs_0"
+Info: rst_controller: "system_inst" instantiated altera_reset_controller "rst_controller"
+Info: system_tb: Done system_tb" with 7 modules, 11 files, 185658 bytes
+Info: ip-generate succeeded.
+Info: sim-script-gen --spd=/mnt/ssd2/validation/system_tb.spd --output-directory=/mnt/ssd2/validation/system/testbench/
+Info: Doing: ip-make-simscript --spd=/mnt/ssd2/validation/system_tb.spd --output-directory=/mnt/ssd2/validation/system/testbench/
+Info: Generating the following file(s) for MODELSIM simulator in /mnt/ssd2/validation/system/testbench/ directory:
+Info: 	mentor/msim_setup.tcl
+Info: Generating the following file(s) for VCS simulator in /mnt/ssd2/validation/system/testbench/ directory:
+Info: 	synopsys/vcs/vcs_setup.sh
+Info: Generating the following file(s) for VCSMX simulator in /mnt/ssd2/validation/system/testbench/ directory:
+Info: 	synopsys/vcsmx/synopsys_sim.setup
+Info: 	synopsys/vcsmx/vcsmx_setup.sh
+Info: Generating the following file(s) for NCSIM simulator in /mnt/ssd2/validation/system/testbench/ directory:
+Info: 	cadence/cds.lib
+Info: 	cadence/hdl.var
+Info: 	cadence/ncsim_setup.sh
+Info: 	6 .cds.lib files in cadence/cds_libs/ directory
+Info: Generating the following file(s) for RIVIERAPRO simulator in /mnt/ssd2/validation/system/testbench/ directory:
+Info: 	aldec/rivierapro_setup.tcl
+Info: Finished: Create testbench Qsys system
+Info: Starting: Create block symbol file (.bsf)
+Info: ip-generate --project-directory=/mnt/ssd2/validation/ --output-directory=/mnt/ssd2/validation/system/ --report-file=bsf:/mnt/ssd2/validation/system.bsf --system-info=DEVICE_FAMILY="Cyclone II" --system-info=DEVICE=EP2C20F484C7 --system-info=DEVICE_SPEEDGRADE=7 --component-file=/mnt/ssd2/validation/system.qsys
+Progress: Loading validation/system.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 13.0]
+Progress: Parameterizing module clk_0
+Progress: Adding alt_vip_tpg_0 [alt_vip_tpg 13.0]
+Progress: Parameterizing module alt_vip_tpg_0
+Progress: Adding alt_vip_crs_0 [alt_vip_crs 13.0]
+Progress: Parameterizing module alt_vip_crs_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: ip-generate --project-directory=/mnt/ssd2/validation/ --output-directory=/mnt/ssd2/validation/system/synthesis/ --file-set=QUARTUS_SYNTH --report-file=sopcinfo:/mnt/ssd2/validation/system.sopcinfo --report-file=html:/mnt/ssd2/validation/system.html --report-file=qip:/mnt/ssd2/validation/system/synthesis/system.qip --report-file=cmp:/mnt/ssd2/validation/system.cmp --report-file=svd --system-info=DEVICE_FAMILY="Cyclone II" --system-info=DEVICE=EP2C20F484C7 --system-info=DEVICE_SPEEDGRADE=7 --component-file=/mnt/ssd2/validation/system.qsys --language=VERILOG
+Progress: Loading validation/system.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 13.0]
+Progress: Parameterizing module clk_0
+Progress: Adding alt_vip_tpg_0 [alt_vip_tpg 13.0]
+Progress: Parameterizing module alt_vip_tpg_0
+Progress: Adding alt_vip_crs_0 [alt_vip_crs 13.0]
+Progress: Parameterizing module alt_vip_crs_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: system: Generating system "system" for QUARTUS_SYNTH
+Info: pipeline_bridge_swap_transform: After transform: 3 modules, 4 connections
+Info: No custom instruction connections, skipping transform 
+Info: No Avalon connections, skipping transform 
+Info: merlin_translator_transform: After transform: 3 modules, 4 connections
+Info: reset_adaptation_transform: After transform: 4 modules, 6 connections
+Info: merlin_mm_transform: After transform: 4 modules, 6 connections
+Info: alt_vip_tpg_0: "system" instantiated alt_vip_tpg "alt_vip_tpg_0"
+Info: alt_vip_crs_0: "system" instantiated alt_vip_crs "alt_vip_crs_0"
+Info: rst_controller: "system" instantiated altera_reset_controller "rst_controller"
+Info: bar_pattern_width_counter_au_sload_muxinst: "alt_vip_tpg_0" instantiated alt_cusp_muxbin2 "bar_pattern_width_counter_au_sload_muxinst"
+Info: bar_pattern_width_counter_au: "alt_vip_tpg_0" instantiated alt_au "bar_pattern_width_counter_au"
+Info: dout_wdata_muxinst: "alt_vip_tpg_0" instantiated alt_cusp_muxhot16 "dout_wdata_muxinst"
+Info: dout: "alt_vip_tpg_0" instantiated alt_avalon_st_output "dout"
+Info: Reusing file /mnt/ssd2/validation/system/synthesis/submodules/alt_cusp130_package.vhd
+Info: pc: "alt_vip_tpg_0" instantiated alt_pc "pc"
+Info: Reusing file /mnt/ssd2/validation/system/synthesis/submodules/alt_cusp130_package.vhd
+Info: values_c1_id_792_line366: "alt_vip_tpg_0" instantiated alt_mem "values_c1_id_792_line366"
+Info: Reusing file /mnt/ssd2/validation/system/synthesis/submodules/alt_cusp130_package.vhd
+Info: values_c1_id_792_line366_lua: "alt_vip_tpg_0" instantiated alt_lu "values_c1_id_792_line366_lua"
+Info: Reusing file /mnt/ssd2/validation/system/synthesis/submodules/alt_cusp130_package.vhd
+Info: fu_id_1382_line414_74: "alt_vip_tpg_0" instantiated alt_cmp "fu_id_1382_line414_74"
+Info: Reusing file /mnt/ssd2/validation/system/synthesis/submodules/alt_cusp130_package.vhd
+Info: write_wire_0_comb_id_1590: "alt_vip_tpg_0" instantiated alt_reg "write_wire_0_comb_id_1590"
+Info: Reusing file /mnt/ssd2/validation/system/synthesis/submodules/alt_cusp130_package.vhd
+Info: clocksource: "alt_vip_tpg_0" instantiated alt_cusp_testbench_clock "clocksource"
+Info: Reusing file /mnt/ssd2/validation/system/synthesis/submodules/alt_cusp130_package.vhd
+Info: din: "alt_vip_crs_0" instantiated alt_avalon_st_input "din"
+Info: Reusing file /mnt/ssd2/validation/system/synthesis/submodules/alt_cusp130_package.vhd
+Info: dout_wdata_muxinst: "alt_vip_crs_0" instantiated alt_cusp_muxfast4 "dout_wdata_muxinst"
+Info: Reusing file /mnt/ssd2/validation/system/synthesis/submodules/alt_cusp130_package.vhd
+Info: system: Done system" with 16 modules, 188 files, 10264210 bytes
+Info: ip-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

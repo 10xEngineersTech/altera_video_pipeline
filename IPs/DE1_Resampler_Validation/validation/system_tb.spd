@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file
+   path="system/testbench/system_tb/simulation/submodules/altera_reset_controller.v"
+   type="VERILOG"
+   library="rst_controller" />
+ <file
+   path="system/testbench/system_tb/simulation/submodules/altera_reset_synchronizer.v"
+   type="VERILOG"
+   library="rst_controller" />
+ <file
+   path="system/testbench/system_tb/simulation/submodules/altera_reset_controller.sdc"
+   type="SDC"
+   library="rst_controller" />
+ <file
+   path="system/testbench/system_tb/simulation/submodules/system_alt_vip_crs_0.vo"
+   type="VERILOG"
+   library="alt_vip_crs_0" />
+ <file
+   path="system/testbench/system_tb/simulation/submodules/tta_x_blank_mem.hex"
+   type="HEX"
+   library="alt_vip_tpg_0" />
+ <file
+   path="system/testbench/system_tb/simulation/submodules/system_alt_vip_tpg_0.vo"
+   type="VERILOG"
+   library="alt_vip_tpg_0" />
+ <file
+   path="system/testbench/system_tb/simulation/submodules/verbosity_pkg.sv"
+   type="SYSTEM_VERILOG"
+   library="system_inst_reset_bfm" />
+ <file
+   path="system/testbench/system_tb/simulation/submodules/altera_avalon_reset_source.sv"
+   type="SYSTEM_VERILOG"
+   library="system_inst_reset_bfm" />
+ <file
+   path="system/testbench/system_tb/simulation/submodules/verbosity_pkg.sv"
+   type="SYSTEM_VERILOG"
+   library="system_inst_clk_bfm" />
+ <file
+   path="system/testbench/system_tb/simulation/submodules/altera_avalon_clock_source.sv"
+   type="SYSTEM_VERILOG"
+   library="system_inst_clk_bfm" />
+ <file
+   path="system/testbench/system_tb/simulation/submodules/system.v"
+   type="VERILOG"
+   library="system_inst" />
+ <file
+   path="system/testbench/system_tb/simulation/system_tb.v"
+   type="VERILOG" />
+ <topLevel name="system_tb" />
+ <deviceFamily name="cycloneii" />
+</simPackage>

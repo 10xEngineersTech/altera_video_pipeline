@@ -1,0 +1,22 @@
+	component system is
+		port (
+			clk_clk                          : in  std_logic                    := 'X';             -- clk
+			reset_reset_n                    : in  std_logic                    := 'X';             -- reset_n
+			alt_vip_crs_0_dout_ready         : in  std_logic                    := 'X';             -- ready
+			alt_vip_crs_0_dout_valid         : out std_logic;                                       -- valid
+			alt_vip_crs_0_dout_data          : out std_logic_vector(7 downto 0);                    -- data
+			alt_vip_crs_0_dout_startofpacket : out std_logic;                                       -- startofpacket
+			alt_vip_crs_0_dout_endofpacket   : out std_logic;                                       -- endofpacket
+			alt_vip_tpg_0_dout_ready         : in  std_logic                    := 'X';             -- ready
+			alt_vip_tpg_0_dout_valid         : out std_logic;                                       -- valid
+			alt_vip_tpg_0_dout_data          : out std_logic_vector(7 downto 0);                    -- data
+			alt_vip_tpg_0_dout_startofpacket : out std_logic;                                       -- startofpacket
+			alt_vip_tpg_0_dout_endofpacket   : out std_logic;                                       -- endofpacket
+			alt_vip_crs_0_din_ready          : out std_logic;                                       -- ready
+			alt_vip_crs_0_din_valid          : in  std_logic                    := 'X';             -- valid
+			alt_vip_crs_0_din_data           : in  std_logic_vector(7 downto 0) := (others => 'X'); -- data
+			alt_vip_crs_0_din_startofpacket  : in  std_logic                    := 'X';             -- startofpacket
+			alt_vip_crs_0_din_endofpacket    : in  std_logic                    := 'X'              -- endofpacket
+		);
+	end component system;
+

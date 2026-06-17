@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system name="$${FILENAME}">
+ <component
+   name="$${FILENAME}"
+   displayName="$${FILENAME}"
+   version="1.0"
+   description=""
+   tags=""
+   categories="System" />
+ <parameter name="bonusData"><![CDATA[bonusData 
+{
+   element $${FILENAME}
+   {
+   }
+   element alt_vip_crs_0
+   {
+      datum _sortIndex
+      {
+         value = "2";
+         type = "int";
+      }
+      datum megawizard_uipreferences
+      {
+         value = "{}";
+         type = "String";
+      }
+   }
+   element alt_vip_tpg_0
+   {
+      datum _sortIndex
+      {
+         value = "1";
+         type = "int";
+      }
+      datum megawizard_uipreferences
+      {
+         value = "{}";
+         type = "String";
+      }
+   }
+   element clk_0
+   {
+      datum _sortIndex
+      {
+         value = "0";
+         type = "int";
+      }
+   }
+}
+]]></parameter>
+ <parameter name="clockCrossingAdapter" value="HANDSHAKE" />
+ <parameter name="device" value="EP2C20F484C7" />
+ <parameter name="deviceFamily" value="Cyclone II" />
+ <parameter name="deviceSpeedGrade" value="7" />
+ <parameter name="fabricMode" value="QSYS" />
+ <parameter name="generateLegacySim" value="false" />
+ <parameter name="generationId" value="0" />
+ <parameter name="globalResetBus" value="false" />
+ <parameter name="hdlLanguage" value="VERILOG" />
+ <parameter name="maxAdditionalLatency" value="1" />
+ <parameter name="projectName" value="resampling.qpf" />
+ <parameter name="sopcBorderPoints" value="false" />
+ <parameter name="systemHash" value="1" />
+ <parameter name="timeStamp" value="1781641011767" />
+ <parameter name="useTestBenchNamingPattern" value="false" />
+ <instanceScript></instanceScript>
+ <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
+ <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
+ <interface
+   name="alt_vip_crs_0_dout"
+   internal="alt_vip_crs_0.dout"
+   type="avalon_streaming"
+   dir="start" />
+ <interface
+   name="alt_vip_tpg_0_dout"
+   internal="alt_vip_tpg_0.dout"
+   type="avalon_streaming"
+   dir="start" />
+ <interface
+   name="alt_vip_crs_0_din"
+   internal="alt_vip_crs_0.din"
+   type="avalon_streaming"
+   dir="end" />
+ <module kind="clock_source" version="13.0" enabled="1" name="clk_0">
+  <parameter name="clockFrequency" value="50000000" />
+  <parameter name="clockFrequencyKnown" value="true" />
+  <parameter name="inputClockFrequency" value="0" />
+  <parameter name="resetSynchronousEdges" value="NONE" />
+ </module>
+ <module kind="alt_vip_tpg" version="13.0" enabled="1" name="alt_vip_tpg_0">
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone II" />
+  <parameter name="CHANNELS_IN_PAR" value="1" />
+  <parameter name="CTRL_INTERFACE_DEPTH" value="10" />
+  <parameter name="PARAMETERISATION"><![CDATA[<testPatternGeneratorParams><TPG_NAME>MyPatternGenerator</TPG_NAME><TPG_RUNTIME_CONTROL>0</TPG_RUNTIME_CONTROL><TPG_BPS>8</TPG_BPS><TPG_MAX_WIDTH>1920</TPG_MAX_WIDTH><TPG_MAX_HEIGHT>1080</TPG_MAX_HEIGHT><TPG_COLORSPACE>COLORSPACE_YCbCr</TPG_COLORSPACE><TPG_FORMAT>SAMPLE_444</TPG_FORMAT><TPG_INTERLACE>PROGRESSIVE_FRAMES</TPG_INTERLACE><TPG_PARALLEL_MODE>false</TPG_PARALLEL_MODE><TPG_PATTERN>TPG_PATTERN_COLORBARS</TPG_PATTERN><TPG_UNIFORM_VAL_C1>128</TPG_UNIFORM_VAL_C1><TPG_UNIFORM_VAL_C2>128</TPG_UNIFORM_VAL_C2><TPG_UNIFORM_VAL_C3>128</TPG_UNIFORM_VAL_C3></testPatternGeneratorParams>]]></parameter>
+ </module>
+ <module kind="alt_vip_crs" version="13.0" enabled="1" name="alt_vip_crs_0">
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone II" />
+  <parameter name="OUT_CHANNELS_IN_PAR" value="1" />
+  <parameter name="IN_CHANNELS_IN_PAR" value="1" />
+  <parameter name="PARAMETERISATION"><![CDATA[<chromaResamplerParams><CRS_NAME>chroma_resampler</CRS_NAME><CRS_BPS>8</CRS_BPS><CRS_WIDTH>1920</CRS_WIDTH><CRS_HEIGHT>1080</CRS_HEIGHT><CRS_PARALLEL_MODE>false</CRS_PARALLEL_MODE><CRS_RESAMPLING><FORMAT><IN>444</IN><OUT>422</OUT></FORMAT><COSITING><V>true</V><H>true</H></COSITING></CRS_RESAMPLING><CRS_ALGORITHM><V><NAME>INTERPOLATION_1D_NEAREST_NEIGHBOUR</NAME><LUMA_ADAPTIVE>false</LUMA_ADAPTIVE></V><H><NAME>INTERPOLATION_1D_NEAREST_NEIGHBOUR</NAME><LUMA_ADAPTIVE>true</LUMA_ADAPTIVE></H></CRS_ALGORITHM></chromaResamplerParams>]]></parameter>
+ </module>
+ <connection
+   kind="clock"
+   version="13.0"
+   start="clk_0.clk"
+   end="alt_vip_crs_0.clock" />
+ <connection
+   kind="clock"
+   version="13.0"
+   start="clk_0.clk"
+   end="alt_vip_tpg_0.clock" />
+ <connection
+   kind="reset"
+   version="13.0"
+   start="clk_0.clk_reset"
+   end="alt_vip_tpg_0.reset" />
+ <connection
+   kind="reset"
+   version="13.0"
+   start="clk_0.clk_reset"
+   end="alt_vip_crs_0.reset" />
+ <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
+ <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />
+</system>

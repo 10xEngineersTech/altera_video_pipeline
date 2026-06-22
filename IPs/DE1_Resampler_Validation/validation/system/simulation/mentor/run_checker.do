@@ -12,8 +12,9 @@ do msim_setup.tcl
 
 dev_com
 com
-vlog -sv ../../synthesis/resampling_checker.v
-vlog -sv ../../synthesis/testbench.v
+vlog -sv +incdir+../../synthesis ../../synthesis/expected_group_model.v
+vlog -sv +incdir+../../synthesis ../../synthesis/resampling_checker.v
+vlog -sv +incdir+../../synthesis ../../synthesis/testbench.v
 
 vsim -voptargs=+acc -t ps \
   -L work -L work_lib -L rst_controller -L alt_vip_crs_0 -L alt_vip_tpg_0 \

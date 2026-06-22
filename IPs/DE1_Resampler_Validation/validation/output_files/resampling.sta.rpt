@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for resampling
-Wed Jun 17 11:20:44 2026
+Wed Jun 17 18:03:48 2026
 Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -83,7 +83,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------------------+--------+--------------------------+
 ; SDC File Path                                           ; Status ; Read at                  ;
 +---------------------------------------------------------+--------+--------------------------+
-; system/synthesis/submodules/altera_reset_controller.sdc ; OK     ; Wed Jun 17 11:20:44 2026 ;
+; system/synthesis/submodules/altera_reset_controller.sdc ; OK     ; Wed Jun 17 18:03:48 2026 ;
 +---------------------------------------------------------+--------+--------------------------+
 
 
@@ -234,11 +234,11 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 ; Property                        ; Setup ; Hold ;
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
-; Unconstrained Clocks            ; 1     ; 1    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
 ; Unconstrained Input Ports       ; 0     ; 0    ;
 ; Unconstrained Input Port Paths  ; 0     ; 0    ;
-; Unconstrained Output Ports      ; 1     ; 1    ;
-; Unconstrained Output Port Paths ; 1     ; 1    ;
+; Unconstrained Output Ports      ; 0     ; 0    ;
+; Unconstrained Output Port Paths ; 0     ; 0    ;
 +---------------------------------+-------+------+
 
 
@@ -248,7 +248,7 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 Info: *******************************************************************
 Info: Running Quartus II 32-bit TimeQuest Timing Analyzer
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Wed Jun 17 11:20:40 2026
+    Info: Processing started: Wed Jun 17 18:03:44 2026
 Info: Command: quartus_sta resampling -c resampling
 Info: qsta_default_script.tcl version: #1
 Warning (20028): Parallel compilation is not licensed and has been disabled
@@ -272,7 +272,6 @@ Info (332164): Evaluating HDL-embedded SDC commands
         Info (332166): create_clock -name altera_reserved_tck [get_ports {altera_reserved_tck}] -period 10MHz   
         Info (332166): set_clock_groups -asynchronous -group {altera_reserved_tck}
 Info (332104): Reading SDC File: 'system/synthesis/submodules/altera_reset_controller.sdc'
-Warning (332060): Node: clk_clk was determined to be a clock but was found without an associated clock assignment.
 Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow Model
 Info (332140): No fmax paths to report
@@ -286,7 +285,6 @@ Info (332146): Worst-case minimum pulse width slack is 97.531
     Info (332119):    97.531         0.000 altera_reserved_tck 
 Info (332001): The selected device family is not supported by the report_metastability command.
 Info: Analyzing Fast Model
-Warning (332060): Node: clk_clk was determined to be a clock but was found without an associated clock assignment.
 Info (332140): No Setup paths to report
 Info (332140): No Hold paths to report
 Info (332140): No Recovery paths to report
@@ -296,11 +294,11 @@ Info (332146): Worst-case minimum pulse width slack is 97.778
     Info (332119): ========= ============= =====================
     Info (332119):    97.778         0.000 altera_reserved_tck 
 Info (332001): The selected device family is not supported by the report_metastability command.
-Info (332102): Design is not fully constrained for setup requirements
-Info (332102): Design is not fully constrained for hold requirements
-Info: Quartus II 32-bit TimeQuest Timing Analyzer was successful. 0 errors, 3 warnings
-    Info: Peak virtual memory: 320 megabytes
-    Info: Processing ended: Wed Jun 17 11:20:44 2026
+Info (332101): Design is fully constrained for setup requirements
+Info (332101): Design is fully constrained for hold requirements
+Info: Quartus II 32-bit TimeQuest Timing Analyzer was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 307 megabytes
+    Info: Processing ended: Wed Jun 17 18:03:48 2026
     Info: Elapsed time: 00:00:04
     Info: Total CPU time (on all processors): 00:00:04
 

@@ -1,11 +1,9 @@
 <?xml version="1.0" ?>
 <LOG_ROOT>
 	<PROJECT NAME="resampling">
-		<CBX_INST_ENTRY INSTANCE_NAME="|resampling_checker|altsyncram:fifo_mem_rtl_0" CBX_FILE_NAME="altsyncram_qbc1.tdf"/>
-		<CBX_INST_ENTRY INSTANCE_NAME="|resampling_checker|system:dut|system_alt_vip_crs_0:alt_vip_crs_0|alt_cusp130_pc:pc|LPM_COUNTER:\d2:lpm_counter_component" CBX_FILE_NAME="cntr_i6m.tdf"/>
-		<CBX_INST_ENTRY INSTANCE_NAME="|resampling_checker|system:dut|system_alt_vip_tpg_0:alt_vip_tpg_0|alt_cusp130_mem:values_c3_id_812_line368|altsyncram:\non_stratix_gen:mode_auto_gen:dual_port_gen:latency2_gen:altsyncram_component" CBX_FILE_NAME="altsyncram_sf82.tdf"/>
-		<CBX_INST_ENTRY INSTANCE_NAME="|resampling_checker|system:dut|system_alt_vip_tpg_0:alt_vip_tpg_0|alt_cusp130_pc:pc|LPM_COUNTER:\d2:lpm_counter_component" CBX_FILE_NAME="cntr_h6m.tdf"/>
 		<CBX_INST_ENTRY INSTANCE_NAME="|resampling_checker|system:dut|system_alt_vip_tpg_0:alt_vip_tpg_0|alt_cusp130_mem:values_c1_id_792_line366|altsyncram:\non_stratix_gen:mode_auto_gen:dual_port_gen:latency2_gen:altsyncram_component" CBX_FILE_NAME="altsyncram_sf82.tdf"/>
 		<CBX_INST_ENTRY INSTANCE_NAME="|resampling_checker|system:dut|system_alt_vip_tpg_0:alt_vip_tpg_0|alt_cusp130_mem:values_c2_id_802_line367|altsyncram:\non_stratix_gen:mode_auto_gen:dual_port_gen:latency2_gen:altsyncram_component" CBX_FILE_NAME="altsyncram_sf82.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|resampling_checker|system:dut|system_alt_vip_tpg_0:alt_vip_tpg_0|alt_cusp130_mem:values_c3_id_812_line368|altsyncram:\non_stratix_gen:mode_auto_gen:dual_port_gen:latency2_gen:altsyncram_component" CBX_FILE_NAME="altsyncram_sf82.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|resampling_checker|system:dut|system_alt_vip_tpg_0:alt_vip_tpg_0|alt_cusp130_pc:pc|LPM_COUNTER:\d2:lpm_counter_component" CBX_FILE_NAME="cntr_h6m.tdf"/>
 	</PROJECT>
 </LOG_ROOT>

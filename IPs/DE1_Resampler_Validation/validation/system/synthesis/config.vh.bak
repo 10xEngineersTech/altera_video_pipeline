@@ -1,0 +1,24 @@
+//------------------------------------------------------------------------------
+// config.vh -- build-time configuration for the resampling checker.
+//
+// Single source of truth for the conversion under test.  resampling_checker
+// reads CRS_CONV_MODE from here as its CONV_MODE default (and forwards it to
+// expected_group_model), so switching configs is a one-line edit below.
+//
+// IMPORTANT: CRS_CONV_MODE must match the Platform Designer Chroma Resampler IP
+// (the <IN>/<OUT> format in system.qsys).  RTL only models what the IP does.
+//------------------------------------------------------------------------------
+`ifndef RESAMPLING_CONFIG_VH
+`define RESAMPLING_CONFIG_VH
+
+// Conversion-mode codes (keep in sync with the localparams in the modules).
+`define CONV_444_TO_422 0
+`define CONV_OTHER      1
+`define CONV_444_TO_420 2
+
+// ---- Active conversion -------------------------------------------------------
+// 4:4:4 -> 4:2:0 : `CONV_444_TO_420   (current Platform Designer config)
+// 4:4:4 -> 4:2:2 : `CONV_444_TO_422
+`define CRS_CONV_MODE `CONV_444_TO_420
+
+`endif // RESAMPLING_CONFIG_VH

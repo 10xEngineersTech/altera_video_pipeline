@@ -1,4 +1,4 @@
-# do /tmp/dbg.do
+# do dump.do
 # system
 # ./../
 # /mnt/ssd2/Quartus13Web/quartus/
@@ -50,7 +50,7 @@
 # QUARTUS_INSTALL_DIR           -- Quartus installation directory.
 # [exec] dev_com
 # QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
-# Start time: 11:15:20 on Jun 17,2026
+# Start time: 16:37:22 on Jun 17,2026
 # vlog /mnt/ssd2/Quartus13Web/quartus/eda/sim_lib/altera_primitives.v -work altera_ver 
 # -- Compiling module global
 # -- Compiling module carry
@@ -128,10 +128,10 @@
 # 	alt_iobuf_diff
 # 	alt_bidir_diff
 # 	alt_bidir_buf
-# End time: 11:15:20 on Jun 17,2026, Elapsed time: 0:00:00
+# End time: 16:37:23 on Jun 17,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
-# Start time: 11:15:20 on Jun 17,2026
+# Start time: 16:37:23 on Jun 17,2026
 # vlog /mnt/ssd2/Quartus13Web/quartus/eda/sim_lib/220model.v -work lpm_ver 
 # -- Compiling module LPM_MEMORY_INITIALIZATION
 # -- Compiling module LPM_HINT_EVALUATION
@@ -195,10 +195,10 @@
 # 	lpm_inpad
 # 	lpm_outpad
 # 	lpm_bipad
-# End time: 11:15:21 on Jun 17,2026, Elapsed time: 0:00:01
+# End time: 16:37:23 on Jun 17,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
-# Start time: 11:15:21 on Jun 17,2026
+# Start time: 16:37:23 on Jun 17,2026
 # vlog /mnt/ssd2/Quartus13Web/quartus/eda/sim_lib/sgate.v -work sgate_ver 
 # -- Compiling module oper_add
 # -- Compiling module oper_addsub
@@ -240,10 +240,10 @@
 # 	oper_decoder
 # 	oper_bus_mux
 # 	oper_latch
-# End time: 11:15:21 on Jun 17,2026, Elapsed time: 0:00:00
+# End time: 16:37:23 on Jun 17,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
-# Start time: 11:15:21 on Jun 17,2026
+# Start time: 16:37:23 on Jun 17,2026
 # vlog /mnt/ssd2/Quartus13Web/quartus/eda/sim_lib/altera_mf.v -work altera_mf_ver 
 # -- Compiling module lcell
 # -- Compiling module ALTERA_MF_MEMORY_INITIALIZATION
@@ -368,10 +368,10 @@
 # 	altserial_flash_loader
 # 	sld_virtual_jtag_basic
 # 	altsource_probe
-# End time: 11:15:21 on Jun 17,2026, Elapsed time: 0:00:00
+# End time: 16:37:24 on Jun 17,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
-# Start time: 11:15:21 on Jun 17,2026
+# Start time: 16:37:24 on Jun 17,2026
 # vlog -sv /mnt/ssd2/Quartus13Web/quartus/eda/sim_lib/altera_lnsim.sv -work altera_lnsim_ver 
 # -- Compiling package altera_lnsim_functions
 # -- Compiling module altera_pll
@@ -435,10 +435,10 @@
 # 	generic_device_pll
 # 	altera_mult_add
 # 	altera_pll_reconfig_tasks
-# End time: 11:15:22 on Jun 17,2026, Elapsed time: 0:00:01
+# End time: 16:37:24 on Jun 17,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 6
 # QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
-# Start time: 11:15:22 on Jun 17,2026
+# Start time: 16:37:24 on Jun 17,2026
 # vlog /mnt/ssd2/Quartus13Web/quartus/eda/sim_lib/cycloneii_atoms.v -work cycloneii_ver 
 # -- Compiling UDP CYCLONEII_PRIM_DFFE
 # -- Compiling UDP CYCLONEII_PRIM_DFFEAS
@@ -499,80 +499,74 @@
 # 	cycloneii_clkctrl
 # 	cycloneii_mac_mult
 # 	cycloneii_mac_out
-# End time: 11:15:22 on Jun 17,2026, Elapsed time: 0:00:00
+# End time: 16:37:24 on Jun 17,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # [exec] com
 # QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
-# Start time: 11:15:22 on Jun 17,2026
+# Start time: 16:37:24 on Jun 17,2026
 # vlog ./../submodules/altera_reset_controller.v -work rst_controller 
 # -- Compiling module altera_reset_controller
 # 
 # Top level modules:
 # 	altera_reset_controller
-# End time: 11:15:22 on Jun 17,2026, Elapsed time: 0:00:00
+# End time: 16:37:24 on Jun 17,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
-# Start time: 11:15:22 on Jun 17,2026
+# Start time: 16:37:24 on Jun 17,2026
 # vlog ./../submodules/altera_reset_synchronizer.v -work rst_controller 
 # -- Compiling module altera_reset_synchronizer
 # 
 # Top level modules:
 # 	altera_reset_synchronizer
-# End time: 11:15:22 on Jun 17,2026, Elapsed time: 0:00:00
+# End time: 16:37:24 on Jun 17,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
-# Start time: 11:15:22 on Jun 17,2026
+# Start time: 16:37:24 on Jun 17,2026
 # vlog ./../submodules/system_alt_vip_crs_0.vo -work alt_vip_crs_0 
 # -- Compiling module system_alt_vip_crs_0
 # 
 # Top level modules:
 # 	system_alt_vip_crs_0
-# End time: 11:15:22 on Jun 17,2026, Elapsed time: 0:00:00
+# End time: 16:37:25 on Jun 17,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
-# Start time: 11:15:22 on Jun 17,2026
+# Start time: 16:37:25 on Jun 17,2026
 # vlog ./../submodules/system_alt_vip_tpg_0.vo -work alt_vip_tpg_0 
 # -- Compiling module system_alt_vip_tpg_0
 # 
 # Top level modules:
 # 	system_alt_vip_tpg_0
-# End time: 11:15:22 on Jun 17,2026, Elapsed time: 0:00:00
+# End time: 16:37:25 on Jun 17,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
-# Start time: 11:15:22 on Jun 17,2026
+# Start time: 16:37:25 on Jun 17,2026
 # vlog ./../system.v 
 # -- Compiling module system
 # 
 # Top level modules:
 # 	system
-# End time: 11:15:23 on Jun 17,2026, Elapsed time: 0:00:01
+# End time: 16:37:25 on Jun 17,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
-# Start time: 11:15:23 on Jun 17,2026
-# vlog -sv ../../synthesis/resampling_checker.v 
-# -- Compiling module resampling_checker
+# Start time: 16:37:25 on Jun 17,2026
+# vlog -sv ../../synthesis/dump_tb.v 
+# -- Compiling module dump_tb
 # 
 # Top level modules:
-# 	resampling_checker
-# End time: 11:15:23 on Jun 17,2026, Elapsed time: 0:00:00
+# 	dump_tb
+# End time: 16:37:25 on Jun 17,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
-# Start time: 11:15:23 on Jun 17,2026
-# vlog -sv ../../synthesis/testbench.v 
-# -- Compiling module testbench
-# 
-# Top level modules:
-# 	testbench
-# End time: 11:15:23 on Jun 17,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# vsim -voptargs="+acc" -t ps -L work -L work_lib -L rst_controller -L alt_vip_crs_0 -L alt_vip_tpg_0 -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneii_ver work.testbench 
-# Start time: 11:15:23 on Jun 17,2026
+# vsim -voptargs="+acc" -t ps -L work -L work_lib -L rst_controller -L alt_vip_crs_0 -L alt_vip_tpg_0 -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneii_ver work.dump_tb 
+# Start time: 16:37:25 on Jun 17,2026
 # ** Note: (vsim-3812) Design is being optimized...
-# ** Warning: ./../submodules/system_alt_vip_crs_0.vo(3063): (vopt-2685) [TFMPC] - Too few port connections for 'nil1li'.  Expected 15, found 14.
-# ** Warning: ./../submodules/system_alt_vip_crs_0.vo(3063): (vopt-2718) [TFMPC] - Missing connection for port 'eq'.
-# ** Warning: ./../submodules/system_alt_vip_tpg_0.vo(2495): (vopt-2685) [TFMPC] - Too few port connections for 'nllOii'.  Expected 15, found 14.
-# ** Warning: ./../submodules/system_alt_vip_tpg_0.vo(2495): (vopt-2718) [TFMPC] - Missing connection for port 'eq'.
-# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=4.
+# ** Warning: ./../submodules/system_alt_vip_crs_0.vo(5059): (vopt-2685) [TFMPC] - Too few port connections for 'n1lO0i'.  Expected 15, found 14.
+# ** Warning: ./../submodules/system_alt_vip_crs_0.vo(5059): (vopt-2718) [TFMPC] - Missing connection for port 'eq'.
+# ** Warning: ./../submodules/system_alt_vip_crs_0.vo(5082): (vopt-2685) [TFMPC] - Too few port connections for 'n1O10O'.  Expected 15, found 14.
+# ** Warning: ./../submodules/system_alt_vip_crs_0.vo(5082): (vopt-2718) [TFMPC] - Missing connection for port 'eq'.
+# ** Warning: ./../submodules/system_alt_vip_tpg_0.vo(2109): (vopt-2685) [TFMPC] - Too few port connections for 'nllOii'.  Expected 15, found 14.
+# ** Warning: ./../submodules/system_alt_vip_tpg_0.vo(2109): (vopt-2718) [TFMPC] - Missing connection for port 'eq'.
+# ** Note: (vopt-143) Recognized 2 FSMs in module "dump_tb(fast)".
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=6.
 # //  Questa Sim-64
 # //  Version 2021.2_1 linux_x86_64 May 15 2021
 # //
@@ -588,41 +582,7 @@
 # //  18 U.S.C. Section 1905.
 # //
 # Loading sv_std.std
-# Loading work.testbench(fast)
-# Loading work.resampling_checker(fast)
-# Loading work.system(fast)
-# Loading alt_vip_tpg_0.system_alt_vip_tpg_0(fast)
-# Loading altera_mf_ver.altsyncramquit -sim
-# End time: 11:16:43 on Jun 17,2026, Elapsed time: 0:21:52
-# Errors: 0, Warnings: 0
-vlog -sv ../../synthesis/resampling_checker.v
-# QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
-# Start time: 11:16:53 on Jun 17,2026
-# vlog -reportprogress 300 -sv ../../synthesis/resampling_checker.v 
-# -- Compiling module resampling_checker
-# 
-# Top level modules:
-# 	resampling_checker
-# End time: 11:16:53 on Jun 17,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -sv ../../synthesis/testbench.v
-# QuestaSim-64 vlog 2021.2_1 Compiler 2021.05 May 15 2021
-# Start time: 11:17:03 on Jun 17,2026
-# vlog -reportprogress 300 -sv ../../synthesis/testbench.v 
-# -- Compiling module testbench
-# 
-# Top level modules:
-# 	testbench
-# End time: 11:17:04 on Jun 17,2026, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
-elab_debug
-# [exec] elab_debug
-# vsim -voptargs="+acc" -t ps -L work -L work_lib -L rst_controller -L alt_vip_crs_0 -L alt_vip_tpg_0 -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneii_ver work.testbench 
-# Start time: 11:17:08 on Jun 17,2026
-# ** Note: (vsim-8009) Loading existing optimized design _opt
-# Loading sv_std.std
-# Loading work.testbench(fast)
-# Loading work.resampling_checker(fast)
+# Loading work.dump_tb(fast)
 # Loading work.system(fast)
 # Loading alt_vip_tpg_0.system_alt_vip_tpg_0(fast)
 # Loading altera_mf_ver.altsyncram(fast)
@@ -643,74 +603,1950 @@ elab_debug
 # Loading sgate_ver.oper_selector(fast)
 # Loading sgate_ver.oper_selector(fast__1)
 # Loading alt_vip_crs_0.system_alt_vip_crs_0(fast)
+# Loading altera_mf_ver.altsyncram(fast__1)
 # Loading lpm_ver.lpm_counter(fast__1)
 # Loading sgate_ver.oper_add(fast__3)
 # Loading lpm_ver.lpm_add_sub(fast__3)
 # Loading sgate_ver.oper_add(fast__4)
 # Loading lpm_ver.lpm_add_sub(fast__4)
+# Loading sgate_ver.oper_add(fast__5)
+# Loading lpm_ver.lpm_add_sub(fast__5)
+# Loading sgate_ver.oper_add(fast__6)
+# Loading lpm_ver.lpm_add_sub(fast__6)
+# Loading sgate_ver.oper_add(fast__7)
+# Loading lpm_ver.lpm_add_sub(fast__7)
+# Loading sgate_ver.oper_add(fast__8)
+# Loading lpm_ver.lpm_add_sub(fast__8)
+# Loading sgate_ver.oper_less_than(fast)
 # Loading sgate_ver.oper_mux(fast__5)
 # Loading rst_controller.altera_reset_controller(fast)
 # Loading rst_controller.altera_reset_synchronizer(fast)
-add wave -position insertpoint  \
-sim:/testbench/crs_inst/PKT_VIDEO \
-sim:/testbench/crs_inst/FIFO_AW \
-sim:/testbench/crs_inst/FIFO_DEPTH \
-sim:/testbench/crs_inst/MIS_THRESH \
-sim:/testbench/crs_inst/LOCK_RUN \
-sim:/testbench/crs_inst/MAX_TRIES \
-sim:/testbench/crs_inst/clk_clk \
-sim:/testbench/crs_inst/status_led \
-sim:/testbench/crs_inst/por_cnt \
-sim:/testbench/crs_inst/reset_reset \
-sim:/testbench/crs_inst/tpg_data \
-sim:/testbench/crs_inst/tpg_valid \
-sim:/testbench/crs_inst/tpg_sop \
-sim:/testbench/crs_inst/tpg_eop \
-sim:/testbench/crs_inst/tpg_ready \
-sim:/testbench/crs_inst/crs_dout_data \
-sim:/testbench/crs_inst/crs_dout_valid \
-sim:/testbench/crs_inst/crs_dout_startofpacket \
-sim:/testbench/crs_inst/crs_dout_endofpacket \
-sim:/testbench/crs_inst/crs_dout_ready \
-sim:/testbench/crs_inst/in_is_sop \
-sim:/testbench/crs_inst/in_video \
-sim:/testbench/crs_inst/in_pixel \
-sim:/testbench/crs_inst/six \
-sim:/testbench/crs_inst/cb0 \
-sim:/testbench/crs_inst/cr0 \
-sim:/testbench/crs_inst/y0 \
-sim:/testbench/crs_inst/rotate_tgl \
-sim:/testbench/crs_inst/rotate_ack \
-sim:/testbench/crs_inst/rotate_pending \
-sim:/testbench/crs_inst/exp_group \
-sim:/testbench/crs_inst/push_group \
-sim:/testbench/crs_inst/out_is_sop \
-sim:/testbench/crs_inst/out_video \
-sim:/testbench/crs_inst/out_pixel \
-sim:/testbench/crs_inst/out_phase \
-sim:/testbench/crs_inst/o_cb \
-sim:/testbench/crs_inst/o_y0 \
-sim:/testbench/crs_inst/o_cr \
-sim:/testbench/crs_inst/out_done \
-sim:/testbench/crs_inst/act_group \
-sim:/testbench/crs_inst/fifo_mem \
-sim:/testbench/crs_inst/wr_ptr \
-sim:/testbench/crs_inst/rd_ptr \
-sim:/testbench/crs_inst/fifo_count \
-sim:/testbench/crs_inst/wr_en \
-sim:/testbench/crs_inst/fifo_empty \
-sim:/testbench/crs_inst/do_rd \
-sim:/testbench/crs_inst/fifo_rd_data \
-sim:/testbench/crs_inst/mis_run \
-sim:/testbench/crs_inst/lock_run \
-sim:/testbench/crs_inst/tries \
-sim:/testbench/crs_inst/err_latched \
-sim:/testbench/crs_inst/grp_match
-run -continue
-run
-run
-run
-run
-run
-run
-run
+# OUT g=0 Y0=16 C=128 Y1=16
+# OUT g=1 Y0=16 C=128 Y1=16
+# OUT g=2 Y0=16 C=128 Y1=16
+# OUT g=3 Y0=16 C=128 Y1=16
+# OUT g=4 Y0=16 C=128 Y1=16
+# OUT g=5 Y0=16 C=128 Y1=16
+# OUT g=6 Y0=16 C=128 Y1=16
+# OUT g=7 Y0=16 C=128 Y1=16
+# OUT g=8 Y0=16 C=128 Y1=16
+# OUT g=9 Y0=16 C=128 Y1=16
+# OUT g=10 Y0=16 C=128 Y1=16
+# OUT g=11 Y0=16 C=128 Y1=16
+# OUT g=12 Y0=16 C=128 Y1=16
+# OUT g=13 Y0=16 C=128 Y1=16
+# OUT g=14 Y0=16 C=128 Y1=16
+# OUT g=15 Y0=16 C=128 Y1=16
+# OUT g=16 Y0=16 C=128 Y1=16
+# OUT g=17 Y0=16 C=128 Y1=16
+# OUT g=18 Y0=16 C=128 Y1=16
+# OUT g=19 Y0=16 C=128 Y1=16
+# OUT g=20 Y0=16 C=128 Y1=16
+# OUT g=21 Y0=16 C=128 Y1=16
+# OUT g=22 Y0=16 C=128 Y1=16
+# OUT g=23 Y0=16 C=128 Y1=16
+# OUT g=24 Y0=16 C=128 Y1=16
+# OUT g=25 Y0=16 C=128 Y1=16
+# OUT g=26 Y0=16 C=128 Y1=16
+# OUT g=27 Y0=16 C=128 Y1=16
+# OUT g=28 Y0=16 C=128 Y1=16
+# OUT g=29 Y0=16 C=128 Y1=16
+# OUT g=30 Y0=16 C=128 Y1=16
+# OUT g=31 Y0=16 C=128 Y1=16
+# OUT g=32 Y0=16 C=128 Y1=16
+# OUT g=33 Y0=16 C=128 Y1=16
+# OUT g=34 Y0=16 C=128 Y1=16
+# OUT g=35 Y0=16 C=128 Y1=16
+# OUT g=36 Y0=16 C=128 Y1=16
+# OUT g=37 Y0=16 C=128 Y1=16
+# OUT g=38 Y0=16 C=128 Y1=16
+# OUT g=39 Y0=16 C=128 Y1=16
+# OUT g=40 Y0=16 C=128 Y1=16
+# OUT g=41 Y0=16 C=128 Y1=16
+# OUT g=42 Y0=16 C=128 Y1=16
+# OUT g=43 Y0=16 C=128 Y1=16
+# OUT g=44 Y0=16 C=128 Y1=16
+# OUT g=45 Y0=16 C=128 Y1=16
+# OUT g=46 Y0=16 C=128 Y1=16
+# OUT g=47 Y0=16 C=128 Y1=16
+# OUT g=48 Y0=16 C=128 Y1=16
+# OUT g=49 Y0=16 C=128 Y1=16
+# OUT g=50 Y0=16 C=128 Y1=16
+# OUT g=51 Y0=16 C=128 Y1=16
+# OUT g=52 Y0=16 C=128 Y1=16
+# OUT g=53 Y0=16 C=128 Y1=16
+# OUT g=54 Y0=16 C=128 Y1=16
+# OUT g=55 Y0=16 C=128 Y1=16
+# OUT g=56 Y0=16 C=128 Y1=16
+# OUT g=57 Y0=16 C=128 Y1=16
+# OUT g=58 Y0=16 C=128 Y1=16
+# OUT g=59 Y0=16 C=128 Y1=16
+# OUT g=60 Y0=16 C=128 Y1=16
+# OUT g=61 Y0=16 C=128 Y1=16
+# OUT g=62 Y0=16 C=128 Y1=16
+# OUT g=63 Y0=16 C=128 Y1=16
+# OUT g=64 Y0=16 C=128 Y1=16
+# OUT g=65 Y0=16 C=128 Y1=16
+# OUT g=66 Y0=16 C=128 Y1=16
+# OUT g=67 Y0=16 C=128 Y1=16
+# OUT g=68 Y0=16 C=128 Y1=16
+# OUT g=69 Y0=16 C=128 Y1=16
+# OUT g=70 Y0=16 C=128 Y1=16
+# OUT g=71 Y0=16 C=128 Y1=16
+# OUT g=72 Y0=16 C=128 Y1=16
+# OUT g=73 Y0=16 C=128 Y1=16
+# OUT g=74 Y0=16 C=128 Y1=16
+# OUT g=75 Y0=16 C=128 Y1=16
+# OUT g=76 Y0=16 C=128 Y1=16
+# OUT g=77 Y0=16 C=128 Y1=16
+# OUT g=78 Y0=16 C=128 Y1=16
+# OUT g=79 Y0=16 C=128 Y1=16
+# OUT g=80 Y0=16 C=128 Y1=16
+# OUT g=81 Y0=16 C=128 Y1=16
+# OUT g=82 Y0=16 C=128 Y1=16
+# OUT g=83 Y0=16 C=128 Y1=16
+# OUT g=84 Y0=16 C=128 Y1=16
+# OUT g=85 Y0=16 C=128 Y1=16
+# OUT g=86 Y0=16 C=128 Y1=16
+# OUT g=87 Y0=16 C=128 Y1=16
+# OUT g=88 Y0=16 C=128 Y1=16
+# OUT g=89 Y0=16 C=128 Y1=16
+# OUT g=90 Y0=16 C=128 Y1=16
+# OUT g=91 Y0=16 C=128 Y1=16
+# OUT g=92 Y0=16 C=128 Y1=16
+# OUT g=93 Y0=16 C=128 Y1=16
+# OUT g=94 Y0=16 C=128 Y1=16
+# OUT g=95 Y0=16 C=128 Y1=16
+# OUT g=96 Y0=16 C=128 Y1=16
+# OUT g=97 Y0=16 C=128 Y1=16
+# OUT g=98 Y0=16 C=128 Y1=16
+# OUT g=99 Y0=16 C=128 Y1=16
+# OUT g=100 Y0=16 C=128 Y1=16
+# OUT g=101 Y0=16 C=128 Y1=16
+# OUT g=102 Y0=16 C=128 Y1=16
+# OUT g=103 Y0=16 C=128 Y1=16
+# OUT g=104 Y0=16 C=128 Y1=16
+# OUT g=105 Y0=16 C=128 Y1=16
+# OUT g=106 Y0=16 C=128 Y1=16
+# OUT g=107 Y0=16 C=128 Y1=16
+# OUT g=108 Y0=16 C=128 Y1=16
+# OUT g=109 Y0=16 C=128 Y1=16
+# OUT g=110 Y0=16 C=128 Y1=16
+# OUT g=111 Y0=16 C=128 Y1=16
+# OUT g=112 Y0=16 C=128 Y1=16
+# OUT g=113 Y0=16 C=128 Y1=16
+# OUT g=114 Y0=16 C=128 Y1=16
+# OUT g=115 Y0=16 C=128 Y1=16
+# OUT g=116 Y0=16 C=128 Y1=16
+# OUT g=117 Y0=16 C=128 Y1=16
+# OUT g=118 Y0=16 C=128 Y1=16
+# OUT g=119 Y0=16 C=128 Y1=16
+# OUT g=120 Y0=16 C=128 Y1=16
+# OUT g=121 Y0=16 C=128 Y1=16
+# OUT g=122 Y0=16 C=128 Y1=16
+# OUT g=123 Y0=16 C=128 Y1=16
+# OUT g=124 Y0=16 C=128 Y1=16
+# OUT g=125 Y0=16 C=128 Y1=16
+# OUT g=126 Y0=16 C=128 Y1=16
+# OUT g=127 Y0=16 C=128 Y1=16
+# OUT g=128 Y0=16 C=128 Y1=16
+# OUT g=129 Y0=16 C=128 Y1=16
+# OUT g=130 Y0=16 C=128 Y1=16
+# OUT g=131 Y0=16 C=128 Y1=16
+# OUT g=132 Y0=16 C=128 Y1=16
+# OUT g=133 Y0=16 C=128 Y1=16
+# OUT g=134 Y0=16 C=128 Y1=16
+# OUT g=135 Y0=16 C=128 Y1=16
+# OUT g=136 Y0=16 C=128 Y1=16
+# OUT g=137 Y0=16 C=128 Y1=16
+# OUT g=138 Y0=16 C=128 Y1=16
+# OUT g=139 Y0=16 C=128 Y1=16
+# OUT g=140 Y0=16 C=128 Y1=16
+# OUT g=141 Y0=16 C=128 Y1=16
+# OUT g=142 Y0=16 C=128 Y1=16
+# OUT g=143 Y0=16 C=128 Y1=16
+# OUT g=144 Y0=16 C=128 Y1=16
+# OUT g=145 Y0=16 C=128 Y1=16
+# OUT g=146 Y0=16 C=128 Y1=16
+# OUT g=147 Y0=16 C=128 Y1=16
+# OUT g=148 Y0=16 C=128 Y1=16
+# OUT g=149 Y0=16 C=128 Y1=16
+# OUT g=150 Y0=16 C=128 Y1=16
+# OUT g=151 Y0=16 C=128 Y1=16
+# OUT g=152 Y0=16 C=128 Y1=16
+# OUT g=153 Y0=16 C=128 Y1=16
+# OUT g=154 Y0=16 C=128 Y1=16
+# OUT g=155 Y0=16 C=128 Y1=16
+# OUT g=156 Y0=16 C=128 Y1=16
+# OUT g=157 Y0=16 C=128 Y1=16
+# OUT g=158 Y0=16 C=128 Y1=16
+# OUT g=159 Y0=16 C=128 Y1=16
+# OUT g=160 Y0=16 C=128 Y1=16
+# OUT g=161 Y0=16 C=128 Y1=16
+# OUT g=162 Y0=16 C=128 Y1=16
+# OUT g=163 Y0=16 C=128 Y1=16
+# OUT g=164 Y0=16 C=128 Y1=16
+# OUT g=165 Y0=16 C=128 Y1=16
+# OUT g=166 Y0=16 C=128 Y1=16
+# OUT g=167 Y0=16 C=128 Y1=16
+# OUT g=168 Y0=16 C=128 Y1=16
+# OUT g=169 Y0=16 C=128 Y1=16
+# OUT g=170 Y0=16 C=128 Y1=16
+# OUT g=171 Y0=16 C=128 Y1=16
+# OUT g=172 Y0=16 C=128 Y1=16
+# OUT g=173 Y0=16 C=128 Y1=16
+# OUT g=174 Y0=16 C=128 Y1=16
+# OUT g=175 Y0=16 C=128 Y1=16
+# OUT g=176 Y0=16 C=128 Y1=16
+# OUT g=177 Y0=16 C=128 Y1=16
+# OUT g=178 Y0=16 C=128 Y1=16
+# OUT g=179 Y0=16 C=128 Y1=16
+# OUT g=180 Y0=16 C=128 Y1=16
+# OUT g=181 Y0=16 C=128 Y1=16
+# OUT g=182 Y0=16 C=128 Y1=16
+# OUT g=183 Y0=16 C=128 Y1=16
+# OUT g=184 Y0=16 C=128 Y1=16
+# OUT g=185 Y0=16 C=128 Y1=16
+# OUT g=186 Y0=16 C=128 Y1=16
+# OUT g=187 Y0=16 C=128 Y1=16
+# OUT g=188 Y0=16 C=128 Y1=16
+# OUT g=189 Y0=16 C=128 Y1=16
+# OUT g=190 Y0=16 C=128 Y1=16
+# OUT g=191 Y0=16 C=128 Y1=16
+# OUT g=192 Y0=16 C=128 Y1=16
+# OUT g=193 Y0=16 C=128 Y1=16
+# OUT g=194 Y0=16 C=128 Y1=16
+# OUT g=195 Y0=16 C=128 Y1=16
+# OUT g=196 Y0=16 C=128 Y1=16
+# OUT g=197 Y0=16 C=128 Y1=16
+# OUT g=198 Y0=16 C=128 Y1=16
+# OUT g=199 Y0=16 C=128 Y1=16
+# OUT g=200 Y0=16 C=128 Y1=16
+# OUT g=201 Y0=16 C=128 Y1=16
+# OUT g=202 Y0=16 C=128 Y1=16
+# OUT g=203 Y0=16 C=128 Y1=16
+# OUT g=204 Y0=16 C=128 Y1=16
+# OUT g=205 Y0=16 C=128 Y1=16
+# OUT g=206 Y0=16 C=128 Y1=16
+# OUT g=207 Y0=16 C=128 Y1=16
+# OUT g=208 Y0=16 C=128 Y1=16
+# OUT g=209 Y0=16 C=128 Y1=16
+# OUT g=210 Y0=16 C=128 Y1=16
+# OUT g=211 Y0=16 C=128 Y1=16
+# OUT g=212 Y0=16 C=128 Y1=16
+# OUT g=213 Y0=16 C=128 Y1=16
+# OUT g=214 Y0=16 C=128 Y1=16
+# OUT g=215 Y0=16 C=128 Y1=16
+# OUT g=216 Y0=16 C=128 Y1=16
+# OUT g=217 Y0=16 C=128 Y1=16
+# OUT g=218 Y0=16 C=128 Y1=16
+# OUT g=219 Y0=16 C=128 Y1=16
+# OUT g=220 Y0=16 C=128 Y1=16
+# OUT g=221 Y0=16 C=128 Y1=16
+# OUT g=222 Y0=16 C=128 Y1=16
+# OUT g=223 Y0=16 C=128 Y1=16
+# OUT g=224 Y0=16 C=128 Y1=16
+# OUT g=225 Y0=16 C=128 Y1=16
+# OUT g=226 Y0=16 C=128 Y1=16
+# OUT g=227 Y0=16 C=128 Y1=16
+# OUT g=228 Y0=16 C=128 Y1=16
+# OUT g=229 Y0=16 C=128 Y1=16
+# OUT g=230 Y0=16 C=128 Y1=16
+# OUT g=231 Y0=16 C=128 Y1=16
+# OUT g=232 Y0=16 C=128 Y1=16
+# OUT g=233 Y0=16 C=128 Y1=16
+# OUT g=234 Y0=16 C=128 Y1=16
+# OUT g=235 Y0=16 C=128 Y1=16
+# OUT g=236 Y0=16 C=128 Y1=16
+# OUT g=237 Y0=16 C=128 Y1=16
+# OUT g=238 Y0=16 C=128 Y1=16
+# OUT g=239 Y0=16 C=128 Y1=16
+# OUT g=240 Y0=16 C=128 Y1=16
+# OUT g=241 Y0=16 C=128 Y1=16
+# OUT g=242 Y0=16 C=128 Y1=16
+# OUT g=243 Y0=16 C=128 Y1=16
+# OUT g=244 Y0=16 C=128 Y1=16
+# OUT g=245 Y0=16 C=128 Y1=16
+# OUT g=246 Y0=16 C=128 Y1=16
+# OUT g=247 Y0=16 C=128 Y1=16
+# OUT g=248 Y0=16 C=128 Y1=16
+# OUT g=249 Y0=16 C=128 Y1=16
+# OUT g=250 Y0=16 C=128 Y1=16
+# OUT g=251 Y0=16 C=128 Y1=16
+# OUT g=252 Y0=16 C=128 Y1=16
+# OUT g=253 Y0=16 C=128 Y1=16
+# OUT g=254 Y0=16 C=128 Y1=16
+# OUT g=255 Y0=16 C=128 Y1=16
+# OUT g=256 Y0=16 C=128 Y1=16
+# OUT g=257 Y0=16 C=128 Y1=16
+# OUT g=258 Y0=16 C=128 Y1=16
+# OUT g=259 Y0=16 C=128 Y1=16
+# OUT g=260 Y0=16 C=128 Y1=16
+# OUT g=261 Y0=16 C=128 Y1=16
+# OUT g=262 Y0=16 C=128 Y1=16
+# OUT g=263 Y0=16 C=128 Y1=16
+# OUT g=264 Y0=16 C=128 Y1=16
+# OUT g=265 Y0=16 C=128 Y1=16
+# OUT g=266 Y0=16 C=128 Y1=16
+# OUT g=267 Y0=16 C=128 Y1=16
+# OUT g=268 Y0=16 C=128 Y1=16
+# OUT g=269 Y0=16 C=128 Y1=16
+# OUT g=270 Y0=16 C=128 Y1=16
+# OUT g=271 Y0=16 C=128 Y1=16
+# OUT g=272 Y0=16 C=128 Y1=16
+# OUT g=273 Y0=16 C=128 Y1=16
+# OUT g=274 Y0=16 C=128 Y1=16
+# OUT g=275 Y0=16 C=128 Y1=16
+# OUT g=276 Y0=16 C=128 Y1=16
+# OUT g=277 Y0=16 C=128 Y1=16
+# OUT g=278 Y0=16 C=128 Y1=16
+# OUT g=279 Y0=16 C=128 Y1=16
+# OUT g=280 Y0=16 C=128 Y1=16
+# OUT g=281 Y0=16 C=128 Y1=16
+# OUT g=282 Y0=16 C=128 Y1=16
+# OUT g=283 Y0=16 C=128 Y1=16
+# OUT g=284 Y0=16 C=128 Y1=16
+# OUT g=285 Y0=16 C=128 Y1=16
+# OUT g=286 Y0=16 C=128 Y1=16
+# OUT g=287 Y0=16 C=128 Y1=16
+# OUT g=288 Y0=16 C=128 Y1=16
+# OUT g=289 Y0=16 C=128 Y1=16
+# OUT g=290 Y0=16 C=128 Y1=16
+# OUT g=291 Y0=16 C=128 Y1=16
+# OUT g=292 Y0=16 C=128 Y1=16
+# OUT g=293 Y0=16 C=128 Y1=16
+# OUT g=294 Y0=16 C=128 Y1=16
+# OUT g=295 Y0=16 C=128 Y1=16
+# OUT g=296 Y0=16 C=128 Y1=16
+# OUT g=297 Y0=16 C=128 Y1=16
+# OUT g=298 Y0=16 C=128 Y1=16
+# OUT g=299 Y0=16 C=128 Y1=16
+# OUT g=300 Y0=16 C=128 Y1=16
+# OUT g=301 Y0=16 C=128 Y1=16
+# OUT g=302 Y0=16 C=128 Y1=16
+# OUT g=303 Y0=16 C=128 Y1=16
+# OUT g=304 Y0=16 C=128 Y1=16
+# OUT g=305 Y0=16 C=128 Y1=16
+# OUT g=306 Y0=16 C=128 Y1=16
+# OUT g=307 Y0=16 C=128 Y1=16
+# OUT g=308 Y0=16 C=128 Y1=16
+# OUT g=309 Y0=16 C=128 Y1=16
+# OUT g=310 Y0=16 C=128 Y1=16
+# OUT g=311 Y0=16 C=128 Y1=16
+# OUT g=312 Y0=16 C=128 Y1=16
+# OUT g=313 Y0=16 C=128 Y1=16
+# OUT g=314 Y0=16 C=128 Y1=16
+# OUT g=315 Y0=16 C=128 Y1=16
+# OUT g=316 Y0=16 C=128 Y1=16
+# OUT g=317 Y0=16 C=128 Y1=16
+# OUT g=318 Y0=16 C=128 Y1=16
+# OUT g=319 Y0=16 C=128 Y1=16
+# OUT g=320 Y0=16 C=128 Y1=16
+# OUT g=321 Y0=16 C=128 Y1=16
+# OUT g=322 Y0=16 C=128 Y1=16
+# OUT g=323 Y0=16 C=128 Y1=16
+# OUT g=324 Y0=16 C=128 Y1=16
+# OUT g=325 Y0=16 C=128 Y1=16
+# OUT g=326 Y0=16 C=128 Y1=16
+# OUT g=327 Y0=16 C=128 Y1=16
+# OUT g=328 Y0=16 C=128 Y1=16
+# OUT g=329 Y0=16 C=128 Y1=16
+# OUT g=330 Y0=16 C=128 Y1=16
+# OUT g=331 Y0=16 C=128 Y1=16
+# OUT g=332 Y0=16 C=128 Y1=16
+# OUT g=333 Y0=16 C=128 Y1=16
+# OUT g=334 Y0=16 C=128 Y1=16
+# OUT g=335 Y0=16 C=128 Y1=16
+# OUT g=336 Y0=16 C=128 Y1=16
+# OUT g=337 Y0=16 C=128 Y1=16
+# OUT g=338 Y0=16 C=128 Y1=16
+# OUT g=339 Y0=16 C=128 Y1=16
+# OUT g=340 Y0=16 C=128 Y1=16
+# OUT g=341 Y0=16 C=128 Y1=16
+# OUT g=342 Y0=16 C=128 Y1=16
+# OUT g=343 Y0=16 C=128 Y1=16
+# OUT g=344 Y0=16 C=128 Y1=16
+# OUT g=345 Y0=16 C=128 Y1=16
+# OUT g=346 Y0=16 C=128 Y1=16
+# OUT g=347 Y0=16 C=128 Y1=16
+# OUT g=348 Y0=16 C=128 Y1=16
+# OUT g=349 Y0=16 C=128 Y1=16
+# OUT g=350 Y0=16 C=128 Y1=16
+# OUT g=351 Y0=16 C=128 Y1=16
+# OUT g=352 Y0=16 C=128 Y1=16
+# OUT g=353 Y0=16 C=128 Y1=16
+# OUT g=354 Y0=16 C=128 Y1=16
+# OUT g=355 Y0=16 C=128 Y1=16
+# OUT g=356 Y0=16 C=128 Y1=16
+# OUT g=357 Y0=16 C=128 Y1=16
+# OUT g=358 Y0=16 C=128 Y1=16
+# OUT g=359 Y0=16 C=128 Y1=16
+# OUT g=360 Y0=16 C=128 Y1=16
+# OUT g=361 Y0=16 C=128 Y1=16
+# OUT g=362 Y0=16 C=128 Y1=16
+# OUT g=363 Y0=16 C=128 Y1=16
+# OUT g=364 Y0=16 C=128 Y1=16
+# OUT g=365 Y0=16 C=128 Y1=16
+# OUT g=366 Y0=16 C=128 Y1=16
+# OUT g=367 Y0=16 C=128 Y1=16
+# OUT g=368 Y0=16 C=128 Y1=16
+# OUT g=369 Y0=16 C=128 Y1=16
+# OUT g=370 Y0=16 C=128 Y1=16
+# OUT g=371 Y0=16 C=128 Y1=16
+# OUT g=372 Y0=16 C=128 Y1=16
+# OUT g=373 Y0=16 C=128 Y1=16
+# OUT g=374 Y0=16 C=128 Y1=16
+# OUT g=375 Y0=16 C=128 Y1=16
+# OUT g=376 Y0=16 C=128 Y1=16
+# OUT g=377 Y0=16 C=128 Y1=16
+# OUT g=378 Y0=16 C=128 Y1=16
+# OUT g=379 Y0=16 C=128 Y1=16
+# OUT g=380 Y0=16 C=128 Y1=16
+# OUT g=381 Y0=16 C=128 Y1=16
+# OUT g=382 Y0=16 C=128 Y1=16
+# OUT g=383 Y0=16 C=128 Y1=16
+# OUT g=384 Y0=16 C=128 Y1=16
+# OUT g=385 Y0=16 C=128 Y1=16
+# OUT g=386 Y0=16 C=128 Y1=16
+# OUT g=387 Y0=16 C=128 Y1=16
+# OUT g=388 Y0=16 C=128 Y1=16
+# OUT g=389 Y0=16 C=128 Y1=16
+# OUT g=390 Y0=16 C=128 Y1=16
+# OUT g=391 Y0=16 C=128 Y1=16
+# OUT g=392 Y0=16 C=128 Y1=16
+# OUT g=393 Y0=16 C=128 Y1=16
+# OUT g=394 Y0=16 C=128 Y1=16
+# OUT g=395 Y0=16 C=128 Y1=16
+# OUT g=396 Y0=16 C=128 Y1=16
+# OUT g=397 Y0=16 C=128 Y1=16
+# OUT g=398 Y0=16 C=128 Y1=16
+# OUT g=399 Y0=16 C=128 Y1=16
+# OUT g=400 Y0=16 C=128 Y1=16
+# OUT g=401 Y0=16 C=128 Y1=16
+# OUT g=402 Y0=16 C=128 Y1=16
+# OUT g=403 Y0=16 C=128 Y1=16
+# OUT g=404 Y0=16 C=128 Y1=16
+# OUT g=405 Y0=16 C=128 Y1=16
+# OUT g=406 Y0=16 C=128 Y1=16
+# OUT g=407 Y0=16 C=128 Y1=16
+# OUT g=408 Y0=16 C=128 Y1=16
+# OUT g=409 Y0=16 C=128 Y1=16
+# OUT g=410 Y0=16 C=128 Y1=16
+# OUT g=411 Y0=16 C=128 Y1=16
+# OUT g=412 Y0=16 C=128 Y1=16
+# OUT g=413 Y0=16 C=128 Y1=16
+# OUT g=414 Y0=16 C=128 Y1=16
+# OUT g=415 Y0=16 C=128 Y1=16
+# OUT g=416 Y0=16 C=128 Y1=16
+# OUT g=417 Y0=16 C=128 Y1=16
+# OUT g=418 Y0=16 C=128 Y1=16
+# OUT g=419 Y0=16 C=128 Y1=16
+# OUT g=420 Y0=16 C=128 Y1=16
+# OUT g=421 Y0=16 C=128 Y1=16
+# OUT g=422 Y0=16 C=128 Y1=16
+# OUT g=423 Y0=16 C=128 Y1=16
+# OUT g=424 Y0=16 C=128 Y1=16
+# OUT g=425 Y0=16 C=128 Y1=16
+# OUT g=426 Y0=16 C=128 Y1=16
+# OUT g=427 Y0=16 C=128 Y1=16
+# OUT g=428 Y0=16 C=128 Y1=16
+# OUT g=429 Y0=16 C=128 Y1=16
+# OUT g=430 Y0=16 C=128 Y1=16
+# OUT g=431 Y0=16 C=128 Y1=16
+# OUT g=432 Y0=16 C=128 Y1=16
+# OUT g=433 Y0=16 C=128 Y1=16
+# OUT g=434 Y0=16 C=128 Y1=16
+# OUT g=435 Y0=16 C=128 Y1=16
+# OUT g=436 Y0=16 C=128 Y1=16
+# OUT g=437 Y0=16 C=128 Y1=16
+# OUT g=438 Y0=16 C=128 Y1=16
+# OUT g=439 Y0=16 C=128 Y1=16
+# OUT g=440 Y0=16 C=128 Y1=16
+# OUT g=441 Y0=16 C=128 Y1=16
+# OUT g=442 Y0=16 C=128 Y1=16
+# OUT g=443 Y0=16 C=128 Y1=16
+# OUT g=444 Y0=16 C=128 Y1=16
+# OUT g=445 Y0=16 C=128 Y1=16
+# OUT g=446 Y0=16 C=128 Y1=16
+# OUT g=447 Y0=16 C=128 Y1=16
+# OUT g=448 Y0=16 C=128 Y1=16
+# OUT g=449 Y0=16 C=128 Y1=16
+# OUT g=450 Y0=16 C=128 Y1=16
+# OUT g=451 Y0=16 C=128 Y1=16
+# OUT g=452 Y0=16 C=128 Y1=16
+# OUT g=453 Y0=16 C=128 Y1=16
+# OUT g=454 Y0=16 C=128 Y1=16
+# OUT g=455 Y0=16 C=128 Y1=16
+# OUT g=456 Y0=16 C=128 Y1=16
+# OUT g=457 Y0=16 C=128 Y1=16
+# OUT g=458 Y0=16 C=128 Y1=16
+# OUT g=459 Y0=16 C=128 Y1=16
+# OUT g=460 Y0=16 C=128 Y1=16
+# OUT g=461 Y0=16 C=128 Y1=16
+# OUT g=462 Y0=16 C=128 Y1=16
+# OUT g=463 Y0=16 C=128 Y1=16
+# OUT g=464 Y0=16 C=128 Y1=16
+# OUT g=465 Y0=16 C=128 Y1=16
+# OUT g=466 Y0=16 C=128 Y1=16
+# OUT g=467 Y0=16 C=128 Y1=16
+# OUT g=468 Y0=16 C=128 Y1=16
+# OUT g=469 Y0=16 C=128 Y1=16
+# OUT g=470 Y0=16 C=128 Y1=16
+# OUT g=471 Y0=16 C=128 Y1=16
+# OUT g=472 Y0=16 C=128 Y1=16
+# OUT g=473 Y0=16 C=128 Y1=16
+# OUT g=474 Y0=16 C=128 Y1=16
+# OUT g=475 Y0=16 C=128 Y1=16
+# OUT g=476 Y0=16 C=128 Y1=16
+# OUT g=477 Y0=16 C=128 Y1=16
+# OUT g=478 Y0=16 C=128 Y1=16
+# OUT g=479 Y0=16 C=128 Y1=16
+# OUT g=480 Y0=16 C=128 Y1=16
+# OUT g=481 Y0=16 C=128 Y1=16
+# OUT g=482 Y0=16 C=128 Y1=16
+# OUT g=483 Y0=16 C=128 Y1=16
+# OUT g=484 Y0=16 C=128 Y1=16
+# OUT g=485 Y0=16 C=128 Y1=16
+# OUT g=486 Y0=16 C=128 Y1=16
+# OUT g=487 Y0=16 C=128 Y1=16
+# OUT g=488 Y0=16 C=128 Y1=16
+# OUT g=489 Y0=16 C=128 Y1=16
+# OUT g=490 Y0=16 C=128 Y1=16
+# OUT g=491 Y0=16 C=128 Y1=16
+# OUT g=492 Y0=16 C=128 Y1=16
+# OUT g=493 Y0=16 C=128 Y1=16
+# OUT g=494 Y0=16 C=128 Y1=16
+# OUT g=495 Y0=16 C=128 Y1=16
+# OUT g=496 Y0=16 C=128 Y1=16
+# OUT g=497 Y0=16 C=128 Y1=16
+# OUT g=498 Y0=16 C=128 Y1=16
+# OUT g=499 Y0=16 C=128 Y1=16
+# OUT g=500 Y0=16 C=128 Y1=16
+# OUT g=501 Y0=16 C=128 Y1=16
+# OUT g=502 Y0=16 C=128 Y1=16
+# OUT g=503 Y0=16 C=128 Y1=16
+# OUT g=504 Y0=16 C=128 Y1=16
+# OUT g=505 Y0=16 C=128 Y1=16
+# OUT g=506 Y0=16 C=128 Y1=16
+# OUT g=507 Y0=16 C=128 Y1=16
+# OUT g=508 Y0=16 C=128 Y1=16
+# OUT g=509 Y0=16 C=128 Y1=16
+# OUT g=510 Y0=16 C=128 Y1=16
+# OUT g=511 Y0=16 C=128 Y1=16
+# OUT g=512 Y0=16 C=128 Y1=16
+# OUT g=513 Y0=16 C=128 Y1=16
+# OUT g=514 Y0=16 C=128 Y1=16
+# OUT g=515 Y0=16 C=128 Y1=16
+# OUT g=516 Y0=16 C=128 Y1=16
+# OUT g=517 Y0=16 C=128 Y1=16
+# OUT g=518 Y0=16 C=128 Y1=16
+# OUT g=519 Y0=16 C=128 Y1=16
+# OUT g=520 Y0=16 C=128 Y1=16
+# OUT g=521 Y0=16 C=128 Y1=16
+# OUT g=522 Y0=16 C=128 Y1=16
+# OUT g=523 Y0=16 C=128 Y1=16
+# OUT g=524 Y0=16 C=128 Y1=16
+# OUT g=525 Y0=16 C=128 Y1=16
+# OUT g=526 Y0=16 C=128 Y1=16
+# OUT g=527 Y0=16 C=128 Y1=16
+# OUT g=528 Y0=16 C=128 Y1=16
+# OUT g=529 Y0=16 C=128 Y1=16
+# OUT g=530 Y0=16 C=128 Y1=16
+# OUT g=531 Y0=16 C=128 Y1=16
+# OUT g=532 Y0=16 C=128 Y1=16
+# OUT g=533 Y0=16 C=128 Y1=16
+# OUT g=534 Y0=16 C=128 Y1=16
+# OUT g=535 Y0=16 C=128 Y1=16
+# OUT g=536 Y0=16 C=128 Y1=16
+# OUT g=537 Y0=16 C=128 Y1=16
+# OUT g=538 Y0=16 C=128 Y1=16
+# OUT g=539 Y0=16 C=128 Y1=16
+# OUT g=540 Y0=16 C=128 Y1=16
+# OUT g=541 Y0=16 C=128 Y1=16
+# OUT g=542 Y0=16 C=128 Y1=16
+# OUT g=543 Y0=16 C=128 Y1=16
+# OUT g=544 Y0=16 C=128 Y1=16
+# OUT g=545 Y0=16 C=128 Y1=16
+# OUT g=546 Y0=16 C=128 Y1=16
+# OUT g=547 Y0=16 C=128 Y1=16
+# OUT g=548 Y0=16 C=128 Y1=16
+# OUT g=549 Y0=16 C=128 Y1=16
+# OUT g=550 Y0=16 C=128 Y1=16
+# OUT g=551 Y0=16 C=128 Y1=16
+# OUT g=552 Y0=16 C=128 Y1=16
+# OUT g=553 Y0=16 C=128 Y1=16
+# OUT g=554 Y0=16 C=128 Y1=16
+# OUT g=555 Y0=16 C=128 Y1=16
+# OUT g=556 Y0=16 C=128 Y1=16
+# OUT g=557 Y0=16 C=128 Y1=16
+# OUT g=558 Y0=16 C=128 Y1=16
+# OUT g=559 Y0=16 C=128 Y1=16
+# OUT g=560 Y0=16 C=128 Y1=16
+# OUT g=561 Y0=16 C=128 Y1=16
+# OUT g=562 Y0=16 C=128 Y1=16
+# OUT g=563 Y0=16 C=128 Y1=16
+# OUT g=564 Y0=16 C=128 Y1=16
+# OUT g=565 Y0=16 C=128 Y1=16
+# OUT g=566 Y0=16 C=128 Y1=16
+# OUT g=567 Y0=16 C=128 Y1=16
+# OUT g=568 Y0=16 C=128 Y1=16
+# OUT g=569 Y0=16 C=128 Y1=16
+# OUT g=570 Y0=16 C=128 Y1=16
+# OUT g=571 Y0=16 C=128 Y1=16
+# OUT g=572 Y0=16 C=128 Y1=16
+# OUT g=573 Y0=16 C=128 Y1=16
+# OUT g=574 Y0=16 C=128 Y1=16
+# OUT g=575 Y0=16 C=128 Y1=16
+# OUT g=576 Y0=16 C=128 Y1=16
+# OUT g=577 Y0=16 C=128 Y1=16
+# OUT g=578 Y0=16 C=128 Y1=16
+# OUT g=579 Y0=16 C=128 Y1=16
+# OUT g=580 Y0=16 C=128 Y1=16
+# OUT g=581 Y0=16 C=128 Y1=16
+# OUT g=582 Y0=16 C=128 Y1=16
+# OUT g=583 Y0=16 C=128 Y1=16
+# OUT g=584 Y0=16 C=128 Y1=16
+# OUT g=585 Y0=16 C=128 Y1=16
+# OUT g=586 Y0=16 C=128 Y1=16
+# OUT g=587 Y0=16 C=128 Y1=16
+# OUT g=588 Y0=16 C=128 Y1=16
+# OUT g=589 Y0=16 C=128 Y1=16
+# OUT g=590 Y0=16 C=128 Y1=16
+# OUT g=591 Y0=16 C=128 Y1=16
+# OUT g=592 Y0=16 C=128 Y1=16
+# OUT g=593 Y0=16 C=128 Y1=16
+# OUT g=594 Y0=16 C=128 Y1=16
+# OUT g=595 Y0=16 C=128 Y1=16
+# OUT g=596 Y0=16 C=128 Y1=16
+# OUT g=597 Y0=16 C=128 Y1=16
+# OUT g=598 Y0=16 C=128 Y1=16
+# OUT g=599 Y0=16 C=128 Y1=16
+# OUT g=600 Y0=16 C=128 Y1=16
+# OUT g=601 Y0=16 C=128 Y1=16
+# OUT g=602 Y0=16 C=128 Y1=16
+# OUT g=603 Y0=16 C=128 Y1=16
+# OUT g=604 Y0=16 C=128 Y1=16
+# OUT g=605 Y0=16 C=128 Y1=16
+# OUT g=606 Y0=16 C=128 Y1=16
+# OUT g=607 Y0=16 C=128 Y1=16
+# OUT g=608 Y0=16 C=128 Y1=16
+# OUT g=609 Y0=16 C=128 Y1=16
+# OUT g=610 Y0=16 C=128 Y1=16
+# OUT g=611 Y0=16 C=128 Y1=16
+# OUT g=612 Y0=16 C=128 Y1=16
+# OUT g=613 Y0=16 C=128 Y1=16
+# OUT g=614 Y0=16 C=128 Y1=16
+# OUT g=615 Y0=16 C=128 Y1=16
+# OUT g=616 Y0=16 C=128 Y1=16
+# OUT g=617 Y0=16 C=128 Y1=16
+# OUT g=618 Y0=16 C=128 Y1=16
+# OUT g=619 Y0=16 C=128 Y1=16
+# OUT g=620 Y0=16 C=128 Y1=16
+# OUT g=621 Y0=16 C=128 Y1=16
+# OUT g=622 Y0=16 C=128 Y1=16
+# OUT g=623 Y0=16 C=128 Y1=16
+# OUT g=624 Y0=16 C=128 Y1=16
+# OUT g=625 Y0=16 C=128 Y1=16
+# OUT g=626 Y0=16 C=128 Y1=16
+# OUT g=627 Y0=16 C=128 Y1=16
+# OUT g=628 Y0=16 C=128 Y1=16
+# OUT g=629 Y0=16 C=128 Y1=16
+# OUT g=630 Y0=16 C=128 Y1=16
+# OUT g=631 Y0=16 C=128 Y1=16
+# OUT g=632 Y0=16 C=128 Y1=16
+# OUT g=633 Y0=16 C=128 Y1=16
+# OUT g=634 Y0=16 C=128 Y1=16
+# OUT g=635 Y0=16 C=128 Y1=16
+# OUT g=636 Y0=16 C=128 Y1=16
+# OUT g=637 Y0=16 C=128 Y1=16
+# OUT g=638 Y0=16 C=128 Y1=16
+# OUT g=639 Y0=16 C=128 Y1=16
+# OUT g=640 Y0=16 C=128 Y1=16
+# OUT g=641 Y0=16 C=128 Y1=16
+# OUT g=642 Y0=16 C=128 Y1=16
+# OUT g=643 Y0=16 C=128 Y1=16
+# OUT g=644 Y0=16 C=128 Y1=16
+# OUT g=645 Y0=16 C=128 Y1=16
+# OUT g=646 Y0=16 C=128 Y1=16
+# OUT g=647 Y0=16 C=128 Y1=16
+# OUT g=648 Y0=16 C=128 Y1=16
+# OUT g=649 Y0=16 C=128 Y1=16
+# OUT g=650 Y0=16 C=128 Y1=16
+# OUT g=651 Y0=16 C=128 Y1=16
+# OUT g=652 Y0=16 C=128 Y1=16
+# OUT g=653 Y0=16 C=128 Y1=16
+# OUT g=654 Y0=16 C=128 Y1=16
+# OUT g=655 Y0=16 C=128 Y1=16
+# OUT g=656 Y0=16 C=128 Y1=16
+# OUT g=657 Y0=16 C=128 Y1=16
+# OUT g=658 Y0=16 C=128 Y1=16
+# OUT g=659 Y0=16 C=128 Y1=16
+# OUT g=660 Y0=16 C=128 Y1=16
+# OUT g=661 Y0=16 C=128 Y1=16
+# OUT g=662 Y0=16 C=128 Y1=16
+# OUT g=663 Y0=16 C=128 Y1=16
+# OUT g=664 Y0=16 C=128 Y1=16
+# OUT g=665 Y0=16 C=128 Y1=16
+# OUT g=666 Y0=16 C=128 Y1=16
+# OUT g=667 Y0=16 C=128 Y1=16
+# OUT g=668 Y0=16 C=128 Y1=16
+# OUT g=669 Y0=16 C=128 Y1=16
+# OUT g=670 Y0=16 C=128 Y1=16
+# OUT g=671 Y0=16 C=128 Y1=16
+# OUT g=672 Y0=16 C=128 Y1=16
+# OUT g=673 Y0=16 C=128 Y1=16
+# OUT g=674 Y0=16 C=128 Y1=16
+# OUT g=675 Y0=16 C=128 Y1=16
+# OUT g=676 Y0=16 C=128 Y1=16
+# OUT g=677 Y0=16 C=128 Y1=16
+# OUT g=678 Y0=16 C=128 Y1=16
+# OUT g=679 Y0=16 C=128 Y1=16
+# OUT g=680 Y0=16 C=128 Y1=16
+# OUT g=681 Y0=16 C=128 Y1=16
+# OUT g=682 Y0=16 C=128 Y1=16
+# OUT g=683 Y0=16 C=128 Y1=16
+# OUT g=684 Y0=16 C=128 Y1=16
+# OUT g=685 Y0=16 C=128 Y1=16
+# OUT g=686 Y0=16 C=128 Y1=16
+# OUT g=687 Y0=16 C=128 Y1=16
+# OUT g=688 Y0=16 C=128 Y1=16
+# OUT g=689 Y0=16 C=128 Y1=16
+# OUT g=690 Y0=16 C=128 Y1=16
+# OUT g=691 Y0=16 C=128 Y1=16
+# OUT g=692 Y0=16 C=128 Y1=16
+# OUT g=693 Y0=16 C=128 Y1=16
+# OUT g=694 Y0=16 C=128 Y1=16
+# OUT g=695 Y0=16 C=128 Y1=16
+# OUT g=696 Y0=16 C=128 Y1=16
+# OUT g=697 Y0=16 C=128 Y1=16
+# OUT g=698 Y0=16 C=128 Y1=# End time: 17:40:44 on Jun 18,2026, Elapsed time: 25:23:58
+# Errors: 0, Warnings: 6
+8 Y1=16
+# OUT g=702 Y0=16 C=128 Y1=16
+# OUT g=703 Y0=16 C=128 Y1=16
+# OUT g=704 Y0=16 C=128 Y1=16
+# OUT g=705 Y0=16 C=128 Y1=16
+# OUT g=706 Y0=16 C=128 Y1=16
+# OUT g=707 Y0=16 C=128 Y1=16
+# OUT g=708 Y0=16 C=128 Y1=16
+# OUT g=709 Y0=16 C=128 Y1=16
+# OUT g=710 Y0=16 C=128 Y1=16
+# OUT g=711 Y0=16 C=128 Y1=16
+# OUT g=712 Y0=16 C=128 Y1=16
+# OUT g=713 Y0=16 C=128 Y1=16
+# OUT g=714 Y0=16 C=128 Y1=16
+# OUT g=715 Y0=16 C=128 Y1=16
+# OUT g=716 Y0=16 C=128 Y1=16
+# OUT g=717 Y0=16 C=128 Y1=16
+# OUT g=718 Y0=16 C=128 Y1=16
+# OUT g=719 Y0=16 C=128 Y1=16
+# OUT g=720 Y0=16 C=128 Y1=16
+# OUT g=721 Y0=16 C=128 Y1=16
+# OUT g=722 Y0=16 C=128 Y1=16
+# OUT g=723 Y0=16 C=128 Y1=16
+# OUT g=724 Y0=16 C=128 Y1=16
+# OUT g=725 Y0=16 C=128 Y1=16
+# OUT g=726 Y0=16 C=128 Y1=16
+# OUT g=727 Y0=16 C=128 Y1=16
+# OUT g=728 Y0=16 C=128 Y1=16
+# OUT g=729 Y0=16 C=128 Y1=16
+# OUT g=730 Y0=16 C=128 Y1=16
+# OUT g=731 Y0=16 C=128 Y1=16
+# OUT g=732 Y0=16 C=128 Y1=16
+# OUT g=733 Y0=16 C=128 Y1=16
+# OUT g=734 Y0=16 C=128 Y1=16
+# OUT g=735 Y0=16 C=128 Y1=16
+# OUT g=736 Y0=16 C=128 Y1=16
+# OUT g=737 Y0=16 C=128 Y1=16
+# OUT g=738 Y0=16 C=128 Y1=16
+# OUT g=739 Y0=16 C=128 Y1=16
+# OUT g=740 Y0=16 C=128 Y1=16
+# OUT g=741 Y0=16 C=128 Y1=16
+# OUT g=742 Y0=16 C=128 Y1=16
+# OUT g=743 Y0=16 C=128 Y1=16
+# OUT g=744 Y0=16 C=128 Y1=16
+# OUT g=745 Y0=16 C=128 Y1=16
+# OUT g=746 Y0=16 C=128 Y1=16
+# OUT g=747 Y0=16 C=128 Y1=16
+# OUT g=748 Y0=16 C=128 Y1=16
+# OUT g=749 Y0=16 C=128 Y1=16
+# OUT g=750 Y0=16 C=128 Y1=16
+# OUT g=751 Y0=16 C=128 Y1=16
+# OUT g=752 Y0=16 C=128 Y1=16
+# OUT g=753 Y0=16 C=128 Y1=16
+# OUT g=754 Y0=16 C=128 Y1=16
+# OUT g=755 Y0=16 C=128 Y1=16
+# OUT g=756 Y0=16 C=128 Y1=16
+# OUT g=757 Y0=16 C=128 Y1=16
+# OUT g=758 Y0=16 C=128 Y1=16
+# OUT g=759 Y0=16 C=128 Y1=16
+# OUT g=760 Y0=16 C=128 Y1=16
+# OUT g=761 Y0=16 C=128 Y1=16
+# OUT g=762 Y0=16 C=128 Y1=16
+# OUT g=763 Y0=16 C=128 Y1=16
+# OUT g=764 Y0=16 C=128 Y1=16
+# OUT g=765 Y0=16 C=128 Y1=16
+# OUT g=766 Y0=16 C=128 Y1=16
+# OUT g=767 Y0=16 C=128 Y1=16
+# OUT g=768 Y0=16 C=128 Y1=16
+# OUT g=769 Y0=16 C=128 Y1=16
+# OUT g=770 Y0=16 C=128 Y1=16
+# OUT g=771 Y0=16 C=128 Y1=16
+# OUT g=772 Y0=16 C=128 Y1=16
+# OUT g=773 Y0=16 C=128 Y1=16
+# OUT g=774 Y0=16 C=128 Y1=16
+# OUT g=775 Y0=16 C=128 Y1=16
+# OUT g=776 Y0=16 C=128 Y1=16
+# OUT g=777 Y0=16 C=128 Y1=16
+# OUT g=778 Y0=16 C=128 Y1=16
+# OUT g=779 Y0=16 C=128 Y1=16
+# OUT g=780 Y0=16 C=128 Y1=16
+# OUT g=781 Y0=16 C=128 Y1=16
+# OUT g=782 Y0=16 C=128 Y1=16
+# OUT g=783 Y0=16 C=128 Y1=16
+# OUT g=784 Y0=16 C=128 Y1=16
+# OUT g=785 Y0=16 C=128 Y1=16
+# OUT g=786 Y0=16 C=128 Y1=16
+# OUT g=787 Y0=16 C=128 Y1=16
+# OUT g=788 Y0=16 C=128 Y1=16
+# OUT g=789 Y0=16 C=128 Y1=16
+# OUT g=790 Y0=16 C=128 Y1=16
+# OUT g=791 Y0=16 C=128 Y1=16
+# OUT g=792 Y0=16 C=128 Y1=16
+# OUT g=793 Y0=16 C=128 Y1=16
+# OUT g=794 Y0=16 C=128 Y1=16
+# OUT g=795 Y0=16 C=128 Y1=16
+# OUT g=796 Y0=16 C=128 Y1=16
+# OUT g=797 Y0=16 C=128 Y1=16
+# OUT g=798 Y0=16 C=128 Y1=16
+# OUT g=799 Y0=16 C=128 Y1=16
+# OUT g=800 Y0=16 C=128 Y1=16
+# OUT g=801 Y0=16 C=128 Y1=16
+# OUT g=802 Y0=16 C=128 Y1=16
+# OUT g=803 Y0=16 C=128 Y1=16
+# OUT g=804 Y0=16 C=128 Y1=16
+# OUT g=805 Y0=16 C=128 Y1=16
+# OUT g=806 Y0=16 C=128 Y1=16
+# OUT g=807 Y0=16 C=128 Y1=16
+# OUT g=808 Y0=16 C=128 Y1=16
+# OUT g=809 Y0=16 C=128 Y1=16
+# OUT g=810 Y0=16 C=128 Y1=16
+# OUT g=811 Y0=16 C=128 Y1=16
+# OUT g=812 Y0=16 C=128 Y1=16
+# OUT g=813 Y0=16 C=128 Y1=16
+# OUT g=814 Y0=16 C=128 Y1=16
+# OUT g=815 Y0=16 C=128 Y1=16
+# OUT g=816 Y0=16 C=128 Y1=16
+# OUT g=817 Y0=16 C=128 Y1=16
+# OUT g=818 Y0=16 C=128 Y1=16
+# OUT g=819 Y0=16 C=128 Y1=16
+# OUT g=820 Y0=16 C=128 Y1=16
+# OUT g=821 Y0=16 C=128 Y1=16
+# OUT g=822 Y0=16 C=128 Y1=16
+# OUT g=823 Y0=16 C=128 Y1=16
+# OUT g=824 Y0=16 C=128 Y1=16
+# OUT g=825 Y0=16 C=128 Y1=16
+# OUT g=826 Y0=16 C=128 Y1=16
+# OUT g=827 Y0=16 C=128 Y1=16
+# OUT g=828 Y0=16 C=128 Y1=16
+# OUT g=829 Y0=16 C=128 Y1=16
+# OUT g=830 Y0=16 C=128 Y1=16
+# OUT g=831 Y0=16 C=128 Y1=16
+# OUT g=832 Y0=16 C=128 Y1=16
+# OUT g=833 Y0=16 C=128 Y1=16
+# OUT g=834 Y0=16 C=128 Y1=16
+# OUT g=835 Y0=16 C=128 Y1=16
+# OUT g=836 Y0=16 C=128 Y1=16
+# OUT g=837 Y0=16 C=128 Y1=16
+# OUT g=838 Y0=16 C=128 Y1=16
+# OUT g=839 Y0=16 C=128 Y1=16
+# OUT g=840 Y0=16 C=128 Y1=16
+# OUT g=841 Y0=16 C=128 Y1=16
+# OUT g=842 Y0=16 C=128 Y1=16
+# OUT g=843 Y0=16 C=128 Y1=16
+# OUT g=844 Y0=16 C=128 Y1=16
+# OUT g=845 Y0=16 C=128 Y1=16
+# OUT g=846 Y0=16 C=128 Y1=16
+# OUT g=847 Y0=16 C=128 Y1=16
+# OUT g=848 Y0=16 C=128 Y1=16
+# OUT g=849 Y0=16 C=128 Y1=16
+# OUT g=850 Y0=16 C=128 Y1=16
+# OUT g=851 Y0=16 C=128 Y1=16
+# OUT g=852 Y0=16 C=128 Y1=16
+# OUT g=853 Y0=16 C=128 Y1=16
+# OUT g=854 Y0=16 C=128 Y1=16
+# OUT g=855 Y0=16 C=128 Y1=16
+# OUT g=856 Y0=16 C=128 Y1=16
+# OUT g=857 Y0=16 C=128 Y1=16
+# OUT g=858 Y0=16 C=128 Y1=16
+# OUT g=859 Y0=16 C=128 Y1=16
+# OUT g=860 Y0=16 C=128 Y1=16
+# OUT g=861 Y0=16 C=128 Y1=16
+# OUT g=862 Y0=16 C=128 Y1=16
+# OUT g=863 Y0=16 C=128 Y1=16
+# OUT g=864 Y0=16 C=128 Y1=16
+# OUT g=865 Y0=16 C=128 Y1=16
+# OUT g=866 Y0=16 C=128 Y1=16
+# OUT g=867 Y0=16 C=128 Y1=16
+# OUT g=868 Y0=16 C=128 Y1=16
+# OUT g=869 Y0=16 C=128 Y1=16
+# OUT g=870 Y0=16 C=128 Y1=16
+# OUT g=871 Y0=16 C=128 Y1=16
+# OUT g=872 Y0=16 C=128 Y1=16
+# OUT g=873 Y0=16 C=128 Y1=16
+# OUT g=874 Y0=16 C=128 Y1=16
+# OUT g=875 Y0=16 C=128 Y1=16
+# OUT g=876 Y0=16 C=128 Y1=16
+# OUT g=877 Y0=16 C=128 Y1=16
+# OUT g=878 Y0=16 C=128 Y1=16
+# OUT g=879 Y0=16 C=128 Y1=16
+# OUT g=880 Y0=16 C=128 Y1=16
+# OUT g=881 Y0=16 C=128 Y1=16
+# OUT g=882 Y0=16 C=128 Y1=16
+# OUT g=883 Y0=16 C=128 Y1=16
+# OUT g=884 Y0=16 C=128 Y1=16
+# OUT g=885 Y0=16 C=128 Y1=16
+# OUT g=886 Y0=16 C=128 Y1=16
+# OUT g=887 Y0=16 C=128 Y1=16
+# OUT g=888 Y0=16 C=128 Y1=16
+# OUT g=889 Y0=16 C=128 Y1=16
+# OUT g=890 Y0=16 C=128 Y1=16
+# OUT g=891 Y0=16 C=128 Y1=16
+# OUT g=892 Y0=16 C=128 Y1=16
+# OUT g=893 Y0=16 C=128 Y1=16
+# OUT g=894 Y0=16 C=128 Y1=16
+# OUT g=895 Y0=16 C=128 Y1=16
+# OUT g=896 Y0=16 C=128 Y1=16
+# OUT g=897 Y0=16 C=128 Y1=16
+# OUT g=898 Y0=16 C=128 Y1=16
+# OUT g=899 Y0=16 C=128 Y1=16
+# OUT g=900 Y0=16 C=128 Y1=16
+# OUT g=901 Y0=16 C=128 Y1=16
+# OUT g=902 Y0=16 C=128 Y1=16
+# OUT g=903 Y0=16 C=128 Y1=16
+# OUT g=904 Y0=16 C=128 Y1=16
+# OUT g=905 Y0=16 C=128 Y1=16
+# OUT g=906 Y0=16 C=128 Y1=16
+# OUT g=907 Y0=16 C=128 Y1=16
+# OUT g=908 Y0=16 C=128 Y1=16
+# OUT g=909 Y0=16 C=128 Y1=16
+# OUT g=910 Y0=16 C=128 Y1=16
+# OUT g=911 Y0=16 C=128 Y1=16
+# OUT g=912 Y0=16 C=128 Y1=16
+# OUT g=913 Y0=16 C=128 Y1=16
+# OUT g=914 Y0=16 C=128 Y1=16
+# OUT g=915 Y0=16 C=128 Y1=16
+# OUT g=916 Y0=16 C=128 Y1=16
+# OUT g=917 Y0=16 C=128 Y1=16
+# OUT g=918 Y0=16 C=128 Y1=16
+# OUT g=919 Y0=16 C=128 Y1=16
+# OUT g=920 Y0=16 C=128 Y1=16
+# OUT g=921 Y0=16 C=128 Y1=16
+# OUT g=922 Y0=16 C=128 Y1=16
+# OUT g=923 Y0=16 C=128 Y1=16
+# OUT g=924 Y0=16 C=128 Y1=16
+# OUT g=925 Y0=16 C=128 Y1=16
+# OUT g=926 Y0=16 C=128 Y1=16
+# OUT g=927 Y0=16 C=128 Y1=16
+# OUT g=928 Y0=16 C=128 Y1=16
+# OUT g=929 Y0=16 C=128 Y1=16
+# OUT g=930 Y0=16 C=128 Y1=16
+# OUT g=931 Y0=16 C=128 Y1=16
+# OUT g=932 Y0=16 C=128 Y1=16
+# OUT g=933 Y0=16 C=128 Y1=16
+# OUT g=934 Y0=16 C=128 Y1=16
+# OUT g=935 Y0=16 C=128 Y1=16
+# OUT g=936 Y0=16 C=128 Y1=16
+# OUT g=937 Y0=16 C=128 Y1=16
+# OUT g=938 Y0=16 C=128 Y1=16
+# OUT g=939 Y0=16 C=128 Y1=16
+# OUT g=940 Y0=16 C=128 Y1=16
+# OUT g=941 Y0=16 C=128 Y1=16
+# OUT g=942 Y0=16 C=128 Y1=16
+# OUT g=943 Y0=16 C=128 Y1=16
+# OUT g=944 Y0=16 C=128 Y1=16
+# OUT g=945 Y0=16 C=128 Y1=16
+# OUT g=946 Y0=16 C=128 Y1=16
+# OUT g=947 Y0=16 C=128 Y1=16
+# OUT g=948 Y0=16 C=128 Y1=16
+# OUT g=949 Y0=16 C=128 Y1=16
+# OUT g=950 Y0=16 C=128 Y1=16
+# OUT g=951 Y0=16 C=128 Y1=16
+# OUT g=952 Y0=16 C=128 Y1=16
+# OUT g=953 Y0=16 C=128 Y1=16
+# OUT g=954 Y0=16 C=128 Y1=16
+# OUT g=955 Y0=16 C=128 Y1=16
+# OUT g=956 Y0=16 C=128 Y1=16
+# OUT g=957 Y0=16 C=128 Y1=16
+# OUT g=958 Y0=16 C=128 Y1=16
+# OUT g=959 Y0=16 C=128 Y1=16
+# OUT g=960 Y0=16 C=128 Y1=180
+# OUT g=961 Y0=180 C=128 Y1=180
+# OUT g=962 Y0=180 C=128 Y1=180
+# OUT g=963 Y0=180 C=128 Y1=180
+# OUT g=964 Y0=180 C=128 Y1=180
+# OUT g=965 Y0=180 C=128 Y1=180
+# OUT g=966 Y0=180 C=128 Y1=180
+# OUT g=967 Y0=180 C=128 Y1=180
+# OUT g=968 Y0=180 C=128 Y1=180
+# OUT g=969 Y0=180 C=128 Y1=180
+# OUT g=970 Y0=180 C=128 Y1=180
+# OUT g=971 Y0=180 C=128 Y1=180
+# OUT g=972 Y0=180 C=128 Y1=180
+# OUT g=973 Y0=180 C=128 Y1=180
+# OUT g=974 Y0=180 C=128 Y1=180
+# OUT g=975 Y0=180 C=128 Y1=180
+# OUT g=976 Y0=180 C=128 Y1=180
+# OUT g=977 Y0=180 C=128 Y1=180
+# OUT g=978 Y0=180 C=128 Y1=180
+# OUT g=979 Y0=180 C=128 Y1=180
+# OUT g=980 Y0=180 C=128 Y1=180
+# OUT g=981 Y0=180 C=128 Y1=180
+# OUT g=982 Y0=180 C=128 Y1=180
+# OUT g=983 Y0=180 C=128 Y1=180
+# OUT g=984 Y0=180 C=128 Y1=180
+# OUT g=985 Y0=180 C=128 Y1=180
+# OUT g=986 Y0=180 C=128 Y1=180
+# OUT g=987 Y0=180 C=128 Y1=180
+# OUT g=988 Y0=180 C=128 Y1=180
+# OUT g=989 Y0=180 C=128 Y1=180
+# OUT g=990 Y0=180 C=128 Y1=180
+# OUT g=991 Y0=180 C=128 Y1=180
+# OUT g=992 Y0=180 C=128 Y1=180
+# OUT g=993 Y0=180 C=128 Y1=180
+# OUT g=994 Y0=180 C=128 Y1=180
+# OUT g=995 Y0=180 C=128 Y1=180
+# OUT g=996 Y0=180 C=128 Y1=180
+# OUT g=997 Y0=180 C=128 Y1=180
+# OUT g=998 Y0=180 C=128 Y1=180
+# OUT g=999 Y0=180 C=128 Y1=180
+# OUT g=1000 Y0=180 C=128 Y1=180
+# OUT g=1001 Y0=180 C=128 Y1=180
+# OUT g=1002 Y0=180 C=128 Y1=180
+# OUT g=1003 Y0=180 C=128 Y1=180
+# OUT g=1004 Y0=180 C=128 Y1=180
+# OUT g=1005 Y0=180 C=128 Y1=180
+# OUT g=1006 Y0=180 C=128 Y1=180
+# OUT g=1007 Y0=180 C=128 Y1=180
+# OUT g=1008 Y0=180 C=128 Y1=180
+# OUT g=1009 Y0=180 C=128 Y1=180
+# OUT g=1010 Y0=180 C=128 Y1=180
+# OUT g=1011 Y0=180 C=128 Y1=180
+# OUT g=1012 Y0=180 C=128 Y1=180
+# OUT g=1013 Y0=180 C=128 Y1=180
+# OUT g=1014 Y0=180 C=128 Y1=180
+# OUT g=1015 Y0=180 C=128 Y1=180
+# OUT g=1016 Y0=180 C=128 Y1=180
+# OUT g=1017 Y0=180 C=128 Y1=180
+# OUT g=1018 Y0=180 C=128 Y1=180
+# OUT g=1019 Y0=180 C=128 Y1=180
+# OUT g=1020 Y0=180 C=128 Y1=180
+# OUT g=1021 Y0=180 C=128 Y1=180
+# OUT g=1022 Y0=180 C=128 Y1=180
+# OUT g=1023 Y0=180 C=128 Y1=180
+# OUT g=1024 Y0=180 C=128 Y1=180
+# OUT g=1025 Y0=180 C=128 Y1=180
+# OUT g=1026 Y0=180 C=128 Y1=180
+# OUT g=1027 Y0=180 C=128 Y1=180
+# OUT g=1028 Y0=180 C=128 Y1=180
+# OUT g=1029 Y0=180 C=128 Y1=180
+# OUT g=1030 Y0=180 C=128 Y1=180
+# OUT g=1031 Y0=180 C=128 Y1=180
+# OUT g=1032 Y0=180 C=128 Y1=180
+# OUT g=1033 Y0=180 C=128 Y1=180
+# OUT g=1034 Y0=180 C=128 Y1=180
+# OUT g=1035 Y0=180 C=128 Y1=180
+# OUT g=1036 Y0=180 C=128 Y1=180
+# OUT g=1037 Y0=180 C=128 Y1=180
+# OUT g=1038 Y0=180 C=128 Y1=180
+# OUT g=1039 Y0=180 C=128 Y1=180
+# OUT g=1040 Y0=180 C=128 Y1=180
+# OUT g=1041 Y0=180 C=128 Y1=180
+# OUT g=1042 Y0=180 C=128 Y1=180
+# OUT g=1043 Y0=180 C=128 Y1=180
+# OUT g=1044 Y0=180 C=128 Y1=180
+# OUT g=1045 Y0=180 C=128 Y1=180
+# OUT g=1046 Y0=180 C=128 Y1=180
+# OUT g=1047 Y0=180 C=128 Y1=180
+# OUT g=1048 Y0=180 C=128 Y1=180
+# OUT g=1049 Y0=180 C=128 Y1=180
+# OUT g=1050 Y0=180 C=128 Y1=180
+# OUT g=1051 Y0=180 C=128 Y1=180
+# OUT g=1052 Y0=180 C=128 Y1=180
+# OUT g=1053 Y0=180 C=128 Y1=180
+# OUT g=1054 Y0=180 C=128 Y1=180
+# OUT g=1055 Y0=180 C=128 Y1=180
+# OUT g=1056 Y0=180 C=128 Y1=180
+# OUT g=1057 Y0=180 C=128 Y1=180
+# OUT g=1058 Y0=180 C=128 Y1=180
+# OUT g=1059 Y0=180 C=128 Y1=180
+# OUT g=1060 Y0=180 C=128 Y1=180
+# OUT g=1061 Y0=180 C=128 Y1=180
+# OUT g=1062 Y0=180 C=128 Y1=180
+# OUT g=1063 Y0=180 C=128 Y1=180
+# OUT g=1064 Y0=180 C=128 Y1=180
+# OUT g=1065 Y0=180 C=128 Y1=180
+# OUT g=1066 Y0=180 C=128 Y1=180
+# OUT g=1067 Y0=180 C=128 Y1=180
+# OUT g=1068 Y0=180 C=128 Y1=180
+# OUT g=1069 Y0=180 C=128 Y1=180
+# OUT g=1070 Y0=180 C=128 Y1=180
+# OUT g=1071 Y0=180 C=128 Y1=180
+# OUT g=1072 Y0=180 C=128 Y1=180
+# OUT g=1073 Y0=180 C=128 Y1=180
+# OUT g=1074 Y0=180 C=128 Y1=180
+# OUT g=1075 Y0=180 C=128 Y1=180
+# OUT g=1076 Y0=180 C=128 Y1=180
+# OUT g=1077 Y0=180 C=128 Y1=180
+# OUT g=1078 Y0=180 C=128 Y1=180
+# OUT g=1079 Y0=180 C=128 Y1=180
+# OUT g=1080 Y0=162 C=128 Y1=162
+# OUT g=1081 Y0=162 C=128 Y1=162
+# OUT g=1082 Y0=162 C=128 Y1=162
+# OUT g=1083 Y0=162 C=128 Y1=162
+# OUT g=1084 Y0=162 C=128 Y1=162
+# OUT g=1085 Y0=162 C=128 Y1=162
+# OUT g=1086 Y0=162 C=128 Y1=162
+# OUT g=1087 Y0=162 C=128 Y1=162
+# OUT g=1088 Y0=162 C=128 Y1=162
+# OUT g=1089 Y0=162 C=128 Y1=162
+# OUT g=1090 Y0=162 C=128 Y1=162
+# OUT g=1091 Y0=162 C=128 Y1=162
+# OUT g=1092 Y0=162 C=128 Y1=162
+# OUT g=1093 Y0=162 C=128 Y1=162
+# OUT g=1094 Y0=162 C=128 Y1=162
+# OUT g=1095 Y0=162 C=128 Y1=162
+# OUT g=1096 Y0=162 C=128 Y1=162
+# OUT g=1097 Y0=162 C=128 Y1=162
+# OUT g=1098 Y0=162 C=128 Y1=162
+# OUT g=1099 Y0=162 C=128 Y1=162
+# OUT g=1100 Y0=162 C=128 Y1=162
+# OUT g=1101 Y0=162 C=128 Y1=162
+# OUT g=1102 Y0=162 C=128 Y1=162
+# OUT g=1103 Y0=162 C=128 Y1=162
+# OUT g=1104 Y0=162 C=128 Y1=162
+# OUT g=1105 Y0=162 C=128 Y1=162
+# OUT g=1106 Y0=162 C=128 Y1=162
+# OUT g=1107 Y0=162 C=128 Y1=162
+# OUT g=1108 Y0=162 C=128 Y1=162
+# OUT g=1109 Y0=162 C=128 Y1=162
+# OUT g=1110 Y0=162 C=128 Y1=162
+# OUT g=1111 Y0=162 C=128 Y1=162
+# OUT g=1112 Y0=162 C=128 Y1=162
+# OUT g=1113 Y0=162 C=128 Y1=162
+# OUT g=1114 Y0=162 C=128 Y1=162
+# OUT g=1115 Y0=162 C=128 Y1=162
+# OUT g=1116 Y0=162 C=128 Y1=162
+# OUT g=1117 Y0=162 C=128 Y1=162
+# OUT g=1118 Y0=162 C=128 Y1=162
+# OUT g=1119 Y0=162 C=128 Y1=162
+# OUT g=1120 Y0=162 C=128 Y1=162
+# OUT g=1121 Y0=162 C=128 Y1=162
+# OUT g=1122 Y0=162 C=128 Y1=162
+# OUT g=1123 Y0=162 C=128 Y1=162
+# OUT g=1124 Y0=162 C=128 Y1=162
+# OUT g=1125 Y0=162 C=128 Y1=162
+# OUT g=1126 Y0=162 C=128 Y1=162
+# OUT g=1127 Y0=162 C=128 Y1=162
+# OUT g=1128 Y0=162 C=128 Y1=162
+# OUT g=1129 Y0=162 C=128 Y1=162
+# OUT g=1130 Y0=162 C=128 Y1=162
+# OUT g=1131 Y0=162 C=128 Y1=162
+# OUT g=1132 Y0=162 C=128 Y1=162
+# OUT g=1133 Y0=162 C=128 Y1=162
+# OUT g=1134 Y0=162 C=128 Y1=162
+# OUT g=1135 Y0=162 C=128 Y1=162
+# OUT g=1136 Y0=162 C=128 Y1=162
+# OUT g=1137 Y0=162 C=128 Y1=162
+# OUT g=1138 Y0=162 C=128 Y1=162
+# OUT g=1139 Y0=162 C=128 Y1=162
+# OUT g=1140 Y0=162 C=128 Y1=162
+# OUT g=1141 Y0=162 C=128 Y1=162
+# OUT g=1142 Y0=162 C=128 Y1=162
+# OUT g=1143 Y0=162 C=128 Y1=162
+# OUT g=1144 Y0=162 C=128 Y1=162
+# OUT g=1145 Y0=162 C=128 Y1=162
+# OUT g=1146 Y0=162 C=128 Y1=162
+# OUT g=1147 Y0=162 C=128 Y1=162
+# OUT g=1148 Y0=162 C=128 Y1=162
+# OUT g=1149 Y0=162 C=128 Y1=162
+# OUT g=1150 Y0=162 C=128 Y1=162
+# OUT g=1151 Y0=162 C=128 Y1=162
+# OUT g=1152 Y0=162 C=128 Y1=162
+# OUT g=1153 Y0=162 C=128 Y1=162
+# OUT g=1154 Y0=162 C=128 Y1=162
+# OUT g=1155 Y0=162 C=128 Y1=162
+# OUT g=1156 Y0=162 C=128 Y1=162
+# OUT g=1157 Y0=162 C=128 Y1=162
+# OUT g=1158 Y0=162 C=128 Y1=162
+# OUT g=1159 Y0=162 C=128 Y1=162
+# OUT g=1160 Y0=162 C=128 Y1=162
+# OUT g=1161 Y0=162 C=128 Y1=162
+# OUT g=1162 Y0=162 C=128 Y1=162
+# OUT g=1163 Y0=162 C=128 Y1=162
+# OUT g=1164 Y0=162 C=128 Y1=162
+# OUT g=1165 Y0=162 C=128 Y1=162
+# OUT g=1166 Y0=162 C=128 Y1=162
+# OUT g=1167 Y0=162 C=128 Y1=162
+# OUT g=1168 Y0=162 C=128 Y1=162
+# OUT g=1169 Y0=162 C=128 Y1=162
+# OUT g=1170 Y0=162 C=128 Y1=162
+# OUT g=1171 Y0=162 C=128 Y1=162
+# OUT g=1172 Y0=162 C=128 Y1=162
+# OUT g=1173 Y0=162 C=128 Y1=162
+# OUT g=1174 Y0=162 C=128 Y1=162
+# OUT g=1175 Y0=162 C=128 Y1=162
+# OUT g=1176 Y0=162 C=128 Y1=162
+# OUT g=1177 Y0=162 C=128 Y1=162
+# OUT g=1178 Y0=162 C=128 Y1=162
+# OUT g=1179 Y0=162 C=128 Y1=162
+# OUT g=1180 Y0=162 C=128 Y1=162
+# OUT g=1181 Y0=162 C=128 Y1=162
+# OUT g=1182 Y0=162 C=128 Y1=162
+# OUT g=1183 Y0=162 C=128 Y1=162
+# OUT g=1184 Y0=162 C=128 Y1=162
+# OUT g=1185 Y0=162 C=128 Y1=162
+# OUT g=1186 Y0=162 C=128 Y1=162
+# OUT g=1187 Y0=162 C=128 Y1=162
+# OUT g=1188 Y0=162 C=128 Y1=162
+# OUT g=1189 Y0=162 C=128 Y1=162
+# OUT g=1190 Y0=162 C=128 Y1=162
+# OUT g=1191 Y0=162 C=128 Y1=162
+# OUT g=1192 Y0=162 C=128 Y1=162
+# OUT g=1193 Y0=162 C=128 Y1=162
+# OUT g=1194 Y0=162 C=128 Y1=162
+# OUT g=1195 Y0=162 C=128 Y1=162
+# OUT g=1196 Y0=162 C=128 Y1=162
+# OUT g=1197 Y0=162 C=128 Y1=162
+# OUT g=1198 Y0=162 C=128 Y1=162
+# OUT g=1199 Y0=162 C=128 Y1=131
+# OUT g=1200 Y0=131 C=128 Y1=131
+# OUT g=1201 Y0=131 C=128 Y1=131
+# OUT g=1202 Y0=131 C=128 Y1=131
+# OUT g=1203 Y0=131 C=128 Y1=131
+# OUT g=1204 Y0=131 C=128 Y1=131
+# OUT g=1205 Y0=131 C=128 Y1=131
+# OUT g=1206 Y0=131 C=128 Y1=131
+# OUT g=1207 Y0=131 C=128 Y1=131
+# OUT g=1208 Y0=131 C=128 Y1=131
+# OUT g=1209 Y0=131 C=128 Y1=131
+# OUT g=1210 Y0=131 C=128 Y1=131
+# OUT g=1211 Y0=131 C=128 Y1=131
+# OUT g=1212 Y0=131 C=128 Y1=131
+# OUT g=1213 Y0=131 C=128 Y1=131
+# OUT g=1214 Y0=131 C=128 Y1=131
+# OUT g=1215 Y0=131 C=128 Y1=131
+# OUT g=1216 Y0=131 C=128 Y1=131
+# OUT g=1217 Y0=131 C=128 Y1=131
+# OUT g=1218 Y0=131 C=128 Y1=131
+# OUT g=1219 Y0=131 C=128 Y1=131
+# OUT g=1220 Y0=131 C=128 Y1=131
+# OUT g=1221 Y0=131 C=128 Y1=131
+# OUT g=1222 Y0=131 C=128 Y1=131
+# OUT g=1223 Y0=131 C=128 Y1=131
+# OUT g=1224 Y0=131 C=128 Y1=131
+# OUT g=1225 Y0=131 C=128 Y1=131
+# OUT g=1226 Y0=131 C=128 Y1=131
+# OUT g=1227 Y0=131 C=128 Y1=131
+# OUT g=1228 Y0=131 C=128 Y1=131
+# OUT g=1229 Y0=131 C=128 Y1=131
+# OUT g=1230 Y0=131 C=128 Y1=131
+# OUT g=1231 Y0=131 C=128 Y1=131
+# OUT g=1232 Y0=131 C=128 Y1=131
+# OUT g=1233 Y0=131 C=128 Y1=131
+# OUT g=1234 Y0=131 C=128 Y1=131
+# OUT g=1235 Y0=131 C=128 Y1=131
+# OUT g=1236 Y0=131 C=128 Y1=131
+# OUT g=1237 Y0=131 C=128 Y1=131
+# OUT g=1238 Y0=131 C=128 Y1=131
+# OUT g=1239 Y0=131 C=128 Y1=131
+# OUT g=1240 Y0=131 C=128 Y1=131
+# OUT g=1241 Y0=131 C=128 Y1=131
+# OUT g=1242 Y0=131 C=128 Y1=131
+# OUT g=1243 Y0=131 C=128 Y1=131
+# OUT g=1244 Y0=131 C=128 Y1=131
+# OUT g=1245 Y0=131 C=128 Y1=131
+# OUT g=1246 Y0=131 C=128 Y1=131
+# OUT g=1247 Y0=131 C=128 Y1=131
+# OUT g=1248 Y0=131 C=128 Y1=131
+# OUT g=1249 Y0=131 C=128 Y1=131
+# OUT g=1250 Y0=131 C=128 Y1=131
+# OUT g=1251 Y0=131 C=128 Y1=131
+# OUT g=1252 Y0=131 C=128 Y1=131
+# OUT g=1253 Y0=131 C=128 Y1=131
+# OUT g=1254 Y0=131 C=128 Y1=131
+# OUT g=1255 Y0=131 C=128 Y1=131
+# OUT g=1256 Y0=131 C=128 Y1=131
+# OUT g=1257 Y0=131 C=128 Y1=131
+# OUT g=1258 Y0=131 C=128 Y1=131
+# OUT g=1259 Y0=131 C=128 Y1=131
+# OUT g=1260 Y0=131 C=128 Y1=131
+# OUT g=1261 Y0=131 C=128 Y1=131
+# OUT g=1262 Y0=131 C=128 Y1=131
+# OUT g=1263 Y0=131 C=128 Y1=131
+# OUT g=1264 Y0=131 C=128 Y1=131
+# OUT g=1265 Y0=131 C=128 Y1=131
+# OUT g=1266 Y0=131 C=128 Y1=131
+# OUT g=1267 Y0=131 C=128 Y1=131
+# OUT g=1268 Y0=131 C=128 Y1=131
+# OUT g=1269 Y0=131 C=128 Y1=131
+# OUT g=1270 Y0=131 C=128 Y1=131
+# OUT g=1271 Y0=131 C=128 Y1=131
+# OUT g=1272 Y0=131 C=128 Y1=131
+# OUT g=1273 Y0=131 C=128 Y1=131
+# OUT g=1274 Y0=131 C=128 Y1=131
+# OUT g=1275 Y0=131 C=128 Y1=131
+# OUT g=1276 Y0=131 C=128 Y1=131
+# OUT g=1277 Y0=131 C=128 Y1=131
+# OUT g=1278 Y0=131 C=128 Y1=131
+# OUT g=1279 Y0=131 C=128 Y1=131
+# OUT g=1280 Y0=131 C=128 Y1=131
+# OUT g=1281 Y0=131 C=128 Y1=131
+# OUT g=1282 Y0=131 C=128 Y1=131
+# OUT g=1283 Y0=131 C=128 Y1=131
+# OUT g=1284 Y0=131 C=128 Y1=131
+# OUT g=1285 Y0=131 C=128 Y1=131
+# OUT g=1286 Y0=131 C=128 Y1=131
+# OUT g=1287 Y0=131 C=128 Y1=131
+# OUT g=1288 Y0=131 C=128 Y1=131
+# OUT g=1289 Y0=131 C=128 Y1=131
+# OUT g=1290 Y0=131 C=128 Y1=131
+# OUT g=1291 Y0=131 C=128 Y1=131
+# OUT g=1292 Y0=131 C=128 Y1=131
+# OUT g=1293 Y0=131 C=128 Y1=131
+# OUT g=1294 Y0=131 C=128 Y1=131
+# OUT g=1295 Y0=131 C=128 Y1=131
+# OUT g=1296 Y0=131 C=128 Y1=131
+# OUT g=1297 Y0=131 C=128 Y1=131
+# OUT g=1298 Y0=131 C=128 Y1=131
+# OUT g=1299 Y0=131 C=128 Y1=131
+# OUT g=1300 Y0=131 C=128 Y1=131
+# OUT g=1301 Y0=131 C=128 Y1=131
+# OUT g=1302 Y0=131 C=128 Y1=131
+# OUT g=1303 Y0=131 C=128 Y1=131
+# OUT g=1304 Y0=131 C=128 Y1=131
+# OUT g=1305 Y0=131 C=128 Y1=131
+# OUT g=1306 Y0=131 C=128 Y1=131
+# OUT g=1307 Y0=131 C=128 Y1=131
+# OUT g=1308 Y0=131 C=128 Y1=131
+# OUT g=1309 Y0=131 C=128 Y1=131
+# OUT g=1310 Y0=131 C=128 Y1=131
+# OUT g=1311 Y0=131 C=128 Y1=131
+# OUT g=1312 Y0=131 C=128 Y1=131
+# OUT g=1313 Y0=131 C=128 Y1=131
+# OUT g=1314 Y0=131 C=128 Y1=131
+# OUT g=1315 Y0=131 C=128 Y1=131
+# OUT g=1316 Y0=131 C=128 Y1=131
+# OUT g=1317 Y0=131 C=128 Y1=131
+# OUT g=1318 Y0=131 C=128 Y1=131
+# OUT g=1319 Y0=112 C=128 Y1=112
+# OUT g=1320 Y0=112 C=128 Y1=112
+# OUT g=1321 Y0=112 C=128 Y1=112
+# OUT g=1322 Y0=112 C=128 Y1=112
+# OUT g=1323 Y0=112 C=128 Y1=112
+# OUT g=1324 Y0=112 C=128 Y1=112
+# OUT g=1325 Y0=112 C=128 Y1=112
+# OUT g=1326 Y0=112 C=128 Y1=112
+# OUT g=1327 Y0=112 C=128 Y1=112
+# OUT g=1328 Y0=112 C=128 Y1=112
+# OUT g=1329 Y0=112 C=128 Y1=112
+# OUT g=1330 Y0=112 C=128 Y1=112
+# OUT g=1331 Y0=112 C=128 Y1=112
+# OUT g=1332 Y0=112 C=128 Y1=112
+# OUT g=1333 Y0=112 C=128 Y1=112
+# OUT g=1334 Y0=112 C=128 Y1=112
+# OUT g=1335 Y0=112 C=128 Y1=112
+# OUT g=1336 Y0=112 C=128 Y1=112
+# OUT g=1337 Y0=112 C=128 Y1=112
+# OUT g=1338 Y0=112 C=128 Y1=112
+# OUT g=1339 Y0=112 C=128 Y1=112
+# OUT g=1340 Y0=112 C=128 Y1=112
+# OUT g=1341 Y0=112 C=128 Y1=112
+# OUT g=1342 Y0=112 C=128 Y1=112
+# OUT g=1343 Y0=112 C=128 Y1=112
+# OUT g=1344 Y0=112 C=128 Y1=112
+# OUT g=1345 Y0=112 C=128 Y1=112
+# OUT g=1346 Y0=112 C=128 Y1=112
+# OUT g=1347 Y0=112 C=128 Y1=112
+# OUT g=1348 Y0=112 C=128 Y1=112
+# OUT g=1349 Y0=112 C=128 Y1=112
+# OUT g=1350 Y0=112 C=128 Y1=112
+# OUT g=1351 Y0=112 C=128 Y1=112
+# OUT g=1352 Y0=112 C=128 Y1=112
+# OUT g=1353 Y0=112 C=128 Y1=112
+# OUT g=1354 Y0=112 C=128 Y1=112
+# OUT g=1355 Y0=112 C=128 Y1=112
+# OUT g=1356 Y0=112 C=128 Y1=112
+# OUT g=1357 Y0=112 C=128 Y1=112
+# OUT g=1358 Y0=112 C=128 Y1=112
+# OUT g=1359 Y0=112 C=128 Y1=112
+# OUT g=1360 Y0=112 C=128 Y1=112
+# OUT g=1361 Y0=112 C=128 Y1=112
+# OUT g=1362 Y0=112 C=128 Y1=112
+# OUT g=1363 Y0=112 C=128 Y1=112
+# OUT g=1364 Y0=112 C=128 Y1=112
+# OUT g=1365 Y0=112 C=128 Y1=112
+# OUT g=1366 Y0=112 C=128 Y1=112
+# OUT g=1367 Y0=112 C=128 Y1=112
+# OUT g=1368 Y0=112 C=128 Y1=112
+# OUT g=1369 Y0=112 C=128 Y1=112
+# OUT g=1370 Y0=112 C=128 Y1=112
+# OUT g=1371 Y0=112 C=128 Y1=112
+# OUT g=1372 Y0=112 C=128 Y1=112
+# OUT g=1373 Y0=112 C=128 Y1=112
+# OUT g=1374 Y0=112 C=128 Y1=112
+# OUT g=1375 Y0=112 C=128 Y1=112
+# OUT g=1376 Y0=112 C=128 Y1=112
+# OUT g=1377 Y0=112 C=128 Y1=112
+# OUT g=1378 Y0=112 C=128 Y1=112
+# OUT g=1379 Y0=112 C=128 Y1=112
+# OUT g=1380 Y0=112 C=128 Y1=112
+# OUT g=1381 Y0=112 C=128 Y1=112
+# OUT g=1382 Y0=112 C=128 Y1=112
+# OUT g=1383 Y0=112 C=128 Y1=112
+# OUT g=1384 Y0=112 C=128 Y1=112
+# OUT g=1385 Y0=112 C=128 Y1=112
+# OUT g=1386 Y0=112 C=128 Y1=112
+# OUT g=1387 Y0=112 C=128 Y1=112
+# OUT g=1388 Y0=112 C=128 Y1=112
+# OUT g=1389 Y0=112 C=128 Y1=112
+# OUT g=1390 Y0=112 C=128 Y1=112
+# OUT g=1391 Y0=112 C=128 Y1=112
+# OUT g=1392 Y0=112 C=128 Y1=112
+# OUT g=1393 Y0=112 C=128 Y1=112
+# OUT g=1394 Y0=112 C=128 Y1=112
+# OUT g=1395 Y0=112 C=128 Y1=112
+# OUT g=1396 Y0=112 C=128 Y1=112
+# OUT g=1397 Y0=112 C=128 Y1=112
+# OUT g=1398 Y0=112 C=128 Y1=112
+# OUT g=1399 Y0=112 C=128 Y1=112
+# OUT g=1400 Y0=112 C=128 Y1=112
+# OUT g=1401 Y0=112 C=128 Y1=112
+# OUT g=1402 Y0=112 C=128 Y1=112
+# OUT g=1403 Y0=112 C=128 Y1=112
+# OUT g=1404 Y0=112 C=128 Y1=112
+# OUT g=1405 Y0=112 C=128 Y1=112
+# OUT g=1406 Y0=112 C=128 Y1=112
+# OUT g=1407 Y0=112 C=128 Y1=112
+# OUT g=1408 Y0=112 C=128 Y1=112
+# OUT g=1409 Y0=112 C=128 Y1=112
+# OUT g=1410 Y0=112 C=128 Y1=112
+# OUT g=1411 Y0=112 C=128 Y1=112
+# OUT g=1412 Y0=112 C=128 Y1=112
+# OUT g=1413 Y0=112 C=128 Y1=112
+# OUT g=1414 Y0=112 C=128 Y1=112
+# OUT g=1415 Y0=112 C=128 Y1=112
+# OUT g=1416 Y0=112 C=128 Y1=112
+# OUT g=1417 Y0=112 C=128 Y1=112
+# OUT g=1418 Y0=112 C=128 Y1=112
+# OUT g=1419 Y0=112 C=128 Y1=112
+# OUT g=1420 Y0=112 C=128 Y1=112
+# OUT g=1421 Y0=112 C=128 Y1=112
+# OUT g=1422 Y0=112 C=128 Y1=112
+# OUT g=1423 Y0=112 C=128 Y1=112
+# OUT g=1424 Y0=112 C=128 Y1=112
+# OUT g=1425 Y0=112 C=128 Y1=112
+# OUT g=1426 Y0=112 C=128 Y1=112
+# OUT g=1427 Y0=112 C=128 Y1=112
+# OUT g=1428 Y0=112 C=128 Y1=112
+# OUT g=1429 Y0=112 C=128 Y1=112
+# OUT g=1430 Y0=112 C=128 Y1=112
+# OUT g=1431 Y0=112 C=128 Y1=112
+# OUT g=1432 Y0=112 C=128 Y1=112
+# OUT g=1433 Y0=112 C=128 Y1=112
+# OUT g=1434 Y0=112 C=128 Y1=112
+# OUT g=1435 Y0=112 C=128 Y1=112
+# OUT g=1436 Y0=112 C=128 Y1=112
+# OUT g=1437 Y0=112 C=128 Y1=112
+# OUT g=1438 Y0=112 C=128 Y1=84
+# OUT g=1439 Y0=84 C=128 Y1=84
+# OUT g=1440 Y0=84 C=128 Y1=84
+# OUT g=1441 Y0=84 C=128 Y1=84
+# OUT g=1442 Y0=84 C=128 Y1=84
+# OUT g=1443 Y0=84 C=128 Y1=84
+# OUT g=1444 Y0=84 C=128 Y1=84
+# OUT g=1445 Y0=84 C=128 Y1=84
+# OUT g=1446 Y0=84 C=128 Y1=84
+# OUT g=1447 Y0=84 C=128 Y1=84
+# OUT g=1448 Y0=84 C=128 Y1=84
+# OUT g=1449 Y0=84 C=128 Y1=84
+# OUT g=1450 Y0=84 C=128 Y1=84
+# OUT g=1451 Y0=84 C=128 Y1=84
+# OUT g=1452 Y0=84 C=128 Y1=84
+# OUT g=1453 Y0=84 C=128 Y1=84
+# OUT g=1454 Y0=84 C=128 Y1=84
+# OUT g=1455 Y0=84 C=128 Y1=84
+# OUT g=1456 Y0=84 C=128 Y1=84
+# OUT g=1457 Y0=84 C=128 Y1=84
+# OUT g=1458 Y0=84 C=128 Y1=84
+# OUT g=1459 Y0=84 C=128 Y1=84
+# OUT g=1460 Y0=84 C=128 Y1=84
+# OUT g=1461 Y0=84 C=128 Y1=84
+# OUT g=1462 Y0=84 C=128 Y1=84
+# OUT g=1463 Y0=84 C=128 Y1=84
+# OUT g=1464 Y0=84 C=128 Y1=84
+# OUT g=1465 Y0=84 C=128 Y1=84
+# OUT g=1466 Y0=84 C=128 Y1=84
+# OUT g=1467 Y0=84 C=128 Y1=84
+# OUT g=1468 Y0=84 C=128 Y1=84
+# OUT g=1469 Y0=84 C=128 Y1=84
+# OUT g=1470 Y0=84 C=128 Y1=84
+# OUT g=1471 Y0=84 C=128 Y1=84
+# OUT g=1472 Y0=84 C=128 Y1=84
+# OUT g=1473 Y0=84 C=128 Y1=84
+# OUT g=1474 Y0=84 C=128 Y1=84
+# OUT g=1475 Y0=84 C=128 Y1=84
+# OUT g=1476 Y0=84 C=128 Y1=84
+# OUT g=1477 Y0=84 C=128 Y1=84
+# OUT g=1478 Y0=84 C=128 Y1=84
+# OUT g=1479 Y0=84 C=128 Y1=84
+# OUT g=1480 Y0=84 C=128 Y1=84
+# OUT g=1481 Y0=84 C=128 Y1=84
+# OUT g=1482 Y0=84 C=128 Y1=84
+# OUT g=1483 Y0=84 C=128 Y1=84
+# OUT g=1484 Y0=84 C=128 Y1=84
+# OUT g=1485 Y0=84 C=128 Y1=84
+# OUT g=1486 Y0=84 C=128 Y1=84
+# OUT g=1487 Y0=84 C=128 Y1=84
+# OUT g=1488 Y0=84 C=128 Y1=84
+# OUT g=1489 Y0=84 C=128 Y1=84
+# OUT g=1490 Y0=84 C=128 Y1=84
+# OUT g=1491 Y0=84 C=128 Y1=84
+# OUT g=1492 Y0=84 C=128 Y1=84
+# OUT g=1493 Y0=84 C=128 Y1=84
+# OUT g=1494 Y0=84 C=128 Y1=84
+# OUT g=1495 Y0=84 C=128 Y1=84
+# OUT g=1496 Y0=84 C=128 Y1=84
+# OUT g=1497 Y0=84 C=128 Y1=84
+# OUT g=1498 Y0=84 C=128 Y1=84
+# OUT g=1499 Y0=84 C=128 Y1=84
+# OUT g=1500 Y0=84 C=128 Y1=84
+# OUT g=1501 Y0=84 C=128 Y1=84
+# OUT g=1502 Y0=84 C=128 Y1=84
+# OUT g=1503 Y0=84 C=128 Y1=84
+# OUT g=1504 Y0=84 C=128 Y1=84
+# OUT g=1505 Y0=84 C=128 Y1=84
+# OUT g=1506 Y0=84 C=128 Y1=84
+# OUT g=1507 Y0=84 C=128 Y1=84
+# OUT g=1508 Y0=84 C=128 Y1=84
+# OUT g=1509 Y0=84 C=128 Y1=84
+# OUT g=1510 Y0=84 C=128 Y1=84
+# OUT g=1511 Y0=84 C=128 Y1=84
+# OUT g=1512 Y0=84 C=128 Y1=84
+# OUT g=1513 Y0=84 C=128 Y1=84
+# OUT g=1514 Y0=84 C=128 Y1=84
+# OUT g=1515 Y0=84 C=128 Y1=84
+# OUT g=1516 Y0=84 C=128 Y1=84
+# OUT g=1517 Y0=84 C=128 Y1=84
+# OUT g=1518 Y0=84 C=128 Y1=84
+# OUT g=1519 Y0=84 C=128 Y1=84
+# OUT g=1520 Y0=84 C=128 Y1=84
+# OUT g=1521 Y0=84 C=128 Y1=84
+# OUT g=1522 Y0=84 C=128 Y1=84
+# OUT g=1523 Y0=84 C=128 Y1=84
+# OUT g=1524 Y0=84 C=128 Y1=84
+# OUT g=1525 Y0=84 C=128 Y1=84
+# OUT g=1526 Y0=84 C=128 Y1=84
+# OUT g=1527 Y0=84 C=128 Y1=84
+# OUT g=1528 Y0=84 C=128 Y1=84
+# OUT g=1529 Y0=84 C=128 Y1=84
+# OUT g=1530 Y0=84 C=128 Y1=84
+# OUT g=1531 Y0=84 C=128 Y1=84
+# OUT g=1532 Y0=84 C=128 Y1=84
+# OUT g=1533 Y0=84 C=128 Y1=84
+# OUT g=1534 Y0=84 C=128 Y1=84
+# OUT g=1535 Y0=84 C=128 Y1=84
+# OUT g=1536 Y0=84 C=128 Y1=84
+# OUT g=1537 Y0=84 C=128 Y1=84
+# OUT g=1538 Y0=84 C=128 Y1=84
+# OUT g=1539 Y0=84 C=128 Y1=84
+# OUT g=1540 Y0=84 C=128 Y1=84
+# OUT g=1541 Y0=84 C=128 Y1=84
+# OUT g=1542 Y0=84 C=128 Y1=84
+# OUT g=1543 Y0=84 C=128 Y1=84
+# OUT g=1544 Y0=84 C=128 Y1=84
+# OUT g=1545 Y0=84 C=128 Y1=84
+# OUT g=1546 Y0=84 C=128 Y1=84
+# OUT g=1547 Y0=84 C=128 Y1=84
+# OUT g=1548 Y0=84 C=128 Y1=84
+# OUT g=1549 Y0=84 C=128 Y1=84
+# OUT g=1550 Y0=84 C=128 Y1=84
+# OUT g=1551 Y0=84 C=128 Y1=84
+# OUT g=1552 Y0=84 C=128 Y1=84
+# OUT g=1553 Y0=84 C=128 Y1=84
+# OUT g=1554 Y0=84 C=128 Y1=84
+# OUT g=1555 Y0=84 C=128 Y1=84
+# OUT g=1556 Y0=84 C=128 Y1=84
+# OUT g=1557 Y0=84 C=128 Y1=84
+# OUT g=1558 Y0=65 C=128 Y1=65
+# OUT g=1559 Y0=65 C=128 Y1=65
+# OUT g=1560 Y0=65 C=128 Y1=65
+# OUT g=1561 Y0=65 C=128 Y1=65
+# OUT g=1562 Y0=65 C=128 Y1=65
+# OUT g=1563 Y0=65 C=128 Y1=65
+# OUT g=1564 Y0=65 C=128 Y1=65
+# OUT g=1565 Y0=65 C=128 Y1=65
+# OUT g=1566 Y0=65 C=128 Y1=65
+# OUT g=1567 Y0=65 C=128 Y1=65
+# OUT g=1568 Y0=65 C=128 Y1=65
+# OUT g=1569 Y0=65 C=128 Y1=65
+# OUT g=1570 Y0=65 C=128 Y1=65
+# OUT g=1571 Y0=65 C=128 Y1=65
+# OUT g=1572 Y0=65 C=128 Y1=65
+# OUT g=1573 Y0=65 C=128 Y1=65
+# OUT g=1574 Y0=65 C=128 Y1=65
+# OUT g=1575 Y0=65 C=128 Y1=65
+# OUT g=1576 Y0=65 C=128 Y1=65
+# OUT g=1577 Y0=65 C=128 Y1=65
+# OUT g=1578 Y0=65 C=128 Y1=65
+# OUT g=1579 Y0=65 C=128 Y1=65
+# OUT g=1580 Y0=65 C=128 Y1=65
+# OUT g=1581 Y0=65 C=128 Y1=65
+# OUT g=1582 Y0=65 C=128 Y1=65
+# OUT g=1583 Y0=65 C=128 Y1=65
+# OUT g=1584 Y0=65 C=128 Y1=65
+# OUT g=1585 Y0=65 C=128 Y1=65
+# OUT g=1586 Y0=65 C=128 Y1=65
+# OUT g=1587 Y0=65 C=128 Y1=65
+# OUT g=1588 Y0=65 C=128 Y1=65
+# OUT g=1589 Y0=65 C=128 Y1=65
+# OUT g=1590 Y0=65 C=128 Y1=65
+# OUT g=1591 Y0=65 C=128 Y1=65
+# OUT g=1592 Y0=65 C=128 Y1=65
+# OUT g=1593 Y0=65 C=128 Y1=65
+# OUT g=1594 Y0=65 C=128 Y1=65
+# OUT g=1595 Y0=65 C=128 Y1=65
+# OUT g=1596 Y0=65 C=128 Y1=65
+# OUT g=1597 Y0=65 C=128 Y1=65
+# OUT g=1598 Y0=65 C=128 Y1=65
+# OUT g=1599 Y0=65 C=128 Y1=65
+# OUT g=1600 Y0=65 C=128 Y1=65
+# OUT g=1601 Y0=65 C=128 Y1=65
+# OUT g=1602 Y0=65 C=128 Y1=65
+# OUT g=1603 Y0=65 C=128 Y1=65
+# OUT g=1604 Y0=65 C=128 Y1=65
+# OUT g=1605 Y0=65 C=128 Y1=65
+# OUT g=1606 Y0=65 C=128 Y1=65
+# OUT g=1607 Y0=65 C=128 Y1=65
+# OUT g=1608 Y0=65 C=128 Y1=65
+# OUT g=1609 Y0=65 C=128 Y1=65
+# OUT g=1610 Y0=65 C=128 Y1=65
+# OUT g=1611 Y0=65 C=128 Y1=65
+# OUT g=1612 Y0=65 C=128 Y1=65
+# OUT g=1613 Y0=65 C=128 Y1=65
+# OUT g=1614 Y0=65 C=128 Y1=65
+# OUT g=1615 Y0=65 C=128 Y1=65
+# OUT g=1616 Y0=65 C=128 Y1=65
+# OUT g=1617 Y0=65 C=128 Y1=65
+# OUT g=1618 Y0=65 C=128 Y1=65
+# OUT g=1619 Y0=65 C=128 Y1=65
+# OUT g=1620 Y0=65 C=128 Y1=65
+# OUT g=1621 Y0=65 C=128 Y1=65
+# OUT g=1622 Y0=65 C=128 Y1=65
+# OUT g=1623 Y0=65 C=128 Y1=65
+# OUT g=1624 Y0=65 C=128 Y1=65
+# OUT g=1625 Y0=65 C=128 Y1=65
+# OUT g=1626 Y0=65 C=128 Y1=65
+# OUT g=1627 Y0=65 C=128 Y1=65
+# OUT g=1628 Y0=65 C=128 Y1=65
+# OUT g=1629 Y0=65 C=128 Y1=65
+# OUT g=1630 Y0=65 C=128 Y1=65
+# OUT g=1631 Y0=65 C=128 Y1=65
+# OUT g=1632 Y0=65 C=128 Y1=65
+# OUT g=1633 Y0=65 C=128 Y1=65
+# OUT g=1634 Y0=65 C=128 Y1=65
+# OUT g=1635 Y0=65 C=128 Y1=65
+# OUT g=1636 Y0=65 C=128 Y1=65
+# OUT g=1637 Y0=65 C=128 Y1=65
+# OUT g=1638 Y0=65 C=128 Y1=65
+# OUT g=1639 Y0=65 C=128 Y1=65
+# OUT g=1640 Y0=65 C=128 Y1=65
+# OUT g=1641 Y0=65 C=128 Y1=65
+# OUT g=1642 Y0=65 C=128 Y1=65
+# OUT g=1643 Y0=65 C=128 Y1=65
+# OUT g=1644 Y0=65 C=128 Y1=65
+# OUT g=1645 Y0=65 C=128 Y1=65
+# OUT g=1646 Y0=65 C=128 Y1=65
+# OUT g=1647 Y0=65 C=128 Y1=65
+# OUT g=1648 Y0=65 C=128 Y1=65
+# OUT g=1649 Y0=65 C=128 Y1=65
+# OUT g=1650 Y0=65 C=128 Y1=65
+# OUT g=1651 Y0=65 C=128 Y1=65
+# OUT g=1652 Y0=65 C=128 Y1=65
+# OUT g=1653 Y0=65 C=128 Y1=65
+# OUT g=1654 Y0=65 C=128 Y1=65
+# OUT g=1655 Y0=65 C=128 Y1=65
+# OUT g=1656 Y0=65 C=128 Y1=65
+# OUT g=1657 Y0=65 C=128 Y1=65
+# OUT g=1658 Y0=65 C=128 Y1=65
+# OUT g=1659 Y0=65 C=128 Y1=65
+# OUT g=1660 Y0=65 C=128 Y1=65
+# OUT g=1661 Y0=65 C=128 Y1=65
+# OUT g=1662 Y0=65 C=128 Y1=65
+# OUT g=1663 Y0=65 C=128 Y1=65
+# OUT g=1664 Y0=65 C=128 Y1=65
+# OUT g=1665 Y0=65 C=128 Y1=65
+# OUT g=1666 Y0=65 C=128 Y1=65
+# OUT g=1667 Y0=65 C=128 Y1=65
+# OUT g=1668 Y0=65 C=128 Y1=65
+# OUT g=1669 Y0=65 C=128 Y1=65
+# OUT g=1670 Y0=65 C=128 Y1=65
+# OUT g=1671 Y0=65 C=128 Y1=65
+# OUT g=1672 Y0=65 C=128 Y1=65
+# OUT g=1673 Y0=65 C=128 Y1=65
+# OUT g=1674 Y0=65 C=128 Y1=65
+# OUT g=1675 Y0=65 C=128 Y1=65
+# OUT g=1676 Y0=65 C=128 Y1=65
+# OUT g=1677 Y0=65 C=128 Y1=35
+# OUT g=1678 Y0=35 C=128 Y1=35
+# OUT g=1679 Y0=35 C=128 Y1=35
+# OUT g=1680 Y0=35 C=128 Y1=35
+# OUT g=1681 Y0=35 C=128 Y1=35
+# OUT g=1682 Y0=35 C=128 Y1=35
+# OUT g=1683 Y0=35 C=128 Y1=35
+# OUT g=1684 Y0=35 C=128 Y1=35
+# OUT g=1685 Y0=35 C=128 Y1=35
+# OUT g=1686 Y0=35 C=128 Y1=35
+# OUT g=1687 Y0=35 C=128 Y1=35
+# OUT g=1688 Y0=35 C=128 Y1=35
+# OUT g=1689 Y0=35 C=128 Y1=35
+# OUT g=1690 Y0=35 C=128 Y1=35
+# OUT g=1691 Y0=35 C=128 Y1=35
+# OUT g=1692 Y0=35 C=128 Y1=35
+# OUT g=1693 Y0=35 C=128 Y1=35
+# OUT g=1694 Y0=35 C=128 Y1=35
+# OUT g=1695 Y0=35 C=128 Y1=35
+# OUT g=1696 Y0=35 C=128 Y1=35
+# OUT g=1697 Y0=35 C=128 Y1=35
+# OUT g=1698 Y0=35 C=128 Y1=35
+# OUT g=1699 Y0=35 C=128 Y1=35
+# OUT g=1700 Y0=35 C=128 Y1=35
+# OUT g=1701 Y0=35 C=128 Y1=35
+# OUT g=1702 Y0=35 C=128 Y1=35
+# OUT g=1703 Y0=35 C=128 Y1=35
+# OUT g=1704 Y0=35 C=128 Y1=35
+# OUT g=1705 Y0=35 C=128 Y1=35
+# OUT g=1706 Y0=35 C=128 Y1=35
+# OUT g=1707 Y0=35 C=128 Y1=35
+# OUT g=1708 Y0=35 C=128 Y1=35
+# OUT g=1709 Y0=35 C=128 Y1=35
+# OUT g=1710 Y0=35 C=128 Y1=35
+# OUT g=1711 Y0=35 C=128 Y1=35
+# OUT g=1712 Y0=35 C=128 Y1=35
+# OUT g=1713 Y0=35 C=128 Y1=35
+# OUT g=1714 Y0=35 C=128 Y1=35
+# OUT g=1715 Y0=35 C=128 Y1=35
+# OUT g=1716 Y0=35 C=128 Y1=35
+# OUT g=1717 Y0=35 C=128 Y1=35
+# OUT g=1718 Y0=35 C=128 Y1=35
+# OUT g=1719 Y0=35 C=128 Y1=35
+# OUT g=1720 Y0=35 C=128 Y1=35
+# OUT g=1721 Y0=35 C=128 Y1=35
+# OUT g=1722 Y0=35 C=128 Y1=35
+# OUT g=1723 Y0=35 C=128 Y1=35
+# OUT g=1724 Y0=35 C=128 Y1=35
+# OUT g=1725 Y0=35 C=128 Y1=35
+# OUT g=1726 Y0=35 C=128 Y1=35
+# OUT g=1727 Y0=35 C=128 Y1=35
+# OUT g=1728 Y0=35 C=128 Y1=35
+# OUT g=1729 Y0=35 C=128 Y1=35
+# OUT g=1730 Y0=35 C=128 Y1=35
+# OUT g=1731 Y0=35 C=128 Y1=35
+# OUT g=1732 Y0=35 C=128 Y1=35
+# OUT g=1733 Y0=35 C=128 Y1=35
+# OUT g=1734 Y0=35 C=128 Y1=35
+# OUT g=1735 Y0=35 C=128 Y1=35
+# OUT g=1736 Y0=35 C=128 Y1=35
+# OUT g=1737 Y0=35 C=128 Y1=35
+# OUT g=1738 Y0=35 C=128 Y1=35
+# OUT g=1739 Y0=35 C=128 Y1=35
+# OUT g=1740 Y0=35 C=128 Y1=35
+# OUT g=1741 Y0=35 C=128 Y1=35
+# OUT g=1742 Y0=35 C=128 Y1=35
+# OUT g=1743 Y0=35 C=128 Y1=35
+# OUT g=1744 Y0=35 C=128 Y1=35
+# OUT g=1745 Y0=35 C=128 Y1=35
+# OUT g=1746 Y0=35 C=128 Y1=35
+# OUT g=1747 Y0=35 C=128 Y1=35
+# OUT g=1748 Y0=35 C=128 Y1=35
+# OUT g=1749 Y0=35 C=128 Y1=35
+# OUT g=1750 Y0=35 C=128 Y1=35
+# OUT g=1751 Y0=35 C=128 Y1=35
+# OUT g=1752 Y0=35 C=128 Y1=35
+# OUT g=1753 Y0=35 C=128 Y1=35
+# OUT g=1754 Y0=35 C=128 Y1=35
+# OUT g=1755 Y0=35 C=128 Y1=35
+# OUT g=1756 Y0=35 C=128 Y1=35
+# OUT g=1757 Y0=35 C=128 Y1=35
+# OUT g=1758 Y0=35 C=128 Y1=35
+# OUT g=1759 Y0=35 C=128 Y1=35
+# OUT g=1760 Y0=35 C=128 Y1=35
+# OUT g=1761 Y0=35 C=128 Y1=35
+# OUT g=1762 Y0=35 C=128 Y1=35
+# OUT g=1763 Y0=35 C=128 Y1=35
+# OUT g=1764 Y0=35 C=128 Y1=35
+# OUT g=1765 Y0=35 C=128 Y1=35
+# OUT g=1766 Y0=35 C=128 Y1=35
+# OUT g=1767 Y0=35 C=128 Y1=35
+# OUT g=1768 Y0=35 C=128 Y1=35
+# OUT g=1769 Y0=35 C=128 Y1=35
+# OUT g=1770 Y0=35 C=128 Y1=35
+# OUT g=1771 Y0=35 C=128 Y1=35
+# OUT g=1772 Y0=35 C=128 Y1=35
+# OUT g=1773 Y0=35 C=128 Y1=35
+# OUT g=1774 Y0=35 C=128 Y1=35
+# OUT g=1775 Y0=35 C=128 Y1=35
+# OUT g=1776 Y0=35 C=128 Y1=35
+# OUT g=1777 Y0=35 C=128 Y1=35
+# OUT g=1778 Y0=35 C=128 Y1=35
+# OUT g=1779 Y0=35 C=128 Y1=35
+# OUT g=1780 Y0=35 C=128 Y1=35
+# OUT g=1781 Y0=35 C=128 Y1=35
+# OUT g=1782 Y0=35 C=128 Y1=35
+# OUT g=1783 Y0=35 C=128 Y1=35
+# OUT g=1784 Y0=35 C=128 Y1=35
+# OUT g=1785 Y0=35 C=128 Y1=35
+# OUT g=1786 Y0=35 C=128 Y1=35
+# OUT g=1787 Y0=35 C=128 Y1=35
+# OUT g=1788 Y0=35 C=128 Y1=35
+# OUT g=1789 Y0=35 C=128 Y1=35
+# OUT g=1790 Y0=35 C=128 Y1=35
+# OUT g=1791 Y0=35 C=128 Y1=35
+# OUT g=1792 Y0=35 C=128 Y1=35
+# OUT g=1793 Y0=35 C=128 Y1=35
+# OUT g=1794 Y0=35 C=128 Y1=35
+# OUT g=1795 Y0=35 C=128 Y1=35
+# OUT g=1796 Y0=35 C=128 Y1=35
+# OUT g=1797 Y0=16 C=128 Y1=16
+# OUT g=1798 Y0=16 C=128 Y1=16
+# OUT g=1799 Y0=16 C=128 Y1=16
+# OUT g=1800 Y0=16 C=128 Y1=16
+# OUT g=1801 Y0=16 C=128 Y1=16
+# OUT g=1802 Y0=16 C=128 Y1=16
+# OUT g=1803 Y0=16 C=128 Y1=16
+# OUT g=1804 Y0=16 C=128 Y1=16
+# OUT g=1805 Y0=16 C=128 Y1=16
+# OUT g=1806 Y0=16 C=128 Y1=16
+# OUT g=1807 Y0=16 C=128 Y1=16
+# OUT g=1808 Y0=16 C=128 Y1=16
+# OUT g=1809 Y0=16 C=128 Y1=16
+# OUT g=1810 Y0=16 C=128 Y1=16
+# OUT g=1811 Y0=16 C=128 Y1=16
+# OUT g=1812 Y0=16 C=128 Y1=16
+# OUT g=1813 Y0=16 C=128 Y1=16
+# OUT g=1814 Y0=16 C=128 Y1=16
+# OUT g=1815 Y0=16 C=128 Y1=16
+# OUT g=1816 Y0=16 C=128 Y1=16
+# OUT g=1817 Y0=16 C=128 Y1=16
+# OUT g=1818 Y0=16 C=128 Y1=16
+# OUT g=1819 Y0=16 C=128 Y1=16
+# OUT g=1820 Y0=16 C=128 Y1=16
+# OUT g=1821 Y0=16 C=128 Y1=16
+# OUT g=1822 Y0=16 C=128 Y1=16
+# OUT g=1823 Y0=16 C=128 Y1=16
+# OUT g=1824 Y0=16 C=128 Y1=16
+# OUT g=1825 Y0=16 C=128 Y1=16
+# OUT g=1826 Y0=16 C=128 Y1=16
+# OUT g=1827 Y0=16 C=128 Y1=16
+# OUT g=1828 Y0=16 C=128 Y1=16
+# OUT g=1829 Y0=16 C=128 Y1=16
+# OUT g=1830 Y0=16 C=128 Y1=16
+# OUT g=1831 Y0=16 C=128 Y1=16
+# OUT g=1832 Y0=16 C=128 Y1=16
+# OUT g=1833 Y0=16 C=128 Y1=16
+# OUT g=1834 Y0=16 C=128 Y1=16
+# OUT g=1835 Y0=16 C=128 Y1=16
+# OUT g=1836 Y0=16 C=128 Y1=16
+# OUT g=1837 Y0=16 C=128 Y1=16
+# OUT g=1838 Y0=16 C=128 Y1=16
+# OUT g=1839 Y0=16 C=128 Y1=16
+# OUT g=1840 Y0=16 C=128 Y1=16
+# OUT g=1841 Y0=16 C=128 Y1=16
+# OUT g=1842 Y0=16 C=128 Y1=16
+# OUT g=1843 Y0=16 C=128 Y1=16
+# OUT g=1844 Y0=16 C=128 Y1=16
+# OUT g=1845 Y0=16 C=128 Y1=16
+# OUT g=1846 Y0=16 C=128 Y1=16
+# OUT g=1847 Y0=16 C=128 Y1=16
+# OUT g=1848 Y0=16 C=128 Y1=16
+# OUT g=1849 Y0=16 C=128 Y1=16
+# OUT g=1850 Y0=16 C=128 Y1=16
+# OUT g=1851 Y0=16 C=128 Y1=16
+# OUT g=1852 Y0=16 C=128 Y1=16
+# OUT g=1853 Y0=16 C=128 Y1=16
+# OUT g=1854 Y0=16 C=128 Y1=16
+# OUT g=1855 Y0=16 C=128 Y1=16
+# OUT g=1856 Y0=16 C=128 Y1=16
+# OUT g=1857 Y0=16 C=128 Y1=16
+# OUT g=1858 Y0=16 C=128 Y1=16
+# OUT g=1859 Y0=16 C=128 Y1=16
+# OUT g=1860 Y0=16 C=128 Y1=16
+# OUT g=1861 Y0=16 C=128 Y1=16
+# OUT g=1862 Y0=16 C=128 Y1=16
+# OUT g=1863 Y0=16 C=128 Y1=16
+# OUT g=1864 Y0=16 C=128 Y1=16
+# OUT g=1865 Y0=16 C=128 Y1=16
+# OUT g=1866 Y0=16 C=128 Y1=16
+# OUT g=1867 Y0=16 C=128 Y1=16
+# OUT g=1868 Y0=16 C=128 Y1=16
+# OUT g=1869 Y0=16 C=128 Y1=16
+# OUT g=1870 Y0=16 C=128 Y1=16
+# OUT g=1871 Y0=16 C=128 Y1=16
+# OUT g=1872 Y0=16 C=128 Y1=16
+# OUT g=1873 Y0=16 C=128 Y1=16
+# OUT g=1874 Y0=16 C=128 Y1=16
+# OUT g=1875 Y0=16 C=128 Y1=16
+# OUT g=1876 Y0=16 C=128 Y1=16
+# OUT g=1877 Y0=16 C=128 Y1=16
+# OUT g=1878 Y0=16 C=128 Y1=16
+# OUT g=1879 Y0=16 C=128 Y1=16
+# OUT g=1880 Y0=16 C=128 Y1=16
+# OUT g=1881 Y0=16 C=128 Y1=16
+# OUT g=1882 Y0=16 C=128 Y1=16
+# OUT g=1883 Y0=16 C=128 Y1=16
+# OUT g=1884 Y0=16 C=128 Y1=16
+# OUT g=1885 Y0=16 C=128 Y1=16
+# OUT g=1886 Y0=16 C=128 Y1=16
+# OUT g=1887 Y0=16 C=128 Y1=16
+# OUT g=1888 Y0=16 C=128 Y1=16
+# OUT g=1889 Y0=16 C=128 Y1=16
+# OUT g=1890 Y0=16 C=128 Y1=16
+# OUT g=1891 Y0=16 C=128 Y1=16
+# OUT g=1892 Y0=16 C=128 Y1=16
+# OUT g=1893 Y0=16 C=128 Y1=16
+# OUT g=1894 Y0=16 C=128 Y1=16
+# OUT g=1895 Y0=16 C=128 Y1=16
+# OUT g=1896 Y0=16 C=128 Y1=16
+# OUT g=1897 Y0=16 C=128 Y1=16
+# OUT g=1898 Y0=16 C=128 Y1=16
+# OUT g=1899 Y0=16 C=128 Y1=16
+# OUT g=1900 Y0=16 C=128 Y1=16
+# OUT g=1901 Y0=16 C=128 Y1=16
+# OUT g=1902 Y0=16 C=128 Y1=16
+# OUT g=1903 Y0=16 C=128 Y1=16
+# OUT g=1904 Y0=16 C=128 Y1=16
+# OUT g=1905 Y0=16 C=128 Y1=16
+# OUT g=1906 Y0=16 C=128 Y1=16
+# OUT g=1907 Y0=16 C=128 Y1=16
+# OUT g=1908 Y0=16 C=128 Y1=16
+# OUT g=1909 Y0=16 C=128 Y1=16
+# OUT g=1910 Y0=16 C=128 Y1=16
+# OUT g=1911 Y0=16 C=128 Y1=16
+# OUT g=1912 Y0=16 C=128 Y1=16
+# OUT g=1913 Y0=16 C=128 Y1=16
+# OUT g=1914 Y0=16 C=128 Y1=16
+# OUT g=1915 Y0=16 C=128 Y1=16
+# OUT g=1916 Y0=16 C=128 Y1=16
+# OUT g=1917 Y0=16 C=128 Y1=16
+# OUT g=1918 Y0=16 C=128 Y1=16
+# OUT g=1919 Y0=16 C=128 Y1=16
+# OUT g=1920 Y0=16 C=128 Y1=180
+# OUT g=1921 Y0=180 C=128 Y1=180
+# OUT g=1922 Y0=180 C=128 Y1=180
+# OUT g=1923 Y0=180 C=128 Y1=180
+# OUT g=1924 Y0=180 C=128 Y1=180
+# done
+# ** Note: $finish    : ../../synthesis/dump_tb.v(76)
+#    Time: 400 us  Iteration: 0  Instance: /dump_tb
+# End time: 16:37:31 on Jun 17,2026, Elapsed time: 0:00:06
+# Errors: 0, Warnings: 6

@@ -12,7 +12,7 @@
 # or its authorized distributors. Please refer to the applicable 
 # agreement for further details.
 
-# ACDS 13.0sp1 232 linux 2026.06.17.09:27:54
+# ACDS 13.0sp1 232 linux 2026.06.17.17:57:19
 
 # ----------------------------------------
 # Auto-generated simulation script
@@ -109,7 +109,7 @@ alias elab {
 # Elaborate the top level design with novopt option
 alias elab_debug {
   echo "\[exec\] elab_debug"
-  vsim -voptargs=+acc -t ps -L work -L work_lib -L rst_controller -L alt_vip_crs_0 -L alt_vip_tpg_0 -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneii_ver $TOP_LEVEL_NAME
+  vsim -novopt -t ps -L work -L work_lib -L rst_controller -L alt_vip_crs_0 -L alt_vip_tpg_0 -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneii_ver $TOP_LEVEL_NAME
 }
 
 # ----------------------------------------

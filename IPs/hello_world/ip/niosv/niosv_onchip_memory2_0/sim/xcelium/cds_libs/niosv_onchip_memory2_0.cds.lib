@@ -1,0 +1,5 @@
+
+DEFINE                     work                   ./../libraries/work/                  
+DEFINE                     niosv_onchip_memory2_0 ./../libraries/niosv_onchip_memory2_0/
+INCLUDE simulator.cds.lib                                                               
+SOFTINCLUDE device.cds.lib                                                              

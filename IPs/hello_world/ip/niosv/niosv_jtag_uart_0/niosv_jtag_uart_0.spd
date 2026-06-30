@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file
+   path="altera_avalon_jtag_uart_1931/sim/altera_avalon_jtag_uart.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_avalon_jtag_uart_1931" />
+ <file
+   path="altera_avalon_jtag_uart_1931/sim/altera_avalon_jtag_uart_log_module.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_avalon_jtag_uart_1931" />
+ <file
+   path="altera_avalon_jtag_uart_1931/sim/altera_avalon_jtag_uart_scfifo_r.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_avalon_jtag_uart_1931" />
+ <file
+   path="altera_avalon_jtag_uart_1931/sim/altera_avalon_jtag_uart_scfifo_w.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_avalon_jtag_uart_1931" />
+ <file
+   path="altera_avalon_jtag_uart_1931/sim/altera_avalon_jtag_uart_sim_scfifo_r.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_avalon_jtag_uart_1931" />
+ <file
+   path="altera_avalon_jtag_uart_1931/sim/altera_avalon_jtag_uart_sim_scfifo_w.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_avalon_jtag_uart_1931" />
+ <file
+   path="sim/niosv_jtag_uart_0.v"
+   type="VERILOG"
+   library="niosv_jtag_uart_0"
+   hasInlineConfiguration="true" />
+ <topLevel name="niosv_jtag_uart_0.niosv_jtag_uart_0" />
+ <deviceFamily name="agilex5" />
+ <device name="A5ED065BB32AE6SR0" />
+</simPackage>

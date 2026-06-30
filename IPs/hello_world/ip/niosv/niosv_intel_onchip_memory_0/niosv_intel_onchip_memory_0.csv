@@ -1,0 +1,19 @@
+# system info niosv_intel_onchip_memory_0 on 2026.06.30.13:08:05
+system_info:
+name,value
+DEVICE,A5ED065BB32AE6SR0
+DEVICE_FAMILY,Agilex 5
+GENERATION_ID,0
+#
+#
+# Files generated for niosv_intel_onchip_memory_0 on 2026.06.30.13:08:05
+files:
+filepath,kind,attributes,module,is_top
+sim/niosv_intel_onchip_memory_0.v,VERILOG,CONTAINS_INLINE_CONFIGURATION,niosv_intel_onchip_memory_0,true
+intel_onchip_memory_1410/sim/niosv_intel_onchip_memory_0_intel_onchip_memory_1410_lcviyji.sv,SYSTEM_VERILOG,,niosv_intel_onchip_memory_0_intel_onchip_memory_1410_lcviyji,false
+intel_onchip_memory_1410/sim/niosv_intel_onchip_memory_0_intel_onchip_memory_0.hex,HEX,,niosv_intel_onchip_memory_0_intel_onchip_memory_1410_lcviyji,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+niosv_intel_onchip_memory_0.intel_onchip_memory_0,niosv_intel_onchip_memory_0_intel_onchip_memory_1410_lcviyji

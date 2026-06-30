@@ -1,0 +1,495 @@
+Fitter Route Stage Report for niosv
+Wed Jun 24 12:40:25 2026
+Quartus Prime Version 25.1.1 Build 125 07/31/2025 Patches 1.31 SC Pro Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Nets with Highest Wire Count
+  3. Delay Chain Summary
+  4. Routing Usage Summary
+  5. Route Messages
+  6. Estimated Delay Added for Hold Timing Summary
+  7. Estimated Delay Added for Hold Timing Details
+  8. Global Router Wire Utilization Map
+  9. Peak Wire Demand Summary
+ 10. Peak Wire Demand Details
+ 11. Peak Total Grid Crossings
+ 12. Global Router Congestion Hotspot Summary
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+
++----------------------------------------------------------------------------+
+; Nets with Highest Wire Count                                               ;
++--------------------------------------------+----------------------+--------+
+; Net                                        ; Number of Wires Used ; Fanout ;
++--------------------------------------------+----------------------+--------+
+; rst_controller|r_sync_rst                  ; 322                  ; 133    ;
+; mm_interconnect_0|cmd_mux_002|Select_118~1 ; 256                  ; 1025   ;
+; mm_interconnect_0|cmd_mux_002|Select_119~1 ; 245                  ; 1025   ;
+; mm_interconnect_0|cmd_mux_002|Select_121~1 ; 245                  ; 1025   ;
+; mm_interconnect_0|cmd_mux_002|Select_114~1 ; 243                  ; 1025   ;
+; mm_interconnect_0|cmd_mux_002|Select_120~1 ; 240                  ; 1025   ;
+; mm_interconnect_0|cmd_mux_002|Select_113~1 ; 239                  ; 1025   ;
+; mm_interconnect_0|cmd_mux_002|Select_117~1 ; 239                  ; 1025   ;
+; mm_interconnect_0|cmd_mux_002|Select_116~1 ; 228                  ; 1025   ;
+; mm_interconnect_0|cmd_mux_002|Select_115~1 ; 215                  ; 1025   ;
++--------------------------------------------+----------------------+--------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Delay Chain Summary                                                                                                                                      ;
++---------+----------+---------------------+--------------------+----------------+-----------------------------------+-------------------------------------+
+; Name    ; Pin Type ; Input Delay Chain 0 ; Output Delay Chain ; OE Delay Chain ; IO_12_LANE Input Data Delay Chain ; IO_12_LANE Input Strobe Delay Chain ;
++---------+----------+---------------------+--------------------+----------------+-----------------------------------+-------------------------------------+
+; clk_clk ; Input    ; 0                   ; --                 ; --             ; --                                ; --                                  ;
++---------+----------+---------------------+--------------------+----------------+-----------------------------------+-------------------------------------+
+
+
++---------------------------------------------------------------------+
+; Routing Usage Summary                                               ;
++--------------------------------------+------------------------------+
+; Routing Resource Type                ; Usage                        ;
++--------------------------------------+------------------------------+
+; Block Input Mux Wrapbacks            ; 10 / 197,400 ( < 1 % )       ;
+; Block Input Muxes                    ; 24,213 / 2,278,560 ( 1 % )   ;
+; Block interconnects                  ; 18,458 / 2,391,360 ( < 1 % ) ;
+; C1 interconnects                     ; 9,594 / 1,071,360 ( < 1 % )  ;
+; C4 interconnects                     ; 3,893 / 1,049,040 ( < 1 % )  ;
+; C8 interconnects                     ; 95 / 104,904 ( < 1 % )       ;
+; DCM_muxes                            ; 1 / 456 ( < 1 % )            ;
+; DELAY_CHAINs                         ; 0 / 4,306 ( 0 % )            ;
+; Direct links                         ; 1,952 / 2,391,360 ( < 1 % )  ;
+; HIO Buffers                          ; 0 / 31,584 ( 0 % )           ;
+; IO12PHYTOP_LOGIC_INPUTs              ; 1 / 416 ( < 1 % )            ;
+; IO12PHYTOP_LOGIC_OUTPUTs             ; 1 / 960 ( < 1 % )            ;
+; IO75XDDRFMXCKTREE_CLKDRV_BIG_VCO_REs ; 0 / 16 ( 0 % )               ;
+; IO75XDDRFMXCKTREE_CLKDRV_GM0_REs     ; 0 / 16 ( 0 % )               ;
+; IO75XDDRFMXCKTREE_CLKDRV_VCO_INPUTs  ; 0 / 8 ( 0 % )                ;
+; IO75XDDRFMXCKTREE_CLKDRV_VCO_OUTPUTs ; 0 / 8 ( 0 % )                ;
+; IO75XDDRFMXCKTREE_FB_MUX31_REs       ; 0 / 48 ( 0 % )               ;
+; IOFBRADAPT_C2P_BUF_INPUTs            ; 0 / 132 ( 0 % )              ;
+; IOFBRADAPT_C2P_BUF_OUTPUTs           ; 0 / 132 ( 0 % )              ;
+; IOFBRADAPT_FRZ_BUFS_REs              ; 0 / 616 ( 0 % )              ;
+; IOFBRADAPT_P2C_BUF_INPUTs            ; 0 / 284 ( 0 % )              ;
+; IOFBRADAPT_P2C_BUF_OUTPUTs           ; 0 / 284 ( 0 % )              ;
+; Programmable Invert Buffers          ; 0 / 320 ( 0 % )              ;
+; Programmable Invert Inputs           ; 649 / 214,170 ( < 1 % )      ;
+; Programmable Inverts                 ; 649 / 214,170 ( < 1 % )      ;
+; R0 interconnects                     ; 12,112 / 1,835,820 ( < 1 % ) ;
+; R1 interconnects                     ; 6,851 / 1,049,040 ( < 1 % )  ;
+; R12 interconnects                    ; 66 / 157,356 ( < 1 % )       ;
+; R2 interconnects                     ; 2,956 / 527,340 ( < 1 % )    ;
+; R4 interconnects                     ; 1,906 / 532,980 ( < 1 % )    ;
+; R6 interconnects                     ; 1,490 / 535,800 ( < 1 % )    ;
+; Redundancy Muxes                     ; 0 / 62,248 ( 0 % )           ;
+; Row Clock Tap-Offs                   ; 458 / 157,356 ( < 1 % )      ;
+; Switchbox_clock_muxes                ; 8 / 5,120 ( < 1 % )          ;
+; VIO Buffers                          ; 3 / 12,800 ( < 1 % )         ;
+; Vertical_seam_tap_muxes              ; 8 / 2,304 ( < 1 % )          ;
++--------------------------------------+------------------------------+
+
+
++----------------+
+; Route Messages ;
++----------------+
+Info (20030): Parallel compilation is enabled and will use 24 of the 32 processors detected
+Info: *******************************************************************
+Info: Running Quartus Prime Fitter
+    Info: Version 25.1.1 Build 125 07/31/2025 Patches 1.31 SC Pro Edition
+    Info: Processing started: Wed Jun 24 12:34:57 2026
+    Info: System process ID: 144171
+Info: Command: quartus_fit --read_settings_files=on --write_settings_files=off niosv -c niosv
+Info: qfit2_default_script.tcl version: #1
+Info: Project  = niosv
+Info: Revision = niosv
+Info (22300): Design uses Placement Effort Multiplier = 1.0.
+Info (170193): Fitter routing operations beginning
+Info (20215): Router estimated peak short interconnect demand : 30% of down directional wire in region X12_Y16 to X23_Y23
+    Info (20265): Estimated peak short right directional wire demand : 0% in region X0_Y0 to X11_Y7
+    Info (20265): Estimated peak short left directional wire demand : 0% in region X0_Y0 to X11_Y7
+    Info (20265): Estimated peak short up directional wire demand : 16% in region X12_Y16 to X23_Y23
+    Info (20265): Estimated peak short down directional wire demand : 30% in region X12_Y16 to X23_Y23
+Info (20215): Router estimated peak long high speed interconnect demand : 100% of down directional wire in region X24_Y8 to X35_Y15
+    Info (20265): Estimated peak long high speed right directional wire demand : 60% in region X12_Y16 to X23_Y23
+    Info (20265): Estimated peak long high speed left directional wire demand : 73% in region X24_Y16 to X35_Y23
+    Info (20265): Estimated peak long high speed up directional wire demand : 91% in region X24_Y16 to X35_Y23
+    Info (20265): Estimated peak long high speed down directional wire demand : 100% in region X24_Y8 to X35_Y15
+    Info (20315): Note that the router may use short wires to implement long connections at higher delay
+Info (170239): Router is attempting to preserve 0.03 percent of routes from an earlier compilation, a user specified Routing Constraints File, or internal routing requirements.
+Info (21076): High junction temperature operating condition is not set. Assuming a default value of '100'.
+Info (21076): Low junction temperature operating condition is not set. Assuming a default value of '0'.
+Info (11888): Total time spent on timing analysis during Routing is 1.82 seconds.
+Warning (18291): Timing characteristics of device A5ED065BB32AE6SR0 are preliminary
+Info (16607): Fitter routing operations ending: elapsed time is 00:01:39
+
+
++-------------------------------------------------------------------------------+
+; Estimated Delay Added for Hold Timing Summary                                 ;
++-----------------------------+-----------------------------+-------------------+
+; Source Clock(s)             ; Destination Clock(s)        ; Delay Added in ns ;
++-----------------------------+-----------------------------+-------------------+
+; clk_clk~derived             ; altera_reserved_tck~derived ; 5.1               ;
+; clk_clk~derived             ; clk_clk~derived             ; 4.6               ;
+; altera_reserved_tck~derived ; clk_clk~derived             ; 1.8               ;
++-----------------------------+-----------------------------+-------------------+
+Note: For more information on problematic transfers, consider running the Fitter again with the Optimize hold timing option (Settings Menu) turned off.
+This will disable optimization of problematic paths and expose them for further analysis using the Timing Analyzer.
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Estimated Delay Added for Hold Timing Details                                                                                                                                                                                                                ;
++------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+; Source Register                                                                    ; Destination Register                                                                                                                                ; Delay Added in ns ;
++------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|C_expn_pc[10]~RTM                  ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|debug_pc[10]                                                                               ; 0.185             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|C_expn_pc[10]~RTM_18               ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|debug_pc[10]                                                                               ; 0.185             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|C_dbg_expn_pc[10]~RTM              ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|debug_pc[10]                                                                               ; 0.185             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|C_expn_pc[4]~RTM_17                ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|debug_pc[4]                                                                                ; 0.129             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|C_expn_pc[4]~RTM                   ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|debug_pc[4]                                                                                ; 0.129             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|C_dbg_expn_pc[4]~RTM               ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|debug_pc[4]                                                                                ; 0.129             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|mcause.interrupt~RTM      ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|mcause.interrupt~RTM                                                                       ; 0.121             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|in_data_buffer[13]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|out_data_buffer[13]                                                                        ; 0.118             ;
+; mm_interconnect_0|cmd_mux_003|saved_grant[1]                                       ; my_niosv|my_niosv|timer_module|mtimecmp[40]                                                                                                         ; 0.118             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|in_data_buffer[1]         ; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|out_data_buffer[1]                                                                         ; 0.115             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|in_data_buffer[15]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|out_data_buffer[15]                                                                        ; 0.114             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|in_data_buffer[28]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|out_data_buffer[28]                                                                        ; 0.108             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|in_data_buffer[41]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_data_buffer[41]                                                                        ; 0.107             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|in_data_buffer[22]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|out_data_buffer[22]                                                                        ; 0.106             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|C_expn_pc[30]~RTM_36               ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|debug_pc[16]                                                                               ; 0.105             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|C_dbg_expn_pc[0]~RTM_7             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|debug_pc[16]                                                                               ; 0.105             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|C_dbg_expn_pc[3]~RTM_6             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|debug_pc[16]                                                                               ; 0.105             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|C_expn_pc[16]~RTM_22               ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|debug_pc[16]                                                                               ; 0.105             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|C_expn_pc[16]~RTM                  ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|debug_pc[16]                                                                               ; 0.105             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|C_dbg_expn_pc[16]~RTM              ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|debug_pc[16]                                                                               ; 0.105             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|in_data_buffer[12]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|out_data_buffer[12]                                                                        ; 0.104             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|in_data_buffer[31]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|out_data_buffer[31]                                                                        ; 0.104             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|in_data_buffer[37]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_data_buffer[37]                                                                        ; 0.104             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|in_data_buffer[30]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_data_buffer[30]                                                                        ; 0.103             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|in_data_buffer[7]         ; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|out_data_buffer[7]                                                                         ; 0.101             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|in_data_buffer[4]         ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_data_buffer[4]                                                                         ; 0.100             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|mtvec.base[17]~RTM        ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|mtvec.base[17]~RTM                                                                         ; 0.098             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_data_toggle_flopped_n ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_to_in_synchronizer|din_s1                                                              ; 0.097             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|in_data_buffer[11]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|out_data_buffer[11]                                                                        ; 0.095             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|in_data_buffer[13]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_data_buffer[13]                                                                        ; 0.094             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|in_data_buffer[22]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_data_buffer[22]                                                                        ; 0.094             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|in_data_buffer[14]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|out_data_buffer[14]                                                                        ; 0.094             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|in_data_buffer[5]         ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_data_buffer[5]                                                                         ; 0.091             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|in_data_buffer[8]         ; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|out_data_buffer[8]                                                                         ; 0.090             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|out_data_toggle_flopped_n ; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|out_to_in_synchronizer|din_s1                                                              ; 0.088             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|in_data_buffer[31]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_data_buffer[31]                                                                        ; 0.088             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|in_data_buffer[9]         ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_data_buffer[9]                                                                         ; 0.085             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|in_data_buffer[2]         ; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|out_data_buffer[2]                                                                         ; 0.081             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|in_data_buffer[15]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_data_buffer[15]                                                                        ; 0.076             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|in_data_buffer[17]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_data_buffer[17]                                                                        ; 0.076             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|in_data_buffer[42]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_data_buffer[42]                                                                        ; 0.076             ;
+; mm_interconnect_0|cmd_mux_002|saved_grant[3]                                       ; sram|intel_onchip_memory_0|altera_syncram_component|auto_generated|altera_syncram_impl1|address_reg_a[3]                                            ; 0.072             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|in_data_buffer[24]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|out_data_buffer[24]                                                                        ; 0.071             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|mcause.code[2]~RTM        ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|mcause.code[2]~RTM                                                                         ; 0.069             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|in_data_buffer[18]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|out_data_buffer[18]                                                                        ; 0.068             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|mtvec.base[25]~RTM        ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|mtvec.base[25]~RTM                                                                         ; 0.064             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|in_data_buffer[3]         ; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|out_data_buffer[3]                                                                         ; 0.062             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|in_data_buffer[9]         ; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|out_data_buffer[9]                                                                         ; 0.060             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|in_data_buffer[25]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|out_data_buffer[25]                                                                        ; 0.058             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|in_data_buffer[40]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_data_buffer[40]                                                                        ; 0.056             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|in_data_buffer[0]         ; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|out_data_buffer[0]                                                                         ; 0.052             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|in_data_buffer[3]         ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_data_buffer[3]                                                                         ; 0.051             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|in_data_buffer[8]         ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_data_buffer[8]                                                                         ; 0.051             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|in_data_buffer[20]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_data_buffer[20]                                                                        ; 0.047             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|C_dbg_expn_pc[5]~RTM               ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|debug_pc[5]                                                                                ; 0.047             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|in_data_buffer[26]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|out_data_buffer[26]                                                                        ; 0.045             ;
+; mm_interconnect_0|cmd_mux_002|saved_grant[0]                                       ; sram|intel_onchip_memory_0|altera_syncram_component|auto_generated|altera_syncram_impl1|address_reg_a[3]                                            ; 0.041             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|in_data_buffer[16]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|out_data_buffer[16]                                                                        ; 0.040             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|in_data_buffer[17]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|out_data_buffer[17]                                                                        ; 0.040             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|in_data_buffer[21]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|out_data_buffer[21]                                                                        ; 0.038             ;
+; mm_interconnect_0|cmd_mux_002|saved_grant[1]                                       ; sram|intel_onchip_memory_0|altera_syncram_component|auto_generated|altera_syncram_impl1|address_reg_a[3]                                            ; 0.037             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|in_data_buffer[29]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_data_buffer[29]                                                                        ; 0.037             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|in_data_buffer[4]         ; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|out_data_buffer[4]                                                                         ; 0.035             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|mtvec.base[26]~RTM        ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|mtvec.base[26]~RTM                                                                         ; 0.032             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|C_dbg_expn_pc[8]~RTM               ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|debug_pc[8]                                                                                ; 0.031             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|in_data_buffer[23]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_data_buffer[23]                                                                        ; 0.030             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|in_data_buffer[1]         ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_data_buffer[1]                                                                         ; 0.029             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_address[7]~RTM_5                            ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_address[7]~RTM                                                                                               ; 0.029             ;
+; mm_interconnect_0|my_niosv_instruction_manager_agent|araddr_q0[6]                  ; my_niosv|my_niosv|dbg_mod|dm_inst|dbg_rom_inst|gen_mlab_rom.dbg_rom_inst|ram_no_ecc.data_ram_inst|auto_generated|altera_syncram_impl1|rdaddr_reg[4] ; 0.027             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|in_data_buffer[32]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_data_buffer[32]                                                                        ; 0.027             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|in_data_buffer[19]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|out_data_buffer[19]                                                                        ; 0.027             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|mcause.code[4]~RTM        ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|mcause.code[4]~RTM                                                                         ; 0.026             ;
+; mm_interconnect_0|cmd_mux_001|saved_grant[0]                                       ; my_niosv|my_niosv|dbg_mod|dm_inst|dbg_rom_inst|gen_mlab_rom.dbg_rom_inst|ram_no_ecc.data_ram_inst|auto_generated|altera_syncram_impl1|rdaddr_reg[4] ; 0.026             ;
+; mm_interconnect_0|my_niosv_data_manager_agent|awaddr_q0[14]                        ; sram|intel_onchip_memory_0|altera_syncram_component|auto_generated|altera_syncram_impl1|ram_block2a4~reg0                                           ; 0.026             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|in_data_buffer[36]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_data_buffer[36]                                                                        ; 0.026             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|in_data_buffer[14]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_data_buffer[14]                                                                        ; 0.026             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|in_data_buffer[19]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_data_buffer[19]                                                                        ; 0.026             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|mtvec.base[3]~RTM         ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|mtvec.base[3]~RTM                                                                          ; 0.026             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|in_data_buffer[34]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_data_buffer[34]                                                                        ; 0.025             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|E_stage_inst|E_rs1_gpr_val[30]     ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|shifter_inst|shift_result[30]                                                         ; 0.023             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|mcause.code[1]~RTM        ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|mcause.code[1]~RTM                                                                         ; 0.022             ;
+; mm_interconnect_0|cmd_mux_001|saved_grant[1]                                       ; my_niosv|my_niosv|dbg_mod|dm_inst|dbg_rom_inst|gen_mlab_rom.dbg_rom_inst|ram_no_ecc.data_ram_inst|auto_generated|altera_syncram_impl1|rdaddr_reg[4] ; 0.022             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|C_expn_pc[30]~RTM_1                ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|debug_pc[30]                                                                               ; 0.020             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|C_expn_pc[30]~RTM                  ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|debug_pc[30]                                                                               ; 0.020             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|C_dbg_expn_pc[30]~RTM              ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|debug_pc[30]                                                                               ; 0.020             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|in_data_buffer[18]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_data_buffer[18]                                                                        ; 0.020             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|E_stage_inst|E_rs1_gpr_val[20]     ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|shifter_inst|shift_result[21]                                                         ; 0.019             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|in_data_buffer[38]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_data_buffer[38]                                                                        ; 0.019             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|in_data_buffer[27]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|out_data_buffer[27]                                                                        ; 0.018             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|in_data_buffer[25]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_data_buffer[25]                                                                        ; 0.017             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|in_data_buffer[30]        ; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|out_data_buffer[30]                                                                        ; 0.016             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|mtvec.base[9]~RTM         ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|mtvec.base[9]~RTM                                                                          ; 0.016             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|mtvec.base[27]~RTM        ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|mtvec.base[27]~RTM                                                                         ; 0.015             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|E_stage_inst|E_rs1_gpr_val[29]     ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|shifter_inst|shift_result[30]                                                         ; 0.014             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|in_data_buffer[0]         ; my_niosv|my_niosv|dbg_mod|dtm_inst|cmd_clk_xer|clock_xer|out_data_buffer[0]                                                                         ; 0.013             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|mtvec.base[1]~RTM         ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|mtvec.base[1]~RTM                                                                          ; 0.013             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|M0_rs2_gpr_val[9]    ; mm_interconnect_0|my_niosv_data_manager_agent|wdata_q0[9]                                                                                           ; 0.013             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|mtvec.base[6]~RTM         ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|mtvec.base[6]~RTM                                                                          ; 0.012             ;
+; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|in_data_buffer[5]         ; my_niosv|my_niosv|dbg_mod|dtm_inst|rsp_clk_xer|clock_xer|out_data_buffer[5]                                                                         ; 0.011             ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|C_expn_pc[6]~RTM                   ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|debug_pc[6]                                                                                ; 0.011             ;
++------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+Note: This table only shows the top 100 path(s) that have the largest delay added for hold.
+
+
+--------------------------------------
+; Global Router Wire Utilization Map ;
+--------------------------------------
+This report is unavailable in plain text report export.
+
+
++-------------------------------------------------------------------------------+
+; Peak Wire Demand Summary                                                      ;
++-----------------+-----------+-----------------------------------+-------------+
+; Wire            ; Direction ; Grid [(Xmin, Ymin), (Xmax, Ymax)] ; Peak Demand ;
++-----------------+-----------+-----------------------------------+-------------+
+; short           ; up        ; [(12, 16), (23, 23)]              ; 16.389 %    ;
+; short           ; down      ; [(12, 16), (23, 23)]              ; 30.833 %    ;
+; long high speed ; right     ; [(12, 16), (23, 23)]              ; 60.417 %    ;
+; long high speed ; left      ; [(24, 16), (35, 23)]              ; 73.311 %    ;
+; long high speed ; up        ; [(24, 16), (35, 23)]              ; 91.667 %    ;
+; long high speed ; down      ; [(24, 8), (35, 15)]               ; 100.000 %   ;
++-----------------+-----------+-----------------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Peak Wire Demand Details                                                                                                                                                               ;
++-----------------+-----------+-----------------------------------+-------------+--------------------------------------------------------------------------------------------------------+
+; Wire            ; Direction ; Grid [(Xmin, Ymin), (Xmax, Ymax)] ; Peak Demand ; Net Names                                                                                              ;
++-----------------+-----------+-----------------------------------+-------------+--------------------------------------------------------------------------------------------------------+
+; short           ; up        ; [(12, 16), (23, 23)]              ; 16.389 %    ;    High Routing Fan-Out                                                                                ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|C_read                                                 ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|shifter_inst|reduce_or_0                 ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|shifter_inst|i246~0                      ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|D_stage_inst|D_use_imm                                 ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|D_stage_inst|instr_decoder_inst|Mux_87~3xsyn           ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|E_stage_inst|E_exe_result[0]~51xsyn                    ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|E_stage_inst|E_exe_result[0]~50                        ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|tdata2[28]                                    ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|tdata2[27]                                    ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|tdata2[5]                                     ;
+; short           ; up        ; [(12, 16), (23, 23)]              ; 16.389 %    ;    Long Distance                                                                                       ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|M0_exe_result[6]                         ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|E_stage_inst|E_rs2_gpr_val[22]                         ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|D_stage_inst|D_imm[4]                                  ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|E_stage_inst|E_rs2_gpr_val[14]                         ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|D_stage_inst|D_instr_pc[30]                            ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|D_stage_inst|D_instr_pc[28]                            ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|tdata2[15]                                    ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|E_stage_inst|E_rs2_gpr_val[19]                         ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|D_stage_inst|D_imm[23]                                 ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|D_stage_inst|D_imm[21]                                 ;
+; short           ; down      ; [(12, 16), (23, 23)]              ; 30.833 %    ;    High Routing Fan-Out                                                                                ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|C_set                                                  ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|debug_pc_nxt[0]~1                             ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|i12~0                                    ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|C_expn_update                                          ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|C_clr~0                                                ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|C_read                                                 ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|i73~0                                    ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|M0_e_expn                                ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|D_stage_inst|D_i_expn                                  ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|M0_unaligned_redir                       ;
+; short           ; down      ; [(12, 16), (23, 23)]              ; 30.833 %    ;    Long Distance                                                                                       ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|tdata2[22]                                    ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|M0_redirect_pc[2]                        ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|M0_exe_result[5]                         ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|M0_redirect_pc[7]                        ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|D_stage_inst|D_instr_word[29]                          ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|D_stage_inst|D_instr_word[28]                          ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|M0_exe_result[17]                        ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|D_stage_inst|D_instr_word[8]                           ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|M0_exe_result[6]                         ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|M0_exe_result[16]                        ;
+; long high speed ; right     ; [(12, 16), (23, 23)]              ; 60.417 %    ;    High Routing Fan-Out                                                                                ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|C_set                                                  ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|M0_rd[2]                                 ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|M0_rd[0]                                 ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|M0_rd[4]                                 ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|M0_rd[1]                                 ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|M0_rd[3]                                 ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|wr_gpr_en~0                                            ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|M0_exe_result[1]                         ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|M0_exe_result[0]                         ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|M0_e_expn                                ;
+; long high speed ; right     ; [(12, 16), (23, 23)]              ; 60.417 %    ;    Long Distance                                                                                       ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|my_niosv_data_manager_agent|wdata_q0[16]                                             ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|my_niosv_data_manager_agent|wdata_q0[20]                                             ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|my_niosv_data_manager_agent|wdata_q0[9]                                              ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|my_niosv_data_manager_agent|wdata_q0[10]                                             ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|my_niosv_data_manager_agent|wdata_q0[7]                                              ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|my_niosv_data_manager_agent|wdata_q0[1]                                              ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|my_niosv_data_manager_agent|wdata_q0[3]                                              ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|my_niosv_data_manager_agent|wdata_q0[4]                                              ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|tdata2[22]                                    ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|shifter_inst|shift_result[28]            ;
+; long high speed ; left      ; [(24, 16), (35, 23)]              ; 73.311 %    ;    High Routing Fan-Out                                                                                ;
+;     --          ;           ;                                   ;             ; rst_controller|r_sync_rst                                                                              ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|mscratch[3]~RTM_4                             ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|debug_pc_nxt[0]~1                             ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|i12~0                                    ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|C_expn_update                                          ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|C_clr~0                                                ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|rsp_mux|Select_0~4                                                                   ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|lsu_inst|ld_instr_done                                 ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|D_stage_inst|D_use_imm                                 ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|prefetch_inst|dispatch_pc[20]~RTM_3                    ;
+; long high speed ; left      ; [(24, 16), (35, 23)]              ; 73.311 %    ;    Long Distance                                                                                       ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux|Select_156~0                                                                 ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux|Select_155~0                                                                 ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux|Select_154~0                                                                 ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux|Select_153~0                                                                 ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux|Select_152~0                                                                 ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux|Select_158~0                                                                 ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux|Select_157~0                                                                 ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux|Select_159~0                                                                 ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|D_stage_inst|D_instr_word[10]                          ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|D_stage_inst|D_instr_word[9]                           ;
+; long high speed ; up        ; [(24, 16), (35, 23)]              ; 91.667 %    ;    High Routing Fan-Out                                                                                ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux_002|Select_113~1                                                             ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux_002|Select_118~1                                                             ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux_002|Select_119~1                                                             ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux_002|Select_120~1                                                             ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux_002|Select_121~1                                                             ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux_002|Select_116~1                                                             ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux_002|Select_115~1                                                             ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux_002|Select_114~1                                                             ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux_002|Select_112~1                                                             ;
+;     --          ;           ;                                   ;             ; rst_controller|r_early_rst                                                                             ;
+; long high speed ; up        ; [(24, 16), (35, 23)]              ; 91.667 %    ;    Long Distance                                                                                       ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux_002|saved_grant[0]                                                           ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux_002|Select_119~1                                                             ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|D_stage_inst|D_instr_word[10]                          ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|prefetch_inst|buffer_inst|queue_mem~163                ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|dbg_mod|dm_inst|hart_readdata[0]~15                                                  ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|M0_exe_result[6]                         ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|dbg_mod|dm_inst|hart_readdata[0]~12                                                  ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|prefetch_inst|buffer_inst|queue_mem~135                ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|dbg_mod|dm_inst|hart_readdata[0]~13                                                  ;
+;     --          ;           ;                                   ;             ; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|lsu_inst|ls_triggered~1                                ;
+; long high speed ; down      ; [(24, 8), (35, 15)]               ; 100.000 %   ;    High Routing Fan-Out                                                                                ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux_002|Select_111~2                                                             ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux_002|Select_121~1                                                             ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux_002|Select_120~1                                                             ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux_002|Select_119~1                                                             ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux_002|Select_118~1                                                             ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux_002|Select_117~1                                                             ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux_002|Select_116~1                                                             ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux_002|Select_115~1                                                             ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux_002|Select_114~1                                                             ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux_002|Select_113~1                                                             ;
+; long high speed ; down      ; [(24, 8), (35, 15)]               ; 100.000 %   ;    Long Distance                                                                                       ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux_002|Select_119~1                                                             ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux_002|Select_111~2                                                             ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux_002|Select_117~1                                                             ;
+;     --          ;           ;                                   ;             ; sram|intel_onchip_memory_0|altera_syncram_component|auto_generated|altera_syncram_impl1|decode3|rtl~17 ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|sram_s1_agent|m0_read~7                                                              ;
+;     --          ;           ;                                   ;             ; mm_interconnect_0|cmd_mux_002|Select_159~26                                                            ;
+;     --          ;           ;                                   ;             ; debug|debug|altera_avalon_jtag_uart_alt_jtag_atlantic|adapted_tdo                                      ;
+;     --          ;           ;                                   ;             ; debug|debug|fifo_rd~0xsyn_2                                                                            ;
+;     --          ;           ;                                   ;             ; sram|intel_onchip_memory_0|altera_syncram_component|auto_generated|altera_syncram_impl1|decode3|rtl~9  ;
+;     --          ;           ;                                   ;             ; sram|intel_onchip_memory_0|altera_syncram_component|auto_generated|altera_syncram_impl1|decode3|rtl~19 ;
++-----------------+-----------+-----------------------------------+-------------+--------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Peak Total Grid Crossings                                                                                                     ;
++--------------------------------------------------------------------------------------------------------+----------------------+
+; Net Name                                                                                               ; Total Grid Crossings ;
++--------------------------------------------------------------------------------------------------------+----------------------+
+; mm_interconnect_0|cmd_mux_002|Select_111~2                                                             ; 8                    ;
+; rst_controller|r_sync_rst                                                                              ; 6                    ;
+; mm_interconnect_0|my_niosv_data_manager_agent|wdata_q0[20]                                             ; 5                    ;
+; mm_interconnect_0|my_niosv_data_manager_agent|wdata_q0[16]                                             ; 5                    ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|D_stage_inst|D_ready~xsyn                              ; 5                    ;
+; auto_fab_0|alt_sld_fab_0|alt_sld_fab_0|sldfabric|jtag_hub_gen.real_sld_jtag_hub|virtual_ir_scan_reg    ; 5                    ;
+; auto_fab_0|alt_sld_fab_0|alt_sld_fab_0|sldfabric|jtag_hub_gen.real_sld_jtag_hub|shadow_jsm|state[4]    ; 5                    ;
+; mm_interconnect_0|cmd_mux_002|Select_119~1                                                             ; 5                    ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|prefetch_inst|buffer_inst|queue_mem~136                ; 4                    ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|prefetch_inst|buffer_inst|queue_mem~131                ; 4                    ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|tdata2[15]                                    ; 4                    ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|irq_inst|A0_timer_irq                         ; 4                    ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|csr_inst|tdata2[2]                                     ; 4                    ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|M0_exe_result[6]                         ; 4                    ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|M0_exe_result[16]                        ; 4                    ;
+; auto_fab_0|alt_sld_fab_0|alt_sld_fab_0|sldfabric|jtag_hub_gen.real_sld_jtag_hub|node_ena_reg[1]        ; 4                    ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|D_stage_inst|D_imm[23]                                 ; 4                    ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|D_stage_inst|D_imm[21]                                 ; 4                    ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|M0_exe_result[17]                        ; 4                    ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|D_stage_inst|D_imm[12]                                 ; 4                    ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|D_stage_inst|D_imm[11]                                 ; 4                    ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|D_stage_inst|D_imm[4]                                  ; 4                    ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|D_stage_inst|D_imm[3]                                  ; 4                    ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|D_stage_inst|D_imm[2]                                  ; 4                    ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|D_stage_inst|D_imm[1]                                  ; 4                    ;
+; mm_interconnect_0|my_niosv_data_manager_agent|wdata_q0[1]                                              ; 4                    ;
+; mm_interconnect_0|my_niosv_data_manager_agent|wdata_q0[4]                                              ; 4                    ;
+; mm_interconnect_0|my_niosv_data_manager_agent|wdata_q0[3]                                              ; 4                    ;
+; mm_interconnect_0|my_niosv_data_manager_agent|wdata_q0[10]                                             ; 4                    ;
+; mm_interconnect_0|my_niosv_data_manager_agent|wdata_q0[9]                                              ; 4                    ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|prefetch_inst|buffer_inst|read_addr[1]                 ; 4                    ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|prefetch_inst|buffer_inst|read_addr[0]                 ; 4                    ;
+; mm_interconnect_0|my_niosv_data_manager_agent|wdata_q0[7]                                              ; 4                    ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|D_stage_inst|D_instr_word[10]                          ; 4                    ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|M0_exe_result[12]                        ; 4                    ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|M0_exe_result[5]                         ; 4                    ;
+; my_niosv|my_niosv|hart|m_core.niosv_m_full_inst|M0_stage_inst|i12~0                                    ; 4                    ;
+; auto_fab_0|alt_sld_fab_0|alt_sld_fab_0|sldfabric|jtag_hub_gen.real_sld_jtag_hub|shadow_jsm|state[8]    ; 4                    ;
+; auto_fab_0|alt_sld_fab_0|alt_sld_fab_0|sldfabric|jtag_hub_gen.real_sld_jtag_hub|shadow_jsm|state[3]    ; 4                    ;
+; mm_interconnect_0|cmd_mux_002|Select_159~1                                                             ; 4                    ;
+; sram|intel_onchip_memory_0|altera_syncram_component|auto_generated|altera_syncram_impl1|decode3|rtl~19 ; 4                    ;
+; sram|intel_onchip_memory_0|altera_syncram_component|auto_generated|altera_syncram_impl1|decode3|rtl~17 ; 4                    ;
+; mm_interconnect_0|cmd_mux_002|Select_112~1                                                             ; 4                    ;
+; mm_interconnect_0|cmd_mux_002|Select_113~1                                                             ; 4                    ;
+; mm_interconnect_0|cmd_mux_002|Select_114~1                                                             ; 4                    ;
+; mm_interconnect_0|cmd_mux_002|Select_115~1                                                             ; 4                    ;
+; mm_interconnect_0|cmd_mux_002|Select_116~1                                                             ; 4                    ;
+; mm_interconnect_0|cmd_mux_002|Select_117~1                                                             ; 4                    ;
+; mm_interconnect_0|cmd_mux_002|Select_118~1                                                             ; 4                    ;
+; mm_interconnect_0|cmd_mux_002|Select_120~1                                                             ; 4                    ;
++--------------------------------------------------------------------------------------------------------+----------------------+
+
+
+--------------------------------------------
+; Global Router Congestion Hotspot Summary ;
+--------------------------------------------
+No congestion hotspots found where global router short wire usage exceeded 100%.
+If the design is hard to route, use other techniques to analyze congestion. Refer to the Estimated Delay Added for Hold Timing section in the Fitter report and routing utilization in the Chip Planner.
+
+

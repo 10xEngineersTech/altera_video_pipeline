@@ -1,0 +1,20 @@
+bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_busy_sleep.c.obj: \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/src/alt_busy_sleep.c \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/lib/gcc/riscv32-unknown-elf/13.2.0/include/limits.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/lib/gcc/riscv32-unknown-elf/13.2.0/include/syslimits.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/limits.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/newlib.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/_newlib_version.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/cdefs.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/machine/_default_types.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/features.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/lib/gcc/riscv32-unknown-elf/13.2.0/include/stddef.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/syslimits.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/./system.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/./linker.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/alt_types.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/sys/alt_timestamp.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/intel_niosv.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/alt_types.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/io.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/priv/alt_busy_sleep.h

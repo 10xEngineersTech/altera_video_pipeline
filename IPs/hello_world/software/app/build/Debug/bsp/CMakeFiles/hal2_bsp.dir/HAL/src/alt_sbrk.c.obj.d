@@ -1,0 +1,34 @@
+bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_sbrk.c.obj: \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/src/alt_sbrk.c \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/types.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/_ansi.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/newlib.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/_newlib_version.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/config.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/machine/ieeefp.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/features.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/cdefs.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/machine/_default_types.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/lib/gcc/riscv32-unknown-elf/13.2.0/include/stddef.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/machine/_types.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/_types.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/_stdint.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/machine/endian.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/machine/_endian.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/select.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/_sigset.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/_timeval.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/timespec.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/_timespec.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/_pthreadtypes.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/sched.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/machine/types.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/os/alt_syscall.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/sys/alt_irq.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/intel_niosv.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/alt_types.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/io.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/./system.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/./linker.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/alt_types.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/sys/alt_stack.h

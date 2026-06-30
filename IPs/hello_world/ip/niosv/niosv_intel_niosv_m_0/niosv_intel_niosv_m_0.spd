@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file
+   path="altera_reset_controller_1924/sim/altera_reset_controller.v"
+   type="VERILOG"
+   library="altera_reset_controller_1924" />
+ <file
+   path="altera_reset_controller_1924/sim/altera_reset_synchronizer.v"
+   type="VERILOG"
+   library="altera_reset_controller_1924" />
+ <file
+   path="altera_reset_controller_1924/sim/altera_reset_controller.sdc"
+   type="SDC_ENTITY"
+   library="altera_reset_controller_1924" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/niosv_reset_controller.v"
+   type="VERILOG"
+   library="intel_niosv_m_unit_2600"
+   hasInlineConfiguration="true" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/niosv_opcode_def.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/niosv_clic_pkg.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/niosv_mem_op_state.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/niosv_ram.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/ecc_enc.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/ecc_dec.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/altecc_enc.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/altecc_dec.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/niosv_reg_file.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/niosv_csr.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/niosv_csrind_if.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/niosv_csrind_host.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/niosv_interrupt_handler.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/niosv_instr_buffer.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/niosv_bus_req.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/niosv_shift.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/niosv_alu.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/niosv_lsu.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/niosv_c_decoder.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/niosv_c_core.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/niosv_c_csr.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/niosv_c_D_stage.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/niosv_c_E_stage.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/niosv_c_M0_stage.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/niosv_m_decoder.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/niosv_m_core.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/niosv_m_instr_prefetch.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/niosv_m_D_stage.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/niosv_m_E_stage.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/niosv_m_M0_stage.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/niosv_m_W_stage.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_m_unit_2600/sim/intelfpga/niosv_intel_niosv_m_0_intel_niosv_m_unit_2600_e7eme3a.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_m_unit_2600" />
+ <file
+   path="intel_niosv_timer_msip_120/sim/intelfpga/niosv_timer_msip.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_timer_msip_120" />
+ <file
+   path="intel_niosv_dbg_mod_210/sim/csr_mlab.mif"
+   type="MIF"
+   library="intel_niosv_dbg_mod_210" />
+ <file
+   path="intel_niosv_dbg_mod_210/sim/debug_rom.mif"
+   type="MIF"
+   library="intel_niosv_dbg_mod_210" />
+ <file
+   path="intel_niosv_dbg_mod_210/sim/intelfpga/niosv_dm_def.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_dbg_mod_210" />
+ <file
+   path="intel_niosv_dbg_mod_210/sim/intelfpga/niosv_ram.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_dbg_mod_210" />
+ <file
+   path="intel_niosv_dbg_mod_210/sim/intelfpga/niosv_dm_jtag2mm.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_dbg_mod_210" />
+ <file
+   path="intel_niosv_dbg_mod_210/sim/intelfpga/niosv_dm_top.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_dbg_mod_210" />
+ <file
+   path="intel_niosv_dbg_mod_210/sim/intelfpga/niosv_debug_module.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_dbg_mod_210" />
+ <file
+   path="intel_niosv_dbg_mod_210/sim/intelfpga/niosv_debug_rom.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_dbg_mod_210" />
+ <file
+   path="intel_niosv_dbg_mod_210/sim/altera_std_synchronizer_bundle.v"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_dbg_mod_210" />
+ <file
+   path="intel_niosv_dbg_mod_210/sim/altera_std_synchronizer_nocut.v"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_dbg_mod_210" />
+ <file
+   path="intel_niosv_dbg_mod_210/sim/altera_std_synchronizer.v"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_dbg_mod_210" />
+ <file
+   path="intel_niosv_dbg_mod_210/sim/altera_avalon_st_clock_crosser.v"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_dbg_mod_210" />
+ <file
+   path="intel_niosv_dbg_mod_210/sim/altera_avalon_st_handshake_clock_crosser.v"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_dbg_mod_210" />
+ <file
+   path="intel_niosv_dbg_mod_210/sim/altera_avalon_st_pipeline_base.v"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_dbg_mod_210" />
+ <file
+   path="intel_niosv_dbg_mod_210/sim/altera_avalon_st_pipeline_stage.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_dbg_mod_210" />
+ <file
+   path="intel_niosv_dbg_mod_210/sim/altera_avalon_st_handshake_clock_crosser.sdc"
+   type="SDC_ENTITY"
+   library="intel_niosv_dbg_mod_210" />
+ <file
+   path="intel_niosv_dbg_mod_210/sim/altera_reset_synchronizer.v"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_dbg_mod_210" />
+ <file
+   path="intel_niosv_dbg_mod_210/sim/altera_reset_controller.v"
+   type="SYSTEM_VERILOG"
+   library="intel_niosv_dbg_mod_210" />
+ <file
+   path="intel_niosv_dbg_mod_210/sim/altera_reset_controller.sdc"
+   type="SDC_ENTITY"
+   library="intel_niosv_dbg_mod_210" />
+ <file
+   path="altera_irq_mapper_2001/sim/niosv_intel_niosv_m_0_altera_irq_mapper_2001_wgtbcyy.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_irq_mapper_2001" />
+ <file
+   path="intel_niosv_m_2600/sim/niosv_intel_niosv_m_0_intel_niosv_m_2600_27lgwlq.v"
+   type="VERILOG"
+   library="intel_niosv_m_2600"
+   hasInlineConfiguration="true" />
+ <file
+   path="sim/niosv_intel_niosv_m_0.v"
+   type="VERILOG"
+   library="niosv_intel_niosv_m_0"
+   hasInlineConfiguration="true" />
+ <topLevel name="niosv_intel_niosv_m_0.niosv_intel_niosv_m_0" />
+ <deviceFamily name="agilex5" />
+ <device name="A5ED065BB32AE6SR0" />
+</simPackage>

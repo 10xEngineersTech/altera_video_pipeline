@@ -1,0 +1,92 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+*/
+(header "symbol" (version "1.1"))
+(symbol
+	(rect 0 0 352 216)
+	(text "niosv" (rect 161 0 182 12)(font "SansSerif" (font_size 11)))
+	(text "inst" (rect 8 200 20 212)(font "Arial" ))
+	(port
+		(pt 0 76)
+		(input)
+		(text "clk_clk" (rect 0 0 27 12)(font "SansSerif" (font_size 8)))
+		(text "clk_clk" (rect 4 65 46 76)(font "SansSerif" (font_size 8)))
+		(line (pt 0 76)(pt 51 76)(line_width 1))
+	)
+	(port
+		(pt 352 126)
+		(input)
+		(text "intel_vvp_scaler_0_axi4s_vid_out_tready" (rect 0 0 171 12)(font "SansSerif" (font_size 8)))
+		(text "intel_vvp_scaler_0_axi4s_vid_out_tready" (rect 147 115 381 126)(font "SansSerif" (font_size 8)))
+	)
+	(port
+		(pt 352 76)
+		(output)
+		(text "intel_vvp_scaler_0_axi4s_vid_out_tdata[23..0]" (rect 0 0 188 12)(font "SansSerif" (font_size 8)))
+		(text "intel_vvp_scaler_0_axi4s_vid_out_tdata[23..0]" (rect 124 65 394 76)(font "SansSerif" (font_size 8)))
+		(line (pt 352 76)(pt 119 76)(line_width 3))
+	)
+	(port
+		(pt 352 101)
+		(output)
+		(text "intel_vvp_scaler_0_axi4s_vid_out_tvalid" (rect 0 0 165 12)(font "SansSerif" (font_size 8)))
+		(text "intel_vvp_scaler_0_axi4s_vid_out_tvalid" (rect 153 90 387 101)(font "SansSerif" (font_size 8)))
+		(line (pt 352 101)(pt 119 101)(line_width 1))
+	)
+	(port
+		(pt 352 151)
+		(output)
+		(text "intel_vvp_scaler_0_axi4s_vid_out_tlast" (rect 0 0 160 12)(font "SansSerif" (font_size 8)))
+		(text "intel_vvp_scaler_0_axi4s_vid_out_tlast" (rect 158 140 386 151)(font "SansSerif" (font_size 8)))
+		(line (pt 352 151)(pt 119 151)(line_width 1))
+	)
+	(port
+		(pt 352 176)
+		(output)
+		(text "intel_vvp_scaler_0_axi4s_vid_out_tuser[2..0]" (rect 0 0 185 12)(font "SansSerif" (font_size 8)))
+		(text "intel_vvp_scaler_0_axi4s_vid_out_tuser[2..0]" (rect 129 165 393 176)(font "SansSerif" (font_size 8)))
+		(line (pt 352 176)(pt 119 176)(line_width 3))
+	)
+	(drawing
+		(text "clk" (rect 36 46 90 105)(font "SansSerif" (color 128 0 0)(font_size 9)))
+		(text "clk" (rect 56 71 130 152)(font "SansSerif" (color 0 0 0)))
+		(text "intel_vvp_scaler_0_axi4s_vid_out" (rect 120 46 432 105)(font "SansSerif" (color 128 0 0)(font_size 9)))
+		(text "tdata" (rect 95 71 220 152)(font "SansSerif" (color 0 0 0)))
+		(text "tvalid" (rect 93 96 222 202)(font "SansSerif" (color 0 0 0)))
+		(text "tready" (rect 88 121 212 252)(font "SansSerif" (color 0 0 0)))
+		(text "tlast" (rect 98 146 226 302)(font "SansSerif" (color 0 0 0)))
+		(text "tuser" (rect 94 171 218 352)(font "SansSerif" (color 0 0 0)))
+		(text " niosv " (rect 331 201 704 412)(font "SansSerif" ))
+		(line (pt 51 34)(pt 119 34)(line_width 1))
+		(line (pt 119 34)(pt 119 201)(line_width 1))
+		(line (pt 51 201)(pt 119 201)(line_width 1))
+		(line (pt 51 34)(pt 51 201)(line_width 1))
+		(line (pt 52 55)(pt 52 80)(line_width 1))
+		(line (pt 53 55)(pt 53 80)(line_width 1))
+		(line (pt 357 126)(pt 119 126)(line_width 1))
+		(line (pt 118 55)(pt 118 180)(line_width 1))
+		(line (pt 117 55)(pt 117 180)(line_width 1))
+		(line (pt 0 0)(pt 352 0)(line_width 1))
+		(line (pt 352 0)(pt 352 218)(line_width 1))
+		(line (pt 0 218)(pt 352 218)(line_width 1))
+		(line (pt 0 0)(pt 0 218)(line_width 1))
+	)
+)

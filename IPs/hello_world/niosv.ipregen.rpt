@@ -1,0 +1,592 @@
+IP Upgrade report for niosv
+Wed Jun 24 12:23:44 2026
+Quartus Prime Version 25.1.1 Build 125 07/31/2025 Patches 1.31 SC Pro Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. IP Upgrade Summary
+  3. Successfully Upgraded IP Components
+  4. IP Upgrade Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+
++----------------------------------------------------------------------------------------+
+; IP Upgrade Summary                                                                     ;
++------------------------------+---------------------------------------------------------+
+; IP Components Upgrade Status ; Passed - Wed Jun 24 12:23:44 2026                       ;
+; Quartus Prime Version        ; 25.1.1 Build 125 07/31/2025 Patches 1.31 SC Pro Edition ;
+; Revision Name                ; niosv                                                   ;
+; Top-level Entity Name        ; niosv                                                   ;
+; Family                       ; Agilex 5                                                ;
++------------------------------+---------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Successfully Upgraded IP Components                                                                                                                                   ;
++------------------------+------------------------------+---------+------------------------------------+------------------------------------+-----------------+---------+
+; Entity Name            ; Component Name               ; Version ; Original Source File               ; Generation File Path               ; New Source File ; Message ;
++------------------------+------------------------------+---------+------------------------------------+------------------------------------+-----------------+---------+
+; niosv_reset_in         ; QsysPrimePro                 ; 25.1.1  ; ip/niosv/niosv_reset_in.ip         ; ip/niosv/niosv_reset_in.ip         ;                 ;         ;
+; niosv_onchip_memory2_0 ; altera_avalon_onchip_memory2 ; 19.3.9  ; ip/niosv/niosv_onchip_memory2_0.ip ; ip/niosv/niosv_onchip_memory2_0.ip ;                 ;         ;
+; niosv_jtag_uart_0      ; altera_avalon_jtag_uart      ; 19.3.1  ; ip/niosv/niosv_jtag_uart_0.ip      ; ip/niosv/niosv_jtag_uart_0.ip      ;                 ;         ;
+; niosv_intel_niosv_m_0  ; intel_niosv_m                ; 26.0.0  ; ip/niosv/niosv_intel_niosv_m_0.ip  ; ip/niosv/niosv_intel_niosv_m_0.ip  ;                 ;         ;
+; niosv_clock_in         ; QsysPrimePro                 ; 25.1.1  ; ip/niosv/niosv_clock_in.ip         ; ip/niosv/niosv_clock_in.ip         ;                 ;         ;
+; niosv                  ; QsysPrimePro                 ; 25.1.1  ; niosv.qsys                         ; niosv.qsys                         ;                 ;         ;
++------------------------+------------------------------+---------+------------------------------------+------------------------------------+-----------------+---------+
+
+
++---------------------+
+; IP Upgrade Messages ;
++---------------------+
+Info (11902): Backing up file "/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_reset_in.ip" to "/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_reset_in.BAK.ip"
+Info (11902): Backing up file "ip/niosv/niosv_reset_in/synth/niosv_reset_in.v" to "/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_reset_in.BAK.v"
+Info (11902): Backing up file "/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_onchip_memory2_0.ip" to "/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_onchip_memory2_0.BAK.ip"
+Info (11902): Backing up file "ip/niosv/niosv_onchip_memory2_0/synth/niosv_onchip_memory2_0.v" to "/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_onchip_memory2_0.BAK.v"
+Info (11902): Backing up file "/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_jtag_uart_0.ip" to "/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_jtag_uart_0.BAK.ip"
+Info (11902): Backing up file "ip/niosv/niosv_jtag_uart_0/synth/niosv_jtag_uart_0.v" to "/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_jtag_uart_0.BAK.v"
+Info (11902): Backing up file "/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_intel_niosv_m_0.ip" to "/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_intel_niosv_m_0.BAK.ip"
+Info (11902): Backing up file "ip/niosv/niosv_intel_niosv_m_0/synth/niosv_intel_niosv_m_0.v" to "/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_intel_niosv_m_0.BAK.v"
+Info (11902): Backing up file "/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_clock_in.ip" to "/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_clock_in.BAK.ip"
+Info (11902): Backing up file "ip/niosv/niosv_clock_in/synth/niosv_clock_in.v" to "/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_clock_in.BAK.v"
+Info (11902): Backing up file "/mnt/ssd2/hamza/hello_world/niosv.qsys" to "/mnt/ssd2/hamza/hello_world/niosv.BAK.qsys"
+Info (11902): Backing up file "niosv/synth/niosv.v" to "/mnt/ssd2/hamza/hello_world/niosv.BAK.v"
+Info (20325): ***************************************************************
+Info (20325): Quartus is a registered trademark of Intel Corporation in the
+Info (20325): US and other countries.  Portions of the Quartus Prime software
+Info (20325): code, and other portions of the code included in this download
+Info (20325): or on this DVD, are licensed to Intel Corporation and are the
+Info (20325): copyrighted property of third parties. For license details,
+Info (20325): refer to the End User License Agreement at
+Info (20325): http://fpgasoftware.intel.com/eula.
+Info (20325): ***************************************************************
+Info (20325): 2026.06.24.12:22:43 Info: Batch generation will generate the listed files in this order: niosv.qsys, /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_reset_in.ip, ip/niosv/niosv_onchip_memory2_0.ip, ip/niosv/niosv_jtag_uart_0.ip, ip/niosv/niosv_intel_niosv_m_0.ip, ip/niosv/niosv_clock_in.ip
+Info (20325): 2026.06.24.12:22:54 Info: IP upgrade skipped for Platform Designer system niosv.qsys
+Info (20325): 2026.06.24.12:22:55 Info: Starting to upgrade the IP cores in the Platform Designer system
+Info (20325): 2026.06.24.12:22:55 Info: Finished upgrading the ip cores
+Info (20325): 2026.06.24.12:22:55 Info: Starting to upgrade the IP cores in the Platform Designer system
+Info (20325): 2026.06.24.12:22:55 Info: Finished upgrading the ip cores
+Info (20325): 2026.06.24.12:22:56 Info: Starting to upgrade the IP cores in the Platform Designer system
+Info (20325): 2026.06.24.12:22:56 Info: Finished upgrading the ip cores
+Info (20325): 2026.06.24.12:22:56 Info: Starting to upgrade the IP cores in the Platform Designer system
+Info (20325): 2026.06.24.12:22:56 Info: Finished upgrading the ip cores
+Info (20325): 2026.06.24.12:22:58 Info: Starting to upgrade the IP cores in the Platform Designer system
+Info (20325): 2026.06.24.12:22:58 Info: Finished upgrading the ip cores
+Info (20325): 2026.06.24.12:22:58 Info: Starting to upgrade the IP cores in the Platform Designer system
+Info (20325): 2026.06.24.12:22:58 Info: Finished upgrading the ip cores
+Info (20325): ***************************************************************
+Info (20325): Quartus is a registered trademark of Intel Corporation in the
+Info (20325): US and other countries.  Portions of the Quartus Prime software
+Info (20325): code, and other portions of the code included in this download
+Info (20325): or on this DVD, are licensed to Intel Corporation and are the
+Info (20325): copyrighted property of third parties. For license details,
+Info (20325): refer to the End User License Agreement at
+Info (20325): http://fpgasoftware.intel.com/eula.
+Info (20325): ***************************************************************
+Info (20325): 2026.06.24.12:22:59 Info: Batch generation will generate the listed files in this order: niosv.qsys, /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_reset_in.ip, ip/niosv/niosv_onchip_memory2_0.ip, ip/niosv/niosv_jtag_uart_0.ip, ip/niosv/niosv_intel_niosv_m_0.ip, ip/niosv/niosv_clock_in.ip
+Info (20325): 2026.06.24.12:23:15 Info: Parallel IP Generation is enabled.
+Info (20325): 2026.06.24.12:23:15 Info: Platform Designer will attempt to use 6 processors for parallel IP generation based on available number of processors and the total number of IP to be generated.
+Info (20325): 2026.06.24.12:23:15 Info:
+Info (20325): 2026.06.24.12:23:15 Info: Starting: Platform Designer system generation
+Info (20325): 2026.06.24.12:23:36 Info:
+Info (20325): 2026.06.24.12:23:36 Info: Generating on localhost:34943
+Info (20325): 2026.06.24.12:23:36 Info: Saving generation log to /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_reset_in/niosv_reset_in_generation.rpt
+Info (20325): 2026.06.24.12:23:36 Info: Generated by version: 25.1.1 build 125
+Info (20325): 2026.06.24.12:23:36 Info: Starting: Create simulation model
+Info (20325): 2026.06.24.12:23:36 Info: qsys-generate /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_reset_in.ip --simulation=VERILOG --allow-mixed-language-simulation --output-directory=/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_reset_in --family="Agilex 5" --part=A5ED065BB32AE6SR0
+Info (20325): 2026.06.24.12:23:36 Info: niosv_reset_in: "Transforming system: niosv_reset_in"
+Info (20325): 2026.06.24.12:23:36 Info: niosv_reset_in: "Naming system components in system: niosv_reset_in"
+Info (20325): 2026.06.24.12:23:36 Info: niosv_reset_in: "Processing generation queue"
+Info (20325): 2026.06.24.12:23:36 Info: niosv_reset_in: "Generating: niosv_reset_in"
+Info (20325): 2026.06.24.12:23:36 Info: niosv_reset_in: Done "niosv_reset_in" with 1 modules, 1 files
+Warning (20326): 2026.06.24.12:23:36 Warning: Skipping generation of synopsys/vcs/vcs_setup.sh since VCS 2-step flow is not supported for specified device family. Use VCS-MX or another supported simulator.
+Info (20325): 2026.06.24.12:23:36 Info: Generating the following file(s) for VCSMX simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_reset_in/sim/ directory:
+Info (20325): 2026.06.24.12:23:36 Info: common/vcsmx_files.tcl
+Info (20325): 2026.06.24.12:23:36 Info: Generating the following file(s) for XCELIUM simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_reset_in/sim/ directory:
+Info (20325): 2026.06.24.12:23:36 Info: common/xcelium_files.tcl
+Info (20325): 2026.06.24.12:23:36 Info: Generating the following file(s) for MODELSIM simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_reset_in/sim/ directory:
+Info (20325): 2026.06.24.12:23:36 Info: common/modelsim_files.tcl
+Info (20325): 2026.06.24.12:23:36 Info: Generating the following file(s) for RIVIERA simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_reset_in/sim/ directory:
+Info (20325): 2026.06.24.12:23:36 Info: common/riviera_files.tcl
+Info (20325): 2026.06.24.12:23:36 Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_reset_in/sim/.
+Info (20325): 2026.06.24.12:23:36 Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
+Info (20325): 2026.06.24.12:23:36 Info: Finished: Create simulation model
+Info (20325): 2026.06.24.12:23:36 Info: Starting: Create simulation script
+Info (20325): 2026.06.24.12:23:36 Info: sim-script-gen --system-file=/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_reset_in.ip --output-directory=/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_reset_in/sim/ --use-relative-paths=true
+Warning (20326): 2026.06.24.12:23:36 Warning: Skipping generation of synopsys/vcs/vcs_setup.sh since VCS 2-step flow is not supported for specified device family. Use VCS-MX or another supported simulator.
+Info (20325): 2026.06.24.12:23:36 Info: Generating the following file(s) for VCSMX simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_reset_in/sim/ directory:
+Info (20325): 2026.06.24.12:23:36 Info: synopsys/vcsmx/_device_synopsys_sim.setup
+Info (20325): 2026.06.24.12:23:36 Info: synopsys/vcsmx/synopsys_sim.setup
+Info (20325): 2026.06.24.12:23:36 Info: synopsys/vcsmx/vcsmx_setup.sh
+Info (20325): 2026.06.24.12:23:36 Info: Generating the following file(s) for XCELIUM simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_reset_in/sim/ directory:
+Info (20325): 2026.06.24.12:23:36 Info: xcelium/cds.lib
+Info (20325): 2026.06.24.12:23:36 Info: xcelium/hdl.var
+Info (20325): 2026.06.24.12:23:36 Info: xcelium/xcelium_setup.sh
+Info (20325): 2026.06.24.12:23:36 Info: 2 .cds.lib files in xcelium/cds_libs/ directory
+Info (20325): 2026.06.24.12:23:36 Info: Generating the following file(s) for MODELSIM simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_reset_in/sim/ directory:
+Info (20325): 2026.06.24.12:23:36 Info: mentor/msim_setup.tcl
+Info (20325): 2026.06.24.12:23:36 Info: mentor/run_msim_setup.tcl
+Info (20325): 2026.06.24.12:23:36 Info: Generating the following file(s) for RIVIERA simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_reset_in/sim/ directory:
+Info (20325): 2026.06.24.12:23:36 Info: aldec/rivierapro_setup.tcl
+Info (20325): 2026.06.24.12:23:36 Info: aldec/run_rivierapro_setup.tcl
+Info (20325): 2026.06.24.12:23:36 Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_reset_in/sim/.
+Info (20325): 2026.06.24.12:23:36 Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
+Info (20325): 2026.06.24.12:23:36 Info: Finished: Create simulation script
+Info (20325): 2026.06.24.12:23:36 Info: Starting: Create block symbol file (.bsf)
+Info (20325): 2026.06.24.12:23:36 Info: qsys-generate /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_reset_in.ip --block-symbol-file --output-directory=/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_reset_in --family="Agilex 5" --part=A5ED065BB32AE6SR0
+Info (20325): 2026.06.24.12:23:36 Info: Finished: Create block symbol file (.bsf)
+Info (20325): 2026.06.24.12:23:36 Info:
+Info (20325): 2026.06.24.12:23:36 Info: Starting: Create HDL design files for synthesis
+Info (20325): 2026.06.24.12:23:36 Info: qsys-generate /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_reset_in.ip --synthesis=VERILOG --output-directory=/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_reset_in --family="Agilex 5" --part=A5ED065BB32AE6SR0
+Info (20325): 2026.06.24.12:23:36 Info: niosv_reset_in: "Transforming system: niosv_reset_in"
+Info (20325): 2026.06.24.12:23:36 Info: niosv_reset_in: "Naming system components in system: niosv_reset_in"
+Info (20325): 2026.06.24.12:23:36 Info: niosv_reset_in: "Processing generation queue"
+Info (20325): 2026.06.24.12:23:36 Info: niosv_reset_in: "Generating: niosv_reset_in"
+Info (20325): 2026.06.24.12:23:36 Info: niosv_reset_in: Done "niosv_reset_in" with 1 modules, 1 files
+Info (20325): 2026.06.24.12:23:36 Info: Finished: Create HDL design files for synthesis
+Info (20325): 2026.06.24.12:23:36 Info: Generation of /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_reset_in.ip (niosv_reset_in) took 7261 ms
+Info (20325): 2026.06.24.12:23:36 Info:
+Info (20325): 2026.06.24.12:23:36 Info: Generating on localhost:40379
+Info (20325): 2026.06.24.12:23:36 Info: Saving generation log to /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_clock_in/niosv_clock_in_generation.rpt
+Info (20325): 2026.06.24.12:23:36 Info: Generated by version: 25.1.1 build 125
+Info (20325): 2026.06.24.12:23:36 Info: Starting: Create simulation model
+Info (20325): 2026.06.24.12:23:36 Info: qsys-generate /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_clock_in.ip --simulation=VERILOG --allow-mixed-language-simulation --output-directory=/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_clock_in --family="Agilex 5" --part=A5ED065BB32AE6SR0
+Info (20325): 2026.06.24.12:23:36 Info: niosv_clock_in: "Transforming system: niosv_clock_in"
+Info (20325): 2026.06.24.12:23:36 Info: niosv_clock_in: "Naming system components in system: niosv_clock_in"
+Info (20325): 2026.06.24.12:23:36 Info: niosv_clock_in: "Processing generation queue"
+Info (20325): 2026.06.24.12:23:36 Info: niosv_clock_in: "Generating: niosv_clock_in"
+Info (20325): 2026.06.24.12:23:36 Info: niosv_clock_in: Done "niosv_clock_in" with 1 modules, 1 files
+Warning (20326): 2026.06.24.12:23:36 Warning: Skipping generation of synopsys/vcs/vcs_setup.sh since VCS 2-step flow is not supported for specified device family. Use VCS-MX or another supported simulator.
+Info (20325): 2026.06.24.12:23:36 Info: Generating the following file(s) for VCSMX simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_clock_in/sim/ directory:
+Info (20325): 2026.06.24.12:23:36 Info: common/vcsmx_files.tcl
+Info (20325): 2026.06.24.12:23:36 Info: Generating the following file(s) for RIVIERA simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_clock_in/sim/ directory:
+Info (20325): 2026.06.24.12:23:36 Info: common/riviera_files.tcl
+Info (20325): 2026.06.24.12:23:36 Info: Generating the following file(s) for XCELIUM simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_clock_in/sim/ directory:
+Info (20325): 2026.06.24.12:23:36 Info: common/xcelium_files.tcl
+Info (20325): 2026.06.24.12:23:36 Info: Generating the following file(s) for MODELSIM simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_clock_in/sim/ directory:
+Info (20325): 2026.06.24.12:23:36 Info: common/modelsim_files.tcl
+Info (20325): 2026.06.24.12:23:36 Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_clock_in/sim/.
+Info (20325): 2026.06.24.12:23:36 Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
+Info (20325): 2026.06.24.12:23:36 Info: Finished: Create simulation model
+Info (20325): 2026.06.24.12:23:36 Info: Starting: Create simulation script
+Info (20325): 2026.06.24.12:23:36 Info: sim-script-gen --system-file=/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_clock_in.ip --output-directory=/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_clock_in/sim/ --use-relative-paths=true
+Warning (20326): 2026.06.24.12:23:36 Warning: Skipping generation of synopsys/vcs/vcs_setup.sh since VCS 2-step flow is not supported for specified device family. Use VCS-MX or another supported simulator.
+Info (20325): 2026.06.24.12:23:36 Info: Generating the following file(s) for VCSMX simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_clock_in/sim/ directory:
+Info (20325): 2026.06.24.12:23:36 Info: synopsys/vcsmx/_device_synopsys_sim.setup
+Info (20325): 2026.06.24.12:23:36 Info: synopsys/vcsmx/synopsys_sim.setup
+Info (20325): 2026.06.24.12:23:36 Info: synopsys/vcsmx/vcsmx_setup.sh
+Info (20325): 2026.06.24.12:23:36 Info: Generating the following file(s) for RIVIERA simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_clock_in/sim/ directory:
+Info (20325): 2026.06.24.12:23:36 Info: aldec/rivierapro_setup.tcl
+Info (20325): 2026.06.24.12:23:36 Info: aldec/run_rivierapro_setup.tcl
+Info (20325): 2026.06.24.12:23:36 Info: Generating the following file(s) for XCELIUM simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_clock_in/sim/ directory:
+Info (20325): 2026.06.24.12:23:36 Info: xcelium/cds.lib
+Info (20325): 2026.06.24.12:23:36 Info: xcelium/hdl.var
+Info (20325): 2026.06.24.12:23:36 Info: xcelium/xcelium_setup.sh
+Info (20325): 2026.06.24.12:23:36 Info: 2 .cds.lib files in xcelium/cds_libs/ directory
+Info (20325): 2026.06.24.12:23:36 Info: Generating the following file(s) for MODELSIM simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_clock_in/sim/ directory:
+Info (20325): 2026.06.24.12:23:36 Info: mentor/msim_setup.tcl
+Info (20325): 2026.06.24.12:23:36 Info: mentor/run_msim_setup.tcl
+Info (20325): 2026.06.24.12:23:36 Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_clock_in/sim/.
+Info (20325): 2026.06.24.12:23:36 Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
+Info (20325): 2026.06.24.12:23:36 Info: Finished: Create simulation script
+Info (20325): 2026.06.24.12:23:36 Info: Starting: Create block symbol file (.bsf)
+Info (20325): 2026.06.24.12:23:36 Info: qsys-generate /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_clock_in.ip --block-symbol-file --output-directory=/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_clock_in --family="Agilex 5" --part=A5ED065BB32AE6SR0
+Info (20325): 2026.06.24.12:23:36 Info: Finished: Create block symbol file (.bsf)
+Info (20325): 2026.06.24.12:23:36 Info:
+Info (20325): 2026.06.24.12:23:36 Info: Starting: Create HDL design files for synthesis
+Info (20325): 2026.06.24.12:23:36 Info: qsys-generate /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_clock_in.ip --synthesis=VERILOG --output-directory=/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_clock_in --family="Agilex 5" --part=A5ED065BB32AE6SR0
+Info (20325): 2026.06.24.12:23:36 Info: niosv_clock_in: "Transforming system: niosv_clock_in"
+Info (20325): 2026.06.24.12:23:36 Info: niosv_clock_in: "Naming system components in system: niosv_clock_in"
+Info (20325): 2026.06.24.12:23:36 Info: niosv_clock_in: "Processing generation queue"
+Info (20325): 2026.06.24.12:23:36 Info: niosv_clock_in: "Generating: niosv_clock_in"
+Info (20325): 2026.06.24.12:23:36 Info: niosv_clock_in: Done "niosv_clock_in" with 1 modules, 1 files
+Info (20325): 2026.06.24.12:23:36 Info: Finished: Create HDL design files for synthesis
+Info (20325): 2026.06.24.12:23:36 Info: Generation of /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_clock_in.ip (niosv_clock_in) took 7346 ms
+Info (20325): 2026.06.24.12:23:37 Info:
+Info (20325): 2026.06.24.12:23:37 Info: Generating on localhost:42973
+Info (20325): 2026.06.24.12:23:37 Info: Saving generation log to /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_jtag_uart_0/niosv_jtag_uart_0_generation.rpt
+Info (20325): 2026.06.24.12:23:37 Info: Generated by version: 25.1.1 build 125
+Info (20325): 2026.06.24.12:23:37 Info: Starting: Create simulation model
+Info (20325): 2026.06.24.12:23:37 Info: qsys-generate /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_jtag_uart_0.ip --simulation=VERILOG --allow-mixed-language-simulation --output-directory=/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_jtag_uart_0 --family="Agilex 5" --part=A5ED065BB32AE6SR0
+Info (20325): 2026.06.24.12:23:37 Info: niosv_jtag_uart_0.jtag_uart_0: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Info (20325): 2026.06.24.12:23:37 Info: niosv_jtag_uart_0: "Transforming system: niosv_jtag_uart_0"
+Info (20325): 2026.06.24.12:23:37 Info: niosv_jtag_uart_0: "Naming system components in system: niosv_jtag_uart_0"
+Info (20325): 2026.06.24.12:23:37 Info: niosv_jtag_uart_0: "Processing generation queue"
+Info (20325): 2026.06.24.12:23:37 Info: niosv_jtag_uart_0: "Generating: niosv_jtag_uart_0"
+Info (20325): 2026.06.24.12:23:37 Info: niosv_jtag_uart_0: "Generating: altera_avalon_jtag_uart"
+Info (20325): 2026.06.24.12:23:37 Info: niosv_jtag_uart_0: Done "niosv_jtag_uart_0" with 2 modules, 7 files
+Warning (20326): 2026.06.24.12:23:37 Warning: Skipping generation of synopsys/vcs/vcs_setup.sh since VCS 2-step flow is not supported for specified device family. Use VCS-MX or another supported simulator.
+Info (20325): 2026.06.24.12:23:37 Info: Generating the following file(s) for MODELSIM simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_jtag_uart_0/sim/ directory:
+Info (20325): 2026.06.24.12:23:37 Info: common/modelsim_files.tcl
+Info (20325): 2026.06.24.12:23:37 Info: Generating the following file(s) for VCSMX simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_jtag_uart_0/sim/ directory:
+Info (20325): 2026.06.24.12:23:37 Info: common/vcsmx_files.tcl
+Info (20325): 2026.06.24.12:23:37 Info: Generating the following file(s) for XCELIUM simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_jtag_uart_0/sim/ directory:
+Info (20325): 2026.06.24.12:23:37 Info: common/xcelium_files.tcl
+Info (20325): 2026.06.24.12:23:37 Info: Generating the following file(s) for RIVIERA simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_jtag_uart_0/sim/ directory:
+Info (20325): 2026.06.24.12:23:37 Info: common/riviera_files.tcl
+Info (20325): 2026.06.24.12:23:37 Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_jtag_uart_0/sim/.
+Info (20325): 2026.06.24.12:23:37 Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
+Info (20325): 2026.06.24.12:23:37 Info: Finished: Create simulation model
+Info (20325): 2026.06.24.12:23:37 Info: Starting: Create simulation script
+Info (20325): 2026.06.24.12:23:37 Info: sim-script-gen --system-file=/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_jtag_uart_0.ip --output-directory=/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_jtag_uart_0/sim/ --use-relative-paths=true
+Warning (20326): 2026.06.24.12:23:37 Warning: Skipping generation of synopsys/vcs/vcs_setup.sh since VCS 2-step flow is not supported for specified device family. Use VCS-MX or another supported simulator.
+Info (20325): 2026.06.24.12:23:37 Info: Generating the following file(s) for MODELSIM simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_jtag_uart_0/sim/ directory:
+Info (20325): 2026.06.24.12:23:37 Info: mentor/msim_setup.tcl
+Info (20325): 2026.06.24.12:23:37 Info: mentor/run_msim_setup.tcl
+Info (20325): 2026.06.24.12:23:37 Info: Generating the following file(s) for VCSMX simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_jtag_uart_0/sim/ directory:
+Info (20325): 2026.06.24.12:23:37 Info: synopsys/vcsmx/_device_synopsys_sim.setup
+Info (20325): 2026.06.24.12:23:37 Info: synopsys/vcsmx/synopsys_sim.setup
+Info (20325): 2026.06.24.12:23:37 Info: synopsys/vcsmx/vcsmx_setup.sh
+Info (20325): 2026.06.24.12:23:37 Info: Generating the following file(s) for XCELIUM simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_jtag_uart_0/sim/ directory:
+Info (20325): 2026.06.24.12:23:37 Info: xcelium/cds.lib
+Info (20325): 2026.06.24.12:23:37 Info: xcelium/hdl.var
+Info (20325): 2026.06.24.12:23:37 Info: xcelium/xcelium_setup.sh
+Info (20325): 2026.06.24.12:23:37 Info: 3 .cds.lib files in xcelium/cds_libs/ directory
+Info (20325): 2026.06.24.12:23:37 Info: Generating the following file(s) for RIVIERA simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_jtag_uart_0/sim/ directory:
+Info (20325): 2026.06.24.12:23:37 Info: aldec/rivierapro_setup.tcl
+Info (20325): 2026.06.24.12:23:37 Info: aldec/run_rivierapro_setup.tcl
+Info (20325): 2026.06.24.12:23:37 Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_jtag_uart_0/sim/.
+Info (20325): 2026.06.24.12:23:37 Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
+Info (20325): 2026.06.24.12:23:37 Info: Finished: Create simulation script
+Info (20325): 2026.06.24.12:23:37 Info: Starting: Create block symbol file (.bsf)
+Info (20325): 2026.06.24.12:23:37 Info: qsys-generate /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_jtag_uart_0.ip --block-symbol-file --output-directory=/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_jtag_uart_0 --family="Agilex 5" --part=A5ED065BB32AE6SR0
+Info (20325): 2026.06.24.12:23:37 Info: niosv_jtag_uart_0.jtag_uart_0: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Info (20325): 2026.06.24.12:23:37 Info: Finished: Create block symbol file (.bsf)
+Info (20325): 2026.06.24.12:23:37 Info:
+Info (20325): 2026.06.24.12:23:37 Info: Starting: Create HDL design files for synthesis
+Info (20325): 2026.06.24.12:23:37 Info: qsys-generate /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_jtag_uart_0.ip --synthesis=VERILOG --output-directory=/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_jtag_uart_0 --family="Agilex 5" --part=A5ED065BB32AE6SR0
+Info (20325): 2026.06.24.12:23:37 Info: niosv_jtag_uart_0.jtag_uart_0: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Info (20325): 2026.06.24.12:23:37 Info: niosv_jtag_uart_0: "Transforming system: niosv_jtag_uart_0"
+Info (20325): 2026.06.24.12:23:37 Info: niosv_jtag_uart_0: "Naming system components in system: niosv_jtag_uart_0"
+Info (20325): 2026.06.24.12:23:37 Info: niosv_jtag_uart_0: "Processing generation queue"
+Info (20325): 2026.06.24.12:23:37 Info: niosv_jtag_uart_0: "Generating: niosv_jtag_uart_0"
+Info (20325): 2026.06.24.12:23:37 Info: niosv_jtag_uart_0: "Generating: altera_avalon_jtag_uart"
+Info (20325): 2026.06.24.12:23:37 Info: niosv_jtag_uart_0: Done "niosv_jtag_uart_0" with 2 modules, 7 files
+Info (20325): 2026.06.24.12:23:37 Info: Finished: Create HDL design files for synthesis
+Info (20325): 2026.06.24.12:23:37 Info: Generation of /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_jtag_uart_0.ip (niosv_jtag_uart_0) took 7614 ms
+Info (20325): 2026.06.24.12:23:37 Info:
+Info (20325): 2026.06.24.12:23:37 Info: Generating on localhost:36179
+Info (20325): 2026.06.24.12:23:37 Info: Saving generation log to /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_onchip_memory2_0/niosv_onchip_memory2_0_generation.rpt
+Info (20325): 2026.06.24.12:23:37 Info: Generated by version: 25.1.1 build 125
+Info (20325): 2026.06.24.12:23:37 Info: Starting: Create simulation model
+Info (20325): 2026.06.24.12:23:37 Info: qsys-generate /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_onchip_memory2_0.ip --simulation=VERILOG --allow-mixed-language-simulation --output-directory=/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_onchip_memory2_0 --family="Agilex 5" --part=A5ED065BB32AE6SR0
+Warning (20326): 2026.06.24.12:23:37 Warning: niosv_onchip_memory2_0.onchip_memory2_0: Please use the new On-Chip Memory II (RAM or ROM) IP for Agilex 5 device support
+Info (20325): 2026.06.24.12:23:37 Info: niosv_onchip_memory2_0: "Transforming system: niosv_onchip_memory2_0"
+Info (20325): 2026.06.24.12:23:37 Info: niosv_onchip_memory2_0: "Naming system components in system: niosv_onchip_memory2_0"
+Info (20325): 2026.06.24.12:23:37 Info: niosv_onchip_memory2_0: "Processing generation queue"
+Info (20325): 2026.06.24.12:23:37 Info: niosv_onchip_memory2_0: "Generating: niosv_onchip_memory2_0"
+Info (20325): 2026.06.24.12:23:37 Info: niosv_onchip_memory2_0: "Generating: niosv_onchip_memory2_0_altera_avalon_onchip_memory2_1939_romci7q"
+Info (20325): 2026.06.24.12:23:37 Info: onchip_memory2_0: Starting RTL generation for module 'niosv_onchip_memory2_0_altera_avalon_onchip_memory2_1939_romci7q'
+Info (20325): 2026.06.24.12:23:37 Info: onchip_memory2_0:   Generation command is [exec /mnt/ssd2/Quartus_25_1_1_Setup_Installation/quartus/linux64//perl/bin/perl -I /mnt/ssd2/Quartus_25_1_1_Setup_Installation/quartus/linux64//perl/lib -I /mnt/ssd2/Quartus_25_1_1_Setup_Installation/quartus/sopc_builder/bin/europa -I /mnt/ssd2/Quartus_25_1_1_Setup_Installation/quartus/sopc_builder/bin/perl_lib -I /mnt/ssd2/Quartus_25_1_1_Setup_Installation/quartus/sopc_builder/bin -I /mnt/ssd2/Quartus_25_1_1_Setup_Installation/quartus/../ip/altera/sopc_builder_ip/common -I /mnt/ssd2/Quartus_25_1_1_Setup_Installation/quartus/../ip/altera/platform_designer_ip/altera_avalon_onchip_memory2 -- /mnt/ssd2/Quartus_25_1_1_Setup_Installation/quartus/../ip/altera/platform_designer_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=niosv_onchip_memory2_0_altera_avalon_onchip_memory2_1939_romci7q --dir=/tmp/alt0628_433212865739124131.dir/0001_onchip_memory2_0_gen/ --quartus_dir=/mnt/ssd2/Quartus_25_1_1_Setup_Installation/quartus --verilog --config=/tmp/alt0628_433212865739124131.dir/0001_onchip_memory2_0_gen//niosv_onchip_memory2_0_altera_avalon_onchip_memory2_1939_romci7q_component_configuration.pl  --do_build_sim=1    --sim_dir=/tmp/alt0628_433212865739124131.dir/0001_onchip_memory2_0_gen/  ]
+Info (20325): 2026.06.24.12:23:37 Info: onchip_memory2_0: Done RTL generation for module 'niosv_onchip_memory2_0_altera_avalon_onchip_memory2_1939_romci7q'
+Info (20325): 2026.06.24.12:23:37 Info: niosv_onchip_memory2_0: Done "niosv_onchip_memory2_0" with 2 modules, 3 files
+Warning (20326): 2026.06.24.12:23:37 Warning: Skipping generation of synopsys/vcs/vcs_setup.sh since VCS 2-step flow is not supported for specified device family. Use VCS-MX or another supported simulator.
+Info (20325): 2026.06.24.12:23:37 Info: Generating the following file(s) for XCELIUM simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_onchip_memory2_0/sim/ directory:
+Info (20325): 2026.06.24.12:23:37 Info: common/xcelium_files.tcl
+Info (20325): 2026.06.24.12:23:37 Info: Generating the following file(s) for RIVIERA simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_onchip_memory2_0/sim/ directory:
+Info (20325): 2026.06.24.12:23:37 Info: common/riviera_files.tcl
+Info (20325): 2026.06.24.12:23:37 Info: Generating the following file(s) for MODELSIM simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_onchip_memory2_0/sim/ directory:
+Info (20325): 2026.06.24.12:23:37 Info: common/modelsim_files.tcl
+Info (20325): 2026.06.24.12:23:37 Info: Generating the following file(s) for VCSMX simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_onchip_memory2_0/sim/ directory:
+Info (20325): 2026.06.24.12:23:37 Info: common/vcsmx_files.tcl
+Info (20325): 2026.06.24.12:23:37 Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_onchip_memory2_0/sim/.
+Info (20325): 2026.06.24.12:23:37 Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
+Info (20325): 2026.06.24.12:23:37 Info: Finished: Create simulation model
+Info (20325): 2026.06.24.12:23:37 Info: Starting: Create simulation script
+Info (20325): 2026.06.24.12:23:37 Info: sim-script-gen --system-file=/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_onchip_memory2_0.ip --output-directory=/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_onchip_memory2_0/sim/ --use-relative-paths=true
+Warning (20326): 2026.06.24.12:23:37 Warning: Skipping generation of synopsys/vcs/vcs_setup.sh since VCS 2-step flow is not supported for specified device family. Use VCS-MX or another supported simulator.
+Info (20325): 2026.06.24.12:23:37 Info: Generating the following file(s) for XCELIUM simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_onchip_memory2_0/sim/ directory:
+Info (20325): 2026.06.24.12:23:37 Info: xcelium/cds.lib
+Info (20325): 2026.06.24.12:23:37 Info: xcelium/hdl.var
+Info (20325): 2026.06.24.12:23:37 Info: xcelium/xcelium_setup.sh
+Info (20325): 2026.06.24.12:23:37 Info: 3 .cds.lib files in xcelium/cds_libs/ directory
+Info (20325): 2026.06.24.12:23:37 Info: Generating the following file(s) for RIVIERA simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_onchip_memory2_0/sim/ directory:
+Info (20325): 2026.06.24.12:23:37 Info: aldec/rivierapro_setup.tcl
+Info (20325): 2026.06.24.12:23:37 Info: aldec/run_rivierapro_setup.tcl
+Info (20325): 2026.06.24.12:23:37 Info: Generating the following file(s) for MODELSIM simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_onchip_memory2_0/sim/ directory:
+Info (20325): 2026.06.24.12:23:37 Info: mentor/msim_setup.tcl
+Info (20325): 2026.06.24.12:23:37 Info: mentor/run_msim_setup.tcl
+Info (20325): 2026.06.24.12:23:37 Info: Generating the following file(s) for VCSMX simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_onchip_memory2_0/sim/ directory:
+Info (20325): 2026.06.24.12:23:37 Info: synopsys/vcsmx/_device_synopsys_sim.setup
+Info (20325): 2026.06.24.12:23:37 Info: synopsys/vcsmx/synopsys_sim.setup
+Info (20325): 2026.06.24.12:23:37 Info: synopsys/vcsmx/vcsmx_setup.sh
+Info (20325): 2026.06.24.12:23:37 Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_onchip_memory2_0/sim/.
+Info (20325): 2026.06.24.12:23:37 Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
+Info (20325): 2026.06.24.12:23:37 Info: Finished: Create simulation script
+Info (20325): 2026.06.24.12:23:37 Info: Starting: Create block symbol file (.bsf)
+Info (20325): 2026.06.24.12:23:37 Info: qsys-generate /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_onchip_memory2_0.ip --block-symbol-file --output-directory=/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_onchip_memory2_0 --family="Agilex 5" --part=A5ED065BB32AE6SR0
+Warning (20326): 2026.06.24.12:23:37 Warning: niosv_onchip_memory2_0.onchip_memory2_0: Please use the new On-Chip Memory II (RAM or ROM) IP for Agilex 5 device support
+Info (20325): 2026.06.24.12:23:37 Info: Finished: Create block symbol file (.bsf)
+Info (20325): 2026.06.24.12:23:37 Info:
+Info (20325): 2026.06.24.12:23:37 Info: Starting: Create HDL design files for synthesis
+Info (20325): 2026.06.24.12:23:37 Info: qsys-generate /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_onchip_memory2_0.ip --synthesis=VERILOG --output-directory=/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_onchip_memory2_0 --family="Agilex 5" --part=A5ED065BB32AE6SR0
+Warning (20326): 2026.06.24.12:23:37 Warning: niosv_onchip_memory2_0.onchip_memory2_0: Please use the new On-Chip Memory II (RAM or ROM) IP for Agilex 5 device support
+Info (20325): 2026.06.24.12:23:37 Info: niosv_onchip_memory2_0: "Transforming system: niosv_onchip_memory2_0"
+Info (20325): 2026.06.24.12:23:37 Info: niosv_onchip_memory2_0: "Naming system components in system: niosv_onchip_memory2_0"
+Info (20325): 2026.06.24.12:23:37 Info: niosv_onchip_memory2_0: "Processing generation queue"
+Info (20325): 2026.06.24.12:23:37 Info: niosv_onchip_memory2_0: "Generating: niosv_onchip_memory2_0"
+Info (20325): 2026.06.24.12:23:37 Info: niosv_onchip_memory2_0: "Generating: niosv_onchip_memory2_0_altera_avalon_onchip_memory2_1939_romci7q"
+Info (20325): 2026.06.24.12:23:37 Info: onchip_memory2_0: Starting RTL generation for module 'niosv_onchip_memory2_0_altera_avalon_onchip_memory2_1939_romci7q'
+Info (20325): 2026.06.24.12:23:37 Info: onchip_memory2_0:   Generation command is [exec /mnt/ssd2/Quartus_25_1_1_Setup_Installation/quartus/linux64//perl/bin/perl -I /mnt/ssd2/Quartus_25_1_1_Setup_Installation/quartus/linux64//perl/lib -I /mnt/ssd2/Quartus_25_1_1_Setup_Installation/quartus/sopc_builder/bin/europa -I /mnt/ssd2/Quartus_25_1_1_Setup_Installation/quartus/sopc_builder/bin/perl_lib -I /mnt/ssd2/Quartus_25_1_1_Setup_Installation/quartus/sopc_builder/bin -I /mnt/ssd2/Quartus_25_1_1_Setup_Installation/quartus/../ip/altera/sopc_builder_ip/common -I /mnt/ssd2/Quartus_25_1_1_Setup_Installation/quartus/../ip/altera/platform_designer_ip/altera_avalon_onchip_memory2 -- /mnt/ssd2/Quartus_25_1_1_Setup_Installation/quartus/../ip/altera/platform_designer_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=niosv_onchip_memory2_0_altera_avalon_onchip_memory2_1939_romci7q --dir=/tmp/alt0628_433212865739124131.dir/0003_onchip_memory2_0_gen/ --quartus_dir=/mnt/ssd2/Quartus_25_1_1_Setup_Installation/quartus --verilog --config=/tmp/alt0628_433212865739124131.dir/0003_onchip_memory2_0_gen//niosv_onchip_memory2_0_altera_avalon_onchip_memory2_1939_romci7q_component_configuration.pl  --do_build_sim=0  ]
+Info (20325): 2026.06.24.12:23:37 Info: onchip_memory2_0: Done RTL generation for module 'niosv_onchip_memory2_0_altera_avalon_onchip_memory2_1939_romci7q'
+Info (20325): 2026.06.24.12:23:37 Info: niosv_onchip_memory2_0: Done "niosv_onchip_memory2_0" with 2 modules, 3 files
+Info (20325): 2026.06.24.12:23:37 Info: Finished: Create HDL design files for synthesis
+Info (20325): 2026.06.24.12:23:37 Info: Generation of /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_onchip_memory2_0.ip (niosv_onchip_memory2_0) took 8354 ms
+Info (20325): 2026.06.24.12:23:40 Info:
+Info (20325): 2026.06.24.12:23:40 Info: Generating on localhost:34825
+Info (20325): 2026.06.24.12:23:40 Info: Saving generation log to /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_intel_niosv_m_0/niosv_intel_niosv_m_0_generation.rpt
+Info (20325): 2026.06.24.12:23:40 Info: Generated by version: 25.1.1 build 125
+Info (20325): 2026.06.24.12:23:40 Info: Starting: Create simulation model
+Info (20325): 2026.06.24.12:23:40 Info: qsys-generate /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_intel_niosv_m_0.ip --simulation=VERILOG --allow-mixed-language-simulation --output-directory=/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_intel_niosv_m_0 --family="Agilex 5" --part=A5ED065BB32AE6SR0
+Info (20325): 2026.06.24.12:23:40 Info: hart.niosv_reset_controller: Deassert with RESET_REQUEST_PRESENT will have Minimum of 4 cycles difference between assertion of reset_req to reset_out
+Info (20325): 2026.06.24.12:23:40 Info: niosv_intel_niosv_m_0: "Transforming system: niosv_intel_niosv_m_0"
+Info (20325): 2026.06.24.12:23:40 Info: niosv_intel_niosv_m_0: "Naming system components in system: niosv_intel_niosv_m_0"
+Info (20325): 2026.06.24.12:23:40 Info: niosv_intel_niosv_m_0: "Processing generation queue"
+Info (20325): 2026.06.24.12:23:40 Info: niosv_intel_niosv_m_0: "Generating: niosv_intel_niosv_m_0"
+Info (20325): 2026.06.24.12:23:40 Info: niosv_intel_niosv_m_0: "Generating: niosv_intel_niosv_m_0_intel_niosv_m_2600_yimltqq"
+Info (20325): 2026.06.24.12:23:40 Info: niosv_intel_niosv_m_0: "Generating: niosv_intel_niosv_m_0_intel_niosv_m_unit_2600_ez2mqoy"
+Info (20325): 2026.06.24.12:23:40 Info: niosv_reset_controller: "Generating: niosv_reset_controller"
+Info (20325): 2026.06.24.12:23:40 Info: niosv_intel_niosv_m_0: "Generating: niosv_timer_msip"
+Info (20325): 2026.06.24.12:23:40 Info: niosv_intel_niosv_m_0: "Generating: niosv_dm_top"
+Info (20325): 2026.06.24.12:23:40 Info: niosv_intel_niosv_m_0: "Generating: niosv_intel_niosv_m_0_altera_irq_mapper_2001_wgtbcyy"
+Info (20325): 2026.06.24.12:23:40 Info: niosv_intel_niosv_m_0: "Generating: altera_reset_controller"
+Info (20325): 2026.06.24.12:23:40 Info: niosv_intel_niosv_m_0: "Generating: niosv_reset_controller"
+Info (20325): 2026.06.24.12:23:40 Info: niosv_intel_niosv_m_0: Done "niosv_intel_niosv_m_0" with 8 modules, 59 files
+Warning (20326): 2026.06.24.12:23:40 Warning: Skipping generation of synopsys/vcs/vcs_setup.sh since VCS 2-step flow is not supported for specified device family. Use VCS-MX or another supported simulator.
+Info (20325): 2026.06.24.12:23:40 Info: Generating the following file(s) for VCSMX simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_intel_niosv_m_0/sim/ directory:
+Info (20325): 2026.06.24.12:23:40 Info: common/vcsmx_files.tcl
+Info (20325): 2026.06.24.12:23:40 Info: Generating the following file(s) for XCELIUM simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_intel_niosv_m_0/sim/ directory:
+Info (20325): 2026.06.24.12:23:40 Info: common/xcelium_files.tcl
+Info (20325): 2026.06.24.12:23:40 Info: Generating the following file(s) for RIVIERA simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_intel_niosv_m_0/sim/ directory:
+Info (20325): 2026.06.24.12:23:40 Info: common/riviera_files.tcl
+Info (20325): 2026.06.24.12:23:40 Info: Generating the following file(s) for MODELSIM simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_intel_niosv_m_0/sim/ directory:
+Info (20325): 2026.06.24.12:23:40 Info: common/modelsim_files.tcl
+Info (20325): 2026.06.24.12:23:40 Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_intel_niosv_m_0/sim/.
+Info (20325): 2026.06.24.12:23:40 Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
+Info (20325): 2026.06.24.12:23:40 Info: Finished: Create simulation model
+Info (20325): 2026.06.24.12:23:40 Info: Starting: Create simulation script
+Info (20325): 2026.06.24.12:23:40 Info: sim-script-gen --system-file=/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_intel_niosv_m_0.ip --output-directory=/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_intel_niosv_m_0/sim/ --use-relative-paths=true
+Warning (20326): 2026.06.24.12:23:40 Warning: Skipping generation of synopsys/vcs/vcs_setup.sh since VCS 2-step flow is not supported for specified device family. Use VCS-MX or another supported simulator.
+Info (20325): 2026.06.24.12:23:40 Info: Generating the following file(s) for VCSMX simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_intel_niosv_m_0/sim/ directory:
+Info (20325): 2026.06.24.12:23:40 Info: synopsys/vcsmx/_device_synopsys_sim.setup
+Info (20325): 2026.06.24.12:23:40 Info: synopsys/vcsmx/synopsys_sim.setup
+Info (20325): 2026.06.24.12:23:40 Info: synopsys/vcsmx/vcsmx_setup.sh
+Info (20325): 2026.06.24.12:23:40 Info: Generating the following file(s) for XCELIUM simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_intel_niosv_m_0/sim/ directory:
+Info (20325): 2026.06.24.12:23:40 Info: xcelium/cds.lib
+Info (20325): 2026.06.24.12:23:40 Info: xcelium/hdl.var
+Info (20325): 2026.06.24.12:23:40 Info: xcelium/xcelium_setup.sh
+Info (20325): 2026.06.24.12:23:40 Info: 8 .cds.lib files in xcelium/cds_libs/ directory
+Info (20325): 2026.06.24.12:23:40 Info: Generating the following file(s) for RIVIERA simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_intel_niosv_m_0/sim/ directory:
+Info (20325): 2026.06.24.12:23:40 Info: aldec/rivierapro_setup.tcl
+Info (20325): 2026.06.24.12:23:40 Info: aldec/run_rivierapro_setup.tcl
+Info (20325): 2026.06.24.12:23:40 Info: Generating the following file(s) for MODELSIM simulator in /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_intel_niosv_m_0/sim/ directory:
+Info (20325): 2026.06.24.12:23:40 Info: mentor/msim_setup.tcl
+Info (20325): 2026.06.24.12:23:40 Info: mentor/run_msim_setup.tcl
+Info (20325): 2026.06.24.12:23:40 Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_intel_niosv_m_0/sim/.
+Info (20325): 2026.06.24.12:23:40 Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
+Info (20325): 2026.06.24.12:23:40 Info: Finished: Create simulation script
+Info (20325): 2026.06.24.12:23:40 Info: Starting: Create block symbol file (.bsf)
+Info (20325): 2026.06.24.12:23:40 Info: qsys-generate /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_intel_niosv_m_0.ip --block-symbol-file --output-directory=/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_intel_niosv_m_0 --family="Agilex 5" --part=A5ED065BB32AE6SR0
+Info (20325): 2026.06.24.12:23:40 Info: Finished: Create block symbol file (.bsf)
+Info (20325): 2026.06.24.12:23:40 Info:
+Info (20325): 2026.06.24.12:23:40 Info: Starting: Create HDL design files for synthesis
+Info (20325): 2026.06.24.12:23:40 Info: qsys-generate /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_intel_niosv_m_0.ip --synthesis=VERILOG --output-directory=/mnt/ssd2/hamza/hello_world/ip/niosv/niosv_intel_niosv_m_0 --family="Agilex 5" --part=A5ED065BB32AE6SR0
+Info (20325): 2026.06.24.12:23:40 Info: hart.niosv_reset_controller: Deassert with RESET_REQUEST_PRESENT will have Minimum of 4 cycles difference between assertion of reset_req to reset_out
+Info (20325): 2026.06.24.12:23:40 Info: niosv_intel_niosv_m_0: "Transforming system: niosv_intel_niosv_m_0"
+Info (20325): 2026.06.24.12:23:40 Info: niosv_intel_niosv_m_0: "Naming system components in system: niosv_intel_niosv_m_0"
+Info (20325): 2026.06.24.12:23:40 Info: niosv_intel_niosv_m_0: "Processing generation queue"
+Info (20325): 2026.06.24.12:23:40 Info: niosv_intel_niosv_m_0: "Generating: niosv_intel_niosv_m_0"
+Info (20325): 2026.06.24.12:23:40 Info: niosv_intel_niosv_m_0: "Generating: niosv_intel_niosv_m_0_intel_niosv_m_2600_yimltqq"
+Info (20325): 2026.06.24.12:23:40 Info: niosv_intel_niosv_m_0: "Generating: niosv_intel_niosv_m_0_intel_niosv_m_unit_2600_ez2mqoy"
+Info (20325): 2026.06.24.12:23:40 Info: niosv_reset_controller: "Generating: niosv_reset_controller"
+Info (20325): 2026.06.24.12:23:40 Info: niosv_intel_niosv_m_0: "Generating: niosv_timer_msip"
+Info (20325): 2026.06.24.12:23:40 Info: niosv_intel_niosv_m_0: "Generating: niosv_dm_top"
+Info (20325): 2026.06.24.12:23:40 Info: niosv_intel_niosv_m_0: "Generating: niosv_intel_niosv_m_0_altera_irq_mapper_2001_wgtbcyy"
+Info (20325): 2026.06.24.12:23:40 Info: niosv_intel_niosv_m_0: "Generating: altera_reset_controller"
+Info (20325): 2026.06.24.12:23:40 Info: niosv_intel_niosv_m_0: "Generating: niosv_reset_controller"
+Info (20325): 2026.06.24.12:23:40 Info: niosv_intel_niosv_m_0: Done "niosv_intel_niosv_m_0" with 8 modules, 59 files
+Info (20325): 2026.06.24.12:23:40 Info: Finished: Create HDL design files for synthesis
+Info (20325): 2026.06.24.12:23:40 Info: Generation of /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_intel_niosv_m_0.ip (niosv_intel_niosv_m_0) took 10394 ms
+Info (20325): 2026.06.24.12:23:43 Info:
+Info (20325): 2026.06.24.12:23:43 Info: Generating on localhost:37017
+Info (20325): 2026.06.24.12:23:43 Info: niosv: All Generic Component instances match their respective ip files.
+Info (20325): 2026.06.24.12:23:43 Info: Saving generation log to /mnt/ssd2/hamza/hello_world/niosv/niosv_generation.rpt
+Info (20325): 2026.06.24.12:23:43 Info: Generated by version: 25.1.1 build 125
+Info (20325): 2026.06.24.12:23:43 Info: Starting: Create simulation model
+Info (20325): 2026.06.24.12:23:43 Info: qsys-generate /mnt/ssd2/hamza/hello_world/niosv.qsys --simulation=VERILOG --allow-mixed-language-simulation --output-directory=/mnt/ssd2/hamza/hello_world/niosv --family="Agilex 5" --part=A5ED065BB32AE6SR0
+Info (20325): 2026.06.24.12:23:43 Info: Loading hello_world/niosv.qsys
+Info (20325): 2026.06.24.12:23:43 Info: Reading input file
+Info (20325): 2026.06.24.12:23:43 Info: Parameterizing module DEBUG
+Info (20325): 2026.06.24.12:23:43 Info: Parameterizing module My_NiosV
+Info (20325): 2026.06.24.12:23:43 Info: Parameterizing module SRAM
+Info (20325): 2026.06.24.12:23:43 Info: Parameterizing module clock_in
+Info (20325): 2026.06.24.12:23:43 Info: Parameterizing module reset_in
+Info (20325): 2026.06.24.12:23:43 Info: Building connections
+Info (20325): 2026.06.24.12:23:43 Info: Parameterizing connections
+Info (20325): 2026.06.24.12:23:43 Info: Validating
+Info (20325): 2026.06.24.12:23:43 Info: Done reading input file
+Warning (20326): 2026.06.24.12:23:43 Warning: niosv.SRAM: Warnings found in IP parameterization.
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Transforming system: niosv"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Naming system components in system: niosv"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Processing generation queue"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_jtag_uart_0"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_intel_niosv_m_0"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_onchip_memory2_0"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_clock_in"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_reset_in"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_mm_interconnect_1920_4mt4roi"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_irq_mapper_2001_x43qi7i"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: altera_reset_controller"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_slave_translator_191_xg7rzxi"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_axi_master_ni_19112_2jrcixq"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_slave_agent_1930_jxauz3i"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_avalon_sc_fifo_1932_22gxxgi"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_router_1921_f7bfoqi"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_router_1921_6midycq"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_router_1921_m7xr3oa"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_router_1921_5zprxna"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_traffic_limiter_1921_2thi65i"
+Info (20325): 2026.06.24.12:23:43 Info: my_altera_avalon_sc_fifo_dest_id_fifo: "Generating: my_altera_avalon_sc_fifo_dest_id_fifo"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_demultiplexer_1921_gf66usy"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_demultiplexer_1921_eqthw6y"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_multiplexer_1922_szjlx7q"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_multiplexer_1922_lxeu3ki"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_demultiplexer_1921_s633mky"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_multiplexer_1922_pkoothq"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_multiplexer_1922_y4jafty"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_traffic_limiter_altera_avalon_sc_fifo_1921_jyjty3i"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: Done "niosv" with 26 modules, 31 files
+Warning (20326): 2026.06.24.12:23:43 Warning: Skipping generation of synopsys/vcs/vcs_setup.sh since VCS 2-step flow is not supported for specified device family. Use VCS-MX or another supported simulator.
+Info (20325): 2026.06.24.12:23:43 Info: Generating the following file(s) for XCELIUM simulator in /mnt/ssd2/hamza/hello_world/niosv/sim/ directory:
+Info (20325): 2026.06.24.12:23:43 Info: common/xcelium_files.tcl
+Info (20325): 2026.06.24.12:23:43 Info: Generating the following file(s) for VCSMX simulator in /mnt/ssd2/hamza/hello_world/niosv/sim/ directory:
+Info (20325): 2026.06.24.12:23:43 Info: common/vcsmx_files.tcl
+Info (20325): 2026.06.24.12:23:43 Info: Generating the following file(s) for MODELSIM simulator in /mnt/ssd2/hamza/hello_world/niosv/sim/ directory:
+Info (20325): 2026.06.24.12:23:43 Info: common/modelsim_files.tcl
+Info (20325): 2026.06.24.12:23:43 Info: Generating the following file(s) for RIVIERA simulator in /mnt/ssd2/hamza/hello_world/niosv/sim/ directory:
+Info (20325): 2026.06.24.12:23:43 Info: common/riviera_files.tcl
+Info (20325): 2026.06.24.12:23:43 Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under /mnt/ssd2/hamza/hello_world/niosv/sim/.
+Info (20325): 2026.06.24.12:23:43 Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
+Info (20325): 2026.06.24.12:23:43 Info: Finished: Create simulation model
+Info (20325): 2026.06.24.12:23:43 Info: Starting: Create simulation script
+Info (20325): 2026.06.24.12:23:43 Info: sim-script-gen --system-file=/mnt/ssd2/hamza/hello_world/niosv.qsys --output-directory=/mnt/ssd2/hamza/hello_world/niosv/sim/ --use-relative-paths=true
+Warning (20326): 2026.06.24.12:23:43 Warning: Skipping generation of synopsys/vcs/vcs_setup.sh since VCS 2-step flow is not supported for specified device family. Use VCS-MX or another supported simulator.
+Info (20325): 2026.06.24.12:23:43 Info: Generating the following file(s) for XCELIUM simulator in /mnt/ssd2/hamza/hello_world/niosv/sim/ directory:
+Info (20325): 2026.06.24.12:23:43 Info: xcelium/cds.lib
+Info (20325): 2026.06.24.12:23:43 Info: xcelium/hdl.var
+Info (20325): 2026.06.24.12:23:43 Info: xcelium/xcelium_setup.sh
+Info (20325): 2026.06.24.12:23:43 Info: 1 .cds.lib files in xcelium/cds_libs/ directory
+Info (20325): 2026.06.24.12:23:43 Info: Generating the following file(s) for VCSMX simulator in /mnt/ssd2/hamza/hello_world/niosv/sim/ directory:
+Info (20325): 2026.06.24.12:23:43 Info: synopsys/vcsmx/_device_synopsys_sim.setup
+Info (20325): 2026.06.24.12:23:43 Info: synopsys/vcsmx/synopsys_sim.setup
+Info (20325): 2026.06.24.12:23:43 Info: synopsys/vcsmx/vcsmx_setup.sh
+Info (20325): 2026.06.24.12:23:43 Info: Generating the following file(s) for MODELSIM simulator in /mnt/ssd2/hamza/hello_world/niosv/sim/ directory:
+Info (20325): 2026.06.24.12:23:43 Info: mentor/msim_setup.tcl
+Info (20325): 2026.06.24.12:23:43 Info: mentor/run_msim_setup.tcl
+Info (20325): 2026.06.24.12:23:43 Info: Generating the following file(s) for RIVIERA simulator in /mnt/ssd2/hamza/hello_world/niosv/sim/ directory:
+Info (20325): 2026.06.24.12:23:43 Info: aldec/rivierapro_setup.tcl
+Info (20325): 2026.06.24.12:23:43 Info: aldec/run_rivierapro_setup.tcl
+Info (20325): 2026.06.24.12:23:43 Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under /mnt/ssd2/hamza/hello_world/niosv/sim/.
+Info (20325): 2026.06.24.12:23:43 Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
+Info (20325): 2026.06.24.12:23:43 Info: Finished: Create simulation script
+Info (20325): 2026.06.24.12:23:43 Info: Starting: Create block symbol file (.bsf)
+Info (20325): 2026.06.24.12:23:43 Info: qsys-generate /mnt/ssd2/hamza/hello_world/niosv.qsys --block-symbol-file --output-directory=/mnt/ssd2/hamza/hello_world/niosv --family="Agilex 5" --part=A5ED065BB32AE6SR0
+Info (20325): 2026.06.24.12:23:43 Info: Loading hello_world/niosv.qsys
+Info (20325): 2026.06.24.12:23:43 Info: Reading input file
+Info (20325): 2026.06.24.12:23:43 Info: Parameterizing module DEBUG
+Info (20325): 2026.06.24.12:23:43 Info: Parameterizing module My_NiosV
+Info (20325): 2026.06.24.12:23:43 Info: Parameterizing module SRAM
+Info (20325): 2026.06.24.12:23:43 Info: Parameterizing module clock_in
+Info (20325): 2026.06.24.12:23:43 Info: Parameterizing module reset_in
+Info (20325): 2026.06.24.12:23:43 Info: Building connections
+Info (20325): 2026.06.24.12:23:43 Info: Parameterizing connections
+Info (20325): 2026.06.24.12:23:43 Info: Validating
+Info (20325): 2026.06.24.12:23:43 Info: Done reading input file
+Warning (20326): 2026.06.24.12:23:43 Warning: niosv.SRAM: Warnings found in IP parameterization.
+Info (20325): 2026.06.24.12:23:43 Info: Finished: Create block symbol file (.bsf)
+Info (20325): 2026.06.24.12:23:43 Info:
+Info (20325): 2026.06.24.12:23:43 Info: Starting: Create HDL design files for synthesis
+Info (20325): 2026.06.24.12:23:43 Info: qsys-generate /mnt/ssd2/hamza/hello_world/niosv.qsys --synthesis=VERILOG --output-directory=/mnt/ssd2/hamza/hello_world/niosv --family="Agilex 5" --part=A5ED065BB32AE6SR0
+Info (20325): 2026.06.24.12:23:43 Info: Loading hello_world/niosv.qsys
+Info (20325): 2026.06.24.12:23:43 Info: Reading input file
+Info (20325): 2026.06.24.12:23:43 Info: Parameterizing module DEBUG
+Info (20325): 2026.06.24.12:23:43 Info: Parameterizing module My_NiosV
+Info (20325): 2026.06.24.12:23:43 Info: Parameterizing module SRAM
+Info (20325): 2026.06.24.12:23:43 Info: Parameterizing module clock_in
+Info (20325): 2026.06.24.12:23:43 Info: Parameterizing module reset_in
+Info (20325): 2026.06.24.12:23:43 Info: Building connections
+Info (20325): 2026.06.24.12:23:43 Info: Parameterizing connections
+Info (20325): 2026.06.24.12:23:43 Info: Validating
+Info (20325): 2026.06.24.12:23:43 Info: Done reading input file
+Warning (20326): 2026.06.24.12:23:43 Warning: niosv.SRAM: Warnings found in IP parameterization.
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Transforming system: niosv"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Naming system components in system: niosv"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Processing generation queue"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_jtag_uart_0"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_intel_niosv_m_0"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_onchip_memory2_0"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_clock_in"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_reset_in"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_mm_interconnect_1920_4mt4roi"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_irq_mapper_2001_x43qi7i"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: altera_reset_controller"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_slave_translator_191_xg7rzxi"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_axi_master_ni_19112_2jrcixq"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_slave_agent_1930_jxauz3i"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_avalon_sc_fifo_1932_22gxxgi"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_router_1921_f7bfoqi"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_router_1921_6midycq"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_router_1921_m7xr3oa"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_router_1921_5zprxna"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_traffic_limiter_1921_2thi65i"
+Info (20325): 2026.06.24.12:23:43 Info: my_altera_avalon_sc_fifo_dest_id_fifo: "Generating: my_altera_avalon_sc_fifo_dest_id_fifo"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_demultiplexer_1921_gf66usy"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_demultiplexer_1921_eqthw6y"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_multiplexer_1922_szjlx7q"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_multiplexer_1922_lxeu3ki"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_demultiplexer_1921_s633mky"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_multiplexer_1922_pkoothq"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_multiplexer_1922_y4jafty"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: "Generating: niosv_altera_merlin_traffic_limiter_altera_avalon_sc_fifo_1921_jyjty3i"
+Info (20325): 2026.06.24.12:23:43 Info: niosv: Done "niosv" with 26 modules, 31 files
+Info (20325): 2026.06.24.12:23:43 Info: Finished: Create HDL design files for synthesis
+Info (20325): 2026.06.24.12:23:43 Info: Generation of /mnt/ssd2/hamza/hello_world/niosv.qsys (niosv) took 14616 ms
+Info (20325): 2026.06.24.12:23:43 Info: Finished: Platform Designer system generation
+Info (11131): Completed upgrading IP component QsysPrimePro with file "ip/niosv/niosv_reset_in.ip"
+Info (11131): Completed upgrading IP component altera_avalon_onchip_memory2 with file "ip/niosv/niosv_onchip_memory2_0.ip"
+Info (11131): Completed upgrading IP component altera_avalon_jtag_uart with file "ip/niosv/niosv_jtag_uart_0.ip"
+Info (11131): Completed upgrading IP component intel_niosv_m with file "ip/niosv/niosv_intel_niosv_m_0.ip"
+Info (11131): Completed upgrading IP component QsysPrimePro with file "ip/niosv/niosv_clock_in.ip"
+Info (11131): Completed upgrading IP component QsysPrimePro with file "niosv.qsys"
+Info (23030): Evaluation of Tcl script /mnt/ssd2/Quartus_25_1_1_Setup_Installation/quartus/common/tcl/internal/ip_regen/ip_regen.tcl was successful
+Info: Quartus Prime Shell was successful. 0 errors, 18 warnings
+    Info: Peak virtual memory: 1393 megabytes
+    Info: Processing ended: Wed Jun 24 12:23:44 2026
+    Info: Elapsed time: 00:01:22
+    Info: System process ID: 123182
+
+

@@ -1,0 +1,146 @@
+Flow report for niosv
+Wed Jun 24 12:42:05 2026
+Quartus Prime Version 25.1.1 Build 125 07/31/2025 Patches 1.31 SC Pro Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Flow Summary
+  2. Flow Settings
+  3. Flow Non-Default Global Settings
+  4. Flow Elapsed Time
+  5. Flow OS Summary
+  6. Flow Log
+  7. Legal Notice
+
+
+
++-------------------------------------------------------------------------------------------+
+; Flow Summary                                                                              ;
++---------------------------------+---------------------------------------------------------+
+; Flow Status                     ; Assembler Failed - Wed Jun 24 12:42:05 2026             ;
+; Quartus Prime Version           ; 25.1.1 Build 125 07/31/2025 Patches 1.31 SC Pro Edition ;
+; Revision Name                   ; niosv                                                   ;
+; Top-level Entity Name           ; niosv                                                   ;
+; Family                          ; Agilex 5                                                ;
+; Device                          ; A5ED065BB32AE6SR0                                       ;
+; Timing Models                   ; Preliminary                                             ;
+; Power Models                    ; Preliminary                                             ;
+; Device Status                   ; Preliminary                                             ;
+; Logic utilization (in ALMs)     ; 2,828 / 222,400 ( 1 % )                                 ;
+; Total dedicated logic registers ; 4952                                                    ;
+; Total pins                      ; 1 / 624 ( < 1 % )                                       ;
+; Total block memory bits         ; 1,051,648 / 32,993,280 ( 3 % )                          ;
+; Total RAM Blocks                ; 68 / 1,611 ( 4 % )                                      ;
+; Total DSP Blocks                ; 0 / 846 ( 0 % )                                         ;
+; Total GTS Transceiver Channels  ; 0 / 24 ( 0 % )                                          ;
+; Total HSSI Ethernet Channels    ; 0 / 6 ( 0 % )                                           ;
+; Total HSSI PCIEs                ; 0 / 6 ( 0 % )                                           ;
+; Total HSSI HPS                  ; 0 / 1 ( 0 % )                                           ;
+; Total PLLs                      ; 0 / 15 ( 0 % )                                          ;
++---------------------------------+---------------------------------------------------------+
+
+
++-----------------------------------------+
+; Flow Settings                           ;
++-------------------+---------------------+
+; Option            ; Setting             ;
++-------------------+---------------------+
+; Start date & time ; 06/24/2026 12:33:30 ;
+; Main task         ; Compilation         ;
+; Revision Name     ; niosv               ;
++-------------------+---------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                                                                        ;
++----------------------------+-------------------------------------------------------------------------------------------------------------+---------------+-------------+----------------+
+; Assignment Name            ; Value                                                                                                       ; Default Value ; Entity Name ; Section Id     ;
++----------------------------+-------------------------------------------------------------------------------------------------------------+---------------+-------------+----------------+
+; COMPILER_SIGNATURE_ID      ; 71125532752932.178228641009769                                                                              ; --            ; --          ; --             ;
+; EDA_OUTPUT_DATA_FORMAT     ; Verilog Hdl                                                                                                 ; --            ; --          ; eda_simulation ;
+; EDA_TIME_SCALE             ; 1 ps                                                                                                        ; --            ; --          ; eda_simulation ;
+; MISC_FILE                  ; /mnt/ssd2/hamza/hello_world/dni/sandboxes/ipaa-10xe_140841_0/sld/ipgen/alt_sld_fab_0/alt_sld_fab_0.cmp      ; --            ; --          ; --             ;
+; MISC_FILE                  ; /mnt/ssd2/hamza/hello_world/dni/sandboxes/ipaa-10xe_140841_0/sld/ipgen/alt_sld_fab_0.ip                     ; --            ; --          ; --             ;
+; MISC_FILE                  ; /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_clock_in/niosv_clock_in.cmp                                      ; --            ; --          ; --             ;
+; MISC_FILE                  ; /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_clock_in.ip                                                      ; --            ; --          ; --             ;
+; MISC_FILE                  ; /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_intel_niosv_m_0/niosv_intel_niosv_m_0.cmp                        ; --            ; --          ; --             ;
+; MISC_FILE                  ; /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_intel_niosv_m_0.ip                                               ; --            ; --          ; --             ;
+; MISC_FILE                  ; /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_intel_onchip_memory_0/niosv_intel_onchip_memory_0.cmp            ; --            ; --          ; --             ;
+; MISC_FILE                  ; /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_intel_onchip_memory_0.ip                                         ; --            ; --          ; --             ;
+; MISC_FILE                  ; /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_jtag_uart_0/niosv_jtag_uart_0.cmp                                ; --            ; --          ; --             ;
+; MISC_FILE                  ; /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_jtag_uart_0.ip                                                   ; --            ; --          ; --             ;
+; MISC_FILE                  ; /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_reset_in/niosv_reset_in.cmp                                      ; --            ; --          ; --             ;
+; MISC_FILE                  ; /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_reset_in.ip                                                      ; --            ; --          ; --             ;
+; MISC_FILE                  ; /mnt/ssd2/hamza/hello_world/niosv/niosv.cmp                                                                 ; --            ; --          ; --             ;
+; MISC_FILE                  ; /mnt/ssd2/hamza/hello_world/niosv.qsys                                                                      ; --            ; --          ; --             ;
+; POWER_APPLY_THERMAL_MARGIN ; ADDITIONAL                                                                                                  ; Off           ; --          ; --             ;
+; PROJECT_OUTPUT_DIRECTORY   ; /mnt/ssd2/hamza/hello_world/output_files                                                                    ; --            ; --          ; --             ;
+; SLD_FILE                   ; /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_jtag_uart_0/niosv_jtag_uart_0.regmap                             ; --            ; --          ; --             ;
+; SLD_FILE                   ; /mnt/ssd2/hamza/hello_world/niosv/niosv.regmap                                                              ; --            ; --          ; --             ;
+; SOPCINFO_FILE              ; /mnt/ssd2/hamza/hello_world/dni/sandboxes/ipaa-10xe_140841_0/sld/ipgen/alt_sld_fab_0/alt_sld_fab_0.sopcinfo ; --            ; --          ; --             ;
+; SOPCINFO_FILE              ; /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_clock_in/niosv_clock_in.sopcinfo                                 ; --            ; --          ; --             ;
+; SOPCINFO_FILE              ; /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_intel_niosv_m_0/niosv_intel_niosv_m_0.sopcinfo                   ; --            ; --          ; --             ;
+; SOPCINFO_FILE              ; /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_intel_onchip_memory_0/niosv_intel_onchip_memory_0.sopcinfo       ; --            ; --          ; --             ;
+; SOPCINFO_FILE              ; /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_jtag_uart_0/niosv_jtag_uart_0.sopcinfo                           ; --            ; --          ; --             ;
+; SOPCINFO_FILE              ; /mnt/ssd2/hamza/hello_world/ip/niosv/niosv_reset_in/niosv_reset_in.sopcinfo                                 ; --            ; --          ; --             ;
+; SOPCINFO_FILE              ; /mnt/ssd2/hamza/hello_world/niosv/niosv.sopcinfo                                                            ; --            ; --          ; --             ;
++----------------------------+-------------------------------------------------------------------------------------------------------------+---------------+-------------+----------------+
+
+
++------------------------------------------------------+
+; Flow Elapsed Time                                    ;
++-----------------+--------------+---------------------+
+; Module Name     ; Elapsed Time ; Peak Virtual Memory ;
++-----------------+--------------+---------------------+
+; Synthesis       ; 00:01:29     ; 2929 MB             ;
+; Fitter          ; 00:06:15     ; 12619 MB            ;
+; Timing Analyzer ; 00:00:25     ; 2732 MB             ;
+; Assembler       ; 00:00:21     ; 2503 MB             ;
+; Total           ; 00:08:30     ; --                  ;
++-----------------+--------------+---------------------+
+
+
++----------------------------------------------------------------------------+
+; Flow OS Summary                                                            ;
++-----------------+------------------+---------+------------+----------------+
+; Module Name     ; Machine Hostname ; OS Name ; OS Version ; Processor type ;
++-----------------+------------------+---------+------------+----------------+
+; Synthesis       ; ipaa-10xe        ; Ubuntu  ; 20         ; x86_64         ;
+; Fitter          ; ipaa-10xe        ; Ubuntu  ; 20         ; x86_64         ;
+; Timing Analyzer ; ipaa-10xe        ; Ubuntu  ; 20         ; x86_64         ;
+; Assembler       ; ipaa-10xe        ; Ubuntu  ; 20         ; x86_64         ;
++-----------------+------------------+---------+------------+----------------+
+
+
+------------
+; Flow Log ;
+------------
+quartus_syn --read_settings_files=on --write_settings_files=off niosv -c niosv
+quartus_fit --read_settings_files=on --write_settings_files=off niosv -c niosv
+quartus_sta niosv -c niosv --mode=finalize
+quartus_asm --read_settings_files=on --write_settings_files=off niosv -c niosv
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+

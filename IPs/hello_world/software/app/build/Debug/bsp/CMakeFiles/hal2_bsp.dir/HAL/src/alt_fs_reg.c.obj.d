@@ -1,0 +1,26 @@
+bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_fs_reg.c.obj: \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/src/alt_fs_reg.c \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/errno.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/errno.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/reent.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/_ansi.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/newlib.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/_newlib_version.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/config.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/machine/ieeefp.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/features.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/lib/gcc/riscv32-unknown-elf/13.2.0/include/stddef.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/cdefs.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/machine/_default_types.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/_types.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/machine/_types.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/lock.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/sys/alt_dev.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/./system.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/./linker.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/sys/alt_llist.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/alt_types.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/priv/alt_dev_llist.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/priv/alt_file.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/os/alt_sem.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/priv/alt_no_error.h

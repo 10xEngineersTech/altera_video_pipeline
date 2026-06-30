@@ -1,0 +1,19 @@
+bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_putstr.c.obj: \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/src/alt_putstr.c \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/stdio.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/_ansi.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/newlib.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/_newlib_version.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/config.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/machine/ieeefp.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/features.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/cdefs.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/machine/_default_types.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/lib/gcc/riscv32-unknown-elf/13.2.0/include/stddef.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/lib/gcc/riscv32-unknown-elf/13.2.0/include/stdarg.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/reent.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/_ansi.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/_types.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/machine/_types.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/lock.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/riscv32-unknown-elf/include/sys/stdio.h

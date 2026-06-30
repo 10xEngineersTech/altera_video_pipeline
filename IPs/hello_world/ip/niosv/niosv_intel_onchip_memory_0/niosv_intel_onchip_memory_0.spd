@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file
+   path="intel_onchip_memory_1410/sim/niosv_intel_onchip_memory_0_intel_onchip_memory_1410_lcviyji.sv"
+   type="SYSTEM_VERILOG"
+   library="intel_onchip_memory_1410" />
+ <file
+   path="intel_onchip_memory_1410/sim/niosv_intel_onchip_memory_0_intel_onchip_memory_0.hex"
+   type="HEX"
+   library="intel_onchip_memory_1410" />
+ <file
+   path="sim/niosv_intel_onchip_memory_0.v"
+   type="VERILOG"
+   library="niosv_intel_onchip_memory_0"
+   hasInlineConfiguration="true" />
+ <topLevel name="niosv_intel_onchip_memory_0.niosv_intel_onchip_memory_0" />
+ <deviceFamily name="agilex5" />
+ <device name="A5ED065BB32AE6SR0" />
+ <modelMap
+   controllerPath="niosv_intel_onchip_memory_0.intel_onchip_memory_0"
+   modelPath="niosv_intel_onchip_memory_0.intel_onchip_memory_0" />
+</simPackage>

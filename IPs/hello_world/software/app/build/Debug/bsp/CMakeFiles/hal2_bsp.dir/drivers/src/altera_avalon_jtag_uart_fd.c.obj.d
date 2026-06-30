@@ -1,0 +1,19 @@
+bsp/CMakeFiles/hal2_bsp.dir/drivers/src/altera_avalon_jtag_uart_fd.c.obj: \
+ /mnt/ssd2/hamza/hello_world/software/bsp/drivers/src/altera_avalon_jtag_uart_fd.c \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/alt_types.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/sys/alt_dev.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/./system.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/./linker.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/sys/alt_llist.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/priv/alt_dev_llist.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/drivers/inc/altera_avalon_jtag_uart.h \
+ /mnt/ssd2/Quartus_25_1_1_Setup_Installation/riscfree/toolchain/riscv32-unknown-elf/lib/gcc/riscv32-unknown-elf/13.2.0/include/stddef.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/sys/alt_alarm.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/sys/alt_llist.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/priv/alt_alarm.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/sys/alt_warning.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/os/alt_hooks.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/os/alt_sem.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/priv/alt_no_error.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/HAL/inc/os/alt_flag.h \
+ /mnt/ssd2/hamza/hello_world/software/bsp/drivers/inc/altera_avalon_jtag_uart_fd.h

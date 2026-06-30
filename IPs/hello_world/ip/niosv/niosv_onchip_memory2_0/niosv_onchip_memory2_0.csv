@@ -1,0 +1,19 @@
+# system info niosv_onchip_memory2_0 on 2026.06.24.12:23:30
+system_info:
+name,value
+DEVICE,A5ED065BB32AE6SR0
+DEVICE_FAMILY,Agilex 5
+GENERATION_ID,0
+#
+#
+# Files generated for niosv_onchip_memory2_0 on 2026.06.24.12:23:30
+files:
+filepath,kind,attributes,module,is_top
+sim/niosv_onchip_memory2_0.v,VERILOG,CONTAINS_INLINE_CONFIGURATION,niosv_onchip_memory2_0,true
+altera_avalon_onchip_memory2_1939/sim/niosv_onchip_memory2_0_onchip_memory2_0.hex,HEX,,niosv_onchip_memory2_0_altera_avalon_onchip_memory2_1939_romci7q,false
+altera_avalon_onchip_memory2_1939/sim/niosv_onchip_memory2_0_altera_avalon_onchip_memory2_1939_romci7q.v,VERILOG,,niosv_onchip_memory2_0_altera_avalon_onchip_memory2_1939_romci7q,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+niosv_onchip_memory2_0.onchip_memory2_0,niosv_onchip_memory2_0_altera_avalon_onchip_memory2_1939_romci7q

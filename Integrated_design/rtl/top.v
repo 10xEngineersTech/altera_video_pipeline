@@ -71,11 +71,11 @@ module top #(
     parameter [31:0] SCALER_OUT_H    = 32'd480,
 
     // CRS output mode: 0=420, 2=422, 3=444
-    parameter [31:0] CRS_OUTPUT_MODE =                                 32'd2,
+    parameter [31:0] CRS_OUTPUT_MODE =                                                          32'd2,
 
     // CSC mode: 0=passthrough, 1=RGB->YCbCrHD, 2=YCbCrHD->RGB,
     //           3=RGB->YCbCrSD, 4=YCbCrSD->RGB
-    parameter [2:0]  CSC_MODE =                                 3'd2,
+    parameter [2:0]  CSC_MODE =                                                          3'd2,
     parameter [31:0] CSC_COLOR_SPACE = 32'd2,
 	 
 	 
@@ -533,7 +533,14 @@ module top #(
                         if (cfg_step == 4'd1) begin
                             bridge_write  <= 1'b0;
                             cfg_step      <= 4'd0;
-                            current_state <= ST_POLL_CRS;
+                            if (DO_CSC) begin
+                                // Combined: skip CRS poll, go to CSC config.
+                                bridge_addr   <= CSC_COEFF_A0;
+                                bridge_wdata  <= csc_a0;
+                                current_state <= ST_CONFIG_CSC;
+                            end else begin
+                                current_state <= ST_POLL_CRS;
+                            end
                         end else begin
                             cfg_step <= cfg_step + 1'b1;
                             case (cfg_step + 1'b1)
@@ -589,30 +596,31 @@ module top #(
                             bridge_write <= 1'b0;
                             cfg_step     <= 4'd0;
                             if (DO_PC1) begin
-                                // Image: skip poll - image data not flowing yet,
-                                // CSC will absorb commit on first live frame
                                 pc1_addr      <= PC1_ADDR_WIDTH;
                                 pc1_wdata     <= IMG_WIDTH;
                                 current_state <= ST_CONFIG_PC1;
+                            end else if (DO_CRS) begin
+                                // Combined: no data flowing, CSC applies immediately.
+                                // Skip STATUS poll, go straight to WORKING.
+                                current_state <= ST_WORKING;
                             end else begin
-                                // TPG: poll STATUS until pending bit clears
                                 current_state <= ST_POLL_CSC;
                             end
                         end else begin
                             cfg_step <= cfg_step + 1'b1;
                             case (cfg_step + 1'b1)
-                                4'd1:  begin bridge_addr <= CSC_COEFF_B0;    bridge_wdata <= csc_b0;      end
-                                4'd2:  begin bridge_addr <= CSC_COEFF_C0;    bridge_wdata <= csc_c0;      end
-                                4'd3:  begin bridge_addr <= CSC_COEFF_A1;    bridge_wdata <= csc_a1;      end
-                                4'd4:  begin bridge_addr <= CSC_COEFF_B1;    bridge_wdata <= csc_b1;      end
-                                4'd5:  begin bridge_addr <= CSC_COEFF_C1;    bridge_wdata <= csc_c1;      end
-                                4'd6:  begin bridge_addr <= CSC_COEFF_A2;    bridge_wdata <= csc_a2;      end
-                                4'd7:  begin bridge_addr <= CSC_COEFF_B2;    bridge_wdata <= csc_b2;      end
-                                4'd8:  begin bridge_addr <= CSC_COEFF_C2;    bridge_wdata <= csc_c2;      end
-                                4'd9:  begin bridge_addr <= CSC_SUMMAND_S0;  bridge_wdata <= csc_s0;      end
-                                4'd10: begin bridge_addr <= CSC_SUMMAND_S1;  bridge_wdata <= csc_s1;      end
-                                4'd11: begin bridge_addr <= CSC_SUMMAND_S2;  bridge_wdata <= csc_s2;      end
-                                4'd12: begin bridge_addr <= CSC_OUT_CS;      bridge_wdata <= csc_out_cs;  end
+                                4'd1:  begin bridge_addr <= CSC_COEFF_B0;    bridge_wdata <= csc_b0;       end
+                                4'd2:  begin bridge_addr <= CSC_COEFF_C0;    bridge_wdata <= csc_c0;       end
+                                4'd3:  begin bridge_addr <= CSC_COEFF_A1;    bridge_wdata <= csc_a1;       end
+                                4'd4:  begin bridge_addr <= CSC_COEFF_B1;    bridge_wdata <= csc_b1;       end
+                                4'd5:  begin bridge_addr <= CSC_COEFF_C1;    bridge_wdata <= csc_c1;       end
+                                4'd6:  begin bridge_addr <= CSC_COEFF_A2;    bridge_wdata <= csc_a2;       end
+                                4'd7:  begin bridge_addr <= CSC_COEFF_B2;    bridge_wdata <= csc_b2;       end
+                                4'd8:  begin bridge_addr <= CSC_COEFF_C2;    bridge_wdata <= csc_c2;       end
+                                4'd9:  begin bridge_addr <= CSC_SUMMAND_S0;  bridge_wdata <= csc_s0;       end
+                                4'd10: begin bridge_addr <= CSC_SUMMAND_S1;  bridge_wdata <= csc_s1;       end
+                                4'd11: begin bridge_addr <= CSC_SUMMAND_S2;  bridge_wdata <= csc_s2;       end
+                                4'd12: begin bridge_addr <= CSC_OUT_CS;      bridge_wdata <= csc_out_cs;   end
                                 4'd13: begin bridge_addr <= CSC_COMMIT_ADDR; bridge_wdata <= 32'hFFFFFFFF; end
                                 default: ;
                             endcase
@@ -696,8 +704,9 @@ module top #(
             // Image: only start when fully configured
             assign ready_to_start = (current_state == ST_WORKING);
         end else if (DO_CSC) begin : gen_rts_csc
-            // TPG + CSC: start at ST_CONFIG_CSC (first frame absorbs commit)
-            assign ready_to_start = (current_state >= ST_CONFIG_CSC);
+            // Combined CRS+CSC: both committed with no live data; start at WORKING.
+            // CSC_ONLY: start at ST_CONFIG_CSC (first frame absorbs commit).
+            assign ready_to_start = (DO_CRS ? (current_state == ST_WORKING) : (current_state >= ST_CONFIG_CSC));
         end else if (DO_SCL) begin : gen_rts_scl
             assign ready_to_start = (current_state == ST_WORKING);
 		  end else if (DO_CRS) begin : gen_rts_crs

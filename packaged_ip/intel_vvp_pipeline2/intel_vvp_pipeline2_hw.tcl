@@ -572,7 +572,7 @@ set_parameter_property SC_MAX_OUT_WIDTH ALLOWED_RANGES       "1:65536"
 set_parameter_property SC_MAX_OUT_WIDTH HDL_PARAMETER        false
 
 add_parameter SC_OUTPUT_HEIGHT INTEGER 720
-set_parameter_property SC_OUTPUT_HEIGHT DISPLAY_NAME        "Output picture height (when MM off)"
+set_parameter_property SC_OUTPUT_HEIGHT DISPLAY_NAME        "Output picture height"
 set_parameter_property SC_OUTPUT_HEIGHT ALLOWED_RANGES       "1:65536"
 set_parameter_property SC_OUTPUT_HEIGHT HDL_PARAMETER        false
 
@@ -741,6 +741,25 @@ set_parameter_property SC_H_INIT_FILE HDL_PARAMETER        false
 # GUI LAYOUT - tabs
 # ============================================================================
 
+# -- General tab -------------------------------------------------------------
+add_display_item "" general_tab group "General"
+set_display_item_property general_tab DISPLAY_HINT "tab"
+
+add_display_item general_tab gen_mode group "Pipeline mode"
+add_display_item gen_mode TOPOLOGY         parameter
+add_display_item gen_mode INPUT_PROTOCOL   parameter
+add_display_item gen_mode OUTPUT_PROTOCOL  parameter
+
+add_display_item general_tab gen_vdf group "Video data format"
+add_display_item gen_vdf BPS                     parameter
+add_display_item gen_vdf NUMBER_OF_COLOR_PLANES  parameter
+add_display_item gen_vdf PIXELS_IN_PARALLEL      parameter
+
+add_display_item general_tab gen_res group "Resolution"
+add_display_item gen_res SC_MAX_IN_WIDTH  parameter
+add_display_item gen_res SC_MAX_OUT_WIDTH parameter
+add_display_item gen_res SC_OUTPUT_HEIGHT parameter
+
 # -- Diagram tab -------------------------------------------------------------
 add_display_item "" diagram_tab group "Diagram"
 set_display_item_property diagram_tab DISPLAY_HINT "tab"
@@ -769,11 +788,11 @@ set_display_item_property dil_tab DISPLAY_HINT "tab"
 
 add_display_item dil_tab dil_vdf group "Video data format"
 add_display_item dil_vdf DIL_EXTERNAL_MODE        parameter
+add_display_item dil_vdf DIL_MAX_WIDTH            parameter
 
 add_display_item dil_tab dil_params group "Deinterlacing"
 add_display_item dil_params DIL_MODE              parameter
 add_display_item dil_params DIL_BOB_MODE          parameter
-add_display_item dil_params DIL_MAX_WIDTH         parameter
 
 add_display_item dil_tab dil_mem group "Memory - Weave and Motion adaptive only"
 add_display_item dil_mem DIL_AV_MM_DATA_WIDTH     parameter
@@ -872,11 +891,6 @@ add_display_item csc_ctrl CSC_PIPELINE_READY       parameter
 add_display_item "" clip_tab group "Clipper"
 set_display_item_property clip_tab DISPLAY_HINT "tab"
 
-add_display_item clip_tab cl_vdf group "Video data format"
-add_display_item cl_vdf BPS                    parameter
-add_display_item cl_vdf NUMBER_OF_COLOR_PLANES parameter
-add_display_item cl_vdf PIXELS_IN_PARALLEL     parameter
-
 add_display_item clip_tab cl_clip group "Clipping"
 add_display_item cl_clip CL_CLIPPING_METHOD    parameter
 add_display_item cl_clip CL_LEFT_OFFSET        parameter
@@ -923,16 +937,10 @@ set_display_item_property scl_tab DISPLAY_HINT "tab"
 
 add_display_item scl_tab sc_vdf group "Video data format"
 add_display_item sc_vdf SC_EXTERNAL_MODE    parameter
-add_display_item sc_vdf BPS                 parameter
-add_display_item sc_vdf NUMBER_OF_COLOR_PLANES parameter
-add_display_item sc_vdf PIXELS_IN_PARALLEL  parameter
 add_display_item sc_vdf SC_ENABLE_444       parameter
 add_display_item sc_vdf SC_ENABLE_422       parameter
 add_display_item sc_vdf SC_ENABLE_420       parameter
 add_display_item sc_vdf SC_NO_BLANKING      parameter
-add_display_item sc_vdf SC_MAX_IN_WIDTH     parameter
-add_display_item sc_vdf SC_MAX_OUT_WIDTH    parameter
-add_display_item sc_vdf SC_OUTPUT_HEIGHT    parameter
 
 add_display_item scl_tab sc_ctrl group "Control"
 add_display_item sc_ctrl SC_RUNTIME_CONTROL      parameter
@@ -1039,6 +1047,7 @@ proc validate {} {
         send_message error "Scaler: at least one chroma sampling mode (444, 422, or 420) must be enabled."
     }
 
+
     # Clipper offset vs rectangle params
     set is_rect [expr {[get_parameter_value CL_CLIPPING_METHOD] eq "RECTANGLE"}]
     set_parameter_property CL_RIGHT_OFFSET  ENABLED [expr {!$is_rect}]
@@ -1075,6 +1084,10 @@ proc compose {} {
         DIL_ONLY    { set do_dil 1; set do_crs 0; set do_csc 0; set do_clip 0; set do_pc0 0; set do_scl 0 }
         default     { set do_dil 0; set do_crs 0; set do_csc 0; set do_clip 0; set do_pc0 0; set do_scl 0 }
     }
+
+    # When CRS or CSC are in the chain the internal pipeline runs at 3 planes
+    # (444).  DIL and CRS input see $npl; Clipper and beyond see $internal_npl.
+    set internal_npl [expr {($do_crs || $do_csc) ? 3 : $npl}]
 
     # -- Determine if MM bridge needed ---------------------------------------
     set need_mm [expr {
@@ -1128,7 +1141,7 @@ proc compose {} {
         add_instance intel_vvp_dil_0 intel_vvp_dil 24.5.1
         set_instance_parameter_value intel_vvp_dil_0 EXTERNAL_MODE          [get_parameter_value DIL_EXTERNAL_MODE]
         set_instance_parameter_value intel_vvp_dil_0 BPS                    $bps
-        set_instance_parameter_value intel_vvp_dil_0 NUMBER_OF_COLOR_PLANES $npl
+        set_instance_parameter_value intel_vvp_dil_0 NUMBER_OF_COLOR_PLANES $internal_npl
         set_instance_parameter_value intel_vvp_dil_0 PIXELS_IN_PARALLEL     $pip
         set_instance_parameter_value intel_vvp_dil_0 MAX_WIDTH              [get_parameter_value DIL_MAX_WIDTH]
         set_instance_parameter_value intel_vvp_dil_0 DIL_MODE               [get_parameter_value DIL_MODE]
@@ -1219,7 +1232,7 @@ proc compose {} {
     if {$do_clip} {
         add_instance intel_vvp_clipper_0 intel_vvp_clipper 24.5.1
         set_instance_parameter_value intel_vvp_clipper_0 BPS                    $bps
-        set_instance_parameter_value intel_vvp_clipper_0 NUMBER_OF_COLOR_PLANES $npl
+        set_instance_parameter_value intel_vvp_clipper_0 NUMBER_OF_COLOR_PLANES $internal_npl
         set_instance_parameter_value intel_vvp_clipper_0 PIXELS_IN_PARALLEL     $pip
         set_instance_parameter_value intel_vvp_clipper_0 EXTERNAL_MODE          [get_parameter_value CL_EXTERNAL_MODE]
         set_instance_parameter_value intel_vvp_clipper_0 RUNTIME_CONTROL        [get_parameter_value CL_RUNTIME_CONTROL]
@@ -1243,7 +1256,7 @@ proc compose {} {
     if {$do_pc0} {
         add_instance intel_vvp_protocol_conv_0 intel_vvp_protocol_conv 24.6.0
         set_instance_parameter_value intel_vvp_protocol_conv_0 BPS                    $bps
-        set_instance_parameter_value intel_vvp_protocol_conv_0 NUMBER_OF_COLOR_PLANES $npl
+        set_instance_parameter_value intel_vvp_protocol_conv_0 NUMBER_OF_COLOR_PLANES $internal_npl
         set_instance_parameter_value intel_vvp_protocol_conv_0 PIXELS_IN_PARALLEL     $pip
         set_instance_parameter_value intel_vvp_protocol_conv_0 INPUT_MODE             "INTERNAL"
         set_instance_parameter_value intel_vvp_protocol_conv_0 OUTPUT_MODE            "EXTERNAL"
@@ -1268,9 +1281,12 @@ proc compose {} {
         add_instance intel_vvp_scaler_0 intel_vvp_scaler 24.5.1
         set_instance_parameter_value intel_vvp_scaler_0 EXTERNAL_MODE          [get_parameter_value SC_EXTERNAL_MODE]
         set_instance_parameter_value intel_vvp_scaler_0 BPS                    $bps
-        set_instance_parameter_value intel_vvp_scaler_0 NUMBER_OF_COLOR_PLANES $npl
+        set_instance_parameter_value intel_vvp_scaler_0 NUMBER_OF_COLOR_PLANES $internal_npl
         set_instance_parameter_value intel_vvp_scaler_0 PIXELS_IN_PARALLEL     $pip
-        set_instance_parameter_value intel_vvp_scaler_0 ENABLE_444             [get_parameter_value SC_ENABLE_444]
+        # When the internal pipeline runs at 3 planes (444), the scaler input is
+        # always 444 — force ENABLE_444 on so the scaler accepts that format.
+        set sc_enable_444 [expr {($internal_npl == 3) ? 1 : [get_parameter_value SC_ENABLE_444]}]
+        set_instance_parameter_value intel_vvp_scaler_0 ENABLE_444             $sc_enable_444
         set_instance_parameter_value intel_vvp_scaler_0 ENABLE_422             [get_parameter_value SC_ENABLE_422]
         set_instance_parameter_value intel_vvp_scaler_0 ENABLE_420             [get_parameter_value SC_ENABLE_420]
         set_instance_parameter_value intel_vvp_scaler_0 NO_BLANKING            [get_parameter_value SC_NO_BLANKING]

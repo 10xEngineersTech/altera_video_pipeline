@@ -70,62 +70,6 @@ their generated HAL drivers.
 ## Prerequisites
 
 - **Quartus Prime 25.1.1** with the **Nios V** and **RISCFree IDE** components.
-- The Nios V tools must be on your `PATH`. Confirm with:
-
-  ```bash
-  which niosv-stack-report elf2hex
-  ```
-
-  If these are *not* found, the build will fail with **`Error 127`** (command
-  not found). Launch RISCFree from a terminal that has the tools on `PATH`, or
-  add them permanently:
-
-  ```bash
-  export PATH=/path/to/Quartus/niosv/bin:$PATH
-  ```
-
----
-
-## Build & run
-
-### 1. Generate the FPGA hardware
-
-Open the system, add/connect IP, generate HDL, then compile the bitstream:
-
-```bash
-qsys-edit niosv.qsys                  # edit the system (optional)
-quartus_sh --flow compile niosv.qpf   # produces output_files/niosv.sof
-```
-
-### 2. Generate the BSP
-
-Regenerate the BSP whenever the `.qsys` system changes — this refreshes
-`system.h`, the linker script, and the IP drivers:
-
-```bash
-niosv-bsp -c -t=hal -p=niosv.qpf -r=niosv -s=niosv.qsys software/bsp/settings.bsp
-```
-
-### 3. Generate the application project
-
-Only needed when the source file list changes:
-
-```bash
-niosv-app -a=software/app -b=software/bsp -s=software/app/hello.c
-```
-
-### 4. Build in RISCFree
-
-Import the project and run **Project → Clean → Build**. This produces:
-
-- `app.elf` — the executable
-- `SRAM.hex` — memory-initialization image for the on-chip RAM
-- `app.elf.stack_report` — stack/heap space report
-
-### 5. Run on hardware
-
-Program `output_files/niosv.sof` to the FPGA, then download `app.elf`.
-Application `printf` output appears on the **JTAG UART** terminal.
 
 ---
 
@@ -153,21 +97,6 @@ The output resolution is set by `#define`s at the top of `hello.c`:
 
 A detailed, step-by-step breakdown of every API call and the registers it
 reads/writes is in [`software/app/docs/`](software/app/docs/).
-
----
-
-## Troubleshooting
-
-| Symptom | Cause | Fix |
-|---------|-------|-----|
-| `Error 127` on `app.elf.stack_report` / `SRAM.hex` | Nios V tools not on the IDE's `PATH` | Launch RISCFree from a shell with the tools on `PATH`, or export it (see Prerequisites) |
-| Editor shows **“Unresolved inclusion”** for a driver header | CDT indexer is stale; the build itself is fine | Right-click project → **Index → Rebuild**; enable the `compile_commands.json` provider |
-| Undefined `*_BASE` macro | BSP not regenerated after editing the `.qsys` | Re-run the `niosv-bsp` command (step 2) |
-| Linker error: **`.bss is not within region 'SRAM'`** | Program is larger than the 128 KB on-chip RAM | Build the **Release** config (`-O2`), enable `-ffunction-sections -fdata-sections` + `-Wl,--gc-sections`, or increase the on-chip RAM size in Platform Designer |
-
-> **Note:** `software/bsp/*` and `software/app/CMakeLists.txt` are **generated**.
-> Changes there are overwritten when you regenerate the BSP/app — re-apply build-flag
-> tweaks afterward, or set them in the IDE's project properties.
 
 ---
 

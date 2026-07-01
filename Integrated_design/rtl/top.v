@@ -55,7 +55,7 @@
 // =============================================================================
 
 module top #(
-    parameter        TOPOLOGY        = "FULL",
+    parameter        TOPOLOGY        = "CLIP_SCL",
     parameter [0:0]  INPUT_SEL       = 1'b0,
 
     parameter [31:0] IMG_WIDTH       = 32'd640,
@@ -71,11 +71,11 @@ module top #(
     parameter [31:0] SCALER_OUT_H    = 32'd480,
 
     // CRS output mode: 0=420, 2=422, 3=444
-    parameter [31:0] CRS_OUTPUT_MODE =                                                                                 32'd3,
+    parameter [31:0] CRS_OUTPUT_MODE =                                                                                            32'd3,
 
     // CSC mode: 0=passthrough, 1=RGB->YCbCrHD, 2=YCbCrHD->RGB,
     //           3=RGB->YCbCrSD, 4=YCbCrSD->RGB
-    parameter [2:0]  CSC_MODE =                                                                                 3'd1,
+    parameter [2:0]  CSC_MODE =                                                                                            3'd0,
     parameter [31:0] CSC_COLOR_SPACE = 32'd2,
 	 
 	 

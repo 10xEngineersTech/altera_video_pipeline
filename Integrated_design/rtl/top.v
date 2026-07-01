@@ -55,7 +55,7 @@
 // =============================================================================
 
 module top #(
-    parameter        TOPOLOGY        = "CRS_ONLY",
+    parameter        TOPOLOGY        = "FULL",
     parameter [0:0]  INPUT_SEL       = 1'b0,
 
     parameter [31:0] IMG_WIDTH       = 32'd640,
@@ -71,11 +71,11 @@ module top #(
     parameter [31:0] SCALER_OUT_H    = 32'd480,
 
     // CRS output mode: 0=420, 2=422, 3=444
-    parameter [31:0] CRS_OUTPUT_MODE =                                                          32'd2,
+    parameter [31:0] CRS_OUTPUT_MODE =                                                                                 32'd3,
 
     // CSC mode: 0=passthrough, 1=RGB->YCbCrHD, 2=YCbCrHD->RGB,
     //           3=RGB->YCbCrSD, 4=YCbCrSD->RGB
-    parameter [2:0]  CSC_MODE =                                                          3'd2,
+    parameter [2:0]  CSC_MODE =                                                                                 3'd1,
     parameter [31:0] CSC_COLOR_SPACE = 32'd2,
 	 
 	 
@@ -201,6 +201,7 @@ module top #(
         ST_POLL_CSC    = 5'd26,
         ST_CONFIG_PC1  = 5'd27,
         ST_WORKING     = 5'd28,
+        ST_WAIT_CRS    = 5'd29,
 		  
 		  // TPG (own Avalon port)
         ST_TPG_CTRL_1    = 5'd0,
@@ -264,6 +265,7 @@ module top #(
     // =========================================================================
     reg [4:0]  current_state;
     reg [3:0]  cfg_step;
+    reg [15:0] wait_counter;
 
     reg [6:0]  pc1_addr;
     reg        pc1_write;
@@ -297,6 +299,7 @@ module top #(
             bridge_write  <= 1'b0;
             bridge_read   <= 1'b0;
             cfg_step      <= 4'd0;
+            wait_counter  <= 16'd0;
         end else begin
             case (current_state)
 
@@ -539,7 +542,8 @@ module top #(
                                 bridge_wdata  <= csc_a0;
                                 current_state <= ST_CONFIG_CSC;
                             end else begin
-                                current_state <= ST_POLL_CRS;
+                                // CRS_ONLY 422: wait 32,000 cycles for 422 path to settle.
+                                current_state <= ST_WAIT_CRS;
                             end
                         end else begin
                             cfg_step <= cfg_step + 1'b1;
@@ -580,6 +584,26 @@ module top #(
                     end
                 end
 					 
+                // --------------------------------------------------------------
+                // CRS_ONLY 422 settling: count 32,000 cycles (~320µs @ 100MHz)
+                // after CRS commit before starting data. Mirrors the natural
+                // delay provided by 13 CSC writes in CRS_CSC mode.
+                // --------------------------------------------------------------
+                ST_WAIT_CRS: begin
+                    if (wait_counter == 16'd32000) begin
+                        wait_counter  <= 16'd0;
+                        if (DO_PC1) begin
+                            pc1_addr      <= PC1_ADDR_WIDTH;
+                            pc1_wdata     <= IMG_WIDTH;
+                            current_state <= ST_CONFIG_PC1;
+                        end else begin
+                            current_state <= ST_WORKING;
+                        end
+                    end else begin
+                        wait_counter <= wait_counter + 1'b1;
+                    end
+                end
+
                 // --------------------------------------------------------------
                 // CSC: write A0 B0 C0 A1 B1 C1 A2 B2 C2 S0 S1 S2 OUT_CS COMMIT
                 // By the time we get here (TPG mode), TPG data is already
@@ -709,8 +733,9 @@ module top #(
             assign ready_to_start = (DO_CRS ? (current_state == ST_WORKING) : (current_state >= ST_CONFIG_CSC));
         end else if (DO_SCL) begin : gen_rts_scl
             assign ready_to_start = (current_state == ST_WORKING);
-		  end else if (DO_CRS) begin : gen_rts_crs
-            assign ready_to_start = (current_state >= ST_CONFIG_CRS);
+        end else if (DO_CRS) begin : gen_rts_crs
+            // CRS_ONLY: wait for full settling (ST_WAIT_CRS counts 32k cycles).
+            assign ready_to_start = (current_state == ST_WORKING);
         end else begin : gen_rts_default
             assign ready_to_start = (current_state == ST_WORKING);
         end

@@ -1,9 +1,9 @@
 
 # Move to sim directory
-cd /mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/app/../platform/pipeline/sim/mentor
+cd /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/../platform/pipeline/sim/mentor
 
 # Setup and Compile IP
-set QUARTUS_INSTALL_DIR /mnt/ssd2/Quartus_Setup_Installation/quartus
+set QUARTUS_INSTALL_DIR /home/lpt-10xe/altera_pro/25.1.1/quartus
 source msim_setup.tcl
 
 # Compile Device Libraries
@@ -13,10 +13,10 @@ dev_com
 com
 
 # Compile RTL and TB
-vlog /mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/app/../rtl/tb.v
-vlog /mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/app/../rtl/top.v
-vlog /mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/app/../rtl/make_file.v
-vlog /mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/app/../rtl/controller.v
+vlog /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/../rtl/tb.v
+vlog /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/../rtl/top.v
+vlog /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/../rtl/make_file.v
+vlog /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/../rtl/controller.v
 
 # Elaborate
 set TOP_LEVEL_NAME work.tb

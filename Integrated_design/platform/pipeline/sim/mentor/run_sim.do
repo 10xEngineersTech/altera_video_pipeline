@@ -3,7 +3,7 @@
 cd /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/../platform/pipeline/sim/mentor
 
 # Setup and Compile IP
-set QUARTUS_INSTALL_DIR /home/lpt-10xe/altera_pro/25.1.1/quartus
+set QUARTUS_INSTALL_DIR $::env(QUARTUS_INSTALL_DIR)
 source msim_setup.tcl
 
 # Compile Device Libraries

@@ -20,7 +20,7 @@ tcl_commands = f"""
 cd {sim_path}
 
 # Setup and Compile IP
-set QUARTUS_INSTALL_DIR /home/lpt-10xe/altera_pro/25.1.1/quartus
+set QUARTUS_INSTALL_DIR $::env(QUARTUS_INSTALL_DIR)
 source msim_setup.tcl
 
 # Compile Device Libraries
@@ -68,7 +68,15 @@ try:
 
     # Define environment and config
     my_env = os.environ.copy()
-    questasim_dir = "/home/lpt-10xe/altera_pro/25.1.1/questa_fse"
+
+    # Get paths from environment variables (must be set in bashrc or system environment)
+    questasim_dir = my_env.get("QUESTASIM_INSTALL_DIR")
+    quartus_dir = my_env.get("QUARTUS_INSTALL_DIR")
+
+    if not questasim_dir or not quartus_dir:
+        print("Error: Please set QUESTASIM_INSTALL_DIR and QUARTUS_INSTALL_DIR environment variables")
+        sys.exit(1)
+
     my_env["QUESTASIM_DIR"] = questasim_dir
     my_env["PATH"] = f"{questasim_dir}/bin:" + my_env.get("PATH", "")
 

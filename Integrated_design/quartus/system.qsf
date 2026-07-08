@@ -53,3 +53,6 @@ set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_intel_vvp_d
 set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_intel_vvp_csc_0.ip
 set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_1.ip
 set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_mm_bridge_0.ip
+set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_2.ip
+set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_intel_vvp_vfb_0.ip
+set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_onchip_memory2_0.ip

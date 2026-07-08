@@ -94,7 +94,7 @@
 # within the Quartus project, and generate a unified
 # script which supports all the Intel IP within the design.
 # ----------------------------------------
-# ACDS 25.1.1 125 linux 2026.05.21.22:17:49
+# ACDS 25.1.1 125 linux 2026.07.08.17:52:30
 
 # ----------------------------------------
 # Initialize variables
@@ -113,7 +113,7 @@ if ![info exists QSYS_SIMDIR] {
 }
 
 if ![info exists QUARTUS_INSTALL_DIR] { 
-  set QUARTUS_INSTALL_DIR "/mnt/ssd2/Quartus_Setup_Installation/quartus/"
+  set QUARTUS_INSTALL_DIR "/home/lpt-10xe/altera_pro/25.1.1/quartus/"
 }
 
 if ![info exists QUARTUS_SIM_LIB_DIR] { 

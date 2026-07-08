@@ -14,7 +14,7 @@ module tb();
     localparam SCALER_OUT_W   = SCALER_WIDTH;
     localparam SCALER_OUT_H   = SCALER_HEIGHT;
 
-    localparam END_TIME   = (SCALER_HEIGHT * SCALER_WIDTH < TPG_WIDTH * TPG_HEIGHT) ? TPG_WIDTH * TPG_HEIGHT * 100 : SCALER_HEIGHT * SCALER_WIDTH * 100;
+    localparam END_TIME   = (SCALER_HEIGHT * SCALER_WIDTH < TPG_WIDTH * TPG_HEIGHT) ? TPG_WIDTH * TPG_HEIGHT * 1000 : SCALER_HEIGHT * SCALER_WIDTH * 1000;
 
     // --- Clock and Reset ---
     reg clk;
@@ -43,9 +43,9 @@ module tb();
 	 make_file #(
         .IMG_H(SCALER_OUT_H),
         .IMG_W(SCALER_OUT_W),
-        .IS_FULL(0),
+        .IS_FULL(1),
 		  .FILE_NAME("../../../../app/sc_data.txt")
-    ) scaler_out (
+    ) vfb_out_capture (
         .clk        (clk),
         .reset      (reset),
 
@@ -107,7 +107,7 @@ module tb();
         out_tready = 1;
 
         wait(out_tvalid && out_tuser[0]);
-        $display("[%0t] First Start of Frame (SOF) detected!", $time);
+        $display("[%0t] First Start of Frame (SOF) detected at VFB output!", $time);
 
         repeat(5) begin
             wait(out_tvalid && out_tlast);

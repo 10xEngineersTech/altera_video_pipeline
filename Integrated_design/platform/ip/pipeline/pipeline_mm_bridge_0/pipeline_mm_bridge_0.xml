@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2026.05.21.22:17:50"
- outputDirectory="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/">
+ date="2026.07.08.17:52:30"
+ outputDirectory="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/">
  <perimeter>
   <parameter
      name="AUTO_GENERATION_ID"
@@ -89,7 +89,7 @@
   <interface name="s0" kind="avalon" start="0">
    <property name="addressAlignment" value="DYNAMIC" />
    <property name="addressGroup" value="0" />
-   <property name="addressSpan" value="2048" />
+   <property name="addressSpan" value="8192" />
    <property name="addressUnits" value="SYMBOLS" />
    <property name="alwaysBurstMaxBurst" value="false" />
    <property name="associatedClock" value="clk" />
@@ -149,7 +149,7 @@
        width="1" />
    <port name="s0_burstcount" direction="input" role="burstcount" width="1" />
    <port name="s0_writedata" direction="input" role="writedata" width="32" />
-   <port name="s0_address" direction="input" role="address" width="11" />
+   <port name="s0_address" direction="input" role="address" width="13" />
    <port name="s0_write" direction="input" role="write" width="1" />
    <port name="s0_read" direction="input" role="read" width="1" />
    <port name="s0_byteenable" direction="input" role="byteenable" width="4" />
@@ -202,7 +202,7 @@
        width="1" />
    <port name="m0_burstcount" direction="output" role="burstcount" width="1" />
    <port name="m0_writedata" direction="output" role="writedata" width="32" />
-   <port name="m0_address" direction="output" role="address" width="11" />
+   <port name="m0_address" direction="output" role="address" width="13" />
    <port name="m0_write" direction="output" role="write" width="1" />
    <port name="m0_read" direction="output" role="read" width="1" />
    <port name="m0_byteenable" direction="output" role="byteenable" width="4" />
@@ -224,21 +224,21 @@
   <parameter name="AUTO_S0_CPU_INFO_ID" value="" />
   <generatedFiles>
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/synth/pipeline_mm_bridge_0.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/synth/pipeline_mm_bridge_0.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/synth/pipeline_mm_bridge_0.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/synth/pipeline_mm_bridge_0.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0.ip" />
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0.ip" />
   </sourceFiles>
   <childSourceFiles>
    <file
-       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/merlin/altera_avalon_mm_bridge/altera_avalon_mm_bridge_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_avalon_mm_bridge/altera_avalon_mm_bridge_hw.tcl" />
   </childSourceFiles>
   <messages>
    <message level="Info" culprit="pipeline_mm_bridge_0">"Generating: pipeline_mm_bridge_0"</message>
@@ -252,29 +252,29 @@
   <parameter name="MAX_BURST_SIZE" value="1" />
   <generatedFiles>
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/altera_avalon_mm_bridge_2010/synth/pipeline_mm_bridge_0_altera_avalon_mm_bridge_2010_tex5a4i.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/altera_avalon_mm_bridge_2010/synth/pipeline_mm_bridge_0_altera_avalon_mm_bridge_2010_tex5a4i.v"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/altera_avalon_mm_bridge_2010/synth/altera_merlin_waitrequest_adapter.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/altera_avalon_mm_bridge_2010/synth/altera_merlin_waitrequest_adapter.v"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/altera_avalon_mm_bridge_2010/synth/altera_avalon_sc_fifo.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/altera_avalon_mm_bridge_2010/synth/altera_avalon_sc_fifo.v"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/altera_avalon_mm_bridge_2010/synth/pipeline_mm_bridge_0_altera_avalon_mm_bridge_2010_tex5a4i.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/altera_avalon_mm_bridge_2010/synth/pipeline_mm_bridge_0_altera_avalon_mm_bridge_2010_tex5a4i.v"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/altera_avalon_mm_bridge_2010/synth/altera_merlin_waitrequest_adapter.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/altera_avalon_mm_bridge_2010/synth/altera_merlin_waitrequest_adapter.v"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/altera_avalon_mm_bridge_2010/synth/altera_avalon_sc_fifo.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/altera_avalon_mm_bridge_2010/synth/altera_avalon_sc_fifo.v"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/mnt/ssd2/Quartus_Setup_Installation/ip/altera/merlin/altera_avalon_mm_bridge/altera_avalon_mm_bridge_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_avalon_mm_bridge/altera_avalon_mm_bridge_hw.tcl" />
   </sourceFiles>
   <childSourceFiles/>
   <instantiator instantiator="pipeline_mm_bridge_0" as="mm_bridge_0" />

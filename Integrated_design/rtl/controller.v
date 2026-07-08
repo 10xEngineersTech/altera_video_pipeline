@@ -22,9 +22,39 @@ module frame_controller #(
     wire        first_frame_active;
 	 reg 			 sof;
 	 
-    // A transaction occurs only when valid and ready are both high
+    // A transaction occurs only when valid and ready are both high.
+    wire raw_beat;
+    assign raw_beat = tvalid && ready;
+
+    // In full mode, metadata packets (image info) are interleaved in-band.
+    // tuser[1] is set on the FIRST beat of a metadata packet only; the packet
+    // spans multiple beats and terminates with its own tlast. Track packet
+    // boundaries so every metadata beat is excluded from counters and capture.
+    reg mid_packet;   // between first beat and tlast of any packet
+    reg in_meta;      // current packet is a metadata packet
+
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            mid_packet <= 1'b0;
+            in_meta    <= 1'b0;
+        end else if (raw_beat) begin
+            if (!mid_packet) begin
+                // First beat of a new packet: classify it
+                in_meta    <= (IS_FULL==1) && tuser[1];
+                mid_packet <= !last;   // single-beat packet ends immediately
+            end else if (last) begin
+                mid_packet <= 1'b0;
+                in_meta    <= 1'b0;
+            end
+        end
+    end
+
+    wire meta_beat;
+    assign meta_beat = (IS_FULL==1) &&
+                       (mid_packet ? in_meta : tuser[1]);
+
     wire transfer_active;
-	 assign transfer_active = tvalid && ready;
+	 assign transfer_active = raw_beat && !meta_beat;
 	 
     // Logic to detect the start of a frame (SOF)
     // In AXI-Stream Video, tuser[0] typically marks the first pixel of a frame
@@ -42,13 +72,14 @@ module frame_controller #(
 				sof 					 <= 1'b0;
         end else begin
 				error <= 1'b0;
-            if(start_of_frame) begin 
+            if(start_of_frame && !frame_done) begin
 					sof <= 1'b1;
 					if(~(line_count == 15'b0 && pixel_count == 15'b0))
 						error <= 1'b1;
 				end
-            // Frame and Line Counting Logic
-            if (transfer_active) begin
+            // Frame and Line Counting Logic (freeze once the frame is captured
+            // so subsequent frames can't retrigger the error/recovery path)
+            if (transfer_active && !frame_done) begin
                 
                 if (start_of_frame) begin
                     pixel_count        <= 1;

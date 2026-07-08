@@ -6,7 +6,7 @@
 module pipeline_mm_bridge_0 #(
 		parameter DATA_WIDTH               = 32,
 		parameter SYMBOL_WIDTH             = 8,
-		parameter HDL_ADDR_WIDTH           = 11,
+		parameter HDL_ADDR_WIDTH           = 13,
 		parameter BURSTCOUNT_WIDTH         = 1,
 		parameter PIPELINE_COMMAND         = 1,
 		parameter PIPELINE_RESPONSE        = 1,

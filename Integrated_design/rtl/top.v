@@ -90,10 +90,11 @@ module top #(
     // Bridge address map — base byte address of each slave on mm_bridge_0.m0
     // (pipeline.html, §Connections). Each slave occupies 0x200 bytes.
     // =========================================================================
-    localparam [10:0] SCL_BASE  = 11'h000;
-    localparam [10:0] CLIP_BASE = 11'h200;
-    localparam [10:0] CRS_BASE  = 11'h400;
-    localparam [10:0] CSC_BASE  = 11'h600;
+    localparam [12:0] CONV_BASE = 13'h000;   // lite_to_full_converter
+    localparam [12:0] SCL_BASE  = 13'h200;
+    localparam [12:0] CLIP_BASE = 13'h400;
+    localparam [12:0] CRS_BASE  = 13'h600;
+    localparam [12:0] CSC_BASE  = 13'h800;
 
     // =========================================================================
     // Per-IP register addresses
@@ -115,42 +116,42 @@ module top #(
     localparam [6:0] TPG_ADDR_BAR_SEL   = 7'h5A;
 
     // --- Clipper (bridge, byte address) ---
-    localparam [10:0] CLIP_IN_WIDTH   = CLIP_BASE | 11'h120; // word 0x48
-    localparam [10:0] CLIP_IN_HEIGHT  = CLIP_BASE | 11'h124; // word 0x49
-    localparam [10:0] CLIP_IN_COLOR   = CLIP_BASE | 11'h130; // word 0x4C
-    localparam [10:0] CLIP_IN_SUBSAMP = CLIP_BASE | 11'h134; // word 0x4D
-    localparam [10:0] CLIP_COMMIT     = CLIP_BASE | 11'h144; // word 0x51
-    localparam [10:0] CLIP_LEFT_OFF   = CLIP_BASE | 11'h148; // word 0x52
-    localparam [10:0] CLIP_TOP_OFF    = CLIP_BASE | 11'h14C; // word 0x53
-    localparam [10:0] CLIP_RIGHT_OFF  = CLIP_BASE | 11'h150; // word 0x54
-    localparam [10:0] CLIP_BOT_OFF    = CLIP_BASE | 11'h154; // word 0x55
+    localparam [12:0] CLIP_IN_WIDTH   = CLIP_BASE | 13'h120; // word 0x48
+    localparam [12:0] CLIP_IN_HEIGHT  = CLIP_BASE | 13'h124; // word 0x49
+    localparam [12:0] CLIP_IN_COLOR   = CLIP_BASE | 13'h130; // word 0x4C
+    localparam [12:0] CLIP_IN_SUBSAMP = CLIP_BASE | 13'h134; // word 0x4D
+    localparam [12:0] CLIP_COMMIT     = CLIP_BASE | 13'h144; // word 0x51
+    localparam [12:0] CLIP_LEFT_OFF   = CLIP_BASE | 13'h148; // word 0x52
+    localparam [12:0] CLIP_TOP_OFF    = CLIP_BASE | 13'h14C; // word 0x53
+    localparam [12:0] CLIP_RIGHT_OFF  = CLIP_BASE | 13'h150; // word 0x54
+    localparam [12:0] CLIP_BOT_OFF    = CLIP_BASE | 13'h154; // word 0x55
 
     // --- Scaler (bridge, byte address) ---
-    localparam [10:0] SCL_IN_WIDTH    = SCL_BASE  | 11'h120; // word 0x48
-    localparam [10:0] SCL_IN_HEIGHT   = SCL_BASE  | 11'h124; // word 0x49
-    localparam [10:0] SCL_OUT_WIDTH   = SCL_BASE  | 11'h148; // word 0x52
-    localparam [10:0] SCL_OUT_HEIGHT  = SCL_BASE  | 11'h14C; // word 0x53
+    localparam [12:0] SCL_IN_WIDTH    = SCL_BASE  | 13'h120; // word 0x48
+    localparam [12:0] SCL_IN_HEIGHT   = SCL_BASE  | 13'h124; // word 0x49
+    localparam [12:0] SCL_OUT_WIDTH   = SCL_BASE  | 13'h148; // word 0x52
+    localparam [12:0] SCL_OUT_HEIGHT  = SCL_BASE  | 13'h14C; // word 0x53
 
     // --- CRS (bridge, byte address) ---
-    localparam [10:0] CRS_OUTPUT_MODE_ADDR = CRS_BASE | 11'h148; // word 0x52
-    localparam [10:0] CRS_COMMIT_ADDR      = CRS_BASE | 11'h144; // word 0x51
+    localparam [12:0] CRS_OUTPUT_MODE_ADDR = CRS_BASE | 13'h148; // word 0x52
+    localparam [12:0] CRS_COMMIT_ADDR      = CRS_BASE | 13'h144; // word 0x51
 
     // --- CSC (bridge, byte address) ---
-    localparam [10:0] CSC_STATUS     = CSC_BASE | 11'h140; // word 0x50
-    localparam [10:0] CSC_COMMIT     = CSC_BASE | 11'h144; // word 0x51
-    localparam [10:0] CSC_COEFF_A0   = CSC_BASE | 11'h148; // word 0x52
-    localparam [10:0] CSC_COEFF_B0   = CSC_BASE | 11'h14C; // word 0x53
-    localparam [10:0] CSC_COEFF_C0   = CSC_BASE | 11'h150; // word 0x54
-    localparam [10:0] CSC_COEFF_A1   = CSC_BASE | 11'h154; // word 0x55
-    localparam [10:0] CSC_COEFF_B1   = CSC_BASE | 11'h158; // word 0x56
-    localparam [10:0] CSC_COEFF_C1   = CSC_BASE | 11'h15C; // word 0x57
-    localparam [10:0] CSC_COEFF_A2   = CSC_BASE | 11'h160; // word 0x58
-    localparam [10:0] CSC_COEFF_B2   = CSC_BASE | 11'h164; // word 0x59
-    localparam [10:0] CSC_COEFF_C2   = CSC_BASE | 11'h168; // word 0x5A
-    localparam [10:0] CSC_SUMMAND_S0 = CSC_BASE | 11'h16C; // word 0x5B
-    localparam [10:0] CSC_SUMMAND_S1 = CSC_BASE | 11'h170; // word 0x5C
-    localparam [10:0] CSC_SUMMAND_S2 = CSC_BASE | 11'h174; // word 0x5D
-    localparam [10:0] CSC_OUT_CS     = CSC_BASE | 11'h178; // word 0x5E
+    localparam [12:0] CSC_STATUS     = CSC_BASE | 13'h140; // word 0x50
+    localparam [12:0] CSC_COMMIT     = CSC_BASE | 13'h144; // word 0x51
+    localparam [12:0] CSC_COEFF_A0   = CSC_BASE | 13'h148; // word 0x52
+    localparam [12:0] CSC_COEFF_B0   = CSC_BASE | 13'h14C; // word 0x53
+    localparam [12:0] CSC_COEFF_C0   = CSC_BASE | 13'h150; // word 0x54
+    localparam [12:0] CSC_COEFF_A1   = CSC_BASE | 13'h154; // word 0x55
+    localparam [12:0] CSC_COEFF_B1   = CSC_BASE | 13'h158; // word 0x56
+    localparam [12:0] CSC_COEFF_C1   = CSC_BASE | 13'h15C; // word 0x57
+    localparam [12:0] CSC_COEFF_A2   = CSC_BASE | 13'h160; // word 0x58
+    localparam [12:0] CSC_COEFF_B2   = CSC_BASE | 13'h164; // word 0x59
+    localparam [12:0] CSC_COEFF_C2   = CSC_BASE | 13'h168; // word 0x5A
+    localparam [12:0] CSC_SUMMAND_S0 = CSC_BASE | 13'h16C; // word 0x5B
+    localparam [12:0] CSC_SUMMAND_S1 = CSC_BASE | 13'h170; // word 0x5C
+    localparam [12:0] CSC_SUMMAND_S2 = CSC_BASE | 13'h174; // word 0x5D
+    localparam [12:0] CSC_OUT_CS     = CSC_BASE | 13'h178; // word 0x5E
 
     // --- Protocol Converter 1 (own port, 7-bit word address) ---
     localparam [6:0] PC1_ADDR_WIDTH       = 7'h48;
@@ -159,6 +160,19 @@ module top #(
     localparam [6:0] PC1_ADDR_COLORSPACE  = 7'h4C;
     localparam [6:0] PC1_ADDR_SUBSAMPLING = 7'h4D;
     localparam [6:0] PC1_ADDR_CTRL        = 7'h55;
+
+    // --- Lite-to-Full Converter (bridge, byte address; protocol_conv regmap) ---
+    localparam [12:0] CONV_WIDTH_ADDR   = CONV_BASE | 13'h120; // word 0x48
+    localparam [12:0] CONV_HEIGHT_ADDR  = CONV_BASE | 13'h124; // word 0x49
+    localparam [12:0] CONV_INTL_ADDR    = CONV_BASE | 13'h128; // word 0x4A
+    localparam [12:0] CONV_CS_ADDR      = CONV_BASE | 13'h130; // word 0x4C
+    localparam [12:0] CONV_SUBSAMP_ADDR = CONV_BASE | 13'h134; // word 0x4D
+    localparam [12:0] CONV_CTRL_ADDR    = CONV_BASE | 13'h154; // word 0x55
+
+    // --- Video Frame Buffer (own port, 7-bit word address) ---
+    // From intel_vvp_vfb_regs.h: RT base = word 0x50,
+    // OUTPUT_CONTROL = RT+7 = 0x57, bit0 = GO (read side won't emit until set)
+    localparam [6:0] VFB_ADDR_OUT_CTRL = 7'h57;
 
     // =========================================================================
     // State encoding
@@ -190,7 +204,12 @@ module top #(
         ST_WORKING       = 5'd18,
 
         // Protocol Converter 1 config (own Avalon port, INPUT_SEL=1 only)
-        ST_CONFIG_PC1    = 5'd19;
+        ST_CONFIG_PC1    = 5'd19,
+
+        // Lite-to-Full Converter config (via mm_bridge_0)
+        ST_CONFIG_CONV   = 5'd20,
+        // Video Frame Buffer start (own Avalon port)
+        ST_CONFIG_VFB    = 5'd21;
 
     // =========================================================================
     // CSC coefficient ROMs (Q10.21 signed, 32-bit)
@@ -249,12 +268,13 @@ module top #(
     reg [3:0]  cfg_step;
     reg [7:0]  cycle_count;
 
-    // TPG and PC1 keep their own Avalon-MM control ports (unchanged in qsys).
+    // TPG, PC1 and VFB keep their own Avalon-MM control ports.
     reg [6:0]  tpg_addr;   reg        tpg_write,  tpg_read;   reg [31:0] tpg_wdata;
     reg [6:0]  pc1_addr;   reg        pc1_write;              reg [31:0] pc1_wdata;
+    reg [6:0]  vfb_addr;   reg        vfb_write;              reg [31:0] vfb_wdata;
 
     // Single bridge master into mm_bridge_0_s0 (drives clipper/scaler/crs/csc).
-    reg [10:0] bridge_addr;
+    reg [12:0] bridge_addr;
     reg [31:0] bridge_wdata;
     reg        bridge_write;
     reg        bridge_read;
@@ -264,6 +284,7 @@ module top #(
     wire        tpg_readdatavalid;
     wire        tpg_wait;
     wire        pc1_wait;
+    wire        vfb_wait;
     wire [31:0] bridge_readdata;
     wire        bridge_readdatavalid;
     wire        bridge_wait;
@@ -277,6 +298,7 @@ module top #(
             tpg_write     <= 1'b0;
             tpg_read      <= 1'b0;
             pc1_write     <= 1'b0;
+            vfb_write     <= 1'b0;
             bridge_write  <= 1'b0;
             bridge_read   <= 1'b0;
             cfg_step      <= 4'd0;
@@ -506,11 +528,11 @@ module top #(
                             // register updates" bit only clears at the next frame
                             // boundary after COMMIT, but no data flows until PC1
                             // is configured and the testbench releases data at
-                            // ST_WORKING. Go straight to PC1 config.
+                            // ST_WORKING. Go straight to converter config.
                             if (INPUT_SEL) begin
-                                pc1_addr      <= PC1_ADDR_WIDTH;
-                                pc1_wdata     <= IMG_WIDTH;
-                                current_state <= ST_CONFIG_PC1;
+                                bridge_addr   <= CONV_WIDTH_ADDR;
+                                bridge_wdata  <= SCALER_OUT_W;
+                                current_state <= ST_CONFIG_CONV;
                             end else begin
                                 current_state <= ST_POLL_CSC;
                             end
@@ -529,7 +551,7 @@ module top #(
                                 4'd10: begin bridge_addr <= CSC_SUMMAND_S1; bridge_wdata <= csc_s1;     end
                                 4'd11: begin bridge_addr <= CSC_SUMMAND_S2; bridge_wdata <= csc_s2;     end
                                 4'd12: begin bridge_addr <= CSC_OUT_CS;     bridge_wdata <= csc_out_cs; end
-                                4'd13: begin bridge_addr <= CSC_COMMIT;     bridge_wdata <= 32'hFFFFFFFF; end
+                                4'd13: begin bridge_addr <= CSC_COMMIT;     bridge_wdata <= 32'h1; end
                                 default: ;
                             endcase
                         end
@@ -556,15 +578,59 @@ module top #(
                         if (bridge_readdatavalid) begin
                             cfg_step <= 4'd0;
                             if (bridge_readdata[1] == 1'b0) begin
-                                if (INPUT_SEL) begin
-                                    pc1_addr      <= PC1_ADDR_WIDTH;
-                                    pc1_wdata     <= IMG_WIDTH;
-                                    current_state <= ST_CONFIG_PC1;
-                                end else begin
-                                    current_state <= ST_WORKING;
-                                end
+                                // Pre-load first converter transaction (WIDTH).
+                                bridge_addr   <= CONV_WIDTH_ADDR;
+                                bridge_wdata  <= SCALER_OUT_W;
+                                current_state <= ST_CONFIG_CONV;
                             end
                             // else re-poll
+                        end
+                    end
+                end
+
+                // ══════════════════════════════════════════════════════════════════
+                // Lite-to-Full Converter config (via mm_bridge_0, base 0x000).
+                // Same regmap as the protocol converters. Image info must match
+                // the scaler output since the converter generates the in-band
+                // image info packets consumed by the frame buffer.
+                // ══════════════════════════════════════════════════════════════════
+                ST_CONFIG_CONV: begin
+                    bridge_write <= 1'b1;
+                    if (bridge_write && !bridge_wait) begin
+                        if (cfg_step == 4'd5) begin
+                            bridge_write  <= 1'b0;
+                            cfg_step      <= 4'd0;
+                            current_state <= ST_CONFIG_VFB;
+                        end else begin
+                            cfg_step <= cfg_step + 1'b1;
+                            case (cfg_step + 1'b1)
+                                4'd1: begin bridge_addr <= CONV_HEIGHT_ADDR;  bridge_wdata <= SCALER_OUT_H; end
+                                4'd2: begin bridge_addr <= CONV_INTL_ADDR;    bridge_wdata <= 32'h0;        end
+                                4'd3: begin bridge_addr <= CONV_CS_ADDR;      bridge_wdata <= 32'h0;        end
+                                4'd4: begin bridge_addr <= CONV_SUBSAMP_ADDR; bridge_wdata <= 32'h3;        end
+                                4'd5: begin bridge_addr <= CONV_CTRL_ADDR;    bridge_wdata <= 32'h1;        end
+                                default: ;
+                            endcase
+                        end
+                    end
+                end
+
+                // ══════════════════════════════════════════════════════════════════
+                // Video Frame Buffer start (own Avalon port):
+                // set OUTPUT_CONTROL.GO so the read side starts emitting frames.
+                // ══════════════════════════════════════════════════════════════════
+                ST_CONFIG_VFB: begin
+                    vfb_write <= 1'b1;
+                    vfb_addr  <= VFB_ADDR_OUT_CTRL;
+                    vfb_wdata <= 32'h1;
+                    if (vfb_write && !vfb_wait) begin
+                        vfb_write <= 1'b0;
+                        if (INPUT_SEL) begin
+                            pc1_addr      <= PC1_ADDR_WIDTH;
+                            pc1_wdata     <= IMG_WIDTH;
+                            current_state <= ST_CONFIG_PC1;
+                        end else begin
+                            current_state <= ST_WORKING;
                         end
                     end
                 end
@@ -575,6 +641,7 @@ module top #(
                 ST_WORKING: begin
                     tpg_write    <= 1'b0; tpg_read <= 1'b0;
                     pc1_write    <= 1'b0;
+                    vfb_write    <= 1'b0;
                     bridge_write <= 1'b0; bridge_read <= 1'b0;
                 end
 
@@ -654,6 +721,18 @@ module top #(
 
     wire [23:0] pc_out_tdata;   wire pc_out_tvalid;  wire pc_out_tready;
     wire        pc_out_tlast;   wire [2:0] pc_out_tuser;
+
+    // Scaler to Converter (lite to full AXIS)
+    wire [23:0] scaler_out_tdata;  wire scaler_out_tvalid;  wire scaler_out_tready;
+    wire        scaler_out_tlast;  wire [2:0] scaler_out_tuser;
+
+    // Converter to Frame Buffer (full AXIS)
+    wire [23:0] converter_out_tdata;  wire converter_out_tvalid;  wire converter_out_tready;
+    wire        converter_out_tlast;  wire [2:0] converter_out_tuser;
+
+    // Frame Buffer output
+    wire [23:0] vfb_out_tdata;  wire vfb_out_tvalid;  wire vfb_out_tready;
+    wire        vfb_out_tlast;  wire [2:0] vfb_out_tuser;
 
     pipeline u_pipeline (
         .clk_clk     (clk),
@@ -766,12 +845,49 @@ module top #(
         .intel_vvp_scaler_0_axi4s_vid_in_tlast  (pc_out_tlast),
         .intel_vvp_scaler_0_axi4s_vid_in_tuser  (pc_out_tuser),
 
-        // ----- Scaler AXI4-S output -----
-        .intel_vvp_scaler_0_axi4s_vid_out_tdata  (out_tdata),
-        .intel_vvp_scaler_0_axi4s_vid_out_tvalid (out_tvalid),
-        .intel_vvp_scaler_0_axi4s_vid_out_tready (out_tready),
-        .intel_vvp_scaler_0_axi4s_vid_out_tlast  (out_tlast),
-        .intel_vvp_scaler_0_axi4s_vid_out_tuser  (out_tuser),
+        // ----- Scaler AXI4-S output → Converter input -----
+        .intel_vvp_scaler_0_axi4s_vid_out_tdata  (scaler_out_tdata),
+        .intel_vvp_scaler_0_axi4s_vid_out_tvalid (scaler_out_tvalid),
+        .intel_vvp_scaler_0_axi4s_vid_out_tready (scaler_out_tready),
+        .intel_vvp_scaler_0_axi4s_vid_out_tlast  (scaler_out_tlast),
+        .intel_vvp_scaler_0_axi4s_vid_out_tuser  (scaler_out_tuser),
+
+        // ----- Lite-to-Full Converter -----
+        .lite_to_full_converter_axi4s_vid_in_tdata  (scaler_out_tdata),
+        .lite_to_full_converter_axi4s_vid_in_tvalid (scaler_out_tvalid),
+        .lite_to_full_converter_axi4s_vid_in_tready (scaler_out_tready),
+        .lite_to_full_converter_axi4s_vid_in_tlast  (scaler_out_tlast),
+        .lite_to_full_converter_axi4s_vid_in_tuser  (scaler_out_tuser),
+
+        .lite_to_full_converter_axi4s_vid_out_tdata  (converter_out_tdata),
+        .lite_to_full_converter_axi4s_vid_out_tvalid (converter_out_tvalid),
+        .lite_to_full_converter_axi4s_vid_out_tready (converter_out_tready),
+        .lite_to_full_converter_axi4s_vid_out_tlast  (converter_out_tlast),
+        .lite_to_full_converter_axi4s_vid_out_tuser  (converter_out_tuser),
+
+        // ----- Frame Buffer Video In (from converter) -----
+        .intel_vvp_vfb_0_axi4s_vid_in_tdata  (converter_out_tdata),
+        .intel_vvp_vfb_0_axi4s_vid_in_tvalid (converter_out_tvalid),
+        .intel_vvp_vfb_0_axi4s_vid_in_tready (converter_out_tready),
+        .intel_vvp_vfb_0_axi4s_vid_in_tlast  (converter_out_tlast),
+        .intel_vvp_vfb_0_axi4s_vid_in_tuser  (converter_out_tuser),
+
+        // ----- Frame Buffer Video Out (to testbench for capture) -----
+        .intel_vvp_vfb_0_axi4s_vid_out_tdata  (vfb_out_tdata),
+        .intel_vvp_vfb_0_axi4s_vid_out_tvalid (vfb_out_tvalid),
+        .intel_vvp_vfb_0_axi4s_vid_out_tready (vfb_out_tready),
+        .intel_vvp_vfb_0_axi4s_vid_out_tlast  (vfb_out_tlast),
+        .intel_vvp_vfb_0_axi4s_vid_out_tuser  (vfb_out_tuser),
+
+        // ----- Frame Buffer Avalon-MM control (own port) -----
+        .intel_vvp_vfb_0_av_mm_control_agent_address       (vfb_addr),
+        .intel_vvp_vfb_0_av_mm_control_agent_write         (vfb_write),
+        .intel_vvp_vfb_0_av_mm_control_agent_read          (1'b0),
+        .intel_vvp_vfb_0_av_mm_control_agent_byteenable    (4'hF),
+        .intel_vvp_vfb_0_av_mm_control_agent_writedata     (vfb_wdata),
+        .intel_vvp_vfb_0_av_mm_control_agent_readdata      (),
+        .intel_vvp_vfb_0_av_mm_control_agent_readdatavalid (),
+        .intel_vvp_vfb_0_av_mm_control_agent_waitrequest   (vfb_wait),
 
         // ----- TPG Avalon-MM control (own port) -----
         .intel_vvp_tpg_0_av_mm_control_agent_address       (tpg_addr),
@@ -795,5 +911,15 @@ module top #(
         .mm_bridge_0_s0_readdatavalid (bridge_readdatavalid),
         .mm_bridge_0_s0_waitrequest   (bridge_wait)
     );
+
+    // =========================================================================
+    // Final pipeline output = Frame Buffer read side (frame round-trips
+    // through OCM: converter -> VFB write host -> OCM -> VFB read host -> out)
+    // =========================================================================
+    assign out_tdata  = vfb_out_tdata;
+    assign out_tvalid = vfb_out_tvalid;
+    assign out_tlast  = vfb_out_tlast;
+    assign out_tuser  = vfb_out_tuser;
+    assign vfb_out_tready = out_tready;
 
 endmodule

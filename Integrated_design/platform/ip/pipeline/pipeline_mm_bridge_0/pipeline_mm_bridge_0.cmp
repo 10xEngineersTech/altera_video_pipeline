@@ -2,7 +2,7 @@
 		generic (
 			DATA_WIDTH               : integer := 32;
 			SYMBOL_WIDTH             : integer := 8;
-			HDL_ADDR_WIDTH           : integer := 11;
+			HDL_ADDR_WIDTH           : integer := 13;
 			BURSTCOUNT_WIDTH         : integer := 1;
 			PIPELINE_COMMAND         : integer := 1;
 			PIPELINE_RESPONSE        : integer := 1;

@@ -5,7 +5,7 @@
  version="1.0"
  fabric="QSYS">
  <!-- Format version 25.1.1 125 (Future versions may contain additional information.) -->
- <!-- 2026.05.21.22:17:50 -->
+ <!-- 2026.07.08.17:52:30 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
@@ -167,7 +167,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="ADDRESS_WIDTH">
    <type>int</type>
-   <value>11</value>
+   <value>13</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -175,7 +175,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="SYSINFO_ADDR_WIDTH">
    <type>int</type>
-   <value>11</value>
+   <value>12</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -193,7 +193,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_ADDRESS_WIDTH">
    <type>int</type>
-   <value>11</value>
+   <value>12</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -201,7 +201,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="HDL_ADDR_WIDTH">
    <type>int</type>
-   <value>11</value>
+   <value>13</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -453,7 +453,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="addressSpan">
     <type>java.math.BigInteger</type>
-    <value>2048</value>
+    <value>8192</value>
     <derived>true</derived>
     <enabled>true</enabled>
     <visible>false</visible>
@@ -876,7 +876,7 @@ parameters are a RESULT of the module parameters. -->
     <valid>true</valid>
    </parameter>
    <type>avalon</type>
-   <span>2048</span>
+   <span>8192</span>
    <isStart>false</isStart>
    <port>
     <name>s0_waitrequest</name>
@@ -911,7 +911,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>s0_address</name>
     <direction>Input</direction>
-    <width>11</width>
+    <width>13</width>
     <role>address</role>
    </port>
    <port>
@@ -1256,7 +1256,7 @@ parameters are a RESULT of the module parameters. -->
     <valid>true</valid>
    </parameter>
    <type>avalon</type>
-   <span>2048</span>
+   <span>8192</span>
    <isStart>true</isStart>
    <port>
     <name>m0_waitrequest</name>
@@ -1291,7 +1291,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>m0_address</name>
     <direction>Output</direction>
-    <width>11</width>
+    <width>13</width>
     <role>address</role>
    </port>
    <port>

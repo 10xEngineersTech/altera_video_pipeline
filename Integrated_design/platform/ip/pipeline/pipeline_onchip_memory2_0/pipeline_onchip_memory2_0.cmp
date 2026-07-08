@@ -16,10 +16,7 @@
 			write2      : in  std_logic                     := 'X';             -- write
 			readdata2   : out std_logic_vector(31 downto 0);                    -- readdata
 			writedata2  : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
-			byteenable2 : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
-			clk2        : in  std_logic                     := 'X';             -- clk
-			reset2      : in  std_logic                     := 'X';             -- reset
-			reset_req2  : in  std_logic                     := 'X'              -- reset_req
+			byteenable2 : in  std_logic_vector(3 downto 0)  := (others => 'X')  -- byteenable
 		);
 	end component pipeline_onchip_memory2_0;
 

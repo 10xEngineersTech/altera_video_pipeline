@@ -6,7 +6,7 @@
     <ipxact:version>1.0</ipxact:version>
     <ipxact:busInterfaces>
         <ipxact:busInterface>
-            <ipxact:name>clk</ipxact:name>
+            <ipxact:name>clock_in_in_clk</ipxact:name>
             <ipxact:busType vendor="intel" library="intel" name="clock" version="25.1"/>
             <ipxact:abstractionTypes>
                 <ipxact:abstractionType>
@@ -17,7 +17,7 @@
                                 <ipxact:name>clk</ipxact:name>
                             </ipxact:logicalPort>
                             <ipxact:physicalPort>
-                                <ipxact:name>clk_clk</ipxact:name>
+                                <ipxact:name>clock_in_in_clk_clk</ipxact:name>
                             </ipxact:physicalPort>
                         </ipxact:portMap>
                     </ipxact:portMaps>
@@ -97,12 +97,12 @@
                 <ipxact:parameter parameterId="associatedClock" type="string">
                     <ipxact:name>associatedClock</ipxact:name>
                     <ipxact:displayName>Associated clock</ipxact:displayName>
-                    <ipxact:value>clk</ipxact:value>
+                    <ipxact:value>clock_in_in_clk</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="associatedReset" type="string">
                     <ipxact:name>associatedReset</ipxact:name>
                     <ipxact:displayName>Associated reset</ipxact:displayName>
-                    <ipxact:value>reset</ipxact:value>
+                    <ipxact:value>reset_in_in_reset</ipxact:value>
                 </ipxact:parameter>
             </ipxact:parameters>
             <ipxact:vendorExtensions>
@@ -187,12 +187,12 @@
                 <ipxact:parameter parameterId="associatedClock" type="string">
                     <ipxact:name>associatedClock</ipxact:name>
                     <ipxact:displayName>Associated clock</ipxact:displayName>
-                    <ipxact:value>clk</ipxact:value>
+                    <ipxact:value>clock_in_in_clk</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="associatedReset" type="string">
                     <ipxact:name>associatedReset</ipxact:name>
                     <ipxact:displayName>Associated reset</ipxact:displayName>
-                    <ipxact:value>reset</ipxact:value>
+                    <ipxact:value>reset_in_in_reset</ipxact:value>
                 </ipxact:parameter>
             </ipxact:parameters>
             <ipxact:vendorExtensions>
@@ -277,12 +277,12 @@
                 <ipxact:parameter parameterId="associatedClock" type="string">
                     <ipxact:name>associatedClock</ipxact:name>
                     <ipxact:displayName>Associated clock</ipxact:displayName>
-                    <ipxact:value>clk</ipxact:value>
+                    <ipxact:value>clock_in_in_clk</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="associatedReset" type="string">
                     <ipxact:name>associatedReset</ipxact:name>
                     <ipxact:displayName>Associated reset</ipxact:displayName>
-                    <ipxact:value>reset</ipxact:value>
+                    <ipxact:value>reset_in_in_reset</ipxact:value>
                 </ipxact:parameter>
             </ipxact:parameters>
             <ipxact:vendorExtensions>
@@ -367,12 +367,12 @@
                 <ipxact:parameter parameterId="associatedClock" type="string">
                     <ipxact:name>associatedClock</ipxact:name>
                     <ipxact:displayName>Associated clock</ipxact:displayName>
-                    <ipxact:value>clk</ipxact:value>
+                    <ipxact:value>clock_in_in_clk</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="associatedReset" type="string">
                     <ipxact:name>associatedReset</ipxact:name>
                     <ipxact:displayName>Associated reset</ipxact:displayName>
-                    <ipxact:value>reset</ipxact:value>
+                    <ipxact:value>reset_in_in_reset</ipxact:value>
                 </ipxact:parameter>
             </ipxact:parameters>
             <ipxact:vendorExtensions>
@@ -457,12 +457,12 @@
                 <ipxact:parameter parameterId="associatedClock" type="string">
                     <ipxact:name>associatedClock</ipxact:name>
                     <ipxact:displayName>Associated clock</ipxact:displayName>
-                    <ipxact:value>clk</ipxact:value>
+                    <ipxact:value>clock_in_in_clk</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="associatedReset" type="string">
                     <ipxact:name>associatedReset</ipxact:name>
                     <ipxact:displayName>Associated reset</ipxact:displayName>
-                    <ipxact:value>reset</ipxact:value>
+                    <ipxact:value>reset_in_in_reset</ipxact:value>
                 </ipxact:parameter>
             </ipxact:parameters>
             <ipxact:vendorExtensions>
@@ -547,12 +547,12 @@
                 <ipxact:parameter parameterId="associatedClock" type="string">
                     <ipxact:name>associatedClock</ipxact:name>
                     <ipxact:displayName>Associated clock</ipxact:displayName>
-                    <ipxact:value>clk</ipxact:value>
+                    <ipxact:value>clock_in_in_clk</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="associatedReset" type="string">
                     <ipxact:name>associatedReset</ipxact:name>
                     <ipxact:displayName>Associated reset</ipxact:displayName>
-                    <ipxact:value>reset</ipxact:value>
+                    <ipxact:value>reset_in_in_reset</ipxact:value>
                 </ipxact:parameter>
             </ipxact:parameters>
             <ipxact:vendorExtensions>
@@ -637,12 +637,12 @@
                 <ipxact:parameter parameterId="associatedClock" type="string">
                     <ipxact:name>associatedClock</ipxact:name>
                     <ipxact:displayName>Associated clock</ipxact:displayName>
-                    <ipxact:value>clk</ipxact:value>
+                    <ipxact:value>clock_in_in_clk</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="associatedReset" type="string">
                     <ipxact:name>associatedReset</ipxact:name>
                     <ipxact:displayName>Associated reset</ipxact:displayName>
-                    <ipxact:value>reset</ipxact:value>
+                    <ipxact:value>reset_in_in_reset</ipxact:value>
                 </ipxact:parameter>
             </ipxact:parameters>
             <ipxact:vendorExtensions>
@@ -727,12 +727,12 @@
                 <ipxact:parameter parameterId="associatedClock" type="string">
                     <ipxact:name>associatedClock</ipxact:name>
                     <ipxact:displayName>Associated clock</ipxact:displayName>
-                    <ipxact:value>clk</ipxact:value>
+                    <ipxact:value>clock_in_in_clk</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="associatedReset" type="string">
                     <ipxact:name>associatedReset</ipxact:name>
                     <ipxact:displayName>Associated reset</ipxact:displayName>
-                    <ipxact:value>reset</ipxact:value>
+                    <ipxact:value>reset_in_in_reset</ipxact:value>
                 </ipxact:parameter>
             </ipxact:parameters>
             <ipxact:vendorExtensions>
@@ -817,12 +817,12 @@
                 <ipxact:parameter parameterId="associatedClock" type="string">
                     <ipxact:name>associatedClock</ipxact:name>
                     <ipxact:displayName>Associated clock</ipxact:displayName>
-                    <ipxact:value>clk</ipxact:value>
+                    <ipxact:value>clock_in_in_clk</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="associatedReset" type="string">
                     <ipxact:name>associatedReset</ipxact:name>
                     <ipxact:displayName>Associated reset</ipxact:displayName>
-                    <ipxact:value>reset</ipxact:value>
+                    <ipxact:value>reset_in_in_reset</ipxact:value>
                 </ipxact:parameter>
             </ipxact:parameters>
             <ipxact:vendorExtensions>
@@ -907,12 +907,12 @@
                 <ipxact:parameter parameterId="associatedClock" type="string">
                     <ipxact:name>associatedClock</ipxact:name>
                     <ipxact:displayName>Associated clock</ipxact:displayName>
-                    <ipxact:value>clk</ipxact:value>
+                    <ipxact:value>clock_in_in_clk</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="associatedReset" type="string">
                     <ipxact:name>associatedReset</ipxact:name>
                     <ipxact:displayName>Associated reset</ipxact:displayName>
-                    <ipxact:value>reset</ipxact:value>
+                    <ipxact:value>reset_in_in_reset</ipxact:value>
                 </ipxact:parameter>
             </ipxact:parameters>
             <ipxact:vendorExtensions>
@@ -997,12 +997,12 @@
                 <ipxact:parameter parameterId="associatedClock" type="string">
                     <ipxact:name>associatedClock</ipxact:name>
                     <ipxact:displayName>Associated clock</ipxact:displayName>
-                    <ipxact:value>clk</ipxact:value>
+                    <ipxact:value>clock_in_in_clk</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="associatedReset" type="string">
                     <ipxact:name>associatedReset</ipxact:name>
                     <ipxact:displayName>Associated reset</ipxact:displayName>
-                    <ipxact:value>reset</ipxact:value>
+                    <ipxact:value>reset_in_in_reset</ipxact:value>
                 </ipxact:parameter>
             </ipxact:parameters>
             <ipxact:vendorExtensions>
@@ -1087,12 +1087,12 @@
                 <ipxact:parameter parameterId="associatedClock" type="string">
                     <ipxact:name>associatedClock</ipxact:name>
                     <ipxact:displayName>Associated clock</ipxact:displayName>
-                    <ipxact:value>clk</ipxact:value>
+                    <ipxact:value>clock_in_in_clk</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="associatedReset" type="string">
                     <ipxact:name>associatedReset</ipxact:name>
                     <ipxact:displayName>Associated reset</ipxact:displayName>
-                    <ipxact:value>reset</ipxact:value>
+                    <ipxact:value>reset_in_in_reset</ipxact:value>
                 </ipxact:parameter>
             </ipxact:parameters>
             <ipxact:vendorExtensions>
@@ -1226,12 +1226,12 @@
                 <ipxact:parameter parameterId="associatedClock" type="string">
                     <ipxact:name>associatedClock</ipxact:name>
                     <ipxact:displayName>Associated clock</ipxact:displayName>
-                    <ipxact:value>clk</ipxact:value>
+                    <ipxact:value>clock_in_in_clk</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="associatedReset" type="string">
                     <ipxact:name>associatedReset</ipxact:name>
                     <ipxact:displayName>Associated reset</ipxact:displayName>
-                    <ipxact:value>reset</ipxact:value>
+                    <ipxact:value>reset_in_in_reset</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="bitsPerSymbol" type="int">
                     <ipxact:name>bitsPerSymbol</ipxact:name>
@@ -1542,12 +1542,12 @@
                 <ipxact:parameter parameterId="associatedClock" type="string">
                     <ipxact:name>associatedClock</ipxact:name>
                     <ipxact:displayName>Associated clock</ipxact:displayName>
-                    <ipxact:value>clk</ipxact:value>
+                    <ipxact:value>clock_in_in_clk</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="associatedReset" type="string">
                     <ipxact:name>associatedReset</ipxact:name>
                     <ipxact:displayName>Associated reset</ipxact:displayName>
-                    <ipxact:value>reset</ipxact:value>
+                    <ipxact:value>reset_in_in_reset</ipxact:value>
                 </ipxact:parameter>
             </ipxact:parameters>
             <ipxact:vendorExtensions>
@@ -1632,12 +1632,12 @@
                 <ipxact:parameter parameterId="associatedClock" type="string">
                     <ipxact:name>associatedClock</ipxact:name>
                     <ipxact:displayName>Associated clock</ipxact:displayName>
-                    <ipxact:value>clk</ipxact:value>
+                    <ipxact:value>clock_in_in_clk</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="associatedReset" type="string">
                     <ipxact:name>associatedReset</ipxact:name>
                     <ipxact:displayName>Associated reset</ipxact:displayName>
-                    <ipxact:value>reset</ipxact:value>
+                    <ipxact:value>reset_in_in_reset</ipxact:value>
                 </ipxact:parameter>
             </ipxact:parameters>
             <ipxact:vendorExtensions>
@@ -1722,12 +1722,12 @@
                 <ipxact:parameter parameterId="associatedClock" type="string">
                     <ipxact:name>associatedClock</ipxact:name>
                     <ipxact:displayName>Associated clock</ipxact:displayName>
-                    <ipxact:value>clk</ipxact:value>
+                    <ipxact:value>clock_in_in_clk</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="associatedReset" type="string">
                     <ipxact:name>associatedReset</ipxact:name>
                     <ipxact:displayName>Associated reset</ipxact:displayName>
-                    <ipxact:value>reset</ipxact:value>
+                    <ipxact:value>reset_in_in_reset</ipxact:value>
                 </ipxact:parameter>
             </ipxact:parameters>
             <ipxact:vendorExtensions>
@@ -1861,12 +1861,12 @@
                 <ipxact:parameter parameterId="associatedClock" type="string">
                     <ipxact:name>associatedClock</ipxact:name>
                     <ipxact:displayName>Associated clock</ipxact:displayName>
-                    <ipxact:value>clk</ipxact:value>
+                    <ipxact:value>clock_in_in_clk</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="associatedReset" type="string">
                     <ipxact:name>associatedReset</ipxact:name>
                     <ipxact:displayName>Associated reset</ipxact:displayName>
-                    <ipxact:value>reset</ipxact:value>
+                    <ipxact:value>reset_in_in_reset</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="bitsPerSymbol" type="int">
                     <ipxact:name>bitsPerSymbol</ipxact:name>
@@ -2177,12 +2177,12 @@
                 <ipxact:parameter parameterId="associatedClock" type="string">
                     <ipxact:name>associatedClock</ipxact:name>
                     <ipxact:displayName>Associated clock</ipxact:displayName>
-                    <ipxact:value>clk</ipxact:value>
+                    <ipxact:value>clock_in_in_clk</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="associatedReset" type="string">
                     <ipxact:name>associatedReset</ipxact:name>
                     <ipxact:displayName>Associated reset</ipxact:displayName>
-                    <ipxact:value>reset</ipxact:value>
+                    <ipxact:value>reset_in_in_reset</ipxact:value>
                 </ipxact:parameter>
             </ipxact:parameters>
             <ipxact:vendorExtensions>
@@ -2267,12 +2267,12 @@
                 <ipxact:parameter parameterId="associatedClock" type="string">
                     <ipxact:name>associatedClock</ipxact:name>
                     <ipxact:displayName>Associated clock</ipxact:displayName>
-                    <ipxact:value>clk</ipxact:value>
+                    <ipxact:value>clock_in_in_clk</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="associatedReset" type="string">
                     <ipxact:name>associatedReset</ipxact:name>
                     <ipxact:displayName>Associated reset</ipxact:displayName>
-                    <ipxact:value>reset</ipxact:value>
+                    <ipxact:value>reset_in_in_reset</ipxact:value>
                 </ipxact:parameter>
             </ipxact:parameters>
             <ipxact:vendorExtensions>
@@ -2357,12 +2357,12 @@
                 <ipxact:parameter parameterId="associatedClock" type="string">
                     <ipxact:name>associatedClock</ipxact:name>
                     <ipxact:displayName>Associated clock</ipxact:displayName>
-                    <ipxact:value>clk</ipxact:value>
+                    <ipxact:value>clock_in_in_clk</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="associatedReset" type="string">
                     <ipxact:name>associatedReset</ipxact:name>
                     <ipxact:displayName>Associated reset</ipxact:displayName>
-                    <ipxact:value>reset</ipxact:value>
+                    <ipxact:value>reset_in_in_reset</ipxact:value>
                 </ipxact:parameter>
             </ipxact:parameters>
             <ipxact:vendorExtensions>
@@ -2447,12 +2447,12 @@
                 <ipxact:parameter parameterId="associatedClock" type="string">
                     <ipxact:name>associatedClock</ipxact:name>
                     <ipxact:displayName>Associated clock</ipxact:displayName>
-                    <ipxact:value>clk</ipxact:value>
+                    <ipxact:value>clock_in_in_clk</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="associatedReset" type="string">
                     <ipxact:name>associatedReset</ipxact:name>
                     <ipxact:displayName>Associated reset</ipxact:displayName>
-                    <ipxact:value>reset</ipxact:value>
+                    <ipxact:value>reset_in_in_reset</ipxact:value>
                 </ipxact:parameter>
             </ipxact:parameters>
             <ipxact:vendorExtensions>
@@ -2602,12 +2602,12 @@
                 <ipxact:parameter parameterId="associatedClock" type="string">
                     <ipxact:name>associatedClock</ipxact:name>
                     <ipxact:displayName>Associated clock</ipxact:displayName>
-                    <ipxact:value>clk</ipxact:value>
+                    <ipxact:value>clock_in_in_clk</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="associatedReset" type="string">
                     <ipxact:name>associatedReset</ipxact:name>
                     <ipxact:displayName>Associated reset</ipxact:displayName>
-                    <ipxact:value>reset</ipxact:value>
+                    <ipxact:value>reset_in_in_reset</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="bitsPerSymbol" type="int">
                     <ipxact:name>bitsPerSymbol</ipxact:name>
@@ -2864,7 +2864,7 @@
             </ipxact:vendorExtensions>
         </ipxact:busInterface>
         <ipxact:busInterface>
-            <ipxact:name>reset</ipxact:name>
+            <ipxact:name>reset_in_in_reset</ipxact:name>
             <ipxact:busType vendor="intel" library="intel" name="reset" version="25.1"/>
             <ipxact:abstractionTypes>
                 <ipxact:abstractionType>
@@ -2875,7 +2875,7 @@
                                 <ipxact:name>reset</ipxact:name>
                             </ipxact:logicalPort>
                             <ipxact:physicalPort>
-                                <ipxact:name>reset_reset</ipxact:name>
+                                <ipxact:name>reset_in_in_reset_reset</ipxact:name>
                             </ipxact:physicalPort>
                         </ipxact:portMap>
                     </ipxact:portMaps>
@@ -2886,7 +2886,7 @@
                 <ipxact:parameter parameterId="associatedClock" type="string">
                     <ipxact:name>associatedClock</ipxact:name>
                     <ipxact:displayName>Associated clock</ipxact:displayName>
-                    <ipxact:value>clk</ipxact:value>
+                    <ipxact:value>clock_in_in_clk</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="synchronousEdges" type="string">
                     <ipxact:name>synchronousEdges</ipxact:name>
@@ -2915,7 +2915,7 @@
         </ipxact:instantiations>
         <ipxact:ports>
             <ipxact:port>
-                <ipxact:name>clk_clk</ipxact:name>
+                <ipxact:name>clock_in_in_clk_clk</ipxact:name>
                 <ipxact:wire>
                     <ipxact:direction>in</ipxact:direction>
                     <ipxact:wireTypeDefs>
@@ -4679,7 +4679,7 @@
                 </ipxact:wire>
             </ipxact:port>
             <ipxact:port>
-                <ipxact:name>reset_reset</ipxact:name>
+                <ipxact:name>reset_in_in_reset_reset</ipxact:name>
                 <ipxact:wire>
                     <ipxact:direction>in</ipxact:direction>
                     <ipxact:wireTypeDefs>
@@ -4736,7 +4736,7 @@
                 </ipxact:vendorExtensions>
             </ipxact:file>
             <ipxact:file>
-                <ipxact:name>altera_avalon_sc_fifo_1932/synth/pipeline_altera_avalon_sc_fifo_1932_onpcouq.v</ipxact:name>
+                <ipxact:name>altera_avalon_sc_fifo_1932/synth/pipeline_altera_avalon_sc_fifo_1932_22gxxgi.v</ipxact:name>
                 <ipxact:fileType>verilogSource</ipxact:fileType>
                 <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
                 <ipxact:vendorExtensions>
@@ -4744,7 +4744,7 @@
                 </ipxact:vendorExtensions>
             </ipxact:file>
             <ipxact:file>
-                <ipxact:name>altera_merlin_router_1921/synth/pipeline_altera_merlin_router_1921_gbik46i.sv</ipxact:name>
+                <ipxact:name>altera_merlin_router_1921/synth/pipeline_altera_merlin_router_1921_mgy2vfy.sv</ipxact:name>
                 <ipxact:fileType>systemVerilogSource</ipxact:fileType>
                 <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
                 <ipxact:vendorExtensions>
@@ -4752,7 +4752,7 @@
                 </ipxact:vendorExtensions>
             </ipxact:file>
             <ipxact:file>
-                <ipxact:name>altera_merlin_router_1921/synth/pipeline_altera_merlin_router_1921_lky73xq.sv</ipxact:name>
+                <ipxact:name>altera_merlin_router_1921/synth/pipeline_altera_merlin_router_1921_u5h25uy.sv</ipxact:name>
                 <ipxact:fileType>systemVerilogSource</ipxact:fileType>
                 <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
                 <ipxact:vendorExtensions>
@@ -4776,7 +4776,7 @@
                 </ipxact:vendorExtensions>
             </ipxact:file>
             <ipxact:file>
-                <ipxact:name>altera_merlin_burst_adapter_1940/synth/pipeline_altera_merlin_burst_adapter_altera_avalon_st_pipeline_stage_1940_3ux5izy.v</ipxact:name>
+                <ipxact:name>altera_merlin_burst_adapter_1940/synth/pipeline_altera_merlin_burst_adapter_altera_avalon_st_pipeline_stage_1940_zghrxiq.v</ipxact:name>
                 <ipxact:fileType>verilogSource</ipxact:fileType>
                 <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
                 <ipxact:vendorExtensions>
@@ -4848,7 +4848,7 @@
                 </ipxact:vendorExtensions>
             </ipxact:file>
             <ipxact:file>
-                <ipxact:name>altera_merlin_demultiplexer_1921/synth/pipeline_altera_merlin_demultiplexer_1921_x6yjluq.sv</ipxact:name>
+                <ipxact:name>altera_merlin_demultiplexer_1921/synth/pipeline_altera_merlin_demultiplexer_1921_n2lmruy.sv</ipxact:name>
                 <ipxact:fileType>systemVerilogSource</ipxact:fileType>
                 <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
                 <ipxact:vendorExtensions>
@@ -4856,7 +4856,7 @@
                 </ipxact:vendorExtensions>
             </ipxact:file>
             <ipxact:file>
-                <ipxact:name>altera_merlin_multiplexer_1922/synth/pipeline_altera_merlin_multiplexer_1922_4kg5nvi.sv</ipxact:name>
+                <ipxact:name>altera_merlin_multiplexer_1922/synth/pipeline_altera_merlin_multiplexer_1922_b474h7a.sv</ipxact:name>
                 <ipxact:fileType>systemVerilogSource</ipxact:fileType>
                 <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
                 <ipxact:vendorExtensions>
@@ -4872,7 +4872,15 @@
                 </ipxact:vendorExtensions>
             </ipxact:file>
             <ipxact:file>
-                <ipxact:name>altera_merlin_multiplexer_1922/synth/pipeline_altera_merlin_multiplexer_1922_prxs4ai.sv</ipxact:name>
+                <ipxact:name>altera_merlin_demultiplexer_1921/synth/pipeline_altera_merlin_demultiplexer_1921_hxz6nyy.sv</ipxact:name>
+                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>altera_merlin_multiplexer_1922/synth/pipeline_altera_merlin_multiplexer_1922_47uerfa.sv</ipxact:name>
                 <ipxact:fileType>systemVerilogSource</ipxact:fileType>
                 <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
                 <ipxact:vendorExtensions>
@@ -4912,23 +4920,7 @@
                 </ipxact:vendorExtensions>
             </ipxact:file>
             <ipxact:file>
-                <ipxact:name>altera_mm_interconnect_1920/synth/pipeline_altera_mm_interconnect_1920_5c5nkdi.v</ipxact:name>
-                <ipxact:fileType>verilogSource</ipxact:fileType>
-                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
-                <ipxact:vendorExtensions>
-                    <altera:altera_hdl_compilation_library>pipeline</altera:altera_hdl_compilation_library>
-                </ipxact:vendorExtensions>
-            </ipxact:file>
-            <ipxact:file>
-                <ipxact:name>altera_merlin_router_1921/synth/pipeline_altera_merlin_router_1921_vvh72si.sv</ipxact:name>
-                <ipxact:fileType>systemVerilogSource</ipxact:fileType>
-                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
-                <ipxact:vendorExtensions>
-                    <altera:altera_hdl_compilation_library>pipeline</altera:altera_hdl_compilation_library>
-                </ipxact:vendorExtensions>
-            </ipxact:file>
-            <ipxact:file>
-                <ipxact:name>altera_mm_interconnect_1920/synth/pipeline_altera_mm_interconnect_1920_h5rdvxi.v</ipxact:name>
+                <ipxact:name>altera_mm_interconnect_1920/synth/pipeline_altera_mm_interconnect_1920_v5evncq.v</ipxact:name>
                 <ipxact:fileType>verilogSource</ipxact:fileType>
                 <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
                 <ipxact:vendorExtensions>
@@ -4938,6 +4930,14 @@
             <ipxact:file>
                 <ipxact:name>altera_merlin_master_agent_1940/synth/pipeline_altera_merlin_master_agent_1940_r3ep6da.sv</ipxact:name>
                 <ipxact:fileType>systemVerilogSource</ipxact:fileType>
+                <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
+                <ipxact:vendorExtensions>
+                    <altera:altera_hdl_compilation_library>pipeline</altera:altera_hdl_compilation_library>
+                </ipxact:vendorExtensions>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>altera_avalon_sc_fifo_1932/synth/pipeline_altera_avalon_sc_fifo_1932_onpcouq.v</ipxact:name>
+                <ipxact:fileType>verilogSource</ipxact:fileType>
                 <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
                 <ipxact:vendorExtensions>
                     <altera:altera_hdl_compilation_library>pipeline</altera:altera_hdl_compilation_library>
@@ -5087,35 +5087,35 @@
                 <ipxact:parameter parameterId="AUTO_DEVICE_FAMILY" type="string">
                     <ipxact:name>AUTO_DEVICE_FAMILY</ipxact:name>
                     <ipxact:displayName>Auto DEVICE_FAMILY</ipxact:displayName>
-                    <ipxact:value>Cyclone 10 GX</ipxact:value>
+                    <ipxact:value>Agilex 5</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="AUTO_DEVICE" type="string">
                     <ipxact:name>AUTO_DEVICE</ipxact:name>
                     <ipxact:displayName>Auto DEVICE</ipxact:displayName>
-                    <ipxact:value>10CX220YF780I5G</ipxact:value>
+                    <ipxact:value>A5ED065BB32AE6SR0</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="AUTO_DEVICE_SPEEDGRADE" type="string">
                     <ipxact:name>AUTO_DEVICE_SPEEDGRADE</ipxact:name>
                     <ipxact:displayName>Auto DEVICE_SPEEDGRADE</ipxact:displayName>
-                    <ipxact:value>5</ipxact:value>
+                    <ipxact:value>6</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="AUTO_BOARD" type="string">
                     <ipxact:name>AUTO_BOARD</ipxact:name>
                     <ipxact:displayName>Auto BOARD</ipxact:displayName>
-                    <ipxact:value>default</ipxact:value>
+                    <ipxact:value>Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1</ipxact:value>
                 </ipxact:parameter>
-                <ipxact:parameter parameterId="AUTO_CLK_CLOCK_RATE" type="longint">
-                    <ipxact:name>AUTO_CLK_CLOCK_RATE</ipxact:name>
+                <ipxact:parameter parameterId="AUTO_CLOCK_IN_IN_CLK_CLOCK_RATE" type="longint">
+                    <ipxact:name>AUTO_CLOCK_IN_IN_CLK_CLOCK_RATE</ipxact:name>
                     <ipxact:displayName>Auto CLOCK_RATE</ipxact:displayName>
                     <ipxact:value>-1</ipxact:value>
                 </ipxact:parameter>
-                <ipxact:parameter parameterId="AUTO_CLK_CLOCK_DOMAIN" type="longint">
-                    <ipxact:name>AUTO_CLK_CLOCK_DOMAIN</ipxact:name>
+                <ipxact:parameter parameterId="AUTO_CLOCK_IN_IN_CLK_CLOCK_DOMAIN" type="longint">
+                    <ipxact:name>AUTO_CLOCK_IN_IN_CLK_CLOCK_DOMAIN</ipxact:name>
                     <ipxact:displayName>Auto CLOCK_DOMAIN</ipxact:displayName>
                     <ipxact:value>-1</ipxact:value>
                 </ipxact:parameter>
-                <ipxact:parameter parameterId="AUTO_CLK_RESET_DOMAIN" type="longint">
-                    <ipxact:name>AUTO_CLK_RESET_DOMAIN</ipxact:name>
+                <ipxact:parameter parameterId="AUTO_CLOCK_IN_IN_CLK_RESET_DOMAIN" type="longint">
+                    <ipxact:name>AUTO_CLOCK_IN_IN_CLK_RESET_DOMAIN</ipxact:name>
                     <ipxact:displayName>Auto RESET_DOMAIN</ipxact:displayName>
                     <ipxact:value>-1</ipxact:value>
                 </ipxact:parameter>

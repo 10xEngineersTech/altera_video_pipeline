@@ -535,12 +535,12 @@
                 <ipxact:parameter parameterId="associatedClock" type="string">
                     <ipxact:name>associatedClock</ipxact:name>
                     <ipxact:displayName>Associated clock</ipxact:displayName>
-                    <ipxact:value>clk2</ipxact:value>
+                    <ipxact:value>clk1</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="associatedReset" type="string">
                     <ipxact:name>associatedReset</ipxact:name>
                     <ipxact:displayName>Associated reset</ipxact:displayName>
-                    <ipxact:value>reset2</ipxact:value>
+                    <ipxact:value>reset1</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="bitsPerSymbol" type="int">
                     <ipxact:name>bitsPerSymbol</ipxact:name>
@@ -795,83 +795,6 @@
                     </ipxact:parameters>
                 </altera:altera_assignments>
             </ipxact:vendorExtensions>
-        </ipxact:busInterface>
-        <ipxact:busInterface>
-            <ipxact:name>clk2</ipxact:name>
-            <ipxact:busType vendor="intel" library="intel" name="clock" version="25.1"/>
-            <ipxact:abstractionTypes>
-                <ipxact:abstractionType>
-                    <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="25.1"/>
-                    <ipxact:portMaps>
-                        <ipxact:portMap>
-                            <ipxact:logicalPort>
-                                <ipxact:name>clk</ipxact:name>
-                            </ipxact:logicalPort>
-                            <ipxact:physicalPort>
-                                <ipxact:name>clk2</ipxact:name>
-                            </ipxact:physicalPort>
-                        </ipxact:portMap>
-                    </ipxact:portMaps>
-                </ipxact:abstractionType>
-            </ipxact:abstractionTypes>
-            <ipxact:slave/>
-            <ipxact:parameters>
-                <ipxact:parameter parameterId="clockRate" type="longint">
-                    <ipxact:name>clockRate</ipxact:name>
-                    <ipxact:displayName>Clock rate</ipxact:displayName>
-                    <ipxact:value>0</ipxact:value>
-                </ipxact:parameter>
-                <ipxact:parameter parameterId="externallyDriven" type="bit">
-                    <ipxact:name>externallyDriven</ipxact:name>
-                    <ipxact:displayName>Externally driven</ipxact:displayName>
-                    <ipxact:value>false</ipxact:value>
-                </ipxact:parameter>
-                <ipxact:parameter parameterId="ptfSchematicName" type="string">
-                    <ipxact:name>ptfSchematicName</ipxact:name>
-                    <ipxact:displayName>PTF schematic name</ipxact:displayName>
-                    <ipxact:value></ipxact:value>
-                </ipxact:parameter>
-            </ipxact:parameters>
-        </ipxact:busInterface>
-        <ipxact:busInterface>
-            <ipxact:name>reset2</ipxact:name>
-            <ipxact:busType vendor="intel" library="intel" name="reset" version="25.1"/>
-            <ipxact:abstractionTypes>
-                <ipxact:abstractionType>
-                    <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="25.1"/>
-                    <ipxact:portMaps>
-                        <ipxact:portMap>
-                            <ipxact:logicalPort>
-                                <ipxact:name>reset</ipxact:name>
-                            </ipxact:logicalPort>
-                            <ipxact:physicalPort>
-                                <ipxact:name>reset2</ipxact:name>
-                            </ipxact:physicalPort>
-                        </ipxact:portMap>
-                        <ipxact:portMap>
-                            <ipxact:logicalPort>
-                                <ipxact:name>reset_req</ipxact:name>
-                            </ipxact:logicalPort>
-                            <ipxact:physicalPort>
-                                <ipxact:name>reset_req2</ipxact:name>
-                            </ipxact:physicalPort>
-                        </ipxact:portMap>
-                    </ipxact:portMaps>
-                </ipxact:abstractionType>
-            </ipxact:abstractionTypes>
-            <ipxact:slave/>
-            <ipxact:parameters>
-                <ipxact:parameter parameterId="associatedClock" type="string">
-                    <ipxact:name>associatedClock</ipxact:name>
-                    <ipxact:displayName>Associated clock</ipxact:displayName>
-                    <ipxact:value>clk2</ipxact:value>
-                </ipxact:parameter>
-                <ipxact:parameter parameterId="synchronousEdges" type="string">
-                    <ipxact:name>synchronousEdges</ipxact:name>
-                    <ipxact:displayName>Synchronous edges</ipxact:displayName>
-                    <ipxact:value>DEASSERT</ipxact:value>
-                </ipxact:parameter>
-            </ipxact:parameters>
         </ipxact:busInterface>
     </ipxact:busInterfaces>
     <ipxact:model>
@@ -1144,42 +1067,6 @@
                     </ipxact:wireTypeDefs>
                 </ipxact:wire>
             </ipxact:port>
-            <ipxact:port>
-                <ipxact:name>clk2</ipxact:name>
-                <ipxact:wire>
-                    <ipxact:direction>in</ipxact:direction>
-                    <ipxact:wireTypeDefs>
-                        <ipxact:wireTypeDef>
-                            <ipxact:typeName>STD_LOGIC</ipxact:typeName>
-                            <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
-                        </ipxact:wireTypeDef>
-                    </ipxact:wireTypeDefs>
-                </ipxact:wire>
-            </ipxact:port>
-            <ipxact:port>
-                <ipxact:name>reset2</ipxact:name>
-                <ipxact:wire>
-                    <ipxact:direction>in</ipxact:direction>
-                    <ipxact:wireTypeDefs>
-                        <ipxact:wireTypeDef>
-                            <ipxact:typeName>STD_LOGIC</ipxact:typeName>
-                            <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
-                        </ipxact:wireTypeDef>
-                    </ipxact:wireTypeDefs>
-                </ipxact:wire>
-            </ipxact:port>
-            <ipxact:port>
-                <ipxact:name>reset_req2</ipxact:name>
-                <ipxact:wire>
-                    <ipxact:direction>in</ipxact:direction>
-                    <ipxact:wireTypeDefs>
-                        <ipxact:wireTypeDef>
-                            <ipxact:typeName>STD_LOGIC</ipxact:typeName>
-                            <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
-                        </ipxact:wireTypeDef>
-                    </ipxact:wireTypeDefs>
-                </ipxact:wire>
-            </ipxact:port>
         </ipxact:ports>
     </ipxact:model>
     <ipxact:fileSets>
@@ -1194,7 +1081,7 @@
                 </ipxact:vendorExtensions>
             </ipxact:file>
             <ipxact:file>
-                <ipxact:name>altera_avalon_onchip_memory2_1939/synth/pipeline_onchip_memory2_0_altera_avalon_onchip_memory2_1939_2kbmgja.v</ipxact:name>
+                <ipxact:name>altera_avalon_onchip_memory2_1939/synth/pipeline_onchip_memory2_0_altera_avalon_onchip_memory2_1939_fqt4xxa.v</ipxact:name>
                 <ipxact:fileType>verilogSource</ipxact:fileType>
                 <ipxact:isIncludeFile>false</ipxact:isIncludeFile>
                 <ipxact:vendorExtensions>
@@ -1233,17 +1120,17 @@
                 <ipxact:parameter parameterId="AUTO_DEVICE_FAMILY" type="string">
                     <ipxact:name>AUTO_DEVICE_FAMILY</ipxact:name>
                     <ipxact:displayName>Auto DEVICE_FAMILY</ipxact:displayName>
-                    <ipxact:value>Cyclone 10 GX</ipxact:value>
+                    <ipxact:value>Agilex 5</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="AUTO_DEVICE" type="string">
                     <ipxact:name>AUTO_DEVICE</ipxact:name>
                     <ipxact:displayName>Auto DEVICE</ipxact:displayName>
-                    <ipxact:value>10CX220YF780I5G</ipxact:value>
+                    <ipxact:value>A5ED065BB32AE6SR0</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="AUTO_DEVICE_SPEEDGRADE" type="string">
                     <ipxact:name>AUTO_DEVICE_SPEEDGRADE</ipxact:name>
                     <ipxact:displayName>Auto DEVICE_SPEEDGRADE</ipxact:displayName>
-                    <ipxact:value>5</ipxact:value>
+                    <ipxact:value>6</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="AUTO_BOARD" type="string">
                     <ipxact:name>AUTO_BOARD</ipxact:name>
@@ -1274,21 +1161,6 @@
                     <ipxact:name>AUTO_S2_CPU_INFO_ID</ipxact:name>
                     <ipxact:displayName>Auto CPU_INFO_ID</ipxact:displayName>
                     <ipxact:value></ipxact:value>
-                </ipxact:parameter>
-                <ipxact:parameter parameterId="AUTO_CLK2_CLOCK_RATE" type="longint">
-                    <ipxact:name>AUTO_CLK2_CLOCK_RATE</ipxact:name>
-                    <ipxact:displayName>Auto CLOCK_RATE</ipxact:displayName>
-                    <ipxact:value>-1</ipxact:value>
-                </ipxact:parameter>
-                <ipxact:parameter parameterId="AUTO_CLK2_CLOCK_DOMAIN" type="longint">
-                    <ipxact:name>AUTO_CLK2_CLOCK_DOMAIN</ipxact:name>
-                    <ipxact:displayName>Auto CLOCK_DOMAIN</ipxact:displayName>
-                    <ipxact:value>-1</ipxact:value>
-                </ipxact:parameter>
-                <ipxact:parameter parameterId="AUTO_CLK2_RESET_DOMAIN" type="longint">
-                    <ipxact:name>AUTO_CLK2_RESET_DOMAIN</ipxact:name>
-                    <ipxact:displayName>Auto RESET_DOMAIN</ipxact:displayName>
-                    <ipxact:value>-1</ipxact:value>
                 </ipxact:parameter>
             </ipxact:parameters>
         </altera:altera_module_parameters>

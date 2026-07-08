@@ -75,7 +75,7 @@ module pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_cmv7q4q (
 		.axi_st_cmd_output_switch_tready       (1'b0)                                // (terminated),                                    
 	);
 
-	pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_rubpkpq luma_algo_comp (
+	pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_6xnoxdy luma_algo_comp (
 		.clk                    (main_clock_clk),                     //   input,    width = 1,      main_clock.clk
 		.rst                    (main_rst_bridge_out_reset_reset),    //   input,    width = 1,      main_reset.reset
 		.axi_st_cmd_tdata       (in_cmd_axi_st_cmd_luma_core_tdata),  //   input,  width = 120,      axi_st_cmd.tdata

@@ -969,11 +969,11 @@
    type="OTHER"
    library="intel_vvp_vert_scaler_algo_comp_2451" />
  <file
-   path="intel_vvp_vert_scaler_algo_comp_2451/sim/pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ahpctzi.v"
+   path="intel_vvp_vert_scaler_algo_comp_2451/sim/pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ddx4ghy.v"
    type="VERILOG"
    library="intel_vvp_vert_scaler_algo_comp_2451" />
  <file
-   path="intel_vvp_vert_scaler_algo_comp_2451/sim/src_hdl/pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ahpctzi_coeff.mif"
+   path="intel_vvp_vert_scaler_algo_comp_2451/sim/src_hdl/pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ddx4ghy_coeff.mif"
    type="MIF"
    library="intel_vvp_vert_scaler_algo_comp_2451" />
  <file
@@ -1985,11 +1985,11 @@
    type="OTHER"
    library="intel_vvp_horiz_scaler_algo_comp_2451" />
  <file
-   path="intel_vvp_horiz_scaler_algo_comp_2451/sim/pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_rubpkpq.v"
+   path="intel_vvp_horiz_scaler_algo_comp_2451/sim/pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_6xnoxdy.v"
    type="VERILOG"
    library="intel_vvp_horiz_scaler_algo_comp_2451" />
  <file
-   path="intel_vvp_horiz_scaler_algo_comp_2451/sim/src_hdl/pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_rubpkpq_coeff.mif"
+   path="intel_vvp_horiz_scaler_algo_comp_2451/sim/src_hdl/pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_6xnoxdy_coeff.mif"
    type="MIF"
    library="intel_vvp_horiz_scaler_algo_comp_2451" />
  <file
@@ -2075,6 +2075,6 @@
    library="pipeline_intel_vvp_scaler_0"
    hasInlineConfiguration="true" />
  <topLevel name="pipeline_intel_vvp_scaler_0.pipeline_intel_vvp_scaler_0" />
- <deviceFamily name="cyclone10gx" />
- <device name="10CX220YF780I5G" />
+ <deviceFamily name="agilex5" />
+ <device name="A5ED065BB32AE6SR0" />
 </simPackage>

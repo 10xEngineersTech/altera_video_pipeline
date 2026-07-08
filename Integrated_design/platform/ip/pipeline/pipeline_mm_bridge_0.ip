@@ -1196,22 +1196,22 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="board" type="string">
           <ipxact:name>board</ipxact:name>
           <ipxact:displayName>Board</ipxact:displayName>
-          <ipxact:value>default</ipxact:value>
+          <ipxact:value>Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="device" type="string">
           <ipxact:name>device</ipxact:name>
           <ipxact:displayName>Device</ipxact:displayName>
-          <ipxact:value>10CX220YF780I5G</ipxact:value>
+          <ipxact:value>A5ED065BB32AE6SR0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="deviceFamily" type="string">
           <ipxact:name>deviceFamily</ipxact:name>
           <ipxact:displayName>Device family</ipxact:displayName>
-          <ipxact:value>Cyclone 10 GX</ipxact:value>
+          <ipxact:value>Agilex 5</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="deviceSpeedGrade" type="string">
           <ipxact:name>deviceSpeedGrade</ipxact:name>
           <ipxact:displayName>Device Speed Grade</ipxact:displayName>
-          <ipxact:value>5</ipxact:value>
+          <ipxact:value>6</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="generationId" type="int">
           <ipxact:name>generationId</ipxact:name>
@@ -1227,12 +1227,17 @@ https://fpgasoftware.intel.com/eula.-->
    {
       datum _originalDeviceFamily
       {
-         value = "Cyclone 10 GX";
+         value = "Agilex 5";
          type = "String";
       }
    }
    element mm_bridge_0
    {
+      datum _sortIndex
+      {
+         value = "0";
+         type = "int";
+      }
    }
 }
 </ipxact:value>

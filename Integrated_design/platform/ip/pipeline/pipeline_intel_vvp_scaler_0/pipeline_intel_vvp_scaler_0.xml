@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2026.07.08.19:13:42"
+ date="2026.07.08.19:35:55"
  outputDirectory="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_scaler_0/">
  <perimeter>
   <parameter
@@ -18,25 +18,25 @@
   <parameter
      name="AUTO_DEVICE_FAMILY"
      type="String"
-     defaultValue="Cyclone 10 GX"
+     defaultValue="Agilex 5"
      onHdl="0"
      affectsHdl="1" />
   <parameter
      name="AUTO_DEVICE"
      type="String"
-     defaultValue="10CX220YF780I5G"
+     defaultValue="A5ED065BB32AE6SR0"
      onHdl="0"
      affectsHdl="1" />
   <parameter
      name="AUTO_DEVICE_SPEEDGRADE"
      type="String"
-     defaultValue="5"
+     defaultValue="6"
      onHdl="0"
      affectsHdl="1" />
   <parameter
      name="AUTO_BOARD"
      type="String"
-     defaultValue="default"
+     defaultValue="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1"
      onHdl="0"
      affectsHdl="1" />
   <parameter
@@ -198,14 +198,16 @@
    name="pipeline_intel_vvp_scaler_0">
   <parameter name="AUTO_MAIN_CLOCK_RESET_DOMAIN" value="-1" />
   <parameter name="AUTO_GENERATION_ID" value="0" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="AUTO_MAIN_CLOCK_CLOCK_DOMAIN" value="-1" />
   <parameter name="AUTO_MAIN_CLOCK_CLOCK_RATE" value="-1" />
   <parameter name="AUTO_UNIQUE_ID" value="" />
   <parameter name="AUTO_AV_MM_CONTROL_AGENT_CPU_INFO_ID" value="" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <generatedFiles>
    <file
        path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_scaler_0/synth/pipeline_intel_vvp_scaler_0.v"
@@ -278,12 +280,12 @@
    <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: intel_vvp_output_interface_bridge"</message>
    <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: intel_vvp_line_buffer"</message>
    <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: intel_vvp_vert_scaler_scheduler"</message>
-   <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ahpctzi"</message>
+   <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ddx4ghy"</message>
    <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: intel_vvp_round_sat_algo_comp"</message>
    <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_cmv7q4q"</message>
    <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: intel_vvp_reset_bridge"</message>
    <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: intel_vvp_horiz_scaler_cmd"</message>
-   <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_rubpkpq"</message>
+   <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_6xnoxdy"</message>
    <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_p3fkffy"</message>
    <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: intel_vvp_reset_bridge"</message>
    <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_ahjqq6i"</message>
@@ -300,7 +302,9 @@
    kind="intel_vvp_scaler"
    version="24.5.1"
    name="pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_s5qlaoq">
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="V_PRES_FRAC_BITS" value="0" />
   <parameter name="H_COEFF_SIGNED" value="1" />
   <parameter name="ENABLE_H" value="1" />
@@ -314,7 +318,7 @@
   <parameter name="P_CORE_CTRL_ID" value="0" />
   <parameter name="ENABLE_V" value="1" />
   <parameter name="VVP_OCS_ENABLED_INI" value="false" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
   <parameter name="HALF_RATE_420" value="0" />
   <parameter name="PIPELINE_READY" value="0" />
   <parameter name="ENABLE_444" value="1" />
@@ -326,7 +330,7 @@
      value="&lt;enter file name (including full path)&gt;" />
   <parameter name="RUNTIME_LOAD" value="0" />
   <parameter name="NO_BLANKING" value="0" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
   <parameter name="H_COEFF_FRAC_BITS" value="6" />
   <parameter name="C_OMNI_CAP_TAG" value="0" />
   <parameter name="C_OMNI_CAP_ID_COMPONENT" value="0" />
@@ -356,7 +360,7 @@
   <parameter name="H_PARTIAL_SCALING" value="0" />
   <parameter name="C_OMNI_CAP_IRQ" value="255" />
   <parameter name="ENABLE_422" value="0" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="C_OMNI_CAP_ID_ASSOCIATED" value="0" />
   <parameter name="H_PHASES" value="64" />
   <parameter name="V_COEFF_SIGNED" value="1" />
@@ -436,12 +440,12 @@
    <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: intel_vvp_output_interface_bridge"</message>
    <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: intel_vvp_line_buffer"</message>
    <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: intel_vvp_vert_scaler_scheduler"</message>
-   <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ahpctzi"</message>
+   <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ddx4ghy"</message>
    <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: intel_vvp_round_sat_algo_comp"</message>
    <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_cmv7q4q"</message>
    <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: intel_vvp_reset_bridge"</message>
    <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: intel_vvp_horiz_scaler_cmd"</message>
-   <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_rubpkpq"</message>
+   <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_6xnoxdy"</message>
    <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_p3fkffy"</message>
    <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: intel_vvp_reset_bridge"</message>
    <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_ahjqq6i"</message>
@@ -587,7 +591,7 @@
   <parameter name="BPS" value="8" />
   <parameter name="MAX_WIDTH" value="8192" />
   <parameter name="ENABLE_RESPONSE" value="1" />
-  <parameter name="DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="DEVICE_FAMILY" value="Agilex 5" />
   <parameter name="PIPELINE_READY" value="1" />
   <parameter name="NUMBER_OF_COLOR_PLANES" value="3" />
   <parameter name="PIXELS_IN_PARALLEL" value="1" />
@@ -825,12 +829,12 @@
  <entity
    kind="intel_vvp_vert_scaler_algo_comp"
    version="24.5.1"
-   name="pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ahpctzi">
+   name="pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ddx4ghy">
   <parameter name="ENABLE_420" value="0" />
   <parameter name="BPS" value="8" />
   <parameter name="NUM_BANKS" value="1" />
   <parameter name="ALGORITHM" value="POLYPHASE" />
-  <parameter name="DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="DEVICE_FAMILY" value="Agilex 5" />
   <parameter name="PIPELINE_READY" value="0" />
   <parameter name="COEFF_FUNCTION" value="LANCZOS_2" />
   <parameter name="PIXELS_IN_PARALLEL" value="1" />
@@ -912,10 +916,10 @@
        path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_vert_scaler_algo_comp_2451/synth/src_hdl/intel_vvp_vert_scaler_algo_comp.ocp"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_vert_scaler_algo_comp_2451/synth/pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ahpctzi.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_vert_scaler_algo_comp_2451/synth/pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ddx4ghy.v"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_vert_scaler_algo_comp_2451/synth/src_hdl/pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ahpctzi_coeff.mif"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_vert_scaler_algo_comp_2451/synth/src_hdl/pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ddx4ghy_coeff.mif"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
@@ -983,10 +987,10 @@
        path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_vert_scaler_algo_comp_2451/synth/src_hdl/intel_vvp_vert_scaler_algo_comp.ocp"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_vert_scaler_algo_comp_2451/synth/pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ahpctzi.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_vert_scaler_algo_comp_2451/synth/pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ddx4ghy.v"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_vert_scaler_algo_comp_2451/synth/src_hdl/pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ahpctzi_coeff.mif"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_vert_scaler_algo_comp_2451/synth/src_hdl/pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ddx4ghy_coeff.mif"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
@@ -1000,7 +1004,7 @@
      instantiator="pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_s5qlaoq"
      as="v_algo_comp" />
   <messages>
-   <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ahpctzi"</message>
+   <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ddx4ghy"</message>
   </messages>
  </entity>
  <entity
@@ -1086,7 +1090,9 @@
    version="24.5.1"
    name="pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_cmv7q4q">
   <parameter name="FIFO_DEPTH" value="8192" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="ALGORITHM" value="POLYPHASE" />
   <parameter name="H_COEFF_SIGNED" value="1" />
   <parameter name="ENABLE_H" value="1" />
@@ -1101,7 +1107,7 @@
      value="&lt;enter file name (including full path)&gt;" />
   <parameter name="NUMBER_OF_COLOR_PLANES" value="3" />
   <parameter name="ENABLE_420" value="0" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
   <parameter name="HALF_RATE_420" value="0" />
   <parameter name="BPS_OUT" value="8" />
   <parameter name="H_PARTIAL_SCALING" value="0" />
@@ -1110,11 +1116,11 @@
   <parameter name="ENABLE_422" value="0" />
   <parameter name="H_COEFF_INT_BITS" value="1" />
   <parameter name="SIGNED_IN" value="1" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="RUNTIME_LOAD" value="0" />
   <parameter name="BPS_IN" value="10" />
   <parameter name="H_PHASES" value="64" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
   <parameter name="H_COEFF_FRAC_BITS" value="6" />
   <parameter name="H_TAPS" value="6" />
   <parameter name="H_BANKS" value="1" />
@@ -1149,7 +1155,7 @@
    <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_cmv7q4q"</message>
    <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: intel_vvp_reset_bridge"</message>
    <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: intel_vvp_horiz_scaler_cmd"</message>
-   <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_rubpkpq"</message>
+   <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_6xnoxdy"</message>
   </messages>
  </entity>
  <entity
@@ -1158,18 +1164,20 @@
    name="pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_p3fkffy">
   <parameter name="AV_MAX_PENDING_READS" value="2" />
   <parameter name="ENABLE_DATA" value="0" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="P_VID_PID" value="1794572852" />
   <parameter name="SEPARATE_SLAVE_CLOCK" value="0" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="NUM_DATA_REG" value="0" />
   <parameter
      name="P_PARAM_LIST"
      value="1,0,1,16383,16383,2,0,1,1,6,64,1,1,1,6,1,6,64,1,1,1,6,0,0,0,0" />
   <parameter name="CC_USE_ALM_FIFO" value="0" />
   <parameter name="P_NUM_ADDR_REGS" value="48" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
   <parameter name="CC_FIFO_DEPTH" value="8" />
   <parameter name="P_VERSION_NUMBER" value="402981121" />
   <parameter name="CC_USE_FIFO" value="1" />
@@ -1221,9 +1229,11 @@
    kind="altera_mm_interconnect"
    version="19.2.0"
    name="pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_vevxpda">
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="" />
   <parameter
      name="COMPOSE_CONTENTS"
@@ -1343,10 +1353,10 @@
  <entity
    kind="intel_vvp_horiz_scaler_algo_comp"
    version="24.5.1"
-   name="pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_rubpkpq">
+   name="pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_6xnoxdy">
   <parameter name="NUM_BANKS" value="1" />
   <parameter name="ALGORITHM" value="POLYPHASE" />
-  <parameter name="DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="DEVICE_FAMILY" value="Agilex 5" />
   <parameter name="BPS_OUT" value="8" />
   <parameter name="PIPELINE_READY" value="0" />
   <parameter name="PARTIAL_IMAGE_SCALING" value="0" />
@@ -1511,10 +1521,10 @@
        path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/synth/src_hdl/intel_vvp_horiz_scaler_algo_comp.ocp"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/synth/pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_rubpkpq.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/synth/pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_6xnoxdy.v"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/synth/src_hdl/pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_rubpkpq_coeff.mif"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/synth/src_hdl/pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_6xnoxdy_coeff.mif"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
@@ -1660,10 +1670,10 @@
        path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/synth/src_hdl/intel_vvp_horiz_scaler_algo_comp.ocp"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/synth/pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_rubpkpq.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/synth/pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_6xnoxdy.v"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/synth/src_hdl/pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_rubpkpq_coeff.mif"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_scaler_0/intel_vvp_horiz_scaler_algo_comp_2451/synth/src_hdl/pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_6xnoxdy_coeff.mif"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
@@ -1677,7 +1687,7 @@
      instantiator="pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_cmv7q4q"
      as="luma_algo_comp" />
   <messages>
-   <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_rubpkpq"</message>
+   <message level="Info" culprit="pipeline_intel_vvp_scaler_0">"Generating: pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_6xnoxdy"</message>
   </messages>
  </entity>
  <entity
@@ -1763,9 +1773,11 @@
    kind="altera_mm_interconnect"
    version="19.2.0"
    name="pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_epi4vay">
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="" />
   <parameter
      name="COMPOSE_CONTENTS"

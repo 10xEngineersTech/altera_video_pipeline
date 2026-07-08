@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2026.07.08.19:13:13"
+ date="2026.07.08.19:35:21"
  outputDirectory="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/">
  <perimeter>
   <parameter
@@ -18,25 +18,25 @@
   <parameter
      name="AUTO_DEVICE_FAMILY"
      type="String"
-     defaultValue="Cyclone 10 GX"
+     defaultValue="Agilex 5"
      onHdl="0"
      affectsHdl="1" />
   <parameter
      name="AUTO_DEVICE"
      type="String"
-     defaultValue="10CX220YF780I5G"
+     defaultValue="A5ED065BB32AE6SR0"
      onHdl="0"
      affectsHdl="1" />
   <parameter
      name="AUTO_DEVICE_SPEEDGRADE"
      type="String"
-     defaultValue="5"
+     defaultValue="6"
      onHdl="0"
      affectsHdl="1" />
   <parameter
      name="AUTO_BOARD"
      type="String"
-     defaultValue="default"
+     defaultValue="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1"
      onHdl="0"
      affectsHdl="1" />
   <parameter
@@ -97,13 +97,15 @@
    name="pipeline_intel_vvp_protocol_conv_0">
   <parameter name="AUTO_MAIN_CLOCK_RESET_DOMAIN" value="-1" />
   <parameter name="AUTO_GENERATION_ID" value="0" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="AUTO_MAIN_CLOCK_CLOCK_DOMAIN" value="-1" />
   <parameter name="AUTO_MAIN_CLOCK_CLOCK_RATE" value="-1" />
   <parameter name="AUTO_UNIQUE_ID" value="" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <generatedFiles>
    <file
        path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/synth/pipeline_intel_vvp_protocol_conv_0.v"
@@ -145,7 +147,9 @@
   <parameter name="RUNTIME_CONTROL" value="0" />
   <parameter name="CHROMA_SAMPLING" value="444" />
   <parameter name="BPS" value="8" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="INPUT_MODE" value="INTERNAL" />
   <parameter name="C_OMNI_CAP_IRQ_ENABLE" value="0" />
   <parameter name="ENABLE_DEBUG" value="0" />
@@ -160,13 +164,13 @@
   <parameter name="VIP_USER_SUPPORT" value="DISCARD" />
   <parameter name="NUMBER_OF_COLOR_PLANES" value="3" />
   <parameter name="VVP_OCS_ENABLED_INI" value="false" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
   <parameter name="PIPELINE_READY" value="0" />
   <parameter name="C_OMNI_CAP_IRQ" value="255" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="C_OMNI_CAP_ID_ASSOCIATED" value="0" />
   <parameter name="ENABLE_YCBCR_SWAP" value="0" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
   <parameter name="C_OMNI_CAP_TYPE" value="573" />
   <parameter name="C_OMNI_CAP_TAG" value="0" />
   <parameter name="C_OMNI_CAP_IRQ_ENABLE_EN" value="0" />

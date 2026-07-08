@@ -164,7 +164,7 @@ module pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_s5qlaoq (
 		.CMD_COMPATIBILITY      (0),
 		.ENABLE_RESPONSE        (1),
 		.PIPELINE_READY         (1),
-		.DEVICE_FAMILY          ("Cyclone 10 GX")
+		.DEVICE_FAMILY          ("Agilex 5")
 	) line_buffer (
 		.clk                    (main_clock_clk),                     //   input,    width = 1,      main_clock.clk
 		.rst                    (main_rst_bridge_out_reset_reset),    //   input,    width = 1,      main_reset.reset
@@ -250,7 +250,7 @@ module pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_s5qlaoq (
 		.axi_st_ls_cmd_tready      (1'b0)                                                   // (terminated),                                 
 	);
 
-	pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ahpctzi v_algo_comp (
+	pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ddx4ghy v_algo_comp (
 		.clk                    (main_clock_clk),                     //   input,    width = 1,      main_clock.clk
 		.rst                    (main_rst_bridge_out_reset_reset),    //   input,    width = 1,      main_reset.reset
 		.axi_st_cmd_tdata       (scheduler_axi_st_v_core_cmd_tdata),  //   input,   width = 56,      axi_st_cmd.tdata

@@ -425,7 +425,7 @@ module pipeline_intel_vvp_dil_0_intel_vvp_dil_2451_zskkody #(
 		.CMD_COMPATIBILITY      (0),
 		.ENABLE_RESPONSE        (0),
 		.PIPELINE_READY         (0),
-		.DEVICE_FAMILY          ("Cyclone 10 GX")
+		.DEVICE_FAMILY          ("Agilex 5")
 	) line_buffer (
 		.clk                    (main_clock_clk),                     //   input,   width = 1,      main_clock.clk
 		.rst                    (main_rst_bridge_out_reset_reset),    //   input,   width = 1,      main_reset.reset

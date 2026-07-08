@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2026.07.08.19:13:22"
+ date="2026.07.08.19:35:31"
  outputDirectory="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_dil_0/">
  <perimeter>
   <parameter
@@ -18,25 +18,25 @@
   <parameter
      name="AUTO_DEVICE_FAMILY"
      type="String"
-     defaultValue="Cyclone 10 GX"
+     defaultValue="Agilex 5"
      onHdl="0"
      affectsHdl="1" />
   <parameter
      name="AUTO_DEVICE"
      type="String"
-     defaultValue="10CX220YF780I5G"
+     defaultValue="A5ED065BB32AE6SR0"
      onHdl="0"
      affectsHdl="1" />
   <parameter
      name="AUTO_DEVICE_SPEEDGRADE"
      type="String"
-     defaultValue="5"
+     defaultValue="6"
      onHdl="0"
      affectsHdl="1" />
   <parameter
      name="AUTO_BOARD"
      type="String"
-     defaultValue="default"
+     defaultValue="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1"
      onHdl="0"
      affectsHdl="1" />
   <parameter
@@ -97,13 +97,15 @@
    name="pipeline_intel_vvp_dil_0">
   <parameter name="AUTO_MAIN_CLOCK_RESET_DOMAIN" value="-1" />
   <parameter name="AUTO_GENERATION_ID" value="0" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="AUTO_MAIN_CLOCK_CLOCK_DOMAIN" value="-1" />
   <parameter name="AUTO_MAIN_CLOCK_CLOCK_RATE" value="-1" />
   <parameter name="AUTO_UNIQUE_ID" value="" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <generatedFiles>
    <file
        path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_dil_0/synth/pipeline_intel_vvp_dil_0.v"
@@ -159,7 +161,9 @@
   <parameter name="RUNTIME_CONTROL" value="0" />
   <parameter name="BPS" value="8" />
   <parameter name="MAX_WIDTH" value="2048" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="C_OMNI_CAP_IRQ_ENABLE" value="0" />
   <parameter name="C_OMNI_CAP_VERSION" value="3" />
   <parameter name="ENABLE_DEBUG" value="0" />
@@ -173,16 +177,16 @@
   <parameter name="BOB_DIL_MODE" value="DEINTERLACE_F0_ONLY" />
   <parameter name="WRITE_BURST_TARGET" value="32" />
   <parameter name="VVP_OCS_ENABLED_INI" value="false" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
   <parameter name="PIPELINE_READY" value="0" />
   <parameter name="C_OMNI_CAP_IRQ" value="255" />
   <parameter name="FIFO" value="0" />
   <parameter name="MEM_BUFF_BASE_ADDR" value="0" />
   <parameter name="READ_FIFO_DEPTH" value="64" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="C_OMNI_CAP_ID_ASSOCIATED" value="0" />
   <parameter name="P_AV_MM_DATA_WIDTH" value="32" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
   <parameter name="C_OMNI_CAP_TYPE" value="570" />
   <parameter name="READ_BURST_TARGET" value="32" />
   <parameter name="C_OMNI_CAP_TAG" value="0" />
@@ -674,7 +678,7 @@
   <parameter name="BPS" value="8" />
   <parameter name="MAX_WIDTH" value="2048" />
   <parameter name="ENABLE_RESPONSE" value="0" />
-  <parameter name="DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="DEVICE_FAMILY" value="Agilex 5" />
   <parameter name="PIPELINE_READY" value="0" />
   <parameter name="NUMBER_OF_COLOR_PLANES" value="3" />
   <parameter name="PIXELS_IN_PARALLEL" value="1" />

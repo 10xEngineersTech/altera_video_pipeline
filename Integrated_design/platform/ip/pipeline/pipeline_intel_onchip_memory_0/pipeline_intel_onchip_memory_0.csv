@@ -1,0 +1,19 @@
+# system info pipeline_intel_onchip_memory_0 on 2026.07.08.19:35:44
+system_info:
+name,value
+DEVICE,A5ED065BB32AE6SR0
+DEVICE_FAMILY,Agilex 5
+GENERATION_ID,0
+#
+#
+# Files generated for pipeline_intel_onchip_memory_0 on 2026.07.08.19:35:44
+files:
+filepath,kind,attributes,module,is_top
+sim/pipeline_intel_onchip_memory_0.v,VERILOG,CONTAINS_INLINE_CONFIGURATION,pipeline_intel_onchip_memory_0,true
+intel_onchip_memory_1410/sim/pipeline_intel_onchip_memory_0_intel_onchip_memory_1410_iby4ocq.sv,SYSTEM_VERILOG,,pipeline_intel_onchip_memory_0_intel_onchip_memory_1410_iby4ocq,false
+intel_onchip_memory_1410/sim/pipeline_intel_onchip_memory_0_intel_onchip_memory_0.hex,HEX,,pipeline_intel_onchip_memory_0_intel_onchip_memory_1410_iby4ocq,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+pipeline_intel_onchip_memory_0.intel_onchip_memory_0,pipeline_intel_onchip_memory_0_intel_onchip_memory_1410_iby4ocq

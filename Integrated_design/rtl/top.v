@@ -740,8 +740,8 @@ module top #(
     wire        vfb_out_tlast;  wire [2:0] vfb_out_tuser;
 
     pipeline u_pipeline (
-        .clk_clk     (clk),
-        .reset_reset (reset),
+        .clock_in_in_clk_clk     (clk),
+        .reset_in_in_reset_reset (reset),
 
         // ----- TPG AXI4-S output -----
         .intel_vvp_tpg_0_axi4s_vid_out_tdata  (tpg_out_tdata),

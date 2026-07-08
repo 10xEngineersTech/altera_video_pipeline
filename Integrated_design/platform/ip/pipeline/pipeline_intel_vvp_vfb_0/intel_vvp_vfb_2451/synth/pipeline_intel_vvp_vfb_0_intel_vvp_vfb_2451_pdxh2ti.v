@@ -422,7 +422,7 @@ module pipeline_intel_vvp_vfb_0_intel_vvp_vfb_2451_pdxh2ti #(
 		.FIFO_DEPTH             (64),
 		.ENABLE_RESPONSES       (1),
 		.PACKING_LEVEL          (1),
-		.DEVICE_FAMILY          ("Cyclone 10 GX")
+		.DEVICE_FAMILY          ("Agilex 5")
 	) packet_writer (
 		.clk                      (main_clock_clk),                      //   input,    width = 1,     main_clock.clk
 		.rst                      (axi_st_reset_bridge_out_reset_reset), //   input,    width = 1,     main_reset.reset
@@ -458,7 +458,7 @@ module pipeline_intel_vvp_vfb_0_intel_vvp_vfb_2451_pdxh2ti #(
 		.FIFO_DEPTH             (64),
 		.PACKING_LEVEL          (1),
 		.ENABLE_RESPONSES       (1),
-		.DEVICE_FAMILY          ("Cyclone 10 GX")
+		.DEVICE_FAMILY          ("Agilex 5")
 	) packet_reader (
 		.clk                        (main_clock_clk),                       //   input,    width = 1,      main_clock.clk
 		.rst                        (axi_st_reset_bridge_out_reset_reset),  //   input,    width = 1,      main_reset.reset

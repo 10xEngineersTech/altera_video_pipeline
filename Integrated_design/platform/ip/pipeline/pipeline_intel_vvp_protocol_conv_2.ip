@@ -15,7 +15,7 @@ https://fpgasoftware.intel.com/eula.-->
 <ipxact:component xmlns:altera="http://www.altera.com/XMLSchema/IPXact2014/extensions" xmlns:ipxact="http://www.accellera.org/XMLSchema/IPXACT/1685-2014">
   <ipxact:vendor>Intel Corporation</ipxact:vendor>
   <ipxact:library>pipeline_intel_vvp_protocol_conv_2</ipxact:library>
-  <ipxact:name>intel_vvp_protocol_conv_2</ipxact:name>
+  <ipxact:name>lite_to_full_converter</ipxact:name>
   <ipxact:version>24.6.0</ipxact:version>
   <ipxact:busInterfaces>
     <ipxact:busInterface>
@@ -1111,22 +1111,22 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="AUTO_DEVICE_FAMILY" type="string">
           <ipxact:name>AUTO_DEVICE_FAMILY</ipxact:name>
           <ipxact:displayName>Auto DEVICE_FAMILY</ipxact:displayName>
-          <ipxact:value>Cyclone 10 GX</ipxact:value>
+          <ipxact:value>Agilex 5</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="AUTO_DEVICE" type="string">
           <ipxact:name>AUTO_DEVICE</ipxact:name>
           <ipxact:displayName>Auto DEVICE</ipxact:displayName>
-          <ipxact:value>10CX220YF780I5G</ipxact:value>
+          <ipxact:value>A5ED065BB32AE6SR0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="AUTO_DEVICE_SPEEDGRADE" type="string">
           <ipxact:name>AUTO_DEVICE_SPEEDGRADE</ipxact:name>
           <ipxact:displayName>Auto DEVICE_SPEEDGRADE</ipxact:displayName>
-          <ipxact:value>5</ipxact:value>
+          <ipxact:value>6</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="AUTO_BOARD" type="string">
           <ipxact:name>AUTO_BOARD</ipxact:name>
           <ipxact:displayName>Auto BOARD</ipxact:displayName>
-          <ipxact:value>default</ipxact:value>
+          <ipxact:value>Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1</ipxact:value>
         </ipxact:parameter>
       </ipxact:parameters>
     </altera:altera_module_parameters>
@@ -1135,22 +1135,22 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="board" type="string">
           <ipxact:name>board</ipxact:name>
           <ipxact:displayName>Board</ipxact:displayName>
-          <ipxact:value>default</ipxact:value>
+          <ipxact:value>Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="device" type="string">
           <ipxact:name>device</ipxact:name>
           <ipxact:displayName>Device</ipxact:displayName>
-          <ipxact:value>10CX220YF780I5G</ipxact:value>
+          <ipxact:value>A5ED065BB32AE6SR0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="deviceFamily" type="string">
           <ipxact:name>deviceFamily</ipxact:name>
           <ipxact:displayName>Device family</ipxact:displayName>
-          <ipxact:value>Cyclone 10 GX</ipxact:value>
+          <ipxact:value>Agilex 5</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="deviceSpeedGrade" type="string">
           <ipxact:name>deviceSpeedGrade</ipxact:name>
           <ipxact:displayName>Device Speed Grade</ipxact:displayName>
-          <ipxact:value>5</ipxact:value>
+          <ipxact:value>6</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="generationId" type="int">
           <ipxact:name>generationId</ipxact:name>
@@ -1166,11 +1166,19 @@ https://fpgasoftware.intel.com/eula.-->
    {
       datum _originalDeviceFamily
       {
-         value = "Cyclone 10 GX";
+         value = "Agilex 5";
          type = "String";
       }
    }
    element intel_vvp_protocol_conv_2
+   {
+      datum _sortIndex
+      {
+         value = "0";
+         type = "int";
+      }
+   }
+   element lite_to_full_converter
    {
    }
 }
@@ -1781,7 +1789,7 @@ https://fpgasoftware.intel.com/eula.-->
       </ipxact:parameters>
     </altera:altera_system_parameters>
     <altera:altera_interface_boundary>
-      <altera:interface_mapping altera:name="av_mm_control_agent" altera:internal="intel_vvp_protocol_conv_2.av_mm_control_agent" altera:type="avalon" altera:dir="end">
+      <altera:interface_mapping altera:name="av_mm_control_agent" altera:internal="lite_to_full_converter.av_mm_control_agent" altera:type="avalon" altera:dir="end">
         <altera:port_mapping altera:name="av_mm_control_agent_address" altera:internal="av_mm_control_agent_address"></altera:port_mapping>
         <altera:port_mapping altera:name="av_mm_control_agent_byteenable" altera:internal="av_mm_control_agent_byteenable"></altera:port_mapping>
         <altera:port_mapping altera:name="av_mm_control_agent_read" altera:internal="av_mm_control_agent_read"></altera:port_mapping>
@@ -1791,24 +1799,24 @@ https://fpgasoftware.intel.com/eula.-->
         <altera:port_mapping altera:name="av_mm_control_agent_write" altera:internal="av_mm_control_agent_write"></altera:port_mapping>
         <altera:port_mapping altera:name="av_mm_control_agent_writedata" altera:internal="av_mm_control_agent_writedata"></altera:port_mapping>
       </altera:interface_mapping>
-      <altera:interface_mapping altera:name="axi4s_vid_in" altera:internal="intel_vvp_protocol_conv_2.axi4s_vid_in" altera:type="axi4stream" altera:dir="end">
+      <altera:interface_mapping altera:name="axi4s_vid_in" altera:internal="lite_to_full_converter.axi4s_vid_in" altera:type="axi4stream" altera:dir="end">
         <altera:port_mapping altera:name="axi4s_vid_in_tdata" altera:internal="axi4s_vid_in_tdata"></altera:port_mapping>
         <altera:port_mapping altera:name="axi4s_vid_in_tlast" altera:internal="axi4s_vid_in_tlast"></altera:port_mapping>
         <altera:port_mapping altera:name="axi4s_vid_in_tready" altera:internal="axi4s_vid_in_tready"></altera:port_mapping>
         <altera:port_mapping altera:name="axi4s_vid_in_tuser" altera:internal="axi4s_vid_in_tuser"></altera:port_mapping>
         <altera:port_mapping altera:name="axi4s_vid_in_tvalid" altera:internal="axi4s_vid_in_tvalid"></altera:port_mapping>
       </altera:interface_mapping>
-      <altera:interface_mapping altera:name="axi4s_vid_out" altera:internal="intel_vvp_protocol_conv_2.axi4s_vid_out" altera:type="axi4stream" altera:dir="start">
+      <altera:interface_mapping altera:name="axi4s_vid_out" altera:internal="lite_to_full_converter.axi4s_vid_out" altera:type="axi4stream" altera:dir="start">
         <altera:port_mapping altera:name="axi4s_vid_out_tdata" altera:internal="axi4s_vid_out_tdata"></altera:port_mapping>
         <altera:port_mapping altera:name="axi4s_vid_out_tlast" altera:internal="axi4s_vid_out_tlast"></altera:port_mapping>
         <altera:port_mapping altera:name="axi4s_vid_out_tready" altera:internal="axi4s_vid_out_tready"></altera:port_mapping>
         <altera:port_mapping altera:name="axi4s_vid_out_tuser" altera:internal="axi4s_vid_out_tuser"></altera:port_mapping>
         <altera:port_mapping altera:name="axi4s_vid_out_tvalid" altera:internal="axi4s_vid_out_tvalid"></altera:port_mapping>
       </altera:interface_mapping>
-      <altera:interface_mapping altera:name="main_clock" altera:internal="intel_vvp_protocol_conv_2.main_clock" altera:type="clock" altera:dir="end">
+      <altera:interface_mapping altera:name="main_clock" altera:internal="lite_to_full_converter.main_clock" altera:type="clock" altera:dir="end">
         <altera:port_mapping altera:name="main_clock_clk" altera:internal="main_clock_clk"></altera:port_mapping>
       </altera:interface_mapping>
-      <altera:interface_mapping altera:name="main_reset" altera:internal="intel_vvp_protocol_conv_2.main_reset" altera:type="reset" altera:dir="end">
+      <altera:interface_mapping altera:name="main_reset" altera:internal="lite_to_full_converter.main_reset" altera:type="reset" altera:dir="end">
         <altera:port_mapping altera:name="main_reset_reset" altera:internal="main_reset_reset"></altera:port_mapping>
       </altera:interface_mapping>
     </altera:altera_interface_boundary>

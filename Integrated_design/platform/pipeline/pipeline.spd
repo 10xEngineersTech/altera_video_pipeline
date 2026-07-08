@@ -21,15 +21,15 @@
    type="SYSTEM_VERILOG"
    library="altera_merlin_slave_agent_1930" />
  <file
-   path="altera_avalon_sc_fifo_1932/sim/pipeline_altera_avalon_sc_fifo_1932_onpcouq.v"
+   path="altera_avalon_sc_fifo_1932/sim/pipeline_altera_avalon_sc_fifo_1932_22gxxgi.v"
    type="VERILOG"
    library="altera_avalon_sc_fifo_1932" />
  <file
-   path="altera_merlin_router_1921/sim/pipeline_altera_merlin_router_1921_gbik46i.sv"
+   path="altera_merlin_router_1921/sim/pipeline_altera_merlin_router_1921_mgy2vfy.sv"
    type="SYSTEM_VERILOG"
    library="altera_merlin_router_1921" />
  <file
-   path="altera_merlin_router_1921/sim/pipeline_altera_merlin_router_1921_lky73xq.sv"
+   path="altera_merlin_router_1921/sim/pipeline_altera_merlin_router_1921_u5h25uy.sv"
    type="SYSTEM_VERILOG"
    library="altera_merlin_router_1921" />
  <file
@@ -41,7 +41,7 @@
    type="SYSTEM_VERILOG"
    library="altera_avalon_st_pipeline_stage_1930" />
  <file
-   path="altera_merlin_burst_adapter_1940/sim/pipeline_altera_merlin_burst_adapter_altera_avalon_st_pipeline_stage_1940_3ux5izy.v"
+   path="altera_merlin_burst_adapter_1940/sim/pipeline_altera_merlin_burst_adapter_altera_avalon_st_pipeline_stage_1940_zghrxiq.v"
    type="VERILOG"
    library="altera_merlin_burst_adapter_1940"
    hasInlineConfiguration="true" />
@@ -78,11 +78,11 @@
    type="SYSTEM_VERILOG"
    library="altera_merlin_burst_adapter_1940" />
  <file
-   path="altera_merlin_demultiplexer_1921/sim/pipeline_altera_merlin_demultiplexer_1921_x6yjluq.sv"
+   path="altera_merlin_demultiplexer_1921/sim/pipeline_altera_merlin_demultiplexer_1921_n2lmruy.sv"
    type="SYSTEM_VERILOG"
    library="altera_merlin_demultiplexer_1921" />
  <file
-   path="altera_merlin_multiplexer_1922/sim/pipeline_altera_merlin_multiplexer_1922_4kg5nvi.sv"
+   path="altera_merlin_multiplexer_1922/sim/pipeline_altera_merlin_multiplexer_1922_b474h7a.sv"
    type="SYSTEM_VERILOG"
    library="altera_merlin_multiplexer_1922" />
  <file
@@ -90,7 +90,11 @@
    type="SYSTEM_VERILOG"
    library="altera_merlin_multiplexer_1922" />
  <file
-   path="altera_merlin_multiplexer_1922/sim/pipeline_altera_merlin_multiplexer_1922_prxs4ai.sv"
+   path="altera_merlin_demultiplexer_1921/sim/pipeline_altera_merlin_demultiplexer_1921_hxz6nyy.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_demultiplexer_1921" />
+ <file
+   path="altera_merlin_multiplexer_1922/sim/pipeline_altera_merlin_multiplexer_1922_47uerfa.sv"
    type="SYSTEM_VERILOG"
    library="altera_merlin_multiplexer_1922" />
  <file
@@ -122,16 +126,7 @@
    type="SYSTEM_VERILOG"
    library="altera_merlin_width_adapter_1961" />
  <file
-   path="altera_mm_interconnect_1920/sim/pipeline_altera_mm_interconnect_1920_5c5nkdi.v"
-   type="VERILOG"
-   library="altera_mm_interconnect_1920"
-   hasInlineConfiguration="true" />
- <file
-   path="altera_merlin_router_1921/sim/pipeline_altera_merlin_router_1921_vvh72si.sv"
-   type="SYSTEM_VERILOG"
-   library="altera_merlin_router_1921" />
- <file
-   path="altera_mm_interconnect_1920/sim/pipeline_altera_mm_interconnect_1920_h5rdvxi.v"
+   path="altera_mm_interconnect_1920/sim/pipeline_altera_mm_interconnect_1920_v5evncq.v"
    type="VERILOG"
    library="altera_mm_interconnect_1920"
    hasInlineConfiguration="true" />
@@ -139,6 +134,10 @@
    path="altera_merlin_master_agent_1940/sim/pipeline_altera_merlin_master_agent_1940_r3ep6da.sv"
    type="SYSTEM_VERILOG"
    library="altera_merlin_master_agent_1940" />
+ <file
+   path="altera_avalon_sc_fifo_1932/sim/pipeline_altera_avalon_sc_fifo_1932_onpcouq.v"
+   type="VERILOG"
+   library="altera_avalon_sc_fifo_1932" />
  <file
    path="altera_merlin_router_1921/sim/pipeline_altera_merlin_router_1921_iaaklri.sv"
    type="SYSTEM_VERILOG"
@@ -211,9 +210,9 @@
    library="pipeline"
    hasInlineConfiguration="true" />
  <topLevel name="pipeline.pipeline" />
- <deviceFamily name="cyclone10gx" />
- <device name="10CX220YF780I5G" />
+ <deviceFamily name="agilex5" />
+ <device name="A5ED065BB32AE6SR0" />
  <modelMap
-   controllerPath="pipeline.onchip_memory2_0"
-   modelPath="pipeline.onchip_memory2_0" />
+   controllerPath="pipeline.intel_onchip_memory_0"
+   modelPath="pipeline.intel_onchip_memory_0" />
 </simPackage>

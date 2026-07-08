@@ -1,6 +1,6 @@
 	component pipeline is
 		port (
-			clk_clk                                                     : in  std_logic                     := 'X';             -- clk
+			clock_in_in_clk_clk                                         : in  std_logic                     := 'X';             -- clk
 			intel_vvp_clipper_0_axi4s_vid_in_tdata                      : in  std_logic_vector(23 downto 0) := (others => 'X'); -- tdata
 			intel_vvp_clipper_0_axi4s_vid_in_tvalid                     : in  std_logic                     := 'X';             -- tvalid
 			intel_vvp_clipper_0_axi4s_vid_in_tready                     : out std_logic;                                        -- tready
@@ -122,13 +122,13 @@
 			mm_bridge_0_s0_read                                         : in  std_logic                     := 'X';             -- read
 			mm_bridge_0_s0_byteenable                                   : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
 			mm_bridge_0_s0_debugaccess                                  : in  std_logic                     := 'X';             -- debugaccess
-			reset_reset                                                 : in  std_logic                     := 'X'              -- reset
+			reset_in_in_reset_reset                                     : in  std_logic                     := 'X'              -- reset
 		);
 	end component pipeline;
 
 	u0 : component pipeline
 		port map (
-			clk_clk                                                     => CONNECTED_TO_clk_clk,                                                     --                                           clk.clk
+			clock_in_in_clk_clk                                         => CONNECTED_TO_clock_in_in_clk_clk,                                         --                               clock_in_in_clk.clk
 			intel_vvp_clipper_0_axi4s_vid_in_tdata                      => CONNECTED_TO_intel_vvp_clipper_0_axi4s_vid_in_tdata,                      --              intel_vvp_clipper_0_axi4s_vid_in.tdata
 			intel_vvp_clipper_0_axi4s_vid_in_tvalid                     => CONNECTED_TO_intel_vvp_clipper_0_axi4s_vid_in_tvalid,                     --                                              .tvalid
 			intel_vvp_clipper_0_axi4s_vid_in_tready                     => CONNECTED_TO_intel_vvp_clipper_0_axi4s_vid_in_tready,                     --                                              .tready
@@ -250,6 +250,6 @@
 			mm_bridge_0_s0_read                                         => CONNECTED_TO_mm_bridge_0_s0_read,                                         --                                              .read
 			mm_bridge_0_s0_byteenable                                   => CONNECTED_TO_mm_bridge_0_s0_byteenable,                                   --                                              .byteenable
 			mm_bridge_0_s0_debugaccess                                  => CONNECTED_TO_mm_bridge_0_s0_debugaccess,                                  --                                              .debugaccess
-			reset_reset                                                 => CONNECTED_TO_reset_reset                                                  --                                         reset.reset
+			reset_in_in_reset_reset                                     => CONNECTED_TO_reset_in_in_reset_reset                                      --                             reset_in_in_reset.reset
 		);
 

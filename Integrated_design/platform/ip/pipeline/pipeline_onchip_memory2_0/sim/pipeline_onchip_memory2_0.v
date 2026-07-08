@@ -20,13 +20,10 @@ module pipeline_onchip_memory2_0 (
 		input  wire        write2,      //       .write
 		output wire [31:0] readdata2,   //       .readdata
 		input  wire [31:0] writedata2,  //       .writedata
-		input  wire [3:0]  byteenable2, //       .byteenable
-		input  wire        clk2,        //   clk2.clk
-		input  wire        reset2,      // reset2.reset
-		input  wire        reset_req2   //       .reset_req
+		input  wire [3:0]  byteenable2  //       .byteenable
 	);
 
-	pipeline_onchip_memory2_0_altera_avalon_onchip_memory2_1939_2kbmgja #(
+	pipeline_onchip_memory2_0_altera_avalon_onchip_memory2_1939_fqt4xxa #(
 		.INIT_FILE ("pipeline_onchip_memory2_0_onchip_memory2_0.hex")
 	) onchip_memory2_0 (
 		.clk         (clk),         //   input,   width = 1,   clk1.clk
@@ -46,9 +43,6 @@ module pipeline_onchip_memory2_0 (
 		.readdata2   (readdata2),   //  output,  width = 32,       .readdata
 		.writedata2  (writedata2),  //   input,  width = 32,       .writedata
 		.byteenable2 (byteenable2), //   input,   width = 4,       .byteenable
-		.clk2        (clk2),        //   input,   width = 1,   clk2.clk
-		.reset2      (reset2),      //   input,   width = 1, reset2.reset
-		.reset_req2  (reset_req2),  //   input,   width = 1,       .reset_req
 		.freeze      (1'b0)         // (terminated),                     
 	);
 

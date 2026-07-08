@@ -269,7 +269,7 @@ module pipeline_altera_merlin_burst_adapter_1940_nwcdjmq
 
 
         if(PIPE_INPUTS == 1) begin: pipe_inputs
-            pipeline_altera_merlin_burst_adapter_altera_avalon_st_pipeline_stage_1940_3ux5izy # (
+            pipeline_altera_merlin_burst_adapter_altera_avalon_st_pipeline_stage_1940_zghrxiq # (
                 .SYMBOLS_PER_BEAT (1),
                 .BITS_PER_SYMBOL  (ST_DATA_W),
                 .USE_PACKETS      (1),

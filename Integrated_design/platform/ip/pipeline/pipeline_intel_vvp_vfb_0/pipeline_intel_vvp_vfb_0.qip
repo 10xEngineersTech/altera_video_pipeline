@@ -11,8 +11,8 @@ set_global_assignment -entity "pipeline_intel_vvp_vfb_0" -library "pipeline_inte
 set_global_assignment -library "pipeline_intel_vvp_vfb_0" -name SOPCINFO_FILE [file join $::quartus(qip_path) "pipeline_intel_vvp_vfb_0.sopcinfo"]
 set_global_assignment -entity "pipeline_intel_vvp_vfb_0" -library "pipeline_intel_vvp_vfb_0" -name SLD_INFO "QSYS_NAME pipeline_intel_vvp_vfb_0 HAS_SOPCINFO 1 GENERATION_ID 0"
 set_global_assignment -library "pipeline_intel_vvp_vfb_0" -name MISC_FILE [file join $::quartus(qip_path) "pipeline_intel_vvp_vfb_0.cmp"]
-set_global_assignment -entity "pipeline_intel_vvp_vfb_0" -library "pipeline_intel_vvp_vfb_0" -name IP_TARGETED_DEVICE_FAMILY "Cyclone 10 GX"
-set_global_assignment -entity "pipeline_intel_vvp_vfb_0" -library "pipeline_intel_vvp_vfb_0" -name IP_GENERATED_DEVICE_FAMILY "{Cyclone 10 GX}"
+set_global_assignment -entity "pipeline_intel_vvp_vfb_0" -library "pipeline_intel_vvp_vfb_0" -name IP_TARGETED_DEVICE_FAMILY "Agilex 5"
+set_global_assignment -entity "pipeline_intel_vvp_vfb_0" -library "pipeline_intel_vvp_vfb_0" -name IP_GENERATED_DEVICE_FAMILY "{Agilex 5}"
 set_global_assignment -entity "pipeline_intel_vvp_vfb_0" -library "pipeline_intel_vvp_vfb_0" -name IP_QSYS_MODE "STANDALONE"
 set_global_assignment -name SYNTHESIS_ONLY_QIP ON
 set_global_assignment -library "pipeline_intel_vvp_vfb_0" -name MISC_FILE [file join $::quartus(qip_path) "../pipeline_intel_vvp_vfb_0.ip"]

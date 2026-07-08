@@ -13,7 +13,7 @@
   </instanceData>
   <children>
     <node>
-      <instanceKey xsi:type="xs:string">intel_vvp_protocol_conv_2</instanceKey>
+      <instanceKey xsi:type="xs:string">lite_to_full_converter</instanceKey>
       <instanceData xsi:type="data">
         <parameters>
           <parameter>
@@ -144,11 +144,11 @@
         <interconnectAssignments></interconnectAssignments>
         <className>intel_vvp_protocol_conv</className>
         <version>24.6.0</version>
-        <name>intel_vvp_protocol_conv_2</name>
+        <name>lite_to_full_converter</name>
         <uniqueName>pipeline_intel_vvp_protocol_conv_2_intel_vvp_protocol_conv_2460_xsgrh3i</uniqueName>
         <nonce>0</nonce>
         <incidentConnections></incidentConnections>
-        <path>pipeline_intel_vvp_protocol_conv_2.intel_vvp_protocol_conv_2</path>
+        <path>pipeline_intel_vvp_protocol_conv_2.lite_to_full_converter</path>
       </instanceData>
       <children>
         <node>
@@ -269,7 +269,7 @@
                 <start>main_rst_bridge/out_reset</start>
               </incidentConnection>
             </incidentConnections>
-            <path>pipeline_intel_vvp_protocol_conv_2.intel_vvp_protocol_conv_2.in_bridge</path>
+            <path>pipeline_intel_vvp_protocol_conv_2.lite_to_full_converter.in_bridge</path>
           </instanceData>
           <children></children>
         </node>
@@ -453,7 +453,7 @@
                 <start>main_clk_bridge/out_clk</start>
               </incidentConnection>
             </incidentConnections>
-            <path>pipeline_intel_vvp_protocol_conv_2.intel_vvp_protocol_conv_2.main_clk_bridge</path>
+            <path>pipeline_intel_vvp_protocol_conv_2.lite_to_full_converter.main_clk_bridge</path>
           </instanceData>
           <children></children>
         </node>
@@ -610,7 +610,7 @@
                 <start>main_rst_bridge/out_reset</start>
               </incidentConnection>
             </incidentConnections>
-            <path>pipeline_intel_vvp_protocol_conv_2.intel_vvp_protocol_conv_2.main_rst_bridge</path>
+            <path>pipeline_intel_vvp_protocol_conv_2.lite_to_full_converter.main_rst_bridge</path>
           </instanceData>
           <children></children>
         </node>
@@ -883,7 +883,7 @@
                 <start>slave_interface/av_mm_master</start>
               </incidentConnection>
             </incidentConnections>
-            <path>pipeline_intel_vvp_protocol_conv_2.intel_vvp_protocol_conv_2.mm_interconnect_0</path>
+            <path>pipeline_intel_vvp_protocol_conv_2.lite_to_full_converter.mm_interconnect_0</path>
           </instanceData>
           <children>
             <node>
@@ -989,7 +989,7 @@
                     <start>main_clk_bridge_out_clk_clock_bridge/out_clk</start>
                   </incidentConnection>
                 </incidentConnections>
-                <path>pipeline_intel_vvp_protocol_conv_2.intel_vvp_protocol_conv_2.mm_interconnect_0.main_clk_bridge_out_clk_clock_bridge</path>
+                <path>pipeline_intel_vvp_protocol_conv_2.lite_to_full_converter.mm_interconnect_0.main_clk_bridge_out_clk_clock_bridge</path>
               </instanceData>
               <children></children>
             </node>
@@ -1392,7 +1392,7 @@
                     <start>slave_interface_av_mm_master_translator_reset_reset_bridge/out_reset</start>
                   </incidentConnection>
                 </incidentConnections>
-                <path>pipeline_intel_vvp_protocol_conv_2.intel_vvp_protocol_conv_2.mm_interconnect_0.scheduler_av_mm_slave_translator</path>
+                <path>pipeline_intel_vvp_protocol_conv_2.lite_to_full_converter.mm_interconnect_0.scheduler_av_mm_slave_translator</path>
               </instanceData>
               <children></children>
             </node>
@@ -1751,7 +1751,7 @@
                     <start>slave_interface_av_mm_master_translator_reset_reset_bridge/out_reset</start>
                   </incidentConnection>
                 </incidentConnections>
-                <path>pipeline_intel_vvp_protocol_conv_2.intel_vvp_protocol_conv_2.mm_interconnect_0.slave_interface_av_mm_master_translator</path>
+                <path>pipeline_intel_vvp_protocol_conv_2.lite_to_full_converter.mm_interconnect_0.slave_interface_av_mm_master_translator</path>
               </instanceData>
               <children></children>
             </node>
@@ -1862,7 +1862,7 @@
                     <start>slave_interface_av_mm_master_translator_reset_reset_bridge/out_reset</start>
                   </incidentConnection>
                 </incidentConnections>
-                <path>pipeline_intel_vvp_protocol_conv_2.intel_vvp_protocol_conv_2.mm_interconnect_0.slave_interface_av_mm_master_translator_reset_reset_bridge</path>
+                <path>pipeline_intel_vvp_protocol_conv_2.lite_to_full_converter.mm_interconnect_0.slave_interface_av_mm_master_translator_reset_reset_bridge</path>
               </instanceData>
               <children></children>
             </node>
@@ -1986,7 +1986,7 @@
                 <start>scheduler/axi_st_ctrl_out</start>
               </incidentConnection>
             </incidentConnections>
-            <path>pipeline_intel_vvp_protocol_conv_2.intel_vvp_protocol_conv_2.out_bridge</path>
+            <path>pipeline_intel_vvp_protocol_conv_2.lite_to_full_converter.out_bridge</path>
           </instanceData>
           <children></children>
         </node>
@@ -2213,7 +2213,7 @@
                 <start>scheduler/axi_st_ctrl_out</start>
               </incidentConnection>
             </incidentConnections>
-            <path>pipeline_intel_vvp_protocol_conv_2.intel_vvp_protocol_conv_2.scheduler</path>
+            <path>pipeline_intel_vvp_protocol_conv_2.lite_to_full_converter.scheduler</path>
           </instanceData>
           <children></children>
         </node>
@@ -2435,7 +2435,7 @@
                 <start>slave_interface/av_mm_master</start>
               </incidentConnection>
             </incidentConnections>
-            <path>pipeline_intel_vvp_protocol_conv_2.intel_vvp_protocol_conv_2.slave_interface</path>
+            <path>pipeline_intel_vvp_protocol_conv_2.lite_to_full_converter.slave_interface</path>
           </instanceData>
           <children>
             <node>
@@ -2566,7 +2566,7 @@
                     <start>main_clk_bridge/out_clk</start>
                   </incidentConnection>
                 </incidentConnections>
-                <path>pipeline_intel_vvp_protocol_conv_2.intel_vvp_protocol_conv_2.slave_interface.main_clk_bridge</path>
+                <path>pipeline_intel_vvp_protocol_conv_2.lite_to_full_converter.slave_interface.main_clk_bridge</path>
               </instanceData>
               <children></children>
             </node>
@@ -2674,7 +2674,7 @@
                     <start>main_reset_bridge/out_reset</start>
                   </incidentConnection>
                 </incidentConnections>
-                <path>pipeline_intel_vvp_protocol_conv_2.intel_vvp_protocol_conv_2.slave_interface.main_reset_bridge</path>
+                <path>pipeline_intel_vvp_protocol_conv_2.lite_to_full_converter.slave_interface.main_reset_bridge</path>
               </instanceData>
               <children></children>
             </node>
@@ -2947,7 +2947,7 @@
                     <start>mm_reset_hold/av_mm_master</start>
                   </incidentConnection>
                 </incidentConnections>
-                <path>pipeline_intel_vvp_protocol_conv_2.intel_vvp_protocol_conv_2.slave_interface.mm_interconnect_0</path>
+                <path>pipeline_intel_vvp_protocol_conv_2.lite_to_full_converter.slave_interface.mm_interconnect_0</path>
               </instanceData>
               <children>
                 <node>
@@ -3053,7 +3053,7 @@
                         <start>main_clk_bridge_out_clk_clock_bridge/out_clk</start>
                       </incidentConnection>
                     </incidentConnections>
-                    <path>pipeline_intel_vvp_protocol_conv_2.intel_vvp_protocol_conv_2.slave_interface.mm_interconnect_0.main_clk_bridge_out_clk_clock_bridge</path>
+                    <path>pipeline_intel_vvp_protocol_conv_2.lite_to_full_converter.slave_interface.mm_interconnect_0.main_clk_bridge_out_clk_clock_bridge</path>
                   </instanceData>
                   <children></children>
                 </node>
@@ -3412,7 +3412,7 @@
                         <start>mm_reset_hold_av_mm_master_translator_reset_reset_bridge/out_reset</start>
                       </incidentConnection>
                     </incidentConnections>
-                    <path>pipeline_intel_vvp_protocol_conv_2.intel_vvp_protocol_conv_2.slave_interface.mm_interconnect_0.mm_reset_hold_av_mm_master_translator</path>
+                    <path>pipeline_intel_vvp_protocol_conv_2.lite_to_full_converter.slave_interface.mm_interconnect_0.mm_reset_hold_av_mm_master_translator</path>
                   </instanceData>
                   <children></children>
                 </node>
@@ -3523,7 +3523,7 @@
                         <start>mm_reset_hold_av_mm_master_translator_reset_reset_bridge/out_reset</start>
                       </incidentConnection>
                     </incidentConnections>
-                    <path>pipeline_intel_vvp_protocol_conv_2.intel_vvp_protocol_conv_2.slave_interface.mm_interconnect_0.mm_reset_hold_av_mm_master_translator_reset_reset_bridge</path>
+                    <path>pipeline_intel_vvp_protocol_conv_2.lite_to_full_converter.slave_interface.mm_interconnect_0.mm_reset_hold_av_mm_master_translator_reset_reset_bridge</path>
                   </instanceData>
                   <children></children>
                 </node>
@@ -3926,7 +3926,7 @@
                         <start>mm_reset_hold_av_mm_master_translator_reset_reset_bridge/out_reset</start>
                       </incidentConnection>
                     </incidentConnections>
-                    <path>pipeline_intel_vvp_protocol_conv_2.intel_vvp_protocol_conv_2.slave_interface.mm_interconnect_0.ro_reg_av_mm_slave_translator</path>
+                    <path>pipeline_intel_vvp_protocol_conv_2.lite_to_full_converter.slave_interface.mm_interconnect_0.ro_reg_av_mm_slave_translator</path>
                   </instanceData>
                   <children></children>
                 </node>
@@ -4099,7 +4099,7 @@
                     <start>mm_reset_hold/av_mm_master</start>
                   </incidentConnection>
                 </incidentConnections>
-                <path>pipeline_intel_vvp_protocol_conv_2.intel_vvp_protocol_conv_2.slave_interface.mm_reset_hold</path>
+                <path>pipeline_intel_vvp_protocol_conv_2.lite_to_full_converter.slave_interface.mm_reset_hold</path>
               </instanceData>
               <children></children>
             </node>
@@ -4289,7 +4289,7 @@
                     <start>mm_interconnect_0/ro_reg_av_mm_slave</start>
                   </incidentConnection>
                 </incidentConnections>
-                <path>pipeline_intel_vvp_protocol_conv_2.intel_vvp_protocol_conv_2.slave_interface.ro_reg</path>
+                <path>pipeline_intel_vvp_protocol_conv_2.lite_to_full_converter.slave_interface.ro_reg</path>
               </instanceData>
               <children></children>
             </node>

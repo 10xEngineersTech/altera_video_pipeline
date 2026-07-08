@@ -44,7 +44,7 @@ https://fpgasoftware.intel.com/eula.-->
    {
       datum baseAddress
       {
-         value = "1024";
+         value = "1536";
          type = "String";
       }
    }
@@ -60,7 +60,7 @@ https://fpgasoftware.intel.com/eula.-->
    {
       datum baseAddress
       {
-         value = "1536";
+         value = "2048";
          type = "String";
       }
    }
@@ -76,7 +76,7 @@ https://fpgasoftware.intel.com/eula.-->
    {
       datum baseAddress
       {
-         value = "2048";
+         value = "2560";
          type = "String";
       }
    }
@@ -116,7 +116,7 @@ https://fpgasoftware.intel.com/eula.-->
    {
       datum baseAddress
       {
-         value = "512";
+         value = "1024";
          type = "String";
       }
    }
@@ -136,6 +136,14 @@ https://fpgasoftware.intel.com/eula.-->
          type = "int";
       }
    }
+   element intel_vvp_vfb_0.av_mm_control_agent
+   {
+      datum baseAddress
+      {
+         value = "0";
+         type = "String";
+      }
+   }
    element lite_to_full_converter
    {
       datum _sortIndex
@@ -148,7 +156,7 @@ https://fpgasoftware.intel.com/eula.-->
    {
       datum baseAddress
       {
-         value = "0";
+         value = "512";
          type = "String";
       }
    }
@@ -166,6 +174,22 @@ https://fpgasoftware.intel.com/eula.-->
       {
          value = "13";
          type = "int";
+      }
+   }
+   element onchip_memory2_0.s1
+   {
+      datum baseAddress
+      {
+         value = "0";
+         type = "String";
+      }
+   }
+   element onchip_memory2_0.s2
+   {
+      datum baseAddress
+      {
+         value = "0";
+         type = "String";
       }
    }
    element reset_in
@@ -278,49 +302,7 @@ https://fpgasoftware.intel.com/eula.-->
                 <consumedSystemInfos>
                     <entry>
                         <key>ADDRESS_MAP</key>
-                        <value>&lt;address-map&gt;&lt;slave name='lite_to_full_converter.av_mm_control_agent' start='0x0' end='0x200' datawidth='32' /&gt;&lt;slave name='intel_vvp_scaler_0.av_mm_control_agent' start='0x200' end='0x400' datawidth='32' /&gt;&lt;slave name='intel_vvp_clipper_0.av_mm_control_agent' start='0x400' end='0x600' datawidth='32' /&gt;&lt;slave name='intel_vvp_crs_0.av_mm_control_agent' start='0x600' end='0x800' datawidth='32' /&gt;&lt;slave name='intel_vvp_csc_0.av_mm_control_agent' start='0x800' end='0xA00' datawidth='32' /&gt;&lt;/address-map&gt;</value>
-                    </entry>
-                    <entry>
-                        <key>ADDRESS_WIDTH</key>
-                        <value>12</value>
-                    </entry>
-                    <entry>
-                        <key>MAX_SLAVE_DATA_WIDTH</key>
-                        <value>32</value>
-                    </entry>
-                </consumedSystemInfos>
-            </value>
-        </entry>
-        <entry>
-            <key>onchip_memory2_0_s1</key>
-            <value>
-                <connectionPointName>onchip_memory2_0_s1</connectionPointName>
-                <suppliedSystemInfos/>
-                <consumedSystemInfos>
-                    <entry>
-                        <key>ADDRESS_MAP</key>
-                        <value>&lt;address-map&gt;&lt;slave name='onchip_memory2_0.s1' start='0x0' end='0x1000' datawidth='32' /&gt;&lt;/address-map&gt;</value>
-                    </entry>
-                    <entry>
-                        <key>ADDRESS_WIDTH</key>
-                        <value>12</value>
-                    </entry>
-                    <entry>
-                        <key>MAX_SLAVE_DATA_WIDTH</key>
-                        <value>32</value>
-                    </entry>
-                </consumedSystemInfos>
-            </value>
-        </entry>
-        <entry>
-            <key>onchip_memory2_0_s2</key>
-            <value>
-                <connectionPointName>onchip_memory2_0_s2</connectionPointName>
-                <suppliedSystemInfos/>
-                <consumedSystemInfos>
-                    <entry>
-                        <key>ADDRESS_MAP</key>
-                        <value>&lt;address-map&gt;&lt;slave name='onchip_memory2_0.s2' start='0x0' end='0x1000' datawidth='32' /&gt;&lt;/address-map&gt;</value>
+                        <value>&lt;address-map&gt;&lt;slave name='intel_vvp_vfb_0.av_mm_control_agent' start='0x0' end='0x200' datawidth='32' /&gt;&lt;slave name='lite_to_full_converter.av_mm_control_agent' start='0x200' end='0x400' datawidth='32' /&gt;&lt;slave name='intel_vvp_scaler_0.av_mm_control_agent' start='0x400' end='0x600' datawidth='32' /&gt;&lt;slave name='intel_vvp_clipper_0.av_mm_control_agent' start='0x600' end='0x800' datawidth='32' /&gt;&lt;slave name='intel_vvp_crs_0.av_mm_control_agent' start='0x800' end='0xA00' datawidth='32' /&gt;&lt;slave name='intel_vvp_csc_0.av_mm_control_agent' start='0xA00' end='0xC00' datawidth='32' /&gt;&lt;/address-map&gt;</value>
                     </entry>
                     <entry>
                         <key>ADDRESS_WIDTH</key>
@@ -426,11 +408,6 @@ https://fpgasoftware.intel.com/eula.-->
    internal="intel_vvp_tpg_0.axi4s_vid_out"
    type="axi4stream"
    dir="start" />
- <interface
-   name="intel_vvp_vfb_0_av_mm_control_agent"
-   internal="intel_vvp_vfb_0.av_mm_control_agent"
-   type="avalon"
-   dir="end" />
  <interface
    name="intel_vvp_vfb_0_axi4s_vid_in"
    internal="intel_vvp_vfb_0.axi4s_vid_in"
@@ -16079,7 +16056,7 @@ https://fpgasoftware.intel.com/eula.-->
    start="mm_bridge_0.m0"
    end="intel_vvp_csc_0.av_mm_control_agent">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0800" />
+  <parameter name="baseAddress" value="0x0a00" />
   <parameter name="defaultConnection" value="false" />
   <parameter name="domainAlias" value="" />
   <parameter name="qsys_mm.burstAdapterImplementation" value="GENERIC_CONVERTER" />
@@ -16104,7 +16081,7 @@ https://fpgasoftware.intel.com/eula.-->
    start="mm_bridge_0.m0"
    end="intel_vvp_crs_0.av_mm_control_agent">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0600" />
+  <parameter name="baseAddress" value="0x0800" />
   <parameter name="defaultConnection" value="false" />
   <parameter name="domainAlias" value="" />
   <parameter name="qsys_mm.burstAdapterImplementation" value="GENERIC_CONVERTER" />
@@ -16129,7 +16106,7 @@ https://fpgasoftware.intel.com/eula.-->
    start="mm_bridge_0.m0"
    end="intel_vvp_clipper_0.av_mm_control_agent">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0400" />
+  <parameter name="baseAddress" value="0x0600" />
   <parameter name="defaultConnection" value="false" />
   <parameter name="domainAlias" value="" />
   <parameter name="qsys_mm.burstAdapterImplementation" value="GENERIC_CONVERTER" />
@@ -16154,7 +16131,7 @@ https://fpgasoftware.intel.com/eula.-->
    start="mm_bridge_0.m0"
    end="intel_vvp_scaler_0.av_mm_control_agent">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0200" />
+  <parameter name="baseAddress" value="0x0400" />
   <parameter name="defaultConnection" value="false" />
   <parameter name="domainAlias" value="" />
   <parameter name="qsys_mm.burstAdapterImplementation" value="GENERIC_CONVERTER" />
@@ -16178,6 +16155,31 @@ https://fpgasoftware.intel.com/eula.-->
    version="25.1"
    start="mm_bridge_0.m0"
    end="lite_to_full_converter.av_mm_control_agent">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0200" />
+  <parameter name="defaultConnection" value="false" />
+  <parameter name="domainAlias" value="" />
+  <parameter name="qsys_mm.burstAdapterImplementation" value="GENERIC_CONVERTER" />
+  <parameter name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
+  <parameter name="qsys_mm.enableAllPipelines" value="FALSE" />
+  <parameter name="qsys_mm.enableEccProtection" value="FALSE" />
+  <parameter name="qsys_mm.enableInstrumentation" value="FALSE" />
+  <parameter name="qsys_mm.enableOutOfOrderSupport" value="FALSE" />
+  <parameter name="qsys_mm.insertDefaultSlave" value="FALSE" />
+  <parameter name="qsys_mm.interconnectResetSource" value="DEFAULT" />
+  <parameter name="qsys_mm.interconnectType" value="STANDARD" />
+  <parameter name="qsys_mm.maxAdditionalLatency" value="1" />
+  <parameter name="qsys_mm.optimizeRdFifoSize" value="FALSE" />
+  <parameter name="qsys_mm.piplineType" value="PIPELINE_STAGE" />
+  <parameter name="qsys_mm.responseFifoType" value="REGISTER_BASED" />
+  <parameter name="qsys_mm.syncResets" value="FALSE" />
+  <parameter name="qsys_mm.widthAdapterImplementation" value="GENERIC_CONVERTER" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="25.1"
+   start="mm_bridge_0.m0"
+   end="intel_vvp_vfb_0.av_mm_control_agent">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0000" />
   <parameter name="defaultConnection" value="false" />

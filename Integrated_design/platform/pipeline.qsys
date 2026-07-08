@@ -60,7 +60,7 @@ https://fpgasoftware.intel.com/eula.-->
    {
       datum baseAddress
       {
-         value = "1024";
+         value = "1536";
          type = "String";
       }
    }
@@ -76,7 +76,7 @@ https://fpgasoftware.intel.com/eula.-->
    {
       datum baseAddress
       {
-         value = "1536";
+         value = "2048";
          type = "String";
       }
    }
@@ -92,7 +92,7 @@ https://fpgasoftware.intel.com/eula.-->
    {
       datum baseAddress
       {
-         value = "2048";
+         value = "2560";
          type = "String";
       }
    }
@@ -132,7 +132,7 @@ https://fpgasoftware.intel.com/eula.-->
    {
       datum baseAddress
       {
-         value = "512";
+         value = "1024";
          type = "String";
       }
    }
@@ -152,6 +152,14 @@ https://fpgasoftware.intel.com/eula.-->
          type = "int";
       }
    }
+   element intel_vvp_vfb_0.av_mm_control_agent
+   {
+      datum baseAddress
+      {
+         value = "0";
+         type = "String";
+      }
+   }
    element lite_to_full_converter
    {
       datum _sortIndex
@@ -164,7 +172,7 @@ https://fpgasoftware.intel.com/eula.-->
    {
       datum baseAddress
       {
-         value = "0";
+         value = "512";
          type = "String";
       }
    }
@@ -182,6 +190,22 @@ https://fpgasoftware.intel.com/eula.-->
       {
          value = "13";
          type = "int";
+      }
+   }
+   element onchip_memory2_0.s1
+   {
+      datum baseAddress
+      {
+         value = "0";
+         type = "String";
+      }
+   }
+   element onchip_memory2_0.s2
+   {
+      datum baseAddress
+      {
+         value = "0";
+         type = "String";
       }
    }
    element reset_in
@@ -358,49 +382,7 @@ https://fpgasoftware.intel.com/eula.-->
                 &lt;consumedSystemInfos&gt;
                     &lt;entry&gt;
                         &lt;key&gt;ADDRESS_MAP&lt;/key&gt;
-                        &lt;value&gt;&amp;lt;address-map&amp;gt;&amp;lt;slave name='lite_to_full_converter.av_mm_control_agent' start='0x0' end='0x200' datawidth='32' /&amp;gt;&amp;lt;slave name='intel_vvp_scaler_0.av_mm_control_agent' start='0x200' end='0x400' datawidth='32' /&amp;gt;&amp;lt;slave name='intel_vvp_clipper_0.av_mm_control_agent' start='0x400' end='0x600' datawidth='32' /&amp;gt;&amp;lt;slave name='intel_vvp_crs_0.av_mm_control_agent' start='0x600' end='0x800' datawidth='32' /&amp;gt;&amp;lt;slave name='intel_vvp_csc_0.av_mm_control_agent' start='0x800' end='0xA00' datawidth='32' /&amp;gt;&amp;lt;/address-map&amp;gt;&lt;/value&gt;
-                    &lt;/entry&gt;
-                    &lt;entry&gt;
-                        &lt;key&gt;ADDRESS_WIDTH&lt;/key&gt;
-                        &lt;value&gt;12&lt;/value&gt;
-                    &lt;/entry&gt;
-                    &lt;entry&gt;
-                        &lt;key&gt;MAX_SLAVE_DATA_WIDTH&lt;/key&gt;
-                        &lt;value&gt;32&lt;/value&gt;
-                    &lt;/entry&gt;
-                &lt;/consumedSystemInfos&gt;
-            &lt;/value&gt;
-        &lt;/entry&gt;
-        &lt;entry&gt;
-            &lt;key&gt;onchip_memory2_0_s1&lt;/key&gt;
-            &lt;value&gt;
-                &lt;connectionPointName&gt;onchip_memory2_0_s1&lt;/connectionPointName&gt;
-                &lt;suppliedSystemInfos/&gt;
-                &lt;consumedSystemInfos&gt;
-                    &lt;entry&gt;
-                        &lt;key&gt;ADDRESS_MAP&lt;/key&gt;
-                        &lt;value&gt;&amp;lt;address-map&amp;gt;&amp;lt;slave name='onchip_memory2_0.s1' start='0x0' end='0x1000' datawidth='32' /&amp;gt;&amp;lt;/address-map&amp;gt;&lt;/value&gt;
-                    &lt;/entry&gt;
-                    &lt;entry&gt;
-                        &lt;key&gt;ADDRESS_WIDTH&lt;/key&gt;
-                        &lt;value&gt;12&lt;/value&gt;
-                    &lt;/entry&gt;
-                    &lt;entry&gt;
-                        &lt;key&gt;MAX_SLAVE_DATA_WIDTH&lt;/key&gt;
-                        &lt;value&gt;32&lt;/value&gt;
-                    &lt;/entry&gt;
-                &lt;/consumedSystemInfos&gt;
-            &lt;/value&gt;
-        &lt;/entry&gt;
-        &lt;entry&gt;
-            &lt;key&gt;onchip_memory2_0_s2&lt;/key&gt;
-            &lt;value&gt;
-                &lt;connectionPointName&gt;onchip_memory2_0_s2&lt;/connectionPointName&gt;
-                &lt;suppliedSystemInfos/&gt;
-                &lt;consumedSystemInfos&gt;
-                    &lt;entry&gt;
-                        &lt;key&gt;ADDRESS_MAP&lt;/key&gt;
-                        &lt;value&gt;&amp;lt;address-map&amp;gt;&amp;lt;slave name='onchip_memory2_0.s2' start='0x0' end='0x1000' datawidth='32' /&amp;gt;&amp;lt;/address-map&amp;gt;&lt;/value&gt;
+                        &lt;value&gt;&amp;lt;address-map&amp;gt;&amp;lt;slave name='intel_vvp_vfb_0.av_mm_control_agent' start='0x0' end='0x200' datawidth='32' /&amp;gt;&amp;lt;slave name='lite_to_full_converter.av_mm_control_agent' start='0x200' end='0x400' datawidth='32' /&amp;gt;&amp;lt;slave name='intel_vvp_scaler_0.av_mm_control_agent' start='0x400' end='0x600' datawidth='32' /&amp;gt;&amp;lt;slave name='intel_vvp_clipper_0.av_mm_control_agent' start='0x600' end='0x800' datawidth='32' /&amp;gt;&amp;lt;slave name='intel_vvp_crs_0.av_mm_control_agent' start='0x800' end='0xA00' datawidth='32' /&amp;gt;&amp;lt;slave name='intel_vvp_csc_0.av_mm_control_agent' start='0xA00' end='0xC00' datawidth='32' /&amp;gt;&amp;lt;/address-map&amp;gt;&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;ADDRESS_WIDTH&lt;/key&gt;
@@ -16809,7 +16791,7 @@ https://fpgasoftware.intel.com/eula.-->
       </altera:connection>
       <altera:connection altera:kind="avalon" altera:version="25.1" altera:start="mm_bridge_0.m0" altera:end="intel_vvp_csc_0.av_mm_control_agent">
         <altera:connection_parameter altera:parameter_name="arbitrationPriority" altera:parameter_value="1"></altera:connection_parameter>
-        <altera:connection_parameter altera:parameter_name="baseAddress" altera:parameter_value="0x0800"></altera:connection_parameter>
+        <altera:connection_parameter altera:parameter_name="baseAddress" altera:parameter_value="0x0a00"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="defaultConnection" altera:parameter_value="false"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="domainAlias" altera:parameter_value=""></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="qsys_mm.burstAdapterImplementation" altera:parameter_value="GENERIC_CONVERTER"></altera:connection_parameter>
@@ -16830,7 +16812,7 @@ https://fpgasoftware.intel.com/eula.-->
       </altera:connection>
       <altera:connection altera:kind="avalon" altera:version="25.1" altera:start="mm_bridge_0.m0" altera:end="intel_vvp_crs_0.av_mm_control_agent">
         <altera:connection_parameter altera:parameter_name="arbitrationPriority" altera:parameter_value="1"></altera:connection_parameter>
-        <altera:connection_parameter altera:parameter_name="baseAddress" altera:parameter_value="0x0600"></altera:connection_parameter>
+        <altera:connection_parameter altera:parameter_name="baseAddress" altera:parameter_value="0x0800"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="defaultConnection" altera:parameter_value="false"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="domainAlias" altera:parameter_value=""></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="qsys_mm.burstAdapterImplementation" altera:parameter_value="GENERIC_CONVERTER"></altera:connection_parameter>
@@ -16851,7 +16833,7 @@ https://fpgasoftware.intel.com/eula.-->
       </altera:connection>
       <altera:connection altera:kind="avalon" altera:version="25.1" altera:start="mm_bridge_0.m0" altera:end="intel_vvp_clipper_0.av_mm_control_agent">
         <altera:connection_parameter altera:parameter_name="arbitrationPriority" altera:parameter_value="1"></altera:connection_parameter>
-        <altera:connection_parameter altera:parameter_name="baseAddress" altera:parameter_value="0x0400"></altera:connection_parameter>
+        <altera:connection_parameter altera:parameter_name="baseAddress" altera:parameter_value="0x0600"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="defaultConnection" altera:parameter_value="false"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="domainAlias" altera:parameter_value=""></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="qsys_mm.burstAdapterImplementation" altera:parameter_value="GENERIC_CONVERTER"></altera:connection_parameter>
@@ -16872,7 +16854,7 @@ https://fpgasoftware.intel.com/eula.-->
       </altera:connection>
       <altera:connection altera:kind="avalon" altera:version="25.1" altera:start="mm_bridge_0.m0" altera:end="intel_vvp_scaler_0.av_mm_control_agent">
         <altera:connection_parameter altera:parameter_name="arbitrationPriority" altera:parameter_value="1"></altera:connection_parameter>
-        <altera:connection_parameter altera:parameter_name="baseAddress" altera:parameter_value="0x0200"></altera:connection_parameter>
+        <altera:connection_parameter altera:parameter_name="baseAddress" altera:parameter_value="0x0400"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="defaultConnection" altera:parameter_value="false"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="domainAlias" altera:parameter_value=""></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="qsys_mm.burstAdapterImplementation" altera:parameter_value="GENERIC_CONVERTER"></altera:connection_parameter>
@@ -16892,6 +16874,27 @@ https://fpgasoftware.intel.com/eula.-->
         <altera:connection_parameter altera:parameter_name="qsys_mm.widthAdapterImplementation" altera:parameter_value="GENERIC_CONVERTER"></altera:connection_parameter>
       </altera:connection>
       <altera:connection altera:kind="avalon" altera:version="25.1" altera:start="mm_bridge_0.m0" altera:end="lite_to_full_converter.av_mm_control_agent">
+        <altera:connection_parameter altera:parameter_name="arbitrationPriority" altera:parameter_value="1"></altera:connection_parameter>
+        <altera:connection_parameter altera:parameter_name="baseAddress" altera:parameter_value="0x0200"></altera:connection_parameter>
+        <altera:connection_parameter altera:parameter_name="defaultConnection" altera:parameter_value="false"></altera:connection_parameter>
+        <altera:connection_parameter altera:parameter_name="domainAlias" altera:parameter_value=""></altera:connection_parameter>
+        <altera:connection_parameter altera:parameter_name="qsys_mm.burstAdapterImplementation" altera:parameter_value="GENERIC_CONVERTER"></altera:connection_parameter>
+        <altera:connection_parameter altera:parameter_name="qsys_mm.clockCrossingAdapter" altera:parameter_value="HANDSHAKE"></altera:connection_parameter>
+        <altera:connection_parameter altera:parameter_name="qsys_mm.enableAllPipelines" altera:parameter_value="FALSE"></altera:connection_parameter>
+        <altera:connection_parameter altera:parameter_name="qsys_mm.enableEccProtection" altera:parameter_value="FALSE"></altera:connection_parameter>
+        <altera:connection_parameter altera:parameter_name="qsys_mm.enableInstrumentation" altera:parameter_value="FALSE"></altera:connection_parameter>
+        <altera:connection_parameter altera:parameter_name="qsys_mm.enableOutOfOrderSupport" altera:parameter_value="FALSE"></altera:connection_parameter>
+        <altera:connection_parameter altera:parameter_name="qsys_mm.insertDefaultSlave" altera:parameter_value="FALSE"></altera:connection_parameter>
+        <altera:connection_parameter altera:parameter_name="qsys_mm.interconnectResetSource" altera:parameter_value="DEFAULT"></altera:connection_parameter>
+        <altera:connection_parameter altera:parameter_name="qsys_mm.interconnectType" altera:parameter_value="STANDARD"></altera:connection_parameter>
+        <altera:connection_parameter altera:parameter_name="qsys_mm.maxAdditionalLatency" altera:parameter_value="1"></altera:connection_parameter>
+        <altera:connection_parameter altera:parameter_name="qsys_mm.optimizeRdFifoSize" altera:parameter_value="FALSE"></altera:connection_parameter>
+        <altera:connection_parameter altera:parameter_name="qsys_mm.piplineType" altera:parameter_value="PIPELINE_STAGE"></altera:connection_parameter>
+        <altera:connection_parameter altera:parameter_name="qsys_mm.responseFifoType" altera:parameter_value="REGISTER_BASED"></altera:connection_parameter>
+        <altera:connection_parameter altera:parameter_name="qsys_mm.syncResets" altera:parameter_value="FALSE"></altera:connection_parameter>
+        <altera:connection_parameter altera:parameter_name="qsys_mm.widthAdapterImplementation" altera:parameter_value="GENERIC_CONVERTER"></altera:connection_parameter>
+      </altera:connection>
+      <altera:connection altera:kind="avalon" altera:version="25.1" altera:start="mm_bridge_0.m0" altera:end="intel_vvp_vfb_0.av_mm_control_agent">
         <altera:connection_parameter altera:parameter_name="arbitrationPriority" altera:parameter_value="1"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="baseAddress" altera:parameter_value="0x0000"></altera:connection_parameter>
         <altera:connection_parameter altera:parameter_name="defaultConnection" altera:parameter_value="false"></altera:connection_parameter>
@@ -16966,7 +16969,6 @@ https://fpgasoftware.intel.com/eula.-->
       <altera:interface_mapping altera:name="intel_vvp_scaler_0_axi4s_vid_out" altera:internal="intel_vvp_scaler_0.axi4s_vid_out" altera:type="axi4stream" altera:dir="start"></altera:interface_mapping>
       <altera:interface_mapping altera:name="intel_vvp_tpg_0_av_mm_control_agent" altera:internal="intel_vvp_tpg_0.av_mm_control_agent" altera:type="avalon" altera:dir="end"></altera:interface_mapping>
       <altera:interface_mapping altera:name="intel_vvp_tpg_0_axi4s_vid_out" altera:internal="intel_vvp_tpg_0.axi4s_vid_out" altera:type="axi4stream" altera:dir="start"></altera:interface_mapping>
-      <altera:interface_mapping altera:name="intel_vvp_vfb_0_av_mm_control_agent" altera:internal="intel_vvp_vfb_0.av_mm_control_agent" altera:type="avalon" altera:dir="end"></altera:interface_mapping>
       <altera:interface_mapping altera:name="intel_vvp_vfb_0_axi4s_vid_in" altera:internal="intel_vvp_vfb_0.axi4s_vid_in" altera:type="axi4stream" altera:dir="end"></altera:interface_mapping>
       <altera:interface_mapping altera:name="intel_vvp_vfb_0_axi4s_vid_out" altera:internal="intel_vvp_vfb_0.axi4s_vid_out" altera:type="axi4stream" altera:dir="start"></altera:interface_mapping>
       <altera:interface_mapping altera:name="lite_to_full_converter_axi4s_vid_in" altera:internal="lite_to_full_converter.axi4s_vid_in" altera:type="axi4stream" altera:dir="end"></altera:interface_mapping>
@@ -17028,11 +17030,15 @@ https://fpgasoftware.intel.com/eula.-->
             <ipxact:busType vendor="intel" library="intel" name="avalon" version="25.1"></ipxact:busType>
           </ipxact:busInterface>
           <ipxact:busInterface>
+            <ipxact:name>intel_vvp_vfb_0.av_mm_control_agent</ipxact:name>
+            <ipxact:busType vendor="intel" library="intel" name="avalon" version="25.1"></ipxact:busType>
+          </ipxact:busInterface>
+          <ipxact:busInterface>
             <ipxact:name>mm_bridge_0.m0</ipxact:name>
             <ipxact:busType vendor="intel" library="intel" name="avalon" version="25.1"></ipxact:busType>
             <ipxact:master>
               <ipxact:addressSpaceRef addressSpaceRef="mm_bridge_0.m0">
-                <ipxact:baseAddress>0x0800</ipxact:baseAddress>
+                <ipxact:baseAddress>0x0a00</ipxact:baseAddress>
               </ipxact:addressSpaceRef>
             </ipxact:master>
           </ipxact:busInterface>
@@ -17063,26 +17069,31 @@ https://fpgasoftware.intel.com/eula.-->
             <ipxact:segments>
               <ipxact:segment>
                 <ipxact:name>intel_vvp_csc_0.av_mm_control_agent</ipxact:name>
-                <ipxact:addressOffset>0x0800</ipxact:addressOffset>
+                <ipxact:addressOffset>0x0a00</ipxact:addressOffset>
                 <ipxact:range>0x0200</ipxact:range>
               </ipxact:segment>
               <ipxact:segment>
                 <ipxact:name>intel_vvp_crs_0.av_mm_control_agent</ipxact:name>
-                <ipxact:addressOffset>0x0600</ipxact:addressOffset>
+                <ipxact:addressOffset>0x0800</ipxact:addressOffset>
                 <ipxact:range>0x0200</ipxact:range>
               </ipxact:segment>
               <ipxact:segment>
                 <ipxact:name>intel_vvp_clipper_0.av_mm_control_agent</ipxact:name>
-                <ipxact:addressOffset>0x0400</ipxact:addressOffset>
+                <ipxact:addressOffset>0x0600</ipxact:addressOffset>
                 <ipxact:range>0x0200</ipxact:range>
               </ipxact:segment>
               <ipxact:segment>
                 <ipxact:name>intel_vvp_scaler_0.av_mm_control_agent</ipxact:name>
-                <ipxact:addressOffset>0x0200</ipxact:addressOffset>
+                <ipxact:addressOffset>0x0400</ipxact:addressOffset>
                 <ipxact:range>0x0200</ipxact:range>
               </ipxact:segment>
               <ipxact:segment>
                 <ipxact:name>lite_to_full_converter.av_mm_control_agent</ipxact:name>
+                <ipxact:addressOffset>0x0200</ipxact:addressOffset>
+                <ipxact:range>0x0200</ipxact:range>
+              </ipxact:segment>
+              <ipxact:segment>
+                <ipxact:name>intel_vvp_vfb_0.av_mm_control_agent</ipxact:name>
                 <ipxact:addressOffset>0x0000</ipxact:addressOffset>
                 <ipxact:range>0x0200</ipxact:range>
               </ipxact:segment>

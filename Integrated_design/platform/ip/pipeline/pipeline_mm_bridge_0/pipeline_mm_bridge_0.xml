@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2026.07.08.17:52:30"
- outputDirectory="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/">
+ date="2026.07.08.19:13:19"
+ outputDirectory="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/">
  <perimeter>
   <parameter
      name="AUTO_GENERATION_ID"
@@ -224,17 +224,17 @@
   <parameter name="AUTO_S0_CPU_INFO_ID" value="" />
   <generatedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/synth/pipeline_mm_bridge_0.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/synth/pipeline_mm_bridge_0.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/synth/pipeline_mm_bridge_0.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/synth/pipeline_mm_bridge_0.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0.ip" />
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0.ip" />
   </sourceFiles>
   <childSourceFiles>
    <file
@@ -252,24 +252,24 @@
   <parameter name="MAX_BURST_SIZE" value="1" />
   <generatedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/altera_avalon_mm_bridge_2010/synth/pipeline_mm_bridge_0_altera_avalon_mm_bridge_2010_tex5a4i.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/altera_avalon_mm_bridge_2010/synth/pipeline_mm_bridge_0_altera_avalon_mm_bridge_2010_tex5a4i.v"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/altera_avalon_mm_bridge_2010/synth/altera_merlin_waitrequest_adapter.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/altera_avalon_mm_bridge_2010/synth/altera_merlin_waitrequest_adapter.v"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/altera_avalon_mm_bridge_2010/synth/altera_avalon_sc_fifo.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/altera_avalon_mm_bridge_2010/synth/altera_avalon_sc_fifo.v"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/altera_avalon_mm_bridge_2010/synth/pipeline_mm_bridge_0_altera_avalon_mm_bridge_2010_tex5a4i.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/altera_avalon_mm_bridge_2010/synth/pipeline_mm_bridge_0_altera_avalon_mm_bridge_2010_tex5a4i.v"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/altera_avalon_mm_bridge_2010/synth/altera_merlin_waitrequest_adapter.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/altera_avalon_mm_bridge_2010/synth/altera_merlin_waitrequest_adapter.v"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/altera_avalon_mm_bridge_2010/synth/altera_avalon_sc_fifo.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mm_bridge_0/altera_avalon_mm_bridge_2010/synth/altera_avalon_sc_fifo.v"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>

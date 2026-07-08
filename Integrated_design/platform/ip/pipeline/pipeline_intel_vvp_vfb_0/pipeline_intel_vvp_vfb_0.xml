@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2026.07.08.17:52:34"
- outputDirectory="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/">
+ date="2026.07.08.19:13:10"
+ outputDirectory="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/">
  <perimeter>
   <parameter
      name="AUTO_GENERATION_ID"
@@ -401,17 +401,17 @@
   <parameter name="AUTO_MEM_CLOCK_RESET_DOMAIN" value="-1" />
   <generatedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/synth/pipeline_intel_vvp_vfb_0.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/synth/pipeline_intel_vvp_vfb_0.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/synth/pipeline_intel_vvp_vfb_0.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/synth/pipeline_intel_vvp_vfb_0.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0.ip" />
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0.ip" />
   </sourceFiles>
   <childSourceFiles>
    <file
@@ -506,12 +506,12 @@
   <parameter name="C_OMNI_CAP_SIZE" value="0" />
   <generatedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_2451/synth/pipeline_intel_vvp_vfb_0_intel_vvp_vfb_2451_pdxh2ti.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_2451/synth/pipeline_intel_vvp_vfb_0_intel_vvp_vfb_2451_pdxh2ti.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_2451/synth/pipeline_intel_vvp_vfb_0_intel_vvp_vfb_2451_pdxh2ti.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_2451/synth/pipeline_intel_vvp_vfb_0_intel_vvp_vfb_2451_pdxh2ti.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </childGeneratedFiles>
   <sourceFiles>
@@ -568,12 +568,12 @@
   <parameter name="SYNC_LEN" value="3" />
   <generatedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_reset_sync_2440/synth/src_hdl/intel_vvp_reset_sync.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_reset_sync_2440/synth/src_hdl/intel_vvp_reset_sync.sv"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_reset_sync_2440/synth/src_hdl/intel_vvp_reset_sync.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_reset_sync_2440/synth/src_hdl/intel_vvp_reset_sync.sv"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
@@ -599,30 +599,30 @@
   <parameter name="PIXELS_IN_PARALLEL" value="1" />
   <generatedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_input_interface_bridge_2440/synth/src_hdl/intel_vvp_input_interface_bridge.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_input_interface_bridge_2440/synth/src_hdl/intel_vvp_input_interface_bridge.sv"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_input_interface_bridge_2440/synth/src_hdl/intel_vvp_input_interface_bridge.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_input_interface_bridge_2440/synth/src_hdl/intel_vvp_input_interface_bridge.sv"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
@@ -648,30 +648,30 @@
   <parameter name="PIXELS_IN_PARALLEL" value="1" />
   <generatedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_output_interface_bridge_2440/synth/src_hdl/intel_vvp_output_interface_bridge.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_output_interface_bridge_2440/synth/src_hdl/intel_vvp_output_interface_bridge.sv"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_output_interface_bridge_2440/synth/src_hdl/intel_vvp_output_interface_bridge.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_output_interface_bridge_2440/synth/src_hdl/intel_vvp_output_interface_bridge.sv"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
@@ -707,90 +707,90 @@
   <parameter name="MEM_BUFF_LINE_STRIDE" value="512" />
   <generatedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_mtm_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_mtm_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_vvp_utility_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_vvp_utility_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_vvp_snoop_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_vvp_snoop_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_vvp_pipelined_mux.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_vvp_pipelined_mux.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_vvp_common_slave_interface.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_vvp_common_slave_interface.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/sv_packages/intel_vvp_mpvdma_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/sv_packages/intel_vvp_mpvdma_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_vvp_vfb_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_vvp_vfb_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/src_hdl/intel_vvp_vfb_scheduler_buff_num.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/src_hdl/intel_vvp_vfb_scheduler_buff_num.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/src_hdl/intel_vvp_vfb_scheduler_wr.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/src_hdl/intel_vvp_vfb_scheduler_wr.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/src_hdl/intel_vvp_vfb_scheduler_rd.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/src_hdl/intel_vvp_vfb_scheduler_rd.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/src_hdl/intel_vvp_vfb_scheduler.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/src_hdl/intel_vvp_vfb_scheduler.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/src_hdl/intel_vvp_vfb_scheduler.ocp"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/src_hdl/intel_vvp_vfb_scheduler.ocp"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_mtm_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_mtm_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_vvp_utility_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_vvp_utility_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_vvp_snoop_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_vvp_snoop_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_vvp_pipelined_mux.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_vvp_pipelined_mux.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_vvp_common_slave_interface.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_vvp_common_slave_interface.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/sv_packages/intel_vvp_mpvdma_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/sv_packages/intel_vvp_mpvdma_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_vvp_vfb_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/intel_vvp_vfb_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/src_hdl/intel_vvp_vfb_scheduler_buff_num.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/src_hdl/intel_vvp_vfb_scheduler_buff_num.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/src_hdl/intel_vvp_vfb_scheduler_wr.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/src_hdl/intel_vvp_vfb_scheduler_wr.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/src_hdl/intel_vvp_vfb_scheduler_rd.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/src_hdl/intel_vvp_vfb_scheduler_rd.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/src_hdl/intel_vvp_vfb_scheduler.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/src_hdl/intel_vvp_vfb_scheduler.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/src_hdl/intel_vvp_vfb_scheduler.ocp"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_vfb_scheduler_2451/synth/src_hdl/intel_vvp_vfb_scheduler.ocp"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
@@ -816,42 +816,42 @@
   <parameter name="VVP_COUNT_MAX" value="1" />
   <generatedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_snoop_core_2440/synth/intel_mtm_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_snoop_core_2440/synth/intel_mtm_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_snoop_core_2440/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_snoop_core_2440/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_snoop_core_2440/synth/intel_vvp_snoop_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_snoop_core_2440/synth/intel_vvp_snoop_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_snoop_core_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_snoop_core_2440/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_snoop_core_2440/synth/intel_vvp_axi_master.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_snoop_core_2440/synth/intel_vvp_axi_master.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_snoop_core_2440/synth/src_hdl/intel_vvp_snoop_core.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_snoop_core_2440/synth/src_hdl/intel_vvp_snoop_core.sv"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_snoop_core_2440/synth/intel_mtm_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_snoop_core_2440/synth/intel_mtm_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_snoop_core_2440/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_snoop_core_2440/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_snoop_core_2440/synth/intel_vvp_snoop_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_snoop_core_2440/synth/intel_vvp_snoop_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_snoop_core_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_snoop_core_2440/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_snoop_core_2440/synth/intel_vvp_axi_master.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_snoop_core_2440/synth/intel_vvp_axi_master.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_snoop_core_2440/synth/src_hdl/intel_vvp_snoop_core.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_snoop_core_2440/synth/src_hdl/intel_vvp_snoop_core.sv"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
@@ -876,42 +876,42 @@
   <parameter name="PIXELS_IN_PARALLEL" value="1" />
   <generatedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_discard_2440/synth/intel_mtm_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_discard_2440/synth/intel_mtm_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_discard_2440/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_discard_2440/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_discard_2440/synth/intel_vvp_utility_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_discard_2440/synth/intel_vvp_utility_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_discard_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_discard_2440/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_discard_2440/synth/intel_vvp_axi_master.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_discard_2440/synth/intel_vvp_axi_master.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_discard_2440/synth/src_hdl/intel_vvp_packet_discard.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_discard_2440/synth/src_hdl/intel_vvp_packet_discard.sv"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_discard_2440/synth/intel_mtm_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_discard_2440/synth/intel_mtm_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_discard_2440/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_discard_2440/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_discard_2440/synth/intel_vvp_utility_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_discard_2440/synth/intel_vvp_utility_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_discard_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_discard_2440/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_discard_2440/synth/intel_vvp_axi_master.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_discard_2440/synth/intel_vvp_axi_master.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_discard_2440/synth/src_hdl/intel_vvp_packet_discard.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_discard_2440/synth/src_hdl/intel_vvp_packet_discard.sv"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
@@ -945,162 +945,162 @@
   <parameter name="PACKING_LEVEL" value="1" />
   <generatedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_mtm_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_mtm_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_shift_mux.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_shift_mux.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_pack_simple.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_pack_simple.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_unpack_simple.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_unpack_simple.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_pack_hard.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_pack_hard.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_unpack_hard.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_unpack_hard.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_axi_zero_pad.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_axi_zero_pad.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_axi_zero_strip.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_axi_zero_strip.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_axi_master.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_axi_master.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_binary_to_gray.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_binary_to_gray.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_gray_to_binary.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_gray_to_binary.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_counter_clock_crosser.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_counter_clock_crosser.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_fifo_input.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_fifo_input.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_fifo_output.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_fifo_output.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_common_fifo.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_common_fifo.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_mpvdma_cmd_split.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_mpvdma_cmd_split.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_mpvdma_resp_cc.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_mpvdma_resp_cc.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/sv_packages/intel_vvp_mpvdma_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/sv_packages/intel_vvp_mpvdma_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/src_hdl/intel_vvp_packet_writer_fifo.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/src_hdl/intel_vvp_packet_writer_fifo.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/src_hdl/intel_vvp_packet_writer_streamer.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/src_hdl/intel_vvp_packet_writer_streamer.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/src_hdl/intel_vvp_packet_writer_master.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/src_hdl/intel_vvp_packet_writer_master.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/src_hdl/intel_vvp_packet_writer.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/src_hdl/intel_vvp_packet_writer.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/src_hdl/intel_vvp_packet_writer.sdc"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/src_hdl/intel_vvp_packet_writer.sdc"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/src_hdl/intel_vvp_packet_writer.ocp"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/src_hdl/intel_vvp_packet_writer.ocp"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_mtm_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_mtm_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_shift_mux.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_shift_mux.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_pack_simple.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_pack_simple.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_unpack_simple.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_unpack_simple.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_pack_hard.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_pack_hard.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_unpack_hard.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_unpack_hard.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_axi_zero_pad.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_axi_zero_pad.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_axi_zero_strip.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_axi_zero_strip.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_axi_master.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_axi_master.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_binary_to_gray.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_binary_to_gray.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_gray_to_binary.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_gray_to_binary.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_counter_clock_crosser.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_counter_clock_crosser.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_fifo_input.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_fifo_input.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_fifo_output.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_fifo_output.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_common_fifo.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_common_fifo.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_mpvdma_cmd_split.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_mpvdma_cmd_split.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_mpvdma_resp_cc.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/intel_vvp_mpvdma_resp_cc.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/sv_packages/intel_vvp_mpvdma_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/sv_packages/intel_vvp_mpvdma_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/src_hdl/intel_vvp_packet_writer_fifo.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/src_hdl/intel_vvp_packet_writer_fifo.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/src_hdl/intel_vvp_packet_writer_streamer.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/src_hdl/intel_vvp_packet_writer_streamer.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/src_hdl/intel_vvp_packet_writer_master.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/src_hdl/intel_vvp_packet_writer_master.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/src_hdl/intel_vvp_packet_writer.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/src_hdl/intel_vvp_packet_writer.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/src_hdl/intel_vvp_packet_writer.sdc"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/src_hdl/intel_vvp_packet_writer.sdc"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/src_hdl/intel_vvp_packet_writer.ocp"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_writer_2450/synth/src_hdl/intel_vvp_packet_writer.ocp"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
@@ -1134,162 +1134,162 @@
   <parameter name="PACKING_LEVEL" value="1" />
   <generatedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_mtm_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_mtm_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_shift_mux.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_shift_mux.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_pack_simple.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_pack_simple.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_unpack_simple.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_unpack_simple.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_pack_hard.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_pack_hard.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_unpack_hard.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_unpack_hard.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_axi_zero_pad.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_axi_zero_pad.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_axi_zero_strip.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_axi_zero_strip.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_axi_master.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_axi_master.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_binary_to_gray.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_binary_to_gray.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_gray_to_binary.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_gray_to_binary.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_counter_clock_crosser.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_counter_clock_crosser.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_fifo_input.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_fifo_input.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_fifo_output.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_fifo_output.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_common_fifo.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_common_fifo.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_mpvdma_cmd_split.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_mpvdma_cmd_split.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_mpvdma_resp_cc.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_mpvdma_resp_cc.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/sv_packages/intel_vvp_mpvdma_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/sv_packages/intel_vvp_mpvdma_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/src_hdl/intel_vvp_packet_reader_fifo.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/src_hdl/intel_vvp_packet_reader_fifo.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/src_hdl/intel_vvp_packet_reader_master.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/src_hdl/intel_vvp_packet_reader_master.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/src_hdl/intel_vvp_packet_reader_streamer.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/src_hdl/intel_vvp_packet_reader_streamer.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/src_hdl/intel_vvp_packet_reader.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/src_hdl/intel_vvp_packet_reader.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/src_hdl/intel_vvp_packet_reader.sdc"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/src_hdl/intel_vvp_packet_reader.sdc"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/src_hdl/intel_vvp_packet_reader.ocp"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/src_hdl/intel_vvp_packet_reader.ocp"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_mtm_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_mtm_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_shift_mux.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_shift_mux.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_pack_simple.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_pack_simple.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_unpack_simple.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_unpack_simple.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_pack_hard.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_pack_hard.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_unpack_hard.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_unpack_hard.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_axi_zero_pad.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_axi_zero_pad.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_axi_zero_strip.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_axi_zero_strip.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_axi_master.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_axi_master.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_binary_to_gray.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_binary_to_gray.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_gray_to_binary.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_gray_to_binary.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_counter_clock_crosser.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_counter_clock_crosser.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_fifo_input.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_fifo_input.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_fifo_output.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_fifo_output.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_common_fifo.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_common_fifo.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_mpvdma_cmd_split.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_mpvdma_cmd_split.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_mpvdma_resp_cc.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/intel_vvp_mpvdma_resp_cc.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/sv_packages/intel_vvp_mpvdma_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/sv_packages/intel_vvp_mpvdma_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/src_hdl/intel_vvp_packet_reader_fifo.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/src_hdl/intel_vvp_packet_reader_fifo.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/src_hdl/intel_vvp_packet_reader_master.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/src_hdl/intel_vvp_packet_reader_master.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/src_hdl/intel_vvp_packet_reader_streamer.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/src_hdl/intel_vvp_packet_reader_streamer.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/src_hdl/intel_vvp_packet_reader.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/src_hdl/intel_vvp_packet_reader.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/src_hdl/intel_vvp_packet_reader.sdc"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/src_hdl/intel_vvp_packet_reader.sdc"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/src_hdl/intel_vvp_packet_reader.ocp"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_packet_reader_2450/synth/src_hdl/intel_vvp_packet_reader.ocp"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
@@ -1316,24 +1316,24 @@
   <parameter name="P_AV_MM_MASTER_ADDR_WIDTH" value="7" />
   <generatedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_ro_reg_servicer_2441/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_ro_reg_servicer_2441/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_ro_reg_servicer_2441/synth/src_hdl/intel_vvp_ro_reg_servicer.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_ro_reg_servicer_2441/synth/src_hdl/intel_vvp_ro_reg_servicer.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_ro_reg_servicer_2441/synth/pipeline_intel_vvp_vfb_0_intel_vvp_ro_reg_servicer_2441_wkfgrla.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_ro_reg_servicer_2441/synth/pipeline_intel_vvp_vfb_0_intel_vvp_ro_reg_servicer_2441_wkfgrla.sv"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_ro_reg_servicer_2441/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_ro_reg_servicer_2441/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_ro_reg_servicer_2441/synth/src_hdl/intel_vvp_ro_reg_servicer.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_ro_reg_servicer_2441/synth/src_hdl/intel_vvp_ro_reg_servicer.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_ro_reg_servicer_2441/synth/pipeline_intel_vvp_vfb_0_intel_vvp_ro_reg_servicer_2441_wkfgrla.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/intel_vvp_ro_reg_servicer_2441/synth/pipeline_intel_vvp_vfb_0_intel_vvp_ro_reg_servicer_2441_wkfgrla.sv"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
@@ -1361,12 +1361,12 @@
      value="add_instance {ro_reg_servicer_av_mm_master_translator} {altera_merlin_master_translator};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {AV_ADDRESS_W} {7};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {AV_DATA_W} {32};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {AV_BURSTCOUNT_W} {1};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {AV_BYTEENABLE_W} {4};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {UAV_ADDRESS_W} {7};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {UAV_BURSTCOUNT_W} {3};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {AV_READLATENCY} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {AV_WRITE_WAIT} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {AV_READ_WAIT} {1};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {AV_DATA_HOLD} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {AV_SETUP_WAIT} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {USE_READDATA} {1};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {USE_WRITEDATA} {1};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {USE_READ} {1};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {USE_WRITE} {1};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {USE_BEGINBURSTTRANSFER} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {USE_BEGINTRANSFER} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {USE_BYTEENABLE} {1};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {USE_CHIPSELECT} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {USE_ADDRESS} {1};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {USE_BURSTCOUNT} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {USE_DEBUGACCESS} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {USE_CLKEN} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {USE_READDATAVALID} {1};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {USE_WAITREQUEST} {1};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {USE_LOCK} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {USE_READRESPONSE} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {USE_WRITERESPONSE} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {AV_SYMBOLS_PER_WORD} {4};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {AV_ADDRESS_SYMBOLS} {1};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {AV_BURSTCOUNT_SYMBOLS} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {AV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {UAV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {AV_LINEWRAPBURSTS} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {AV_MAX_PENDING_READ_TRANSACTIONS} {64};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {AV_BURSTBOUNDARIES} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {AV_INTERLEAVEBURSTS} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {AV_BITS_PER_SYMBOL} {8};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {AV_ISBIGENDIAN} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {AV_ADDRESSGROUP} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {UAV_ADDRESSGROUP} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {AV_REGISTEROUTGOINGSIGNALS} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {AV_REGISTERINCOMINGSIGNALS} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {AV_ALWAYSBURSTMAXBURST} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {SYNC_RESET} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {WAITREQUEST_ALLOWANCE} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {USE_OUTPUTENABLE} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator} {OPTIMIZED_READS_WITH_BE} {0};add_instance {scheduler_av_mm_agent_translator} {altera_merlin_slave_translator};set_instance_parameter_value {scheduler_av_mm_agent_translator} {AV_ADDRESS_W} {5};set_instance_parameter_value {scheduler_av_mm_agent_translator} {AV_DATA_W} {32};set_instance_parameter_value {scheduler_av_mm_agent_translator} {UAV_DATA_W} {32};set_instance_parameter_value {scheduler_av_mm_agent_translator} {AV_BURSTCOUNT_W} {1};set_instance_parameter_value {scheduler_av_mm_agent_translator} {AV_BYTEENABLE_W} {4};set_instance_parameter_value {scheduler_av_mm_agent_translator} {UAV_BYTEENABLE_W} {4};set_instance_parameter_value {scheduler_av_mm_agent_translator} {UAV_ADDRESS_W} {7};set_instance_parameter_value {scheduler_av_mm_agent_translator} {UAV_BURSTCOUNT_W} {3};set_instance_parameter_value {scheduler_av_mm_agent_translator} {AV_READLATENCY} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {AV_SETUP_WAIT} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {AV_WRITE_WAIT} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {AV_READ_WAIT} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {AV_DATA_HOLD} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {AV_TIMING_UNITS} {1};set_instance_parameter_value {scheduler_av_mm_agent_translator} {USE_READDATA} {1};set_instance_parameter_value {scheduler_av_mm_agent_translator} {USE_WRITEDATA} {1};set_instance_parameter_value {scheduler_av_mm_agent_translator} {USE_READ} {1};set_instance_parameter_value {scheduler_av_mm_agent_translator} {USE_WRITE} {1};set_instance_parameter_value {scheduler_av_mm_agent_translator} {USE_BEGINBURSTTRANSFER} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {USE_BEGINTRANSFER} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {USE_BYTEENABLE} {1};set_instance_parameter_value {scheduler_av_mm_agent_translator} {USE_CHIPSELECT} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {USE_ADDRESS} {1};set_instance_parameter_value {scheduler_av_mm_agent_translator} {USE_BURSTCOUNT} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {USE_READDATAVALID} {1};set_instance_parameter_value {scheduler_av_mm_agent_translator} {USE_WAITREQUEST} {1};set_instance_parameter_value {scheduler_av_mm_agent_translator} {USE_WRITEBYTEENABLE} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {USE_LOCK} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {USE_AV_CLKEN} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {USE_UAV_CLKEN} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {USE_OUTPUTENABLE} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {USE_DEBUGACCESS} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {USE_READRESPONSE} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {USE_WRITERESPONSE} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {AV_SYMBOLS_PER_WORD} {4};set_instance_parameter_value {scheduler_av_mm_agent_translator} {AV_ADDRESS_SYMBOLS} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {AV_BURSTCOUNT_SYMBOLS} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {AV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {UAV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {AV_REQUIRE_UNALIGNED_ADDRESSES} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {AV_LINEWRAPBURSTS} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {AV_MAX_PENDING_READ_TRANSACTIONS} {1};set_instance_parameter_value {scheduler_av_mm_agent_translator} {AV_MAX_PENDING_WRITE_TRANSACTIONS} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {AV_BURSTBOUNDARIES} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {AV_INTERLEAVEBURSTS} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {AV_BITS_PER_SYMBOL} {8};set_instance_parameter_value {scheduler_av_mm_agent_translator} {AV_ISBIGENDIAN} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {AV_ADDRESSGROUP} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {UAV_ADDRESSGROUP} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {AV_REGISTEROUTGOINGSIGNALS} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {AV_REGISTERINCOMINGSIGNALS} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {AV_ALWAYSBURSTMAXBURST} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {CHIPSELECT_THROUGH_READLATENCY} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {WAITREQUEST_ALLOWANCE} {0};set_instance_parameter_value {scheduler_av_mm_agent_translator} {SYNC_RESET} {0};add_instance {ro_reg_servicer_av_mm_master_translator_reset_reset_bridge} {altera_reset_bridge};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator_reset_reset_bridge} {ACTIVE_LOW_RESET} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator_reset_reset_bridge} {SYNCHRONOUS_EDGES} {deassert};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator_reset_reset_bridge} {NUM_RESET_OUTPUTS} {1};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator_reset_reset_bridge} {USE_RESET_REQUEST} {0};set_instance_parameter_value {ro_reg_servicer_av_mm_master_translator_reset_reset_bridge} {SYNC_RESET} {0};add_instance {axi_st_clk_bridge_out_clk_clock_bridge} {altera_clock_bridge};set_instance_parameter_value {axi_st_clk_bridge_out_clk_clock_bridge} {EXPLICIT_CLOCK_RATE} {0};set_instance_parameter_value {axi_st_clk_bridge_out_clk_clock_bridge} {NUM_CLOCK_OUTPUTS} {1};add_connection {ro_reg_servicer_av_mm_master_translator.avalon_universal_master_0} {scheduler_av_mm_agent_translator.avalon_universal_slave_0} {avalon};set_connection_parameter_value {ro_reg_servicer_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_agent_translator.avalon_universal_slave_0} {arbitrationPriority} {1};set_connection_parameter_value {ro_reg_servicer_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_agent_translator.avalon_universal_slave_0} {baseAddress} {0x0000};set_connection_parameter_value {ro_reg_servicer_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_agent_translator.avalon_universal_slave_0} {defaultConnection} {false};set_connection_parameter_value {ro_reg_servicer_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_agent_translator.avalon_universal_slave_0} {domainAlias} {};set_connection_parameter_value {ro_reg_servicer_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_agent_translator.avalon_universal_slave_0} {qsys_mm.piplineType} {PIPELINE_STAGE};set_connection_parameter_value {ro_reg_servicer_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_agent_translator.avalon_universal_slave_0} {qsys_mm.enableAllPipelines} {FALSE};set_connection_parameter_value {ro_reg_servicer_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_agent_translator.avalon_universal_slave_0} {qsys_mm.maxAdditionalLatency} {1};set_connection_parameter_value {ro_reg_servicer_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_agent_translator.avalon_universal_slave_0} {qsys_mm.clockCrossingAdapter} {HANDSHAKE};set_connection_parameter_value {ro_reg_servicer_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_agent_translator.avalon_universal_slave_0} {qsys_mm.insertDefaultSlave} {FALSE};set_connection_parameter_value {ro_reg_servicer_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_agent_translator.avalon_universal_slave_0} {qsys_mm.enableInstrumentation} {FALSE};set_connection_parameter_value {ro_reg_servicer_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_agent_translator.avalon_universal_slave_0} {qsys_mm.interconnectResetSource} {DEFAULT};set_connection_parameter_value {ro_reg_servicer_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_agent_translator.avalon_universal_slave_0} {qsys_mm.burstAdapterImplementation} {GENERIC_CONVERTER};set_connection_parameter_value {ro_reg_servicer_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_agent_translator.avalon_universal_slave_0} {qsys_mm.widthAdapterImplementation} {GENERIC_CONVERTER};set_connection_parameter_value {ro_reg_servicer_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_agent_translator.avalon_universal_slave_0} {qsys_mm.enableEccProtection} {FALSE};set_connection_parameter_value {ro_reg_servicer_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_agent_translator.avalon_universal_slave_0} {qsys_mm.interconnectType} {STANDARD};set_connection_parameter_value {ro_reg_servicer_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_agent_translator.avalon_universal_slave_0} {qsys_mm.syncResets} {FALSE};set_connection_parameter_value {ro_reg_servicer_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_agent_translator.avalon_universal_slave_0} {qsys_mm.optimizeRdFifoSize} {FALSE};set_connection_parameter_value {ro_reg_servicer_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_agent_translator.avalon_universal_slave_0} {qsys_mm.responseFifoType} {REGISTER_BASED};set_connection_parameter_value {ro_reg_servicer_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_agent_translator.avalon_universal_slave_0} {qsys_mm.enableOutOfOrderSupport} {FALSE};add_connection {ro_reg_servicer_av_mm_master_translator_reset_reset_bridge.out_reset} {ro_reg_servicer_av_mm_master_translator.reset} {reset};add_connection {ro_reg_servicer_av_mm_master_translator_reset_reset_bridge.out_reset} {scheduler_av_mm_agent_translator.reset} {reset};add_connection {axi_st_clk_bridge_out_clk_clock_bridge.out_clk} {ro_reg_servicer_av_mm_master_translator.clk} {clock};add_connection {axi_st_clk_bridge_out_clk_clock_bridge.out_clk} {scheduler_av_mm_agent_translator.clk} {clock};add_connection {axi_st_clk_bridge_out_clk_clock_bridge.out_clk} {ro_reg_servicer_av_mm_master_translator_reset_reset_bridge.clk} {clock};add_interface {ro_reg_servicer_av_mm_master} {avalon} {slave};set_interface_property {ro_reg_servicer_av_mm_master} {EXPORT_OF} {ro_reg_servicer_av_mm_master_translator.avalon_anti_master_0};add_interface {scheduler_av_mm_agent} {avalon} {master};set_interface_property {scheduler_av_mm_agent} {EXPORT_OF} {scheduler_av_mm_agent_translator.avalon_anti_slave_0};add_interface {ro_reg_servicer_av_mm_master_translator_reset_reset_bridge_in_reset} {reset} {slave};set_interface_property {ro_reg_servicer_av_mm_master_translator_reset_reset_bridge_in_reset} {EXPORT_OF} {ro_reg_servicer_av_mm_master_translator_reset_reset_bridge.in_reset};add_interface {axi_st_clk_bridge_out_clk} {clock} {slave};set_interface_property {axi_st_clk_bridge_out_clk} {EXPORT_OF} {axi_st_clk_bridge_out_clk_clock_bridge.in_clk};set_module_assignment {interconnect_id.ro_reg_servicer.av_mm_master} {0};set_module_assignment {interconnect_id.scheduler.av_mm_agent} {0};" />
   <generatedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/altera_mm_interconnect_1920/synth/pipeline_intel_vvp_vfb_0_altera_mm_interconnect_1920_jcbczky.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/altera_mm_interconnect_1920/synth/pipeline_intel_vvp_vfb_0_altera_mm_interconnect_1920_jcbczky.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/altera_mm_interconnect_1920/synth/pipeline_intel_vvp_vfb_0_altera_mm_interconnect_1920_jcbczky.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/altera_mm_interconnect_1920/synth/pipeline_intel_vvp_vfb_0_altera_mm_interconnect_1920_jcbczky.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </childGeneratedFiles>
   <sourceFiles>
@@ -1395,12 +1395,12 @@
   <parameter name="WAITREQUEST_ALLOWANCE" value="0" />
   <generatedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/altera_merlin_master_translator_193/synth/pipeline_intel_vvp_vfb_0_altera_merlin_master_translator_193_lgcew2q.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/altera_merlin_master_translator_193/synth/pipeline_intel_vvp_vfb_0_altera_merlin_master_translator_193_lgcew2q.sv"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/altera_merlin_master_translator_193/synth/pipeline_intel_vvp_vfb_0_altera_merlin_master_translator_193_lgcew2q.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/altera_merlin_master_translator_193/synth/pipeline_intel_vvp_vfb_0_altera_merlin_master_translator_193_lgcew2q.sv"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
@@ -1421,12 +1421,12 @@
    name="pipeline_intel_vvp_vfb_0_altera_merlin_slave_translator_191_xg7rzxi">
   <generatedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/altera_merlin_slave_translator_191/synth/pipeline_intel_vvp_vfb_0_altera_merlin_slave_translator_191_xg7rzxi.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/altera_merlin_slave_translator_191/synth/pipeline_intel_vvp_vfb_0_altera_merlin_slave_translator_191_xg7rzxi.sv"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/altera_merlin_slave_translator_191/synth/pipeline_intel_vvp_vfb_0_altera_merlin_slave_translator_191_xg7rzxi.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_vfb_0/altera_merlin_slave_translator_191/synth/pipeline_intel_vvp_vfb_0_altera_merlin_slave_translator_191_xg7rzxi.sv"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>

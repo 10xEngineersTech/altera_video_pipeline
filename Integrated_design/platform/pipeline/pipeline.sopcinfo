@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="pipeline" kind="pipeline" version="1.0" fabric="QSYS">
  <!-- Format version 25.1.1 125 (Future versions may contain additional information.) -->
- <!-- 2026.07.08.17:52:44 -->
+ <!-- 2026.07.08.19:13:59 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
@@ -106,16 +106,6 @@
   <valid>true</valid>
   <sysinfo_type>CPU_INFO_ID</sysinfo_type>
   <sysinfo_arg>intel_vvp_tpg_0_av_mm_control_agent</sysinfo_arg>
- </parameter>
- <parameter name="AUTO_INTEL_VVP_VFB_0_AV_MM_CONTROL_AGENT_CPU_INFO_ID">
-  <type>java.lang.String</type>
-  <value></value>
-  <derived>false</derived>
-  <enabled>true</enabled>
-  <visible>false</visible>
-  <valid>true</valid>
-  <sysinfo_type>CPU_INFO_ID</sysinfo_type>
-  <sysinfo_arg>intel_vvp_vfb_0_av_mm_control_agent</sysinfo_arg>
  </parameter>
  <parameter name="AUTO_MM_BRIDGE_0_S0_CPU_INFO_ID">
   <type>java.lang.String</type>
@@ -24240,7 +24230,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>intel_vvp_csc_0</moduleName>
     <slaveName>av_mm_control_agent</slaveName>
     <name>intel_vvp_csc_0.av_mm_control_agent</name>
-    <baseAddress>2048</baseAddress>
+    <baseAddress>2560</baseAddress>
     <span>512</span>
    </memoryBlock>
    <memoryBlock>
@@ -24248,7 +24238,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>intel_vvp_crs_0</moduleName>
     <slaveName>av_mm_control_agent</slaveName>
     <name>intel_vvp_crs_0.av_mm_control_agent</name>
-    <baseAddress>1536</baseAddress>
+    <baseAddress>2048</baseAddress>
     <span>512</span>
    </memoryBlock>
    <memoryBlock>
@@ -24256,7 +24246,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>intel_vvp_clipper_0</moduleName>
     <slaveName>av_mm_control_agent</slaveName>
     <name>intel_vvp_clipper_0.av_mm_control_agent</name>
-    <baseAddress>1024</baseAddress>
+    <baseAddress>1536</baseAddress>
     <span>512</span>
    </memoryBlock>
    <memoryBlock>
@@ -24264,7 +24254,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>intel_vvp_scaler_0</moduleName>
     <slaveName>av_mm_control_agent</slaveName>
     <name>intel_vvp_scaler_0.av_mm_control_agent</name>
-    <baseAddress>512</baseAddress>
+    <baseAddress>1024</baseAddress>
     <span>512</span>
    </memoryBlock>
    <memoryBlock>
@@ -24272,6 +24262,14 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>lite_to_full_converter</moduleName>
     <slaveName>av_mm_control_agent</slaveName>
     <name>lite_to_full_converter.av_mm_control_agent</name>
+    <baseAddress>512</baseAddress>
+    <span>512</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>intel_vvp_vfb_0</moduleName>
+    <slaveName>av_mm_control_agent</slaveName>
+    <name>intel_vvp_vfb_0.av_mm_control_agent</name>
     <baseAddress>0</baseAddress>
     <span>512</span>
    </memoryBlock>
@@ -28506,7 +28504,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x0800</value>
+   <value>0x0a00</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -28721,7 +28719,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x0600</value>
+   <value>0x0800</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -28936,7 +28934,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x0400</value>
+   <value>0x0600</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -29151,7 +29149,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x0200</value>
+   <value>0x0400</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -29366,7 +29364,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x0000</value>
+   <value>0x0200</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -29563,6 +29561,221 @@ parameters are a RESULT of the module parameters. -->
   <startModule>mm_bridge_0</startModule>
   <startConnectionPoint>m0</startConnectionPoint>
   <endModule>lite_to_full_converter</endModule>
+  <endConnectionPoint>av_mm_control_agent</endConnectionPoint>
+ </connection>
+ <connection
+   name="mm_bridge_0.m0/intel_vvp_vfb_0.av_mm_control_agent"
+   kind="avalon"
+   version="25.1"
+   start="mm_bridge_0.m0"
+   end="intel_vvp_vfb_0.av_mm_control_agent">
+  <parameter name="arbitrationPriority">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="baseAddress">
+   <type>java.math.BigInteger</type>
+   <value>0x0000</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="defaultConnection">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="domainAlias">
+   <type>java.lang.String</type>
+   <value></value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="slaveDataWidthSysInfo">
+   <type>java.lang.Integer</type>
+   <value>-1</value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>MAX_SLAVE_DATA_WIDTH</sysinfo_type>
+  </parameter>
+  <parameter name="addressMapSysInfo">
+   <type>com.altera.entityinterfaces.moduleext.AddressMap</type>
+   <value></value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>ADDRESS_MAP</sysinfo_type>
+  </parameter>
+  <parameter name="addressWidthSysInfo">
+   <type>com.altera.entityinterfaces.moduleext.AddressWidthType</type>
+   <value>12</value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>ADDRESS_WIDTH</sysinfo_type>
+  </parameter>
+  <parameter name="cpuInfoIdSysInfo">
+   <type>java.lang.String</type>
+   <value></value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>CPU_INFO_ID</sysinfo_type>
+  </parameter>
+  <parameter name="qsys_mm.piplineType">
+   <type>java.lang.String</type>
+   <value>PIPELINE_STAGE</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="qsys_mm.enableAllPipelines">
+   <type>java.lang.String</type>
+   <value>FALSE</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="qsys_mm.maxAdditionalLatency">
+   <type>java.lang.String</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="qsys_mm.clockCrossingAdapter">
+   <type>java.lang.String</type>
+   <value>HANDSHAKE</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="qsys_mm.insertDefaultSlave">
+   <type>java.lang.String</type>
+   <value>FALSE</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="qsys_mm.enableInstrumentation">
+   <type>java.lang.String</type>
+   <value>FALSE</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="qsys_mm.interconnectResetSource">
+   <type>java.lang.String</type>
+   <value>DEFAULT</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="qsys_mm.burstAdapterImplementation">
+   <type>java.lang.String</type>
+   <value>GENERIC_CONVERTER</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="qsys_mm.widthAdapterImplementation">
+   <type>java.lang.String</type>
+   <value>GENERIC_CONVERTER</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="qsys_mm.enableEccProtection">
+   <type>java.lang.String</type>
+   <value>FALSE</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="qsys_mm.interconnectType">
+   <type>java.lang.String</type>
+   <value>STANDARD</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="qsys_mm.syncResets">
+   <type>java.lang.String</type>
+   <value>FALSE</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="qsys_mm.optimizeRdFifoSize">
+   <type>java.lang.String</type>
+   <value>FALSE</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="qsys_mm.responseFifoType">
+   <type>java.lang.String</type>
+   <value>REGISTER_BASED</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="qsys_mm.enableOutOfOrderSupport">
+   <type>java.lang.String</type>
+   <value>FALSE</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>mm_bridge_0</startModule>
+  <startConnectionPoint>m0</startConnectionPoint>
+  <endModule>intel_vvp_vfb_0</endModule>
   <endConnectionPoint>av_mm_control_agent</endConnectionPoint>
  </connection>
  <connection
@@ -31339,7 +31552,7 @@ parameters are a RESULT of the module parameters. -->
   <version>25.1</version>
  </plugin>
  <plugin>
-  <instanceCount>7</instanceCount>
+  <instanceCount>8</instanceCount>
   <name>avalon</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IConnection</subtype>

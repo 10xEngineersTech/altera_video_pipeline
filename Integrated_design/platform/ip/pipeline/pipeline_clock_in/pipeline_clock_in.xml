@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2026.07.08.17:52:37"
- outputDirectory="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_clock_in/">
+ date="2026.07.08.19:13:31"
+ outputDirectory="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_clock_in/">
  <perimeter>
   <parameter
      name="AUTO_GENERATION_ID"
@@ -84,17 +84,17 @@
   <parameter name="AUTO_IN_CLK_CLOCK_DOMAIN" value="-1" />
   <generatedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_clock_in/synth/pipeline_clock_in.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_clock_in/synth/pipeline_clock_in.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_clock_in/synth/pipeline_clock_in.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_clock_in/synth/pipeline_clock_in.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_clock_in.ip" />
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_clock_in.ip" />
   </sourceFiles>
   <childSourceFiles/>
   <messages>

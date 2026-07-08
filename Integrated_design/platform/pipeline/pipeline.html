@@ -67,7 +67,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </table>
   <table class="blueBar">
    <tr>
-    <td class="l">2026.07.08.17:52:42</td>
+    <td class="l">2026.07.08.19:13:58</td>
     <td class="r">Datasheet</td>
    </tr>
   </table>
@@ -147,7 +147,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="slaveb">av_mm_control_agent&#160;</td>
     <td class="empty"></td>
     <td class="empty"></td>
-    <td>0x0400 - 0x05ff</td>
+    <td>0x0600 - 0x07ff</td>
    </tr>
    <tr>
     <td class="slavemodule">&#160;
@@ -162,7 +162,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="slaveb">av_mm_control_agent&#160;</td>
     <td class="empty"></td>
     <td class="empty"></td>
-    <td>0x0600 - 0x07ff</td>
+    <td>0x0800 - 0x09ff</td>
    </tr>
    <tr>
     <td class="slavemodule">&#160;
@@ -177,7 +177,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="slaveb">av_mm_control_agent&#160;</td>
     <td class="empty"></td>
     <td class="empty"></td>
-    <td>0x0800 - 0x09ff</td>
+    <td>0x0a00 - 0x0bff</td>
    </tr>
    <tr>
     <td class="slavemodule">&#160;
@@ -207,7 +207,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="slaveb">av_mm_control_agent&#160;</td>
     <td class="empty"></td>
     <td class="empty"></td>
-    <td>0x0200 - 0x03ff</td>
+    <td>0x0400 - 0x05ff</td>
    </tr>
    <tr>
     <td class="slavemodule">&#160;
@@ -237,7 +237,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="slaveb">av_mm_control_agent&#160;</td>
     <td class="empty"></td>
     <td class="empty"></td>
-    <td class="empty"></td>
+    <td>0x0000 - 0x01ff</td>
    </tr>
    <tr>
     <td class="slavemodule">&#160;
@@ -252,7 +252,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="slaveb">av_mm_control_agent&#160;</td>
     <td class="empty"></td>
     <td class="empty"></td>
-    <td>0x0000 - 0x01ff</td>
+    <td>0x0200 - 0x03ff</td>
    </tr>
    <tr>
     <td class="slavemodule">&#160;
@@ -798,11 +798,23 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    <div class="greydiv">
     <table class="connectionboxes">
      <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_mm_bridge_0">mm_bridge_0</a>
+      </td>
+      <td class="from">m0&#160;&#160;</td>
+      <td class="main" rowspan="16">intel_vvp_vfb_0</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;av_mm_control_agent</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
       <td class="neighbor" rowspan="4">
        <a href="#module_clock_in">clock_in</a>
       </td>
       <td class="from">out_clk&#160;&#160;</td>
-      <td class="main" rowspan="13">intel_vvp_vfb_0</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;main_clock</td>
@@ -955,7 +967,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_clock_in">clock_in</a>
       </td>
       <td class="from">out_clk&#160;&#160;</td>
-      <td class="main" rowspan="19">mm_bridge_0</td>
+      <td class="main" rowspan="22">mm_bridge_0</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;clk</td>
@@ -1042,6 +1054,22 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td class="from">m0&#160;&#160;</td>
       <td class="neighbor" rowspan="2">
        <a href="#module_lite_to_full_converter">lite_to_full_converter</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;av_mm_control_agent</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">m0&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_intel_vvp_vfb_0">intel_vvp_vfb_0</a>
       </td>
      </tr>
      <tr>

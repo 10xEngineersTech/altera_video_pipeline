@@ -13,28 +13,33 @@
 // Control-bus topology (UG-20344 §5):
 //   • TPG and protocol_conv_1 each expose their own Avalon-MM control agent
 //     port at the pipeline boundary (unchanged).
-//   • Clipper / Scaler / CRS / CSC are now reached through an Avalon Memory
-//     Mapped Pipeline Bridge ("mm_bridge_0") instantiated inside pipeline.qsys.
-//     Only the bridge's slave port (mm_bridge_0_s0) is exposed externally.
+//   • VFB / Converter / Scaler / Clipper / CRS / CSC are reached through an
+//     Avalon Memory Mapped Pipeline Bridge ("mm_bridge_0") instantiated inside
+//     pipeline.qsys. Only the bridge's slave port (mm_bridge_0_s0) is exposed
+//     externally.
 //
 // Bridge slave port (mm_bridge_0_s0):
-//   • 11-bit byte address, 32-bit data, burstcount=1
+//   • 13-bit byte address, 32-bit data, burstcount=1
 //   • Address map (per pipeline.html, §Connections):
-//        0x000–0x1FF  →  Scaler   (intel_vvp_scaler_0.av_mm_control_agent)
-//        0x200–0x3FF  →  Clipper  (intel_vvp_clipper_0.av_mm_control_agent)
-//        0x400–0x5FF  →  CRS      (intel_vvp_crs_0.av_mm_control_agent)
-//        0x600–0x7FF  →  CSC      (intel_vvp_csc_0.av_mm_control_agent)
+//        0x000–0x1FF  →  VFB       (intel_vvp_vfb_0.av_mm_control_agent)
+//        0x200–0x3FF  →  Converter (lite_to_full_converter.av_mm_control_agent)
+//        0x400–0x5FF  →  Scaler    (intel_vvp_scaler_0.av_mm_control_agent)
+//        0x600–0x7FF  →  Clipper   (intel_vvp_clipper_0.av_mm_control_agent)
+//        0x800–0x9FF  →  CRS       (intel_vvp_crs_0.av_mm_control_agent)
+//        0xA00–0xBFF  →  CSC       (intel_vvp_csc_0.av_mm_control_agent)
 //   • Per-IP register addresses come from UG-20344 Table 7 as BYTE offsets
 //     (e.g. IMG_INFO_WIDTH=0x0120). They are simply ORed with the slave base.
 //
-// Configuration order (unchanged):
+// Configuration order:
 //   1. TPG     — set resolution, pattern, commit, enable        (own port)
 //   2. Clipper — set input size, color space, subsampling, …    (bridge)
 //   3. Scaler  — set input/output sizes                          (bridge)
 //   4. CRS     — set output mode, commit                         (bridge)
 //   5. CSC     — write coefficients, commit, poll status         (bridge)
-//   6. PC1     — image-source dims/control (only if INPUT_SEL=1) (own port)
-//   7. WORKING — all IPs live
+//   6. CONV    — image info matching scaler output               (bridge)
+//   7. VFB     — OUTPUT_CONTROL.GO to start frame output         (bridge)
+//   8. PC1     — image-source dims/control (only if INPUT_SEL=1) (own port)
+//   9. WORKING — all IPs live
 // =============================================================================
 
 module top #(
@@ -90,11 +95,12 @@ module top #(
     // Bridge address map — base byte address of each slave on mm_bridge_0.m0
     // (pipeline.html, §Connections). Each slave occupies 0x200 bytes.
     // =========================================================================
-    localparam [12:0] CONV_BASE = 13'h000;   // lite_to_full_converter
-    localparam [12:0] SCL_BASE  = 13'h200;
-    localparam [12:0] CLIP_BASE = 13'h400;
-    localparam [12:0] CRS_BASE  = 13'h600;
-    localparam [12:0] CSC_BASE  = 13'h800;
+    localparam [12:0] VFB_BASE  = 13'h000;   // intel_vvp_vfb_0
+    localparam [12:0] CONV_BASE = 13'h200;   // lite_to_full_converter
+    localparam [12:0] SCL_BASE  = 13'h400;
+    localparam [12:0] CLIP_BASE = 13'h600;
+    localparam [12:0] CRS_BASE  = 13'h800;
+    localparam [12:0] CSC_BASE  = 13'hA00;
 
     // =========================================================================
     // Per-IP register addresses
@@ -169,10 +175,10 @@ module top #(
     localparam [12:0] CONV_SUBSAMP_ADDR = CONV_BASE | 13'h134; // word 0x4D
     localparam [12:0] CONV_CTRL_ADDR    = CONV_BASE | 13'h154; // word 0x55
 
-    // --- Video Frame Buffer (own port, 7-bit word address) ---
+    // --- Video Frame Buffer (bridge, byte address) ---
     // From intel_vvp_vfb_regs.h: RT base = word 0x50,
     // OUTPUT_CONTROL = RT+7 = 0x57, bit0 = GO (read side won't emit until set)
-    localparam [6:0] VFB_ADDR_OUT_CTRL = 7'h57;
+    localparam [12:0] VFB_OUT_CTRL_ADDR = VFB_BASE | 13'h15C; // word 0x57
 
     // =========================================================================
     // State encoding
@@ -268,12 +274,12 @@ module top #(
     reg [3:0]  cfg_step;
     reg [7:0]  cycle_count;
 
-    // TPG, PC1 and VFB keep their own Avalon-MM control ports.
+    // TPG and PC1 keep their own Avalon-MM control ports.
     reg [6:0]  tpg_addr;   reg        tpg_write,  tpg_read;   reg [31:0] tpg_wdata;
     reg [6:0]  pc1_addr;   reg        pc1_write;              reg [31:0] pc1_wdata;
-    reg [6:0]  vfb_addr;   reg        vfb_write;              reg [31:0] vfb_wdata;
 
-    // Single bridge master into mm_bridge_0_s0 (drives clipper/scaler/crs/csc).
+    // Single bridge master into mm_bridge_0_s0
+    // (drives vfb/converter/scaler/clipper/crs/csc).
     reg [12:0] bridge_addr;
     reg [31:0] bridge_wdata;
     reg        bridge_write;
@@ -284,7 +290,6 @@ module top #(
     wire        tpg_readdatavalid;
     wire        tpg_wait;
     wire        pc1_wait;
-    wire        vfb_wait;
     wire [31:0] bridge_readdata;
     wire        bridge_readdatavalid;
     wire        bridge_wait;
@@ -298,7 +303,6 @@ module top #(
             tpg_write     <= 1'b0;
             tpg_read      <= 1'b0;
             pc1_write     <= 1'b0;
-            vfb_write     <= 1'b0;
             bridge_write  <= 1'b0;
             bridge_read   <= 1'b0;
             cfg_step      <= 4'd0;
@@ -600,6 +604,9 @@ module top #(
                         if (cfg_step == 4'd5) begin
                             bridge_write  <= 1'b0;
                             cfg_step      <= 4'd0;
+                            // Pre-load the VFB start write (bridge, base 0x000).
+                            bridge_addr   <= VFB_OUT_CTRL_ADDR;
+                            bridge_wdata  <= 32'h1;
                             current_state <= ST_CONFIG_VFB;
                         end else begin
                             cfg_step <= cfg_step + 1'b1;
@@ -616,15 +623,14 @@ module top #(
                 end
 
                 // ══════════════════════════════════════════════════════════════════
-                // Video Frame Buffer start (own Avalon port):
+                // Video Frame Buffer start (via mm_bridge_0):
                 // set OUTPUT_CONTROL.GO so the read side starts emitting frames.
+                // Address/data pre-loaded by ST_CONFIG_CONV.
                 // ══════════════════════════════════════════════════════════════════
                 ST_CONFIG_VFB: begin
-                    vfb_write <= 1'b1;
-                    vfb_addr  <= VFB_ADDR_OUT_CTRL;
-                    vfb_wdata <= 32'h1;
-                    if (vfb_write && !vfb_wait) begin
-                        vfb_write <= 1'b0;
+                    bridge_write <= 1'b1;
+                    if (bridge_write && !bridge_wait) begin
+                        bridge_write <= 1'b0;
                         if (INPUT_SEL) begin
                             pc1_addr      <= PC1_ADDR_WIDTH;
                             pc1_wdata     <= IMG_WIDTH;
@@ -641,7 +647,6 @@ module top #(
                 ST_WORKING: begin
                     tpg_write    <= 1'b0; tpg_read <= 1'b0;
                     pc1_write    <= 1'b0;
-                    vfb_write    <= 1'b0;
                     bridge_write <= 1'b0; bridge_read <= 1'b0;
                 end
 
@@ -878,16 +883,6 @@ module top #(
         .intel_vvp_vfb_0_axi4s_vid_out_tready (vfb_out_tready),
         .intel_vvp_vfb_0_axi4s_vid_out_tlast  (vfb_out_tlast),
         .intel_vvp_vfb_0_axi4s_vid_out_tuser  (vfb_out_tuser),
-
-        // ----- Frame Buffer Avalon-MM control (own port) -----
-        .intel_vvp_vfb_0_av_mm_control_agent_address       (vfb_addr),
-        .intel_vvp_vfb_0_av_mm_control_agent_write         (vfb_write),
-        .intel_vvp_vfb_0_av_mm_control_agent_read          (1'b0),
-        .intel_vvp_vfb_0_av_mm_control_agent_byteenable    (4'hF),
-        .intel_vvp_vfb_0_av_mm_control_agent_writedata     (vfb_wdata),
-        .intel_vvp_vfb_0_av_mm_control_agent_readdata      (),
-        .intel_vvp_vfb_0_av_mm_control_agent_readdatavalid (),
-        .intel_vvp_vfb_0_av_mm_control_agent_waitrequest   (vfb_wait),
 
         // ----- TPG Avalon-MM control (own port) -----
         .intel_vvp_tpg_0_av_mm_control_agent_address       (tpg_addr),

@@ -106,14 +106,6 @@ module pipeline (
 		input  wire        intel_vvp_vfb_0_axi4s_vid_out_tready,                        //                                              .tready
 		output wire        intel_vvp_vfb_0_axi4s_vid_out_tlast,                         //                                              .tlast
 		output wire [2:0]  intel_vvp_vfb_0_axi4s_vid_out_tuser,                         //                                              .tuser
-		input  wire [6:0]  intel_vvp_vfb_0_av_mm_control_agent_address,                 //           intel_vvp_vfb_0_av_mm_control_agent.address
-		input  wire        intel_vvp_vfb_0_av_mm_control_agent_write,                   //                                              .write
-		input  wire [3:0]  intel_vvp_vfb_0_av_mm_control_agent_byteenable,              //                                              .byteenable
-		input  wire [31:0] intel_vvp_vfb_0_av_mm_control_agent_writedata,               //                                              .writedata
-		input  wire        intel_vvp_vfb_0_av_mm_control_agent_read,                    //                                              .read
-		output wire [31:0] intel_vvp_vfb_0_av_mm_control_agent_readdata,                //                                              .readdata
-		output wire        intel_vvp_vfb_0_av_mm_control_agent_readdatavalid,           //                                              .readdatavalid
-		output wire        intel_vvp_vfb_0_av_mm_control_agent_waitrequest,             //                                              .waitrequest
 		input  wire [23:0] lite_to_full_converter_axi4s_vid_in_tdata,                   //           lite_to_full_converter_axi4s_vid_in.tdata
 		input  wire        lite_to_full_converter_axi4s_vid_in_tvalid,                  //                                              .tvalid
 		output wire        lite_to_full_converter_axi4s_vid_in_tready,                  //                                              .tready
@@ -213,6 +205,14 @@ module pipeline (
 	wire          mm_interconnect_2_lite_to_full_converter_av_mm_control_agent_readdatavalid; // lite_to_full_converter:av_mm_control_agent_readdatavalid -> mm_interconnect_2:lite_to_full_converter_av_mm_control_agent_readdatavalid
 	wire          mm_interconnect_2_lite_to_full_converter_av_mm_control_agent_write;         // mm_interconnect_2:lite_to_full_converter_av_mm_control_agent_write -> lite_to_full_converter:av_mm_control_agent_write
 	wire   [31:0] mm_interconnect_2_lite_to_full_converter_av_mm_control_agent_writedata;     // mm_interconnect_2:lite_to_full_converter_av_mm_control_agent_writedata -> lite_to_full_converter:av_mm_control_agent_writedata
+	wire   [31:0] mm_interconnect_2_intel_vvp_vfb_0_av_mm_control_agent_readdata;             // intel_vvp_vfb_0:av_mm_control_agent_readdata -> mm_interconnect_2:intel_vvp_vfb_0_av_mm_control_agent_readdata
+	wire          mm_interconnect_2_intel_vvp_vfb_0_av_mm_control_agent_waitrequest;          // intel_vvp_vfb_0:av_mm_control_agent_waitrequest -> mm_interconnect_2:intel_vvp_vfb_0_av_mm_control_agent_waitrequest
+	wire    [6:0] mm_interconnect_2_intel_vvp_vfb_0_av_mm_control_agent_address;              // mm_interconnect_2:intel_vvp_vfb_0_av_mm_control_agent_address -> intel_vvp_vfb_0:av_mm_control_agent_address
+	wire          mm_interconnect_2_intel_vvp_vfb_0_av_mm_control_agent_read;                 // mm_interconnect_2:intel_vvp_vfb_0_av_mm_control_agent_read -> intel_vvp_vfb_0:av_mm_control_agent_read
+	wire    [3:0] mm_interconnect_2_intel_vvp_vfb_0_av_mm_control_agent_byteenable;           // mm_interconnect_2:intel_vvp_vfb_0_av_mm_control_agent_byteenable -> intel_vvp_vfb_0:av_mm_control_agent_byteenable
+	wire          mm_interconnect_2_intel_vvp_vfb_0_av_mm_control_agent_readdatavalid;        // intel_vvp_vfb_0:av_mm_control_agent_readdatavalid -> mm_interconnect_2:intel_vvp_vfb_0_av_mm_control_agent_readdatavalid
+	wire          mm_interconnect_2_intel_vvp_vfb_0_av_mm_control_agent_write;                // mm_interconnect_2:intel_vvp_vfb_0_av_mm_control_agent_write -> intel_vvp_vfb_0:av_mm_control_agent_write
+	wire   [31:0] mm_interconnect_2_intel_vvp_vfb_0_av_mm_control_agent_writedata;            // mm_interconnect_2:intel_vvp_vfb_0_av_mm_control_agent_writedata -> intel_vvp_vfb_0:av_mm_control_agent_writedata
 	wire          rst_controller_reset_out_reset;                                             // rst_controller:reset_out -> [intel_vvp_clipper_0:main_reset_reset, intel_vvp_crs_0:main_reset_reset, intel_vvp_csc_0:main_reset_reset, intel_vvp_dil_0:main_reset_reset, intel_vvp_protocol_conv_0:main_reset_reset, intel_vvp_protocol_conv_1:main_reset_reset, intel_vvp_scaler_0:main_reset_reset, intel_vvp_tpg_0:main_reset_reset, intel_vvp_vfb_0:main_reset_reset, intel_vvp_vfb_0:mem_reset_reset, lite_to_full_converter:main_reset_reset]
 	wire          reset_in_out_reset_reset;                                                   // reset_in:out_reset -> [rst_controller:reset_in0, rst_controller_001:reset_in0]
 	wire          rst_controller_001_reset_out_reset;                                         // rst_controller_001:reset_out -> [mm_bridge_0:reset, mm_interconnect_0:onchip_memory2_0_reset2_reset_bridge_in_reset_reset, mm_interconnect_1:onchip_memory2_0_reset1_reset_bridge_in_reset_reset, mm_interconnect_2:mm_bridge_0_reset_reset_bridge_in_reset_reset, onchip_memory2_0:reset, onchip_memory2_0:reset2, rst_translator:in_reset]
@@ -387,39 +387,39 @@ module pipeline (
 	);
 
 	pipeline_intel_vvp_vfb_0 intel_vvp_vfb_0 (
-		.main_clock_clk                    (clock_in_out_clk_clk),                              //   input,    width = 1,           main_clock.clk
-		.main_reset_reset                  (rst_controller_reset_out_reset),                    //   input,    width = 1,           main_reset.reset
-		.mem_clock_clk                     (clock_in_out_clk_clk),                              //   input,    width = 1,            mem_clock.clk
-		.mem_reset_reset                   (rst_controller_reset_out_reset),                    //   input,    width = 1,            mem_reset.reset
-		.axi4s_vid_in_tdata                (intel_vvp_vfb_0_axi4s_vid_in_tdata),                //   input,   width = 24,         axi4s_vid_in.tdata
-		.axi4s_vid_in_tvalid               (intel_vvp_vfb_0_axi4s_vid_in_tvalid),               //   input,    width = 1,                     .tvalid
-		.axi4s_vid_in_tready               (intel_vvp_vfb_0_axi4s_vid_in_tready),               //  output,    width = 1,                     .tready
-		.axi4s_vid_in_tlast                (intel_vvp_vfb_0_axi4s_vid_in_tlast),                //   input,    width = 1,                     .tlast
-		.axi4s_vid_in_tuser                (intel_vvp_vfb_0_axi4s_vid_in_tuser),                //   input,    width = 3,                     .tuser
-		.axi4s_vid_out_tdata               (intel_vvp_vfb_0_axi4s_vid_out_tdata),               //  output,   width = 24,        axi4s_vid_out.tdata
-		.axi4s_vid_out_tvalid              (intel_vvp_vfb_0_axi4s_vid_out_tvalid),              //  output,    width = 1,                     .tvalid
-		.axi4s_vid_out_tready              (intel_vvp_vfb_0_axi4s_vid_out_tready),              //   input,    width = 1,                     .tready
-		.axi4s_vid_out_tlast               (intel_vvp_vfb_0_axi4s_vid_out_tlast),               //  output,    width = 1,                     .tlast
-		.axi4s_vid_out_tuser               (intel_vvp_vfb_0_axi4s_vid_out_tuser),               //  output,    width = 3,                     .tuser
-		.av_mm_mem_write_host_address      (intel_vvp_vfb_0_av_mm_mem_write_host_address),      //  output,   width = 32, av_mm_mem_write_host.address
-		.av_mm_mem_write_host_waitrequest  (intel_vvp_vfb_0_av_mm_mem_write_host_waitrequest),  //   input,    width = 1,                     .waitrequest
-		.av_mm_mem_write_host_burstcount   (intel_vvp_vfb_0_av_mm_mem_write_host_burstcount),   //  output,    width = 4,                     .burstcount
-		.av_mm_mem_write_host_write        (intel_vvp_vfb_0_av_mm_mem_write_host_write),        //  output,    width = 1,                     .write
-		.av_mm_mem_write_host_writedata    (intel_vvp_vfb_0_av_mm_mem_write_host_writedata),    //  output,  width = 256,                     .writedata
-		.av_mm_mem_read_host_address       (intel_vvp_vfb_0_av_mm_mem_read_host_address),       //  output,   width = 32,  av_mm_mem_read_host.address
-		.av_mm_mem_read_host_waitrequest   (intel_vvp_vfb_0_av_mm_mem_read_host_waitrequest),   //   input,    width = 1,                     .waitrequest
-		.av_mm_mem_read_host_burstcount    (intel_vvp_vfb_0_av_mm_mem_read_host_burstcount),    //  output,    width = 4,                     .burstcount
-		.av_mm_mem_read_host_read          (intel_vvp_vfb_0_av_mm_mem_read_host_read),          //  output,    width = 1,                     .read
-		.av_mm_mem_read_host_readdata      (intel_vvp_vfb_0_av_mm_mem_read_host_readdata),      //   input,  width = 256,                     .readdata
-		.av_mm_mem_read_host_readdatavalid (intel_vvp_vfb_0_av_mm_mem_read_host_readdatavalid), //   input,    width = 1,                     .readdatavalid
-		.av_mm_control_agent_address       (intel_vvp_vfb_0_av_mm_control_agent_address),       //   input,    width = 7,  av_mm_control_agent.address
-		.av_mm_control_agent_write         (intel_vvp_vfb_0_av_mm_control_agent_write),         //   input,    width = 1,                     .write
-		.av_mm_control_agent_byteenable    (intel_vvp_vfb_0_av_mm_control_agent_byteenable),    //   input,    width = 4,                     .byteenable
-		.av_mm_control_agent_writedata     (intel_vvp_vfb_0_av_mm_control_agent_writedata),     //   input,   width = 32,                     .writedata
-		.av_mm_control_agent_read          (intel_vvp_vfb_0_av_mm_control_agent_read),          //   input,    width = 1,                     .read
-		.av_mm_control_agent_readdata      (intel_vvp_vfb_0_av_mm_control_agent_readdata),      //  output,   width = 32,                     .readdata
-		.av_mm_control_agent_readdatavalid (intel_vvp_vfb_0_av_mm_control_agent_readdatavalid), //  output,    width = 1,                     .readdatavalid
-		.av_mm_control_agent_waitrequest   (intel_vvp_vfb_0_av_mm_control_agent_waitrequest)    //  output,    width = 1,                     .waitrequest
+		.main_clock_clk                    (clock_in_out_clk_clk),                                                //   input,    width = 1,           main_clock.clk
+		.main_reset_reset                  (rst_controller_reset_out_reset),                                      //   input,    width = 1,           main_reset.reset
+		.mem_clock_clk                     (clock_in_out_clk_clk),                                                //   input,    width = 1,            mem_clock.clk
+		.mem_reset_reset                   (rst_controller_reset_out_reset),                                      //   input,    width = 1,            mem_reset.reset
+		.axi4s_vid_in_tdata                (intel_vvp_vfb_0_axi4s_vid_in_tdata),                                  //   input,   width = 24,         axi4s_vid_in.tdata
+		.axi4s_vid_in_tvalid               (intel_vvp_vfb_0_axi4s_vid_in_tvalid),                                 //   input,    width = 1,                     .tvalid
+		.axi4s_vid_in_tready               (intel_vvp_vfb_0_axi4s_vid_in_tready),                                 //  output,    width = 1,                     .tready
+		.axi4s_vid_in_tlast                (intel_vvp_vfb_0_axi4s_vid_in_tlast),                                  //   input,    width = 1,                     .tlast
+		.axi4s_vid_in_tuser                (intel_vvp_vfb_0_axi4s_vid_in_tuser),                                  //   input,    width = 3,                     .tuser
+		.axi4s_vid_out_tdata               (intel_vvp_vfb_0_axi4s_vid_out_tdata),                                 //  output,   width = 24,        axi4s_vid_out.tdata
+		.axi4s_vid_out_tvalid              (intel_vvp_vfb_0_axi4s_vid_out_tvalid),                                //  output,    width = 1,                     .tvalid
+		.axi4s_vid_out_tready              (intel_vvp_vfb_0_axi4s_vid_out_tready),                                //   input,    width = 1,                     .tready
+		.axi4s_vid_out_tlast               (intel_vvp_vfb_0_axi4s_vid_out_tlast),                                 //  output,    width = 1,                     .tlast
+		.axi4s_vid_out_tuser               (intel_vvp_vfb_0_axi4s_vid_out_tuser),                                 //  output,    width = 3,                     .tuser
+		.av_mm_mem_write_host_address      (intel_vvp_vfb_0_av_mm_mem_write_host_address),                        //  output,   width = 32, av_mm_mem_write_host.address
+		.av_mm_mem_write_host_waitrequest  (intel_vvp_vfb_0_av_mm_mem_write_host_waitrequest),                    //   input,    width = 1,                     .waitrequest
+		.av_mm_mem_write_host_burstcount   (intel_vvp_vfb_0_av_mm_mem_write_host_burstcount),                     //  output,    width = 4,                     .burstcount
+		.av_mm_mem_write_host_write        (intel_vvp_vfb_0_av_mm_mem_write_host_write),                          //  output,    width = 1,                     .write
+		.av_mm_mem_write_host_writedata    (intel_vvp_vfb_0_av_mm_mem_write_host_writedata),                      //  output,  width = 256,                     .writedata
+		.av_mm_mem_read_host_address       (intel_vvp_vfb_0_av_mm_mem_read_host_address),                         //  output,   width = 32,  av_mm_mem_read_host.address
+		.av_mm_mem_read_host_waitrequest   (intel_vvp_vfb_0_av_mm_mem_read_host_waitrequest),                     //   input,    width = 1,                     .waitrequest
+		.av_mm_mem_read_host_burstcount    (intel_vvp_vfb_0_av_mm_mem_read_host_burstcount),                      //  output,    width = 4,                     .burstcount
+		.av_mm_mem_read_host_read          (intel_vvp_vfb_0_av_mm_mem_read_host_read),                            //  output,    width = 1,                     .read
+		.av_mm_mem_read_host_readdata      (intel_vvp_vfb_0_av_mm_mem_read_host_readdata),                        //   input,  width = 256,                     .readdata
+		.av_mm_mem_read_host_readdatavalid (intel_vvp_vfb_0_av_mm_mem_read_host_readdatavalid),                   //   input,    width = 1,                     .readdatavalid
+		.av_mm_control_agent_address       (mm_interconnect_2_intel_vvp_vfb_0_av_mm_control_agent_address),       //   input,    width = 7,  av_mm_control_agent.address
+		.av_mm_control_agent_write         (mm_interconnect_2_intel_vvp_vfb_0_av_mm_control_agent_write),         //   input,    width = 1,                     .write
+		.av_mm_control_agent_byteenable    (mm_interconnect_2_intel_vvp_vfb_0_av_mm_control_agent_byteenable),    //   input,    width = 4,                     .byteenable
+		.av_mm_control_agent_writedata     (mm_interconnect_2_intel_vvp_vfb_0_av_mm_control_agent_writedata),     //   input,   width = 32,                     .writedata
+		.av_mm_control_agent_read          (mm_interconnect_2_intel_vvp_vfb_0_av_mm_control_agent_read),          //   input,    width = 1,                     .read
+		.av_mm_control_agent_readdata      (mm_interconnect_2_intel_vvp_vfb_0_av_mm_control_agent_readdata),      //  output,   width = 32,                     .readdata
+		.av_mm_control_agent_readdatavalid (mm_interconnect_2_intel_vvp_vfb_0_av_mm_control_agent_readdatavalid), //  output,    width = 1,                     .readdatavalid
+		.av_mm_control_agent_waitrequest   (mm_interconnect_2_intel_vvp_vfb_0_av_mm_control_agent_waitrequest)    //  output,    width = 1,                     .waitrequest
 	);
 
 	pipeline_intel_vvp_protocol_conv_2 lite_to_full_converter (
@@ -534,7 +534,7 @@ module pipeline (
 		.clock_in_out_clk_clk                                (clock_in_out_clk_clk)                              //   input,    width = 1,                              clock_in_out_clk.clk
 	);
 
-	pipeline_altera_mm_interconnect_1920_cwek6ja mm_interconnect_2 (
+	pipeline_altera_mm_interconnect_1920_xjpsnky mm_interconnect_2 (
 		.mm_bridge_0_m0_address                                   (mm_bridge_0_m0_address),                                                     //   input,  width = 13,                             mm_bridge_0_m0.address
 		.mm_bridge_0_m0_waitrequest                               (mm_bridge_0_m0_waitrequest),                                                 //  output,   width = 1,                                           .waitrequest
 		.mm_bridge_0_m0_burstcount                                (mm_bridge_0_m0_burstcount),                                                  //   input,   width = 1,                                           .burstcount
@@ -585,6 +585,14 @@ module pipeline (
 		.lite_to_full_converter_av_mm_control_agent_byteenable    (mm_interconnect_2_lite_to_full_converter_av_mm_control_agent_byteenable),    //  output,   width = 4,                                           .byteenable
 		.lite_to_full_converter_av_mm_control_agent_readdatavalid (mm_interconnect_2_lite_to_full_converter_av_mm_control_agent_readdatavalid), //   input,   width = 1,                                           .readdatavalid
 		.lite_to_full_converter_av_mm_control_agent_waitrequest   (mm_interconnect_2_lite_to_full_converter_av_mm_control_agent_waitrequest),   //   input,   width = 1,                                           .waitrequest
+		.intel_vvp_vfb_0_av_mm_control_agent_address              (mm_interconnect_2_intel_vvp_vfb_0_av_mm_control_agent_address),              //  output,   width = 7,        intel_vvp_vfb_0_av_mm_control_agent.address
+		.intel_vvp_vfb_0_av_mm_control_agent_write                (mm_interconnect_2_intel_vvp_vfb_0_av_mm_control_agent_write),                //  output,   width = 1,                                           .write
+		.intel_vvp_vfb_0_av_mm_control_agent_read                 (mm_interconnect_2_intel_vvp_vfb_0_av_mm_control_agent_read),                 //  output,   width = 1,                                           .read
+		.intel_vvp_vfb_0_av_mm_control_agent_readdata             (mm_interconnect_2_intel_vvp_vfb_0_av_mm_control_agent_readdata),             //   input,  width = 32,                                           .readdata
+		.intel_vvp_vfb_0_av_mm_control_agent_writedata            (mm_interconnect_2_intel_vvp_vfb_0_av_mm_control_agent_writedata),            //  output,  width = 32,                                           .writedata
+		.intel_vvp_vfb_0_av_mm_control_agent_byteenable           (mm_interconnect_2_intel_vvp_vfb_0_av_mm_control_agent_byteenable),           //  output,   width = 4,                                           .byteenable
+		.intel_vvp_vfb_0_av_mm_control_agent_readdatavalid        (mm_interconnect_2_intel_vvp_vfb_0_av_mm_control_agent_readdatavalid),        //   input,   width = 1,                                           .readdatavalid
+		.intel_vvp_vfb_0_av_mm_control_agent_waitrequest          (mm_interconnect_2_intel_vvp_vfb_0_av_mm_control_agent_waitrequest),          //   input,   width = 1,                                           .waitrequest
 		.mm_bridge_0_reset_reset_bridge_in_reset_reset            (rst_controller_001_reset_out_reset),                                         //   input,   width = 1,    mm_bridge_0_reset_reset_bridge_in_reset.reset
 		.clock_in_out_clk_clk                                     (clock_in_out_clk_clk)                                                        //   input,   width = 1,                           clock_in_out_clk.clk
 	);

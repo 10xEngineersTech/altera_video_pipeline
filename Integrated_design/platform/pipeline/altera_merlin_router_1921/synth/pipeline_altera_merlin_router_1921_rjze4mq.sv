@@ -32,23 +32,22 @@
 // Merlin Router
 //
 // Asserts the appropriate one-hot encoded channel based on 
-// the address.
+// the dest id.
 //
-// Also sets the binary-encoded destination id.
 // -------------------------------------------------------
 
 `timescale 1 ns / 1 ns
 
 // ------------------------------------------
 // Generation parameters:
-//    decoder_type            0 (address decoder)
-//    default_channel         4
-//    default_destid          4
+//    decoder_type            1 (dest id decoder)
+//    default_channel         0
+//    default_destid          0
 //    default_rd_channel      -1
 //    default_wr_channel      -1
 //    has_default_slave       0
 //    memory_aliasing_decode  0
-//    output_name             pipeline_altera_merlin_router_1921_d4qtqfq
+//    output_name             pipeline_altera_merlin_router_1921_rjze4mq
 //    pkt_addr_h              48
 //    pkt_addr_l              36
 //    pkt_dest_id_h           73
@@ -57,22 +56,22 @@
 //    pkt_protection_l        75
 //    pkt_trans_read          52
 //    pkt_trans_write         51
-//    slaves_info             4:10000:0x0:0x200:both:1:0:0:1,3:01000:0x200:0x400:both:1:0:0:1,0:00100:0x400:0x600:both:1:0:0:1,1:00010:0x600:0x800:both:1:0:0:1,2:00001:0x800:0xa00:both:1:0:0:1
-//    st_channel_w            5
+//    slaves_info             0:1:0x0:0x0:both:1:0:0:1
+//    st_channel_w            6
 //    st_data_w               141
 // ------------------------------------------
 
-module pipeline_altera_merlin_router_1921_d4qtqfq_default_decode
+module pipeline_altera_merlin_router_1921_rjze4mq_default_decode
   #(
-     parameter DEFAULT_CHANNEL = 4,
+     parameter DEFAULT_CHANNEL = 0,
                DEFAULT_WR_CHANNEL = -1,
                DEFAULT_RD_CHANNEL = -1,
-               DEFAULT_DESTID = 4 
+               DEFAULT_DESTID = 0 
    )
   (output [73 - 71 : 0] default_destination_id,
-   output [5-1 : 0] default_wr_channel,
-   output [5-1 : 0] default_rd_channel,
-   output [5-1 : 0] default_src_channel
+   output [6-1 : 0] default_wr_channel,
+   output [6-1 : 0] default_rd_channel,
+   output [6-1 : 0] default_src_channel
   );
 
   assign default_destination_id = 
@@ -83,7 +82,7 @@ module pipeline_altera_merlin_router_1921_d4qtqfq_default_decode
       assign default_src_channel = '0;
     end
     else begin : default_channel_assignment
-      assign default_src_channel = 5'b1 << DEFAULT_CHANNEL;
+      assign default_src_channel = 6'b1 << DEFAULT_CHANNEL;
     end
   endgenerate
 
@@ -93,15 +92,15 @@ module pipeline_altera_merlin_router_1921_d4qtqfq_default_decode
       assign default_rd_channel = '0;
     end
     else begin : default_rw_channel_assignment
-      assign default_wr_channel = 5'b1 << DEFAULT_WR_CHANNEL;
-      assign default_rd_channel = 5'b1 << DEFAULT_RD_CHANNEL;
+      assign default_wr_channel = 6'b1 << DEFAULT_WR_CHANNEL;
+      assign default_rd_channel = 6'b1 << DEFAULT_RD_CHANNEL;
     end
   endgenerate
 
 endmodule
 
 
-module pipeline_altera_merlin_router_1921_d4qtqfq
+module pipeline_altera_merlin_router_1921_rjze4mq
 (
     // -------------------
     // Clock & Reset
@@ -123,7 +122,7 @@ module pipeline_altera_merlin_router_1921_d4qtqfq
     // -------------------
     output                          src_valid,
     output reg [141-1    : 0] src_data,
-    output reg [5-1 : 0] src_channel,
+    output reg [6-1 : 0] src_channel,
     output                          src_startofpacket,
     output                          src_endofpacket,
     input                           src_ready
@@ -139,8 +138,8 @@ module pipeline_altera_merlin_router_1921_d4qtqfq
     localparam PKT_PROTECTION_H = 77;
     localparam PKT_PROTECTION_L = 75;
     localparam ST_DATA_W = 141;
-    localparam ST_CHANNEL_W = 5;
-    localparam DECODER_TYPE = 0;
+    localparam ST_CHANNEL_W = 6;
+    localparam DECODER_TYPE = 1;
 
     localparam PKT_TRANS_WRITE = 51;
     localparam PKT_TRANS_READ  = 52;
@@ -159,7 +158,7 @@ module pipeline_altera_merlin_router_1921_d4qtqfq
     // address range of the slaves. If the required width is too
     // large or too small, we use the address field width instead.
     // -------------------------------------------------------
-    localparam ADDR_RANGE = 64'ha00;
+    localparam ADDR_RANGE = 64'h0;
     localparam RANGE_ADDR_WIDTH = log2ceil(ADDR_RANGE);
     localparam OPTIMIZED_ADDR_H = (RANGE_ADDR_WIDTH > PKT_ADDR_W) ||
                                   (RANGE_ADDR_WIDTH == 0) ?
@@ -168,11 +167,7 @@ module pipeline_altera_merlin_router_1921_d4qtqfq
 
     localparam REAL_ADDRESS_RANGE = OPTIMIZED_ADDR_H - PKT_ADDR_L;
 
-      reg [PKT_ADDR_W-1 : 0] address;
-      always @* begin
-        address = {PKT_ADDR_W{1'b0}};
-        address [REAL_ADDRESS_RANGE:0] = sink_data[OPTIMIZED_ADDR_H : PKT_ADDR_L];
-      end   
+    reg [PKT_DEST_ID_W-1 : 0] destid;
 
     // -------------------------------------------------------
     // Pass almost everything through, untouched
@@ -181,16 +176,15 @@ module pipeline_altera_merlin_router_1921_d4qtqfq
     assign src_valid         = sink_valid;
     assign src_startofpacket = sink_startofpacket;
     assign src_endofpacket   = sink_endofpacket;
-    wire [PKT_DEST_ID_W-1:0] default_destid;
-    wire [5-1 : 0] default_src_channel;
+    wire [6-1 : 0] default_src_channel;
 
 
 
 
 
 
-    pipeline_altera_merlin_router_1921_d4qtqfq_default_decode the_default_decode(
-      .default_destination_id (default_destid),
+    pipeline_altera_merlin_router_1921_rjze4mq_default_decode the_default_decode(
+      .default_destination_id (),
       .default_wr_channel   (),
       .default_rd_channel   (),
       .default_src_channel  (default_src_channel)
@@ -199,42 +193,19 @@ module pipeline_altera_merlin_router_1921_d4qtqfq
     always @* begin
         src_data    = sink_data;
         src_channel = default_src_channel;
-        src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = default_destid;
 
         // --------------------------------------------------
-        // Address Decoder
-        // Sets the channel and destination ID based on the address
+        // DestinationID Decoder
+        // Sets the channel based on the destination ID.
         // --------------------------------------------------
+        destid      = sink_data[PKT_DEST_ID_H : PKT_DEST_ID_L];
 
-        // slave 0: [0x0, 0x200) : sel [11:9]
-        if ( {address[11:9],{9 {1'b0}}} == 12'h0   ) begin
-            src_channel = 5'b10000;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 4;
+
+
+        if (destid == 0 ) begin
+            src_channel = 6'b1;
         end
 
-        // slave 1: [0x200, 0x400) : sel [11:9]
-        if ( {address[11:9],{9 {1'b0}}} == 12'h200   ) begin
-            src_channel = 5'b01000;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 3;
-        end
-
-        // slave 2: [0x400, 0x600) : sel [11:9]
-        if ( {address[11:9],{9 {1'b0}}} == 12'h400   ) begin
-            src_channel = 5'b00100;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 0;
-        end
-
-        // slave 3: [0x600, 0x800) : sel [11:9]
-        if ( {address[11:9],{9 {1'b0}}} == 12'h600   ) begin
-            src_channel = 5'b00010;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 1;
-        end
-
-        // slave 4: [0x800, 0xa00) : sel [11:9]
-        if ( {address[11:9],{9 {1'b0}}} == 12'h800   ) begin
-            src_channel = 5'b00001;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 2;
-        end
     end
 
 

@@ -26,9 +26,9 @@
 
 // ------------------------------------------
 // Generation parameters:
-//   output_name:         pipeline_altera_merlin_demultiplexer_1921_7grpvkq
+//   output_name:         pipeline_altera_merlin_demultiplexer_1921_fcckpky
 //   ST_DATA_W:           141
-//   ST_CHANNEL_W:        5
+//   ST_CHANNEL_W:        6
 //   NUM_OUTPUTS:         1
 //   VALID_WIDTH:         1
 // ------------------------------------------
@@ -40,14 +40,14 @@
 //------------------------------------------
 
 // altera message_off 16753
-module pipeline_altera_merlin_demultiplexer_1921_7grpvkq
+module pipeline_altera_merlin_demultiplexer_1921_fcckpky
 (
     // -------------------
     // Sink
     // -------------------
     input  [1-1      : 0]   sink_valid,
     input  [141-1    : 0]   sink_data, // ST_DATA_W=141
-    input  [5-1 : 0]   sink_channel, // ST_CHANNEL_W=5
+    input  [6-1 : 0]   sink_channel, // ST_CHANNEL_W=6
     input                         sink_startofpacket,
     input                         sink_endofpacket,
     output                        sink_ready,
@@ -57,7 +57,7 @@ module pipeline_altera_merlin_demultiplexer_1921_7grpvkq
     // -------------------
     output reg                      src0_valid,
     output reg [141-1    : 0] src0_data, // ST_DATA_W=141
-    output reg [5-1 : 0] src0_channel, // ST_CHANNEL_W=5
+    output reg [6-1 : 0] src0_channel, // ST_CHANNEL_W=6
     output reg                      src0_startofpacket,
     output reg                      src0_endofpacket,
     input                           src0_ready,
@@ -94,7 +94,7 @@ module pipeline_altera_merlin_demultiplexer_1921_7grpvkq
     // -------------------
     assign ready_vector[0] = src0_ready;
 
-    assign sink_ready = |(sink_channel & {{4{1'b0}},{ready_vector[NUM_OUTPUTS - 1 : 0]}});
+    assign sink_ready = |(sink_channel & {{5{1'b0}},{ready_vector[NUM_OUTPUTS - 1 : 0]}});
 
 endmodule
 

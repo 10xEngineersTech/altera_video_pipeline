@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2026.07.08.17:52:07"
- outputDirectory="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_onchip_memory2_0/">
+ date="2026.07.08.19:13:52"
+ outputDirectory="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_onchip_memory2_0/">
  <perimeter>
   <parameter
      name="AUTO_GENERATION_ID"
@@ -256,17 +256,17 @@
   <parameter name="AUTO_S1_CPU_INFO_ID" value="" />
   <generatedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_onchip_memory2_0/synth/pipeline_onchip_memory2_0.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_onchip_memory2_0/synth/pipeline_onchip_memory2_0.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_onchip_memory2_0/synth/pipeline_onchip_memory2_0.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_onchip_memory2_0/synth/pipeline_onchip_memory2_0.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_onchip_memory2_0.ip" />
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_onchip_memory2_0.ip" />
   </sourceFiles>
   <childSourceFiles>
    <file
@@ -276,7 +276,7 @@
    <message level="Info" culprit="pipeline_onchip_memory2_0">"Generating: pipeline_onchip_memory2_0"</message>
    <message level="Info" culprit="pipeline_onchip_memory2_0">"Generating: pipeline_onchip_memory2_0_altera_avalon_onchip_memory2_1939_2kbmgja"</message>
    <message level="Info" culprit="onchip_memory2_0">Starting RTL generation for module 'pipeline_onchip_memory2_0_altera_avalon_onchip_memory2_1939_2kbmgja'</message>
-   <message level="Info" culprit="onchip_memory2_0">  Generation command is [exec /home/lpt-10xe/altera_pro/25.1.1/quartus/linux64//perl/bin/perl -I /home/lpt-10xe/altera_pro/25.1.1/quartus/linux64//perl/lib -I /home/lpt-10xe/altera_pro/25.1.1/quartus/sopc_builder/bin/europa -I /home/lpt-10xe/altera_pro/25.1.1/quartus/sopc_builder/bin/perl_lib -I /home/lpt-10xe/altera_pro/25.1.1/quartus/sopc_builder/bin -I /home/lpt-10xe/altera_pro/25.1.1/quartus/../ip/altera/sopc_builder_ip/common -I /home/lpt-10xe/altera_pro/25.1.1/quartus/../ip/altera/platform_designer_ip/altera_avalon_onchip_memory2 -- /home/lpt-10xe/altera_pro/25.1.1/quartus/../ip/altera/platform_designer_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=pipeline_onchip_memory2_0_altera_avalon_onchip_memory2_1939_2kbmgja --dir=/tmp/alt0642_13809966467795999138.dir/1295_onchip_memory2_0_gen/ --quartus_dir=/home/lpt-10xe/altera_pro/25.1.1/quartus --verilog --config=/tmp/alt0642_13809966467795999138.dir/1295_onchip_memory2_0_gen//pipeline_onchip_memory2_0_altera_avalon_onchip_memory2_1939_2kbmgja_component_configuration.pl  --do_build_sim=0  ]</message>
+   <message level="Info" culprit="onchip_memory2_0">  Generation command is [exec /home/lpt-10xe/altera_pro/25.1.1/quartus/linux64//perl/bin/perl -I /home/lpt-10xe/altera_pro/25.1.1/quartus/linux64//perl/lib -I /home/lpt-10xe/altera_pro/25.1.1/quartus/sopc_builder/bin/europa -I /home/lpt-10xe/altera_pro/25.1.1/quartus/sopc_builder/bin/perl_lib -I /home/lpt-10xe/altera_pro/25.1.1/quartus/sopc_builder/bin -I /home/lpt-10xe/altera_pro/25.1.1/quartus/../ip/altera/sopc_builder_ip/common -I /home/lpt-10xe/altera_pro/25.1.1/quartus/../ip/altera/platform_designer_ip/altera_avalon_onchip_memory2 -- /home/lpt-10xe/altera_pro/25.1.1/quartus/../ip/altera/platform_designer_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=pipeline_onchip_memory2_0_altera_avalon_onchip_memory2_1939_2kbmgja --dir=/tmp/alt0642_7993260564572303647.dir/0748_onchip_memory2_0_gen/ --quartus_dir=/home/lpt-10xe/altera_pro/25.1.1/quartus --verilog --config=/tmp/alt0642_7993260564572303647.dir/0748_onchip_memory2_0_gen//pipeline_onchip_memory2_0_altera_avalon_onchip_memory2_1939_2kbmgja_component_configuration.pl  --do_build_sim=0  ]</message>
    <message level="Info" culprit="onchip_memory2_0">Done RTL generation for module 'pipeline_onchip_memory2_0_altera_avalon_onchip_memory2_1939_2kbmgja'</message>
   </messages>
  </entity>
@@ -328,18 +328,18 @@
   <parameter name="slave2Latency" value="1" />
   <generatedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_onchip_memory2_0/altera_avalon_onchip_memory2_1939/synth/pipeline_onchip_memory2_0_onchip_memory2_0.hex"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_onchip_memory2_0/altera_avalon_onchip_memory2_1939/synth/pipeline_onchip_memory2_0_onchip_memory2_0.hex"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_onchip_memory2_0/altera_avalon_onchip_memory2_1939/synth/pipeline_onchip_memory2_0_altera_avalon_onchip_memory2_1939_2kbmgja.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_onchip_memory2_0/altera_avalon_onchip_memory2_1939/synth/pipeline_onchip_memory2_0_altera_avalon_onchip_memory2_1939_2kbmgja.v"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_onchip_memory2_0/altera_avalon_onchip_memory2_1939/synth/pipeline_onchip_memory2_0_onchip_memory2_0.hex"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_onchip_memory2_0/altera_avalon_onchip_memory2_1939/synth/pipeline_onchip_memory2_0_onchip_memory2_0.hex"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_onchip_memory2_0/altera_avalon_onchip_memory2_1939/synth/pipeline_onchip_memory2_0_altera_avalon_onchip_memory2_1939_2kbmgja.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_onchip_memory2_0/altera_avalon_onchip_memory2_1939/synth/pipeline_onchip_memory2_0_altera_avalon_onchip_memory2_1939_2kbmgja.v"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
@@ -351,7 +351,7 @@
   <messages>
    <message level="Info" culprit="pipeline_onchip_memory2_0">"Generating: pipeline_onchip_memory2_0_altera_avalon_onchip_memory2_1939_2kbmgja"</message>
    <message level="Info" culprit="onchip_memory2_0">Starting RTL generation for module 'pipeline_onchip_memory2_0_altera_avalon_onchip_memory2_1939_2kbmgja'</message>
-   <message level="Info" culprit="onchip_memory2_0">  Generation command is [exec /home/lpt-10xe/altera_pro/25.1.1/quartus/linux64//perl/bin/perl -I /home/lpt-10xe/altera_pro/25.1.1/quartus/linux64//perl/lib -I /home/lpt-10xe/altera_pro/25.1.1/quartus/sopc_builder/bin/europa -I /home/lpt-10xe/altera_pro/25.1.1/quartus/sopc_builder/bin/perl_lib -I /home/lpt-10xe/altera_pro/25.1.1/quartus/sopc_builder/bin -I /home/lpt-10xe/altera_pro/25.1.1/quartus/../ip/altera/sopc_builder_ip/common -I /home/lpt-10xe/altera_pro/25.1.1/quartus/../ip/altera/platform_designer_ip/altera_avalon_onchip_memory2 -- /home/lpt-10xe/altera_pro/25.1.1/quartus/../ip/altera/platform_designer_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=pipeline_onchip_memory2_0_altera_avalon_onchip_memory2_1939_2kbmgja --dir=/tmp/alt0642_13809966467795999138.dir/1295_onchip_memory2_0_gen/ --quartus_dir=/home/lpt-10xe/altera_pro/25.1.1/quartus --verilog --config=/tmp/alt0642_13809966467795999138.dir/1295_onchip_memory2_0_gen//pipeline_onchip_memory2_0_altera_avalon_onchip_memory2_1939_2kbmgja_component_configuration.pl  --do_build_sim=0  ]</message>
+   <message level="Info" culprit="onchip_memory2_0">  Generation command is [exec /home/lpt-10xe/altera_pro/25.1.1/quartus/linux64//perl/bin/perl -I /home/lpt-10xe/altera_pro/25.1.1/quartus/linux64//perl/lib -I /home/lpt-10xe/altera_pro/25.1.1/quartus/sopc_builder/bin/europa -I /home/lpt-10xe/altera_pro/25.1.1/quartus/sopc_builder/bin/perl_lib -I /home/lpt-10xe/altera_pro/25.1.1/quartus/sopc_builder/bin -I /home/lpt-10xe/altera_pro/25.1.1/quartus/../ip/altera/sopc_builder_ip/common -I /home/lpt-10xe/altera_pro/25.1.1/quartus/../ip/altera/platform_designer_ip/altera_avalon_onchip_memory2 -- /home/lpt-10xe/altera_pro/25.1.1/quartus/../ip/altera/platform_designer_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=pipeline_onchip_memory2_0_altera_avalon_onchip_memory2_1939_2kbmgja --dir=/tmp/alt0642_7993260564572303647.dir/0748_onchip_memory2_0_gen/ --quartus_dir=/home/lpt-10xe/altera_pro/25.1.1/quartus --verilog --config=/tmp/alt0642_7993260564572303647.dir/0748_onchip_memory2_0_gen//pipeline_onchip_memory2_0_altera_avalon_onchip_memory2_1939_2kbmgja_component_configuration.pl  --do_build_sim=0  ]</message>
    <message level="Info" culprit="onchip_memory2_0">Done RTL generation for module 'pipeline_onchip_memory2_0_altera_avalon_onchip_memory2_1939_2kbmgja'</message>
   </messages>
  </entity>

@@ -67,7 +67,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </table>
   <table class="blueBar">
    <tr>
-    <td class="l">2026.07.08.19:36:07</td>
+    <td class="l">2026.07.08.20:17:25</td>
     <td class="r">Datasheet</td>
    </tr>
   </table>
@@ -83,9 +83,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </div><span style="display:inline-block ; width:28px"> </span>
    <div style="display:inline-block ; text-align:left"><span>
      <br/>All Components
-     <br/>&#160;&#160;
-     <a href="#module_intel_onchip_memory_0"><b>intel_onchip_memory_0</b>
-     </a> intel_onchip_memory 1.4.10
      <br/>&#160;&#160;
      <a href="#module_intel_vvp_clipper_0"><b>intel_vvp_clipper_0</b>
      </a> intel_vvp_clipper 24.5.1
@@ -136,7 +133,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slavemodule">&#160;
-     <a href="#module_intel_onchip_memory_0"><b>intel_onchip_memory_0</b>
+     <a href="#module_emif_0"><b>emif_0</b>
      </a>
     </td>
     <td class="empty"></td>
@@ -144,9 +141,15 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
    </tr>
    <tr>
-    <td class="slaveb">s1&#160;</td>
-    <td>0x0000_0000 - 0x0000_0fff</td>
-    <td>0x0000_0000 - 0x0000_0fff</td>
+    <td class="slavem">s0_axi4&#160;</td>
+    <td>0x0000_0000 - 0x7fff_ffff</td>
+    <td>0x0000_0000 - 0x7fff_ffff</td>
+    <td class="empty"></td>
+   </tr>
+   <tr>
+    <td class="slavem">s0_axi4lite&#160;</td>
+    <td class="empty"></td>
+    <td class="empty"></td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -312,10 +315,10 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     </tr>
    </table>
   </div>
-  <a name="module_intel_onchip_memory_0"> </a>
+  <a name="module_emif_0"> </a>
   <div>
    <hr/>
-   <h2>intel_onchip_memory_0</h2>intel_onchip_memory v1.4.10
+   <h2>emif_0</h2>emif_io96b_ddr4comp v4.0.0
    <br/>
    <div class="greydiv">
     <table class="connectionboxes">
@@ -324,40 +327,82 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_intel_vvp_vfb_0">intel_vvp_vfb_0</a>
       </td>
       <td class="from">av_mm_mem_read_host&#160;&#160;</td>
-      <td class="main" rowspan="10">intel_onchip_memory_0</td>
+      <td class="main" rowspan="23">emif_0</td>
      </tr>
      <tr>
-      <td class="to">&#160;&#160;s1</td>
+      <td class="to">&#160;&#160;s0_axi4</td>
      </tr>
      <tr>
       <td class="from">av_mm_mem_write_host&#160;&#160;</td>
      </tr>
      <tr>
-      <td class="to">&#160;&#160;s1</td>
+      <td class="to">&#160;&#160;s0_axi4</td>
      </tr>
      <tr style="height:6px">
       <td></td>
      </tr>
      <tr>
-      <td class="neighbor" rowspan="2">
+      <td class="neighbor" rowspan="4">
        <a href="#module_clock_in">clock_in</a>
       </td>
       <td class="from">out_clk&#160;&#160;</td>
      </tr>
      <tr>
-      <td class="to">&#160;&#160;clk1</td>
+      <td class="to">&#160;&#160;s0_axi4_clock_in</td>
+     </tr>
+     <tr>
+      <td class="from">out_clk&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;s0_axi4lite_clock</td>
      </tr>
      <tr style="height:6px">
       <td></td>
      </tr>
      <tr>
-      <td class="neighbor" rowspan="2">
+      <td class="neighbor" rowspan="8">
+       <a href="#module_mem_0">mem_0</a>
+      </td>
+      <td class="from">mem_0&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;mem_0</td>
+     </tr>
+     <tr>
+      <td class="from">mem_ck_0&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;mem_ck_0</td>
+     </tr>
+     <tr>
+      <td class="from">mem_reset_n&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;mem_reset_n</td>
+     </tr>
+     <tr>
+      <td class="from">oct_0&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;oct_0</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="4">
        <a href="#module_reset_in">reset_in</a>
       </td>
       <td class="from">out_reset&#160;&#160;</td>
      </tr>
      <tr>
-      <td class="to">&#160;&#160;reset1</td>
+      <td class="to">&#160;&#160;core_init_n</td>
+     </tr>
+     <tr>
+      <td class="from">out_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;s0_axi4lite_reset_n</td>
      </tr>
     </table>
    </div>
@@ -379,66 +424,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    <table class="flowbox">
     <tr>
      <td class="parametersbox">
-      <h2>Software Assignments</h2>
-      <table>
-       <tr>
-        <td class="parametername">ALLOW_IN_SYSTEM_MEMORY_CONTENT_EDITOR</td>
-        <td class="parametervalue">0</td>
-       </tr>
-       <tr>
-        <td class="parametername">CONTENTS_INFO</td>
-        <td class="parametervalue">""</td>
-       </tr>
-       <tr>
-        <td class="parametername">DUAL_PORT</td>
-        <td class="parametervalue">0</td>
-       </tr>
-       <tr>
-        <td class="parametername">GUI_RAM_BLOCK_TYPE</td>
-        <td class="parametervalue">AUTO</td>
-       </tr>
-       <tr>
-        <td class="parametername">INIT_CONTENTS_FILE</td>
-        <td class="parametervalue">pipeline_intel_onchip_memory_0_intel_onchip_memory_0</td>
-       </tr>
-       <tr>
-        <td class="parametername">INIT_MEM_CONTENT</td>
-        <td class="parametervalue">1</td>
-       </tr>
-       <tr>
-        <td class="parametername">INSTANCE_ID</td>
-        <td class="parametervalue">NONE</td>
-       </tr>
-       <tr>
-        <td class="parametername">NON_DEFAULT_INIT_FILE_ENABLED</td>
-        <td class="parametervalue">0</td>
-       </tr>
-       <tr>
-        <td class="parametername">RAM_BLOCK_TYPE</td>
-        <td class="parametervalue">AUTO</td>
-       </tr>
-       <tr>
-        <td class="parametername">READ_DURING_WRITE_MODE</td>
-        <td class="parametervalue">DONT_CARE</td>
-       </tr>
-       <tr>
-        <td class="parametername">SINGLE_CLOCK_OP</td>
-        <td class="parametervalue">0</td>
-       </tr>
-       <tr>
-        <td class="parametername">SIZE_MULTIPLE</td>
-        <td class="parametervalue">1</td>
-       </tr>
-       <tr>
-        <td class="parametername">SIZE_VALUE</td>
-        <td class="parametervalue">4096</td>
-       </tr>
-       <tr>
-        <td class="parametername">WRITABLE</td>
-        <td class="parametervalue">1</td>
-       </tr>
-      </table>
-     </td>
+      <h2>Software Assignments</h2>(none)</td>
     </tr>
    </table>
   </div>
@@ -972,13 +958,13 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td class="from">av_mm_mem_read_host&#160;&#160;</td>
       <td class="neighbor" rowspan="4">
-       <a href="#module_intel_onchip_memory_0">intel_onchip_memory_0</a>
+       <a href="#module_emif_0">emif_0</a>
       </td>
      </tr>
      <tr>
       <td></td>
       <td></td>
-      <td class="to">&#160;&#160;s1</td>
+      <td class="to">&#160;&#160;s0_axi4</td>
      </tr>
      <tr>
       <td></td>
@@ -988,7 +974,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <tr>
       <td></td>
       <td></td>
-      <td class="to">&#160;&#160;s1</td>
+      <td class="to">&#160;&#160;s0_axi4</td>
      </tr>
     </table>
    </div>
@@ -1057,6 +1043,33 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      </tr>
     </table>
    </div>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>(none)</td>
+    </tr>
+   </table>
+  </div>
+  <a name="module_mem_0"> </a>
+  <div>
+   <hr/>
+   <h2>mem_0</h2>emif_io96b_mem_model_ddr4 v1.0.0
+   <br/>
    <br/>
    <br/>
    <table class="flowbox">
@@ -1237,10 +1250,36 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_clock_in">clock_in</a>
       </td>
       <td class="from">out_clk&#160;&#160;</td>
-      <td class="main" rowspan="39">reset_in</td>
+      <td class="main" rowspan="41">reset_in</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">out_reset&#160;&#160;</td>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_emif_0">emif_0</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;core_init_n</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">out_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;s0_axi4lite_reset_n</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
      </tr>
      <tr>
       <td></td>
@@ -1424,22 +1463,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td></td>
       <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">out_reset&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_intel_onchip_memory_0">intel_onchip_memory_0</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset1</td>
      </tr>
     </table>
    </div>

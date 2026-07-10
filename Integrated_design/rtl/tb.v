@@ -14,10 +14,14 @@ module tb();
     localparam SCALER_OUT_W   = SCALER_WIDTH;
     localparam SCALER_OUT_H   = SCALER_HEIGHT;
 
-    localparam END_TIME   = (SCALER_HEIGHT * SCALER_WIDTH < TPG_WIDTH * TPG_HEIGHT) ? TPG_WIDTH * TPG_HEIGHT * 1000 : SCALER_HEIGHT * SCALER_WIDTH * 1000;
+    // DDR4 calibration (abbreviated sim model) runs before the first frame
+    // can round-trip through the EMIF, so pad the watchdog with a fixed margin.
+    localparam CAL_MARGIN = 1000000; // 1 ms
+    localparam END_TIME   = ((SCALER_HEIGHT * SCALER_WIDTH < TPG_WIDTH * TPG_HEIGHT) ? TPG_WIDTH * TPG_HEIGHT * 1000 : SCALER_HEIGHT * SCALER_WIDTH * 1000) + CAL_MARGIN;
 
     // --- Clock and Reset ---
     reg clk;
+    reg emif_ref_clk;
     reg reset;
 
     // --- Output Monitor Signals ---
@@ -73,6 +77,7 @@ module tb();
         .INPUT_SEL(INPUT_SEL)
     ) dut (
         .clk(clk),
+        .emif_ref_clk(emif_ref_clk),
         .reset(reset),
         .out_tdata(out_tdata),
         .out_tvalid(out_tvalid),
@@ -90,6 +95,10 @@ module tb();
     // --- Clock Generation ---
     initial clk = 0;
     always #(CLK_PERIOD/2) clk = ~clk;
+
+    // EMIF PHY reference clock: 200 MHz (PHY_REFCLK_FREQ_MHZ)
+    initial emif_ref_clk = 0;
+    always #2.5 emif_ref_clk = ~emif_ref_clk;
 
     // --- Stimulus Process ---
     initial begin

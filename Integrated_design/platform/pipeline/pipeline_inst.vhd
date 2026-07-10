@@ -1,6 +1,7 @@
 	component pipeline is
 		port (
 			clock_in_in_clk_clk                                         : in  std_logic                     := 'X';             -- clk
+			emif_ref_clk_clk                                            : in  std_logic                     := 'X';             -- clk
 			intel_vvp_clipper_0_axi4s_vid_in_tdata                      : in  std_logic_vector(23 downto 0) := (others => 'X'); -- tdata
 			intel_vvp_clipper_0_axi4s_vid_in_tvalid                     : in  std_logic                     := 'X';             -- tvalid
 			intel_vvp_clipper_0_axi4s_vid_in_tready                     : out std_logic;                                        -- tready
@@ -129,6 +130,7 @@
 	u0 : component pipeline
 		port map (
 			clock_in_in_clk_clk                                         => CONNECTED_TO_clock_in_in_clk_clk,                                         --                               clock_in_in_clk.clk
+			emif_ref_clk_clk                                            => CONNECTED_TO_emif_ref_clk_clk,                                            --                                  emif_ref_clk.clk
 			intel_vvp_clipper_0_axi4s_vid_in_tdata                      => CONNECTED_TO_intel_vvp_clipper_0_axi4s_vid_in_tdata,                      --              intel_vvp_clipper_0_axi4s_vid_in.tdata
 			intel_vvp_clipper_0_axi4s_vid_in_tvalid                     => CONNECTED_TO_intel_vvp_clipper_0_axi4s_vid_in_tvalid,                     --                                              .tvalid
 			intel_vvp_clipper_0_axi4s_vid_in_tready                     => CONNECTED_TO_intel_vvp_clipper_0_axi4s_vid_in_tready,                     --                                              .tready

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2026.07.08.19:35:40"
+ date="2026.07.08.20:17:05"
  outputDirectory="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_clock_in/">
  <perimeter>
   <parameter
@@ -24,7 +24,7 @@
   <parameter
      name="AUTO_DEVICE"
      type="String"
-     defaultValue="A5ED065BB32AE6SR0"
+     defaultValue="A5DC051AB32BE1V"
      onHdl="0"
      affectsHdl="1" />
   <parameter
@@ -36,7 +36,7 @@
   <parameter
      name="AUTO_BOARD"
      type="String"
-     defaultValue="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1"
+     defaultValue="default"
      onHdl="0"
      affectsHdl="1" />
   <parameter
@@ -74,15 +74,13 @@
  </perimeter>
  <entity kind="pipeline_clock_in" version="1.0" name="pipeline_clock_in">
   <parameter name="AUTO_GENERATION_ID" value="0" />
-  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
+  <parameter name="AUTO_DEVICE" value="A5DC051AB32BE1V" />
   <parameter name="AUTO_IN_CLK_CLOCK_RATE" value="-1" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
-  <parameter
-     name="AUTO_BOARD"
-     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
+  <parameter name="AUTO_BOARD" value="default" />
   <parameter name="AUTO_IN_CLK_RESET_DOMAIN" value="-1" />
   <parameter name="AUTO_UNIQUE_ID" value="" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="1" />
   <parameter name="AUTO_IN_CLK_CLOCK_DOMAIN" value="-1" />
   <generatedFiles>
    <file

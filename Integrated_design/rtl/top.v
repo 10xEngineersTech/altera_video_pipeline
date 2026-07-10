@@ -69,6 +69,7 @@ module top #(
 )(
     input  wire        clk,
     input  wire        reset,
+    input  wire        emif_ref_clk,   // EMIF PHY reference clock (200 MHz)
 
     // Final pipeline output (Scaler output)
     output wire [23:0] out_tdata,
@@ -742,6 +743,7 @@ module top #(
     pipeline u_pipeline (
         .clock_in_in_clk_clk     (clk),
         .reset_in_in_reset_reset (reset),
+        .emif_ref_clk_clk        (emif_ref_clk),
 
         // ----- TPG AXI4-S output -----
         .intel_vvp_tpg_0_axi4s_vid_out_tdata  (tpg_out_tdata),

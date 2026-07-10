@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2026.07.08.19:35:37"
+ date="2026.07.08.20:17:23"
  outputDirectory="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_crs_0/">
  <perimeter>
   <parameter
@@ -24,7 +24,7 @@
   <parameter
      name="AUTO_DEVICE"
      type="String"
-     defaultValue="A5ED065BB32AE6SR0"
+     defaultValue="A5DC051AB32BE1V"
      onHdl="0"
      affectsHdl="1" />
   <parameter
@@ -36,7 +36,7 @@
   <parameter
      name="AUTO_BOARD"
      type="String"
-     defaultValue="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1"
+     defaultValue="default"
      onHdl="0"
      affectsHdl="1" />
   <parameter
@@ -198,16 +198,14 @@
    name="pipeline_intel_vvp_crs_0">
   <parameter name="AUTO_MAIN_CLOCK_RESET_DOMAIN" value="-1" />
   <parameter name="AUTO_GENERATION_ID" value="0" />
-  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
+  <parameter name="AUTO_DEVICE" value="A5DC051AB32BE1V" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
-  <parameter
-     name="AUTO_BOARD"
-     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
+  <parameter name="AUTO_BOARD" value="default" />
   <parameter name="AUTO_MAIN_CLOCK_CLOCK_DOMAIN" value="-1" />
   <parameter name="AUTO_MAIN_CLOCK_CLOCK_RATE" value="-1" />
   <parameter name="AUTO_UNIQUE_ID" value="" />
   <parameter name="AUTO_AV_MM_CONTROL_AGENT_CPU_INFO_ID" value="" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="1" />
   <generatedFiles>
    <file
        path="/home/lpt-10xe/altera_projects/altera_video_pipeline/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_crs_0/synth/pipeline_intel_vvp_crs_0.v"
@@ -359,9 +357,7 @@
   <parameter name="RUNTIME_CONTROL" value="1" />
   <parameter name="BPS" value="8" />
   <parameter name="MAX_WIDTH" value="16384" />
-  <parameter
-     name="AUTO_BOARD"
-     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
+  <parameter name="AUTO_BOARD" value="default" />
   <parameter name="HORIZ_CO_SITING" value="LEFT" />
   <parameter name="HORIZ_ENABLE_LUMA_ADAPT" value="0" />
   <parameter name="C_OMNI_CAP_IRQ_ENABLE" value="0" />
@@ -388,11 +384,11 @@
   <parameter name="PIPELINE_READY" value="0" />
   <parameter name="C_OMNI_CAP_IRQ" value="255" />
   <parameter name="SUPPORT_444_TO_422" value="0" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="1" />
   <parameter name="SUPPORT_444_TO_420" value="1" />
   <parameter name="C_OMNI_CAP_ID_ASSOCIATED" value="0" />
   <parameter name="NO_BLANKING" value="0" />
-  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
+  <parameter name="AUTO_DEVICE" value="A5DC051AB32BE1V" />
   <parameter name="C_OMNI_CAP_TYPE" value="558" />
   <parameter name="PIXELS_IN_PARALLEL_OUT" value="1" />
   <parameter name="C_OMNI_CAP_TAG" value="0" />
@@ -901,16 +897,14 @@
   <parameter name="USE_PASSTHROUGH" value="1" />
   <parameter name="BPS" value="8" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
-  <parameter
-     name="AUTO_BOARD"
-     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
+  <parameter name="AUTO_BOARD" value="default" />
   <parameter name="ALGORITHM" value="NEAREST_NEIGHBOUR" />
   <parameter name="PIPELINE_READY" value="0" />
   <parameter name="PASSTHROUGH_COLOURS" value="3" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="1" />
   <parameter name="NO_BLANKING" value="0" />
   <parameter name="CO_SITING" value="TOP" />
-  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
+  <parameter name="AUTO_DEVICE" value="A5DC051AB32BE1V" />
   <parameter name="ENABLE_LUMA_ADAPT" value="0" />
   <parameter name="PIXELS_IN_PARALLEL_IN" value="1" />
   <parameter name="PIXELS_IN_PARALLEL_OUT" value="1" />
@@ -976,16 +970,14 @@
   <parameter name="USE_PASSTHROUGH" value="1" />
   <parameter name="BPS" value="8" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
-  <parameter
-     name="AUTO_BOARD"
-     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
+  <parameter name="AUTO_BOARD" value="default" />
   <parameter name="ALGORITHM" value="NEAREST_NEIGHBOUR" />
   <parameter name="PIPELINE_READY" value="0" />
   <parameter name="PIXELS_IN_PARALLEL" value="1" />
   <parameter name="PASSTHROUGH_COLOURS" value="3" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="1" />
   <parameter name="CO_SITING" value="LEFT" />
-  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
+  <parameter name="AUTO_DEVICE" value="A5DC051AB32BE1V" />
   <parameter name="ENABLE_LUMA_ADAPT" value="0" />
   <parameter name="USE_UP_CORE" value="0" />
   <parameter name="USE_DOWN_CORE" value="1" />
@@ -1037,16 +1029,14 @@
   <parameter name="USE_PASSTHROUGH" value="1" />
   <parameter name="BPS" value="8" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
-  <parameter
-     name="AUTO_BOARD"
-     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
+  <parameter name="AUTO_BOARD" value="default" />
   <parameter name="ALGORITHM" value="NEAREST_NEIGHBOUR" />
   <parameter name="PIPELINE_READY" value="0" />
   <parameter name="PIXELS_IN_PARALLEL" value="1" />
   <parameter name="PASSTHROUGH_COLOURS" value="3" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="1" />
   <parameter name="CO_SITING" value="LEFT" />
-  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
+  <parameter name="AUTO_DEVICE" value="A5DC051AB32BE1V" />
   <parameter name="ENABLE_LUMA_ADAPT" value="0" />
   <parameter name="USE_UP_CORE" value="1" />
   <parameter name="USE_DOWN_CORE" value="0" />
@@ -1098,17 +1088,15 @@
   <parameter name="AV_MAX_PENDING_READS" value="2" />
   <parameter name="ENABLE_DATA" value="0" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
-  <parameter
-     name="AUTO_BOARD"
-     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
+  <parameter name="AUTO_BOARD" value="default" />
   <parameter name="P_VID_PID" value="1794572846" />
   <parameter name="SEPARATE_SLAVE_CLOCK" value="0" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="1" />
   <parameter name="NUM_DATA_REG" value="0" />
   <parameter name="P_PARAM_LIST" value="0,0,1,0,1,1,1,1,1,1,1" />
   <parameter name="CC_USE_ALM_FIFO" value="0" />
   <parameter name="P_NUM_ADDR_REGS" value="3" />
-  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
+  <parameter name="AUTO_DEVICE" value="A5DC051AB32BE1V" />
   <parameter name="CC_FIFO_DEPTH" value="8" />
   <parameter name="P_VERSION_NUMBER" value="402981121" />
   <parameter name="CC_USE_FIFO" value="1" />
@@ -1160,11 +1148,9 @@
    kind="altera_mm_interconnect"
    version="19.2.0"
    name="pipeline_intel_vvp_crs_0_altera_mm_interconnect_1920_7yc6fii">
-  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
+  <parameter name="AUTO_DEVICE" value="A5DC051AB32BE1V" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
-  <parameter
-     name="AUTO_BOARD"
-     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
+  <parameter name="AUTO_BOARD" value="default" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="" />
   <parameter
      name="COMPOSE_CONTENTS"
@@ -2463,11 +2449,9 @@
    kind="altera_mm_interconnect"
    version="19.2.0"
    name="pipeline_intel_vvp_crs_0_altera_mm_interconnect_1920_epi4vay">
-  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
+  <parameter name="AUTO_DEVICE" value="A5DC051AB32BE1V" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
-  <parameter
-     name="AUTO_BOARD"
-     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
+  <parameter name="AUTO_BOARD" value="default" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="" />
   <parameter
      name="COMPOSE_CONTENTS"

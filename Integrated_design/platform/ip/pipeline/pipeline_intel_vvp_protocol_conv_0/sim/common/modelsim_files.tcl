@@ -16,23 +16,23 @@ namespace eval pipeline_intel_vvp_protocol_conv_0 {
     return $memory_files
   }
   
-  proc get_common_design_files {USER_DEFINED_COMPILE_OPTIONS USER_DEFINED_VERILOG_COMPILE_OPTIONS USER_DEFINED_VHDL_COMPILE_OPTIONS QSYS_SIMDIR} {
+  proc get_common_design_files {QSYS_SIMDIR} {
     set design_files [dict create]
-    dict set design_files "altera_common_sv_packages::mentor_intel_vvp_common_pkg" "vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS  \"[normalize_path "$QSYS_SIMDIR/../intel_vvp_int_to_ext_bridge_2460/sim/mentor/intel_vvp_common_pkg.sv"]\"  -work altera_common_sv_packages"
+    dict set design_files "altera_common_sv_packages::mentor_intel_vvp_common_pkg" "-makelib altera_common_sv_packages \"[normalize_path "$QSYS_SIMDIR/../intel_vvp_int_to_ext_bridge_2460/sim/mentor/intel_vvp_common_pkg.sv"]\"   -end"
     return $design_files
   }
   
-  proc get_design_files {USER_DEFINED_COMPILE_OPTIONS USER_DEFINED_VERILOG_COMPILE_OPTIONS USER_DEFINED_VHDL_COMPILE_OPTIONS QSYS_SIMDIR QUARTUS_INSTALL_DIR} {
+  proc get_design_files {QSYS_SIMDIR QUARTUS_INSTALL_DIR} {
     set design_files [list]
-    lappend design_files "vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS  \"[normalize_path "$QSYS_SIMDIR/../intel_vvp_reset_sync_2440/sim/mentor/src_hdl/intel_vvp_reset_sync.sv"]\" -L altera_common_sv_packages -work intel_vvp_reset_sync_2440"                                       
-    lappend design_files "vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS  \"[normalize_path "$QSYS_SIMDIR/../intel_vvp_int_to_ext_bridge_2460/sim/mentor/intel_vvp_axi_pipeline_stage.sv"]\" -L altera_common_sv_packages -work intel_vvp_int_to_ext_bridge_2460"                         
-    lappend design_files "vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS  \"[normalize_path "$QSYS_SIMDIR/../intel_vvp_int_to_ext_bridge_2460/sim/mentor/intel_vvp_axi_master.sv"]\" -L altera_common_sv_packages -work intel_vvp_int_to_ext_bridge_2460"                                 
-    lappend design_files "vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS  \"[normalize_path "$QSYS_SIMDIR/../intel_vvp_int_to_ext_bridge_2460/sim/mentor/src_hdl/intel_vvp_int_to_ext_bridge.sv"]\" -L altera_common_sv_packages -work intel_vvp_int_to_ext_bridge_2460"                  
-    lappend design_files "vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS  \"[normalize_path "$QSYS_SIMDIR/../intel_vvp_output_interface_bridge_2440/sim/mentor/intel_vvp_axi_pipeline_stage.sv"]\" -L altera_common_sv_packages -work intel_vvp_output_interface_bridge_2440"             
-    lappend design_files "vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS  \"[normalize_path "$QSYS_SIMDIR/../intel_vvp_output_interface_bridge_2440/sim/mentor/intel_vvp_axi_master.sv"]\" -L altera_common_sv_packages -work intel_vvp_output_interface_bridge_2440"                     
-    lappend design_files "vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS  \"[normalize_path "$QSYS_SIMDIR/../intel_vvp_output_interface_bridge_2440/sim/mentor/src_hdl/intel_vvp_output_interface_bridge.sv"]\" -L altera_common_sv_packages -work intel_vvp_output_interface_bridge_2440"
-    lappend design_files "vlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS  \"[normalize_path "$QSYS_SIMDIR/../intel_vvp_protocol_conv_2460/sim/pipeline_intel_vvp_protocol_conv_0_intel_vvp_protocol_conv_2460_ydxwruq.v"]\"  -work intel_vvp_protocol_conv_2460"                              
-    lappend design_files "vlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS  \"[normalize_path "$QSYS_SIMDIR/pipeline_intel_vvp_protocol_conv_0.v"]\"  -work pipeline_intel_vvp_protocol_conv_0"                                                                                                 
+    lappend design_files "-makelib intel_vvp_reset_sync_2440 \"[normalize_path "$QSYS_SIMDIR/../intel_vvp_reset_sync_2440/sim/mentor/src_hdl/intel_vvp_reset_sync.sv"]\"   -L altera_common_sv_packages -end"                                       
+    lappend design_files "-makelib intel_vvp_int_to_ext_bridge_2460 \"[normalize_path "$QSYS_SIMDIR/../intel_vvp_int_to_ext_bridge_2460/sim/mentor/intel_vvp_axi_pipeline_stage.sv"]\"   -L altera_common_sv_packages -end"                         
+    lappend design_files "-makelib intel_vvp_int_to_ext_bridge_2460 \"[normalize_path "$QSYS_SIMDIR/../intel_vvp_int_to_ext_bridge_2460/sim/mentor/intel_vvp_axi_master.sv"]\"   -L altera_common_sv_packages -end"                                 
+    lappend design_files "-makelib intel_vvp_int_to_ext_bridge_2460 \"[normalize_path "$QSYS_SIMDIR/../intel_vvp_int_to_ext_bridge_2460/sim/mentor/src_hdl/intel_vvp_int_to_ext_bridge.sv"]\"   -L altera_common_sv_packages -end"                  
+    lappend design_files "-makelib intel_vvp_output_interface_bridge_2440 \"[normalize_path "$QSYS_SIMDIR/../intel_vvp_output_interface_bridge_2440/sim/mentor/intel_vvp_axi_pipeline_stage.sv"]\"   -L altera_common_sv_packages -end"             
+    lappend design_files "-makelib intel_vvp_output_interface_bridge_2440 \"[normalize_path "$QSYS_SIMDIR/../intel_vvp_output_interface_bridge_2440/sim/mentor/intel_vvp_axi_master.sv"]\"   -L altera_common_sv_packages -end"                     
+    lappend design_files "-makelib intel_vvp_output_interface_bridge_2440 \"[normalize_path "$QSYS_SIMDIR/../intel_vvp_output_interface_bridge_2440/sim/mentor/src_hdl/intel_vvp_output_interface_bridge.sv"]\"   -L altera_common_sv_packages -end"
+    lappend design_files "-makelib intel_vvp_protocol_conv_2460 \"[normalize_path "$QSYS_SIMDIR/../intel_vvp_protocol_conv_2460/sim/pipeline_intel_vvp_protocol_conv_0_intel_vvp_protocol_conv_2460_ydxwruq.v"]\"   -end"                           
+    lappend design_files "-makelib pipeline_intel_vvp_protocol_conv_0 \"[normalize_path "$QSYS_SIMDIR/pipeline_intel_vvp_protocol_conv_0.v"]\"   -end"                                                                                              
     return $design_files
   }
   

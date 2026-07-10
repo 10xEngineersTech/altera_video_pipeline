@@ -12,17 +12,17 @@ namespace eval pipeline_mm_bridge_0 {
     return $memory_files
   }
   
-  proc get_common_design_files {USER_DEFINED_COMPILE_OPTIONS USER_DEFINED_VERILOG_COMPILE_OPTIONS USER_DEFINED_VHDL_COMPILE_OPTIONS QSYS_SIMDIR} {
+  proc get_common_design_files {QSYS_SIMDIR} {
     set design_files [dict create]
     return $design_files
   }
   
-  proc get_design_files {USER_DEFINED_COMPILE_OPTIONS USER_DEFINED_VERILOG_COMPILE_OPTIONS USER_DEFINED_VHDL_COMPILE_OPTIONS QSYS_SIMDIR QUARTUS_INSTALL_DIR} {
+  proc get_design_files {QSYS_SIMDIR QUARTUS_INSTALL_DIR} {
     set design_files [list]
-    lappend design_files "vlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS  \"[normalize_path "$QSYS_SIMDIR/../altera_avalon_mm_bridge_2010/sim/pipeline_mm_bridge_0_altera_avalon_mm_bridge_2010_tex5a4i.v"]\"  -work altera_avalon_mm_bridge_2010"
-    lappend design_files "vlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS  \"[normalize_path "$QSYS_SIMDIR/../altera_avalon_mm_bridge_2010/sim/altera_merlin_waitrequest_adapter.v"]\"  -work altera_avalon_mm_bridge_2010"                        
-    lappend design_files "vlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS  \"[normalize_path "$QSYS_SIMDIR/../altera_avalon_mm_bridge_2010/sim/altera_avalon_sc_fifo.v"]\"  -work altera_avalon_mm_bridge_2010"                                    
-    lappend design_files "vlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS  \"[normalize_path "$QSYS_SIMDIR/pipeline_mm_bridge_0.v"]\"  -work pipeline_mm_bridge_0"                                                                                 
+    lappend design_files "-makelib altera_avalon_mm_bridge_2010 \"[normalize_path "$QSYS_SIMDIR/../altera_avalon_mm_bridge_2010/sim/pipeline_mm_bridge_0_altera_avalon_mm_bridge_2010_tex5a4i.v"]\"   -end"
+    lappend design_files "-makelib altera_avalon_mm_bridge_2010 \"[normalize_path "$QSYS_SIMDIR/../altera_avalon_mm_bridge_2010/sim/altera_merlin_waitrequest_adapter.v"]\"   -end"                        
+    lappend design_files "-makelib altera_avalon_mm_bridge_2010 \"[normalize_path "$QSYS_SIMDIR/../altera_avalon_mm_bridge_2010/sim/altera_avalon_sc_fifo.v"]\"   -end"                                    
+    lappend design_files "-makelib pipeline_mm_bridge_0 \"[normalize_path "$QSYS_SIMDIR/pipeline_mm_bridge_0.v"]\"   -end"                                                                                 
     return $design_files
   }
   

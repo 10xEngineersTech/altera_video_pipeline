@@ -5,6 +5,7 @@
 `timescale 1 ps / 1 ps
 module pipeline (
 		input  wire        clock_in_in_clk_clk,                                         //                               clock_in_in_clk.clk
+		input  wire        emif_ref_clk_clk,                                            //                                  emif_ref_clk.clk
 		input  wire [23:0] intel_vvp_clipper_0_axi4s_vid_in_tdata,                      //              intel_vvp_clipper_0_axi4s_vid_in.tdata
 		input  wire        intel_vvp_clipper_0_axi4s_vid_in_tvalid,                     //                                              .tvalid
 		output wire        intel_vvp_clipper_0_axi4s_vid_in_tready,                     //                                              .tready
@@ -129,7 +130,24 @@ module pipeline (
 		input  wire        reset_in_in_reset_reset                                      //                             reset_in_in_reset.reset
 	);
 
-	wire          clock_in_out_clk_clk;                                                       // clock_in:out_clk -> [intel_onchip_memory_0:clk, intel_vvp_clipper_0:main_clock_clk, intel_vvp_crs_0:main_clock_clk, intel_vvp_csc_0:main_clock_clk, intel_vvp_dil_0:main_clock_clk, intel_vvp_protocol_conv_0:main_clock_clk, intel_vvp_protocol_conv_1:main_clock_clk, intel_vvp_scaler_0:main_clock_clk, intel_vvp_tpg_0:main_clock_clk, intel_vvp_vfb_0:main_clock_clk, intel_vvp_vfb_0:mem_clock_clk, lite_to_full_converter:main_clock_clk, mm_bridge_0:clk, mm_interconnect_0:clock_in_out_clk_clk, mm_interconnect_1:clock_in_out_clk_clk, reset_in:clk, rst_controller:clk, rst_controller_001:clk]
+	wire          clock_in_out_clk_clk;                                                       // clock_in:out_clk -> [emif_0:s0_axi4_clock_in, emif_0:s0_axi4lite_clock, intel_vvp_clipper_0:main_clock_clk, intel_vvp_crs_0:main_clock_clk, intel_vvp_csc_0:main_clock_clk, intel_vvp_dil_0:main_clock_clk, intel_vvp_protocol_conv_0:main_clock_clk, intel_vvp_protocol_conv_1:main_clock_clk, intel_vvp_scaler_0:main_clock_clk, intel_vvp_tpg_0:main_clock_clk, intel_vvp_vfb_0:main_clock_clk, intel_vvp_vfb_0:mem_clock_clk, lite_to_full_converter:main_clock_clk, mm_bridge_0:clk, mm_interconnect_0:clock_in_out_clk_clk, mm_interconnect_1:clock_in_out_clk_clk, reset_in:clk, rst_controller:clk, rst_controller_001:clk]
+	wire    [3:0] emif_0_mem_0_mem_dqs_t;                                                     // [] -> [emif_0:mem_0_dqs_t, mem_0:mem_dqs_t_0]
+	wire    [3:0] emif_0_mem_0_mem_dqs_c;                                                     // [] -> [emif_0:mem_0_dqs_c, mem_0:mem_dqs_c_0]
+	wire          emif_0_mem_0_mem_act_n;                                                     // emif_0:mem_0_act_n -> mem_0:mem_act_n_0
+	wire   [31:0] emif_0_mem_0_mem_dq;                                                        // [] -> [emif_0:mem_0_dq, mem_0:mem_dq_0]
+	wire    [0:0] emif_0_mem_0_mem_cs_n;                                                      // emif_0:mem_0_cs_n -> mem_0:mem_cs_n_0
+	wire    [0:0] emif_0_mem_0_mem_odt;                                                       // emif_0:mem_0_odt -> mem_0:mem_odt_0
+	wire   [16:0] emif_0_mem_0_mem_a;                                                         // emif_0:mem_0_a -> mem_0:mem_a_0
+	wire          mem_0_mem_0_mem_alert_n;                                                    // mem_0:mem_alert_n_0 -> emif_0:mem_0_alert_n
+	wire          emif_0_mem_0_mem_par;                                                       // emif_0:mem_0_par -> mem_0:mem_par_0
+	wire    [1:0] emif_0_mem_0_mem_ba;                                                        // emif_0:mem_0_ba -> mem_0:mem_ba_0
+	wire    [0:0] emif_0_mem_0_mem_bg;                                                        // emif_0:mem_0_bg -> mem_0:mem_bg_0
+	wire    [0:0] emif_0_mem_0_mem_cke;                                                       // emif_0:mem_0_cke -> mem_0:mem_cke_0
+	wire    [0:0] emif_0_mem_ck_0_mem_ck_t;                                                   // emif_0:mem_0_ck_t -> mem_0:mem_ck_t_0
+	wire    [0:0] emif_0_mem_ck_0_mem_ck_c;                                                   // emif_0:mem_0_ck_c -> mem_0:mem_ck_c_0
+	wire          emif_0_mem_reset_n_mem_reset_n;                                             // emif_0:mem_0_reset_n -> mem_0:mem_reset_n_0
+	wire          mem_0_oct_0_oct_rzqin;                                                      // mem_0:oct_rzqin_0 -> emif_0:oct_rzqin_0
+	wire          reset_in_out_reset_reset;                                                   // reset_in:out_reset -> [emif_0:core_init_n, emif_0:s0_axi4lite_reset_n, mm_bridge_0:reset, mm_interconnect_1:mm_bridge_0_reset_reset_bridge_in_reset_reset, rst_controller:reset_in0]
 	wire          intel_vvp_vfb_0_av_mm_mem_read_host_waitrequest;                            // mm_interconnect_0:intel_vvp_vfb_0_av_mm_mem_read_host_waitrequest -> intel_vvp_vfb_0:av_mm_mem_read_host_waitrequest
 	wire  [255:0] intel_vvp_vfb_0_av_mm_mem_read_host_readdata;                               // mm_interconnect_0:intel_vvp_vfb_0_av_mm_mem_read_host_readdata -> intel_vvp_vfb_0:av_mm_mem_read_host_readdata
 	wire   [31:0] intel_vvp_vfb_0_av_mm_mem_read_host_address;                                // intel_vvp_vfb_0:av_mm_mem_read_host_address -> mm_interconnect_0:intel_vvp_vfb_0_av_mm_mem_read_host_address
@@ -141,12 +159,43 @@ module pipeline (
 	wire          intel_vvp_vfb_0_av_mm_mem_write_host_write;                                 // intel_vvp_vfb_0:av_mm_mem_write_host_write -> mm_interconnect_0:intel_vvp_vfb_0_av_mm_mem_write_host_write
 	wire  [255:0] intel_vvp_vfb_0_av_mm_mem_write_host_writedata;                             // intel_vvp_vfb_0:av_mm_mem_write_host_writedata -> mm_interconnect_0:intel_vvp_vfb_0_av_mm_mem_write_host_writedata
 	wire    [3:0] intel_vvp_vfb_0_av_mm_mem_write_host_burstcount;                            // intel_vvp_vfb_0:av_mm_mem_write_host_burstcount -> mm_interconnect_0:intel_vvp_vfb_0_av_mm_mem_write_host_burstcount
-	wire   [31:0] mm_interconnect_0_intel_onchip_memory_0_s1_readdata;                        // intel_onchip_memory_0:readdata -> mm_interconnect_0:intel_onchip_memory_0_s1_readdata
-	wire    [9:0] mm_interconnect_0_intel_onchip_memory_0_s1_address;                         // mm_interconnect_0:intel_onchip_memory_0_s1_address -> intel_onchip_memory_0:address
-	wire          mm_interconnect_0_intel_onchip_memory_0_s1_read;                            // mm_interconnect_0:intel_onchip_memory_0_s1_read -> intel_onchip_memory_0:read
-	wire    [3:0] mm_interconnect_0_intel_onchip_memory_0_s1_byteenable;                      // mm_interconnect_0:intel_onchip_memory_0_s1_byteenable -> intel_onchip_memory_0:byteenable
-	wire          mm_interconnect_0_intel_onchip_memory_0_s1_write;                           // mm_interconnect_0:intel_onchip_memory_0_s1_write -> intel_onchip_memory_0:write
-	wire   [31:0] mm_interconnect_0_intel_onchip_memory_0_s1_writedata;                       // mm_interconnect_0:intel_onchip_memory_0_s1_writedata -> intel_onchip_memory_0:writedata
+	wire    [1:0] mm_interconnect_0_emif_0_s0_axi4_awburst;                                   // mm_interconnect_0:emif_0_s0_axi4_awburst -> emif_0:s0_axi4_awburst
+	wire   [13:0] mm_interconnect_0_emif_0_s0_axi4_awuser;                                    // mm_interconnect_0:emif_0_s0_axi4_awuser -> emif_0:s0_axi4_awuser
+	wire    [7:0] mm_interconnect_0_emif_0_s0_axi4_arlen;                                     // mm_interconnect_0:emif_0_s0_axi4_arlen -> emif_0:s0_axi4_arlen
+	wire    [3:0] mm_interconnect_0_emif_0_s0_axi4_arqos;                                     // mm_interconnect_0:emif_0_s0_axi4_arqos -> emif_0:s0_axi4_arqos
+	wire   [31:0] mm_interconnect_0_emif_0_s0_axi4_wstrb;                                     // mm_interconnect_0:emif_0_s0_axi4_wstrb -> emif_0:s0_axi4_wstrb
+	wire          mm_interconnect_0_emif_0_s0_axi4_wready;                                    // emif_0:s0_axi4_wready -> mm_interconnect_0:emif_0_s0_axi4_wready
+	wire    [6:0] mm_interconnect_0_emif_0_s0_axi4_rid;                                       // emif_0:s0_axi4_rid -> mm_interconnect_0:emif_0_s0_axi4_rid
+	wire          mm_interconnect_0_emif_0_s0_axi4_rready;                                    // mm_interconnect_0:emif_0_s0_axi4_rready -> emif_0:s0_axi4_rready
+	wire    [7:0] mm_interconnect_0_emif_0_s0_axi4_awlen;                                     // mm_interconnect_0:emif_0_s0_axi4_awlen -> emif_0:s0_axi4_awlen
+	wire    [3:0] mm_interconnect_0_emif_0_s0_axi4_awqos;                                     // mm_interconnect_0:emif_0_s0_axi4_awqos -> emif_0:s0_axi4_awqos
+	wire          mm_interconnect_0_emif_0_s0_axi4_wvalid;                                    // mm_interconnect_0:emif_0_s0_axi4_wvalid -> emif_0:s0_axi4_wvalid
+	wire   [30:0] mm_interconnect_0_emif_0_s0_axi4_araddr;                                    // mm_interconnect_0:emif_0_s0_axi4_araddr -> emif_0:s0_axi4_araddr
+	wire    [2:0] mm_interconnect_0_emif_0_s0_axi4_arprot;                                    // mm_interconnect_0:emif_0_s0_axi4_arprot -> emif_0:s0_axi4_arprot
+	wire    [2:0] mm_interconnect_0_emif_0_s0_axi4_awprot;                                    // mm_interconnect_0:emif_0_s0_axi4_awprot -> emif_0:s0_axi4_awprot
+	wire  [255:0] mm_interconnect_0_emif_0_s0_axi4_wdata;                                     // mm_interconnect_0:emif_0_s0_axi4_wdata -> emif_0:s0_axi4_wdata
+	wire          mm_interconnect_0_emif_0_s0_axi4_arvalid;                                   // mm_interconnect_0:emif_0_s0_axi4_arvalid -> emif_0:s0_axi4_arvalid
+	wire    [6:0] mm_interconnect_0_emif_0_s0_axi4_arid;                                      // mm_interconnect_0:emif_0_s0_axi4_arid -> emif_0:s0_axi4_arid
+	wire    [0:0] mm_interconnect_0_emif_0_s0_axi4_arlock;                                    // mm_interconnect_0:emif_0_s0_axi4_arlock -> emif_0:s0_axi4_arlock
+	wire    [0:0] mm_interconnect_0_emif_0_s0_axi4_awlock;                                    // mm_interconnect_0:emif_0_s0_axi4_awlock -> emif_0:s0_axi4_awlock
+	wire   [30:0] mm_interconnect_0_emif_0_s0_axi4_awaddr;                                    // mm_interconnect_0:emif_0_s0_axi4_awaddr -> emif_0:s0_axi4_awaddr
+	wire    [1:0] mm_interconnect_0_emif_0_s0_axi4_bresp;                                     // emif_0:s0_axi4_bresp -> mm_interconnect_0:emif_0_s0_axi4_bresp
+	wire          mm_interconnect_0_emif_0_s0_axi4_arready;                                   // emif_0:s0_axi4_arready -> mm_interconnect_0:emif_0_s0_axi4_arready
+	wire  [255:0] mm_interconnect_0_emif_0_s0_axi4_rdata;                                     // emif_0:s0_axi4_rdata -> mm_interconnect_0:emif_0_s0_axi4_rdata
+	wire          mm_interconnect_0_emif_0_s0_axi4_awready;                                   // emif_0:s0_axi4_awready -> mm_interconnect_0:emif_0_s0_axi4_awready
+	wire    [1:0] mm_interconnect_0_emif_0_s0_axi4_arburst;                                   // mm_interconnect_0:emif_0_s0_axi4_arburst -> emif_0:s0_axi4_arburst
+	wire    [2:0] mm_interconnect_0_emif_0_s0_axi4_arsize;                                    // mm_interconnect_0:emif_0_s0_axi4_arsize -> emif_0:s0_axi4_arsize
+	wire          mm_interconnect_0_emif_0_s0_axi4_bready;                                    // mm_interconnect_0:emif_0_s0_axi4_bready -> emif_0:s0_axi4_bready
+	wire          mm_interconnect_0_emif_0_s0_axi4_rlast;                                     // emif_0:s0_axi4_rlast -> mm_interconnect_0:emif_0_s0_axi4_rlast
+	wire          mm_interconnect_0_emif_0_s0_axi4_wlast;                                     // mm_interconnect_0:emif_0_s0_axi4_wlast -> emif_0:s0_axi4_wlast
+	wire    [1:0] mm_interconnect_0_emif_0_s0_axi4_rresp;                                     // emif_0:s0_axi4_rresp -> mm_interconnect_0:emif_0_s0_axi4_rresp
+	wire    [6:0] mm_interconnect_0_emif_0_s0_axi4_awid;                                      // mm_interconnect_0:emif_0_s0_axi4_awid -> emif_0:s0_axi4_awid
+	wire    [6:0] mm_interconnect_0_emif_0_s0_axi4_bid;                                       // emif_0:s0_axi4_bid -> mm_interconnect_0:emif_0_s0_axi4_bid
+	wire          mm_interconnect_0_emif_0_s0_axi4_bvalid;                                    // emif_0:s0_axi4_bvalid -> mm_interconnect_0:emif_0_s0_axi4_bvalid
+	wire    [2:0] mm_interconnect_0_emif_0_s0_axi4_awsize;                                    // mm_interconnect_0:emif_0_s0_axi4_awsize -> emif_0:s0_axi4_awsize
+	wire          mm_interconnect_0_emif_0_s0_axi4_awvalid;                                   // mm_interconnect_0:emif_0_s0_axi4_awvalid -> emif_0:s0_axi4_awvalid
+	wire   [13:0] mm_interconnect_0_emif_0_s0_axi4_aruser;                                    // mm_interconnect_0:emif_0_s0_axi4_aruser -> emif_0:s0_axi4_aruser
+	wire          mm_interconnect_0_emif_0_s0_axi4_rvalid;                                    // emif_0:s0_axi4_rvalid -> mm_interconnect_0:emif_0_s0_axi4_rvalid
 	wire          mm_bridge_0_m0_waitrequest;                                                 // mm_interconnect_1:mm_bridge_0_m0_waitrequest -> mm_bridge_0:m0_waitrequest
 	wire   [31:0] mm_bridge_0_m0_readdata;                                                    // mm_interconnect_1:mm_bridge_0_m0_readdata -> mm_bridge_0:m0_readdata
 	wire          mm_bridge_0_m0_debugaccess;                                                 // mm_bridge_0:m0_debugaccess -> mm_interconnect_1:mm_bridge_0_m0_debugaccess
@@ -205,31 +254,99 @@ module pipeline (
 	wire          mm_interconnect_1_intel_vvp_vfb_0_av_mm_control_agent_readdatavalid;        // intel_vvp_vfb_0:av_mm_control_agent_readdatavalid -> mm_interconnect_1:intel_vvp_vfb_0_av_mm_control_agent_readdatavalid
 	wire          mm_interconnect_1_intel_vvp_vfb_0_av_mm_control_agent_write;                // mm_interconnect_1:intel_vvp_vfb_0_av_mm_control_agent_write -> intel_vvp_vfb_0:av_mm_control_agent_write
 	wire   [31:0] mm_interconnect_1_intel_vvp_vfb_0_av_mm_control_agent_writedata;            // mm_interconnect_1:intel_vvp_vfb_0_av_mm_control_agent_writedata -> intel_vvp_vfb_0:av_mm_control_agent_writedata
-	wire          rst_controller_reset_out_reset;                                             // rst_controller:reset_out -> [intel_onchip_memory_0:reset, mm_bridge_0:reset, mm_interconnect_1:mm_bridge_0_reset_reset_bridge_in_reset_reset]
-	wire          rst_controller_reset_out_reset_req;                                         // rst_controller:reset_req -> [intel_onchip_memory_0:reset_req, rst_translator:reset_req_in]
-	wire          reset_in_out_reset_reset;                                                   // reset_in:out_reset -> [rst_controller:reset_in0, rst_controller_001:reset_in0]
-	wire          rst_controller_001_reset_out_reset;                                         // rst_controller_001:reset_out -> [intel_vvp_clipper_0:main_reset_reset, intel_vvp_crs_0:main_reset_reset, intel_vvp_csc_0:main_reset_reset, intel_vvp_dil_0:main_reset_reset, intel_vvp_protocol_conv_0:main_reset_reset, intel_vvp_protocol_conv_1:main_reset_reset, intel_vvp_scaler_0:main_reset_reset, intel_vvp_tpg_0:main_reset_reset, intel_vvp_vfb_0:main_reset_reset, intel_vvp_vfb_0:mem_reset_reset, lite_to_full_converter:main_reset_reset, mm_interconnect_0:intel_onchip_memory_0_reset1_reset_bridge_in_reset_reset, mm_interconnect_0:intel_vvp_vfb_0_mem_reset_reset_bridge_in_reset_reset]
+	wire          rst_controller_reset_out_reset;                                             // rst_controller:reset_out -> [intel_vvp_clipper_0:main_reset_reset, intel_vvp_crs_0:main_reset_reset, intel_vvp_csc_0:main_reset_reset, intel_vvp_dil_0:main_reset_reset, intel_vvp_protocol_conv_0:main_reset_reset, intel_vvp_protocol_conv_1:main_reset_reset, intel_vvp_scaler_0:main_reset_reset, intel_vvp_tpg_0:main_reset_reset, intel_vvp_vfb_0:main_reset_reset, intel_vvp_vfb_0:mem_reset_reset, lite_to_full_converter:main_reset_reset, mm_interconnect_0:intel_vvp_vfb_0_mem_reset_reset_bridge_in_reset_reset]
+	wire          rst_controller_001_reset_out_reset;                                         // rst_controller_001:reset_out -> mm_interconnect_0:emif_0_s0_axi4_translator_clk_reset_reset_bridge_in_reset_reset
+	wire          emif_0_s0_axi4_ctrl_ready_reset;                                            // emif_0:s0_axi4_reset_n -> rst_controller_001:reset_in0
 
 	pipeline_clock_in clock_in (
 		.in_clk  (clock_in_in_clk_clk),  //   input,  width = 1,  in_clk.clk
 		.out_clk (clock_in_out_clk_clk)  //  output,  width = 1, out_clk.clk
 	);
 
-	pipeline_intel_onchip_memory_0 intel_onchip_memory_0 (
-		.clk        (clock_in_out_clk_clk),                                  //   input,   width = 1,   clk1.clk
-		.address    (mm_interconnect_0_intel_onchip_memory_0_s1_address),    //   input,  width = 10,     s1.address
-		.read       (mm_interconnect_0_intel_onchip_memory_0_s1_read),       //   input,   width = 1,       .read
-		.readdata   (mm_interconnect_0_intel_onchip_memory_0_s1_readdata),   //  output,  width = 32,       .readdata
-		.byteenable (mm_interconnect_0_intel_onchip_memory_0_s1_byteenable), //   input,   width = 4,       .byteenable
-		.write      (mm_interconnect_0_intel_onchip_memory_0_s1_write),      //   input,   width = 1,       .write
-		.writedata  (mm_interconnect_0_intel_onchip_memory_0_s1_writedata),  //   input,  width = 32,       .writedata
-		.reset      (rst_controller_reset_out_reset),                        //   input,   width = 1, reset1.reset
-		.reset_req  (rst_controller_reset_out_reset_req)                     //   input,   width = 1,       .reset_req
+	pipeline_emif_0 emif_0 (
+		.s0_axi4_clock_in    (clock_in_out_clk_clk),                     //   input,    width = 1,    s0_axi4_clock_in.clk
+		.s0_axi4_reset_n     (emif_0_s0_axi4_ctrl_ready_reset),          //  output,    width = 1,  s0_axi4_ctrl_ready.reset_n
+		.core_init_n         (~reset_in_out_reset_reset),                //   input,    width = 1,         core_init_n.reset_n
+		.s0_axi4_awaddr      (mm_interconnect_0_emif_0_s0_axi4_awaddr),  //   input,   width = 31,             s0_axi4.awaddr
+		.s0_axi4_awburst     (mm_interconnect_0_emif_0_s0_axi4_awburst), //   input,    width = 2,                    .awburst
+		.s0_axi4_awid        (mm_interconnect_0_emif_0_s0_axi4_awid),    //   input,    width = 7,                    .awid
+		.s0_axi4_awlen       (mm_interconnect_0_emif_0_s0_axi4_awlen),   //   input,    width = 8,                    .awlen
+		.s0_axi4_awlock      (mm_interconnect_0_emif_0_s0_axi4_awlock),  //   input,    width = 1,                    .awlock
+		.s0_axi4_awqos       (mm_interconnect_0_emif_0_s0_axi4_awqos),   //   input,    width = 4,                    .awqos
+		.s0_axi4_awsize      (mm_interconnect_0_emif_0_s0_axi4_awsize),  //   input,    width = 3,                    .awsize
+		.s0_axi4_awvalid     (mm_interconnect_0_emif_0_s0_axi4_awvalid), //   input,    width = 1,                    .awvalid
+		.s0_axi4_awuser      (mm_interconnect_0_emif_0_s0_axi4_awuser),  //   input,   width = 14,                    .awuser
+		.s0_axi4_awprot      (mm_interconnect_0_emif_0_s0_axi4_awprot),  //   input,    width = 3,                    .awprot
+		.s0_axi4_awready     (mm_interconnect_0_emif_0_s0_axi4_awready), //  output,    width = 1,                    .awready
+		.s0_axi4_araddr      (mm_interconnect_0_emif_0_s0_axi4_araddr),  //   input,   width = 31,                    .araddr
+		.s0_axi4_arburst     (mm_interconnect_0_emif_0_s0_axi4_arburst), //   input,    width = 2,                    .arburst
+		.s0_axi4_arid        (mm_interconnect_0_emif_0_s0_axi4_arid),    //   input,    width = 7,                    .arid
+		.s0_axi4_arlen       (mm_interconnect_0_emif_0_s0_axi4_arlen),   //   input,    width = 8,                    .arlen
+		.s0_axi4_arlock      (mm_interconnect_0_emif_0_s0_axi4_arlock),  //   input,    width = 1,                    .arlock
+		.s0_axi4_arqos       (mm_interconnect_0_emif_0_s0_axi4_arqos),   //   input,    width = 4,                    .arqos
+		.s0_axi4_arsize      (mm_interconnect_0_emif_0_s0_axi4_arsize),  //   input,    width = 3,                    .arsize
+		.s0_axi4_arvalid     (mm_interconnect_0_emif_0_s0_axi4_arvalid), //   input,    width = 1,                    .arvalid
+		.s0_axi4_aruser      (mm_interconnect_0_emif_0_s0_axi4_aruser),  //   input,   width = 14,                    .aruser
+		.s0_axi4_arprot      (mm_interconnect_0_emif_0_s0_axi4_arprot),  //   input,    width = 3,                    .arprot
+		.s0_axi4_arready     (mm_interconnect_0_emif_0_s0_axi4_arready), //  output,    width = 1,                    .arready
+		.s0_axi4_wdata       (mm_interconnect_0_emif_0_s0_axi4_wdata),   //   input,  width = 256,                    .wdata
+		.s0_axi4_wstrb       (mm_interconnect_0_emif_0_s0_axi4_wstrb),   //   input,   width = 32,                    .wstrb
+		.s0_axi4_wlast       (mm_interconnect_0_emif_0_s0_axi4_wlast),   //   input,    width = 1,                    .wlast
+		.s0_axi4_wvalid      (mm_interconnect_0_emif_0_s0_axi4_wvalid),  //   input,    width = 1,                    .wvalid
+		.s0_axi4_wready      (mm_interconnect_0_emif_0_s0_axi4_wready),  //  output,    width = 1,                    .wready
+		.s0_axi4_bready      (mm_interconnect_0_emif_0_s0_axi4_bready),  //   input,    width = 1,                    .bready
+		.s0_axi4_bid         (mm_interconnect_0_emif_0_s0_axi4_bid),     //  output,    width = 7,                    .bid
+		.s0_axi4_bresp       (mm_interconnect_0_emif_0_s0_axi4_bresp),   //  output,    width = 2,                    .bresp
+		.s0_axi4_bvalid      (mm_interconnect_0_emif_0_s0_axi4_bvalid),  //  output,    width = 1,                    .bvalid
+		.s0_axi4_rready      (mm_interconnect_0_emif_0_s0_axi4_rready),  //   input,    width = 1,                    .rready
+		.s0_axi4_rdata       (mm_interconnect_0_emif_0_s0_axi4_rdata),   //  output,  width = 256,                    .rdata
+		.s0_axi4_rid         (mm_interconnect_0_emif_0_s0_axi4_rid),     //  output,    width = 7,                    .rid
+		.s0_axi4_rlast       (mm_interconnect_0_emif_0_s0_axi4_rlast),   //  output,    width = 1,                    .rlast
+		.s0_axi4_rresp       (mm_interconnect_0_emif_0_s0_axi4_rresp),   //  output,    width = 2,                    .rresp
+		.s0_axi4_rvalid      (mm_interconnect_0_emif_0_s0_axi4_rvalid),  //  output,    width = 1,                    .rvalid
+		.s0_axi4lite_clock   (clock_in_out_clk_clk),                     //   input,    width = 1,   s0_axi4lite_clock.clk
+		.s0_axi4lite_reset_n (~reset_in_out_reset_reset),                //   input,    width = 1, s0_axi4lite_reset_n.reset_n
+		.s0_axi4lite_awaddr  (),                                         //   input,   width = 27,         s0_axi4lite.awaddr
+		.s0_axi4lite_awprot  (),                                         //   input,    width = 3,                    .awprot
+		.s0_axi4lite_awvalid (),                                         //   input,    width = 1,                    .awvalid
+		.s0_axi4lite_awready (),                                         //  output,    width = 1,                    .awready
+		.s0_axi4lite_araddr  (),                                         //   input,   width = 27,                    .araddr
+		.s0_axi4lite_arprot  (),                                         //   input,    width = 3,                    .arprot
+		.s0_axi4lite_arvalid (),                                         //   input,    width = 1,                    .arvalid
+		.s0_axi4lite_arready (),                                         //  output,    width = 1,                    .arready
+		.s0_axi4lite_wdata   (),                                         //   input,   width = 32,                    .wdata
+		.s0_axi4lite_wstrb   (),                                         //   input,    width = 4,                    .wstrb
+		.s0_axi4lite_wvalid  (),                                         //   input,    width = 1,                    .wvalid
+		.s0_axi4lite_wready  (),                                         //  output,    width = 1,                    .wready
+		.s0_axi4lite_bready  (),                                         //   input,    width = 1,                    .bready
+		.s0_axi4lite_bresp   (),                                         //  output,    width = 2,                    .bresp
+		.s0_axi4lite_bvalid  (),                                         //  output,    width = 1,                    .bvalid
+		.s0_axi4lite_rready  (),                                         //   input,    width = 1,                    .rready
+		.s0_axi4lite_rdata   (),                                         //  output,   width = 32,                    .rdata
+		.s0_axi4lite_rresp   (),                                         //  output,    width = 2,                    .rresp
+		.s0_axi4lite_rvalid  (),                                         //  output,    width = 1,                    .rvalid
+		.mem_0_cke           (emif_0_mem_0_mem_cke),                     //  output,    width = 1,               mem_0.mem_cke
+		.mem_0_odt           (emif_0_mem_0_mem_odt),                     //  output,    width = 1,                    .mem_odt
+		.mem_0_cs_n          (emif_0_mem_0_mem_cs_n),                    //  output,    width = 1,                    .mem_cs_n
+		.mem_0_a             (emif_0_mem_0_mem_a),                       //  output,   width = 17,                    .mem_a
+		.mem_0_ba            (emif_0_mem_0_mem_ba),                      //  output,    width = 2,                    .mem_ba
+		.mem_0_bg            (emif_0_mem_0_mem_bg),                      //  output,    width = 1,                    .mem_bg
+		.mem_0_act_n         (emif_0_mem_0_mem_act_n),                   //  output,    width = 1,                    .mem_act_n
+		.mem_0_par           (emif_0_mem_0_mem_par),                     //  output,    width = 1,                    .mem_par
+		.mem_0_dq            (emif_0_mem_0_mem_dq),                      //   inout,   width = 32,                    .mem_dq
+		.mem_0_dqs_t         (emif_0_mem_0_mem_dqs_t),                   //   inout,    width = 4,                    .mem_dqs_t
+		.mem_0_dqs_c         (emif_0_mem_0_mem_dqs_c),                   //   inout,    width = 4,                    .mem_dqs_c
+		.mem_0_alert_n       (mem_0_mem_0_mem_alert_n),                  //   input,    width = 1,                    .mem_alert_n
+		.mem_0_ck_t          (emif_0_mem_ck_0_mem_ck_t),                 //  output,    width = 1,            mem_ck_0.mem_ck_t
+		.mem_0_ck_c          (emif_0_mem_ck_0_mem_ck_c),                 //  output,    width = 1,                    .mem_ck_c
+		.mem_0_reset_n       (emif_0_mem_reset_n_mem_reset_n),           //  output,    width = 1,         mem_reset_n.mem_reset_n
+		.oct_rzqin_0         (mem_0_oct_0_oct_rzqin),                    //   input,    width = 1,               oct_0.oct_rzqin
+		.ref_clk             (emif_ref_clk_clk)                          //   input,    width = 1,             ref_clk.clk
 	);
 
 	pipeline_intel_vvp_clipper_0 intel_vvp_clipper_0 (
 		.main_clock_clk                    (clock_in_out_clk_clk),                                                    //   input,   width = 1,          main_clock.clk
-		.main_reset_reset                  (rst_controller_001_reset_out_reset),                                      //   input,   width = 1,          main_reset.reset
+		.main_reset_reset                  (rst_controller_reset_out_reset),                                          //   input,   width = 1,          main_reset.reset
 		.axi4s_vid_in_tdata                (intel_vvp_clipper_0_axi4s_vid_in_tdata),                                  //   input,  width = 24,        axi4s_vid_in.tdata
 		.axi4s_vid_in_tvalid               (intel_vvp_clipper_0_axi4s_vid_in_tvalid),                                 //   input,   width = 1,                    .tvalid
 		.axi4s_vid_in_tready               (intel_vvp_clipper_0_axi4s_vid_in_tready),                                 //  output,   width = 1,                    .tready
@@ -252,7 +369,7 @@ module pipeline (
 
 	pipeline_intel_vvp_crs_0 intel_vvp_crs_0 (
 		.main_clock_clk                    (clock_in_out_clk_clk),                                                //   input,   width = 1,          main_clock.clk
-		.main_reset_reset                  (rst_controller_001_reset_out_reset),                                  //   input,   width = 1,          main_reset.reset
+		.main_reset_reset                  (rst_controller_reset_out_reset),                                      //   input,   width = 1,          main_reset.reset
 		.axi4s_vid_in_tdata                (intel_vvp_crs_0_axi4s_vid_in_tdata),                                  //   input,  width = 24,        axi4s_vid_in.tdata
 		.axi4s_vid_in_tvalid               (intel_vvp_crs_0_axi4s_vid_in_tvalid),                                 //   input,   width = 1,                    .tvalid
 		.axi4s_vid_in_tready               (intel_vvp_crs_0_axi4s_vid_in_tready),                                 //  output,   width = 1,                    .tready
@@ -275,7 +392,7 @@ module pipeline (
 
 	pipeline_intel_vvp_csc_0 intel_vvp_csc_0 (
 		.main_clock_clk                    (clock_in_out_clk_clk),                                                //   input,   width = 1,          main_clock.clk
-		.main_reset_reset                  (rst_controller_001_reset_out_reset),                                  //   input,   width = 1,          main_reset.reset
+		.main_reset_reset                  (rst_controller_reset_out_reset),                                      //   input,   width = 1,          main_reset.reset
 		.axi4s_vid_in_tdata                (intel_vvp_csc_0_axi4s_vid_in_tdata),                                  //   input,  width = 24,        axi4s_vid_in.tdata
 		.axi4s_vid_in_tvalid               (intel_vvp_csc_0_axi4s_vid_in_tvalid),                                 //   input,   width = 1,                    .tvalid
 		.axi4s_vid_in_tready               (intel_vvp_csc_0_axi4s_vid_in_tready),                                 //  output,   width = 1,                    .tready
@@ -298,7 +415,7 @@ module pipeline (
 
 	pipeline_intel_vvp_dil_0 intel_vvp_dil_0 (
 		.main_clock_clk       (clock_in_out_clk_clk),                 //   input,   width = 1,    main_clock.clk
-		.main_reset_reset     (rst_controller_001_reset_out_reset),   //   input,   width = 1,    main_reset.reset
+		.main_reset_reset     (rst_controller_reset_out_reset),       //   input,   width = 1,    main_reset.reset
 		.axi4s_vid_in_tdata   (intel_vvp_dil_0_axi4s_vid_in_tdata),   //   input,  width = 24,  axi4s_vid_in.tdata
 		.axi4s_vid_in_tvalid  (intel_vvp_dil_0_axi4s_vid_in_tvalid),  //   input,   width = 1,              .tvalid
 		.axi4s_vid_in_tready  (intel_vvp_dil_0_axi4s_vid_in_tready),  //  output,   width = 1,              .tready
@@ -313,7 +430,7 @@ module pipeline (
 
 	pipeline_intel_vvp_protocol_conv_0 intel_vvp_protocol_conv_0 (
 		.main_clock_clk       (clock_in_out_clk_clk),                           //   input,   width = 1,    main_clock.clk
-		.main_reset_reset     (rst_controller_001_reset_out_reset),             //   input,   width = 1,    main_reset.reset
+		.main_reset_reset     (rst_controller_reset_out_reset),                 //   input,   width = 1,    main_reset.reset
 		.axi4s_vid_in_tdata   (intel_vvp_protocol_conv_0_axi4s_vid_in_tdata),   //   input,  width = 24,  axi4s_vid_in.tdata
 		.axi4s_vid_in_tvalid  (intel_vvp_protocol_conv_0_axi4s_vid_in_tvalid),  //   input,   width = 1,              .tvalid
 		.axi4s_vid_in_tready  (intel_vvp_protocol_conv_0_axi4s_vid_in_tready),  //  output,   width = 1,              .tready
@@ -328,7 +445,7 @@ module pipeline (
 
 	pipeline_intel_vvp_protocol_conv_1 intel_vvp_protocol_conv_1 (
 		.main_clock_clk                    (clock_in_out_clk_clk),                                        //   input,   width = 1,          main_clock.clk
-		.main_reset_reset                  (rst_controller_001_reset_out_reset),                          //   input,   width = 1,          main_reset.reset
+		.main_reset_reset                  (rst_controller_reset_out_reset),                              //   input,   width = 1,          main_reset.reset
 		.axi4s_vid_in_tdata                (intel_vvp_protocol_conv_1_axi4s_vid_in_tdata),                //   input,  width = 24,        axi4s_vid_in.tdata
 		.axi4s_vid_in_tvalid               (intel_vvp_protocol_conv_1_axi4s_vid_in_tvalid),               //   input,   width = 1,                    .tvalid
 		.axi4s_vid_in_tready               (intel_vvp_protocol_conv_1_axi4s_vid_in_tready),               //  output,   width = 1,                    .tready
@@ -351,7 +468,7 @@ module pipeline (
 
 	pipeline_intel_vvp_scaler_0 intel_vvp_scaler_0 (
 		.main_clock_clk                    (clock_in_out_clk_clk),                                                   //   input,   width = 1,          main_clock.clk
-		.main_reset_reset                  (rst_controller_001_reset_out_reset),                                     //   input,   width = 1,          main_reset.reset
+		.main_reset_reset                  (rst_controller_reset_out_reset),                                         //   input,   width = 1,          main_reset.reset
 		.axi4s_vid_in_tdata                (intel_vvp_scaler_0_axi4s_vid_in_tdata),                                  //   input,  width = 24,        axi4s_vid_in.tdata
 		.axi4s_vid_in_tvalid               (intel_vvp_scaler_0_axi4s_vid_in_tvalid),                                 //   input,   width = 1,                    .tvalid
 		.axi4s_vid_in_tready               (intel_vvp_scaler_0_axi4s_vid_in_tready),                                 //  output,   width = 1,                    .tready
@@ -374,7 +491,7 @@ module pipeline (
 
 	pipeline_intel_vvp_tpg_0 intel_vvp_tpg_0 (
 		.main_clock_clk                    (clock_in_out_clk_clk),                              //   input,   width = 1,          main_clock.clk
-		.main_reset_reset                  (rst_controller_001_reset_out_reset),                //   input,   width = 1,          main_reset.reset
+		.main_reset_reset                  (rst_controller_reset_out_reset),                    //   input,   width = 1,          main_reset.reset
 		.axi4s_vid_out_tdata               (intel_vvp_tpg_0_axi4s_vid_out_tdata),               //  output,  width = 24,       axi4s_vid_out.tdata
 		.axi4s_vid_out_tvalid              (intel_vvp_tpg_0_axi4s_vid_out_tvalid),              //  output,   width = 1,                    .tvalid
 		.axi4s_vid_out_tready              (intel_vvp_tpg_0_axi4s_vid_out_tready),              //   input,   width = 1,                    .tready
@@ -392,9 +509,9 @@ module pipeline (
 
 	pipeline_intel_vvp_vfb_0 intel_vvp_vfb_0 (
 		.main_clock_clk                    (clock_in_out_clk_clk),                                                //   input,    width = 1,           main_clock.clk
-		.main_reset_reset                  (rst_controller_001_reset_out_reset),                                  //   input,    width = 1,           main_reset.reset
+		.main_reset_reset                  (rst_controller_reset_out_reset),                                      //   input,    width = 1,           main_reset.reset
 		.mem_clock_clk                     (clock_in_out_clk_clk),                                                //   input,    width = 1,            mem_clock.clk
-		.mem_reset_reset                   (rst_controller_001_reset_out_reset),                                  //   input,    width = 1,            mem_reset.reset
+		.mem_reset_reset                   (rst_controller_reset_out_reset),                                      //   input,    width = 1,            mem_reset.reset
 		.axi4s_vid_in_tdata                (intel_vvp_vfb_0_axi4s_vid_in_tdata),                                  //   input,   width = 24,         axi4s_vid_in.tdata
 		.axi4s_vid_in_tvalid               (intel_vvp_vfb_0_axi4s_vid_in_tvalid),                                 //   input,    width = 1,                     .tvalid
 		.axi4s_vid_in_tready               (intel_vvp_vfb_0_axi4s_vid_in_tready),                                 //  output,    width = 1,                     .tready
@@ -428,7 +545,7 @@ module pipeline (
 
 	pipeline_intel_vvp_protocol_conv_2 lite_to_full_converter (
 		.main_clock_clk                    (clock_in_out_clk_clk),                                                       //   input,   width = 1,          main_clock.clk
-		.main_reset_reset                  (rst_controller_001_reset_out_reset),                                         //   input,   width = 1,          main_reset.reset
+		.main_reset_reset                  (rst_controller_reset_out_reset),                                             //   input,   width = 1,          main_reset.reset
 		.axi4s_vid_in_tdata                (lite_to_full_converter_axi4s_vid_in_tdata),                                  //   input,  width = 24,        axi4s_vid_in.tdata
 		.axi4s_vid_in_tvalid               (lite_to_full_converter_axi4s_vid_in_tvalid),                                 //   input,   width = 1,                    .tvalid
 		.axi4s_vid_in_tready               (lite_to_full_converter_axi4s_vid_in_tready),                                 //  output,   width = 1,                    .tready
@@ -449,29 +566,48 @@ module pipeline (
 		.av_mm_control_agent_waitrequest   (mm_interconnect_1_lite_to_full_converter_av_mm_control_agent_waitrequest)    //  output,   width = 1,                    .waitrequest
 	);
 
+	pipeline_mem_0 mem_0 (
+		.mem_cke_0     (emif_0_mem_0_mem_cke),           //   input,   width = 1,       mem_0.mem_cke
+		.mem_odt_0     (emif_0_mem_0_mem_odt),           //   input,   width = 1,            .mem_odt
+		.mem_cs_n_0    (emif_0_mem_0_mem_cs_n),          //   input,   width = 1,            .mem_cs_n
+		.mem_a_0       (emif_0_mem_0_mem_a),             //   input,  width = 17,            .mem_a
+		.mem_ba_0      (emif_0_mem_0_mem_ba),            //   input,   width = 2,            .mem_ba
+		.mem_bg_0      (emif_0_mem_0_mem_bg),            //   input,   width = 1,            .mem_bg
+		.mem_act_n_0   (emif_0_mem_0_mem_act_n),         //   input,   width = 1,            .mem_act_n
+		.mem_par_0     (emif_0_mem_0_mem_par),           //   input,   width = 1,            .mem_par
+		.mem_dq_0      (emif_0_mem_0_mem_dq),            //   inout,  width = 32,            .mem_dq
+		.mem_dqs_t_0   (emif_0_mem_0_mem_dqs_t),         //   inout,   width = 4,            .mem_dqs_t
+		.mem_dqs_c_0   (emif_0_mem_0_mem_dqs_c),         //   inout,   width = 4,            .mem_dqs_c
+		.mem_alert_n_0 (mem_0_mem_0_mem_alert_n),        //  output,   width = 1,            .mem_alert_n
+		.mem_ck_t_0    (emif_0_mem_ck_0_mem_ck_t),       //   input,   width = 1,    mem_ck_0.mem_ck_t
+		.mem_ck_c_0    (emif_0_mem_ck_0_mem_ck_c),       //   input,   width = 1,            .mem_ck_c
+		.mem_reset_n_0 (emif_0_mem_reset_n_mem_reset_n), //   input,   width = 1, mem_reset_n.mem_reset_n
+		.oct_rzqin_0   (mem_0_oct_0_oct_rzqin)           //  output,   width = 1,       oct_0.oct_rzqin
+	);
+
 	pipeline_mm_bridge_0 mm_bridge_0 (
-		.clk              (clock_in_out_clk_clk),           //   input,   width = 1,   clk.clk
-		.reset            (rst_controller_reset_out_reset), //   input,   width = 1, reset.reset
-		.s0_waitrequest   (mm_bridge_0_s0_waitrequest),     //  output,   width = 1,    s0.waitrequest
-		.s0_readdata      (mm_bridge_0_s0_readdata),        //  output,  width = 32,      .readdata
-		.s0_readdatavalid (mm_bridge_0_s0_readdatavalid),   //  output,   width = 1,      .readdatavalid
-		.s0_burstcount    (mm_bridge_0_s0_burstcount),      //   input,   width = 1,      .burstcount
-		.s0_writedata     (mm_bridge_0_s0_writedata),       //   input,  width = 32,      .writedata
-		.s0_address       (mm_bridge_0_s0_address),         //   input,  width = 13,      .address
-		.s0_write         (mm_bridge_0_s0_write),           //   input,   width = 1,      .write
-		.s0_read          (mm_bridge_0_s0_read),            //   input,   width = 1,      .read
-		.s0_byteenable    (mm_bridge_0_s0_byteenable),      //   input,   width = 4,      .byteenable
-		.s0_debugaccess   (mm_bridge_0_s0_debugaccess),     //   input,   width = 1,      .debugaccess
-		.m0_waitrequest   (mm_bridge_0_m0_waitrequest),     //   input,   width = 1,    m0.waitrequest
-		.m0_readdata      (mm_bridge_0_m0_readdata),        //   input,  width = 32,      .readdata
-		.m0_readdatavalid (mm_bridge_0_m0_readdatavalid),   //   input,   width = 1,      .readdatavalid
-		.m0_burstcount    (mm_bridge_0_m0_burstcount),      //  output,   width = 1,      .burstcount
-		.m0_writedata     (mm_bridge_0_m0_writedata),       //  output,  width = 32,      .writedata
-		.m0_address       (mm_bridge_0_m0_address),         //  output,  width = 13,      .address
-		.m0_write         (mm_bridge_0_m0_write),           //  output,   width = 1,      .write
-		.m0_read          (mm_bridge_0_m0_read),            //  output,   width = 1,      .read
-		.m0_byteenable    (mm_bridge_0_m0_byteenable),      //  output,   width = 4,      .byteenable
-		.m0_debugaccess   (mm_bridge_0_m0_debugaccess)      //  output,   width = 1,      .debugaccess
+		.clk              (clock_in_out_clk_clk),         //   input,   width = 1,   clk.clk
+		.reset            (reset_in_out_reset_reset),     //   input,   width = 1, reset.reset
+		.s0_waitrequest   (mm_bridge_0_s0_waitrequest),   //  output,   width = 1,    s0.waitrequest
+		.s0_readdata      (mm_bridge_0_s0_readdata),      //  output,  width = 32,      .readdata
+		.s0_readdatavalid (mm_bridge_0_s0_readdatavalid), //  output,   width = 1,      .readdatavalid
+		.s0_burstcount    (mm_bridge_0_s0_burstcount),    //   input,   width = 1,      .burstcount
+		.s0_writedata     (mm_bridge_0_s0_writedata),     //   input,  width = 32,      .writedata
+		.s0_address       (mm_bridge_0_s0_address),       //   input,  width = 13,      .address
+		.s0_write         (mm_bridge_0_s0_write),         //   input,   width = 1,      .write
+		.s0_read          (mm_bridge_0_s0_read),          //   input,   width = 1,      .read
+		.s0_byteenable    (mm_bridge_0_s0_byteenable),    //   input,   width = 4,      .byteenable
+		.s0_debugaccess   (mm_bridge_0_s0_debugaccess),   //   input,   width = 1,      .debugaccess
+		.m0_waitrequest   (mm_bridge_0_m0_waitrequest),   //   input,   width = 1,    m0.waitrequest
+		.m0_readdata      (mm_bridge_0_m0_readdata),      //   input,  width = 32,      .readdata
+		.m0_readdatavalid (mm_bridge_0_m0_readdatavalid), //   input,   width = 1,      .readdatavalid
+		.m0_burstcount    (mm_bridge_0_m0_burstcount),    //  output,   width = 1,      .burstcount
+		.m0_writedata     (mm_bridge_0_m0_writedata),     //  output,  width = 32,      .writedata
+		.m0_address       (mm_bridge_0_m0_address),       //  output,  width = 13,      .address
+		.m0_write         (mm_bridge_0_m0_write),         //  output,   width = 1,      .write
+		.m0_read          (mm_bridge_0_m0_read),          //  output,   width = 1,      .read
+		.m0_byteenable    (mm_bridge_0_m0_byteenable),    //  output,   width = 4,      .byteenable
+		.m0_debugaccess   (mm_bridge_0_m0_debugaccess)    //  output,   width = 1,      .debugaccess
 	);
 
 	pipeline_reset_in reset_in (
@@ -480,27 +616,58 @@ module pipeline (
 		.out_reset (reset_in_out_reset_reset)  //  output,  width = 1, out_reset.reset
 	);
 
-	pipeline_altera_mm_interconnect_1920_v5evncq mm_interconnect_0 (
-		.intel_vvp_vfb_0_av_mm_mem_read_host_address              (intel_vvp_vfb_0_av_mm_mem_read_host_address),           //   input,   width = 32,                intel_vvp_vfb_0_av_mm_mem_read_host.address
-		.intel_vvp_vfb_0_av_mm_mem_read_host_waitrequest          (intel_vvp_vfb_0_av_mm_mem_read_host_waitrequest),       //  output,    width = 1,                                                   .waitrequest
-		.intel_vvp_vfb_0_av_mm_mem_read_host_burstcount           (intel_vvp_vfb_0_av_mm_mem_read_host_burstcount),        //   input,    width = 4,                                                   .burstcount
-		.intel_vvp_vfb_0_av_mm_mem_read_host_read                 (intel_vvp_vfb_0_av_mm_mem_read_host_read),              //   input,    width = 1,                                                   .read
-		.intel_vvp_vfb_0_av_mm_mem_read_host_readdata             (intel_vvp_vfb_0_av_mm_mem_read_host_readdata),          //  output,  width = 256,                                                   .readdata
-		.intel_vvp_vfb_0_av_mm_mem_read_host_readdatavalid        (intel_vvp_vfb_0_av_mm_mem_read_host_readdatavalid),     //  output,    width = 1,                                                   .readdatavalid
-		.intel_vvp_vfb_0_av_mm_mem_write_host_address             (intel_vvp_vfb_0_av_mm_mem_write_host_address),          //   input,   width = 32,               intel_vvp_vfb_0_av_mm_mem_write_host.address
-		.intel_vvp_vfb_0_av_mm_mem_write_host_waitrequest         (intel_vvp_vfb_0_av_mm_mem_write_host_waitrequest),      //  output,    width = 1,                                                   .waitrequest
-		.intel_vvp_vfb_0_av_mm_mem_write_host_burstcount          (intel_vvp_vfb_0_av_mm_mem_write_host_burstcount),       //   input,    width = 4,                                                   .burstcount
-		.intel_vvp_vfb_0_av_mm_mem_write_host_write               (intel_vvp_vfb_0_av_mm_mem_write_host_write),            //   input,    width = 1,                                                   .write
-		.intel_vvp_vfb_0_av_mm_mem_write_host_writedata           (intel_vvp_vfb_0_av_mm_mem_write_host_writedata),        //   input,  width = 256,                                                   .writedata
-		.intel_onchip_memory_0_s1_address                         (mm_interconnect_0_intel_onchip_memory_0_s1_address),    //  output,   width = 10,                           intel_onchip_memory_0_s1.address
-		.intel_onchip_memory_0_s1_write                           (mm_interconnect_0_intel_onchip_memory_0_s1_write),      //  output,    width = 1,                                                   .write
-		.intel_onchip_memory_0_s1_read                            (mm_interconnect_0_intel_onchip_memory_0_s1_read),       //  output,    width = 1,                                                   .read
-		.intel_onchip_memory_0_s1_readdata                        (mm_interconnect_0_intel_onchip_memory_0_s1_readdata),   //   input,   width = 32,                                                   .readdata
-		.intel_onchip_memory_0_s1_writedata                       (mm_interconnect_0_intel_onchip_memory_0_s1_writedata),  //  output,   width = 32,                                                   .writedata
-		.intel_onchip_memory_0_s1_byteenable                      (mm_interconnect_0_intel_onchip_memory_0_s1_byteenable), //  output,    width = 4,                                                   .byteenable
-		.intel_vvp_vfb_0_mem_reset_reset_bridge_in_reset_reset    (rst_controller_001_reset_out_reset),                    //   input,    width = 1,    intel_vvp_vfb_0_mem_reset_reset_bridge_in_reset.reset
-		.intel_onchip_memory_0_reset1_reset_bridge_in_reset_reset (rst_controller_001_reset_out_reset),                    //   input,    width = 1, intel_onchip_memory_0_reset1_reset_bridge_in_reset.reset
-		.clock_in_out_clk_clk                                     (clock_in_out_clk_clk)                                   //   input,    width = 1,                                   clock_in_out_clk.clk
+	pipeline_altera_mm_interconnect_1920_a3rbxji mm_interconnect_0 (
+		.intel_vvp_vfb_0_av_mm_mem_read_host_address                     (intel_vvp_vfb_0_av_mm_mem_read_host_address),       //   input,   width = 32,                       intel_vvp_vfb_0_av_mm_mem_read_host.address
+		.intel_vvp_vfb_0_av_mm_mem_read_host_waitrequest                 (intel_vvp_vfb_0_av_mm_mem_read_host_waitrequest),   //  output,    width = 1,                                                          .waitrequest
+		.intel_vvp_vfb_0_av_mm_mem_read_host_burstcount                  (intel_vvp_vfb_0_av_mm_mem_read_host_burstcount),    //   input,    width = 4,                                                          .burstcount
+		.intel_vvp_vfb_0_av_mm_mem_read_host_read                        (intel_vvp_vfb_0_av_mm_mem_read_host_read),          //   input,    width = 1,                                                          .read
+		.intel_vvp_vfb_0_av_mm_mem_read_host_readdata                    (intel_vvp_vfb_0_av_mm_mem_read_host_readdata),      //  output,  width = 256,                                                          .readdata
+		.intel_vvp_vfb_0_av_mm_mem_read_host_readdatavalid               (intel_vvp_vfb_0_av_mm_mem_read_host_readdatavalid), //  output,    width = 1,                                                          .readdatavalid
+		.intel_vvp_vfb_0_av_mm_mem_write_host_address                    (intel_vvp_vfb_0_av_mm_mem_write_host_address),      //   input,   width = 32,                      intel_vvp_vfb_0_av_mm_mem_write_host.address
+		.intel_vvp_vfb_0_av_mm_mem_write_host_waitrequest                (intel_vvp_vfb_0_av_mm_mem_write_host_waitrequest),  //  output,    width = 1,                                                          .waitrequest
+		.intel_vvp_vfb_0_av_mm_mem_write_host_burstcount                 (intel_vvp_vfb_0_av_mm_mem_write_host_burstcount),   //   input,    width = 4,                                                          .burstcount
+		.intel_vvp_vfb_0_av_mm_mem_write_host_write                      (intel_vvp_vfb_0_av_mm_mem_write_host_write),        //   input,    width = 1,                                                          .write
+		.intel_vvp_vfb_0_av_mm_mem_write_host_writedata                  (intel_vvp_vfb_0_av_mm_mem_write_host_writedata),    //   input,  width = 256,                                                          .writedata
+		.emif_0_s0_axi4_awid                                             (mm_interconnect_0_emif_0_s0_axi4_awid),             //  output,    width = 7,                                            emif_0_s0_axi4.awid
+		.emif_0_s0_axi4_awaddr                                           (mm_interconnect_0_emif_0_s0_axi4_awaddr),           //  output,   width = 31,                                                          .awaddr
+		.emif_0_s0_axi4_awlen                                            (mm_interconnect_0_emif_0_s0_axi4_awlen),            //  output,    width = 8,                                                          .awlen
+		.emif_0_s0_axi4_awsize                                           (mm_interconnect_0_emif_0_s0_axi4_awsize),           //  output,    width = 3,                                                          .awsize
+		.emif_0_s0_axi4_awburst                                          (mm_interconnect_0_emif_0_s0_axi4_awburst),          //  output,    width = 2,                                                          .awburst
+		.emif_0_s0_axi4_awlock                                           (mm_interconnect_0_emif_0_s0_axi4_awlock),           //  output,    width = 1,                                                          .awlock
+		.emif_0_s0_axi4_awprot                                           (mm_interconnect_0_emif_0_s0_axi4_awprot),           //  output,    width = 3,                                                          .awprot
+		.emif_0_s0_axi4_awuser                                           (mm_interconnect_0_emif_0_s0_axi4_awuser),           //  output,   width = 14,                                                          .awuser
+		.emif_0_s0_axi4_awqos                                            (mm_interconnect_0_emif_0_s0_axi4_awqos),            //  output,    width = 4,                                                          .awqos
+		.emif_0_s0_axi4_awvalid                                          (mm_interconnect_0_emif_0_s0_axi4_awvalid),          //  output,    width = 1,                                                          .awvalid
+		.emif_0_s0_axi4_awready                                          (mm_interconnect_0_emif_0_s0_axi4_awready),          //   input,    width = 1,                                                          .awready
+		.emif_0_s0_axi4_wdata                                            (mm_interconnect_0_emif_0_s0_axi4_wdata),            //  output,  width = 256,                                                          .wdata
+		.emif_0_s0_axi4_wstrb                                            (mm_interconnect_0_emif_0_s0_axi4_wstrb),            //  output,   width = 32,                                                          .wstrb
+		.emif_0_s0_axi4_wlast                                            (mm_interconnect_0_emif_0_s0_axi4_wlast),            //  output,    width = 1,                                                          .wlast
+		.emif_0_s0_axi4_wvalid                                           (mm_interconnect_0_emif_0_s0_axi4_wvalid),           //  output,    width = 1,                                                          .wvalid
+		.emif_0_s0_axi4_wready                                           (mm_interconnect_0_emif_0_s0_axi4_wready),           //   input,    width = 1,                                                          .wready
+		.emif_0_s0_axi4_bid                                              (mm_interconnect_0_emif_0_s0_axi4_bid),              //   input,    width = 7,                                                          .bid
+		.emif_0_s0_axi4_bresp                                            (mm_interconnect_0_emif_0_s0_axi4_bresp),            //   input,    width = 2,                                                          .bresp
+		.emif_0_s0_axi4_bvalid                                           (mm_interconnect_0_emif_0_s0_axi4_bvalid),           //   input,    width = 1,                                                          .bvalid
+		.emif_0_s0_axi4_bready                                           (mm_interconnect_0_emif_0_s0_axi4_bready),           //  output,    width = 1,                                                          .bready
+		.emif_0_s0_axi4_arid                                             (mm_interconnect_0_emif_0_s0_axi4_arid),             //  output,    width = 7,                                                          .arid
+		.emif_0_s0_axi4_araddr                                           (mm_interconnect_0_emif_0_s0_axi4_araddr),           //  output,   width = 31,                                                          .araddr
+		.emif_0_s0_axi4_arlen                                            (mm_interconnect_0_emif_0_s0_axi4_arlen),            //  output,    width = 8,                                                          .arlen
+		.emif_0_s0_axi4_arsize                                           (mm_interconnect_0_emif_0_s0_axi4_arsize),           //  output,    width = 3,                                                          .arsize
+		.emif_0_s0_axi4_arburst                                          (mm_interconnect_0_emif_0_s0_axi4_arburst),          //  output,    width = 2,                                                          .arburst
+		.emif_0_s0_axi4_arlock                                           (mm_interconnect_0_emif_0_s0_axi4_arlock),           //  output,    width = 1,                                                          .arlock
+		.emif_0_s0_axi4_arprot                                           (mm_interconnect_0_emif_0_s0_axi4_arprot),           //  output,    width = 3,                                                          .arprot
+		.emif_0_s0_axi4_aruser                                           (mm_interconnect_0_emif_0_s0_axi4_aruser),           //  output,   width = 14,                                                          .aruser
+		.emif_0_s0_axi4_arqos                                            (mm_interconnect_0_emif_0_s0_axi4_arqos),            //  output,    width = 4,                                                          .arqos
+		.emif_0_s0_axi4_arvalid                                          (mm_interconnect_0_emif_0_s0_axi4_arvalid),          //  output,    width = 1,                                                          .arvalid
+		.emif_0_s0_axi4_arready                                          (mm_interconnect_0_emif_0_s0_axi4_arready),          //   input,    width = 1,                                                          .arready
+		.emif_0_s0_axi4_rid                                              (mm_interconnect_0_emif_0_s0_axi4_rid),              //   input,    width = 7,                                                          .rid
+		.emif_0_s0_axi4_rdata                                            (mm_interconnect_0_emif_0_s0_axi4_rdata),            //   input,  width = 256,                                                          .rdata
+		.emif_0_s0_axi4_rresp                                            (mm_interconnect_0_emif_0_s0_axi4_rresp),            //   input,    width = 2,                                                          .rresp
+		.emif_0_s0_axi4_rlast                                            (mm_interconnect_0_emif_0_s0_axi4_rlast),            //   input,    width = 1,                                                          .rlast
+		.emif_0_s0_axi4_rvalid                                           (mm_interconnect_0_emif_0_s0_axi4_rvalid),           //   input,    width = 1,                                                          .rvalid
+		.emif_0_s0_axi4_rready                                           (mm_interconnect_0_emif_0_s0_axi4_rready),           //  output,    width = 1,                                                          .rready
+		.intel_vvp_vfb_0_mem_reset_reset_bridge_in_reset_reset           (rst_controller_reset_out_reset),                    //   input,    width = 1,           intel_vvp_vfb_0_mem_reset_reset_bridge_in_reset.reset
+		.emif_0_s0_axi4_translator_clk_reset_reset_bridge_in_reset_reset (rst_controller_001_reset_out_reset),                //   input,    width = 1, emif_0_s0_axi4_translator_clk_reset_reset_bridge_in_reset.reset
+		.clock_in_out_clk_clk                                            (clock_in_out_clk_clk)                               //   input,    width = 1,                                          clock_in_out_clk.clk
 	);
 
 	pipeline_altera_mm_interconnect_1920_xjpsnky mm_interconnect_1 (
@@ -562,15 +729,15 @@ module pipeline (
 		.intel_vvp_vfb_0_av_mm_control_agent_byteenable           (mm_interconnect_1_intel_vvp_vfb_0_av_mm_control_agent_byteenable),           //  output,   width = 4,                                           .byteenable
 		.intel_vvp_vfb_0_av_mm_control_agent_readdatavalid        (mm_interconnect_1_intel_vvp_vfb_0_av_mm_control_agent_readdatavalid),        //   input,   width = 1,                                           .readdatavalid
 		.intel_vvp_vfb_0_av_mm_control_agent_waitrequest          (mm_interconnect_1_intel_vvp_vfb_0_av_mm_control_agent_waitrequest),          //   input,   width = 1,                                           .waitrequest
-		.mm_bridge_0_reset_reset_bridge_in_reset_reset            (rst_controller_reset_out_reset),                                             //   input,   width = 1,    mm_bridge_0_reset_reset_bridge_in_reset.reset
+		.mm_bridge_0_reset_reset_bridge_in_reset_reset            (reset_in_out_reset_reset),                                                   //   input,   width = 1,    mm_bridge_0_reset_reset_bridge_in_reset.reset
 		.clock_in_out_clk_clk                                     (clock_in_out_clk_clk)                                                        //   input,   width = 1,                           clock_in_out_clk.clk
 	);
 
 	altera_reset_controller #(
 		.NUM_RESET_INPUTS          (1),
-		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
+		.OUTPUT_RESET_SYNC_EDGES   ("both"),
 		.SYNC_DEPTH                (2),
-		.RESET_REQUEST_PRESENT     (1),
+		.RESET_REQUEST_PRESENT     (0),
 		.RESET_REQ_WAIT_TIME       (1),
 		.MIN_RST_ASSERTION_TIME    (3),
 		.RESET_REQ_EARLY_DSRT_TIME (1),
@@ -592,41 +759,41 @@ module pipeline (
 		.USE_RESET_REQUEST_IN15    (0),
 		.ADAPT_RESET_REQUEST       (0)
 	) rst_controller (
-		.reset_in0      (reset_in_out_reset_reset),           //   input,  width = 1, reset_in0.reset
-		.clk            (clock_in_out_clk_clk),               //   input,  width = 1,       clk.clk
-		.reset_out      (rst_controller_reset_out_reset),     //  output,  width = 1, reset_out.reset
-		.reset_req      (rst_controller_reset_out_reset_req), //  output,  width = 1,          .reset_req
-		.reset_req_in0  (1'b0),                               // (terminated),                       
-		.reset_in1      (1'b0),                               // (terminated),                       
-		.reset_req_in1  (1'b0),                               // (terminated),                       
-		.reset_in2      (1'b0),                               // (terminated),                       
-		.reset_req_in2  (1'b0),                               // (terminated),                       
-		.reset_in3      (1'b0),                               // (terminated),                       
-		.reset_req_in3  (1'b0),                               // (terminated),                       
-		.reset_in4      (1'b0),                               // (terminated),                       
-		.reset_req_in4  (1'b0),                               // (terminated),                       
-		.reset_in5      (1'b0),                               // (terminated),                       
-		.reset_req_in5  (1'b0),                               // (terminated),                       
-		.reset_in6      (1'b0),                               // (terminated),                       
-		.reset_req_in6  (1'b0),                               // (terminated),                       
-		.reset_in7      (1'b0),                               // (terminated),                       
-		.reset_req_in7  (1'b0),                               // (terminated),                       
-		.reset_in8      (1'b0),                               // (terminated),                       
-		.reset_req_in8  (1'b0),                               // (terminated),                       
-		.reset_in9      (1'b0),                               // (terminated),                       
-		.reset_req_in9  (1'b0),                               // (terminated),                       
-		.reset_in10     (1'b0),                               // (terminated),                       
-		.reset_req_in10 (1'b0),                               // (terminated),                       
-		.reset_in11     (1'b0),                               // (terminated),                       
-		.reset_req_in11 (1'b0),                               // (terminated),                       
-		.reset_in12     (1'b0),                               // (terminated),                       
-		.reset_req_in12 (1'b0),                               // (terminated),                       
-		.reset_in13     (1'b0),                               // (terminated),                       
-		.reset_req_in13 (1'b0),                               // (terminated),                       
-		.reset_in14     (1'b0),                               // (terminated),                       
-		.reset_req_in14 (1'b0),                               // (terminated),                       
-		.reset_in15     (1'b0),                               // (terminated),                       
-		.reset_req_in15 (1'b0)                                // (terminated),                       
+		.reset_in0      (reset_in_out_reset_reset),       //   input,  width = 1, reset_in0.reset
+		.clk            (clock_in_out_clk_clk),           //   input,  width = 1,       clk.clk
+		.reset_out      (rst_controller_reset_out_reset), //  output,  width = 1, reset_out.reset
+		.reset_req      (),                               // (terminated),                       
+		.reset_req_in0  (1'b0),                           // (terminated),                       
+		.reset_in1      (1'b0),                           // (terminated),                       
+		.reset_req_in1  (1'b0),                           // (terminated),                       
+		.reset_in2      (1'b0),                           // (terminated),                       
+		.reset_req_in2  (1'b0),                           // (terminated),                       
+		.reset_in3      (1'b0),                           // (terminated),                       
+		.reset_req_in3  (1'b0),                           // (terminated),                       
+		.reset_in4      (1'b0),                           // (terminated),                       
+		.reset_req_in4  (1'b0),                           // (terminated),                       
+		.reset_in5      (1'b0),                           // (terminated),                       
+		.reset_req_in5  (1'b0),                           // (terminated),                       
+		.reset_in6      (1'b0),                           // (terminated),                       
+		.reset_req_in6  (1'b0),                           // (terminated),                       
+		.reset_in7      (1'b0),                           // (terminated),                       
+		.reset_req_in7  (1'b0),                           // (terminated),                       
+		.reset_in8      (1'b0),                           // (terminated),                       
+		.reset_req_in8  (1'b0),                           // (terminated),                       
+		.reset_in9      (1'b0),                           // (terminated),                       
+		.reset_req_in9  (1'b0),                           // (terminated),                       
+		.reset_in10     (1'b0),                           // (terminated),                       
+		.reset_req_in10 (1'b0),                           // (terminated),                       
+		.reset_in11     (1'b0),                           // (terminated),                       
+		.reset_req_in11 (1'b0),                           // (terminated),                       
+		.reset_in12     (1'b0),                           // (terminated),                       
+		.reset_req_in12 (1'b0),                           // (terminated),                       
+		.reset_in13     (1'b0),                           // (terminated),                       
+		.reset_req_in13 (1'b0),                           // (terminated),                       
+		.reset_in14     (1'b0),                           // (terminated),                       
+		.reset_req_in14 (1'b0),                           // (terminated),                       
+		.reset_in15     (1'b0),                           // (terminated),                       
+		.reset_req_in15 (1'b0)                            // (terminated),                       
 	);
 
 	altera_reset_controller #(
@@ -655,7 +822,7 @@ module pipeline (
 		.USE_RESET_REQUEST_IN15    (0),
 		.ADAPT_RESET_REQUEST       (0)
 	) rst_controller_001 (
-		.reset_in0      (reset_in_out_reset_reset),           //   input,  width = 1, reset_in0.reset
+		.reset_in0      (~emif_0_s0_axi4_ctrl_ready_reset),   //   input,  width = 1, reset_in0.reset
 		.clk            (clock_in_out_clk_clk),               //   input,  width = 1,       clk.clk
 		.reset_out      (rst_controller_001_reset_out_reset), //  output,  width = 1, reset_out.reset
 		.reset_req      (),                                   // (terminated),                       

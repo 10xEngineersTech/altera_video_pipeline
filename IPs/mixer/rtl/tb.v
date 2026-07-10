@@ -1,22 +1,22 @@
 `timescale 1 ps / 1 ps
 
 // =============================================================================
-// tb.v — Mixer demo testbench
+// tb.v — Mixer demo testbench (8 TPG sources)
 //
-// TPG0 (color bars, 64x64 base) + TPG1 (uniform red, 32x32 overlay at
-// (16,16)) are mixed by intel_vvp_mixer_0. The first complete output frame
-// is captured to a hex file (one 24-bit RRGGBB word per pixel) by make_file;
-// app/hex_to_png.py turns that file into mixer_result.png.
+// TPG0 (color bars, 1280x720 base) + TPG1..TPG7 (uniform-color 180x180
+// overlays placed on a diagonal, 90px apart, layer 7 on top) are mixed by
+// intel_vvp_mixer_0. The first complete output frame is captured to a hex
+// file (one 24-bit RRGGBB word per pixel) by make_file; app/hex_to_png.py
+// turns that file into mixer_result.png.
 // =============================================================================
 
 module tb();
 
-    localparam BG_WIDTH  = 64;
-    localparam BG_HEIGHT = 64;
-    localparam FG_WIDTH  = 32;
-    localparam FG_HEIGHT = 32;
-    localparam FG_H_OFF  = 16;
-    localparam FG_V_OFF  = 16;
+    localparam BG_WIDTH  = 1280;
+    localparam BG_HEIGHT = 720;
+    localparam FG_WIDTH  = 180;
+    localparam FG_HEIGHT = 180;
+    localparam FG_STEP   = 90;
 
     // Written into the sim working directory (system/sim/mentor)
     localparam FILE_NAME = "../../../app/mixer_data.txt";
@@ -59,11 +59,7 @@ module tb();
         .BG_HEIGHT (BG_HEIGHT),
         .FG_WIDTH  (FG_WIDTH),
         .FG_HEIGHT (FG_HEIGHT),
-        .FG_H_OFF  (FG_H_OFF),
-        .FG_V_OFF  (FG_V_OFF),
-        .FG_R      (32'd255),
-        .FG_G      (32'd0),
-        .FG_B      (32'd0)
+        .FG_STEP   (FG_STEP)
     ) dut (
         .clk        (clk),
         .reset      (reset),
@@ -113,8 +109,8 @@ module tb();
 
     // --- Timeout watchdog ---
     initial begin
-        // Config + a few frames at 100 MHz; 64x64 frame ≈ 41 us
-        #(2000000000);   // 2 ms
+        // Config + a few frames at 100 MHz; 1280x720 frame ≈ 9.2 ms
+        #(64'd50000000000);   // 50 ms
         $display("Error: Simulation timeout! current_state=%0d cfg_step=%0d",
                  dut.current_state, dut.cfg_step);
         $finish;

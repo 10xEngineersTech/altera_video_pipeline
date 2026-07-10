@@ -34,6 +34,54 @@ module system (
 		output wire [31:0] intel_vvp_tpg_1_av_mm_control_agent_readdata,        //                                      .readdata
 		output wire        intel_vvp_tpg_1_av_mm_control_agent_readdatavalid,   //                                      .readdatavalid
 		output wire        intel_vvp_tpg_1_av_mm_control_agent_waitrequest,     //                                      .waitrequest
+		input  wire [6:0]  intel_vvp_tpg_2_av_mm_control_agent_address,         //   intel_vvp_tpg_2_av_mm_control_agent.address
+		input  wire        intel_vvp_tpg_2_av_mm_control_agent_write,           //                                      .write
+		input  wire [3:0]  intel_vvp_tpg_2_av_mm_control_agent_byteenable,      //                                      .byteenable
+		input  wire [31:0] intel_vvp_tpg_2_av_mm_control_agent_writedata,       //                                      .writedata
+		input  wire        intel_vvp_tpg_2_av_mm_control_agent_read,            //                                      .read
+		output wire [31:0] intel_vvp_tpg_2_av_mm_control_agent_readdata,        //                                      .readdata
+		output wire        intel_vvp_tpg_2_av_mm_control_agent_readdatavalid,   //                                      .readdatavalid
+		output wire        intel_vvp_tpg_2_av_mm_control_agent_waitrequest,     //                                      .waitrequest
+		input  wire [6:0]  intel_vvp_tpg_3_av_mm_control_agent_address,         //   intel_vvp_tpg_3_av_mm_control_agent.address
+		input  wire        intel_vvp_tpg_3_av_mm_control_agent_write,           //                                      .write
+		input  wire [3:0]  intel_vvp_tpg_3_av_mm_control_agent_byteenable,      //                                      .byteenable
+		input  wire [31:0] intel_vvp_tpg_3_av_mm_control_agent_writedata,       //                                      .writedata
+		input  wire        intel_vvp_tpg_3_av_mm_control_agent_read,            //                                      .read
+		output wire [31:0] intel_vvp_tpg_3_av_mm_control_agent_readdata,        //                                      .readdata
+		output wire        intel_vvp_tpg_3_av_mm_control_agent_readdatavalid,   //                                      .readdatavalid
+		output wire        intel_vvp_tpg_3_av_mm_control_agent_waitrequest,     //                                      .waitrequest
+		input  wire [6:0]  intel_vvp_tpg_4_av_mm_control_agent_address,         //   intel_vvp_tpg_4_av_mm_control_agent.address
+		input  wire        intel_vvp_tpg_4_av_mm_control_agent_write,           //                                      .write
+		input  wire [3:0]  intel_vvp_tpg_4_av_mm_control_agent_byteenable,      //                                      .byteenable
+		input  wire [31:0] intel_vvp_tpg_4_av_mm_control_agent_writedata,       //                                      .writedata
+		input  wire        intel_vvp_tpg_4_av_mm_control_agent_read,            //                                      .read
+		output wire [31:0] intel_vvp_tpg_4_av_mm_control_agent_readdata,        //                                      .readdata
+		output wire        intel_vvp_tpg_4_av_mm_control_agent_readdatavalid,   //                                      .readdatavalid
+		output wire        intel_vvp_tpg_4_av_mm_control_agent_waitrequest,     //                                      .waitrequest
+		input  wire [6:0]  intel_vvp_tpg_5_av_mm_control_agent_address,         //   intel_vvp_tpg_5_av_mm_control_agent.address
+		input  wire        intel_vvp_tpg_5_av_mm_control_agent_write,           //                                      .write
+		input  wire [3:0]  intel_vvp_tpg_5_av_mm_control_agent_byteenable,      //                                      .byteenable
+		input  wire [31:0] intel_vvp_tpg_5_av_mm_control_agent_writedata,       //                                      .writedata
+		input  wire        intel_vvp_tpg_5_av_mm_control_agent_read,            //                                      .read
+		output wire [31:0] intel_vvp_tpg_5_av_mm_control_agent_readdata,        //                                      .readdata
+		output wire        intel_vvp_tpg_5_av_mm_control_agent_readdatavalid,   //                                      .readdatavalid
+		output wire        intel_vvp_tpg_5_av_mm_control_agent_waitrequest,     //                                      .waitrequest
+		input  wire [6:0]  intel_vvp_tpg_6_av_mm_control_agent_address,         //   intel_vvp_tpg_6_av_mm_control_agent.address
+		input  wire        intel_vvp_tpg_6_av_mm_control_agent_write,           //                                      .write
+		input  wire [3:0]  intel_vvp_tpg_6_av_mm_control_agent_byteenable,      //                                      .byteenable
+		input  wire [31:0] intel_vvp_tpg_6_av_mm_control_agent_writedata,       //                                      .writedata
+		input  wire        intel_vvp_tpg_6_av_mm_control_agent_read,            //                                      .read
+		output wire [31:0] intel_vvp_tpg_6_av_mm_control_agent_readdata,        //                                      .readdata
+		output wire        intel_vvp_tpg_6_av_mm_control_agent_readdatavalid,   //                                      .readdatavalid
+		output wire        intel_vvp_tpg_6_av_mm_control_agent_waitrequest,     //                                      .waitrequest
+		input  wire [6:0]  intel_vvp_tpg_7_av_mm_control_agent_address,         //   intel_vvp_tpg_7_av_mm_control_agent.address
+		input  wire        intel_vvp_tpg_7_av_mm_control_agent_write,           //                                      .write
+		input  wire [3:0]  intel_vvp_tpg_7_av_mm_control_agent_byteenable,      //                                      .byteenable
+		input  wire [31:0] intel_vvp_tpg_7_av_mm_control_agent_writedata,       //                                      .writedata
+		input  wire        intel_vvp_tpg_7_av_mm_control_agent_read,            //                                      .read
+		output wire [31:0] intel_vvp_tpg_7_av_mm_control_agent_readdata,        //                                      .readdata
+		output wire        intel_vvp_tpg_7_av_mm_control_agent_readdatavalid,   //                                      .readdatavalid
+		output wire        intel_vvp_tpg_7_av_mm_control_agent_waitrequest,     //                                      .waitrequest
 		input  wire        reset_reset                                          //                                 reset.reset
 	);
 
@@ -47,8 +95,38 @@ module system (
 	wire         intel_vvp_tpg_1_axi4s_vid_out_tready; // intel_vvp_mixer_0:axi4s_vid_1_in_tready -> intel_vvp_tpg_1:axi4s_vid_out_tready
 	wire  [23:0] intel_vvp_tpg_1_axi4s_vid_out_tdata;  // intel_vvp_tpg_1:axi4s_vid_out_tdata -> intel_vvp_mixer_0:axi4s_vid_1_in_tdata
 	wire         intel_vvp_tpg_1_axi4s_vid_out_tlast;  // intel_vvp_tpg_1:axi4s_vid_out_tlast -> intel_vvp_mixer_0:axi4s_vid_1_in_tlast
-	wire         clock_in_out_clk_clk;                 // clock_in:out_clk -> [intel_vvp_mixer_0:main_clock_clk, intel_vvp_tpg_0:main_clock_clk, intel_vvp_tpg_1:main_clock_clk, reset_in:clk, rst_controller:clk]
-	wire         rst_controller_reset_out_reset;       // rst_controller:reset_out -> [intel_vvp_mixer_0:main_reset_reset, intel_vvp_tpg_0:main_reset_reset, intel_vvp_tpg_1:main_reset_reset]
+	wire         intel_vvp_tpg_2_axi4s_vid_out_tvalid; // intel_vvp_tpg_2:axi4s_vid_out_tvalid -> intel_vvp_mixer_0:axi4s_vid_2_in_tvalid
+	wire   [2:0] intel_vvp_tpg_2_axi4s_vid_out_tuser;  // intel_vvp_tpg_2:axi4s_vid_out_tuser -> intel_vvp_mixer_0:axi4s_vid_2_in_tuser
+	wire         intel_vvp_tpg_2_axi4s_vid_out_tready; // intel_vvp_mixer_0:axi4s_vid_2_in_tready -> intel_vvp_tpg_2:axi4s_vid_out_tready
+	wire  [23:0] intel_vvp_tpg_2_axi4s_vid_out_tdata;  // intel_vvp_tpg_2:axi4s_vid_out_tdata -> intel_vvp_mixer_0:axi4s_vid_2_in_tdata
+	wire         intel_vvp_tpg_2_axi4s_vid_out_tlast;  // intel_vvp_tpg_2:axi4s_vid_out_tlast -> intel_vvp_mixer_0:axi4s_vid_2_in_tlast
+	wire         intel_vvp_tpg_3_axi4s_vid_out_tvalid; // intel_vvp_tpg_3:axi4s_vid_out_tvalid -> intel_vvp_mixer_0:axi4s_vid_3_in_tvalid
+	wire   [2:0] intel_vvp_tpg_3_axi4s_vid_out_tuser;  // intel_vvp_tpg_3:axi4s_vid_out_tuser -> intel_vvp_mixer_0:axi4s_vid_3_in_tuser
+	wire         intel_vvp_tpg_3_axi4s_vid_out_tready; // intel_vvp_mixer_0:axi4s_vid_3_in_tready -> intel_vvp_tpg_3:axi4s_vid_out_tready
+	wire  [23:0] intel_vvp_tpg_3_axi4s_vid_out_tdata;  // intel_vvp_tpg_3:axi4s_vid_out_tdata -> intel_vvp_mixer_0:axi4s_vid_3_in_tdata
+	wire         intel_vvp_tpg_3_axi4s_vid_out_tlast;  // intel_vvp_tpg_3:axi4s_vid_out_tlast -> intel_vvp_mixer_0:axi4s_vid_3_in_tlast
+	wire         intel_vvp_tpg_4_axi4s_vid_out_tvalid; // intel_vvp_tpg_4:axi4s_vid_out_tvalid -> intel_vvp_mixer_0:axi4s_vid_4_in_tvalid
+	wire   [2:0] intel_vvp_tpg_4_axi4s_vid_out_tuser;  // intel_vvp_tpg_4:axi4s_vid_out_tuser -> intel_vvp_mixer_0:axi4s_vid_4_in_tuser
+	wire         intel_vvp_tpg_4_axi4s_vid_out_tready; // intel_vvp_mixer_0:axi4s_vid_4_in_tready -> intel_vvp_tpg_4:axi4s_vid_out_tready
+	wire  [23:0] intel_vvp_tpg_4_axi4s_vid_out_tdata;  // intel_vvp_tpg_4:axi4s_vid_out_tdata -> intel_vvp_mixer_0:axi4s_vid_4_in_tdata
+	wire         intel_vvp_tpg_4_axi4s_vid_out_tlast;  // intel_vvp_tpg_4:axi4s_vid_out_tlast -> intel_vvp_mixer_0:axi4s_vid_4_in_tlast
+	wire         intel_vvp_tpg_5_axi4s_vid_out_tvalid; // intel_vvp_tpg_5:axi4s_vid_out_tvalid -> intel_vvp_mixer_0:axi4s_vid_5_in_tvalid
+	wire   [2:0] intel_vvp_tpg_5_axi4s_vid_out_tuser;  // intel_vvp_tpg_5:axi4s_vid_out_tuser -> intel_vvp_mixer_0:axi4s_vid_5_in_tuser
+	wire         intel_vvp_tpg_5_axi4s_vid_out_tready; // intel_vvp_mixer_0:axi4s_vid_5_in_tready -> intel_vvp_tpg_5:axi4s_vid_out_tready
+	wire  [23:0] intel_vvp_tpg_5_axi4s_vid_out_tdata;  // intel_vvp_tpg_5:axi4s_vid_out_tdata -> intel_vvp_mixer_0:axi4s_vid_5_in_tdata
+	wire         intel_vvp_tpg_5_axi4s_vid_out_tlast;  // intel_vvp_tpg_5:axi4s_vid_out_tlast -> intel_vvp_mixer_0:axi4s_vid_5_in_tlast
+	wire         intel_vvp_tpg_6_axi4s_vid_out_tvalid; // intel_vvp_tpg_6:axi4s_vid_out_tvalid -> intel_vvp_mixer_0:axi4s_vid_6_in_tvalid
+	wire   [2:0] intel_vvp_tpg_6_axi4s_vid_out_tuser;  // intel_vvp_tpg_6:axi4s_vid_out_tuser -> intel_vvp_mixer_0:axi4s_vid_6_in_tuser
+	wire         intel_vvp_tpg_6_axi4s_vid_out_tready; // intel_vvp_mixer_0:axi4s_vid_6_in_tready -> intel_vvp_tpg_6:axi4s_vid_out_tready
+	wire  [23:0] intel_vvp_tpg_6_axi4s_vid_out_tdata;  // intel_vvp_tpg_6:axi4s_vid_out_tdata -> intel_vvp_mixer_0:axi4s_vid_6_in_tdata
+	wire         intel_vvp_tpg_6_axi4s_vid_out_tlast;  // intel_vvp_tpg_6:axi4s_vid_out_tlast -> intel_vvp_mixer_0:axi4s_vid_6_in_tlast
+	wire         intel_vvp_tpg_7_axi4s_vid_out_tvalid; // intel_vvp_tpg_7:axi4s_vid_out_tvalid -> intel_vvp_mixer_0:axi4s_vid_7_in_tvalid
+	wire   [2:0] intel_vvp_tpg_7_axi4s_vid_out_tuser;  // intel_vvp_tpg_7:axi4s_vid_out_tuser -> intel_vvp_mixer_0:axi4s_vid_7_in_tuser
+	wire         intel_vvp_tpg_7_axi4s_vid_out_tready; // intel_vvp_mixer_0:axi4s_vid_7_in_tready -> intel_vvp_tpg_7:axi4s_vid_out_tready
+	wire  [23:0] intel_vvp_tpg_7_axi4s_vid_out_tdata;  // intel_vvp_tpg_7:axi4s_vid_out_tdata -> intel_vvp_mixer_0:axi4s_vid_7_in_tdata
+	wire         intel_vvp_tpg_7_axi4s_vid_out_tlast;  // intel_vvp_tpg_7:axi4s_vid_out_tlast -> intel_vvp_mixer_0:axi4s_vid_7_in_tlast
+	wire         clock_in_out_clk_clk;                 // clock_in:out_clk -> [intel_vvp_mixer_0:main_clock_clk, intel_vvp_tpg_0:main_clock_clk, intel_vvp_tpg_1:main_clock_clk, intel_vvp_tpg_2:main_clock_clk, intel_vvp_tpg_3:main_clock_clk, intel_vvp_tpg_4:main_clock_clk, intel_vvp_tpg_5:main_clock_clk, intel_vvp_tpg_6:main_clock_clk, intel_vvp_tpg_7:main_clock_clk, reset_in:clk, rst_controller:clk]
+	wire         rst_controller_reset_out_reset;       // rst_controller:reset_out -> [intel_vvp_mixer_0:main_reset_reset, intel_vvp_tpg_0:main_reset_reset, intel_vvp_tpg_1:main_reset_reset, intel_vvp_tpg_2:main_reset_reset, intel_vvp_tpg_3:main_reset_reset, intel_vvp_tpg_4:main_reset_reset, intel_vvp_tpg_5:main_reset_reset, intel_vvp_tpg_6:main_reset_reset, intel_vvp_tpg_7:main_reset_reset]
 	wire         reset_in_out_reset_reset;             // reset_in:out_reset -> rst_controller:reset_in0
 
 	system_clock_in clock_in (
@@ -56,7 +134,7 @@ module system (
 		.out_clk (clock_in_out_clk_clk)  //  output,  width = 1, out_clk.clk
 	);
 
-	system_intel_vvp_mixer_0 intel_vvp_mixer_0 (
+	system_intel_vvp_mixer_1 intel_vvp_mixer_0 (
 		.main_clock_clk                    (clock_in_out_clk_clk),                                //   input,   width = 1,          main_clock.clk
 		.main_reset_reset                  (rst_controller_reset_out_reset),                      //   input,   width = 1,          main_reset.reset
 		.axi4s_vid_0_in_tdata              (intel_vvp_tpg_0_axi4s_vid_out_tdata),                 //   input,  width = 24,      axi4s_vid_0_in.tdata
@@ -74,6 +152,36 @@ module system (
 		.axi4s_vid_1_in_tready             (intel_vvp_tpg_1_axi4s_vid_out_tready),                //  output,   width = 1,                    .tready
 		.axi4s_vid_1_in_tlast              (intel_vvp_tpg_1_axi4s_vid_out_tlast),                 //   input,   width = 1,                    .tlast
 		.axi4s_vid_1_in_tuser              (intel_vvp_tpg_1_axi4s_vid_out_tuser),                 //   input,   width = 3,                    .tuser
+		.axi4s_vid_2_in_tdata              (intel_vvp_tpg_2_axi4s_vid_out_tdata),                 //   input,  width = 24,      axi4s_vid_2_in.tdata
+		.axi4s_vid_2_in_tvalid             (intel_vvp_tpg_2_axi4s_vid_out_tvalid),                //   input,   width = 1,                    .tvalid
+		.axi4s_vid_2_in_tready             (intel_vvp_tpg_2_axi4s_vid_out_tready),                //  output,   width = 1,                    .tready
+		.axi4s_vid_2_in_tlast              (intel_vvp_tpg_2_axi4s_vid_out_tlast),                 //   input,   width = 1,                    .tlast
+		.axi4s_vid_2_in_tuser              (intel_vvp_tpg_2_axi4s_vid_out_tuser),                 //   input,   width = 3,                    .tuser
+		.axi4s_vid_3_in_tdata              (intel_vvp_tpg_3_axi4s_vid_out_tdata),                 //   input,  width = 24,      axi4s_vid_3_in.tdata
+		.axi4s_vid_3_in_tvalid             (intel_vvp_tpg_3_axi4s_vid_out_tvalid),                //   input,   width = 1,                    .tvalid
+		.axi4s_vid_3_in_tready             (intel_vvp_tpg_3_axi4s_vid_out_tready),                //  output,   width = 1,                    .tready
+		.axi4s_vid_3_in_tlast              (intel_vvp_tpg_3_axi4s_vid_out_tlast),                 //   input,   width = 1,                    .tlast
+		.axi4s_vid_3_in_tuser              (intel_vvp_tpg_3_axi4s_vid_out_tuser),                 //   input,   width = 3,                    .tuser
+		.axi4s_vid_4_in_tdata              (intel_vvp_tpg_4_axi4s_vid_out_tdata),                 //   input,  width = 24,      axi4s_vid_4_in.tdata
+		.axi4s_vid_4_in_tvalid             (intel_vvp_tpg_4_axi4s_vid_out_tvalid),                //   input,   width = 1,                    .tvalid
+		.axi4s_vid_4_in_tready             (intel_vvp_tpg_4_axi4s_vid_out_tready),                //  output,   width = 1,                    .tready
+		.axi4s_vid_4_in_tlast              (intel_vvp_tpg_4_axi4s_vid_out_tlast),                 //   input,   width = 1,                    .tlast
+		.axi4s_vid_4_in_tuser              (intel_vvp_tpg_4_axi4s_vid_out_tuser),                 //   input,   width = 3,                    .tuser
+		.axi4s_vid_5_in_tdata              (intel_vvp_tpg_5_axi4s_vid_out_tdata),                 //   input,  width = 24,      axi4s_vid_5_in.tdata
+		.axi4s_vid_5_in_tvalid             (intel_vvp_tpg_5_axi4s_vid_out_tvalid),                //   input,   width = 1,                    .tvalid
+		.axi4s_vid_5_in_tready             (intel_vvp_tpg_5_axi4s_vid_out_tready),                //  output,   width = 1,                    .tready
+		.axi4s_vid_5_in_tlast              (intel_vvp_tpg_5_axi4s_vid_out_tlast),                 //   input,   width = 1,                    .tlast
+		.axi4s_vid_5_in_tuser              (intel_vvp_tpg_5_axi4s_vid_out_tuser),                 //   input,   width = 3,                    .tuser
+		.axi4s_vid_6_in_tdata              (intel_vvp_tpg_6_axi4s_vid_out_tdata),                 //   input,  width = 24,      axi4s_vid_6_in.tdata
+		.axi4s_vid_6_in_tvalid             (intel_vvp_tpg_6_axi4s_vid_out_tvalid),                //   input,   width = 1,                    .tvalid
+		.axi4s_vid_6_in_tready             (intel_vvp_tpg_6_axi4s_vid_out_tready),                //  output,   width = 1,                    .tready
+		.axi4s_vid_6_in_tlast              (intel_vvp_tpg_6_axi4s_vid_out_tlast),                 //   input,   width = 1,                    .tlast
+		.axi4s_vid_6_in_tuser              (intel_vvp_tpg_6_axi4s_vid_out_tuser),                 //   input,   width = 3,                    .tuser
+		.axi4s_vid_7_in_tdata              (intel_vvp_tpg_7_axi4s_vid_out_tdata),                 //   input,  width = 24,      axi4s_vid_7_in.tdata
+		.axi4s_vid_7_in_tvalid             (intel_vvp_tpg_7_axi4s_vid_out_tvalid),                //   input,   width = 1,                    .tvalid
+		.axi4s_vid_7_in_tready             (intel_vvp_tpg_7_axi4s_vid_out_tready),                //  output,   width = 1,                    .tready
+		.axi4s_vid_7_in_tlast              (intel_vvp_tpg_7_axi4s_vid_out_tlast),                 //   input,   width = 1,                    .tlast
+		.axi4s_vid_7_in_tuser              (intel_vvp_tpg_7_axi4s_vid_out_tuser),                 //   input,   width = 3,                    .tuser
 		.av_mm_control_agent_address       (intel_vvp_mixer_0_av_mm_control_agent_address),       //   input,   width = 8, av_mm_control_agent.address
 		.av_mm_control_agent_write         (intel_vvp_mixer_0_av_mm_control_agent_write),         //   input,   width = 1,                    .write
 		.av_mm_control_agent_byteenable    (intel_vvp_mixer_0_av_mm_control_agent_byteenable),    //   input,   width = 4,                    .byteenable
@@ -84,7 +192,7 @@ module system (
 		.av_mm_control_agent_waitrequest   (intel_vvp_mixer_0_av_mm_control_agent_waitrequest)    //  output,   width = 1,                    .waitrequest
 	);
 
-	system_intel_vvp_tpg_0 intel_vvp_tpg_0 (
+	system_intel_vvp_tpg_2 intel_vvp_tpg_0 (
 		.main_clock_clk                    (clock_in_out_clk_clk),                              //   input,   width = 1,          main_clock.clk
 		.main_reset_reset                  (rst_controller_reset_out_reset),                    //   input,   width = 1,          main_reset.reset
 		.axi4s_vid_out_tdata               (intel_vvp_tpg_0_axi4s_vid_out_tdata),               //  output,  width = 24,       axi4s_vid_out.tdata
@@ -102,7 +210,7 @@ module system (
 		.av_mm_control_agent_waitrequest   (intel_vvp_tpg_0_av_mm_control_agent_waitrequest)    //  output,   width = 1,                    .waitrequest
 	);
 
-	system_intel_vvp_tpg_1 intel_vvp_tpg_1 (
+	system_intel_vvp_tpg_3 intel_vvp_tpg_1 (
 		.main_clock_clk                    (clock_in_out_clk_clk),                              //   input,   width = 1,          main_clock.clk
 		.main_reset_reset                  (rst_controller_reset_out_reset),                    //   input,   width = 1,          main_reset.reset
 		.axi4s_vid_out_tdata               (intel_vvp_tpg_1_axi4s_vid_out_tdata),               //  output,  width = 24,       axi4s_vid_out.tdata
@@ -118,6 +226,114 @@ module system (
 		.av_mm_control_agent_readdata      (intel_vvp_tpg_1_av_mm_control_agent_readdata),      //  output,  width = 32,                    .readdata
 		.av_mm_control_agent_readdatavalid (intel_vvp_tpg_1_av_mm_control_agent_readdatavalid), //  output,   width = 1,                    .readdatavalid
 		.av_mm_control_agent_waitrequest   (intel_vvp_tpg_1_av_mm_control_agent_waitrequest)    //  output,   width = 1,                    .waitrequest
+	);
+
+	system_intel_vvp_tpg_4 intel_vvp_tpg_2 (
+		.main_clock_clk                    (clock_in_out_clk_clk),                              //   input,   width = 1,          main_clock.clk
+		.main_reset_reset                  (rst_controller_reset_out_reset),                    //   input,   width = 1,          main_reset.reset
+		.axi4s_vid_out_tdata               (intel_vvp_tpg_2_axi4s_vid_out_tdata),               //  output,  width = 24,       axi4s_vid_out.tdata
+		.axi4s_vid_out_tvalid              (intel_vvp_tpg_2_axi4s_vid_out_tvalid),              //  output,   width = 1,                    .tvalid
+		.axi4s_vid_out_tready              (intel_vvp_tpg_2_axi4s_vid_out_tready),              //   input,   width = 1,                    .tready
+		.axi4s_vid_out_tlast               (intel_vvp_tpg_2_axi4s_vid_out_tlast),               //  output,   width = 1,                    .tlast
+		.axi4s_vid_out_tuser               (intel_vvp_tpg_2_axi4s_vid_out_tuser),               //  output,   width = 3,                    .tuser
+		.av_mm_control_agent_address       (intel_vvp_tpg_2_av_mm_control_agent_address),       //   input,   width = 7, av_mm_control_agent.address
+		.av_mm_control_agent_write         (intel_vvp_tpg_2_av_mm_control_agent_write),         //   input,   width = 1,                    .write
+		.av_mm_control_agent_byteenable    (intel_vvp_tpg_2_av_mm_control_agent_byteenable),    //   input,   width = 4,                    .byteenable
+		.av_mm_control_agent_writedata     (intel_vvp_tpg_2_av_mm_control_agent_writedata),     //   input,  width = 32,                    .writedata
+		.av_mm_control_agent_read          (intel_vvp_tpg_2_av_mm_control_agent_read),          //   input,   width = 1,                    .read
+		.av_mm_control_agent_readdata      (intel_vvp_tpg_2_av_mm_control_agent_readdata),      //  output,  width = 32,                    .readdata
+		.av_mm_control_agent_readdatavalid (intel_vvp_tpg_2_av_mm_control_agent_readdatavalid), //  output,   width = 1,                    .readdatavalid
+		.av_mm_control_agent_waitrequest   (intel_vvp_tpg_2_av_mm_control_agent_waitrequest)    //  output,   width = 1,                    .waitrequest
+	);
+
+	system_intel_vvp_tpg_5 intel_vvp_tpg_3 (
+		.main_clock_clk                    (clock_in_out_clk_clk),                              //   input,   width = 1,          main_clock.clk
+		.main_reset_reset                  (rst_controller_reset_out_reset),                    //   input,   width = 1,          main_reset.reset
+		.axi4s_vid_out_tdata               (intel_vvp_tpg_3_axi4s_vid_out_tdata),               //  output,  width = 24,       axi4s_vid_out.tdata
+		.axi4s_vid_out_tvalid              (intel_vvp_tpg_3_axi4s_vid_out_tvalid),              //  output,   width = 1,                    .tvalid
+		.axi4s_vid_out_tready              (intel_vvp_tpg_3_axi4s_vid_out_tready),              //   input,   width = 1,                    .tready
+		.axi4s_vid_out_tlast               (intel_vvp_tpg_3_axi4s_vid_out_tlast),               //  output,   width = 1,                    .tlast
+		.axi4s_vid_out_tuser               (intel_vvp_tpg_3_axi4s_vid_out_tuser),               //  output,   width = 3,                    .tuser
+		.av_mm_control_agent_address       (intel_vvp_tpg_3_av_mm_control_agent_address),       //   input,   width = 7, av_mm_control_agent.address
+		.av_mm_control_agent_write         (intel_vvp_tpg_3_av_mm_control_agent_write),         //   input,   width = 1,                    .write
+		.av_mm_control_agent_byteenable    (intel_vvp_tpg_3_av_mm_control_agent_byteenable),    //   input,   width = 4,                    .byteenable
+		.av_mm_control_agent_writedata     (intel_vvp_tpg_3_av_mm_control_agent_writedata),     //   input,  width = 32,                    .writedata
+		.av_mm_control_agent_read          (intel_vvp_tpg_3_av_mm_control_agent_read),          //   input,   width = 1,                    .read
+		.av_mm_control_agent_readdata      (intel_vvp_tpg_3_av_mm_control_agent_readdata),      //  output,  width = 32,                    .readdata
+		.av_mm_control_agent_readdatavalid (intel_vvp_tpg_3_av_mm_control_agent_readdatavalid), //  output,   width = 1,                    .readdatavalid
+		.av_mm_control_agent_waitrequest   (intel_vvp_tpg_3_av_mm_control_agent_waitrequest)    //  output,   width = 1,                    .waitrequest
+	);
+
+	system_intel_vvp_tpg_6 intel_vvp_tpg_4 (
+		.main_clock_clk                    (clock_in_out_clk_clk),                              //   input,   width = 1,          main_clock.clk
+		.main_reset_reset                  (rst_controller_reset_out_reset),                    //   input,   width = 1,          main_reset.reset
+		.axi4s_vid_out_tdata               (intel_vvp_tpg_4_axi4s_vid_out_tdata),               //  output,  width = 24,       axi4s_vid_out.tdata
+		.axi4s_vid_out_tvalid              (intel_vvp_tpg_4_axi4s_vid_out_tvalid),              //  output,   width = 1,                    .tvalid
+		.axi4s_vid_out_tready              (intel_vvp_tpg_4_axi4s_vid_out_tready),              //   input,   width = 1,                    .tready
+		.axi4s_vid_out_tlast               (intel_vvp_tpg_4_axi4s_vid_out_tlast),               //  output,   width = 1,                    .tlast
+		.axi4s_vid_out_tuser               (intel_vvp_tpg_4_axi4s_vid_out_tuser),               //  output,   width = 3,                    .tuser
+		.av_mm_control_agent_address       (intel_vvp_tpg_4_av_mm_control_agent_address),       //   input,   width = 7, av_mm_control_agent.address
+		.av_mm_control_agent_write         (intel_vvp_tpg_4_av_mm_control_agent_write),         //   input,   width = 1,                    .write
+		.av_mm_control_agent_byteenable    (intel_vvp_tpg_4_av_mm_control_agent_byteenable),    //   input,   width = 4,                    .byteenable
+		.av_mm_control_agent_writedata     (intel_vvp_tpg_4_av_mm_control_agent_writedata),     //   input,  width = 32,                    .writedata
+		.av_mm_control_agent_read          (intel_vvp_tpg_4_av_mm_control_agent_read),          //   input,   width = 1,                    .read
+		.av_mm_control_agent_readdata      (intel_vvp_tpg_4_av_mm_control_agent_readdata),      //  output,  width = 32,                    .readdata
+		.av_mm_control_agent_readdatavalid (intel_vvp_tpg_4_av_mm_control_agent_readdatavalid), //  output,   width = 1,                    .readdatavalid
+		.av_mm_control_agent_waitrequest   (intel_vvp_tpg_4_av_mm_control_agent_waitrequest)    //  output,   width = 1,                    .waitrequest
+	);
+
+	system_intel_vvp_tpg_7 intel_vvp_tpg_5 (
+		.main_clock_clk                    (clock_in_out_clk_clk),                              //   input,   width = 1,          main_clock.clk
+		.main_reset_reset                  (rst_controller_reset_out_reset),                    //   input,   width = 1,          main_reset.reset
+		.axi4s_vid_out_tdata               (intel_vvp_tpg_5_axi4s_vid_out_tdata),               //  output,  width = 24,       axi4s_vid_out.tdata
+		.axi4s_vid_out_tvalid              (intel_vvp_tpg_5_axi4s_vid_out_tvalid),              //  output,   width = 1,                    .tvalid
+		.axi4s_vid_out_tready              (intel_vvp_tpg_5_axi4s_vid_out_tready),              //   input,   width = 1,                    .tready
+		.axi4s_vid_out_tlast               (intel_vvp_tpg_5_axi4s_vid_out_tlast),               //  output,   width = 1,                    .tlast
+		.axi4s_vid_out_tuser               (intel_vvp_tpg_5_axi4s_vid_out_tuser),               //  output,   width = 3,                    .tuser
+		.av_mm_control_agent_address       (intel_vvp_tpg_5_av_mm_control_agent_address),       //   input,   width = 7, av_mm_control_agent.address
+		.av_mm_control_agent_write         (intel_vvp_tpg_5_av_mm_control_agent_write),         //   input,   width = 1,                    .write
+		.av_mm_control_agent_byteenable    (intel_vvp_tpg_5_av_mm_control_agent_byteenable),    //   input,   width = 4,                    .byteenable
+		.av_mm_control_agent_writedata     (intel_vvp_tpg_5_av_mm_control_agent_writedata),     //   input,  width = 32,                    .writedata
+		.av_mm_control_agent_read          (intel_vvp_tpg_5_av_mm_control_agent_read),          //   input,   width = 1,                    .read
+		.av_mm_control_agent_readdata      (intel_vvp_tpg_5_av_mm_control_agent_readdata),      //  output,  width = 32,                    .readdata
+		.av_mm_control_agent_readdatavalid (intel_vvp_tpg_5_av_mm_control_agent_readdatavalid), //  output,   width = 1,                    .readdatavalid
+		.av_mm_control_agent_waitrequest   (intel_vvp_tpg_5_av_mm_control_agent_waitrequest)    //  output,   width = 1,                    .waitrequest
+	);
+
+	system_intel_vvp_tpg_8 intel_vvp_tpg_6 (
+		.main_clock_clk                    (clock_in_out_clk_clk),                              //   input,   width = 1,          main_clock.clk
+		.main_reset_reset                  (rst_controller_reset_out_reset),                    //   input,   width = 1,          main_reset.reset
+		.axi4s_vid_out_tdata               (intel_vvp_tpg_6_axi4s_vid_out_tdata),               //  output,  width = 24,       axi4s_vid_out.tdata
+		.axi4s_vid_out_tvalid              (intel_vvp_tpg_6_axi4s_vid_out_tvalid),              //  output,   width = 1,                    .tvalid
+		.axi4s_vid_out_tready              (intel_vvp_tpg_6_axi4s_vid_out_tready),              //   input,   width = 1,                    .tready
+		.axi4s_vid_out_tlast               (intel_vvp_tpg_6_axi4s_vid_out_tlast),               //  output,   width = 1,                    .tlast
+		.axi4s_vid_out_tuser               (intel_vvp_tpg_6_axi4s_vid_out_tuser),               //  output,   width = 3,                    .tuser
+		.av_mm_control_agent_address       (intel_vvp_tpg_6_av_mm_control_agent_address),       //   input,   width = 7, av_mm_control_agent.address
+		.av_mm_control_agent_write         (intel_vvp_tpg_6_av_mm_control_agent_write),         //   input,   width = 1,                    .write
+		.av_mm_control_agent_byteenable    (intel_vvp_tpg_6_av_mm_control_agent_byteenable),    //   input,   width = 4,                    .byteenable
+		.av_mm_control_agent_writedata     (intel_vvp_tpg_6_av_mm_control_agent_writedata),     //   input,  width = 32,                    .writedata
+		.av_mm_control_agent_read          (intel_vvp_tpg_6_av_mm_control_agent_read),          //   input,   width = 1,                    .read
+		.av_mm_control_agent_readdata      (intel_vvp_tpg_6_av_mm_control_agent_readdata),      //  output,  width = 32,                    .readdata
+		.av_mm_control_agent_readdatavalid (intel_vvp_tpg_6_av_mm_control_agent_readdatavalid), //  output,   width = 1,                    .readdatavalid
+		.av_mm_control_agent_waitrequest   (intel_vvp_tpg_6_av_mm_control_agent_waitrequest)    //  output,   width = 1,                    .waitrequest
+	);
+
+	system_intel_vvp_tpg_9 intel_vvp_tpg_7 (
+		.main_clock_clk                    (clock_in_out_clk_clk),                              //   input,   width = 1,          main_clock.clk
+		.main_reset_reset                  (rst_controller_reset_out_reset),                    //   input,   width = 1,          main_reset.reset
+		.axi4s_vid_out_tdata               (intel_vvp_tpg_7_axi4s_vid_out_tdata),               //  output,  width = 24,       axi4s_vid_out.tdata
+		.axi4s_vid_out_tvalid              (intel_vvp_tpg_7_axi4s_vid_out_tvalid),              //  output,   width = 1,                    .tvalid
+		.axi4s_vid_out_tready              (intel_vvp_tpg_7_axi4s_vid_out_tready),              //   input,   width = 1,                    .tready
+		.axi4s_vid_out_tlast               (intel_vvp_tpg_7_axi4s_vid_out_tlast),               //  output,   width = 1,                    .tlast
+		.axi4s_vid_out_tuser               (intel_vvp_tpg_7_axi4s_vid_out_tuser),               //  output,   width = 3,                    .tuser
+		.av_mm_control_agent_address       (intel_vvp_tpg_7_av_mm_control_agent_address),       //   input,   width = 7, av_mm_control_agent.address
+		.av_mm_control_agent_write         (intel_vvp_tpg_7_av_mm_control_agent_write),         //   input,   width = 1,                    .write
+		.av_mm_control_agent_byteenable    (intel_vvp_tpg_7_av_mm_control_agent_byteenable),    //   input,   width = 4,                    .byteenable
+		.av_mm_control_agent_writedata     (intel_vvp_tpg_7_av_mm_control_agent_writedata),     //   input,  width = 32,                    .writedata
+		.av_mm_control_agent_read          (intel_vvp_tpg_7_av_mm_control_agent_read),          //   input,   width = 1,                    .read
+		.av_mm_control_agent_readdata      (intel_vvp_tpg_7_av_mm_control_agent_readdata),      //  output,  width = 32,                    .readdata
+		.av_mm_control_agent_readdatavalid (intel_vvp_tpg_7_av_mm_control_agent_readdatavalid), //  output,   width = 1,                    .readdatavalid
+		.av_mm_control_agent_waitrequest   (intel_vvp_tpg_7_av_mm_control_agent_waitrequest)    //  output,   width = 1,                    .waitrequest
 	);
 
 	system_reset_in reset_in (

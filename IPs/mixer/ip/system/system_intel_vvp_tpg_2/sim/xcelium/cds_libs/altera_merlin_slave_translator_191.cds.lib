@@ -1,0 +1,6 @@
+
+DEFINE                     altera_common_sv_packages          ./../libraries/altera_common_sv_packages/         
+DEFINE                     work                               ./../libraries/work/                              
+DEFINE                     altera_merlin_slave_translator_191 ./../libraries/altera_merlin_slave_translator_191/
+INCLUDE simulator.cds.lib                                                                                       
+SOFTINCLUDE device.cds.lib                                                                                      

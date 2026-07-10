@@ -1,0 +1,12 @@
+- Entry: 1
+  Time: Fri Jul 10 11:00:56 2026
+  Command: /home/lpt-10xe/altera_pro/25.1.1/questa_fse/linux_x86_64/qrun -compile -noautoorder -parallel -outdir ./libraries -vlog.options -end -vcom.options -end -vlog.ext=+.vo -vlog.ext=+.vt -vcom.ext=+.vho -sv -suppress 13338 -makelib work /home/lpt-10xe/altera_pro/25.1.1/quartus/eda/sim_lib/simsf_dpi.cpp -end 
+- Entry: 2
+  Time: Fri Jul 10 11:00:58 2026
+  Command: /home/lpt-10xe/altera_pro/25.1.1/questa_fse/linux_x86_64/qrun -compile -noautoorder -parallel -outdir ./libraries -vlog.options -end -vcom.options -end -vlog.ext=+.vo -vlog.ext=+.vt -vcom.ext=+.vho -sv -suppress 13338 -f modelsim_com.f 
+- Entry: 3
+  Time: Fri Jul 10 11:15:25 2026
+  Command: /home/lpt-10xe/altera_pro/25.1.1/questa_fse/linux_x86_64/qrun -compile -noautoorder -parallel -outdir ./libraries -vlog.options -end -vcom.options -end -vlog.ext=+.vo -vlog.ext=+.vt -vcom.ext=+.vho -sv -suppress 13338 -makelib work /home/lpt-10xe/altera_pro/25.1.1/quartus/eda/sim_lib/simsf_dpi.cpp -end 
+- Entry: 4
+  Time: Fri Jul 10 11:15:25 2026
+  Command: /home/lpt-10xe/altera_pro/25.1.1/questa_fse/linux_x86_64/qrun -compile -noautoorder -parallel -outdir ./libraries -vlog.options -end -vcom.options -end -vlog.ext=+.vo -vlog.ext=+.vt -vcom.ext=+.vho -sv -suppress 13338 -f modelsim_com.f 

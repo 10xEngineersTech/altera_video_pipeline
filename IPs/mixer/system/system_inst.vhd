@@ -30,6 +30,54 @@
 			intel_vvp_tpg_1_av_mm_control_agent_readdata        : out std_logic_vector(31 downto 0);                    -- readdata
 			intel_vvp_tpg_1_av_mm_control_agent_readdatavalid   : out std_logic;                                        -- readdatavalid
 			intel_vvp_tpg_1_av_mm_control_agent_waitrequest     : out std_logic;                                        -- waitrequest
+			intel_vvp_tpg_2_av_mm_control_agent_address         : in  std_logic_vector(6 downto 0)  := (others => 'X'); -- address
+			intel_vvp_tpg_2_av_mm_control_agent_write           : in  std_logic                     := 'X';             -- write
+			intel_vvp_tpg_2_av_mm_control_agent_byteenable      : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
+			intel_vvp_tpg_2_av_mm_control_agent_writedata       : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
+			intel_vvp_tpg_2_av_mm_control_agent_read            : in  std_logic                     := 'X';             -- read
+			intel_vvp_tpg_2_av_mm_control_agent_readdata        : out std_logic_vector(31 downto 0);                    -- readdata
+			intel_vvp_tpg_2_av_mm_control_agent_readdatavalid   : out std_logic;                                        -- readdatavalid
+			intel_vvp_tpg_2_av_mm_control_agent_waitrequest     : out std_logic;                                        -- waitrequest
+			intel_vvp_tpg_3_av_mm_control_agent_address         : in  std_logic_vector(6 downto 0)  := (others => 'X'); -- address
+			intel_vvp_tpg_3_av_mm_control_agent_write           : in  std_logic                     := 'X';             -- write
+			intel_vvp_tpg_3_av_mm_control_agent_byteenable      : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
+			intel_vvp_tpg_3_av_mm_control_agent_writedata       : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
+			intel_vvp_tpg_3_av_mm_control_agent_read            : in  std_logic                     := 'X';             -- read
+			intel_vvp_tpg_3_av_mm_control_agent_readdata        : out std_logic_vector(31 downto 0);                    -- readdata
+			intel_vvp_tpg_3_av_mm_control_agent_readdatavalid   : out std_logic;                                        -- readdatavalid
+			intel_vvp_tpg_3_av_mm_control_agent_waitrequest     : out std_logic;                                        -- waitrequest
+			intel_vvp_tpg_4_av_mm_control_agent_address         : in  std_logic_vector(6 downto 0)  := (others => 'X'); -- address
+			intel_vvp_tpg_4_av_mm_control_agent_write           : in  std_logic                     := 'X';             -- write
+			intel_vvp_tpg_4_av_mm_control_agent_byteenable      : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
+			intel_vvp_tpg_4_av_mm_control_agent_writedata       : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
+			intel_vvp_tpg_4_av_mm_control_agent_read            : in  std_logic                     := 'X';             -- read
+			intel_vvp_tpg_4_av_mm_control_agent_readdata        : out std_logic_vector(31 downto 0);                    -- readdata
+			intel_vvp_tpg_4_av_mm_control_agent_readdatavalid   : out std_logic;                                        -- readdatavalid
+			intel_vvp_tpg_4_av_mm_control_agent_waitrequest     : out std_logic;                                        -- waitrequest
+			intel_vvp_tpg_5_av_mm_control_agent_address         : in  std_logic_vector(6 downto 0)  := (others => 'X'); -- address
+			intel_vvp_tpg_5_av_mm_control_agent_write           : in  std_logic                     := 'X';             -- write
+			intel_vvp_tpg_5_av_mm_control_agent_byteenable      : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
+			intel_vvp_tpg_5_av_mm_control_agent_writedata       : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
+			intel_vvp_tpg_5_av_mm_control_agent_read            : in  std_logic                     := 'X';             -- read
+			intel_vvp_tpg_5_av_mm_control_agent_readdata        : out std_logic_vector(31 downto 0);                    -- readdata
+			intel_vvp_tpg_5_av_mm_control_agent_readdatavalid   : out std_logic;                                        -- readdatavalid
+			intel_vvp_tpg_5_av_mm_control_agent_waitrequest     : out std_logic;                                        -- waitrequest
+			intel_vvp_tpg_6_av_mm_control_agent_address         : in  std_logic_vector(6 downto 0)  := (others => 'X'); -- address
+			intel_vvp_tpg_6_av_mm_control_agent_write           : in  std_logic                     := 'X';             -- write
+			intel_vvp_tpg_6_av_mm_control_agent_byteenable      : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
+			intel_vvp_tpg_6_av_mm_control_agent_writedata       : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
+			intel_vvp_tpg_6_av_mm_control_agent_read            : in  std_logic                     := 'X';             -- read
+			intel_vvp_tpg_6_av_mm_control_agent_readdata        : out std_logic_vector(31 downto 0);                    -- readdata
+			intel_vvp_tpg_6_av_mm_control_agent_readdatavalid   : out std_logic;                                        -- readdatavalid
+			intel_vvp_tpg_6_av_mm_control_agent_waitrequest     : out std_logic;                                        -- waitrequest
+			intel_vvp_tpg_7_av_mm_control_agent_address         : in  std_logic_vector(6 downto 0)  := (others => 'X'); -- address
+			intel_vvp_tpg_7_av_mm_control_agent_write           : in  std_logic                     := 'X';             -- write
+			intel_vvp_tpg_7_av_mm_control_agent_byteenable      : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
+			intel_vvp_tpg_7_av_mm_control_agent_writedata       : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
+			intel_vvp_tpg_7_av_mm_control_agent_read            : in  std_logic                     := 'X';             -- read
+			intel_vvp_tpg_7_av_mm_control_agent_readdata        : out std_logic_vector(31 downto 0);                    -- readdata
+			intel_vvp_tpg_7_av_mm_control_agent_readdatavalid   : out std_logic;                                        -- readdatavalid
+			intel_vvp_tpg_7_av_mm_control_agent_waitrequest     : out std_logic;                                        -- waitrequest
 			reset_reset                                         : in  std_logic                     := 'X'              -- reset
 		);
 	end component system;
@@ -66,6 +114,54 @@
 			intel_vvp_tpg_1_av_mm_control_agent_readdata        => CONNECTED_TO_intel_vvp_tpg_1_av_mm_control_agent_readdata,        --                                      .readdata
 			intel_vvp_tpg_1_av_mm_control_agent_readdatavalid   => CONNECTED_TO_intel_vvp_tpg_1_av_mm_control_agent_readdatavalid,   --                                      .readdatavalid
 			intel_vvp_tpg_1_av_mm_control_agent_waitrequest     => CONNECTED_TO_intel_vvp_tpg_1_av_mm_control_agent_waitrequest,     --                                      .waitrequest
+			intel_vvp_tpg_2_av_mm_control_agent_address         => CONNECTED_TO_intel_vvp_tpg_2_av_mm_control_agent_address,         --   intel_vvp_tpg_2_av_mm_control_agent.address
+			intel_vvp_tpg_2_av_mm_control_agent_write           => CONNECTED_TO_intel_vvp_tpg_2_av_mm_control_agent_write,           --                                      .write
+			intel_vvp_tpg_2_av_mm_control_agent_byteenable      => CONNECTED_TO_intel_vvp_tpg_2_av_mm_control_agent_byteenable,      --                                      .byteenable
+			intel_vvp_tpg_2_av_mm_control_agent_writedata       => CONNECTED_TO_intel_vvp_tpg_2_av_mm_control_agent_writedata,       --                                      .writedata
+			intel_vvp_tpg_2_av_mm_control_agent_read            => CONNECTED_TO_intel_vvp_tpg_2_av_mm_control_agent_read,            --                                      .read
+			intel_vvp_tpg_2_av_mm_control_agent_readdata        => CONNECTED_TO_intel_vvp_tpg_2_av_mm_control_agent_readdata,        --                                      .readdata
+			intel_vvp_tpg_2_av_mm_control_agent_readdatavalid   => CONNECTED_TO_intel_vvp_tpg_2_av_mm_control_agent_readdatavalid,   --                                      .readdatavalid
+			intel_vvp_tpg_2_av_mm_control_agent_waitrequest     => CONNECTED_TO_intel_vvp_tpg_2_av_mm_control_agent_waitrequest,     --                                      .waitrequest
+			intel_vvp_tpg_3_av_mm_control_agent_address         => CONNECTED_TO_intel_vvp_tpg_3_av_mm_control_agent_address,         --   intel_vvp_tpg_3_av_mm_control_agent.address
+			intel_vvp_tpg_3_av_mm_control_agent_write           => CONNECTED_TO_intel_vvp_tpg_3_av_mm_control_agent_write,           --                                      .write
+			intel_vvp_tpg_3_av_mm_control_agent_byteenable      => CONNECTED_TO_intel_vvp_tpg_3_av_mm_control_agent_byteenable,      --                                      .byteenable
+			intel_vvp_tpg_3_av_mm_control_agent_writedata       => CONNECTED_TO_intel_vvp_tpg_3_av_mm_control_agent_writedata,       --                                      .writedata
+			intel_vvp_tpg_3_av_mm_control_agent_read            => CONNECTED_TO_intel_vvp_tpg_3_av_mm_control_agent_read,            --                                      .read
+			intel_vvp_tpg_3_av_mm_control_agent_readdata        => CONNECTED_TO_intel_vvp_tpg_3_av_mm_control_agent_readdata,        --                                      .readdata
+			intel_vvp_tpg_3_av_mm_control_agent_readdatavalid   => CONNECTED_TO_intel_vvp_tpg_3_av_mm_control_agent_readdatavalid,   --                                      .readdatavalid
+			intel_vvp_tpg_3_av_mm_control_agent_waitrequest     => CONNECTED_TO_intel_vvp_tpg_3_av_mm_control_agent_waitrequest,     --                                      .waitrequest
+			intel_vvp_tpg_4_av_mm_control_agent_address         => CONNECTED_TO_intel_vvp_tpg_4_av_mm_control_agent_address,         --   intel_vvp_tpg_4_av_mm_control_agent.address
+			intel_vvp_tpg_4_av_mm_control_agent_write           => CONNECTED_TO_intel_vvp_tpg_4_av_mm_control_agent_write,           --                                      .write
+			intel_vvp_tpg_4_av_mm_control_agent_byteenable      => CONNECTED_TO_intel_vvp_tpg_4_av_mm_control_agent_byteenable,      --                                      .byteenable
+			intel_vvp_tpg_4_av_mm_control_agent_writedata       => CONNECTED_TO_intel_vvp_tpg_4_av_mm_control_agent_writedata,       --                                      .writedata
+			intel_vvp_tpg_4_av_mm_control_agent_read            => CONNECTED_TO_intel_vvp_tpg_4_av_mm_control_agent_read,            --                                      .read
+			intel_vvp_tpg_4_av_mm_control_agent_readdata        => CONNECTED_TO_intel_vvp_tpg_4_av_mm_control_agent_readdata,        --                                      .readdata
+			intel_vvp_tpg_4_av_mm_control_agent_readdatavalid   => CONNECTED_TO_intel_vvp_tpg_4_av_mm_control_agent_readdatavalid,   --                                      .readdatavalid
+			intel_vvp_tpg_4_av_mm_control_agent_waitrequest     => CONNECTED_TO_intel_vvp_tpg_4_av_mm_control_agent_waitrequest,     --                                      .waitrequest
+			intel_vvp_tpg_5_av_mm_control_agent_address         => CONNECTED_TO_intel_vvp_tpg_5_av_mm_control_agent_address,         --   intel_vvp_tpg_5_av_mm_control_agent.address
+			intel_vvp_tpg_5_av_mm_control_agent_write           => CONNECTED_TO_intel_vvp_tpg_5_av_mm_control_agent_write,           --                                      .write
+			intel_vvp_tpg_5_av_mm_control_agent_byteenable      => CONNECTED_TO_intel_vvp_tpg_5_av_mm_control_agent_byteenable,      --                                      .byteenable
+			intel_vvp_tpg_5_av_mm_control_agent_writedata       => CONNECTED_TO_intel_vvp_tpg_5_av_mm_control_agent_writedata,       --                                      .writedata
+			intel_vvp_tpg_5_av_mm_control_agent_read            => CONNECTED_TO_intel_vvp_tpg_5_av_mm_control_agent_read,            --                                      .read
+			intel_vvp_tpg_5_av_mm_control_agent_readdata        => CONNECTED_TO_intel_vvp_tpg_5_av_mm_control_agent_readdata,        --                                      .readdata
+			intel_vvp_tpg_5_av_mm_control_agent_readdatavalid   => CONNECTED_TO_intel_vvp_tpg_5_av_mm_control_agent_readdatavalid,   --                                      .readdatavalid
+			intel_vvp_tpg_5_av_mm_control_agent_waitrequest     => CONNECTED_TO_intel_vvp_tpg_5_av_mm_control_agent_waitrequest,     --                                      .waitrequest
+			intel_vvp_tpg_6_av_mm_control_agent_address         => CONNECTED_TO_intel_vvp_tpg_6_av_mm_control_agent_address,         --   intel_vvp_tpg_6_av_mm_control_agent.address
+			intel_vvp_tpg_6_av_mm_control_agent_write           => CONNECTED_TO_intel_vvp_tpg_6_av_mm_control_agent_write,           --                                      .write
+			intel_vvp_tpg_6_av_mm_control_agent_byteenable      => CONNECTED_TO_intel_vvp_tpg_6_av_mm_control_agent_byteenable,      --                                      .byteenable
+			intel_vvp_tpg_6_av_mm_control_agent_writedata       => CONNECTED_TO_intel_vvp_tpg_6_av_mm_control_agent_writedata,       --                                      .writedata
+			intel_vvp_tpg_6_av_mm_control_agent_read            => CONNECTED_TO_intel_vvp_tpg_6_av_mm_control_agent_read,            --                                      .read
+			intel_vvp_tpg_6_av_mm_control_agent_readdata        => CONNECTED_TO_intel_vvp_tpg_6_av_mm_control_agent_readdata,        --                                      .readdata
+			intel_vvp_tpg_6_av_mm_control_agent_readdatavalid   => CONNECTED_TO_intel_vvp_tpg_6_av_mm_control_agent_readdatavalid,   --                                      .readdatavalid
+			intel_vvp_tpg_6_av_mm_control_agent_waitrequest     => CONNECTED_TO_intel_vvp_tpg_6_av_mm_control_agent_waitrequest,     --                                      .waitrequest
+			intel_vvp_tpg_7_av_mm_control_agent_address         => CONNECTED_TO_intel_vvp_tpg_7_av_mm_control_agent_address,         --   intel_vvp_tpg_7_av_mm_control_agent.address
+			intel_vvp_tpg_7_av_mm_control_agent_write           => CONNECTED_TO_intel_vvp_tpg_7_av_mm_control_agent_write,           --                                      .write
+			intel_vvp_tpg_7_av_mm_control_agent_byteenable      => CONNECTED_TO_intel_vvp_tpg_7_av_mm_control_agent_byteenable,      --                                      .byteenable
+			intel_vvp_tpg_7_av_mm_control_agent_writedata       => CONNECTED_TO_intel_vvp_tpg_7_av_mm_control_agent_writedata,       --                                      .writedata
+			intel_vvp_tpg_7_av_mm_control_agent_read            => CONNECTED_TO_intel_vvp_tpg_7_av_mm_control_agent_read,            --                                      .read
+			intel_vvp_tpg_7_av_mm_control_agent_readdata        => CONNECTED_TO_intel_vvp_tpg_7_av_mm_control_agent_readdata,        --                                      .readdata
+			intel_vvp_tpg_7_av_mm_control_agent_readdatavalid   => CONNECTED_TO_intel_vvp_tpg_7_av_mm_control_agent_readdatavalid,   --                                      .readdatavalid
+			intel_vvp_tpg_7_av_mm_control_agent_waitrequest     => CONNECTED_TO_intel_vvp_tpg_7_av_mm_control_agent_waitrequest,     --                                      .waitrequest
 			reset_reset                                         => CONNECTED_TO_reset_reset                                          --                                 reset.reset
 		);
 

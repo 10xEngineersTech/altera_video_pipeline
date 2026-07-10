@@ -1,0 +1,9 @@
+
+WORK > DEFAULT
+DEFAULT:                           ./libraries/work/                        
+work:                              ./libraries/work/                        
+altera_reset_controller_1924:      ./libraries/altera_reset_controller_1924/
+system:                            ./libraries/system/                      
+OTHERS=_device_synopsys_sim.setup                                           
+OTHERS=_default_synopsys_sim.setup                                          
+LIBRARY_SCAN = TRUE

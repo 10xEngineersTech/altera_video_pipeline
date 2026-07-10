@@ -1,4 +1,4 @@
-# system info system on 2026.07.09.15:58:10
+# system info system on 2026.07.10.10:59:02
 system_info:
 name,value
 DEVICE,A5ED065BB32AE6SR0
@@ -6,7 +6,7 @@ DEVICE_FAMILY,Agilex 5
 GENERATION_ID,0
 #
 #
-# Files generated for system on 2026.07.09.15:58:10
+# Files generated for system on 2026.07.10.10:59:02
 files:
 filepath,kind,attributes,module,is_top
 sim/system.v,VERILOG,CONTAINS_INLINE_CONFIGURATION,system,true
@@ -18,8 +18,14 @@ altera_reset_controller_1924/sim/altera_reset_controller.sdc,SDC_ENTITY,NO_SDC_P
 instances:
 instancePath,module
 system.clock_in,system_clock_in
-system.intel_vvp_mixer_0,system_intel_vvp_mixer_0
-system.intel_vvp_tpg_0,system_intel_vvp_tpg_0
-system.intel_vvp_tpg_1,system_intel_vvp_tpg_1
+system.intel_vvp_mixer_0,system_intel_vvp_mixer_1
+system.intel_vvp_tpg_0,system_intel_vvp_tpg_2
+system.intel_vvp_tpg_1,system_intel_vvp_tpg_3
+system.intel_vvp_tpg_2,system_intel_vvp_tpg_4
+system.intel_vvp_tpg_3,system_intel_vvp_tpg_5
+system.intel_vvp_tpg_4,system_intel_vvp_tpg_6
+system.intel_vvp_tpg_5,system_intel_vvp_tpg_7
+system.intel_vvp_tpg_6,system_intel_vvp_tpg_8
+system.intel_vvp_tpg_7,system_intel_vvp_tpg_9
 system.reset_in,system_reset_in
 system.rst_controller,altera_reset_controller

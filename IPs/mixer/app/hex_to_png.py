@@ -6,8 +6,8 @@ import numpy as np
 import os
 
 # Must match BG_WIDTH / BG_HEIGHT in rtl/tb.v
-WIDTH  = 64
-HEIGHT = 64
+WIDTH  = 1280
+HEIGHT = 720
 
 
 def convert_hex_rgb_to_png(input_file, output_file, width, height):

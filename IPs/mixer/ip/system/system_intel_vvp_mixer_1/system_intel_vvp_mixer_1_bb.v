@@ -1,0 +1,59 @@
+module system_intel_vvp_mixer_1 (
+		input  wire        main_clock_clk,                    //          main_clock.clk,          Clock Input
+		input  wire        main_reset_reset,                  //          main_reset.reset
+		input  wire [23:0] axi4s_vid_0_in_tdata,              //      axi4s_vid_0_in.tdata
+		input  wire        axi4s_vid_0_in_tvalid,             //                    .tvalid
+		output wire        axi4s_vid_0_in_tready,             //                    .tready
+		input  wire        axi4s_vid_0_in_tlast,              //                    .tlast
+		input  wire [2:0]  axi4s_vid_0_in_tuser,              //                    .tuser
+		output wire [23:0] axi4s_vid_out_tdata,               //       axi4s_vid_out.tdata
+		output wire        axi4s_vid_out_tvalid,              //                    .tvalid
+		input  wire        axi4s_vid_out_tready,              //                    .tready
+		output wire        axi4s_vid_out_tlast,               //                    .tlast
+		output wire [2:0]  axi4s_vid_out_tuser,               //                    .tuser
+		input  wire [23:0] axi4s_vid_1_in_tdata,              //      axi4s_vid_1_in.tdata
+		input  wire        axi4s_vid_1_in_tvalid,             //                    .tvalid
+		output wire        axi4s_vid_1_in_tready,             //                    .tready
+		input  wire        axi4s_vid_1_in_tlast,              //                    .tlast
+		input  wire [2:0]  axi4s_vid_1_in_tuser,              //                    .tuser
+		input  wire [23:0] axi4s_vid_2_in_tdata,              //      axi4s_vid_2_in.tdata
+		input  wire        axi4s_vid_2_in_tvalid,             //                    .tvalid
+		output wire        axi4s_vid_2_in_tready,             //                    .tready
+		input  wire        axi4s_vid_2_in_tlast,              //                    .tlast
+		input  wire [2:0]  axi4s_vid_2_in_tuser,              //                    .tuser
+		input  wire [23:0] axi4s_vid_3_in_tdata,              //      axi4s_vid_3_in.tdata
+		input  wire        axi4s_vid_3_in_tvalid,             //                    .tvalid
+		output wire        axi4s_vid_3_in_tready,             //                    .tready
+		input  wire        axi4s_vid_3_in_tlast,              //                    .tlast
+		input  wire [2:0]  axi4s_vid_3_in_tuser,              //                    .tuser
+		input  wire [23:0] axi4s_vid_4_in_tdata,              //      axi4s_vid_4_in.tdata
+		input  wire        axi4s_vid_4_in_tvalid,             //                    .tvalid
+		output wire        axi4s_vid_4_in_tready,             //                    .tready
+		input  wire        axi4s_vid_4_in_tlast,              //                    .tlast
+		input  wire [2:0]  axi4s_vid_4_in_tuser,              //                    .tuser
+		input  wire [23:0] axi4s_vid_5_in_tdata,              //      axi4s_vid_5_in.tdata
+		input  wire        axi4s_vid_5_in_tvalid,             //                    .tvalid
+		output wire        axi4s_vid_5_in_tready,             //                    .tready
+		input  wire        axi4s_vid_5_in_tlast,              //                    .tlast
+		input  wire [2:0]  axi4s_vid_5_in_tuser,              //                    .tuser
+		input  wire [23:0] axi4s_vid_6_in_tdata,              //      axi4s_vid_6_in.tdata
+		input  wire        axi4s_vid_6_in_tvalid,             //                    .tvalid
+		output wire        axi4s_vid_6_in_tready,             //                    .tready
+		input  wire        axi4s_vid_6_in_tlast,              //                    .tlast
+		input  wire [2:0]  axi4s_vid_6_in_tuser,              //                    .tuser
+		input  wire [23:0] axi4s_vid_7_in_tdata,              //      axi4s_vid_7_in.tdata
+		input  wire        axi4s_vid_7_in_tvalid,             //                    .tvalid
+		output wire        axi4s_vid_7_in_tready,             //                    .tready
+		input  wire        axi4s_vid_7_in_tlast,              //                    .tlast
+		input  wire [2:0]  axi4s_vid_7_in_tuser,              //                    .tuser
+		input  wire [7:0]  av_mm_control_agent_address,       // av_mm_control_agent.address
+		input  wire        av_mm_control_agent_write,         //                    .write
+		input  wire [3:0]  av_mm_control_agent_byteenable,    //                    .byteenable
+		input  wire [31:0] av_mm_control_agent_writedata,     //                    .writedata
+		input  wire        av_mm_control_agent_read,          //                    .read
+		output wire [31:0] av_mm_control_agent_readdata,      //                    .readdata
+		output wire        av_mm_control_agent_readdatavalid, //                    .readdatavalid
+		output wire        av_mm_control_agent_waitrequest    //                    .waitrequest
+	);
+endmodule
+

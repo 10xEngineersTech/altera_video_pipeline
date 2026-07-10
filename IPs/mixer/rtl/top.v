@@ -1,40 +1,42 @@
 `timescale 1 ps / 1 ps
 
 // =============================================================================
-// top.v  —  Mixer demo top-level controller
+// top.v  —  Mixer demo top-level controller (8 TPG sources)
 //
 // Topology (inside system.qsys):
-//   intel_vvp_tpg_0 (color bars)    → mixer axi4s_vid_0_in (base layer)
-//   intel_vvp_tpg_1 (uniform color) → mixer axi4s_vid_1_in (layer 1)
-//   mixer axi4s_vid_out             → exported to tb for hex capture
+//   intel_vvp_tpg_0 (color bars)      → mixer axi4s_vid_0_in (base layer)
+//   intel_vvp_tpg_1..7 (uniform color)→ mixer axi4s_vid_1..7_in (layers 1..7)
+//   mixer axi4s_vid_out               → exported to tb for hex capture
 //
-// The three Avalon-MM control agents are exported; this module configures
+// The nine Avalon-MM control agents are exported; this module configures
 // them with a single FSM:
-//   1. Mixer   — layer 1: enable, opaque, (FG_H_OFF, FG_V_OFF), commit
-//   2. TPG 1   — overlay: FG_WIDTH×FG_HEIGHT uniform color (FG_R,FG_G,FG_B)
+//   1. Mixer   — layers 1..7: enable, opaque, offsets; single commit
+//   2. TPG 1..7— overlays: FG_WIDTH×FG_HEIGHT uniform color, one per layer,
+//                placed on a diagonal with FG_STEP spacing (layer 7 on top)
 //   3. TPG 0   — base:    BG_WIDTH×BG_HEIGHT color bars
-//   4. WORKING — mixer output streams, base-size frames with overlay inset
+//   4. WORKING — mixer output streams, base-size frames with overlays inset
+//
+// Mixer register map (intel_vvp_mixer_regs.h): STATUS = 0x50, COMMIT = 0x51,
+// layer N (1..7) base = 0x52 + 7*(N-1); regs at base+0..4 are
+// MODE, BLEND_MODE, STATIC_ALPHA, H_OFFSET, V_OFFSET.
 //
 // Each TPG uses the sequence proven in Integrated_design/rtl/top.v:
 // CONTROL=0, config regs, COMMIT, CONTROL=1, poll STATUS.pending_commit,
-// short gap, CONTROL=1 again. The base TPG is enabled LAST so the overlay
-// layer is already streaming when the first base frame starts, guaranteeing
-// the overlay is present in the very first output frame.
+// short gap, CONTROL=1 again. The base TPG is enabled LAST so all overlay
+// layers are already streaming when the first base frame starts, guaranteeing
+// every overlay is present in the very first output frame.
 // =============================================================================
 
 module top #(
     // Base layer (background, TPG0 — color bars)
-    parameter [31:0] BG_WIDTH  = 32'd64,
-    parameter [31:0] BG_HEIGHT = 32'd64,
+    parameter [31:0] BG_WIDTH  = 32'd1280,
+    parameter [31:0] BG_HEIGHT = 32'd720,
 
-    // Overlay layer (foreground, TPG1 — uniform color)
-    parameter [31:0] FG_WIDTH  = 32'd32,
-    parameter [31:0] FG_HEIGHT = 32'd32,
-    parameter [31:0] FG_H_OFF  = 32'd16,
-    parameter [31:0] FG_V_OFF  = 32'd16,
-    parameter [31:0] FG_R      = 32'd255,
-    parameter [31:0] FG_G      = 32'd0,
-    parameter [31:0] FG_B      = 32'd0
+    // Overlay layers (foreground, TPG1..7 — uniform color, fixed palette).
+    // Overlay N is placed at ((N-1)*FG_STEP, (N-1)*FG_STEP).
+    parameter [31:0] FG_WIDTH  = 32'd180,
+    parameter [31:0] FG_HEIGHT = 32'd180,
+    parameter [31:0] FG_STEP   = 32'd90
 )(
     input  wire        clk,
     input  wire        reset,
@@ -64,33 +66,54 @@ module top #(
 
     // =========================================================================
     // Mixer register word addresses (intel_vvp_mixer_regs.h)
-    //   STATUS = RT+0 = 0x50, COMMIT = RT+1 = 0x51, layer1 base = RT+2 = 0x52
+    //   STATUS = RT+0 = 0x50, COMMIT = RT+1 = 0x51,
+    //   layer N base = 0x52 + 7*(N-1), N in 1..7
     // =========================================================================
-    localparam [7:0] MIX_ADDR_STATUS       = 8'h50;
-    localparam [7:0] MIX_ADDR_COMMIT       = 8'h51;
-    localparam [7:0] MIX_ADDR_L1_MODE      = 8'h52;   // bit0 = enable
-    localparam [7:0] MIX_ADDR_L1_BLEND     = 8'h53;   // 0=transparent 1=opaque
-    localparam [7:0] MIX_ADDR_L1_ALPHA     = 8'h54;
-    localparam [7:0] MIX_ADDR_L1_H_OFFSET  = 8'h55;
-    localparam [7:0] MIX_ADDR_L1_V_OFFSET  = 8'h56;
+    localparam [7:0] MIX_ADDR_COMMIT      = 8'h51;
+    localparam [7:0] MIX_ADDR_LAYERS_BASE = 8'h52;
+    localparam [7:0] MIX_LAYER_NUM_REGS   = 8'd7;
+    // Offsets within a layer's register block
+    localparam [2:0] MIX_OFS_MODE     = 3'd0;   // bit0 = enable
+    localparam [2:0] MIX_OFS_BLEND    = 3'd1;   // 0=transparent 1=opaque
+    localparam [2:0] MIX_OFS_ALPHA    = 3'd2;
+    localparam [2:0] MIX_OFS_H_OFFSET = 3'd3;
+    localparam [2:0] MIX_OFS_V_OFFSET = 3'd4;
+
+    // =========================================================================
+    // Overlay palette: {R, G, B} for layers 1..7
+    // =========================================================================
+    function [23:0] overlay_rgb;
+        input [2:0] idx;
+        case (idx)
+            3'd1:    overlay_rgb = 24'hFF0000;   // red
+            3'd2:    overlay_rgb = 24'h00FF00;   // green
+            3'd3:    overlay_rgb = 24'h0000FF;   // blue
+            3'd4:    overlay_rgb = 24'hFFFF00;   // yellow
+            3'd5:    overlay_rgb = 24'h00FFFF;   // cyan
+            3'd6:    overlay_rgb = 24'hFF00FF;   // magenta
+            default: overlay_rgb = 24'hFFFFFF;   // white (layer 7)
+        endcase
+    endfunction
 
     // =========================================================================
     // State encoding
     // =========================================================================
     localparam [3:0]
         ST_IDLE       = 4'd0,
-        ST_CFG_MIXER  = 4'd1,   // layer regs + commit
-        ST_CFG_TPG    = 4'd2,   // write sequence for the selected TPG
-        ST_TPG_POLL_I = 4'd3,   // issue STATUS read
-        ST_TPG_POLL_W = 4'd4,   // wait for readdata, check pending-commit
-        ST_TPG_GAP    = 4'd5,   // few idle cycles
-        ST_TPG_GO     = 4'd6,   // re-write CONTROL=1
-        ST_WORKING    = 4'd7;
+        ST_CFG_MIXER  = 4'd1,   // layer regs for layers 1..7
+        ST_MIX_COMMIT = 4'd2,   // single commit after all layers
+        ST_CFG_TPG    = 4'd3,   // write sequence for the selected TPG
+        ST_TPG_POLL_I = 4'd4,   // issue STATUS read
+        ST_TPG_POLL_W = 4'd5,   // wait for readdata, check pending-commit
+        ST_TPG_GAP    = 4'd6,   // few idle cycles
+        ST_TPG_GO     = 4'd7,   // re-write CONTROL=1
+        ST_WORKING    = 4'd8;
 
     reg [3:0] current_state;
     reg [3:0] cfg_step;
     reg [7:0] cycle_count;
-    reg       tpg_sel;          // 0: configuring TPG1 (overlay), 1: TPG0 (base)
+    reg [2:0] layer_idx;        // mixer layer being configured (1..7)
+    reg [2:0] tpg_sel;          // TPG being configured: 1..7 overlays, then 0 base
 
     // =========================================================================
     // Control buses
@@ -98,25 +121,35 @@ module top #(
     reg  [6:0]  tpg_addr;  reg tpg_write, tpg_read;  reg [31:0] tpg_wdata;
     reg  [7:0]  mix_addr;  reg mix_write;            reg [31:0] mix_wdata;
 
-    // Per-TPG demux: drive the selected TPG's agent, idle the other one.
-    // (tpg_sel==0 → TPG1 overlay first, tpg_sel==1 → TPG0 base last)
-    wire tpg0_write = tpg_sel ? tpg_write : 1'b0;
-    wire tpg0_read  = tpg_sel ? tpg_read  : 1'b0;
-    wire tpg1_write = tpg_sel ? 1'b0 : tpg_write;
-    wire tpg1_read  = tpg_sel ? 1'b0 : tpg_read;
+    // Per-TPG demux: drive the selected TPG's agent, idle the others.
+    wire [7:0] tpg_write_v, tpg_read_v;
+    genvar g;
+    generate
+        for (g = 0; g < 8; g = g + 1) begin : tpg_demux
+            assign tpg_write_v[g] = (tpg_sel == g[2:0]) ? tpg_write : 1'b0;
+            assign tpg_read_v[g]  = (tpg_sel == g[2:0]) ? tpg_read  : 1'b0;
+        end
+    endgenerate
 
-    wire [31:0] tpg0_readdata,      tpg1_readdata;
-    wire        tpg0_readdatavalid, tpg1_readdatavalid;
-    wire        tpg0_wait,          tpg1_wait;
+    wire [31:0] tpg_readdata_v      [0:7];
+    wire [7:0]  tpg_readdatavalid_v;
+    wire [7:0]  tpg_wait_v;
     wire        mix_wait;
 
-    wire [31:0] tpg_readdata      = tpg_sel ? tpg0_readdata      : tpg1_readdata;
-    wire        tpg_readdatavalid = tpg_sel ? tpg0_readdatavalid : tpg1_readdatavalid;
-    wire        tpg_wait          = tpg_sel ? tpg0_wait          : tpg1_wait;
+    wire [31:0] tpg_readdata      = tpg_readdata_v[tpg_sel];
+    wire        tpg_readdatavalid = tpg_readdatavalid_v[tpg_sel];
+    wire        tpg_wait          = tpg_wait_v[tpg_sel];
 
-    // Per-TPG configuration values
-    wire [31:0] cfg_width   = tpg_sel ? BG_WIDTH  : FG_WIDTH;
-    wire [31:0] cfg_height  = tpg_sel ? BG_HEIGHT : FG_HEIGHT;
+    // Per-TPG configuration values (TPG0 = base, others = fixed-size overlays)
+    wire        is_base    = (tpg_sel == 3'd0);
+    wire [31:0] cfg_width  = is_base ? BG_WIDTH  : FG_WIDTH;
+    wire [31:0] cfg_height = is_base ? BG_HEIGHT : FG_HEIGHT;
+    wire [23:0] cfg_rgb    = overlay_rgb(tpg_sel);
+
+    // Mixer per-layer values: layer N at ((N-1)*FG_STEP, (N-1)*FG_STEP)
+    wire [7:0]  mix_layer_base = MIX_ADDR_LAYERS_BASE
+                               + ({5'd0, layer_idx} - 8'd1) * MIX_LAYER_NUM_REGS;
+    wire [31:0] layer_off      = ({29'd0, layer_idx} - 32'd1) * FG_STEP;
 
     // =========================================================================
     // Configuration state machine
@@ -126,7 +159,8 @@ module top #(
             current_state <= ST_IDLE;
             cfg_step      <= 4'd0;
             cycle_count   <= 8'd0;
-            tpg_sel       <= 1'b0;
+            layer_idx     <= 3'd1;
+            tpg_sel       <= 3'd1;
             tpg_write     <= 1'b0;
             tpg_read      <= 1'b0;
             mix_write     <= 1'b0;
@@ -135,11 +169,12 @@ module top #(
 
                 ST_IDLE: begin
                     cfg_step      <= 4'd0;
+                    layer_idx     <= 3'd1;
                     current_state <= ST_CFG_MIXER;
                 end
 
                 // ══════════════════════════════════════════════════════════
-                // Mixer layer 1 setup, then commit
+                // Mixer layers 1..7 setup, then a single commit
                 // ══════════════════════════════════════════════════════════
                 // Avalon-MM rule: addr/data must be stable while waitrequest=1.
                 // On acceptance, write deasserts for one cycle while cfg_step
@@ -147,20 +182,22 @@ module top #(
                 // change during a pending transaction.
                 ST_CFG_MIXER: begin
                     case (cfg_step)
-                        4'd0: begin mix_addr <= MIX_ADDR_L1_MODE;     mix_wdata <= 32'h1;      end
-                        4'd1: begin mix_addr <= MIX_ADDR_L1_BLEND;    mix_wdata <= 32'h1;      end
-                        4'd2: begin mix_addr <= MIX_ADDR_L1_ALPHA;    mix_wdata <= 32'd255;    end
-                        4'd3: begin mix_addr <= MIX_ADDR_L1_H_OFFSET; mix_wdata <= FG_H_OFF;   end
-                        4'd4: begin mix_addr <= MIX_ADDR_L1_V_OFFSET; mix_wdata <= FG_V_OFF;   end
-                        4'd5: begin mix_addr <= MIX_ADDR_COMMIT;      mix_wdata <= 32'h1;      end
+                        4'd0: begin mix_addr <= mix_layer_base + {5'd0, MIX_OFS_MODE};     mix_wdata <= 32'h1;     end
+                        4'd1: begin mix_addr <= mix_layer_base + {5'd0, MIX_OFS_BLEND};    mix_wdata <= 32'h1;     end
+                        4'd2: begin mix_addr <= mix_layer_base + {5'd0, MIX_OFS_ALPHA};    mix_wdata <= 32'd255;   end
+                        4'd3: begin mix_addr <= mix_layer_base + {5'd0, MIX_OFS_H_OFFSET}; mix_wdata <= layer_off; end
+                        4'd4: begin mix_addr <= mix_layer_base + {5'd0, MIX_OFS_V_OFFSET}; mix_wdata <= layer_off; end
                         default: ;
                     endcase
                     if (mix_write && !mix_wait) begin
                         mix_write <= 1'b0;
-                        if (cfg_step == 4'd5) begin
-                            cfg_step      <= 4'd0;
-                            tpg_sel       <= 1'b0;      // overlay TPG first
-                            current_state <= ST_CFG_TPG;
+                        if (cfg_step == 4'd4) begin
+                            cfg_step <= 4'd0;
+                            if (layer_idx == 3'd7) begin
+                                current_state <= ST_MIX_COMMIT;
+                            end else begin
+                                layer_idx <= layer_idx + 1'b1;
+                            end
                         end else begin
                             cfg_step <= cfg_step + 1'b1;
                         end
@@ -169,8 +206,21 @@ module top #(
                     end
                 end
 
+                ST_MIX_COMMIT: begin
+                    mix_addr  <= MIX_ADDR_COMMIT;
+                    mix_wdata <= 32'h1;
+                    if (mix_write && !mix_wait) begin
+                        mix_write     <= 1'b0;
+                        cfg_step      <= 4'd0;
+                        tpg_sel       <= 3'd1;      // overlay TPGs first
+                        current_state <= ST_CFG_TPG;
+                    end else begin
+                        mix_write <= 1'b1;
+                    end
+                end
+
                 // ══════════════════════════════════════════════════════════
-                // TPG write sequence (runs twice: TPG1 overlay, then TPG0 base)
+                // TPG write sequence (runs 8x: TPG1..TPG7 overlays, TPG0 base)
                 // ══════════════════════════════════════════════════════════
                 ST_CFG_TPG: begin
                     case (cfg_step)
@@ -180,9 +230,9 @@ module top #(
                         4'd3:  begin tpg_addr <= TPG_ADDR_HEIGHT;    tpg_wdata <= cfg_height; end
                         4'd4:  begin tpg_addr <= TPG_ADDR_BAR_SEL;   tpg_wdata <= 32'h0;      end
                         4'd5:  begin tpg_addr <= TPG_ADDR_PATTERN;   tpg_wdata <= 32'h0;      end
-                        4'd6:  begin tpg_addr <= TPG_ADDR_C0;        tpg_wdata <= FG_B;       end
-                        4'd7:  begin tpg_addr <= TPG_ADDR_C1;        tpg_wdata <= FG_G;       end
-                        4'd8:  begin tpg_addr <= TPG_ADDR_C2;        tpg_wdata <= FG_R;       end
+                        4'd6:  begin tpg_addr <= TPG_ADDR_C0;        tpg_wdata <= {24'd0, cfg_rgb[7:0]};   end
+                        4'd7:  begin tpg_addr <= TPG_ADDR_C1;        tpg_wdata <= {24'd0, cfg_rgb[15:8]};  end
+                        4'd8:  begin tpg_addr <= TPG_ADDR_C2;        tpg_wdata <= {24'd0, cfg_rgb[23:16]}; end
                         4'd9:  begin tpg_addr <= TPG_ADDR_COMMIT;    tpg_wdata <= 32'h1;      end
                         4'd10: begin tpg_addr <= TPG_ADDR_CONTROL;   tpg_wdata <= 32'h1;      end
                         default: ;
@@ -233,11 +283,14 @@ module top #(
                     if (tpg_write && !tpg_wait) begin
                         tpg_write <= 1'b0;
                         cfg_step  <= 4'd0;
-                        if (tpg_sel == 1'b0) begin
-                            tpg_sel       <= 1'b1;       // now the base TPG
+                        if (tpg_sel == 3'd0) begin
+                            current_state <= ST_WORKING;      // base TPG was last
+                        end else if (tpg_sel == 3'd7) begin
+                            tpg_sel       <= 3'd0;            // now the base TPG
                             current_state <= ST_CFG_TPG;
                         end else begin
-                            current_state <= ST_WORKING;
+                            tpg_sel       <= tpg_sel + 1'b1;  // next overlay TPG
+                            current_state <= ST_CFG_TPG;
                         end
                     end
                 end
@@ -282,23 +335,77 @@ module top #(
 
         // ----- TPG0 (base, color bars) Avalon-MM control -----
         .intel_vvp_tpg_0_av_mm_control_agent_address       (tpg_addr),
-        .intel_vvp_tpg_0_av_mm_control_agent_write         (tpg0_write),
-        .intel_vvp_tpg_0_av_mm_control_agent_read          (tpg0_read),
+        .intel_vvp_tpg_0_av_mm_control_agent_write         (tpg_write_v[0]),
+        .intel_vvp_tpg_0_av_mm_control_agent_read          (tpg_read_v[0]),
         .intel_vvp_tpg_0_av_mm_control_agent_byteenable    (4'hF),
         .intel_vvp_tpg_0_av_mm_control_agent_writedata     (tpg_wdata),
-        .intel_vvp_tpg_0_av_mm_control_agent_readdata      (tpg0_readdata),
-        .intel_vvp_tpg_0_av_mm_control_agent_readdatavalid (tpg0_readdatavalid),
-        .intel_vvp_tpg_0_av_mm_control_agent_waitrequest   (tpg0_wait),
+        .intel_vvp_tpg_0_av_mm_control_agent_readdata      (tpg_readdata_v[0]),
+        .intel_vvp_tpg_0_av_mm_control_agent_readdatavalid (tpg_readdatavalid_v[0]),
+        .intel_vvp_tpg_0_av_mm_control_agent_waitrequest   (tpg_wait_v[0]),
 
-        // ----- TPG1 (overlay, uniform color) Avalon-MM control -----
+        // ----- TPG1..TPG7 (overlays, uniform color) Avalon-MM control -----
         .intel_vvp_tpg_1_av_mm_control_agent_address       (tpg_addr),
-        .intel_vvp_tpg_1_av_mm_control_agent_write         (tpg1_write),
-        .intel_vvp_tpg_1_av_mm_control_agent_read          (tpg1_read),
+        .intel_vvp_tpg_1_av_mm_control_agent_write         (tpg_write_v[1]),
+        .intel_vvp_tpg_1_av_mm_control_agent_read          (tpg_read_v[1]),
         .intel_vvp_tpg_1_av_mm_control_agent_byteenable    (4'hF),
         .intel_vvp_tpg_1_av_mm_control_agent_writedata     (tpg_wdata),
-        .intel_vvp_tpg_1_av_mm_control_agent_readdata      (tpg1_readdata),
-        .intel_vvp_tpg_1_av_mm_control_agent_readdatavalid (tpg1_readdatavalid),
-        .intel_vvp_tpg_1_av_mm_control_agent_waitrequest   (tpg1_wait)
+        .intel_vvp_tpg_1_av_mm_control_agent_readdata      (tpg_readdata_v[1]),
+        .intel_vvp_tpg_1_av_mm_control_agent_readdatavalid (tpg_readdatavalid_v[1]),
+        .intel_vvp_tpg_1_av_mm_control_agent_waitrequest   (tpg_wait_v[1]),
+
+        .intel_vvp_tpg_2_av_mm_control_agent_address       (tpg_addr),
+        .intel_vvp_tpg_2_av_mm_control_agent_write         (tpg_write_v[2]),
+        .intel_vvp_tpg_2_av_mm_control_agent_read          (tpg_read_v[2]),
+        .intel_vvp_tpg_2_av_mm_control_agent_byteenable    (4'hF),
+        .intel_vvp_tpg_2_av_mm_control_agent_writedata     (tpg_wdata),
+        .intel_vvp_tpg_2_av_mm_control_agent_readdata      (tpg_readdata_v[2]),
+        .intel_vvp_tpg_2_av_mm_control_agent_readdatavalid (tpg_readdatavalid_v[2]),
+        .intel_vvp_tpg_2_av_mm_control_agent_waitrequest   (tpg_wait_v[2]),
+
+        .intel_vvp_tpg_3_av_mm_control_agent_address       (tpg_addr),
+        .intel_vvp_tpg_3_av_mm_control_agent_write         (tpg_write_v[3]),
+        .intel_vvp_tpg_3_av_mm_control_agent_read          (tpg_read_v[3]),
+        .intel_vvp_tpg_3_av_mm_control_agent_byteenable    (4'hF),
+        .intel_vvp_tpg_3_av_mm_control_agent_writedata     (tpg_wdata),
+        .intel_vvp_tpg_3_av_mm_control_agent_readdata      (tpg_readdata_v[3]),
+        .intel_vvp_tpg_3_av_mm_control_agent_readdatavalid (tpg_readdatavalid_v[3]),
+        .intel_vvp_tpg_3_av_mm_control_agent_waitrequest   (tpg_wait_v[3]),
+
+        .intel_vvp_tpg_4_av_mm_control_agent_address       (tpg_addr),
+        .intel_vvp_tpg_4_av_mm_control_agent_write         (tpg_write_v[4]),
+        .intel_vvp_tpg_4_av_mm_control_agent_read          (tpg_read_v[4]),
+        .intel_vvp_tpg_4_av_mm_control_agent_byteenable    (4'hF),
+        .intel_vvp_tpg_4_av_mm_control_agent_writedata     (tpg_wdata),
+        .intel_vvp_tpg_4_av_mm_control_agent_readdata      (tpg_readdata_v[4]),
+        .intel_vvp_tpg_4_av_mm_control_agent_readdatavalid (tpg_readdatavalid_v[4]),
+        .intel_vvp_tpg_4_av_mm_control_agent_waitrequest   (tpg_wait_v[4]),
+
+        .intel_vvp_tpg_5_av_mm_control_agent_address       (tpg_addr),
+        .intel_vvp_tpg_5_av_mm_control_agent_write         (tpg_write_v[5]),
+        .intel_vvp_tpg_5_av_mm_control_agent_read          (tpg_read_v[5]),
+        .intel_vvp_tpg_5_av_mm_control_agent_byteenable    (4'hF),
+        .intel_vvp_tpg_5_av_mm_control_agent_writedata     (tpg_wdata),
+        .intel_vvp_tpg_5_av_mm_control_agent_readdata      (tpg_readdata_v[5]),
+        .intel_vvp_tpg_5_av_mm_control_agent_readdatavalid (tpg_readdatavalid_v[5]),
+        .intel_vvp_tpg_5_av_mm_control_agent_waitrequest   (tpg_wait_v[5]),
+
+        .intel_vvp_tpg_6_av_mm_control_agent_address       (tpg_addr),
+        .intel_vvp_tpg_6_av_mm_control_agent_write         (tpg_write_v[6]),
+        .intel_vvp_tpg_6_av_mm_control_agent_read          (tpg_read_v[6]),
+        .intel_vvp_tpg_6_av_mm_control_agent_byteenable    (4'hF),
+        .intel_vvp_tpg_6_av_mm_control_agent_writedata     (tpg_wdata),
+        .intel_vvp_tpg_6_av_mm_control_agent_readdata      (tpg_readdata_v[6]),
+        .intel_vvp_tpg_6_av_mm_control_agent_readdatavalid (tpg_readdatavalid_v[6]),
+        .intel_vvp_tpg_6_av_mm_control_agent_waitrequest   (tpg_wait_v[6]),
+
+        .intel_vvp_tpg_7_av_mm_control_agent_address       (tpg_addr),
+        .intel_vvp_tpg_7_av_mm_control_agent_write         (tpg_write_v[7]),
+        .intel_vvp_tpg_7_av_mm_control_agent_read          (tpg_read_v[7]),
+        .intel_vvp_tpg_7_av_mm_control_agent_byteenable    (4'hF),
+        .intel_vvp_tpg_7_av_mm_control_agent_writedata     (tpg_wdata),
+        .intel_vvp_tpg_7_av_mm_control_agent_readdata      (tpg_readdata_v[7]),
+        .intel_vvp_tpg_7_av_mm_control_agent_readdatavalid (tpg_readdatavalid_v[7]),
+        .intel_vvp_tpg_7_av_mm_control_agent_waitrequest   (tpg_wait_v[7])
     );
 
 endmodule

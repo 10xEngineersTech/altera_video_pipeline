@@ -16,8 +16,9 @@ module tb();
 
     // DDR4 calibration (abbreviated sim model) runs before the first frame
     // can round-trip through the EMIF, so pad the watchdog with a fixed margin.
+    // The captured frame is now the mixer output (MIXER_WIDTH x MIXER_HEIGHT).
     localparam CAL_MARGIN = 1000000; // 1 ms
-    localparam END_TIME   = ((SCALER_HEIGHT * SCALER_WIDTH < TPG_WIDTH * TPG_HEIGHT) ? TPG_WIDTH * TPG_HEIGHT * 1000 : SCALER_HEIGHT * SCALER_WIDTH * 1000) + CAL_MARGIN;
+    localparam END_TIME   = ((SCALER_HEIGHT * SCALER_WIDTH < TPG_WIDTH * TPG_HEIGHT) ? TPG_WIDTH * TPG_HEIGHT * 1000 : SCALER_HEIGHT * SCALER_WIDTH * 1000) + MIXER_WIDTH * MIXER_HEIGHT * 1000 + CAL_MARGIN;
 
     // --- Clock and Reset ---
     reg clk;
@@ -45,11 +46,11 @@ module tb();
     localparam CLK_PERIOD = 10; // 100MHz
 
 	 make_file #(
-        .IMG_H(SCALER_OUT_H),
-        .IMG_W(SCALER_OUT_W),
+        .IMG_H(MIXER_HEIGHT),
+        .IMG_W(MIXER_WIDTH),
         .IS_FULL(1),
 		  .FILE_NAME("../../../../app/sc_data.txt")
-    ) vfb_out_capture (
+    ) mixer_out_capture (
         .clk        (clk),
         .reset      (reset),
 
@@ -74,6 +75,8 @@ module tb();
         .IMG_B_OFF(IMG_B_OFF),
         .SCALER_OUT_W(SCALER_OUT_W),
         .SCALER_OUT_H(SCALER_OUT_H),
+        .MIXER_W(MIXER_WIDTH),
+        .MIXER_H(MIXER_HEIGHT),
         .INPUT_SEL(INPUT_SEL)
     ) dut (
         .clk(clk),
@@ -116,7 +119,7 @@ module tb();
         out_tready = 1;
 
         wait(out_tvalid && out_tuser[0]);
-        $display("[%0t] First Start of Frame (SOF) detected at VFB output!", $time);
+        $display("[%0t] First Start of Frame (SOF) detected at mixer output!", $time);
 
         repeat(5) begin
             wait(out_tvalid && out_tlast);

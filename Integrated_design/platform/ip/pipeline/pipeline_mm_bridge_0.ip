@@ -1122,7 +1122,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="SYSINFO_ADDR_WIDTH" type="int">
           <ipxact:name>SYSINFO_ADDR_WIDTH</ipxact:name>
           <ipxact:displayName>SYSINFO_ADDR_WIDTH</ipxact:displayName>
-          <ipxact:value>12</ipxact:value>
+          <ipxact:value>13</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="USE_AUTO_ADDRESS_WIDTH" type="int">
           <ipxact:name>USE_AUTO_ADDRESS_WIDTH</ipxact:name>
@@ -1201,7 +1201,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="device" type="string">
           <ipxact:name>device</ipxact:name>
           <ipxact:displayName>Device</ipxact:displayName>
-          <ipxact:value>A5DC051AB32BE1V</ipxact:value>
+          <ipxact:value>A5ED065BB32AE6SR0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="deviceFamily" type="string">
           <ipxact:name>deviceFamily</ipxact:name>
@@ -1911,7 +1911,7 @@ https://fpgasoftware.intel.com/eula.-->
                 &lt;suppliedSystemInfos&gt;
                     &lt;entry&gt;
                         &lt;key&gt;ADDRESS_WIDTH&lt;/key&gt;
-                        &lt;value&gt;12&lt;/value&gt;
+                        &lt;value&gt;13&lt;/value&gt;
                     &lt;/entry&gt;
                 &lt;/suppliedSystemInfos&gt;
                 &lt;consumedSystemInfos/&gt;

@@ -2518,7 +2518,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="SYSINFO_DEVICE" type="string">
           <ipxact:name>SYSINFO_DEVICE</ipxact:name>
           <ipxact:displayName>SYSINFO_DEVICE</ipxact:displayName>
-          <ipxact:value>A5DC051AB32BE1V</ipxact:value>
+          <ipxact:value>A5ED065BB32AE6SR0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SYSINFO_DEVICE_FAMILY" type="string">
           <ipxact:name>SYSINFO_DEVICE_FAMILY</ipxact:name>
@@ -2528,12 +2528,12 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="SYSINFO_DEVICE_SPEEDGRADE" type="string">
           <ipxact:name>SYSINFO_DEVICE_SPEEDGRADE</ipxact:name>
           <ipxact:displayName>SYSINFO_DEVICE_SPEEDGRADE</ipxact:displayName>
-          <ipxact:value>1</ipxact:value>
+          <ipxact:value>6</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SYSINFO_DEVICE_DIE_REVISIONS" type="string">
           <ipxact:name>SYSINFO_DEVICE_DIE_REVISIONS</ipxact:name>
           <ipxact:displayName>SYSINFO_DEVICE_DIE_REVISIONS</ipxact:displayName>
-          <ipxact:value>MAIN_FMM3_REVA</ipxact:value>
+          <ipxact:value>MAIN_SM7_REVA</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SYSINFO_DEVICE_TEMPERATURE_GRADE" type="string">
           <ipxact:name>SYSINFO_DEVICE_TEMPERATURE_GRADE</ipxact:name>
@@ -2543,27 +2543,27 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="SYSINFO_DEVICE_POWER_MODEL" type="string">
           <ipxact:name>SYSINFO_DEVICE_POWER_MODEL</ipxact:name>
           <ipxact:displayName>SYSINFO_DEVICE_POWER_MODEL</ipxact:displayName>
-          <ipxact:value>STANDARD_POWER</ipxact:value>
+          <ipxact:value>STANDARD_POWER_FIXED</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SYSINFO_SUPPORTS_VID" type="string">
           <ipxact:name>SYSINFO_SUPPORTS_VID</ipxact:name>
           <ipxact:displayName>SYSINFO_SUPPORTS_VID</ipxact:displayName>
-          <ipxact:value>1</ipxact:value>
+          <ipxact:value>0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SYSINFO_DEVICE_IOBANK_REVISION" type="string">
           <ipxact:name>SYSINFO_DEVICE_IOBANK_REVISION</ipxact:name>
           <ipxact:displayName>SYSINFO_DEVICE_IOBANK_REVISION</ipxact:displayName>
-          <ipxact:value>IO96B_REVB1</ipxact:value>
+          <ipxact:value>IO96B</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SYSINFO_DEVICE_GROUP" type="string">
           <ipxact:name>SYSINFO_DEVICE_GROUP</ipxact:name>
           <ipxact:displayName>SYSINFO_DEVICE_GROUP</ipxact:displayName>
-          <ipxact:value>A</ipxact:value>
+          <ipxact:value>B</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SYSINFO_DEVICE_BASE_DIE" type="string">
           <ipxact:name>SYSINFO_DEVICE_BASE_DIE</ipxact:name>
           <ipxact:displayName>SYSINFO_DEVICE_BASE_DIE</ipxact:displayName>
-          <ipxact:value>FMM3</ipxact:value>
+          <ipxact:value>SM7</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="MEM_CHANNEL_DATA_DQ_WIDTH" type="int">
           <ipxact:name>MEM_CHANNEL_DATA_DQ_WIDTH</ipxact:name>
@@ -2623,7 +2623,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="MEM_OPERATING_FREQ_MHZ" type="string">
           <ipxact:name>MEM_OPERATING_FREQ_MHZ</ipxact:name>
           <ipxact:displayName>Memory Operating Frequency</ipxact:displayName>
-          <ipxact:value>1600</ipxact:value>
+          <ipxact:value>800</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="CTRL_ECC_AUTOCORRECT_EN" type="bit">
           <ipxact:name>CTRL_ECC_AUTOCORRECT_EN</ipxact:name>
@@ -2808,12 +2808,12 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="MEM_CL_CYC" type="real">
           <ipxact:name>MEM_CL_CYC</ipxact:name>
           <ipxact:displayName>Read Latency</ipxact:displayName>
-          <ipxact:value>20.0</ipxact:value>
+          <ipxact:value>11.0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="MEM_CWL_CYC" type="real">
           <ipxact:name>MEM_CWL_CYC</ipxact:name>
           <ipxact:displayName>Write Latency</ipxact:displayName>
-          <ipxact:value>16.0</ipxact:value>
+          <ipxact:value>9.0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="MEM_AL_CYC" type="real">
           <ipxact:name>MEM_AL_CYC</ipxact:name>
@@ -2868,12 +2868,12 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="MEM_TCCD_L_NS" type="real">
           <ipxact:name>MEM_TCCD_L_NS</ipxact:name>
           <ipxact:displayName>tCCD_L</ipxact:displayName>
-          <ipxact:value>5.0</ipxact:value>
+          <ipxact:value>6.25</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="MEM_TCCD_S_NS" type="real">
           <ipxact:name>MEM_TCCD_S_NS</ipxact:name>
           <ipxact:displayName>tCCD_S</ipxact:displayName>
-          <ipxact:value>2.5</ipxact:value>
+          <ipxact:value>5.0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="MEM_PAGE_SIZE" type="real">
           <ipxact:name>MEM_PAGE_SIZE</ipxact:name>
@@ -2893,7 +2893,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="MEM_TFAW_NS" type="real">
           <ipxact:name>MEM_TFAW_NS</ipxact:name>
           <ipxact:displayName>tFAW</ipxact:displayName>
-          <ipxact:value>30.0</ipxact:value>
+          <ipxact:value>35.0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="MEM_TWTR_L_NS" type="real">
           <ipxact:name>MEM_TWTR_L_NS</ipxact:name>
@@ -2908,12 +2908,12 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="MEM_TWTR_L_CRC_DM_NS" type="real">
           <ipxact:name>MEM_TWTR_L_CRC_DM_NS</ipxact:name>
           <ipxact:displayName>MEM_TWTR_L_CRC_DM_NS</ipxact:displayName>
-          <ipxact:value>3.75</ipxact:value>
+          <ipxact:value>6.25</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="MEM_TWTR_S_CRC_DM_NS" type="real">
           <ipxact:name>MEM_TWTR_S_CRC_DM_NS</ipxact:name>
           <ipxact:displayName>MEM_TWTR_S_CRC_DM_NS</ipxact:displayName>
-          <ipxact:value>3.75</ipxact:value>
+          <ipxact:value>6.25</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="MEM_TRTP_NS" type="real">
           <ipxact:name>MEM_TRTP_NS</ipxact:name>
@@ -2928,12 +2928,12 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="MEM_TWR_CRC_DM_NS" type="real">
           <ipxact:name>MEM_TWR_CRC_DM_NS</ipxact:name>
           <ipxact:displayName>MEM_TWR_CRC_DM_NS</ipxact:displayName>
-          <ipxact:value>3.75</ipxact:value>
+          <ipxact:value>6.25</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="MEM_TMRD_NS" type="real">
           <ipxact:name>MEM_TMRD_NS</ipxact:name>
           <ipxact:displayName>tMRD</ipxact:displayName>
-          <ipxact:value>5.0</ipxact:value>
+          <ipxact:value>10.0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="MEM_TCKSRE_NS" type="real">
           <ipxact:name>MEM_TCKSRE_NS</ipxact:name>
@@ -2953,12 +2953,12 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="MEM_TCKESR_CYC" type="real">
           <ipxact:name>MEM_TCKESR_CYC</ipxact:name>
           <ipxact:displayName>tCKESR</ipxact:displayName>
-          <ipxact:value>9.0</ipxact:value>
+          <ipxact:value>5.0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="MEM_TMPRR_NS" type="real">
           <ipxact:name>MEM_TMPRR_NS</ipxact:name>
           <ipxact:displayName>tMPRR</ipxact:displayName>
-          <ipxact:value>0.625</ipxact:value>
+          <ipxact:value>1.25</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="MEM_TRFC_NS" type="real">
           <ipxact:name>MEM_TRFC_NS</ipxact:name>
@@ -3008,22 +3008,22 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="MEM_TXS_DLL_NS" type="real">
           <ipxact:name>MEM_TXS_DLL_NS</ipxact:name>
           <ipxact:displayName>tXSDLL</ipxact:displayName>
-          <ipxact:value>640.0</ipxact:value>
+          <ipxact:value>1280.0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="MEM_TCPDED_NS" type="real">
           <ipxact:name>MEM_TCPDED_NS</ipxact:name>
           <ipxact:displayName>tCPDED</ipxact:displayName>
-          <ipxact:value>2.5</ipxact:value>
+          <ipxact:value>5.0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="MEM_TMOD_NS" type="real">
           <ipxact:name>MEM_TMOD_NS</ipxact:name>
           <ipxact:displayName>tMOD</ipxact:displayName>
-          <ipxact:value>15.0</ipxact:value>
+          <ipxact:value>30.0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="MEM_TZQCS_NS" type="real">
           <ipxact:name>MEM_TZQCS_NS</ipxact:name>
           <ipxact:displayName>tZQCS</ipxact:displayName>
-          <ipxact:value>80.0</ipxact:value>
+          <ipxact:value>160.0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="MEM_TZQINIT_CYC" type="real">
           <ipxact:name>MEM_TZQINIT_CYC</ipxact:name>
@@ -3038,12 +3038,12 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="MEM_TCK_CL_CWL_MIN_NS" type="real">
           <ipxact:name>MEM_TCK_CL_CWL_MIN_NS</ipxact:name>
           <ipxact:displayName>MEM_TCK_CL_CWL_MIN_NS</ipxact:displayName>
-          <ipxact:value>0.625</ipxact:value>
+          <ipxact:value>1.25</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="MEM_TCK_CL_CWL_MAX_NS" type="real">
           <ipxact:name>MEM_TCK_CL_CWL_MAX_NS</ipxact:name>
           <ipxact:displayName>MEM_TCK_CL_CWL_MAX_NS</ipxact:displayName>
-          <ipxact:value>0.682</ipxact:value>
+          <ipxact:value>1.5</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="JEDEC_OVERRIDE_TABLE_PARAM_NAME" type="string">
           <ipxact:name>JEDEC_OVERRIDE_TABLE_PARAM_NAME</ipxact:name>
@@ -3098,7 +3098,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="EX_DESIGN_USER_PLL_OUTPUT_FREQ_MHZ" type="real">
           <ipxact:name>EX_DESIGN_USER_PLL_OUTPUT_FREQ_MHZ</ipxact:name>
           <ipxact:displayName>User PLL Output Clock Frequency</ipxact:displayName>
-          <ipxact:value>200.0</ipxact:value>
+          <ipxact:value>220.0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="EX_DESIGN_USER_PLL_REFCLK_FREQ_MHZ" type="real">
           <ipxact:name>EX_DESIGN_USER_PLL_REFCLK_FREQ_MHZ</ipxact:name>
@@ -3282,7 +3282,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="device" type="string">
           <ipxact:name>device</ipxact:name>
           <ipxact:displayName>Device</ipxact:displayName>
-          <ipxact:value>A5DC051AB32BE1V</ipxact:value>
+          <ipxact:value>A5ED065BB32AE6SR0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="deviceFamily" type="string">
           <ipxact:name>deviceFamily</ipxact:name>
@@ -3304,6 +3304,17 @@ https://fpgasoftware.intel.com/eula.-->
           <ipxact:displayName>bonusData</ipxact:displayName>
           <ipxact:value>bonusData 
 {
+   element $system
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Agilex 5";
+         type = "String";
+      }
+   }
+   element emif_0
+   {
+   }
 }
 </ipxact:value>
         </ipxact:parameter>

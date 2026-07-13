@@ -94,7 +94,7 @@
 # within the Quartus project, and generate a unified
 # script which supports all the Intel IP within the design.
 # ----------------------------------------
-# ACDS 25.1.1 125 linux 2026.07.08.20:17:22
+# ACDS 25.1.1 125 linux 2026.07.12.19:49:22
 
 # ----------------------------------------
 # Initialize variables
@@ -251,7 +251,7 @@ if { $PRECOMP_DEVICE_LIB_FILE ne "" } {
 # ----------------------------------------
 # Create compilation libraries
 
-set logical_libraries [list "work" "work_lib" "lpm_ver" "sgate_ver" "altera_ver" "altera_mf_ver" "altera_lnsim_ver" "tennm_ver" "tennm_sm_hps_ver" "tennm_fmm3_hssi_ver" "tennm_revb_hvio_ver" "tennm_revb_io96_ver"]
+set logical_libraries [list "work" "work_lib" "lpm_ver" "sgate_ver" "altera_ver" "altera_mf_ver" "altera_lnsim_ver" "tennm_ver" "tennm_hvio_ver" "tennm_sm_hps_ver" "tennm_agilex5_io96_ver" "tennm_agilex5_hssi_a_ver"]
 
 proc ensure_lib { lib } { if ![file isdirectory $lib] { vlib $lib } }
 ensure_lib          ./libraries/     
@@ -276,26 +276,26 @@ if { [llength $dpi_libraries] != 0 } {
 }
 
 if [ check_precomp_device $PRECOMP_DEVICE_LIB_FILE $FORCE_MODELSIM_AE_SELECTION ] {
-  ensure_lib                     ./libraries/lpm_ver/            
-  vmap       lpm_ver             ./libraries/lpm_ver/            
-  ensure_lib                     ./libraries/sgate_ver/          
-  vmap       sgate_ver           ./libraries/sgate_ver/          
-  ensure_lib                     ./libraries/altera_ver/         
-  vmap       altera_ver          ./libraries/altera_ver/         
-  ensure_lib                     ./libraries/altera_mf_ver/      
-  vmap       altera_mf_ver       ./libraries/altera_mf_ver/      
-  ensure_lib                     ./libraries/altera_lnsim_ver/   
-  vmap       altera_lnsim_ver    ./libraries/altera_lnsim_ver/   
-  ensure_lib                     ./libraries/tennm_ver/          
-  vmap       tennm_ver           ./libraries/tennm_ver/          
-  ensure_lib                     ./libraries/tennm_sm_hps_ver/   
-  vmap       tennm_sm_hps_ver    ./libraries/tennm_sm_hps_ver/   
-  ensure_lib                     ./libraries/tennm_fmm3_hssi_ver/
-  vmap       tennm_fmm3_hssi_ver ./libraries/tennm_fmm3_hssi_ver/
-  ensure_lib                     ./libraries/tennm_revb_hvio_ver/
-  vmap       tennm_revb_hvio_ver ./libraries/tennm_revb_hvio_ver/
-  ensure_lib                     ./libraries/tennm_revb_io96_ver/
-  vmap       tennm_revb_io96_ver ./libraries/tennm_revb_io96_ver/
+  ensure_lib                          ./libraries/lpm_ver/                 
+  vmap       lpm_ver                  ./libraries/lpm_ver/                 
+  ensure_lib                          ./libraries/sgate_ver/               
+  vmap       sgate_ver                ./libraries/sgate_ver/               
+  ensure_lib                          ./libraries/altera_ver/              
+  vmap       altera_ver               ./libraries/altera_ver/              
+  ensure_lib                          ./libraries/altera_mf_ver/           
+  vmap       altera_mf_ver            ./libraries/altera_mf_ver/           
+  ensure_lib                          ./libraries/altera_lnsim_ver/        
+  vmap       altera_lnsim_ver         ./libraries/altera_lnsim_ver/        
+  ensure_lib                          ./libraries/tennm_ver/               
+  vmap       tennm_ver                ./libraries/tennm_ver/               
+  ensure_lib                          ./libraries/tennm_hvio_ver/          
+  vmap       tennm_hvio_ver           ./libraries/tennm_hvio_ver/          
+  ensure_lib                          ./libraries/tennm_sm_hps_ver/        
+  vmap       tennm_sm_hps_ver         ./libraries/tennm_sm_hps_ver/        
+  ensure_lib                          ./libraries/tennm_agilex5_io96_ver/  
+  vmap       tennm_agilex5_io96_ver   ./libraries/tennm_agilex5_io96_ver/  
+  ensure_lib                          ./libraries/tennm_agilex5_hssi_a_ver/
+  vmap       tennm_agilex5_hssi_a_ver ./libraries/tennm_agilex5_hssi_a_ver/
 }
 set design_libraries [dict create]
 set design_libraries [dict merge $design_libraries [pipeline_intel_vvp_protocol_conv_1::get_design_libraries]]
@@ -324,14 +324,14 @@ alias dev_com {
      -makelib tennm_ver "$QUARTUS_SIM_LIB_DIR/tennm_atoms.sv" -end \
      -makelib tennm_ver "$QUARTUS_SIM_LIB_DIR/mentor/tennm_atoms_ncrypt.sv" -end \
      -makelib tennm_ver "$QUARTUS_SIM_LIB_DIR/fmica_atoms_ncrypt.sv" -end \
+     -makelib tennm_hvio_ver "$DEVICES_SIM_LIB_DIR/tennm_hvio.sv" -end \
+     -makelib tennm_hvio_ver "$DEVICES_SIM_LIB_DIR/tennm_hvio_ncrypt.sv"  -suppress 2583 -end \
      -makelib tennm_sm_hps_ver "$DEVICES_SIM_LIB_DIR/tennm_sm_hps.sv" -end \
      -makelib tennm_sm_hps_ver "$DEVICES_SIM_LIB_DIR/tennm_sm_hps_ncrypt.sv" -end \
-     -makelib tennm_fmm3_hssi_ver "$DEVICES_SIM_LIB_DIR/tennm_fmm3_hssi.sv" -end \
-     -makelib tennm_fmm3_hssi_ver "$DEVICES_SIM_LIB_DIR/tennm_fmm3_hssi_ncrypt.sv"  -suppress 7061,2583,13314,2244,2283,2600,3691 -end \
-     -makelib tennm_revb_hvio_ver "$DEVICES_SIM_LIB_DIR/tennm_revb_hvio.sv" -end \
-     -makelib tennm_revb_hvio_ver "$DEVICES_SIM_LIB_DIR/tennm_revb_hvio_ncrypt.sv"  -suppress 2583 -end \
-     -makelib tennm_revb_io96_ver "$DEVICES_SIM_LIB_DIR/tennm_revb_io96.sv" -end \
-     -makelib tennm_revb_io96_ver "$DEVICES_SIM_LIB_DIR/tennm_revb_io96_ncrypt.sv" -end \
+     -makelib tennm_agilex5_io96_ver "$DEVICES_SIM_LIB_DIR/tennm_agilex5_io96.sv" -end \
+     -makelib tennm_agilex5_io96_ver "$DEVICES_SIM_LIB_DIR/tennm_agilex5_io96_ncrypt.sv"  -suppress 2583,13314 -end \
+     -makelib tennm_agilex5_hssi_a_ver "$DEVICES_SIM_LIB_DIR/tennm_agilex5_hssi_a.sv" -end \
+     -makelib tennm_agilex5_hssi_a_ver "$DEVICES_SIM_LIB_DIR/tennm_agilex5_hssi_a_ncrypt.sv"  -suppress 7061,2583,13314,2244,2283,2600,3691 -end \
     
   }
   eval  qrun -compile -noautoorder -parallel -outdir ./libraries -vlog.options $USER_DEFINED_COMPILE_OPTIONS $USER_DEFINED_VERILOG_COMPILE_OPTIONS -end \

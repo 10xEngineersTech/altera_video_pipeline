@@ -115,6 +115,13 @@ class ImageViewerWindow(Gtk.Window):
             ("Scaler Height", "scale_h", 480)
         ])
 
+        # Mixer background canvas (TPG#2 solid color); the scaled frame from
+        # the VFB read side is centered on it, so it must be >= scaler output.
+        self.add_param_group(sidebar, "Mixer Canvas", [
+            ("Mixer Width",  "mixer_w", 20),
+            ("Mixer Height", "mixer_h", 20)
+        ])
+
         # Debugging Checkbox
         self.debug_checkbox = Gtk.CheckButton(label="Enable Debugging Mode")
         self.debug_checkbox.get_style_context().add_class("debug-checkbox")
@@ -276,6 +283,8 @@ class ImageViewerWindow(Gtk.Window):
                 f.write(f"parameter CLIPPER_RIGHT   = {values['clip_right']};\n")
                 f.write(f"parameter SCALER_WIDTH    = {values['scale_w']};\n")
                 f.write(f"parameter SCALER_HEIGHT   = {values['scale_h']};\n")
+                f.write(f"parameter MIXER_WIDTH     = {values['mixer_w']};\n")
+                f.write(f"parameter MIXER_HEIGHT    = {values['mixer_h']};\n")
 
             def run_pipeline():
                 try:

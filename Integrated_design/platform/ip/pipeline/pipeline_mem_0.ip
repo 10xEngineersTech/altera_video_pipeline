@@ -539,7 +539,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="SYSINFO_DEVICE" type="string">
           <ipxact:name>SYSINFO_DEVICE</ipxact:name>
           <ipxact:displayName>SYSINFO_DEVICE</ipxact:displayName>
-          <ipxact:value>A5DC051AB32BE1V</ipxact:value>
+          <ipxact:value>A5ED065BB32AE6SR0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SYSINFO_DEVICE_FAMILY" type="string">
           <ipxact:name>SYSINFO_DEVICE_FAMILY</ipxact:name>
@@ -549,12 +549,12 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="SYSINFO_DEVICE_SPEEDGRADE" type="string">
           <ipxact:name>SYSINFO_DEVICE_SPEEDGRADE</ipxact:name>
           <ipxact:displayName>SYSINFO_DEVICE_SPEEDGRADE</ipxact:displayName>
-          <ipxact:value>1</ipxact:value>
+          <ipxact:value>6</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SYSINFO_DEVICE_DIE_REVISIONS" type="string">
           <ipxact:name>SYSINFO_DEVICE_DIE_REVISIONS</ipxact:name>
           <ipxact:displayName>SYSINFO_DEVICE_DIE_REVISIONS</ipxact:displayName>
-          <ipxact:value>MAIN_FMM3_REVA</ipxact:value>
+          <ipxact:value>MAIN_SM7_REVA</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SYSINFO_DEVICE_TEMPERATURE_GRADE" type="string">
           <ipxact:name>SYSINFO_DEVICE_TEMPERATURE_GRADE</ipxact:name>
@@ -564,27 +564,27 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="SYSINFO_DEVICE_POWER_MODEL" type="string">
           <ipxact:name>SYSINFO_DEVICE_POWER_MODEL</ipxact:name>
           <ipxact:displayName>SYSINFO_DEVICE_POWER_MODEL</ipxact:displayName>
-          <ipxact:value>STANDARD_POWER</ipxact:value>
+          <ipxact:value>STANDARD_POWER_FIXED</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SYSINFO_SUPPORTS_VID" type="string">
           <ipxact:name>SYSINFO_SUPPORTS_VID</ipxact:name>
           <ipxact:displayName>SYSINFO_SUPPORTS_VID</ipxact:displayName>
-          <ipxact:value>1</ipxact:value>
+          <ipxact:value>0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SYSINFO_DEVICE_IOBANK_REVISION" type="string">
           <ipxact:name>SYSINFO_DEVICE_IOBANK_REVISION</ipxact:name>
           <ipxact:displayName>SYSINFO_DEVICE_IOBANK_REVISION</ipxact:displayName>
-          <ipxact:value>IO96B_REVB1</ipxact:value>
+          <ipxact:value>IO96B</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SYSINFO_DEVICE_GROUP" type="string">
           <ipxact:name>SYSINFO_DEVICE_GROUP</ipxact:name>
           <ipxact:displayName>SYSINFO_DEVICE_GROUP</ipxact:displayName>
-          <ipxact:value>A</ipxact:value>
+          <ipxact:value>B</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SYSINFO_DEVICE_BASE_DIE" type="string">
           <ipxact:name>SYSINFO_DEVICE_BASE_DIE</ipxact:name>
           <ipxact:displayName>SYSINFO_DEVICE_BASE_DIE</ipxact:displayName>
-          <ipxact:value>FMM3</ipxact:value>
+          <ipxact:value>SM7</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="CTRL_DMDBI_EN" type="string">
           <ipxact:name>CTRL_DMDBI_EN</ipxact:name>
@@ -998,7 +998,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="device" type="string">
           <ipxact:name>device</ipxact:name>
           <ipxact:displayName>Device</ipxact:displayName>
-          <ipxact:value>A5DC051AB32BE1V</ipxact:value>
+          <ipxact:value>A5ED065BB32AE6SR0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="deviceFamily" type="string">
           <ipxact:name>deviceFamily</ipxact:name>

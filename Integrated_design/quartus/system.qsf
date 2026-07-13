@@ -58,3 +58,5 @@ set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_intel_vvp_v
 set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_intel_onchip_memory_0.ip
 set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_emif_0.ip
 set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_mem_0.ip
+set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_intel_vvp_tpg_1.ip
+set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_intel_vvp_mixer_0.ip

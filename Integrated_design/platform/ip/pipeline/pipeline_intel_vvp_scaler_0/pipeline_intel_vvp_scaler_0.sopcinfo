@@ -5,7 +5,7 @@
  version="1.0"
  fabric="QSYS">
  <!-- Format version 25.1.1 125 (Future versions may contain additional information.) -->
- <!-- 2026.07.08.20:17:24 -->
+ <!-- 2026.07.12.19:49:20 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
@@ -36,7 +36,7 @@
  </parameter>
  <parameter name="AUTO_DEVICE">
   <type>java.lang.String</type>
-  <value>A5DC051AB32BE1V</value>
+  <value>A5ED065BB32AE6SR0</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -45,7 +45,7 @@
  </parameter>
  <parameter name="AUTO_DEVICE_SPEEDGRADE">
   <type>java.lang.String</type>
-  <value>1</value>
+  <value>6</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -606,7 +606,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_DEVICE">
    <type>java.lang.String</type>
-   <value>A5DC051AB32BE1V</value>
+   <value>A5ED065BB32AE6SR0</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -615,7 +615,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_DEVICE_SPEEDGRADE">
    <type>java.lang.String</type>
-   <value>1</value>
+   <value>6</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>

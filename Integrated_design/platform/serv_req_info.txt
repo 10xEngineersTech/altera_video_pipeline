@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<internal_error>
+	<sub_system>ERR</sub_system>
+	<callstack>*** Fatal Error: 	0x7f4c1e2fbdd9: ccl_err + 0x23dd9 (_Z14err_terminatorv + 0x1bc)
+	0x7f4c1e7aa36a: stdc++ + 0xb036a (_ZN10__cxxabiv111__terminateEPFvvE + 0xa)
+	0x7f4c1e7aa3d5: stdc++ + 0xb03d5
+	0x7f4c1e7aa628: stdc++ + 0xb0628
+	0x7f4c0d79384d: ddm_report + 0x1684d (_Z9ddm_throwI17DDM_RUNTIME_ERROREvRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE + 0x26d)
+	0x7f4c0d790f3e: ddm_report + 0x13f3e (_ZNK10DDM_REPORT21DDM_ASSERTION_HANDLER15assertion_errorENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE + 0xde)
+	0x7f4c0d78f9e2: ddm_report + 0x129e2 (_ZN10DDM_REPORT17ASSERTION_HANDLER5errorENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE + 0x72)
+	0x7f4c0d790df4: ddm_report + 0x13df4 (_ZN10DDM_REPORT6detail14assert_at_lineEPKcS2_iS2_z + 0x1b4)
+	0x7f4c0d98dbb0: ddm + 0x1debb0 (_Z17ddm_set_lassessorP14DDM_T_ASSESSORRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE + 0x60)
+	0x7f4c0e673dc7: dni_dms + 0xeedc7 (_ZN11DMS_MANAGERC1Ev + 0x21f)
+	0x7f4c0e673f48: dni_dms + 0xeef48 (_ZN11DMS_MANAGER3getEv + 0x7a)
+	0x7f4c0e67663b: dni_dms + 0xf163b (_GLOBAL__sub_I_dms_manager.cpp + 0x58)
+	0x7f4c23870b9a: ld-linux-x86-64 + 0x11b9a
+	0x7f4c23870ca1: ld-linux-x86-64 + 0x11ca1
+	0x7f4c2386013a: ld-linux-x86-64 + 0x113a
+</callstack>
+	<error>Program termination requested</error>
+	<date>Sun Jul 12 19:09:32 2026
+</date>
+	<version>Version 25.1.1 Build 125 07/31/2025 SC Pro Edition</version>
+</internal_error>

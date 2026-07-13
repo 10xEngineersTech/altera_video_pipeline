@@ -10,3 +10,5 @@ parameter CLIPPER_LEFT    = 0;
 parameter CLIPPER_RIGHT   = 0;
 parameter SCALER_WIDTH    = 10;
 parameter SCALER_HEIGHT   = 10;
+parameter MIXER_WIDTH     = 20;
+parameter MIXER_HEIGHT    = 20;

@@ -69,8 +69,10 @@ if __name__ == "__main__":
     CONFIG_FILE = os.path.join(base_dir, "pipeline_config.txt")
     params = load_config(CONFIG_FILE)
 
-    WIDTH  = params.get('scale_w', 640)
-    HEIGHT = params.get('scale_h', 480)
+    # The captured stream is now the mixer output (scaled frame centered on
+    # the TPG#2 background canvas), so the image has the mixer dimensions.
+    WIDTH  = params.get('mixer_w', params.get('scale_w', 640))
+    HEIGHT = params.get('mixer_h', params.get('scale_h', 480))
 
     INPUT_TXT  = os.path.join(base_dir, "sc_data.txt")
     OUTPUT_IMG = os.path.join(base_dir, "result.png")

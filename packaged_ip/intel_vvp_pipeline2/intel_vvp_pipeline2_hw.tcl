@@ -5,7 +5,7 @@ package require qsys
 set_module_property NAME                 intel_vvp_pipeline2
 set_module_property DISPLAY_NAME         "Intel VVP Video Processing Subsystem"
 set_module_property VERSION              1.0
-set_module_property DESCRIPTION          "Altera VVP pipeline subsystem - DIL, CRS, CSC, Clipper, PC0, Scaler with unified MM bridge"
+set_module_property DESCRIPTION          "Altera VVP pipeline subsystem - DIL, CRS, CSC, Clipper, PC0, Scaler with unified MM bridge. Optional features: Frame Rate Conversion (VFB) and Picture-in-Picture (Mixer)"
 set_module_property GROUP                "Video & Image Processing"
 set_module_property AUTHOR               "Project"
 
@@ -50,6 +50,21 @@ set_parameter_property OUTPUT_PROTOCOL DISPLAY_NAME        "Output protocol vari
 set_parameter_property OUTPUT_PROTOCOL ALLOWED_RANGES       {"ALTERA_SV_FULL:Altera Streaming Video Full" "ALTERA_SV_LITE:Altera Streaming Video Lite" "AVALON_ST:Avalon Streaming Video"}
 set_parameter_property OUTPUT_PROTOCOL AFFECTS_ELABORATION  true
 set_parameter_property OUTPUT_PROTOCOL HDL_PARAMETER        false
+
+# -- Optional features (combinable with any video processing mode) ----------
+add_parameter ENABLE_FRC INTEGER 0
+set_parameter_property ENABLE_FRC DISPLAY_NAME        "Frame rate conversion (memory frame buffer)"
+set_parameter_property ENABLE_FRC DISPLAY_HINT         boolean
+set_parameter_property ENABLE_FRC DESCRIPTION          "Appends a Video Frame Buffer after the processing chain. Frames are written to and read back from external memory (EMIF/DDR); rate mismatch is absorbed by frame drop/repeat. The Avalon-MM memory read/write host ports are exported."
+set_parameter_property ENABLE_FRC AFFECTS_ELABORATION  true
+set_parameter_property ENABLE_FRC HDL_PARAMETER        false
+
+add_parameter ENABLE_PIP INTEGER 0
+set_parameter_property ENABLE_PIP DISPLAY_NAME        "Picture-in-picture (mixer overlay)"
+set_parameter_property ENABLE_PIP DISPLAY_HINT         boolean
+set_parameter_property ENABLE_PIP DESCRIPTION          "Appends a Mixer after the processing chain (and after the frame buffer when FRC is also enabled). Layer 0 is an internal uniform-color background TPG, layer 1 is the pipeline video; additional layer inputs are exported."
+set_parameter_property ENABLE_PIP AFFECTS_ELABORATION  true
+set_parameter_property ENABLE_PIP HDL_PARAMETER        false
 
 # ============================================================================
 # DEINTERLACER parameters
@@ -738,6 +753,154 @@ set_parameter_property SC_H_INIT_FILE DISPLAY_HINT         file
 set_parameter_property SC_H_INIT_FILE HDL_PARAMETER        false
 
 # ============================================================================
+# FRAME RATE CONVERSION (FRC / Video Frame Buffer) parameters
+# Defaults match the configuration validated on the frame_buf_addition branch
+# (VFB + EMIF IO96B DDR4 + memory model simulation).
+# ============================================================================
+add_parameter FRC_MAX_WIDTH INTEGER 128
+set_parameter_property FRC_MAX_WIDTH DISPLAY_NAME        "Maximum frame width"
+set_parameter_property FRC_MAX_WIDTH ALLOWED_RANGES       "1:16384"
+set_parameter_property FRC_MAX_WIDTH HDL_PARAMETER        false
+
+add_parameter FRC_MAX_HEIGHT INTEGER 96
+set_parameter_property FRC_MAX_HEIGHT DISPLAY_NAME        "Maximum frame height"
+set_parameter_property FRC_MAX_HEIGHT ALLOWED_RANGES       "1:16384"
+set_parameter_property FRC_MAX_HEIGHT HDL_PARAMETER        false
+
+add_parameter FRC_FRAME_DROP_ENABLE INTEGER 1
+set_parameter_property FRC_FRAME_DROP_ENABLE DISPLAY_NAME        "Enable dropping of input frames"
+set_parameter_property FRC_FRAME_DROP_ENABLE DISPLAY_HINT         boolean
+set_parameter_property FRC_FRAME_DROP_ENABLE HDL_PARAMETER        false
+
+add_parameter FRC_FRAME_REPEAT_ENABLE INTEGER 1
+set_parameter_property FRC_FRAME_REPEAT_ENABLE DISPLAY_NAME        "Enable repeating of output frames"
+set_parameter_property FRC_FRAME_REPEAT_ENABLE DISPLAY_HINT         boolean
+set_parameter_property FRC_FRAME_REPEAT_ENABLE HDL_PARAMETER        false
+
+add_parameter FRC_DROP_BROKEN_FRAMES INTEGER 1
+set_parameter_property FRC_DROP_BROKEN_FRAMES DISPLAY_NAME        "Drop broken frames"
+set_parameter_property FRC_DROP_BROKEN_FRAMES DISPLAY_HINT         boolean
+set_parameter_property FRC_DROP_BROKEN_FRAMES HDL_PARAMETER        false
+
+add_parameter FRC_DROP_RPT_AUX INTEGER 1
+set_parameter_property FRC_DROP_RPT_AUX DISPLAY_NAME        "Drop/repeat aux packets with frames"
+set_parameter_property FRC_DROP_RPT_AUX DISPLAY_HINT         boolean
+set_parameter_property FRC_DROP_RPT_AUX HDL_PARAMETER        false
+
+add_parameter FRC_MAX_CONTROL_PACKETS INTEGER 0
+set_parameter_property FRC_MAX_CONTROL_PACKETS DISPLAY_NAME        "Maximum stored control packets"
+set_parameter_property FRC_MAX_CONTROL_PACKETS ALLOWED_RANGES       "0:16"
+set_parameter_property FRC_MAX_CONTROL_PACKETS HDL_PARAMETER        false
+
+add_parameter FRC_AV_MM_DATA_WIDTH INTEGER 256
+set_parameter_property FRC_AV_MM_DATA_WIDTH DISPLAY_NAME        "Memory port data width (bits)"
+set_parameter_property FRC_AV_MM_DATA_WIDTH ALLOWED_RANGES       {16 32 64 128 256 512 1024}
+set_parameter_property FRC_AV_MM_DATA_WIDTH HDL_PARAMETER        false
+
+add_parameter FRC_AV_MM_ADDR_WIDTH INTEGER 32
+set_parameter_property FRC_AV_MM_ADDR_WIDTH DISPLAY_NAME        "Memory port address width (bits)"
+set_parameter_property FRC_AV_MM_ADDR_WIDTH ALLOWED_RANGES       "8:32"
+set_parameter_property FRC_AV_MM_ADDR_WIDTH HDL_PARAMETER        false
+
+add_parameter FRC_WRITE_FIFO_DEPTH INTEGER 64
+set_parameter_property FRC_WRITE_FIFO_DEPTH DISPLAY_NAME        "Write FIFO depth"
+set_parameter_property FRC_WRITE_FIFO_DEPTH ALLOWED_RANGES       {32 64 128 256 512 1024 2048}
+set_parameter_property FRC_WRITE_FIFO_DEPTH HDL_PARAMETER        false
+
+add_parameter FRC_WRITE_BURST_TARGET INTEGER 8
+set_parameter_property FRC_WRITE_BURST_TARGET DISPLAY_NAME        "Write burst target"
+set_parameter_property FRC_WRITE_BURST_TARGET ALLOWED_RANGES       {2 4 8 16 32 64}
+set_parameter_property FRC_WRITE_BURST_TARGET HDL_PARAMETER        false
+
+add_parameter FRC_READ_FIFO_DEPTH INTEGER 64
+set_parameter_property FRC_READ_FIFO_DEPTH DISPLAY_NAME        "Read FIFO depth"
+set_parameter_property FRC_READ_FIFO_DEPTH ALLOWED_RANGES       {32 64 128 256 512 1024 2048}
+set_parameter_property FRC_READ_FIFO_DEPTH HDL_PARAMETER        false
+
+add_parameter FRC_READ_BURST_TARGET INTEGER 8
+set_parameter_property FRC_READ_BURST_TARGET DISPLAY_NAME        "Read burst target"
+set_parameter_property FRC_READ_BURST_TARGET ALLOWED_RANGES       {2 4 8 16 32 64}
+set_parameter_property FRC_READ_BURST_TARGET HDL_PARAMETER        false
+
+add_parameter FRC_PACKING STRING "PERFECT"
+set_parameter_property FRC_PACKING DISPLAY_NAME        "Packing method"
+set_parameter_property FRC_PACKING ALLOWED_RANGES       {PERFECT COLOR PIXEL}
+set_parameter_property FRC_PACKING HDL_PARAMETER        false
+
+add_parameter FRC_CLOCKS_ARE_SEPARATE INTEGER 1
+set_parameter_property FRC_CLOCKS_ARE_SEPARATE DISPLAY_NAME        "Separate clock for memory interface"
+set_parameter_property FRC_CLOCKS_ARE_SEPARATE DISPLAY_HINT         boolean
+set_parameter_property FRC_CLOCKS_ARE_SEPARATE AFFECTS_ELABORATION  true
+set_parameter_property FRC_CLOCKS_ARE_SEPARATE HDL_PARAMETER        false
+
+add_parameter FRC_MEM_BUFF_BASE_ADDR INTEGER 0
+set_parameter_property FRC_MEM_BUFF_BASE_ADDR DISPLAY_NAME        "Frame buffer memory base address"
+set_parameter_property FRC_MEM_BUFF_BASE_ADDR HDL_PARAMETER        false
+
+add_parameter FRC_MEM_BUFF_LINE_STRIDE INTEGER 512
+set_parameter_property FRC_MEM_BUFF_LINE_STRIDE DISPLAY_NAME        "Interline stride (bytes)"
+set_parameter_property FRC_MEM_BUFF_LINE_STRIDE HDL_PARAMETER        false
+
+add_parameter FRC_RUNTIME_CONTROL INTEGER 1
+set_parameter_property FRC_RUNTIME_CONTROL DISPLAY_NAME        "Memory-mapped control interface"
+set_parameter_property FRC_RUNTIME_CONTROL DISPLAY_HINT         boolean
+set_parameter_property FRC_RUNTIME_CONTROL AFFECTS_ELABORATION  true
+set_parameter_property FRC_RUNTIME_CONTROL HDL_PARAMETER        false
+
+add_parameter FRC_SEPARATE_SLAVE_CLOCK INTEGER 0
+set_parameter_property FRC_SEPARATE_SLAVE_CLOCK DISPLAY_NAME        "Separate clock for control interface"
+set_parameter_property FRC_SEPARATE_SLAVE_CLOCK DISPLAY_HINT         boolean
+set_parameter_property FRC_SEPARATE_SLAVE_CLOCK HDL_PARAMETER        false
+
+add_parameter FRC_ENABLE_DEBUG INTEGER 0
+set_parameter_property FRC_ENABLE_DEBUG DISPLAY_NAME        "Debug features"
+set_parameter_property FRC_ENABLE_DEBUG DISPLAY_HINT         boolean
+set_parameter_property FRC_ENABLE_DEBUG HDL_PARAMETER        false
+
+# ============================================================================
+# PIP (Picture-in-Picture / Mixer) parameters
+# Defaults match the configuration validated on the frame_buf_addition branch
+# (2-layer mixer, uniform-color background TPG, runtime programmed).
+# ============================================================================
+add_parameter PIP_NUM_LAYERS INTEGER 2
+set_parameter_property PIP_NUM_LAYERS DISPLAY_NAME        "Number of mixer layers"
+set_parameter_property PIP_NUM_LAYERS ALLOWED_RANGES       {2 3 4}
+set_parameter_property PIP_NUM_LAYERS DESCRIPTION          "Layer 0 = internal background TPG, layer 1 = pipeline video. Layers 2 and above are exported as extra AXI4-S inputs."
+set_parameter_property PIP_NUM_LAYERS AFFECTS_ELABORATION  true
+set_parameter_property PIP_NUM_LAYERS HDL_PARAMETER        false
+
+add_parameter PIP_BLENDING_MODE_1 INTEGER 0
+set_parameter_property PIP_BLENDING_MODE_1 DISPLAY_NAME        "Layer 1 blending mode"
+set_parameter_property PIP_BLENDING_MODE_1 ALLOWED_RANGES       "0:2"
+set_parameter_property PIP_BLENDING_MODE_1 HDL_PARAMETER        false
+
+add_parameter PIP_BLENDING_MODE_2 INTEGER 0
+set_parameter_property PIP_BLENDING_MODE_2 DISPLAY_NAME        "Layer 2 blending mode"
+set_parameter_property PIP_BLENDING_MODE_2 ALLOWED_RANGES       "0:2"
+set_parameter_property PIP_BLENDING_MODE_2 HDL_PARAMETER        false
+
+add_parameter PIP_BLENDING_MODE_3 INTEGER 0
+set_parameter_property PIP_BLENDING_MODE_3 DISPLAY_NAME        "Layer 3 blending mode"
+set_parameter_property PIP_BLENDING_MODE_3 ALLOWED_RANGES       "0:2"
+set_parameter_property PIP_BLENDING_MODE_3 HDL_PARAMETER        false
+
+add_parameter PIP_RUNTIME_CONTROL INTEGER 1
+set_parameter_property PIP_RUNTIME_CONTROL DISPLAY_NAME        "Memory-mapped control interface"
+set_parameter_property PIP_RUNTIME_CONTROL DISPLAY_HINT         boolean
+set_parameter_property PIP_RUNTIME_CONTROL AFFECTS_ELABORATION  true
+set_parameter_property PIP_RUNTIME_CONTROL HDL_PARAMETER        false
+
+add_parameter PIP_SEPARATE_SLAVE_CLOCK INTEGER 0
+set_parameter_property PIP_SEPARATE_SLAVE_CLOCK DISPLAY_NAME        "Separate clock for control interface"
+set_parameter_property PIP_SEPARATE_SLAVE_CLOCK DISPLAY_HINT         boolean
+set_parameter_property PIP_SEPARATE_SLAVE_CLOCK HDL_PARAMETER        false
+
+add_parameter PIP_ENABLE_DEBUG INTEGER 0
+set_parameter_property PIP_ENABLE_DEBUG DISPLAY_NAME        "Debug features"
+set_parameter_property PIP_ENABLE_DEBUG DISPLAY_HINT         boolean
+set_parameter_property PIP_ENABLE_DEBUG HDL_PARAMETER        false
+
+# ============================================================================
 # GUI LAYOUT - tabs
 # ============================================================================
 
@@ -749,6 +912,10 @@ add_display_item general_tab gen_mode group "Pipeline mode"
 add_display_item gen_mode TOPOLOGY         parameter
 add_display_item gen_mode INPUT_PROTOCOL   parameter
 add_display_item gen_mode OUTPUT_PROTOCOL  parameter
+
+add_display_item general_tab gen_feat group "Features"
+add_display_item gen_feat ENABLE_FRC parameter
+add_display_item gen_feat ENABLE_PIP parameter
 
 add_display_item general_tab gen_vdf group "Video data format"
 add_display_item gen_vdf BPS                     parameter
@@ -778,7 +945,15 @@ add_display_item diagram_tab diagram_html TEXT \
 </table><br>
 <b>MM bridge (s0) - fixed byte address map:</b><br>
 DIL: 0x0000-0x01FF &nbsp;|&nbsp; CRS: 0x0200-0x03FF &nbsp;|&nbsp;
-CSC: 0x0400-0x05FF &nbsp;|&nbsp; Clipper: 0x0600-0x07FF &nbsp;|&nbsp; Scaler: 0x0800-0x09FF<br><br>
+CSC: 0x0400-0x05FF &nbsp;|&nbsp; Clipper: 0x0600-0x07FF &nbsp;|&nbsp; Scaler: 0x0800-0x0BFF<br>
+<b>Feature agents (only when enabled):</b><br>
+FRC Lite&rarr;Full conv: 0x0C00-0x0DFF &nbsp;|&nbsp; FRC Frame Buffer: 0x0E00-0x0FFF &nbsp;|&nbsp;
+PIP Mixer: 0x1000-0x13FF &nbsp;|&nbsp; PIP background TPG: 0x1400-0x15FF<br><br>
+<b>Features:</b><br>
+FRC (frame rate conversion): chain output &rarr; (Lite&rarr;Full conv) &rarr; Video Frame Buffer &rarr; output.
+The frame buffer's Avalon-MM memory read/write hosts are exported - connect them to EMIF/DDR at system level.<br>
+PIP (picture-in-picture): background TPG (layer 0) + pipeline video (layer 1) &rarr; Mixer &rarr; output.
+FRC and PIP combine: video path becomes &hellip; &rarr; Frame Buffer &rarr; Mixer &rarr; output.<br><br>
 <i>Note: TPG and PC1 (input source adapters) are external - configured outside this subsystem.</i>
 </body></html>"
 
@@ -981,6 +1156,51 @@ add_display_item sc_hscl SC_H_COEFF_FRAC_BITS parameter
 add_display_item sc_hscl SC_H_COEFF_FUNCTION  parameter
 add_display_item sc_hscl SC_H_INIT_FILE       parameter
 
+# -- Frame Rate Conversion tab ------------------------------------------------
+add_display_item "" frc_tab group "Frame rate conv. (FRC)"
+set_display_item_property frc_tab DISPLAY_HINT "tab"
+
+add_display_item frc_tab frc_frames group "Frame buffering"
+add_display_item frc_frames FRC_MAX_WIDTH           parameter
+add_display_item frc_frames FRC_MAX_HEIGHT          parameter
+add_display_item frc_frames FRC_FRAME_DROP_ENABLE   parameter
+add_display_item frc_frames FRC_FRAME_REPEAT_ENABLE parameter
+add_display_item frc_frames FRC_DROP_BROKEN_FRAMES  parameter
+add_display_item frc_frames FRC_DROP_RPT_AUX        parameter
+add_display_item frc_frames FRC_MAX_CONTROL_PACKETS parameter
+
+add_display_item frc_tab frc_mem group "Memory interface"
+add_display_item frc_mem FRC_AV_MM_DATA_WIDTH     parameter
+add_display_item frc_mem FRC_AV_MM_ADDR_WIDTH     parameter
+add_display_item frc_mem FRC_WRITE_FIFO_DEPTH     parameter
+add_display_item frc_mem FRC_WRITE_BURST_TARGET   parameter
+add_display_item frc_mem FRC_READ_FIFO_DEPTH      parameter
+add_display_item frc_mem FRC_READ_BURST_TARGET    parameter
+add_display_item frc_mem FRC_PACKING              parameter
+add_display_item frc_mem FRC_CLOCKS_ARE_SEPARATE  parameter
+add_display_item frc_mem FRC_MEM_BUFF_BASE_ADDR   parameter
+add_display_item frc_mem FRC_MEM_BUFF_LINE_STRIDE parameter
+
+add_display_item frc_tab frc_ctrl group "Control"
+add_display_item frc_ctrl FRC_RUNTIME_CONTROL      parameter
+add_display_item frc_ctrl FRC_SEPARATE_SLAVE_CLOCK parameter
+add_display_item frc_ctrl FRC_ENABLE_DEBUG         parameter
+
+# -- PIP / Mixer tab -----------------------------------------------------------
+add_display_item "" pip_tab group "PIP / Mixer"
+set_display_item_property pip_tab DISPLAY_HINT "tab"
+
+add_display_item pip_tab pip_layers group "Layers"
+add_display_item pip_layers PIP_NUM_LAYERS      parameter
+add_display_item pip_layers PIP_BLENDING_MODE_1 parameter
+add_display_item pip_layers PIP_BLENDING_MODE_2 parameter
+add_display_item pip_layers PIP_BLENDING_MODE_3 parameter
+
+add_display_item pip_tab pip_ctrl group "Control"
+add_display_item pip_ctrl PIP_RUNTIME_CONTROL      parameter
+add_display_item pip_ctrl PIP_SEPARATE_SLAVE_CLOCK parameter
+add_display_item pip_ctrl PIP_ENABLE_DEBUG         parameter
+
 # ============================================================================
 # VALIDATE - enforce parameter dependencies
 # ============================================================================
@@ -1054,6 +1274,31 @@ proc validate {} {
     set_parameter_property CL_BOTTOM_OFFSET ENABLED [expr {!$is_rect}]
     set_parameter_property CL_OUTPUT_WIDTH  ENABLED $is_rect
     set_parameter_property CL_OUTPUT_HEIGHT ENABLED $is_rect
+
+    # FRC params only relevant when the feature is on
+    set frc_on [get_parameter_value ENABLE_FRC]
+    foreach p {FRC_MAX_WIDTH FRC_MAX_HEIGHT FRC_FRAME_DROP_ENABLE
+               FRC_FRAME_REPEAT_ENABLE FRC_DROP_BROKEN_FRAMES FRC_DROP_RPT_AUX
+               FRC_MAX_CONTROL_PACKETS FRC_AV_MM_DATA_WIDTH FRC_AV_MM_ADDR_WIDTH
+               FRC_WRITE_FIFO_DEPTH FRC_WRITE_BURST_TARGET FRC_READ_FIFO_DEPTH
+               FRC_READ_BURST_TARGET FRC_PACKING FRC_CLOCKS_ARE_SEPARATE
+               FRC_MEM_BUFF_BASE_ADDR FRC_MEM_BUFF_LINE_STRIDE
+               FRC_RUNTIME_CONTROL FRC_SEPARATE_SLAVE_CLOCK FRC_ENABLE_DEBUG} {
+        set_parameter_property $p ENABLED $frc_on
+    }
+    if {$frc_on && ![get_parameter_value FRC_RUNTIME_CONTROL]} {
+        send_message warning "FRC: the frame buffer output is started by a runtime register write (OUTPUT_CONTROL.GO). Without the memory-mapped control interface no frames will be produced."
+    }
+
+    # PIP params only relevant when the feature is on
+    set pip_on [get_parameter_value ENABLE_PIP]
+    set pip_layers [get_parameter_value PIP_NUM_LAYERS]
+    foreach p {PIP_NUM_LAYERS PIP_BLENDING_MODE_1 PIP_RUNTIME_CONTROL
+               PIP_SEPARATE_SLAVE_CLOCK PIP_ENABLE_DEBUG} {
+        set_parameter_property $p ENABLED $pip_on
+    }
+    set_parameter_property PIP_BLENDING_MODE_2 ENABLED [expr {$pip_on && $pip_layers >= 3}]
+    set_parameter_property PIP_BLENDING_MODE_3 ENABLED [expr {$pip_on && $pip_layers >= 4}]
 }
 
 # ============================================================================
@@ -1085,17 +1330,24 @@ proc compose {} {
         default     { set do_dil 0; set do_crs 0; set do_csc 0; set do_clip 0; set do_pc0 0; set do_scl 0 }
     }
 
+    # -- Optional features (combinable with any mode) ------------------------
+    set do_frc [get_parameter_value ENABLE_FRC]
+    set do_pip [get_parameter_value ENABLE_PIP]
+
     # When CRS or CSC are in the chain the internal pipeline runs at 3 planes
     # (444).  DIL and CRS input see $npl; Clipper and beyond see $internal_npl.
     set internal_npl [expr {($do_crs || $do_csc) ? 3 : $npl}]
 
     # -- Determine if MM bridge needed ---------------------------------------
+    # FRC and PIP always bring the bridge: the frame buffer is started and the
+    # lite->full converter / background TPG are programmed at runtime.
     set need_mm [expr {
         ($do_dil  && [get_parameter_value DIL_RUNTIME_CONTROL])  ||
         ($do_crs  && [get_parameter_value CRS_RUNTIME_CONTROL])  ||
         ($do_csc  && [get_parameter_value CSC_RUNTIME_CONTROL])  ||
         ($do_clip && [get_parameter_value CL_RUNTIME_CONTROL])   ||
-        ($do_scl  && [get_parameter_value SC_RUNTIME_CONTROL])
+        ($do_scl  && [get_parameter_value SC_RUNTIME_CONTROL])   ||
+        $do_frc || $do_pip
     }]
 
     # -- Infrastructure ------------------------------------------------------
@@ -1111,11 +1363,13 @@ proc compose {} {
     set_instance_parameter_value reset_in SYNC_RESET        0
     add_connection clock_in.out_clk reset_in.clk
 
-    # -- MM bridge (12-bit byte addressed = 4KB, covers 5 IPs x 512B) -------
+    # -- MM bridge -----------------------------------------------------------
+    # 12-bit byte addressed (4KB) covers the 5 core IPs x 512B.
+    # With FRC/PIP the map extends to 0x15FF, so grow to 13-bit (8KB).
     if {$need_mm} {
         add_instance mm_bridge_0 altera_avalon_mm_bridge 20.1.0
         set_instance_parameter_value mm_bridge_0 DATA_WIDTH            32
-        set_instance_parameter_value mm_bridge_0 ADDRESS_WIDTH         12
+        set_instance_parameter_value mm_bridge_0 ADDRESS_WIDTH         [expr {($do_frc || $do_pip) ? 13 : 12}]
         set_instance_parameter_value mm_bridge_0 ADDRESS_UNITS         SYMBOLS
         set_instance_parameter_value mm_bridge_0 MAX_BURST_SIZE        1
         set_instance_parameter_value mm_bridge_0 MAX_PENDING_RESPONSES 4
@@ -1358,6 +1612,145 @@ proc compose {} {
         add_connection intel_vvp_dil_0.axi4s_vid_out intel_vvp_crs_0.axi4s_vid_in
     }
 
+    # In DIL_ONLY mode the features (if any) consume the DIL output
+    if {$do_dil && !$do_crs && ($do_frc || $do_pip)} {
+        set last_out "intel_vvp_dil_0.axi4s_vid_out"
+    }
+
+    # ========================================================================
+    # FEATURES - appended after the processing chain
+    # Chain: ... -> [Lite->Full conv] -> [FRC frame buffer] -> [PIP mixer] -> out
+    # Validated configuration ported from the frame_buf_addition branch
+    # (VFB + EMIF IO96B DDR4 + memory model, 2-layer mixer).
+    # ========================================================================
+
+    # -- Is the current chain output Lite (no backpressure)? -----------------
+    # The frame buffer and the mixer are Full-protocol IPs; a Lite chain
+    # output must first pass through a Lite->Full protocol converter.
+    set chain_is_lite 0
+    if {$do_scl} {
+        set chain_is_lite [get_parameter_value SC_EXTERNAL_MODE]
+    } elseif {$do_pc0} {
+        set chain_is_lite 1
+    } elseif {$do_clip} {
+        set chain_is_lite [get_parameter_value CL_EXTERNAL_MODE]
+    } elseif {$do_csc} {
+        set chain_is_lite [get_parameter_value CSC_EXTERNAL_MODE]
+    } elseif {$do_crs} {
+        set chain_is_lite [get_parameter_value CRS_EXTERNAL_MODE]
+    } elseif {$do_dil} {
+        set chain_is_lite [get_parameter_value DIL_EXTERNAL_MODE]
+    }
+
+    # -- Lite->Full converter (runtime programmed with the frame dimensions) -
+    if {($do_frc || $do_pip) && $chain_is_lite && $last_out ne ""} {
+        add_instance ltf_conv_0 intel_vvp_protocol_conv 24.6.0
+        set_instance_parameter_value ltf_conv_0 BPS                    $bps
+        set_instance_parameter_value ltf_conv_0 NUMBER_OF_COLOR_PLANES $internal_npl
+        set_instance_parameter_value ltf_conv_0 PIXELS_IN_PARALLEL     $pip
+        set_instance_parameter_value ltf_conv_0 INPUT_MODE             "EXTERNAL"
+        set_instance_parameter_value ltf_conv_0 OUTPUT_MODE            "INTERNAL"
+        set_instance_parameter_value ltf_conv_0 RUNTIME_CONTROL        1
+        set_instance_parameter_value ltf_conv_0 ENABLE_YCBCR_SWAP      0
+        set_instance_parameter_value ltf_conv_0 VVP_USER_SUPPORT       "NONE_ALLOWED"
+        set_instance_parameter_value ltf_conv_0 VIP_USER_SUPPORT       "DISCARD"
+        set_instance_parameter_value ltf_conv_0 COLOR_SPACE            [get_parameter_value PC0_COLOR_SPACE]
+        set_instance_parameter_value ltf_conv_0 CHROMA_SAMPLING        [expr {($internal_npl == 3) ? "444" : [get_parameter_value PC0_CHROMA_SAMPLING]}]
+        set_instance_parameter_value ltf_conv_0 CHROMA_SITING          [get_parameter_value PC0_CHROMA_SITING]
+        # Clip long fields so a mis-programmed source cannot corrupt buffered frames
+        set_instance_parameter_value ltf_conv_0 CLIP_LONG_FIELDS       1
+        set_instance_parameter_value ltf_conv_0 ENABLE_TIMEOUT         0
+        add_connection clock_in.out_clk   ltf_conv_0.main_clock
+        add_connection reset_in.out_reset ltf_conv_0.main_reset
+        add_connection $last_out ltf_conv_0.axi4s_vid_in
+        set last_out "ltf_conv_0.axi4s_vid_out"
+        # 0x0C00: the scaler agent spans 0x0800-0x0BFF (runtime coefficient
+        # load region), so the feature agents start above it
+        mm_connect ltf_conv_0 av_mm_control_agent 0x0C00
+    }
+
+    # -- FRC: Video Frame Buffer (write + read through external memory) ------
+    if {$do_frc} {
+        add_instance intel_vvp_vfb_0 intel_vvp_vfb 24.5.1
+        set_instance_parameter_value intel_vvp_vfb_0 BPS                           $bps
+        set_instance_parameter_value intel_vvp_vfb_0 NUMBER_OF_COLOR_PLANES        $internal_npl
+        set_instance_parameter_value intel_vvp_vfb_0 PIXELS_IN_PARALLEL            $pip
+        set_instance_parameter_value intel_vvp_vfb_0 MAX_WIDTH                     [get_parameter_value FRC_MAX_WIDTH]
+        set_instance_parameter_value intel_vvp_vfb_0 MAX_HEIGHT                    [get_parameter_value FRC_MAX_HEIGHT]
+        set_instance_parameter_value intel_vvp_vfb_0 FRAME_DROP_ENABLE             [get_parameter_value FRC_FRAME_DROP_ENABLE]
+        set_instance_parameter_value intel_vvp_vfb_0 FRAME_REPEAT_ENABLE           [get_parameter_value FRC_FRAME_REPEAT_ENABLE]
+        set_instance_parameter_value intel_vvp_vfb_0 DROP_BROKEN_FRAMES            [get_parameter_value FRC_DROP_BROKEN_FRAMES]
+        set_instance_parameter_value intel_vvp_vfb_0 DROP_RPT_AUX_PKTS_WITH_FRAMES [get_parameter_value FRC_DROP_RPT_AUX]
+        set_instance_parameter_value intel_vvp_vfb_0 MAX_CONTROL_PACKETS           [get_parameter_value FRC_MAX_CONTROL_PACKETS]
+        set_instance_parameter_value intel_vvp_vfb_0 EXTERNAL_MODE                 0
+        set_instance_parameter_value intel_vvp_vfb_0 RUNTIME_CONTROL               [get_parameter_value FRC_RUNTIME_CONTROL]
+        set_instance_parameter_value intel_vvp_vfb_0 SEPARATE_SLAVE_CLOCK          [get_parameter_value FRC_SEPARATE_SLAVE_CLOCK]
+        set_instance_parameter_value intel_vvp_vfb_0 ENABLE_DEBUG                  [get_parameter_value FRC_ENABLE_DEBUG]
+        set_instance_parameter_value intel_vvp_vfb_0 P_AV_MM_DATA_WIDTH            [get_parameter_value FRC_AV_MM_DATA_WIDTH]
+        set_instance_parameter_value intel_vvp_vfb_0 P_AV_MM_ADDR_WIDTH            [get_parameter_value FRC_AV_MM_ADDR_WIDTH]
+        set_instance_parameter_value intel_vvp_vfb_0 WRITE_FIFO_DEPTH              [get_parameter_value FRC_WRITE_FIFO_DEPTH]
+        set_instance_parameter_value intel_vvp_vfb_0 WRITE_BURST_TARGET            [get_parameter_value FRC_WRITE_BURST_TARGET]
+        set_instance_parameter_value intel_vvp_vfb_0 READ_FIFO_DEPTH               [get_parameter_value FRC_READ_FIFO_DEPTH]
+        set_instance_parameter_value intel_vvp_vfb_0 READ_BURST_TARGET             [get_parameter_value FRC_READ_BURST_TARGET]
+        set_instance_parameter_value intel_vvp_vfb_0 PACKING                       [get_parameter_value FRC_PACKING]
+        set_instance_parameter_value intel_vvp_vfb_0 CLOCKS_ARE_SEPARATE           [get_parameter_value FRC_CLOCKS_ARE_SEPARATE]
+        set_instance_parameter_value intel_vvp_vfb_0 MEM_BUFF_BASE_ADDR            [get_parameter_value FRC_MEM_BUFF_BASE_ADDR]
+        set_instance_parameter_value intel_vvp_vfb_0 MEM_BUFF_LINE_STRIDE          [get_parameter_value FRC_MEM_BUFF_LINE_STRIDE]
+        add_connection clock_in.out_clk   intel_vvp_vfb_0.main_clock
+        add_connection reset_in.out_reset intel_vvp_vfb_0.main_reset
+        if {$last_out ne ""} { add_connection $last_out intel_vvp_vfb_0.axi4s_vid_in }
+        set last_out "intel_vvp_vfb_0.axi4s_vid_out"
+        if {[get_parameter_value FRC_RUNTIME_CONTROL]} {
+            mm_connect intel_vvp_vfb_0 av_mm_control_agent 0x0E00
+        }
+    }
+
+    # -- PIP: uniform-color background TPG + mixer ----------------------------
+    if {$do_pip} {
+        set pip_layers [get_parameter_value PIP_NUM_LAYERS]
+
+        add_instance pip_bg_tpg_0 intel_vvp_tpg 24.5.1
+        set_instance_parameter_value pip_bg_tpg_0 BPS                $bps
+        set_instance_parameter_value pip_bg_tpg_0 PIXELS_IN_PARALLEL $pip
+        set_instance_parameter_value pip_bg_tpg_0 RUNTIME_CONTROL    1
+        set_instance_parameter_value pip_bg_tpg_0 EXTERNAL_MODE      0
+        set_instance_parameter_value pip_bg_tpg_0 NUM_CORES          1
+        set_instance_parameter_value pip_bg_tpg_0 CORE_PATTERN_0     1
+        set_instance_parameter_value pip_bg_tpg_0 CORE_COL_SPACE_0   0
+        set_instance_parameter_value pip_bg_tpg_0 OUTPUT_FORMAT      [expr {($internal_npl == 2) ? "4.2.2" : "4.4.4"}]
+        add_connection clock_in.out_clk   pip_bg_tpg_0.main_clock
+        add_connection reset_in.out_reset pip_bg_tpg_0.main_reset
+
+        add_instance intel_vvp_mixer_0 intel_vvp_mixer 24.5.1
+        set_instance_parameter_value intel_vvp_mixer_0 BPS                    $bps
+        set_instance_parameter_value intel_vvp_mixer_0 NUMBER_OF_COLOR_PLANES $internal_npl
+        set_instance_parameter_value intel_vvp_mixer_0 PIXELS_IN_PARALLEL     $pip
+        set_instance_parameter_value intel_vvp_mixer_0 NUM_LAYERS             $pip_layers
+        set_instance_parameter_value intel_vvp_mixer_0 EXTERNAL_MODE          0
+        set_instance_parameter_value intel_vvp_mixer_0 RUNTIME_CONTROL        [get_parameter_value PIP_RUNTIME_CONTROL]
+        set_instance_parameter_value intel_vvp_mixer_0 SEPARATE_SLAVE_CLOCK   [get_parameter_value PIP_SEPARATE_SLAVE_CLOCK]
+        set_instance_parameter_value intel_vvp_mixer_0 ENABLE_DEBUG           [get_parameter_value PIP_ENABLE_DEBUG]
+        set_instance_parameter_value intel_vvp_mixer_0 BLENDING_MODE_1        [get_parameter_value PIP_BLENDING_MODE_1]
+        if {$pip_layers >= 3} {
+            set_instance_parameter_value intel_vvp_mixer_0 BLENDING_MODE_2 [get_parameter_value PIP_BLENDING_MODE_2]
+        }
+        if {$pip_layers >= 4} {
+            set_instance_parameter_value intel_vvp_mixer_0 BLENDING_MODE_3 [get_parameter_value PIP_BLENDING_MODE_3]
+        }
+        add_connection clock_in.out_clk   intel_vvp_mixer_0.main_clock
+        add_connection reset_in.out_reset intel_vvp_mixer_0.main_reset
+
+        # Layer 0 = background TPG, layer 1 = pipeline video
+        add_connection pip_bg_tpg_0.axi4s_vid_out intel_vvp_mixer_0.axi4s_vid_0_in
+        if {$last_out ne ""} { add_connection $last_out intel_vvp_mixer_0.axi4s_vid_1_in }
+        set last_out "intel_vvp_mixer_0.axi4s_vid_out"
+
+        if {[get_parameter_value PIP_RUNTIME_CONTROL]} {
+            mm_connect intel_vvp_mixer_0 av_mm_control_agent 0x1000
+        }
+        mm_connect pip_bg_tpg_0 av_mm_control_agent 0x1400
+    }
+
     # -- Exports -------------------------------------------------------------
     add_interface clk clock end
     set_interface_property clk EXPORT_OF clock_in.in_clk
@@ -1379,11 +1772,14 @@ proc compose {} {
         }
 
         if {!$do_crs} {
-            # DIL-only: export DIL video out as main output
+            # DIL-only: export DIL input; DIL output goes to the features when
+            # enabled, otherwise it is exported as the main output directly
             add_interface s_axis_video_in axi4stream end
             set_interface_property s_axis_video_in EXPORT_OF intel_vvp_dil_0.axi4s_vid_in
-            add_interface m_axis_video_out axi4stream start
-            set_interface_property m_axis_video_out EXPORT_OF intel_vvp_dil_0.axi4s_vid_out
+            if {!($do_frc || $do_pip)} {
+                add_interface m_axis_video_out axi4stream start
+                set_interface_property m_axis_video_out EXPORT_OF intel_vvp_dil_0.axi4s_vid_out
+            }
         } else {
             # FULL mode: DIL feeds CRS; expose DIL input port
             add_interface s_axis_video_in axi4stream end
@@ -1411,9 +1807,34 @@ proc compose {} {
         }
     }
 
-    # Main chain output - last active IP
-    if {$last_out ne "" && !($do_dil && !$do_crs)} {
+    # Main chain output - last active IP (with features: frame buffer / mixer)
+    if {$last_out ne "" && !($do_dil && !$do_crs && !($do_frc || $do_pip))} {
         add_interface m_axis_video_out axi4stream start
         set_interface_property m_axis_video_out EXPORT_OF $last_out
+    }
+
+    # -- FRC exports: memory hosts (connect to EMIF/DDR at system level) -----
+    if {$do_frc} {
+        add_interface frc_mem_write_host avalon start
+        set_interface_property frc_mem_write_host EXPORT_OF intel_vvp_vfb_0.av_mm_mem_write_host
+        add_interface frc_mem_read_host avalon start
+        set_interface_property frc_mem_read_host EXPORT_OF intel_vvp_vfb_0.av_mm_mem_read_host
+        if {[get_parameter_value FRC_CLOCKS_ARE_SEPARATE]} {
+            # Drive from the memory/EMIF user clock domain at system level
+            # (the validated design drove this from the same clock as 'clk')
+            add_interface frc_mem_clock clock end
+            set_interface_property frc_mem_clock EXPORT_OF intel_vvp_vfb_0.mem_clock
+            add_interface frc_mem_reset reset end
+            set_interface_property frc_mem_reset EXPORT_OF intel_vvp_vfb_0.mem_reset
+        }
+    }
+
+    # -- PIP exports: additional mixer layer inputs (layers 2 and above) -----
+    if {$do_pip} {
+        set pip_layers [get_parameter_value PIP_NUM_LAYERS]
+        for {set i 2} {$i < $pip_layers} {incr i} {
+            add_interface s_axis_pip_layer${i}_in axi4stream end
+            set_interface_property s_axis_pip_layer${i}_in EXPORT_OF intel_vvp_mixer_0.axi4s_vid_${i}_in
+        }
     }
 }

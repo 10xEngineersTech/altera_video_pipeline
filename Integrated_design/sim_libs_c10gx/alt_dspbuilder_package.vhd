@@ -1,0 +1,1 @@
+/mnt/ssd2/Quartus_25_1_1_Setup_Installation/quartus/libraries/vhdl/altera/alt_dspbuilder_package.vhd

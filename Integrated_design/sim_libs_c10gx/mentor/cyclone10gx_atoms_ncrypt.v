@@ -1,0 +1,1 @@
+/mnt/ssd2/Quartus_25_1_1_Setup_Installation/quartus/eda/sim_lib/common/cyclone10gx_atoms_ncrypt.v

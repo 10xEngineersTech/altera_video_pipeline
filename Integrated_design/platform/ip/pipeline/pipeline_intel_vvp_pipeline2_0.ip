@@ -1008,7 +1008,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="TOPOLOGY" type="string">
           <ipxact:name>TOPOLOGY</ipxact:name>
           <ipxact:displayName>Video processing mode</ipxact:displayName>
-          <ipxact:value>CRS_ONLY</ipxact:value>
+          <ipxact:value>FULL</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="BPS" type="int">
           <ipxact:name>BPS</ipxact:name>
@@ -1532,7 +1532,7 @@ https://fpgasoftware.intel.com/eula.-->
         </ipxact:parameter>
         <ipxact:parameter parameterId="SC_OUTPUT_HEIGHT" type="int">
           <ipxact:name>SC_OUTPUT_HEIGHT</ipxact:name>
-          <ipxact:displayName>Output picture height (when MM off)</ipxact:displayName>
+          <ipxact:displayName>Output picture height</ipxact:displayName>
           <ipxact:value>2200</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SC_RUNTIME_CONTROL" type="int">

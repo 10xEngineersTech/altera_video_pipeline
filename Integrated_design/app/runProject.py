@@ -8,6 +8,16 @@ is_debug = False
 if len(sys.argv) > 1:
     is_debug = sys.argv[1] == "True"
 
+# Tool install paths come from the environment (export these in ~/.bashrc so
+# moving to another machine only means editing bashrc, not this script).
+# Fallbacks keep the current setup working if the vars are not exported.
+QUARTUS_INSTALL_DIR = os.environ.get(
+    "QUARTUS_INSTALL_DIR", "/mnt/ssd2/Quartus_25_1_1_Setup_Installation/quartus"
+)
+QUESTASIM_DIR = os.environ.get(
+    "QUESTASIM_DIR", "/mnt/ssd2/Quartus21/questasim/linux_x86_64"
+)
+
 # 2. Define your paths and commands
 sim_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "platform", "pipeline", "sim", "mentor")
 do_file_path = os.path.join(sim_path, "run_sim.do")
@@ -20,7 +30,9 @@ tcl_commands = f"""
 cd {sim_path}
 
 # Setup and Compile IP
-set QUARTUS_INSTALL_DIR /mnt/ssd2/Quartus_Setup_Installation/quartus
+set QUARTUS_INSTALL_DIR {QUARTUS_INSTALL_DIR}
+# 25.1.1 scatters the sim-lib sources; use the stitched dir built by setup_sim_libs.sh
+set QUARTUS_SIM_LIB_DIR {os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'sim_libs_c10gx')}
 source msim_setup.tcl
 
 # Compile Device Libraries
@@ -41,7 +53,7 @@ set USER_DEFINED_ELAB_OPTIONS {{-voptargs="+acc"}}
 elab_debug
 
 # Add Waves (only useful if GUI opens, but harmless in command line)
-add wave /tb/dut/u_pipeline/intel_*
+add wave /tb/dut/*
 add wave -r /*
 
 # Run simulation
@@ -68,7 +80,7 @@ try:
         
     # Define environment and config
     my_env = os.environ.copy()
-    my_env["QUESTASIM_DIR"] = "/mnt/ssd2/Quartus21/questasim/linux_x86_64"
+    my_env["QUESTASIM_DIR"] = QUESTASIM_DIR
     
     subprocess.run(["vsim", mode_flag, "-do", do_file_path], check=True, env=my_env)
     

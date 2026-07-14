@@ -1,0 +1,1 @@
+/mnt/ssd2/Quartus_25_1_1_Setup_Installation/questa_fse/intel/verilog/src/cyclone10gx_hssi_atoms.v

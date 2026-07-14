@@ -7,7 +7,7 @@ set_global_assignment -entity "pipeline_intel_vvp_scaler_0" -library "pipeline_i
 set_global_assignment -entity "pipeline_intel_vvp_scaler_0" -library "pipeline_intel_vvp_scaler_0" -name OCS_IP_FILE [file join $::quartus(qip_path) "../pipeline_intel_vvp_scaler_0.ip"]
 set_global_assignment -entity "pipeline_intel_vvp_scaler_0" -library "pipeline_intel_vvp_scaler_0" -name OCS_IP_TYPE "intel_vvp_scaler"
 set_global_assignment -entity "pipeline_intel_vvp_scaler_0" -library "pipeline_intel_vvp_scaler_0" -name OCS_IP_VERSION "24.5.1"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0" -library "pipeline_intel_vvp_scaler_0" -name OCS_IP_HASH "s5qlaoq"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0" -library "pipeline_intel_vvp_scaler_0" -name OCS_IP_HASH "z7wmuia"
 set_global_assignment -library "pipeline_intel_vvp_scaler_0" -name SOPCINFO_FILE [file join $::quartus(qip_path) "pipeline_intel_vvp_scaler_0.sopcinfo"]
 set_global_assignment -entity "pipeline_intel_vvp_scaler_0" -library "pipeline_intel_vvp_scaler_0" -name SLD_INFO "QSYS_NAME pipeline_intel_vvp_scaler_0 HAS_SOPCINFO 1 GENERATION_ID 0"
 set_global_assignment -library "pipeline_intel_vvp_scaler_0" -name MISC_FILE [file join $::quartus(qip_path) "pipeline_intel_vvp_scaler_0.cmp"]
@@ -62,24 +62,6 @@ set_global_assignment -entity "intel_vvp_vert_scaler_scheduler" -library "intel_
 set_global_assignment -entity "intel_vvp_vert_scaler_scheduler" -library "intel_vvp_vert_scaler_scheduler_2451" -name IP_COMPONENT_DESCRIPTION "U2NoZWR1bGVyIGZvciB0aGUgdmVydGljYWwgc2NhbGVyIGNvcmU="
 set_global_assignment -entity "intel_vvp_vert_scaler_scheduler" -library "intel_vvp_vert_scaler_scheduler_2451" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBWaXNpb24gUHJvY2Vzc2luZy9Db21wb25lbnQgTGlicmFyeQ=="
 set_global_assignment -entity "intel_vvp_vert_scaler_scheduler" -library "intel_vvp_vert_scaler_scheduler_2451" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2VuZDE2MTg5MDk2MTI5NTUuaHRtbA=="
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ahpctzi" -library "intel_vvp_vert_scaler_algo_comp_2451" -name IP_COMPONENT_NAME "cGlwZWxpbmVfaW50ZWxfdnZwX3NjYWxlcl8wX2ludGVsX3Z2cF92ZXJ0X3NjYWxlcl9hbGdvX2NvbXBfMjQ1MV9haHBjdHpp"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ahpctzi" -library "intel_vvp_vert_scaler_algo_comp_2451" -name IP_COMPONENT_DISPLAY_NAME "VmVydGljYWwgU2NhbGVyIEFsZ29yaXRobWljIENvbXBvbmVudA=="
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ahpctzi" -library "intel_vvp_vert_scaler_algo_comp_2451" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ahpctzi" -library "intel_vvp_vert_scaler_algo_comp_2451" -name IP_COMPONENT_INTERNAL "On"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ahpctzi" -library "intel_vvp_vert_scaler_algo_comp_2451" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ahpctzi" -library "intel_vvp_vert_scaler_algo_comp_2451" -name IP_COMPONENT_VERSION "MjQuNS4x"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ahpctzi" -library "intel_vvp_vert_scaler_algo_comp_2451" -name IP_COMPONENT_DESCRIPTION "VmVydGljYWwgc2NhbGluZyBhbGdvcml0aG1pYyBjb21wb25lbnQgZm9yIHRoZSBTY2FsZXIgSVAgY29yZQ=="
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ahpctzi" -library "intel_vvp_vert_scaler_algo_comp_2451" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBWaXNpb24gUHJvY2Vzc2luZy9Db21wb25lbnQgTGlicmFyeQ=="
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ahpctzi" -library "intel_vvp_vert_scaler_algo_comp_2451" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2VuZDE2MTg5MDk2MTI5NTUuaHRtbA=="
-set_global_assignment -entity "intel_vvp_round_sat_algo_comp" -library "intel_vvp_round_sat_algo_comp_2450" -name IP_COMPONENT_NAME "aW50ZWxfdnZwX3JvdW5kX3NhdF9hbGdvX2NvbXA="
-set_global_assignment -entity "intel_vvp_round_sat_algo_comp" -library "intel_vvp_round_sat_algo_comp_2450" -name IP_COMPONENT_DISPLAY_NAME "Um91bmRpbmcgJiBTYXR1cmF0aW9uIEFsZ29yaXRobWljIENvbXBvbmVudA=="
-set_global_assignment -entity "intel_vvp_round_sat_algo_comp" -library "intel_vvp_round_sat_algo_comp_2450" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
-set_global_assignment -entity "intel_vvp_round_sat_algo_comp" -library "intel_vvp_round_sat_algo_comp_2450" -name IP_COMPONENT_INTERNAL "On"
-set_global_assignment -entity "intel_vvp_round_sat_algo_comp" -library "intel_vvp_round_sat_algo_comp_2450" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
-set_global_assignment -entity "intel_vvp_round_sat_algo_comp" -library "intel_vvp_round_sat_algo_comp_2450" -name IP_COMPONENT_VERSION "MjQuNS4w"
-set_global_assignment -entity "intel_vvp_round_sat_algo_comp" -library "intel_vvp_round_sat_algo_comp_2450" -name IP_COMPONENT_DESCRIPTION "QXBwbGllcyByb3VuZGluZyBhbmQgc2F0dXJhdGlvbiB0byBmaWx0ZXIgcmVzdWx0cw=="
-set_global_assignment -entity "intel_vvp_round_sat_algo_comp" -library "intel_vvp_round_sat_algo_comp_2450" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBWaXNpb24gUHJvY2Vzc2luZy9Db21wb25lbnQgTGlicmFyeQ=="
-set_global_assignment -entity "intel_vvp_round_sat_algo_comp" -library "intel_vvp_round_sat_algo_comp_2450" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2VuZDE2MTg5MDk2MTI5NTUuaHRtbA=="
 set_global_assignment -entity "intel_vvp_reset_bridge" -library "intel_vvp_reset_bridge_2440" -name IP_COMPONENT_NAME "aW50ZWxfdnZwX3Jlc2V0X2JyaWRnZQ=="
 set_global_assignment -entity "intel_vvp_reset_bridge" -library "intel_vvp_reset_bridge_2440" -name IP_COMPONENT_DISPLAY_NAME "VlZQIGN1c3RvbSByZXNldCBicmlkZ2U="
 set_global_assignment -entity "intel_vvp_reset_bridge" -library "intel_vvp_reset_bridge_2440" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
@@ -97,31 +79,31 @@ set_global_assignment -entity "intel_vvp_horiz_scaler_cmd" -library "intel_vvp_h
 set_global_assignment -entity "intel_vvp_horiz_scaler_cmd" -library "intel_vvp_horiz_scaler_cmd_2451" -name IP_COMPONENT_VERSION "MjQuNS4x"
 set_global_assignment -entity "intel_vvp_horiz_scaler_cmd" -library "intel_vvp_horiz_scaler_cmd_2451" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBWaXNpb24gUHJvY2Vzc2luZy9Db21wb25lbnQgTGlicmFyeQ=="
 set_global_assignment -entity "intel_vvp_horiz_scaler_cmd" -library "intel_vvp_horiz_scaler_cmd_2451" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2VuZDE2MTg5MDk2MTI5NTUuaHRtbA=="
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_rubpkpq" -library "intel_vvp_horiz_scaler_algo_comp_2451" -name IP_COMPONENT_NAME "cGlwZWxpbmVfaW50ZWxfdnZwX3NjYWxlcl8wX2ludGVsX3Z2cF9ob3Jpel9zY2FsZXJfYWxnb19jb21wXzI0NTFfcnVicGtwcQ=="
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_rubpkpq" -library "intel_vvp_horiz_scaler_algo_comp_2451" -name IP_COMPONENT_DISPLAY_NAME "SG9yaXpvbnRhbCBTY2FsZXIgQWxnb3JpdGhtaWMgQ29tcG9uZW50"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_rubpkpq" -library "intel_vvp_horiz_scaler_algo_comp_2451" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_rubpkpq" -library "intel_vvp_horiz_scaler_algo_comp_2451" -name IP_COMPONENT_INTERNAL "On"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_rubpkpq" -library "intel_vvp_horiz_scaler_algo_comp_2451" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_rubpkpq" -library "intel_vvp_horiz_scaler_algo_comp_2451" -name IP_COMPONENT_VERSION "MjQuNS4x"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_rubpkpq" -library "intel_vvp_horiz_scaler_algo_comp_2451" -name IP_COMPONENT_DESCRIPTION "SG9yaXpvbnRhbCBzY2FsaW5nIGFsZ29yaXRobWljIGNvbXBvbmVudCBmb3IgdGhlIFNjYWxlciBJUCBjb3Jl"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_rubpkpq" -library "intel_vvp_horiz_scaler_algo_comp_2451" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBWaXNpb24gUHJvY2Vzc2luZy9Db21wb25lbnQgTGlicmFyeQ=="
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_rubpkpq" -library "intel_vvp_horiz_scaler_algo_comp_2451" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2VuZDE2MTg5MDk2MTI5NTUuaHRtbA=="
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_cmv7q4q" -library "intel_vvp_scaler_h_macro_2451" -name IP_COMPONENT_NAME "cGlwZWxpbmVfaW50ZWxfdnZwX3NjYWxlcl8wX2ludGVsX3Z2cF9zY2FsZXJfaF9tYWNyb18yNDUxX2NtdjdxNHE="
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_cmv7q4q" -library "intel_vvp_scaler_h_macro_2451" -name IP_COMPONENT_DISPLAY_NAME "U2NhbGVyIGhvcml6b250YWwgbWFjcm8gY29yZQ=="
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_cmv7q4q" -library "intel_vvp_scaler_h_macro_2451" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_cmv7q4q" -library "intel_vvp_scaler_h_macro_2451" -name IP_COMPONENT_INTERNAL "On"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_cmv7q4q" -library "intel_vvp_scaler_h_macro_2451" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_cmv7q4q" -library "intel_vvp_scaler_h_macro_2451" -name IP_COMPONENT_VERSION "MjQuNS4x"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_cmv7q4q" -library "intel_vvp_scaler_h_macro_2451" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBWaXNpb24gUHJvY2Vzc2luZy9Db21wb25lbnQgTGlicmFyeQ=="
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_cmv7q4q" -library "intel_vvp_scaler_h_macro_2451" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2VuZDE2MTg5MDk2MTI5NTUuaHRtbA=="
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_ahjqq6i" -library "intel_vvp_ro_reg_servicer_2441" -name IP_COMPONENT_NAME "cGlwZWxpbmVfaW50ZWxfdnZwX3NjYWxlcl8wX2ludGVsX3Z2cF9yb19yZWdfc2VydmljZXJfMjQ0MV9haGpxcTZp"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_ahjqq6i" -library "intel_vvp_ro_reg_servicer_2441" -name IP_COMPONENT_DISPLAY_NAME "Um8gUmVnIFNlcnZpY2Vy"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_ahjqq6i" -library "intel_vvp_ro_reg_servicer_2441" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_ahjqq6i" -library "intel_vvp_ro_reg_servicer_2441" -name IP_COMPONENT_INTERNAL "On"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_ahjqq6i" -library "intel_vvp_ro_reg_servicer_2441" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_ahjqq6i" -library "intel_vvp_ro_reg_servicer_2441" -name IP_COMPONENT_VERSION "MjQuNC4x"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_ahjqq6i" -library "intel_vvp_ro_reg_servicer_2441" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBWaXNpb24gUHJvY2Vzc2luZy9Db21wb25lbnQgTGlicmFyeQ=="
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_ahjqq6i" -library "intel_vvp_ro_reg_servicer_2441" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2VuZDE2MTg5MDk2MTI5NTUuaHRtbA=="
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_npk6mki" -library "intel_vvp_horiz_scaler_algo_comp_2451" -name IP_COMPONENT_NAME "cGlwZWxpbmVfaW50ZWxfdnZwX3NjYWxlcl8wX2ludGVsX3Z2cF9ob3Jpel9zY2FsZXJfYWxnb19jb21wXzI0NTFfbnBrNm1raQ=="
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_npk6mki" -library "intel_vvp_horiz_scaler_algo_comp_2451" -name IP_COMPONENT_DISPLAY_NAME "SG9yaXpvbnRhbCBTY2FsZXIgQWxnb3JpdGhtaWMgQ29tcG9uZW50"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_npk6mki" -library "intel_vvp_horiz_scaler_algo_comp_2451" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_npk6mki" -library "intel_vvp_horiz_scaler_algo_comp_2451" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_npk6mki" -library "intel_vvp_horiz_scaler_algo_comp_2451" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_npk6mki" -library "intel_vvp_horiz_scaler_algo_comp_2451" -name IP_COMPONENT_VERSION "MjQuNS4x"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_npk6mki" -library "intel_vvp_horiz_scaler_algo_comp_2451" -name IP_COMPONENT_DESCRIPTION "SG9yaXpvbnRhbCBzY2FsaW5nIGFsZ29yaXRobWljIGNvbXBvbmVudCBmb3IgdGhlIFNjYWxlciBJUCBjb3Jl"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_npk6mki" -library "intel_vvp_horiz_scaler_algo_comp_2451" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBWaXNpb24gUHJvY2Vzc2luZy9Db21wb25lbnQgTGlicmFyeQ=="
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_npk6mki" -library "intel_vvp_horiz_scaler_algo_comp_2451" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2VuZDE2MTg5MDk2MTI5NTUuaHRtbA=="
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_7xdsdlq" -library "intel_vvp_scaler_h_macro_2451" -name IP_COMPONENT_NAME "cGlwZWxpbmVfaW50ZWxfdnZwX3NjYWxlcl8wX2ludGVsX3Z2cF9zY2FsZXJfaF9tYWNyb18yNDUxXzd4ZHNkbHE="
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_7xdsdlq" -library "intel_vvp_scaler_h_macro_2451" -name IP_COMPONENT_DISPLAY_NAME "U2NhbGVyIGhvcml6b250YWwgbWFjcm8gY29yZQ=="
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_7xdsdlq" -library "intel_vvp_scaler_h_macro_2451" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_7xdsdlq" -library "intel_vvp_scaler_h_macro_2451" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_7xdsdlq" -library "intel_vvp_scaler_h_macro_2451" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_7xdsdlq" -library "intel_vvp_scaler_h_macro_2451" -name IP_COMPONENT_VERSION "MjQuNS4x"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_7xdsdlq" -library "intel_vvp_scaler_h_macro_2451" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBWaXNpb24gUHJvY2Vzc2luZy9Db21wb25lbnQgTGlicmFyeQ=="
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_7xdsdlq" -library "intel_vvp_scaler_h_macro_2451" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2VuZDE2MTg5MDk2MTI5NTUuaHRtbA=="
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_shbm2aq" -library "intel_vvp_ro_reg_servicer_2441" -name IP_COMPONENT_NAME "cGlwZWxpbmVfaW50ZWxfdnZwX3NjYWxlcl8wX2ludGVsX3Z2cF9yb19yZWdfc2VydmljZXJfMjQ0MV9zaGJtMmFx"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_shbm2aq" -library "intel_vvp_ro_reg_servicer_2441" -name IP_COMPONENT_DISPLAY_NAME "Um8gUmVnIFNlcnZpY2Vy"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_shbm2aq" -library "intel_vvp_ro_reg_servicer_2441" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_shbm2aq" -library "intel_vvp_ro_reg_servicer_2441" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_shbm2aq" -library "intel_vvp_ro_reg_servicer_2441" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_shbm2aq" -library "intel_vvp_ro_reg_servicer_2441" -name IP_COMPONENT_VERSION "MjQuNC4x"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_shbm2aq" -library "intel_vvp_ro_reg_servicer_2441" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBWaXNpb24gUHJvY2Vzc2luZy9Db21wb25lbnQgTGlicmFyeQ=="
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_shbm2aq" -library "intel_vvp_ro_reg_servicer_2441" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2VuZDE2MTg5MDk2MTI5NTUuaHRtbA=="
 set_global_assignment -entity "intel_vvp_mm_agent_reset_hold" -library "intel_vvp_mm_agent_reset_hold_2440" -name IP_COMPONENT_NAME "aW50ZWxfdnZwX21tX2FnZW50X3Jlc2V0X2hvbGQ="
 set_global_assignment -entity "intel_vvp_mm_agent_reset_hold" -library "intel_vvp_mm_agent_reset_hold_2440" -name IP_COMPONENT_DISPLAY_NAME "QXZhbG9uIE1NIHJlc2V0IHdhaXRyZXF1ZXN0IGhvbGQ="
 set_global_assignment -entity "intel_vvp_mm_agent_reset_hold" -library "intel_vvp_mm_agent_reset_hold_2440" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
@@ -160,15 +142,15 @@ set_global_assignment -entity "pipeline_intel_vvp_scaler_0_altera_mm_interconnec
 set_global_assignment -entity "pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_epi4vay" -library "altera_mm_interconnect_1920" -name IP_COMPONENT_VERSION "MTkuMi4w"
 set_global_assignment -entity "pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_epi4vay" -library "altera_mm_interconnect_1920" -name IP_COMPONENT_DESCRIPTION "TU0gSW50ZXJjb25uZWN0"
 set_global_assignment -entity "pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_epi4vay" -library "altera_mm_interconnect_1920" -name IP_COMPONENT_GROUP "TWVybGluIENvbXBvbmVudHM="
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_p3fkffy" -library "intel_vvp_slave_front_end_2441" -name IP_COMPONENT_NAME "cGlwZWxpbmVfaW50ZWxfdnZwX3NjYWxlcl8wX2ludGVsX3Z2cF9zbGF2ZV9mcm9udF9lbmRfMjQ0MV9wM2ZrZmZ5"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_p3fkffy" -library "intel_vvp_slave_front_end_2441" -name IP_COMPONENT_DISPLAY_NAME "Q29tbW9uIHNsYXZlIGZyb250IGVuZA=="
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_p3fkffy" -library "intel_vvp_slave_front_end_2441" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_p3fkffy" -library "intel_vvp_slave_front_end_2441" -name IP_COMPONENT_INTERNAL "On"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_p3fkffy" -library "intel_vvp_slave_front_end_2441" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_p3fkffy" -library "intel_vvp_slave_front_end_2441" -name IP_COMPONENT_VERSION "MjQuNC4x"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_p3fkffy" -library "intel_vvp_slave_front_end_2441" -name IP_COMPONENT_DESCRIPTION "Q29tbW9uIGZyb250IGVuZCBtb2R1bGUgZm9yIHNsYXZlIGludGVyZmFjZXMgb24gVlZQIGNvcmVz"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_p3fkffy" -library "intel_vvp_slave_front_end_2441" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBWaXNpb24gUHJvY2Vzc2luZy9Db21wb25lbnQgTGlicmFyeQ=="
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_p3fkffy" -library "intel_vvp_slave_front_end_2441" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2VuZDE2MTg5MDk2MTI5NTUuaHRtbA=="
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_5acy5eq" -library "intel_vvp_slave_front_end_2441" -name IP_COMPONENT_NAME "cGlwZWxpbmVfaW50ZWxfdnZwX3NjYWxlcl8wX2ludGVsX3Z2cF9zbGF2ZV9mcm9udF9lbmRfMjQ0MV81YWN5NWVx"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_5acy5eq" -library "intel_vvp_slave_front_end_2441" -name IP_COMPONENT_DISPLAY_NAME "Q29tbW9uIHNsYXZlIGZyb250IGVuZA=="
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_5acy5eq" -library "intel_vvp_slave_front_end_2441" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_5acy5eq" -library "intel_vvp_slave_front_end_2441" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_5acy5eq" -library "intel_vvp_slave_front_end_2441" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_5acy5eq" -library "intel_vvp_slave_front_end_2441" -name IP_COMPONENT_VERSION "MjQuNC4x"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_5acy5eq" -library "intel_vvp_slave_front_end_2441" -name IP_COMPONENT_DESCRIPTION "Q29tbW9uIGZyb250IGVuZCBtb2R1bGUgZm9yIHNsYXZlIGludGVyZmFjZXMgb24gVlZQIGNvcmVz"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_5acy5eq" -library "intel_vvp_slave_front_end_2441" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBWaXNpb24gUHJvY2Vzc2luZy9Db21wb25lbnQgTGlicmFyeQ=="
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_5acy5eq" -library "intel_vvp_slave_front_end_2441" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2VuZDE2MTg5MDk2MTI5NTUuaHRtbA=="
 set_global_assignment -entity "pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_vevxpda" -library "altera_mm_interconnect_1920" -name IP_COMPONENT_NAME "cGlwZWxpbmVfaW50ZWxfdnZwX3NjYWxlcl8wX2FsdGVyYV9tbV9pbnRlcmNvbm5lY3RfMTkyMF92ZXZ4cGRh"
 set_global_assignment -entity "pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_vevxpda" -library "altera_mm_interconnect_1920" -name IP_COMPONENT_DISPLAY_NAME "TU0gSW50ZXJjb25uZWN0"
 set_global_assignment -entity "pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_vevxpda" -library "altera_mm_interconnect_1920" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
@@ -177,15 +159,15 @@ set_global_assignment -entity "pipeline_intel_vvp_scaler_0_altera_mm_interconnec
 set_global_assignment -entity "pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_vevxpda" -library "altera_mm_interconnect_1920" -name IP_COMPONENT_VERSION "MTkuMi4w"
 set_global_assignment -entity "pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_vevxpda" -library "altera_mm_interconnect_1920" -name IP_COMPONENT_DESCRIPTION "TU0gSW50ZXJjb25uZWN0"
 set_global_assignment -entity "pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_vevxpda" -library "altera_mm_interconnect_1920" -name IP_COMPONENT_GROUP "TWVybGluIENvbXBvbmVudHM="
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_s5qlaoq" -library "intel_vvp_scaler_2451" -name IP_COMPONENT_NAME "cGlwZWxpbmVfaW50ZWxfdnZwX3NjYWxlcl8wX2ludGVsX3Z2cF9zY2FsZXJfMjQ1MV9zNXFsYW9x"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_s5qlaoq" -library "intel_vvp_scaler_2451" -name IP_COMPONENT_DISPLAY_NAME "U2NhbGVy"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_s5qlaoq" -library "intel_vvp_scaler_2451" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_s5qlaoq" -library "intel_vvp_scaler_2451" -name IP_COMPONENT_INTERNAL "Off"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_s5qlaoq" -library "intel_vvp_scaler_2451" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_s5qlaoq" -library "intel_vvp_scaler_2451" -name IP_COMPONENT_VERSION "MjQuNS4x"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_s5qlaoq" -library "intel_vvp_scaler_2451" -name IP_COMPONENT_DESCRIPTION "VGhlIFNjYWxlciBzY2FsZXMgYW4gaW5jb21pbmcgdmlkZW8gZmllbGQgdG8gY3JlYXRlIGFuIG91dGdvaW5nIGZpZWxkIGF0IGEgdXNlciBzcGVjaWZpZWQgcmVzb2x1dGlvbi4="
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_s5qlaoq" -library "intel_vvp_scaler_2451" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBWaXNpb24gUHJvY2Vzc2luZw=="
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_s5qlaoq" -library "intel_vvp_scaler_2451" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2VuZDE2MTg5MDk2MTI5NTUuaHRtbA=="
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_z7wmuia" -library "intel_vvp_scaler_2451" -name IP_COMPONENT_NAME "cGlwZWxpbmVfaW50ZWxfdnZwX3NjYWxlcl8wX2ludGVsX3Z2cF9zY2FsZXJfMjQ1MV96N3dtdWlh"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_z7wmuia" -library "intel_vvp_scaler_2451" -name IP_COMPONENT_DISPLAY_NAME "U2NhbGVy"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_z7wmuia" -library "intel_vvp_scaler_2451" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_z7wmuia" -library "intel_vvp_scaler_2451" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_z7wmuia" -library "intel_vvp_scaler_2451" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_z7wmuia" -library "intel_vvp_scaler_2451" -name IP_COMPONENT_VERSION "MjQuNS4x"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_z7wmuia" -library "intel_vvp_scaler_2451" -name IP_COMPONENT_DESCRIPTION "VGhlIFNjYWxlciBzY2FsZXMgYW4gaW5jb21pbmcgdmlkZW8gZmllbGQgdG8gY3JlYXRlIGFuIG91dGdvaW5nIGZpZWxkIGF0IGEgdXNlciBzcGVjaWZpZWQgcmVzb2x1dGlvbi4="
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_z7wmuia" -library "intel_vvp_scaler_2451" -name IP_COMPONENT_GROUP "RFNQL1ZpZGVvIGFuZCBWaXNpb24gUHJvY2Vzc2luZw=="
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_z7wmuia" -library "intel_vvp_scaler_2451" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL2VuZDE2MTg5MDk2MTI5NTUuaHRtbA=="
 set_global_assignment -entity "pipeline_intel_vvp_scaler_0" -library "pipeline_intel_vvp_scaler_0" -name IP_COMPONENT_NAME "cGlwZWxpbmVfaW50ZWxfdnZwX3NjYWxlcl8w"
 set_global_assignment -entity "pipeline_intel_vvp_scaler_0" -library "pipeline_intel_vvp_scaler_0" -name IP_COMPONENT_DISPLAY_NAME "c3lzdGVt"
 set_global_assignment -entity "pipeline_intel_vvp_scaler_0" -library "pipeline_intel_vvp_scaler_0" -name IP_COMPONENT_REPORT_HIERARCHY "On"
@@ -231,37 +213,6 @@ set_global_assignment -library "intel_vvp_vert_scaler_scheduler_2451" -name SYST
 set_global_assignment -library "intel_vvp_vert_scaler_scheduler_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_vert_scaler_scheduler_2451/synth/src_hdl/intel_vvp_vert_scaler_scheduler_init.sv"]
 set_global_assignment -library "intel_vvp_vert_scaler_scheduler_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_vert_scaler_scheduler_2451/synth/src_hdl/intel_vvp_vert_scaler_scheduler.sv"]
 set_global_assignment -library "intel_vvp_vert_scaler_scheduler_2451" -name SOURCE_FILE [file join $::quartus(qip_path) "intel_vvp_vert_scaler_scheduler_2451/synth/src_hdl/intel_vvp_vert_scaler_scheduler.ocp"]
-set_global_assignment -library "intel_vvp_vert_scaler_algo_comp_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_vert_scaler_algo_comp_2451/synth/intel_mtm_common_pkg.sv"]
-set_global_assignment -library "intel_vvp_vert_scaler_algo_comp_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_common_pkg.sv"]
-set_global_assignment -library "intel_vvp_vert_scaler_algo_comp_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_scaler_pkg.sv"]
-set_global_assignment -library "intel_vvp_vert_scaler_algo_comp_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_add_tree.sv"]
-set_global_assignment -library "intel_vvp_vert_scaler_algo_comp_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_mult.sv"]
-set_global_assignment -library "intel_vvp_vert_scaler_algo_comp_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_2_mult_add.sv"]
-set_global_assignment -library "intel_vvp_vert_scaler_algo_comp_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_3_mult_add.sv"]
-set_global_assignment -library "intel_vvp_vert_scaler_algo_comp_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_4_mult_add.sv"]
-set_global_assignment -library "intel_vvp_vert_scaler_algo_comp_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_mult_add.sv"]
-set_global_assignment -library "intel_vvp_vert_scaler_algo_comp_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_pipelined_mux.sv"]
-set_global_assignment -library "intel_vvp_vert_scaler_algo_comp_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_edge_pad.sv"]
-set_global_assignment -library "intel_vvp_vert_scaler_algo_comp_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_mirror.sv"]
-set_global_assignment -library "intel_vvp_vert_scaler_algo_comp_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_axi_zero_pad.sv"]
-set_global_assignment -library "intel_vvp_vert_scaler_algo_comp_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_axi_zero_strip.sv"]
-set_global_assignment -library "intel_vvp_vert_scaler_algo_comp_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_axi_pipeline_stage.sv"]
-set_global_assignment -library "intel_vvp_vert_scaler_algo_comp_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_vert_scaler_algo_comp_2451/synth/intel_vvp_axi_master.sv"]
-set_global_assignment -library "intel_vvp_vert_scaler_algo_comp_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_vert_scaler_algo_comp_2451/synth/src_hdl/intel_vvp_vert_scaler_algo_comp_bl.sv"]
-set_global_assignment -library "intel_vvp_vert_scaler_algo_comp_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_vert_scaler_algo_comp_2451/synth/src_hdl/intel_vvp_vert_scaler_algo_comp_coeff.sv"]
-set_global_assignment -library "intel_vvp_vert_scaler_algo_comp_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_vert_scaler_algo_comp_2451/synth/src_hdl/intel_vvp_vert_scaler_algo_comp.sv"]
-set_global_assignment -library "intel_vvp_vert_scaler_algo_comp_2451" -name QIP_FILE [file join $::quartus(qip_path) "intel_vvp_vert_scaler_algo_comp_2451/synth/src_hdl/intel_vvp_vert_scaler_algo_comp_meminit.qip"]
-set_global_assignment -library "intel_vvp_vert_scaler_algo_comp_2451" -name SOURCE_FILE [file join $::quartus(qip_path) "intel_vvp_vert_scaler_algo_comp_2451/synth/src_hdl/intel_vvp_vert_scaler_algo_comp.ocp"]
-set_global_assignment -library "intel_vvp_vert_scaler_algo_comp_2451" -name VERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_vert_scaler_algo_comp_2451/synth/pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ahpctzi.v"]
-set_global_assignment -library "intel_vvp_vert_scaler_algo_comp_2451" -name SOURCE_FILE [file join $::quartus(qip_path) "intel_vvp_vert_scaler_algo_comp_2451/synth/src_hdl/pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ahpctzi_coeff.mif"]
-set_global_assignment -library "intel_vvp_round_sat_algo_comp_2450" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_round_sat_algo_comp_2450/synth/intel_mtm_common_pkg.sv"]
-set_global_assignment -library "intel_vvp_round_sat_algo_comp_2450" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_round_sat_algo_comp_2450/synth/intel_vvp_common_pkg.sv"]
-set_global_assignment -library "intel_vvp_round_sat_algo_comp_2450" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_round_sat_algo_comp_2450/synth/intel_vvp_round_sat.sv"]
-set_global_assignment -library "intel_vvp_round_sat_algo_comp_2450" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_round_sat_algo_comp_2450/synth/intel_vvp_axi_zero_pad.sv"]
-set_global_assignment -library "intel_vvp_round_sat_algo_comp_2450" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_round_sat_algo_comp_2450/synth/intel_vvp_axi_zero_strip.sv"]
-set_global_assignment -library "intel_vvp_round_sat_algo_comp_2450" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_round_sat_algo_comp_2450/synth/intel_vvp_axi_pipeline_stage.sv"]
-set_global_assignment -library "intel_vvp_round_sat_algo_comp_2450" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_round_sat_algo_comp_2450/synth/intel_vvp_axi_master.sv"]
-set_global_assignment -library "intel_vvp_round_sat_algo_comp_2450" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_round_sat_algo_comp_2450/synth/src_hdl/intel_vvp_round_sat_algo_comp.sv"]
 set_global_assignment -library "intel_vvp_reset_bridge_2440" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_reset_bridge_2440/synth/src_hdl/intel_vvp_reset_bridge.sv"]
 set_global_assignment -library "intel_vvp_horiz_scaler_cmd_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_horiz_scaler_cmd_2451/synth/intel_mtm_common_pkg.sv"]
 set_global_assignment -library "intel_vvp_horiz_scaler_cmd_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_horiz_scaler_cmd_2451/synth/intel_vvp_common_pkg.sv"]
@@ -315,32 +266,31 @@ set_global_assignment -library "intel_vvp_horiz_scaler_algo_comp_2451" -name SYS
 set_global_assignment -library "intel_vvp_horiz_scaler_algo_comp_2451" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_horiz_scaler_algo_comp_2451/synth/src_hdl/intel_vvp_horiz_scaler_algo_comp.sv"]
 set_global_assignment -library "intel_vvp_horiz_scaler_algo_comp_2451" -name QIP_FILE [file join $::quartus(qip_path) "intel_vvp_horiz_scaler_algo_comp_2451/synth/src_hdl/intel_vvp_horiz_scaler_algo_comp_meminit.qip"]
 set_global_assignment -library "intel_vvp_horiz_scaler_algo_comp_2451" -name SOURCE_FILE [file join $::quartus(qip_path) "intel_vvp_horiz_scaler_algo_comp_2451/synth/src_hdl/intel_vvp_horiz_scaler_algo_comp.ocp"]
-set_global_assignment -library "intel_vvp_horiz_scaler_algo_comp_2451" -name VERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_horiz_scaler_algo_comp_2451/synth/pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_rubpkpq.v"]
-set_global_assignment -library "intel_vvp_horiz_scaler_algo_comp_2451" -name SOURCE_FILE [file join $::quartus(qip_path) "intel_vvp_horiz_scaler_algo_comp_2451/synth/src_hdl/pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_rubpkpq_coeff.mif"]
-set_global_assignment -library "intel_vvp_scaler_h_macro_2451" -name VERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_scaler_h_macro_2451/synth/pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_cmv7q4q.v"]
+set_global_assignment -library "intel_vvp_horiz_scaler_algo_comp_2451" -name VERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_horiz_scaler_algo_comp_2451/synth/pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_npk6mki.v"]
+set_global_assignment -library "intel_vvp_scaler_h_macro_2451" -name VERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_scaler_h_macro_2451/synth/pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_7xdsdlq.v"]
 set_global_assignment -library "intel_vvp_ro_reg_servicer_2441" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_ro_reg_servicer_2441/synth/intel_vvp_common_pkg.sv"]
 set_global_assignment -library "intel_vvp_ro_reg_servicer_2441" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_ro_reg_servicer_2441/synth/src_hdl/intel_vvp_ro_reg_servicer.sv"]
-set_global_assignment -library "intel_vvp_ro_reg_servicer_2441" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_ro_reg_servicer_2441/synth/pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_ahjqq6i.sv"]
+set_global_assignment -library "intel_vvp_ro_reg_servicer_2441" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_ro_reg_servicer_2441/synth/pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_shbm2aq.sv"]
 set_global_assignment -library "intel_vvp_mm_agent_reset_hold_2440" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_mm_agent_reset_hold_2440/synth/intel_vvp_common_pkg.sv"]
 set_global_assignment -library "intel_vvp_mm_agent_reset_hold_2440" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_mm_agent_reset_hold_2440/synth/src_hdl/intel_vvp_mm_agent_reset_hold.sv"]
 set_global_assignment -library "altera_merlin_master_translator_193" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "altera_merlin_master_translator_193/synth/pipeline_intel_vvp_scaler_0_altera_merlin_master_translator_193_lgcew2q.sv"]
 set_global_assignment -library "altera_merlin_slave_translator_191" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "altera_merlin_slave_translator_191/synth/pipeline_intel_vvp_scaler_0_altera_merlin_slave_translator_191_xg7rzxi.sv"]
 set_global_assignment -library "altera_mm_interconnect_1920" -name VERILOG_FILE [file join $::quartus(qip_path) "altera_mm_interconnect_1920/synth/pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_epi4vay.v"]
-set_global_assignment -library "intel_vvp_slave_front_end_2441" -name VERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_slave_front_end_2441/synth/pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_p3fkffy.v"]
+set_global_assignment -library "intel_vvp_slave_front_end_2441" -name VERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_slave_front_end_2441/synth/pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_5acy5eq.v"]
 set_global_assignment -library "altera_mm_interconnect_1920" -name VERILOG_FILE [file join $::quartus(qip_path) "altera_mm_interconnect_1920/synth/pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_vevxpda.v"]
-set_global_assignment -library "intel_vvp_scaler_2451" -name VERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_scaler_2451/synth/pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_s5qlaoq.v"]
+set_global_assignment -library "intel_vvp_scaler_2451" -name VERILOG_FILE [file join $::quartus(qip_path) "intel_vvp_scaler_2451/synth/pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_z7wmuia.v"]
 set_global_assignment -library "pipeline_intel_vvp_scaler_0" -name VERILOG_FILE [file join $::quartus(qip_path) "synth/pipeline_intel_vvp_scaler_0.v"]
 
 
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_s5qlaoq" -library "intel_vvp_scaler_2451" -name IP_TOOL_NAME "intel_vvp_scaler"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_s5qlaoq" -library "intel_vvp_scaler_2451" -name IP_TOOL_VERSION "24.5.1"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_s5qlaoq" -library "intel_vvp_scaler_2451" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_z7wmuia" -library "intel_vvp_scaler_2451" -name IP_TOOL_NAME "intel_vvp_scaler"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_z7wmuia" -library "intel_vvp_scaler_2451" -name IP_TOOL_VERSION "24.5.1"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_z7wmuia" -library "intel_vvp_scaler_2451" -name IP_TOOL_ENV "QsysPrimePro"
 set_global_assignment -entity "pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_vevxpda" -library "altera_mm_interconnect_1920" -name IP_TOOL_NAME "altera_mm_interconnect"
 set_global_assignment -entity "pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_vevxpda" -library "altera_mm_interconnect_1920" -name IP_TOOL_VERSION "19.2.0"
 set_global_assignment -entity "pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_vevxpda" -library "altera_mm_interconnect_1920" -name IP_TOOL_ENV "QsysPrimePro"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_p3fkffy" -library "intel_vvp_slave_front_end_2441" -name IP_TOOL_NAME "intel_vvp_slave_front_end"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_p3fkffy" -library "intel_vvp_slave_front_end_2441" -name IP_TOOL_VERSION "24.4.1"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_p3fkffy" -library "intel_vvp_slave_front_end_2441" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_5acy5eq" -library "intel_vvp_slave_front_end_2441" -name IP_TOOL_NAME "intel_vvp_slave_front_end"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_5acy5eq" -library "intel_vvp_slave_front_end_2441" -name IP_TOOL_VERSION "24.4.1"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_5acy5eq" -library "intel_vvp_slave_front_end_2441" -name IP_TOOL_ENV "QsysPrimePro"
 set_global_assignment -entity "pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_epi4vay" -library "altera_mm_interconnect_1920" -name IP_TOOL_NAME "altera_mm_interconnect"
 set_global_assignment -entity "pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_epi4vay" -library "altera_mm_interconnect_1920" -name IP_TOOL_VERSION "19.2.0"
 set_global_assignment -entity "pipeline_intel_vvp_scaler_0_altera_mm_interconnect_1920_epi4vay" -library "altera_mm_interconnect_1920" -name IP_TOOL_ENV "QsysPrimePro"
@@ -353,27 +303,21 @@ set_global_assignment -entity "pipeline_intel_vvp_scaler_0_altera_merlin_master_
 set_global_assignment -entity "intel_vvp_mm_agent_reset_hold" -library "intel_vvp_mm_agent_reset_hold_2440" -name IP_TOOL_NAME "intel_vvp_mm_agent_reset_hold"
 set_global_assignment -entity "intel_vvp_mm_agent_reset_hold" -library "intel_vvp_mm_agent_reset_hold_2440" -name IP_TOOL_VERSION "24.4.0"
 set_global_assignment -entity "intel_vvp_mm_agent_reset_hold" -library "intel_vvp_mm_agent_reset_hold_2440" -name IP_TOOL_ENV "QsysPrimePro"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_ahjqq6i" -library "intel_vvp_ro_reg_servicer_2441" -name IP_TOOL_NAME "intel_vvp_ro_reg_servicer"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_ahjqq6i" -library "intel_vvp_ro_reg_servicer_2441" -name IP_TOOL_VERSION "24.4.1"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_ahjqq6i" -library "intel_vvp_ro_reg_servicer_2441" -name IP_TOOL_ENV "QsysPrimePro"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_cmv7q4q" -library "intel_vvp_scaler_h_macro_2451" -name IP_TOOL_NAME "intel_vvp_scaler_h_macro"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_cmv7q4q" -library "intel_vvp_scaler_h_macro_2451" -name IP_TOOL_VERSION "24.5.1"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_cmv7q4q" -library "intel_vvp_scaler_h_macro_2451" -name IP_TOOL_ENV "QsysPrimePro"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_rubpkpq" -library "intel_vvp_horiz_scaler_algo_comp_2451" -name IP_TOOL_NAME "intel_vvp_horiz_scaler_algo_comp"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_rubpkpq" -library "intel_vvp_horiz_scaler_algo_comp_2451" -name IP_TOOL_VERSION "24.5.1"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_rubpkpq" -library "intel_vvp_horiz_scaler_algo_comp_2451" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_shbm2aq" -library "intel_vvp_ro_reg_servicer_2441" -name IP_TOOL_NAME "intel_vvp_ro_reg_servicer"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_shbm2aq" -library "intel_vvp_ro_reg_servicer_2441" -name IP_TOOL_VERSION "24.4.1"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_shbm2aq" -library "intel_vvp_ro_reg_servicer_2441" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_7xdsdlq" -library "intel_vvp_scaler_h_macro_2451" -name IP_TOOL_NAME "intel_vvp_scaler_h_macro"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_7xdsdlq" -library "intel_vvp_scaler_h_macro_2451" -name IP_TOOL_VERSION "24.5.1"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_7xdsdlq" -library "intel_vvp_scaler_h_macro_2451" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_npk6mki" -library "intel_vvp_horiz_scaler_algo_comp_2451" -name IP_TOOL_NAME "intel_vvp_horiz_scaler_algo_comp"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_npk6mki" -library "intel_vvp_horiz_scaler_algo_comp_2451" -name IP_TOOL_VERSION "24.5.1"
+set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_npk6mki" -library "intel_vvp_horiz_scaler_algo_comp_2451" -name IP_TOOL_ENV "QsysPrimePro"
 set_global_assignment -entity "intel_vvp_horiz_scaler_cmd" -library "intel_vvp_horiz_scaler_cmd_2451" -name IP_TOOL_NAME "intel_vvp_horiz_scaler_cmd"
 set_global_assignment -entity "intel_vvp_horiz_scaler_cmd" -library "intel_vvp_horiz_scaler_cmd_2451" -name IP_TOOL_VERSION "24.5.1"
 set_global_assignment -entity "intel_vvp_horiz_scaler_cmd" -library "intel_vvp_horiz_scaler_cmd_2451" -name IP_TOOL_ENV "QsysPrimePro"
 set_global_assignment -entity "intel_vvp_reset_bridge" -library "intel_vvp_reset_bridge_2440" -name IP_TOOL_NAME "intel_vvp_reset_bridge"
 set_global_assignment -entity "intel_vvp_reset_bridge" -library "intel_vvp_reset_bridge_2440" -name IP_TOOL_VERSION "24.4.0"
 set_global_assignment -entity "intel_vvp_reset_bridge" -library "intel_vvp_reset_bridge_2440" -name IP_TOOL_ENV "QsysPrimePro"
-set_global_assignment -entity "intel_vvp_round_sat_algo_comp" -library "intel_vvp_round_sat_algo_comp_2450" -name IP_TOOL_NAME "intel_vvp_round_sat_algo_comp"
-set_global_assignment -entity "intel_vvp_round_sat_algo_comp" -library "intel_vvp_round_sat_algo_comp_2450" -name IP_TOOL_VERSION "24.5.0"
-set_global_assignment -entity "intel_vvp_round_sat_algo_comp" -library "intel_vvp_round_sat_algo_comp_2450" -name IP_TOOL_ENV "QsysPrimePro"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ahpctzi" -library "intel_vvp_vert_scaler_algo_comp_2451" -name IP_TOOL_NAME "intel_vvp_vert_scaler_algo_comp"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ahpctzi" -library "intel_vvp_vert_scaler_algo_comp_2451" -name IP_TOOL_VERSION "24.5.1"
-set_global_assignment -entity "pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ahpctzi" -library "intel_vvp_vert_scaler_algo_comp_2451" -name IP_TOOL_ENV "QsysPrimePro"
 set_global_assignment -entity "intel_vvp_vert_scaler_scheduler" -library "intel_vvp_vert_scaler_scheduler_2451" -name IP_TOOL_NAME "intel_vvp_vert_scaler_scheduler"
 set_global_assignment -entity "intel_vvp_vert_scaler_scheduler" -library "intel_vvp_vert_scaler_scheduler_2451" -name IP_TOOL_VERSION "24.5.1"
 set_global_assignment -entity "intel_vvp_vert_scaler_scheduler" -library "intel_vvp_vert_scaler_scheduler_2451" -name IP_TOOL_ENV "QsysPrimePro"

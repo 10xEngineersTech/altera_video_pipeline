@@ -18,7 +18,7 @@
         <parameters>
           <parameter>
             <name>ALGORITHM</name>
-            <value>POLYPHASE</value>
+            <value>NEAREST_NEIGHBOUR</value>
           </parameter>
           <parameter>
             <name>BPS</name>
@@ -142,11 +142,11 @@
           </parameter>
           <parameter>
             <name>H_PHASES</name>
-            <value>64</value>
+            <value>16</value>
           </parameter>
           <parameter>
             <name>H_TAPS</name>
-            <value>6</value>
+            <value>4</value>
           </parameter>
           <parameter>
             <name>MAX_IN_WIDTH</name>
@@ -158,7 +158,7 @@
           </parameter>
           <parameter>
             <name>MEM_INIT</name>
-            <value>1</value>
+            <value>0</value>
           </parameter>
           <parameter>
             <name>NO_BLANKING</name>
@@ -194,7 +194,7 @@
           </parameter>
           <parameter>
             <name>RUNTIME_LOAD</name>
-            <value>0</value>
+            <value>1</value>
           </parameter>
           <parameter>
             <name>SEPARATE_SLAVE_CLOCK</name>
@@ -238,7 +238,7 @@
           </parameter>
           <parameter>
             <name>V_PHASES</name>
-            <value>64</value>
+            <value>16</value>
           </parameter>
           <parameter>
             <name>V_PRES_FRAC_BITS</name>
@@ -246,14 +246,14 @@
           </parameter>
           <parameter>
             <name>V_TAPS</name>
-            <value>6</value>
+            <value>4</value>
           </parameter>
         </parameters>
         <interconnectAssignments></interconnectAssignments>
         <className>intel_vvp_scaler</className>
         <version>24.5.1</version>
         <name>intel_vvp_scaler_0</name>
-        <uniqueName>pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_s5qlaoq</uniqueName>
+        <uniqueName>pipeline_intel_vvp_scaler_0_intel_vvp_scaler_2451_z7wmuia</uniqueName>
         <nonce>0</nonce>
         <incidentConnections></incidentConnections>
         <path>pipeline_intel_vvp_scaler_0.intel_vvp_scaler_0</path>
@@ -265,11 +265,11 @@
             <parameters>
               <parameter>
                 <name>ALGORITHM</name>
-                <value>POLYPHASE</value>
+                <value>NEAREST_NEIGHBOUR</value>
               </parameter>
               <parameter>
                 <name>BPS_IN</name>
-                <value>10</value>
+                <value>8</value>
               </parameter>
               <parameter>
                 <name>BPS_OUT</name>
@@ -337,15 +337,15 @@
               </parameter>
               <parameter>
                 <name>H_PHASES</name>
-                <value>64</value>
+                <value>16</value>
               </parameter>
               <parameter>
                 <name>H_TAPS</name>
-                <value>6</value>
+                <value>4</value>
               </parameter>
               <parameter>
                 <name>MEM_INIT</name>
-                <value>1</value>
+                <value>0</value>
               </parameter>
               <parameter>
                 <name>NUMBER_OF_COLOR_PLANES</name>
@@ -369,14 +369,14 @@
               </parameter>
               <parameter>
                 <name>SIGNED_IN</name>
-                <value>1</value>
+                <value>0</value>
               </parameter>
             </parameters>
             <interconnectAssignments></interconnectAssignments>
             <className>intel_vvp_scaler_h_macro</className>
             <version>24.5.1</version>
             <name>h_algo_comp</name>
-            <uniqueName>pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_cmv7q4q</uniqueName>
+            <uniqueName>pipeline_intel_vvp_scaler_0_intel_vvp_scaler_h_macro_2451_7xdsdlq</uniqueName>
             <nonce>0</nonce>
             <incidentConnections>
               <incidentConnection>
@@ -396,6 +396,24 @@
                 <name>h_algo_comp.axi_st_data_out/out_bridge.axi_st_data_in</name>
                 <end>out_bridge/axi_st_data_in</end>
                 <start>h_algo_comp/axi_st_data_out</start>
+              </incidentConnection>
+              <incidentConnection>
+                <parameters>
+                  <parameter>
+                    <name>axiStreamingCrossbarTxSysInfo</name>
+                    <value></value>
+                  </parameter>
+                  <parameter>
+                    <name>axiStreamingCrossbarRxSysInfo</name>
+                    <value></value>
+                  </parameter>
+                </parameters>
+                <interconnectAssignments></interconnectAssignments>
+                <className>axi4stream</className>
+                <version>25.1</version>
+                <name>line_buffer.axi_st_data_out/h_algo_comp.axi_st_data_in</name>
+                <end>h_algo_comp/axi_st_data_in</end>
+                <start>line_buffer/axi_st_data_out</start>
               </incidentConnection>
               <incidentConnection>
                 <parameters>
@@ -462,24 +480,6 @@
                 <name>scheduler.axi_st_h_core_cmd/h_algo_comp.axi_st_cmd</name>
                 <end>h_algo_comp/axi_st_cmd</end>
                 <start>scheduler/axi_st_h_core_cmd</start>
-              </incidentConnection>
-              <incidentConnection>
-                <parameters>
-                  <parameter>
-                    <name>axiStreamingCrossbarTxSysInfo</name>
-                    <value></value>
-                  </parameter>
-                  <parameter>
-                    <name>axiStreamingCrossbarRxSysInfo</name>
-                    <value></value>
-                  </parameter>
-                </parameters>
-                <interconnectAssignments></interconnectAssignments>
-                <className>axi4stream</className>
-                <version>25.1</version>
-                <name>v_round_sat.axi_st_data_out/h_algo_comp.axi_st_data_in</name>
-                <end>h_algo_comp/axi_st_data_in</end>
-                <start>v_round_sat/axi_st_data_out</start>
               </incidentConnection>
             </incidentConnections>
             <path>pipeline_intel_vvp_scaler_0.intel_vvp_scaler_0.h_algo_comp</path>
@@ -591,11 +591,11 @@
                 <parameters>
                   <parameter>
                     <name>ALGORITHM</name>
-                    <value>POLYPHASE</value>
+                    <value>NEAREST_NEIGHBOUR</value>
                   </parameter>
                   <parameter>
                     <name>BPS_IN</name>
-                    <value>10</value>
+                    <value>8</value>
                   </parameter>
                   <parameter>
                     <name>BPS_OUT</name>
@@ -635,7 +635,7 @@
                   </parameter>
                   <parameter>
                     <name>MEM_INIT</name>
-                    <value>1</value>
+                    <value>0</value>
                   </parameter>
                   <parameter>
                     <name>NUMBER_OF_COLOR_PLANES</name>
@@ -647,11 +647,11 @@
                   </parameter>
                   <parameter>
                     <name>NUM_PHASES</name>
-                    <value>64</value>
+                    <value>16</value>
                   </parameter>
                   <parameter>
                     <name>NUM_TAPS</name>
-                    <value>6</value>
+                    <value>4</value>
                   </parameter>
                   <parameter>
                     <name>PARTIAL_IMAGE_SCALING</name>
@@ -675,14 +675,14 @@
                   </parameter>
                   <parameter>
                     <name>SIGNED_IN</name>
-                    <value>1</value>
+                    <value>0</value>
                   </parameter>
                 </parameters>
                 <interconnectAssignments></interconnectAssignments>
                 <className>intel_vvp_horiz_scaler_algo_comp</className>
                 <version>24.5.1</version>
                 <name>luma_algo_comp</name>
-                <uniqueName>pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_rubpkpq</uniqueName>
+                <uniqueName>pipeline_intel_vvp_scaler_0_intel_vvp_horiz_scaler_algo_comp_2451_npk6mki</uniqueName>
                 <nonce>0</nonce>
                 <incidentConnections>
                   <incidentConnection>
@@ -1108,7 +1108,7 @@
               </parameter>
               <parameter>
                 <name>NUM_LINES</name>
-                <value>6</value>
+                <value>1</value>
               </parameter>
               <parameter>
                 <name>PIPELINE_READY</name>
@@ -1159,8 +1159,8 @@
                 <interconnectAssignments></interconnectAssignments>
                 <className>axi4stream</className>
                 <version>25.1</version>
-                <name>line_buffer.axi_st_data_out/v_algo_comp.axi_st_data_in</name>
-                <end>v_algo_comp/axi_st_data_in</end>
+                <name>line_buffer.axi_st_data_out/h_algo_comp.axi_st_data_in</name>
+                <end>h_algo_comp/axi_st_data_in</end>
                 <start>line_buffer/axi_st_data_out</start>
               </incidentConnection>
               <incidentConnection>
@@ -1483,58 +1483,6 @@
                 <end>slave_interface/main_clock</end>
                 <start>main_clk_bridge/out_clk</start>
               </incidentConnection>
-              <incidentConnection>
-                <parameters>
-                  <parameter>
-                    <name>clockRateSysInfo</name>
-                    <value></value>
-                  </parameter>
-                  <parameter>
-                    <name>resetDomainSysInfo</name>
-                    <value>-1</value>
-                  </parameter>
-                  <parameter>
-                    <name>clockDomainSysInfo</name>
-                    <value>-1</value>
-                  </parameter>
-                  <parameter>
-                    <name>clockResetSysInfo</name>
-                    <value></value>
-                  </parameter>
-                </parameters>
-                <interconnectAssignments></interconnectAssignments>
-                <className>clock</className>
-                <version>25.1</version>
-                <name>main_clk_bridge.out_clk/v_algo_comp.main_clock</name>
-                <end>v_algo_comp/main_clock</end>
-                <start>main_clk_bridge/out_clk</start>
-              </incidentConnection>
-              <incidentConnection>
-                <parameters>
-                  <parameter>
-                    <name>clockRateSysInfo</name>
-                    <value></value>
-                  </parameter>
-                  <parameter>
-                    <name>resetDomainSysInfo</name>
-                    <value>-1</value>
-                  </parameter>
-                  <parameter>
-                    <name>clockDomainSysInfo</name>
-                    <value>-1</value>
-                  </parameter>
-                  <parameter>
-                    <name>clockResetSysInfo</name>
-                    <value></value>
-                  </parameter>
-                </parameters>
-                <interconnectAssignments></interconnectAssignments>
-                <className>clock</className>
-                <version>25.1</version>
-                <name>main_clk_bridge.out_clk/v_round_sat.main_clock</name>
-                <end>v_round_sat/main_clock</end>
-                <start>main_clk_bridge/out_clk</start>
-              </incidentConnection>
             </incidentConnections>
             <path>pipeline_intel_vvp_scaler_0.intel_vvp_scaler_0.main_clk_bridge</path>
           </instanceData>
@@ -1734,50 +1682,6 @@
                 <version>25.1</version>
                 <name>main_rst_bridge.out_reset/slave_interface.main_reset</name>
                 <end>slave_interface/main_reset</end>
-                <start>main_rst_bridge/out_reset</start>
-              </incidentConnection>
-              <incidentConnection>
-                <parameters>
-                  <parameter>
-                    <name>resetDomainSysInfo</name>
-                    <value>-1</value>
-                  </parameter>
-                  <parameter>
-                    <name>clockDomainSysInfo</name>
-                    <value>-1</value>
-                  </parameter>
-                  <parameter>
-                    <name>clockResetSysInfo</name>
-                    <value></value>
-                  </parameter>
-                </parameters>
-                <interconnectAssignments></interconnectAssignments>
-                <className>reset</className>
-                <version>25.1</version>
-                <name>main_rst_bridge.out_reset/v_algo_comp.main_reset</name>
-                <end>v_algo_comp/main_reset</end>
-                <start>main_rst_bridge/out_reset</start>
-              </incidentConnection>
-              <incidentConnection>
-                <parameters>
-                  <parameter>
-                    <name>resetDomainSysInfo</name>
-                    <value>-1</value>
-                  </parameter>
-                  <parameter>
-                    <name>clockDomainSysInfo</name>
-                    <value>-1</value>
-                  </parameter>
-                  <parameter>
-                    <name>clockResetSysInfo</name>
-                    <value></value>
-                  </parameter>
-                </parameters>
-                <interconnectAssignments></interconnectAssignments>
-                <className>reset</className>
-                <version>25.1</version>
-                <name>main_rst_bridge.out_reset/v_round_sat.main_reset</name>
-                <end>v_round_sat/main_reset</end>
                 <start>main_rst_bridge/out_reset</start>
               </incidentConnection>
             </incidentConnections>
@@ -3191,7 +3095,7 @@
               </parameter>
               <parameter>
                 <name>ENABLE_V_CORE</name>
-                <value>1</value>
+                <value>0</value>
               </parameter>
               <parameter>
                 <name>EXTERNAL_MODE</name>
@@ -3207,7 +3111,7 @@
               </parameter>
               <parameter>
                 <name>H_TAPS</name>
-                <value>6</value>
+                <value>1</value>
               </parameter>
               <parameter>
                 <name>MAX_IN_WIDTH</name>
@@ -3259,11 +3163,11 @@
               </parameter>
               <parameter>
                 <name>V_PHASES</name>
-                <value>64</value>
+                <value>2</value>
               </parameter>
               <parameter>
                 <name>V_TAPS</name>
-                <value>6</value>
+                <value>1</value>
               </parameter>
             </parameters>
             <interconnectAssignments></interconnectAssignments>
@@ -3513,24 +3417,6 @@
                 <end>line_buffer/axi_st_cmd</end>
                 <start>scheduler/axi_st_lb_cmd</start>
               </incidentConnection>
-              <incidentConnection>
-                <parameters>
-                  <parameter>
-                    <name>axiStreamingCrossbarTxSysInfo</name>
-                    <value></value>
-                  </parameter>
-                  <parameter>
-                    <name>axiStreamingCrossbarRxSysInfo</name>
-                    <value></value>
-                  </parameter>
-                </parameters>
-                <interconnectAssignments></interconnectAssignments>
-                <className>axi4stream</className>
-                <version>25.1</version>
-                <name>scheduler.axi_st_v_core_cmd/v_algo_comp.axi_st_cmd</name>
-                <end>v_algo_comp/axi_st_cmd</end>
-                <start>scheduler/axi_st_v_core_cmd</start>
-              </incidentConnection>
             </incidentConnections>
             <path>pipeline_intel_vvp_scaler_0.intel_vvp_scaler_0.scheduler</path>
           </instanceData>
@@ -3578,7 +3464,7 @@
               </parameter>
               <parameter>
                 <name>P_PARAM_LIST</name>
-                <value>1,0,1,16383,16383,2,0,1,1,6,64,1,1,1,6,1,6,64,1,1,1,6,0,0,0,0</value>
+                <value>1,0,1,16383,16383,0,0,0,1,1,1,0,0,1,1,1,1,1,0,0,1,1,0,0,0,0</value>
               </parameter>
               <parameter>
                 <name>P_VERSION_NUMBER</name>
@@ -3601,7 +3487,7 @@
             <className>intel_vvp_slave_front_end</className>
             <version>24.4.1</version>
             <name>slave_interface</name>
-            <uniqueName>pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_p3fkffy</uniqueName>
+            <uniqueName>pipeline_intel_vvp_scaler_0_intel_vvp_slave_front_end_2441_5acy5eq</uniqueName>
             <nonce>0</nonce>
             <incidentConnections>
               <incidentConnection>
@@ -5440,7 +5326,7 @@
                   </parameter>
                   <parameter>
                     <name>P_PARAM_LIST</name>
-                    <value>1,0,1,16383,16383,2,0,1,1,6,64,1,1,1,6,1,6,64,1,1,1,6,0,0,0,0</value>
+                    <value>1,0,1,16383,16383,0,0,0,1,1,1,0,0,1,1,1,1,1,0,0,1,1,0,0,0,0</value>
                   </parameter>
                   <parameter>
                     <name>P_VERSION_NUMBER</name>
@@ -5455,7 +5341,7 @@
                 <className>intel_vvp_ro_reg_servicer</className>
                 <version>24.4.1</version>
                 <name>ro_reg</name>
-                <uniqueName>pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_ahjqq6i</uniqueName>
+                <uniqueName>pipeline_intel_vvp_scaler_0_intel_vvp_ro_reg_servicer_2441_shbm2aq</uniqueName>
                 <nonce>0</nonce>
                 <incidentConnections>
                   <incidentConnection>
@@ -5613,343 +5499,6 @@
               <children></children>
             </node>
           </children>
-        </node>
-        <node>
-          <instanceKey xsi:type="xs:string">v_algo_comp</instanceKey>
-          <instanceData xsi:type="data">
-            <parameters>
-              <parameter>
-                <name>ALGORITHM</name>
-                <value>POLYPHASE</value>
-              </parameter>
-              <parameter>
-                <name>BPS</name>
-                <value>8</value>
-              </parameter>
-              <parameter>
-                <name>COEFF_FRAC_BITS</name>
-                <value>6</value>
-              </parameter>
-              <parameter>
-                <name>COEFF_FUNCTION</name>
-                <value>LANCZOS_2</value>
-              </parameter>
-              <parameter>
-                <name>COEFF_INT_BITS</name>
-                <value>1</value>
-              </parameter>
-              <parameter>
-                <name>COEFF_SIGNED</name>
-                <value>1</value>
-              </parameter>
-              <parameter>
-                <name>DEVICE_FAMILY</name>
-                <value>Cyclone 10 GX</value>
-              </parameter>
-              <parameter>
-                <name>EDGE_MIRROR</name>
-                <value>0</value>
-              </parameter>
-              <parameter>
-                <name>ENABLE_420</name>
-                <value>0</value>
-              </parameter>
-              <parameter>
-                <name>INIT_FILE</name>
-                <value>&lt;enter file name (including full path)&gt;</value>
-              </parameter>
-              <parameter>
-                <name>MEM_INIT</name>
-                <value>1</value>
-              </parameter>
-              <parameter>
-                <name>NO_BLANKING</name>
-                <value>1</value>
-              </parameter>
-              <parameter>
-                <name>NUMBER_OF_COLOR_PLANES</name>
-                <value>3</value>
-              </parameter>
-              <parameter>
-                <name>NUM_BANKS</name>
-                <value>1</value>
-              </parameter>
-              <parameter>
-                <name>NUM_PHASES</name>
-                <value>64</value>
-              </parameter>
-              <parameter>
-                <name>NUM_TAPS</name>
-                <value>6</value>
-              </parameter>
-              <parameter>
-                <name>PIPELINE_READY</name>
-                <value>0</value>
-              </parameter>
-              <parameter>
-                <name>PIXELS_IN_PARALLEL</name>
-                <value>1</value>
-              </parameter>
-              <parameter>
-                <name>RUNTIME_LOAD</name>
-                <value>0</value>
-              </parameter>
-            </parameters>
-            <interconnectAssignments></interconnectAssignments>
-            <className>intel_vvp_vert_scaler_algo_comp</className>
-            <version>24.5.1</version>
-            <name>v_algo_comp</name>
-            <uniqueName>pipeline_intel_vvp_scaler_0_intel_vvp_vert_scaler_algo_comp_2451_ahpctzi</uniqueName>
-            <nonce>0</nonce>
-            <incidentConnections>
-              <incidentConnection>
-                <parameters>
-                  <parameter>
-                    <name>axiStreamingCrossbarTxSysInfo</name>
-                    <value></value>
-                  </parameter>
-                  <parameter>
-                    <name>axiStreamingCrossbarRxSysInfo</name>
-                    <value></value>
-                  </parameter>
-                </parameters>
-                <interconnectAssignments></interconnectAssignments>
-                <className>axi4stream</className>
-                <version>25.1</version>
-                <name>line_buffer.axi_st_data_out/v_algo_comp.axi_st_data_in</name>
-                <end>v_algo_comp/axi_st_data_in</end>
-                <start>line_buffer/axi_st_data_out</start>
-              </incidentConnection>
-              <incidentConnection>
-                <parameters>
-                  <parameter>
-                    <name>clockRateSysInfo</name>
-                    <value></value>
-                  </parameter>
-                  <parameter>
-                    <name>resetDomainSysInfo</name>
-                    <value>-1</value>
-                  </parameter>
-                  <parameter>
-                    <name>clockDomainSysInfo</name>
-                    <value>-1</value>
-                  </parameter>
-                  <parameter>
-                    <name>clockResetSysInfo</name>
-                    <value></value>
-                  </parameter>
-                </parameters>
-                <interconnectAssignments></interconnectAssignments>
-                <className>clock</className>
-                <version>25.1</version>
-                <name>main_clk_bridge.out_clk/v_algo_comp.main_clock</name>
-                <end>v_algo_comp/main_clock</end>
-                <start>main_clk_bridge/out_clk</start>
-              </incidentConnection>
-              <incidentConnection>
-                <parameters>
-                  <parameter>
-                    <name>resetDomainSysInfo</name>
-                    <value>-1</value>
-                  </parameter>
-                  <parameter>
-                    <name>clockDomainSysInfo</name>
-                    <value>-1</value>
-                  </parameter>
-                  <parameter>
-                    <name>clockResetSysInfo</name>
-                    <value></value>
-                  </parameter>
-                </parameters>
-                <interconnectAssignments></interconnectAssignments>
-                <className>reset</className>
-                <version>25.1</version>
-                <name>main_rst_bridge.out_reset/v_algo_comp.main_reset</name>
-                <end>v_algo_comp/main_reset</end>
-                <start>main_rst_bridge/out_reset</start>
-              </incidentConnection>
-              <incidentConnection>
-                <parameters>
-                  <parameter>
-                    <name>axiStreamingCrossbarTxSysInfo</name>
-                    <value></value>
-                  </parameter>
-                  <parameter>
-                    <name>axiStreamingCrossbarRxSysInfo</name>
-                    <value></value>
-                  </parameter>
-                </parameters>
-                <interconnectAssignments></interconnectAssignments>
-                <className>axi4stream</className>
-                <version>25.1</version>
-                <name>scheduler.axi_st_v_core_cmd/v_algo_comp.axi_st_cmd</name>
-                <end>v_algo_comp/axi_st_cmd</end>
-                <start>scheduler/axi_st_v_core_cmd</start>
-              </incidentConnection>
-              <incidentConnection>
-                <parameters>
-                  <parameter>
-                    <name>axiStreamingCrossbarTxSysInfo</name>
-                    <value></value>
-                  </parameter>
-                  <parameter>
-                    <name>axiStreamingCrossbarRxSysInfo</name>
-                    <value></value>
-                  </parameter>
-                </parameters>
-                <interconnectAssignments></interconnectAssignments>
-                <className>axi4stream</className>
-                <version>25.1</version>
-                <name>v_algo_comp.axi_st_data_out/v_round_sat.axi_st_data_in</name>
-                <end>v_round_sat/axi_st_data_in</end>
-                <start>v_algo_comp/axi_st_data_out</start>
-              </incidentConnection>
-            </incidentConnections>
-            <path>pipeline_intel_vvp_scaler_0.intel_vvp_scaler_0.v_algo_comp</path>
-          </instanceData>
-          <children></children>
-        </node>
-        <node>
-          <instanceKey xsi:type="xs:string">v_round_sat</instanceKey>
-          <instanceData xsi:type="data">
-            <parameters>
-              <parameter>
-                <name>BPS_IN</name>
-                <value>19</value>
-              </parameter>
-              <parameter>
-                <name>BPS_OUT</name>
-                <value>10</value>
-              </parameter>
-              <parameter>
-                <name>DO_ROUNDING</name>
-                <value>1</value>
-              </parameter>
-              <parameter>
-                <name>FRAC_BITS_IN</name>
-                <value>6</value>
-              </parameter>
-              <parameter>
-                <name>NUMBER_OF_COLOR_PLANES</name>
-                <value>3</value>
-              </parameter>
-              <parameter>
-                <name>PIPELINE_READY</name>
-                <value>0</value>
-              </parameter>
-              <parameter>
-                <name>PIXELS_IN_PARALLEL</name>
-                <value>1</value>
-              </parameter>
-              <parameter>
-                <name>PRESERVE_BITS</name>
-                <value>0</value>
-              </parameter>
-              <parameter>
-                <name>UNSIGNED_INPUT</name>
-                <value>0</value>
-              </parameter>
-              <parameter>
-                <name>UNSIGNED_OUTPUT</name>
-                <value>0</value>
-              </parameter>
-            </parameters>
-            <interconnectAssignments></interconnectAssignments>
-            <className>intel_vvp_round_sat_algo_comp</className>
-            <version>24.5.0</version>
-            <name>v_round_sat</name>
-            <uniqueName>intel_vvp_round_sat_algo_comp</uniqueName>
-            <fixedName>intel_vvp_round_sat_algo_comp</fixedName>
-            <nonce>0</nonce>
-            <incidentConnections>
-              <incidentConnection>
-                <parameters>
-                  <parameter>
-                    <name>clockRateSysInfo</name>
-                    <value></value>
-                  </parameter>
-                  <parameter>
-                    <name>resetDomainSysInfo</name>
-                    <value>-1</value>
-                  </parameter>
-                  <parameter>
-                    <name>clockDomainSysInfo</name>
-                    <value>-1</value>
-                  </parameter>
-                  <parameter>
-                    <name>clockResetSysInfo</name>
-                    <value></value>
-                  </parameter>
-                </parameters>
-                <interconnectAssignments></interconnectAssignments>
-                <className>clock</className>
-                <version>25.1</version>
-                <name>main_clk_bridge.out_clk/v_round_sat.main_clock</name>
-                <end>v_round_sat/main_clock</end>
-                <start>main_clk_bridge/out_clk</start>
-              </incidentConnection>
-              <incidentConnection>
-                <parameters>
-                  <parameter>
-                    <name>resetDomainSysInfo</name>
-                    <value>-1</value>
-                  </parameter>
-                  <parameter>
-                    <name>clockDomainSysInfo</name>
-                    <value>-1</value>
-                  </parameter>
-                  <parameter>
-                    <name>clockResetSysInfo</name>
-                    <value></value>
-                  </parameter>
-                </parameters>
-                <interconnectAssignments></interconnectAssignments>
-                <className>reset</className>
-                <version>25.1</version>
-                <name>main_rst_bridge.out_reset/v_round_sat.main_reset</name>
-                <end>v_round_sat/main_reset</end>
-                <start>main_rst_bridge/out_reset</start>
-              </incidentConnection>
-              <incidentConnection>
-                <parameters>
-                  <parameter>
-                    <name>axiStreamingCrossbarTxSysInfo</name>
-                    <value></value>
-                  </parameter>
-                  <parameter>
-                    <name>axiStreamingCrossbarRxSysInfo</name>
-                    <value></value>
-                  </parameter>
-                </parameters>
-                <interconnectAssignments></interconnectAssignments>
-                <className>axi4stream</className>
-                <version>25.1</version>
-                <name>v_algo_comp.axi_st_data_out/v_round_sat.axi_st_data_in</name>
-                <end>v_round_sat/axi_st_data_in</end>
-                <start>v_algo_comp/axi_st_data_out</start>
-              </incidentConnection>
-              <incidentConnection>
-                <parameters>
-                  <parameter>
-                    <name>axiStreamingCrossbarTxSysInfo</name>
-                    <value></value>
-                  </parameter>
-                  <parameter>
-                    <name>axiStreamingCrossbarRxSysInfo</name>
-                    <value></value>
-                  </parameter>
-                </parameters>
-                <interconnectAssignments></interconnectAssignments>
-                <className>axi4stream</className>
-                <version>25.1</version>
-                <name>v_round_sat.axi_st_data_out/h_algo_comp.axi_st_data_in</name>
-                <end>h_algo_comp/axi_st_data_in</end>
-                <start>v_round_sat/axi_st_data_out</start>
-              </incidentConnection>
-            </incidentConnections>
-            <path>pipeline_intel_vvp_scaler_0.intel_vvp_scaler_0.v_round_sat</path>
-          </instanceData>
-          <children></children>
         </node>
       </children>
     </node>

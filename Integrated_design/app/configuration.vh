@@ -10,3 +10,5 @@ parameter CLIPPER_LEFT    = 0;
 parameter CLIPPER_RIGHT   = 0;
 parameter SCALER_WIDTH    = 32;
 parameter SCALER_HEIGHT   = 32;
+parameter TPG_COLORSPACE  = 0;
+parameter VID_PLANES      = 3;

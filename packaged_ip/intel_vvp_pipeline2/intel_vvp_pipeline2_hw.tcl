@@ -55,7 +55,7 @@ set_parameter_property OUTPUT_PROTOCOL HDL_PARAMETER        false
 add_parameter ENABLE_FRC INTEGER 0
 set_parameter_property ENABLE_FRC DISPLAY_NAME        "Frame rate conversion (memory frame buffer)"
 set_parameter_property ENABLE_FRC DISPLAY_HINT         boolean
-set_parameter_property ENABLE_FRC DESCRIPTION          "Appends a Video Frame Buffer after the processing chain. Frames are written to and read back from external memory (EMIF/DDR); rate mismatch is absorbed by frame drop/repeat. The Avalon-MM memory read/write host ports are exported."
+set_parameter_property ENABLE_FRC DESCRIPTION          "Appends a Video Frame Buffer after the processing chain. Frames are written to and read back from DDR4 memory; rate mismatch is absorbed by frame drop/repeat. By default a DDR4 EMIF is included in the subsystem and its memory I/Os are exported (see the FRC tab)."
 set_parameter_property ENABLE_FRC AFFECTS_ELABORATION  true
 set_parameter_property ENABLE_FRC HDL_PARAMETER        false
 
@@ -792,6 +792,13 @@ set_parameter_property FRC_MAX_CONTROL_PACKETS DISPLAY_NAME        "Maximum stor
 set_parameter_property FRC_MAX_CONTROL_PACKETS ALLOWED_RANGES       "0:16"
 set_parameter_property FRC_MAX_CONTROL_PACKETS HDL_PARAMETER        false
 
+add_parameter FRC_INCLUDE_EMIF INTEGER 1
+set_parameter_property FRC_INCLUDE_EMIF DISPLAY_NAME        "Include DDR4 EMIF (IO96B) inside the subsystem"
+set_parameter_property FRC_INCLUDE_EMIF DISPLAY_HINT         boolean
+set_parameter_property FRC_INCLUDE_EMIF DESCRIPTION          "When enabled the DDR4 external memory interface is instantiated inside the subsystem and its memory I/Os (mem, mem_ck, mem_reset_n, oct, ref_clk) are exported - connect the DDR4 device or memory model to them at system level. When disabled the frame buffer's raw Avalon-MM read/write hosts are exported instead."
+set_parameter_property FRC_INCLUDE_EMIF AFFECTS_ELABORATION  true
+set_parameter_property FRC_INCLUDE_EMIF HDL_PARAMETER        false
+
 add_parameter FRC_AV_MM_DATA_WIDTH INTEGER 256
 set_parameter_property FRC_AV_MM_DATA_WIDTH DISPLAY_NAME        "Memory port data width (bits)"
 set_parameter_property FRC_AV_MM_DATA_WIDTH ALLOWED_RANGES       {16 32 64 128 256 512 1024}
@@ -951,7 +958,9 @@ FRC Lite&rarr;Full conv: 0x0C00-0x0DFF &nbsp;|&nbsp; FRC Frame Buffer: 0x0E00-0x
 PIP Mixer: 0x1000-0x13FF &nbsp;|&nbsp; PIP background TPG: 0x1400-0x15FF<br><br>
 <b>Features:</b><br>
 FRC (frame rate conversion): chain output &rarr; (Lite&rarr;Full conv) &rarr; Video Frame Buffer &rarr; output.
-The frame buffer's Avalon-MM memory read/write hosts are exported - connect them to EMIF/DDR at system level.<br>
+A DDR4 EMIF (IO96B) is included in the subsystem by default; its memory I/Os (mem, mem_ck, mem_reset_n, oct, ref_clk)
+are exported - connect the DDR4 device or simulation memory model to them at system level.
+Alternatively disable 'Include DDR4 EMIF' to export the frame buffer's raw Avalon-MM read/write hosts instead.<br>
 PIP (picture-in-picture): background TPG (layer 0) + pipeline video (layer 1) &rarr; Mixer &rarr; output.
 FRC and PIP combine: video path becomes &hellip; &rarr; Frame Buffer &rarr; Mixer &rarr; output.<br><br>
 <i>Note: TPG and PC1 (input source adapters) are external - configured outside this subsystem.</i>
@@ -1170,6 +1179,7 @@ add_display_item frc_frames FRC_DROP_RPT_AUX        parameter
 add_display_item frc_frames FRC_MAX_CONTROL_PACKETS parameter
 
 add_display_item frc_tab frc_mem group "Memory interface"
+add_display_item frc_mem FRC_INCLUDE_EMIF         parameter
 add_display_item frc_mem FRC_AV_MM_DATA_WIDTH     parameter
 add_display_item frc_mem FRC_AV_MM_ADDR_WIDTH     parameter
 add_display_item frc_mem FRC_WRITE_FIFO_DEPTH     parameter
@@ -1279,7 +1289,8 @@ proc validate {} {
     set frc_on [get_parameter_value ENABLE_FRC]
     foreach p {FRC_MAX_WIDTH FRC_MAX_HEIGHT FRC_FRAME_DROP_ENABLE
                FRC_FRAME_REPEAT_ENABLE FRC_DROP_BROKEN_FRAMES FRC_DROP_RPT_AUX
-               FRC_MAX_CONTROL_PACKETS FRC_AV_MM_DATA_WIDTH FRC_AV_MM_ADDR_WIDTH
+               FRC_MAX_CONTROL_PACKETS FRC_INCLUDE_EMIF
+               FRC_AV_MM_DATA_WIDTH FRC_AV_MM_ADDR_WIDTH
                FRC_WRITE_FIFO_DEPTH FRC_WRITE_BURST_TARGET FRC_READ_FIFO_DEPTH
                FRC_READ_BURST_TARGET FRC_PACKING FRC_CLOCKS_ARE_SEPARATE
                FRC_MEM_BUFF_BASE_ADDR FRC_MEM_BUFF_LINE_STRIDE
@@ -1703,6 +1714,31 @@ proc compose {} {
         if {[get_parameter_value FRC_RUNTIME_CONTROL]} {
             mm_connect intel_vvp_vfb_0 av_mm_control_agent 0x0E00
         }
+
+        # -- Internal DDR4 EMIF (IO96B) ---------------------------------------
+        # Wiring replicated from the validated frame_buf_addition system:
+        # both VFB memory hosts on the EMIF AXI4 target, everything in the
+        # main clock domain. The memory-side I/Os are exported below; the
+        # DDR4 device / memory model connects to them at system level.
+        if {[get_parameter_value FRC_INCLUDE_EMIF]} {
+            add_instance frc_emif_0 emif_io96b_ddr4comp 4.0.0
+            # DDR4-3200W, one x32 channel of 8Gb x16 dies - timing auto-derives
+            set_instance_parameter_value frc_emif_0 MEM_SPEEDBIN               "3200W"
+            set_instance_parameter_value frc_emif_0 MEM_DIE_DENSITY_GBITS      8
+            set_instance_parameter_value frc_emif_0 MEM_DIE_DQ_WIDTH           16
+            set_instance_parameter_value frc_emif_0 MEM_CHANNEL_DATA_DQ_WIDTH  32
+            set_instance_parameter_value frc_emif_0 CTRL_PERFORMANCE_PROFILE   "SEQ"
+            add_connection clock_in.out_clk   frc_emif_0.s0_axi4_clock_in
+            add_connection clock_in.out_clk   frc_emif_0.s0_axi4lite_clock
+            add_connection reset_in.out_reset frc_emif_0.core_init_n
+            add_connection reset_in.out_reset frc_emif_0.s0_axi4lite_reset_n
+            add_connection intel_vvp_vfb_0.av_mm_mem_write_host frc_emif_0.s0_axi4
+            add_connection intel_vvp_vfb_0.av_mm_mem_read_host  frc_emif_0.s0_axi4
+            if {[get_parameter_value FRC_CLOCKS_ARE_SEPARATE]} {
+                add_connection clock_in.out_clk   intel_vvp_vfb_0.mem_clock
+                add_connection reset_in.out_reset intel_vvp_vfb_0.mem_reset
+            }
+        }
     }
 
     # -- PIP: uniform-color background TPG + mixer ----------------------------
@@ -1813,19 +1849,36 @@ proc compose {} {
         set_interface_property m_axis_video_out EXPORT_OF $last_out
     }
 
-    # -- FRC exports: memory hosts (connect to EMIF/DDR at system level) -----
+    # -- FRC exports ----------------------------------------------------------
     if {$do_frc} {
-        add_interface frc_mem_write_host avalon start
-        set_interface_property frc_mem_write_host EXPORT_OF intel_vvp_vfb_0.av_mm_mem_write_host
-        add_interface frc_mem_read_host avalon start
-        set_interface_property frc_mem_read_host EXPORT_OF intel_vvp_vfb_0.av_mm_mem_read_host
-        if {[get_parameter_value FRC_CLOCKS_ARE_SEPARATE]} {
-            # Drive from the memory/EMIF user clock domain at system level
-            # (the validated design drove this from the same clock as 'clk')
-            add_interface frc_mem_clock clock end
-            set_interface_property frc_mem_clock EXPORT_OF intel_vvp_vfb_0.mem_clock
-            add_interface frc_mem_reset reset end
-            set_interface_property frc_mem_reset EXPORT_OF intel_vvp_vfb_0.mem_reset
+        if {[get_parameter_value FRC_INCLUDE_EMIF]} {
+            # EMIF inside: export the DDR4 memory-side I/Os for the memory
+            # device / simulation memory model
+            add_interface frc_emif_ref_clk clock end
+            set_interface_property frc_emif_ref_clk EXPORT_OF frc_emif_0.ref_clk
+            add_interface frc_emif_mem conduit end
+            set_interface_property frc_emif_mem EXPORT_OF frc_emif_0.mem_0
+            add_interface frc_emif_mem_ck conduit end
+            set_interface_property frc_emif_mem_ck EXPORT_OF frc_emif_0.mem_ck_0
+            add_interface frc_emif_mem_reset_n conduit end
+            set_interface_property frc_emif_mem_reset_n EXPORT_OF frc_emif_0.mem_reset_n
+            add_interface frc_emif_oct conduit end
+            set_interface_property frc_emif_oct EXPORT_OF frc_emif_0.oct_0
+        } else {
+            # No internal EMIF: export the raw memory hosts (connect to an
+            # external EMIF/DDR controller at system level)
+            add_interface frc_mem_write_host avalon start
+            set_interface_property frc_mem_write_host EXPORT_OF intel_vvp_vfb_0.av_mm_mem_write_host
+            add_interface frc_mem_read_host avalon start
+            set_interface_property frc_mem_read_host EXPORT_OF intel_vvp_vfb_0.av_mm_mem_read_host
+            if {[get_parameter_value FRC_CLOCKS_ARE_SEPARATE]} {
+                # Drive from the memory/EMIF user clock domain at system level
+                # (the validated design drove this from the same clock as 'clk')
+                add_interface frc_mem_clock clock end
+                set_interface_property frc_mem_clock EXPORT_OF intel_vvp_vfb_0.mem_clock
+                add_interface frc_mem_reset reset end
+                set_interface_property frc_mem_reset EXPORT_OF intel_vvp_vfb_0.mem_reset
+            }
         }
     }
 

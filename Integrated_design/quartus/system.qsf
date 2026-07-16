@@ -35,13 +35,15 @@
 # Date created = 15:25:20  July 14, 2026
 #
 # -------------------------------------------------------------------------- #
-set_global_assignment -name FAMILY "Cyclone 10 GX"
+set_global_assignment -name FAMILY "Agilex 5"
 set_global_assignment -name TOP_LEVEL_ENTITY system
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "25.1.1 SP1.31"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "15:25:20  JULY 14, 2026"
 set_global_assignment -name LAST_QUARTUS_VERSION "25.1.1 SP1.31 Pro Edition"
-set_global_assignment -name DEVICE 10CX220YF780I5G
-set_global_assignment -name BOARD default
+set_global_assignment -name DEVICE A5ED065BB32AE6SR0
+set_global_assignment -name BOARD "Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1"
+set_global_assignment -name PWRMGT_VOLTAGE_OUTPUT_FORMAT "LINEAR FORMAT"
+set_global_assignment -name PWRMGT_LINEAR_FORMAT_N "-12"
 set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0.ip
 set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_intel_vvp_pipeline2_0.ip
 set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_reset_in.ip

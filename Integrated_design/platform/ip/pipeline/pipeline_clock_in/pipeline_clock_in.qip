@@ -11,8 +11,8 @@ set_global_assignment -entity "pipeline_clock_in" -library "pipeline_clock_in" -
 set_global_assignment -library "pipeline_clock_in" -name SOPCINFO_FILE [file join $::quartus(qip_path) "pipeline_clock_in.sopcinfo"]
 set_global_assignment -entity "pipeline_clock_in" -library "pipeline_clock_in" -name SLD_INFO "QSYS_NAME pipeline_clock_in HAS_SOPCINFO 1 GENERATION_ID 0"
 set_global_assignment -library "pipeline_clock_in" -name MISC_FILE [file join $::quartus(qip_path) "pipeline_clock_in.cmp"]
-set_global_assignment -entity "pipeline_clock_in" -library "pipeline_clock_in" -name IP_TARGETED_DEVICE_FAMILY "Cyclone 10 GX"
-set_global_assignment -entity "pipeline_clock_in" -library "pipeline_clock_in" -name IP_GENERATED_DEVICE_FAMILY "{Cyclone 10 GX}"
+set_global_assignment -entity "pipeline_clock_in" -library "pipeline_clock_in" -name IP_TARGETED_DEVICE_FAMILY "Agilex 5"
+set_global_assignment -entity "pipeline_clock_in" -library "pipeline_clock_in" -name IP_GENERATED_DEVICE_FAMILY "{Agilex 5}"
 set_global_assignment -entity "pipeline_clock_in" -library "pipeline_clock_in" -name IP_QSYS_MODE "STANDALONE"
 set_global_assignment -name SYNTHESIS_ONLY_QIP ON
 set_global_assignment -library "pipeline_clock_in" -name MISC_FILE [file join $::quartus(qip_path) "../pipeline_clock_in.ip"]

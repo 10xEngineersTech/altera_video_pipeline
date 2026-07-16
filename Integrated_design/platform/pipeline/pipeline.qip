@@ -4,8 +4,8 @@ set_global_assignment -entity "pipeline" -library "pipeline" -name IP_TOOL_ENV "
 set_global_assignment -library "pipeline" -name SOPCINFO_FILE [file join $::quartus(qip_path) "pipeline.sopcinfo"]
 set_global_assignment -entity "pipeline" -library "pipeline" -name SLD_INFO "QSYS_NAME pipeline HAS_SOPCINFO 1 GENERATION_ID 0"
 set_global_assignment -library "pipeline" -name MISC_FILE [file join $::quartus(qip_path) "pipeline.cmp"]
-set_global_assignment -entity "pipeline" -library "pipeline" -name IP_TARGETED_DEVICE_FAMILY "Cyclone 10 GX"
-set_global_assignment -entity "pipeline" -library "pipeline" -name IP_GENERATED_DEVICE_FAMILY "{Cyclone 10 GX}"
+set_global_assignment -entity "pipeline" -library "pipeline" -name IP_TARGETED_DEVICE_FAMILY "Agilex 5"
+set_global_assignment -entity "pipeline" -library "pipeline" -name IP_GENERATED_DEVICE_FAMILY "{Agilex 5}"
 set_global_assignment -entity "pipeline" -library "pipeline" -name IP_QSYS_MODE "SYSTEM"
 set_global_assignment -name SYNTHESIS_ONLY_QIP ON
 set_global_assignment -library "pipeline" -name MISC_FILE [file join $::quartus(qip_path) "../pipeline.qsys"]

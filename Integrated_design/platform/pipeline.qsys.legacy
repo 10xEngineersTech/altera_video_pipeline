@@ -21,7 +21,7 @@ https://fpgasoftware.intel.com/eula.-->
    tags=""
    categories="Systems"
    tool="QsysPro" />
- <parameter name="board" value="default" />
+ <parameter name="board">Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1</parameter>
  <parameter name="bonusData"><![CDATA[bonusData 
 {
    element clock_in
@@ -68,9 +68,9 @@ https://fpgasoftware.intel.com/eula.-->
 ]]></parameter>
  <parameter name="cpuInfo" value="" />
  <parameter name="designId" value="" />
- <parameter name="device" value="10CX220YF780I5G" />
- <parameter name="deviceFamily" value="Cyclone 10 GX" />
- <parameter name="deviceSpeedGrade" value="5" />
+ <parameter name="device" value="A5ED065BB32AE6SR0" />
+ <parameter name="deviceFamily" value="Agilex 5" />
+ <parameter name="deviceSpeedGrade" value="6" />
  <parameter name="dflBitArray" value="" />
  <parameter name="fabricMode" value="QSYS" />
  <parameter name="generateLegacySim" value="false" />
@@ -176,6 +176,11 @@ https://fpgasoftware.intel.com/eula.-->
    type="axi4stream"
    dir="end" />
  <interface
+   name="axi4s_vid_out"
+   internal="intel_vvp_tpg_1.axi4s_vid_out"
+   type="axi4stream"
+   dir="start" />
+ <interface
    name="axi4s_vid_out_1"
    internal="intel_vvp_protocol_conv_0.axi4s_vid_out"
    type="axi4stream"
@@ -191,11 +196,6 @@ https://fpgasoftware.intel.com/eula.-->
    internal="intel_vvp_tpg_1.av_mm_control_agent"
    type="avalon"
    dir="end" />
- <interface
-   name="axi4s_vid_out"
-   internal="intel_vvp_tpg_1.axi4s_vid_out"
-   type="axi4stream"
-   dir="start" />
  <interface
    name="m_axis_video_out"
    internal="intel_vvp_pipeline2_0.m_axis_video_out"

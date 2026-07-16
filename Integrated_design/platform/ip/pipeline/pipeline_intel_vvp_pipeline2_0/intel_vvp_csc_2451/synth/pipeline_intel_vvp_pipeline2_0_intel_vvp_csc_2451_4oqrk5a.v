@@ -116,7 +116,7 @@ module pipeline_intel_vvp_pipeline2_0_intel_vvp_csc_2451_4oqrk5a #(
 		.BPS_OUT                 (8),
 		.PIXELS_IN_PARALLEL      (1),
 		.PIPELINE_READY          (0),
-		.DEVICE_FAMILY           ("Cyclone 10 GX"),
+		.DEVICE_FAMILY           ("Agilex 5"),
 		.EXTERNAL_MODE           (0),
 		.MOVE_BINARY_POINT_RIGHT (0),
 		.ROUNDING_METHOD         ("ROUND_HALF_UP"),

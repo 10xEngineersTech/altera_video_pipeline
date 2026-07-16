@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2026.07.14.16:49:27"
+ date="2026.07.16.16:38:13"
  outputDirectory="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_clock_in/">
  <perimeter>
   <parameter
@@ -18,25 +18,25 @@
   <parameter
      name="AUTO_DEVICE_FAMILY"
      type="String"
-     defaultValue="Cyclone 10 GX"
+     defaultValue="Agilex 5"
      onHdl="0"
      affectsHdl="1" />
   <parameter
      name="AUTO_DEVICE"
      type="String"
-     defaultValue="10CX220YF780I5G"
+     defaultValue="A5ED065BB32AE6SR0"
      onHdl="0"
      affectsHdl="1" />
   <parameter
      name="AUTO_DEVICE_SPEEDGRADE"
      type="String"
-     defaultValue="5"
+     defaultValue="6"
      onHdl="0"
      affectsHdl="1" />
   <parameter
      name="AUTO_BOARD"
      type="String"
-     defaultValue="default"
+     defaultValue="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1"
      onHdl="0"
      affectsHdl="1" />
   <parameter
@@ -74,13 +74,15 @@
  </perimeter>
  <entity kind="pipeline_clock_in" version="1.0" name="pipeline_clock_in">
   <parameter name="AUTO_GENERATION_ID" value="0" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
   <parameter name="AUTO_IN_CLK_CLOCK_RATE" value="-1" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="AUTO_IN_CLK_RESET_DOMAIN" value="-1" />
   <parameter name="AUTO_UNIQUE_ID" value="" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="AUTO_IN_CLK_CLOCK_DOMAIN" value="-1" />
   <generatedFiles>
    <file

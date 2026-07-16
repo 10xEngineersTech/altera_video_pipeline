@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2026.07.14.16:49:42"
+ date="2026.07.16.16:38:27"
  outputDirectory="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/pipeline/">
  <perimeter>
   <parameter
@@ -18,25 +18,25 @@
   <parameter
      name="AUTO_DEVICE_FAMILY"
      type="String"
-     defaultValue="Cyclone 10 GX"
+     defaultValue="Agilex 5"
      onHdl="0"
      affectsHdl="1" />
   <parameter
      name="AUTO_DEVICE"
      type="String"
-     defaultValue="10CX220YF780I5G"
+     defaultValue="A5ED065BB32AE6SR0"
      onHdl="0"
      affectsHdl="1" />
   <parameter
      name="AUTO_DEVICE_SPEEDGRADE"
      type="String"
-     defaultValue="5"
+     defaultValue="6"
      onHdl="0"
      affectsHdl="1" />
   <parameter
      name="AUTO_BOARD"
      type="String"
-     defaultValue="default"
+     defaultValue="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1"
      onHdl="0"
      affectsHdl="1" />
   <parameter
@@ -459,14 +459,16 @@
  <entity kind="pipeline" version="1.0" name="pipeline">
   <parameter name="AUTO_CLK_CLOCK_RATE" value="-1" />
   <parameter name="AUTO_GENERATION_ID" value="0" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="AUTO_CLK_RESET_DOMAIN" value="-1" />
   <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="-1" />
   <parameter name="AUTO_UNIQUE_ID" value="" />
   <parameter name="AUTO_AV_MM_CONTROL_AGENT_CPU_INFO_ID" value="" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="AUTO_S0_CPU_INFO_ID" value="" />
   <parameter name="AUTO_INTEL_VVP_TPG_1_AV_MM_CONTROL_AGENT_CPU_INFO_ID" value="" />
   <generatedFiles>
@@ -502,7 +504,7 @@
    version="1.0"
    name="pipeline_clock_in">
   <parameter name="hlsFile" value="" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
   <parameter
      name="defaultBoundary"
      value="&lt;boundaryDefinition&gt;
@@ -728,7 +730,7 @@
      name="transformParameters"
      value="&lt;transformParameterDescriptorDefinitionList/&gt;" />
   <parameter name="svInterfaceDefinition" value="" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
   <parameter
      name="hdlParameters"
      value="&lt;hdlParameterDescriptorDefinitionList/&gt;" />
@@ -784,8 +786,10 @@
    version="1.0"
    name="pipeline_intel_vvp_pipeline2_0">
   <parameter name="hlsFile" value="" />
-  <parameter name="AUTO_BOARD" value="default" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
   <parameter
      name="defaultBoundary"
      value="&lt;boundaryDefinition&gt;
@@ -1996,7 +2000,7 @@
     &lt;/systemInfos&gt;
 &lt;/componentDefinition&gt;" />
   <parameter name="cpuInfo" value="" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter
      name="logicalView"
      value="ip/pipeline/pipeline_intel_vvp_pipeline2_0.ip" />
@@ -2009,7 +2013,7 @@
      name="transformParameters"
      value="&lt;transformParameterDescriptorDefinitionList/&gt;" />
   <parameter name="svInterfaceDefinition" value="" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
   <parameter
      name="hdlParameters"
      value="&lt;hdlParameterDescriptorDefinitionList/&gt;" />
@@ -2066,8 +2070,10 @@
    name="pipeline_intel_vvp_protocol_conv_0">
   <parameter name="hlsFile" value="" />
   <parameter name="VVP_OCS_ENABLED_INI" value="false" />
-  <parameter name="AUTO_BOARD" value="default" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
   <parameter
      name="defaultBoundary"
      value="&lt;boundaryDefinition&gt;
@@ -3249,7 +3255,7 @@
     &lt;/systemInfos&gt;
 &lt;/componentDefinition&gt;" />
   <parameter name="cpuInfo" value="" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter
      name="logicalView"
      value="ip/pipeline/pipeline_intel_vvp_protocol_conv_0.ip" />
@@ -3262,7 +3268,7 @@
      name="transformParameters"
      value="&lt;transformParameterDescriptorDefinitionList/&gt;" />
   <parameter name="svInterfaceDefinition" value="" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
   <parameter
      name="hdlParameters"
      value="&lt;hdlParameterDescriptorDefinitionList/&gt;" />
@@ -3319,8 +3325,10 @@
    name="pipeline_intel_vvp_tpg_1">
   <parameter name="hlsFile" value="" />
   <parameter name="VVP_OCS_ENABLED_INI" value="false" />
-  <parameter name="AUTO_BOARD" value="default" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
   <parameter
      name="defaultBoundary"
      value="&lt;boundaryDefinition&gt;
@@ -4326,7 +4334,7 @@
     &lt;/systemInfos&gt;
 &lt;/componentDefinition&gt;" />
   <parameter name="cpuInfo" value="" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="logicalView" value="ip/pipeline/pipeline_intel_vvp_tpg_1.ip" />
   <parameter
      name="moduleAssignmentDefinition"
@@ -4337,7 +4345,7 @@
      name="transformParameters"
      value="&lt;transformParameterDescriptorDefinitionList/&gt;" />
   <parameter name="svInterfaceDefinition" value="" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
   <parameter
      name="hdlParameters"
      value="&lt;hdlParameterDescriptorDefinitionList/&gt;" />
@@ -4394,7 +4402,7 @@
    name="pipeline_reset_in">
   <parameter name="AUTO_CLK_CLOCK_RATE" value="50000000" />
   <parameter name="hlsFile" value="" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
   <parameter
      name="defaultBoundary"
      value="&lt;boundaryDefinition&gt;
@@ -4662,7 +4670,7 @@
      name="transformParameters"
      value="&lt;transformParameterDescriptorDefinitionList/&gt;" />
   <parameter name="svInterfaceDefinition" value="" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
   <parameter
      name="hdlParameters"
      value="&lt;hdlParameterDescriptorDefinitionList/&gt;" />

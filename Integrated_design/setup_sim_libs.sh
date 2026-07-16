@@ -36,6 +36,7 @@ FLAT=(
   cyclone10gx_hip_atoms.v cyclone10gx_hip_atoms.vhd cyclone10gx_hip_components.vhd
   cyclone10gx_hssi_atoms.v cyclone10gx_hssi_atoms.vhd cyclone10gx_hssi_components.vhd
   sgate.v sgate.vhd sgate_pack.vhd
+  simsf_dpi.cpp
 )
 
 # Files dev_com opens under $QUARTUS_SIM_LIB_DIR/mentor/

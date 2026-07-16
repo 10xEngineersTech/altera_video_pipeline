@@ -14,9 +14,16 @@ if len(sys.argv) > 1:
 QUARTUS_INSTALL_DIR = os.environ.get(
     "QUARTUS_INSTALL_DIR", "/mnt/ssd2/Quartus_25_1_1_Setup_Installation/quartus"
 )
+# Use the QuestaSim (FE) that ships with Quartus 25.1.1 (questa_fse).
 QUESTASIM_DIR = os.environ.get(
-    "QUESTASIM_DIR", "/mnt/ssd2/Quartus21/questasim/linux_x86_64"
+    "QUESTASIM_DIR", "/mnt/ssd2/Quartus_25_1_1_Setup_Installation/questa_fse"
 )
+
+# Call vsim explicitly from QUESTASIM_DIR so the app is not affected by whatever
+# other vsim happens to be first on PATH. Falls back to a bare "vsim" (PATH).
+vsim_bin = os.path.join(QUESTASIM_DIR, "bin", "vsim")
+if not os.path.exists(vsim_bin):
+    vsim_bin = "vsim"
 
 # 2. Define your paths and commands
 sim_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "platform", "pipeline", "sim", "mentor")
@@ -82,9 +89,9 @@ try:
     my_env = os.environ.copy()
     my_env["QUESTASIM_DIR"] = QUESTASIM_DIR
     
-    subprocess.run(["vsim", mode_flag, "-do", do_file_path], check=True, env=my_env)
-    
+    subprocess.run([vsim_bin, mode_flag, "-do", do_file_path], check=True, env=my_env)
+
 except FileNotFoundError:
-    print("Error: 'vsim' not found in PATH. Make sure Questa is sourced.")
+    print(f"Error: vsim not found ({vsim_bin}). Check QUESTASIM_DIR / PATH.")
 except subprocess.CalledProcessError as e:
     print(f"Simulation failed with exit code {e.returncode}")

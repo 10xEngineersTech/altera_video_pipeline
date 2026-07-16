@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2026.07.14.16:49:01"
+ date="2026.07.16.16:37:47"
  outputDirectory="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_pipeline2_0/">
  <perimeter>
   <parameter
@@ -18,25 +18,25 @@
   <parameter
      name="AUTO_DEVICE_FAMILY"
      type="String"
-     defaultValue="Cyclone 10 GX"
+     defaultValue="Agilex 5"
      onHdl="0"
      affectsHdl="1" />
   <parameter
      name="AUTO_DEVICE"
      type="String"
-     defaultValue="10CX220YF780I5G"
+     defaultValue="A5ED065BB32AE6SR0"
      onHdl="0"
      affectsHdl="1" />
   <parameter
      name="AUTO_DEVICE_SPEEDGRADE"
      type="String"
-     defaultValue="5"
+     defaultValue="6"
      onHdl="0"
      affectsHdl="1" />
   <parameter
      name="AUTO_BOARD"
      type="String"
-     defaultValue="default"
+     defaultValue="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1"
      onHdl="0"
      affectsHdl="1" />
   <parameter
@@ -200,13 +200,15 @@
    name="pipeline_intel_vvp_pipeline2_0">
   <parameter name="AUTO_CLK_CLOCK_RATE" value="-1" />
   <parameter name="AUTO_GENERATION_ID" value="0" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="AUTO_CLK_RESET_DOMAIN" value="-1" />
   <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="-1" />
   <parameter name="AUTO_UNIQUE_ID" value="" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="AUTO_S0_CPU_INFO_ID" value="" />
   <generatedFiles>
    <file
@@ -603,7 +605,7 @@
    <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: pipeline_intel_vvp_pipeline2_0_intel_vvp_scaler_h_macro_2451_q2m6fuy"</message>
    <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: intel_vvp_reset_bridge"</message>
    <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: intel_vvp_horiz_scaler_cmd"</message>
-   <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: pipeline_intel_vvp_pipeline2_0_intel_vvp_horiz_scaler_algo_comp_2451_z5ma6zi"</message>
+   <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: pipeline_intel_vvp_pipeline2_0_intel_vvp_horiz_scaler_algo_comp_2451_yz36aui"</message>
    <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: pipeline_intel_vvp_pipeline2_0_intel_vvp_slave_front_end_2441_de7mlfy"</message>
    <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: intel_vvp_reset_bridge"</message>
    <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: pipeline_intel_vvp_pipeline2_0_intel_vvp_ro_reg_servicer_2441_oe4a3oa"</message>
@@ -640,7 +642,9 @@
   <parameter name="SC_V_PHASES" value="64" />
   <parameter name="SC_V_BANKS" value="1" />
   <parameter name="CRS_SUPPORT_422_PASS" value="1" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="DIL_PIPELINE_READY" value="0" />
   <parameter name="SC_H_COEFF_FRAC_BITS" value="6" />
   <parameter name="CSC_COLOR_SPACE_OUT" value="RGB" />
@@ -653,7 +657,7 @@
   <parameter name="DIL_READ_FIFO_DEPTH" value="256" />
   <parameter name="SC_H_PHASES" value="64" />
   <parameter name="CSC_RUNTIME_CONTROL" value="1" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
   <parameter name="DIL_MEM_BUFF_LINE_STRIDE" value="8192" />
   <parameter name="SC_MEM_INIT" value="1" />
   <parameter name="PC0_VIP_USER_SUPPORT" value="DISCARD" />
@@ -667,7 +671,7 @@
   <parameter name="CRS_VERT_CO_SITING" value="TOP" />
   <parameter name="SC_OUTPUT_HEIGHT" value="2200" />
   <parameter name="PC0_VVP_USER_SUPPORT" value="NONE_ALLOWED" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
   <parameter name="DIL_WRITE_FIFO_DEPTH" value="256" />
   <parameter name="CRS_VERT_ENABLE_LUMA_ADAPT" value="0" />
   <parameter name="DIL_AV_MM_ADDR_WIDTH" value="32" />
@@ -768,7 +772,7 @@
   <parameter name="PC0_CHROMA_SITING" value="TOP_LEFT" />
   <parameter name="SC_V_PRES_FRAC_BITS" value="6" />
   <parameter name="DIL_AV_MM_DATA_WIDTH" value="256" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="OUTPUT_PROTOCOL" value="ALTERA_SV_LITE" />
   <parameter name="CSC_SEPARATE_SLAVE_CLOCK" value="0" />
   <parameter name="CL_RIGHT_OFFSET" value="0" />
@@ -1173,7 +1177,7 @@
    <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: pipeline_intel_vvp_pipeline2_0_intel_vvp_scaler_h_macro_2451_q2m6fuy"</message>
    <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: intel_vvp_reset_bridge"</message>
    <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: intel_vvp_horiz_scaler_cmd"</message>
-   <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: pipeline_intel_vvp_pipeline2_0_intel_vvp_horiz_scaler_algo_comp_2451_z5ma6zi"</message>
+   <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: pipeline_intel_vvp_pipeline2_0_intel_vvp_horiz_scaler_algo_comp_2451_yz36aui"</message>
    <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: pipeline_intel_vvp_pipeline2_0_intel_vvp_slave_front_end_2441_de7mlfy"</message>
    <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: intel_vvp_reset_bridge"</message>
    <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: pipeline_intel_vvp_pipeline2_0_intel_vvp_ro_reg_servicer_2441_oe4a3oa"</message>
@@ -1250,7 +1254,9 @@
   <parameter name="RUNTIME_CONTROL" value="1" />
   <parameter name="BPS" value="8" />
   <parameter name="MAX_WIDTH" value="2048" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="C_OMNI_CAP_IRQ_ENABLE" value="0" />
   <parameter name="C_OMNI_CAP_VERSION" value="3" />
   <parameter name="ENABLE_DEBUG" value="0" />
@@ -1264,16 +1270,16 @@
   <parameter name="BOB_DIL_MODE" value="DEINTERLACE_F0_ONLY" />
   <parameter name="WRITE_BURST_TARGET" value="16" />
   <parameter name="VVP_OCS_ENABLED_INI" value="false" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
   <parameter name="PIPELINE_READY" value="0" />
   <parameter name="C_OMNI_CAP_IRQ" value="255" />
   <parameter name="FIFO" value="0" />
   <parameter name="MEM_BUFF_BASE_ADDR" value="0" />
   <parameter name="READ_FIFO_DEPTH" value="256" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="C_OMNI_CAP_ID_ASSOCIATED" value="0" />
   <parameter name="P_AV_MM_DATA_WIDTH" value="256" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
   <parameter name="C_OMNI_CAP_TYPE" value="570" />
   <parameter name="READ_BURST_TARGET" value="16" />
   <parameter name="C_OMNI_CAP_TAG" value="0" />
@@ -1371,7 +1377,9 @@
   <parameter name="RUNTIME_CONTROL" value="1" />
   <parameter name="BPS" value="8" />
   <parameter name="MAX_WIDTH" value="2048" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="HORIZ_CO_SITING" value="LEFT" />
   <parameter name="HORIZ_ENABLE_LUMA_ADAPT" value="0" />
   <parameter name="C_OMNI_CAP_IRQ_ENABLE" value="0" />
@@ -1394,15 +1402,15 @@
   <parameter name="HORIZ_ALGORITHM" value="NEAREST_NEIGHBOUR" />
   <parameter name="VERT_ENABLE_LUMA_ADAPT" value="0" />
   <parameter name="VVP_OCS_ENABLED_INI" value="false" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
   <parameter name="PIPELINE_READY" value="0" />
   <parameter name="C_OMNI_CAP_IRQ" value="255" />
   <parameter name="SUPPORT_444_TO_422" value="1" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="SUPPORT_444_TO_420" value="1" />
   <parameter name="C_OMNI_CAP_ID_ASSOCIATED" value="0" />
   <parameter name="NO_BLANKING" value="0" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
   <parameter name="C_OMNI_CAP_TYPE" value="558" />
   <parameter name="PIXELS_IN_PARALLEL_OUT" value="1" />
   <parameter name="C_OMNI_CAP_TAG" value="0" />
@@ -1563,7 +1571,9 @@
   <parameter name="SUMMAND_INT_BITS" value="10" />
   <parameter name="COEFF_A2" value="0" />
   <parameter name="COEFF_A1" value="0" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="REMOVE_FRACTION_METHOD" value="1" />
   <parameter name="C_OMNI_CAP_ENABLED" value="0" />
   <parameter name="SUMMAND_SIGNED" value="1" />
@@ -1574,7 +1584,7 @@
   <parameter name="REQ_FCOEFF_A1" value="0.0" />
   <parameter name="REQ_FCOEFF_A2" value="0.0" />
   <parameter name="VVP_OCS_ENABLED_INI" value="false" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
   <parameter name="BPS_OUT" value="8" />
   <parameter name="PIPELINE_READY" value="0" />
   <parameter name="min_output_s4" value="0" />
@@ -1582,7 +1592,7 @@
   <parameter name="min_output_s3" value="0" />
   <parameter name="OUTPUT_COLORSPACE" value="0" />
   <parameter name="min_output_s1" value="0.0" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
   <parameter name="max_output_s4" value="0" />
   <parameter name="C_OMNI_CAP_TAG" value="0" />
   <parameter name="C_OMNI_CAP_ID_COMPONENT" value="0" />
@@ -1617,7 +1627,7 @@
   <parameter name="COEFF_B2" value="0" />
   <parameter name="COEFFICIENT_SIGNED" value="1" />
   <parameter name="C_OMNI_CAP_IRQ" value="255" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="MOVE_BINARY_POINT_RIGHT" value="0" />
   <parameter name="C_OMNI_CAP_ID_ASSOCIATED" value="0" />
   <parameter name="BPS_IN" value="8" />
@@ -1703,7 +1713,9 @@
    name="pipeline_intel_vvp_pipeline2_0_intel_vvp_clipper_2451_oow3h7y">
   <parameter name="RUNTIME_CONTROL" value="1" />
   <parameter name="BPS" value="8" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="LEFT_OFFSET" value="0" />
   <parameter name="C_OMNI_CAP_IRQ_ENABLE" value="0" />
   <parameter name="ENABLE_DEBUG" value="0" />
@@ -1718,12 +1730,12 @@
   <parameter name="RECTANGLE_HEIGHT" value="8" />
   <parameter name="NUMBER_OF_COLOR_PLANES" value="3" />
   <parameter name="VVP_OCS_ENABLED_INI" value="false" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
   <parameter name="C_OMNI_CAP_IRQ" value="255" />
   <parameter name="RIGHT_OFFSET" value="0" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="C_OMNI_CAP_ID_ASSOCIATED" value="0" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
   <parameter name="RECTANGLE_WIDTH" value="8" />
   <parameter name="C_OMNI_CAP_TYPE" value="557" />
   <parameter name="BOTTOM_OFFSET" value="0" />
@@ -1810,7 +1822,9 @@
   <parameter name="RUNTIME_CONTROL" value="0" />
   <parameter name="CHROMA_SAMPLING" value="444" />
   <parameter name="BPS" value="8" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="INPUT_MODE" value="INTERNAL" />
   <parameter name="C_OMNI_CAP_IRQ_ENABLE" value="0" />
   <parameter name="ENABLE_DEBUG" value="0" />
@@ -1825,13 +1839,13 @@
   <parameter name="VIP_USER_SUPPORT" value="DISCARD" />
   <parameter name="NUMBER_OF_COLOR_PLANES" value="3" />
   <parameter name="VVP_OCS_ENABLED_INI" value="false" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
   <parameter name="PIPELINE_READY" value="0" />
   <parameter name="C_OMNI_CAP_IRQ" value="255" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="C_OMNI_CAP_ID_ASSOCIATED" value="0" />
   <parameter name="ENABLE_YCBCR_SWAP" value="0" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
   <parameter name="C_OMNI_CAP_TYPE" value="573" />
   <parameter name="C_OMNI_CAP_TAG" value="0" />
   <parameter name="C_OMNI_CAP_IRQ_ENABLE_EN" value="0" />
@@ -1876,7 +1890,9 @@
    kind="intel_vvp_scaler"
    version="24.5.1"
    name="pipeline_intel_vvp_pipeline2_0_intel_vvp_scaler_2451_vxxbz7y">
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="V_PRES_FRAC_BITS" value="6" />
   <parameter name="H_COEFF_SIGNED" value="1" />
   <parameter name="ENABLE_H" value="1" />
@@ -1888,7 +1904,7 @@
   <parameter name="P_CORE_CTRL_ID" value="0" />
   <parameter name="ENABLE_V" value="1" />
   <parameter name="VVP_OCS_ENABLED_INI" value="false" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
   <parameter name="HALF_RATE_420" value="0" />
   <parameter name="PIPELINE_READY" value="0" />
   <parameter name="ENABLE_444" value="1" />
@@ -1898,7 +1914,7 @@
   <parameter name="V_INIT_FILE" value="" />
   <parameter name="RUNTIME_LOAD" value="1" />
   <parameter name="NO_BLANKING" value="0" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
   <parameter name="H_COEFF_FRAC_BITS" value="6" />
   <parameter name="C_OMNI_CAP_TAG" value="0" />
   <parameter name="C_OMNI_CAP_ID_COMPONENT" value="0" />
@@ -1928,7 +1944,7 @@
   <parameter name="H_PARTIAL_SCALING" value="0" />
   <parameter name="C_OMNI_CAP_IRQ" value="255" />
   <parameter name="ENABLE_422" value="0" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="C_OMNI_CAP_ID_ASSOCIATED" value="0" />
   <parameter name="H_PHASES" value="64" />
   <parameter name="V_COEFF_SIGNED" value="1" />
@@ -2007,7 +2023,7 @@
    <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: pipeline_intel_vvp_pipeline2_0_intel_vvp_scaler_h_macro_2451_q2m6fuy"</message>
    <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: intel_vvp_reset_bridge"</message>
    <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: intel_vvp_horiz_scaler_cmd"</message>
-   <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: pipeline_intel_vvp_pipeline2_0_intel_vvp_horiz_scaler_algo_comp_2451_z5ma6zi"</message>
+   <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: pipeline_intel_vvp_pipeline2_0_intel_vvp_horiz_scaler_algo_comp_2451_yz36aui"</message>
    <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: pipeline_intel_vvp_pipeline2_0_intel_vvp_slave_front_end_2441_de7mlfy"</message>
    <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: intel_vvp_reset_bridge"</message>
    <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: pipeline_intel_vvp_pipeline2_0_intel_vvp_ro_reg_servicer_2441_oe4a3oa"</message>
@@ -2024,9 +2040,11 @@
    kind="altera_mm_interconnect"
    version="19.2.0"
    name="pipeline_intel_vvp_pipeline2_0_altera_mm_interconnect_1920_j4srm5i">
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="" />
   <parameter
      name="COMPOSE_CONTENTS"
@@ -2581,7 +2599,7 @@
   <parameter name="BPS" value="8" />
   <parameter name="MAX_WIDTH" value="2048" />
   <parameter name="ENABLE_RESPONSE" value="0" />
-  <parameter name="DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="DEVICE_FAMILY" value="Agilex 5" />
   <parameter name="PIPELINE_READY" value="0" />
   <parameter name="NUMBER_OF_COLOR_PLANES" value="3" />
   <parameter name="PIXELS_IN_PARALLEL" value="1" />
@@ -2687,16 +2705,18 @@
    name="pipeline_intel_vvp_pipeline2_0_intel_vvp_slave_front_end_2441_wcdw6ey">
   <parameter name="AV_MAX_PENDING_READS" value="2" />
   <parameter name="ENABLE_DATA" value="0" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="P_VID_PID" value="1794572858" />
   <parameter name="SEPARATE_SLAVE_CLOCK" value="0" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="NUM_DATA_REG" value="0" />
   <parameter name="P_PARAM_LIST" value="0,0,2048,0,1" />
   <parameter name="CC_USE_ALM_FIFO" value="0" />
   <parameter name="P_NUM_ADDR_REGS" value="2" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
   <parameter name="CC_FIFO_DEPTH" value="8" />
   <parameter name="P_VERSION_NUMBER" value="402981123" />
   <parameter name="CC_USE_FIFO" value="1" />
@@ -2748,9 +2768,11 @@
    kind="altera_mm_interconnect"
    version="19.2.0"
    name="pipeline_intel_vvp_pipeline2_0_altera_mm_interconnect_1920_vibtxqa">
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="" />
   <parameter
      name="COMPOSE_CONTENTS"
@@ -2917,15 +2939,17 @@
    name="pipeline_intel_vvp_pipeline2_0_intel_vvp_crs_v_2451_zxafysy">
   <parameter name="USE_PASSTHROUGH" value="1" />
   <parameter name="BPS" value="8" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="ALGORITHM" value="NEAREST_NEIGHBOUR" />
   <parameter name="PIPELINE_READY" value="0" />
   <parameter name="PASSTHROUGH_COLOURS" value="3" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="NO_BLANKING" value="0" />
   <parameter name="CO_SITING" value="TOP" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
   <parameter name="ENABLE_LUMA_ADAPT" value="0" />
   <parameter name="PIXELS_IN_PARALLEL_IN" value="1" />
   <parameter name="PIXELS_IN_PARALLEL_OUT" value="1" />
@@ -2990,15 +3014,17 @@
    name="pipeline_intel_vvp_pipeline2_0_intel_vvp_crs_h_2451_rnmzd3y">
   <parameter name="USE_PASSTHROUGH" value="1" />
   <parameter name="BPS" value="8" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="ALGORITHM" value="NEAREST_NEIGHBOUR" />
   <parameter name="PIPELINE_READY" value="0" />
   <parameter name="PIXELS_IN_PARALLEL" value="1" />
   <parameter name="PASSTHROUGH_COLOURS" value="3" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="CO_SITING" value="LEFT" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
   <parameter name="ENABLE_LUMA_ADAPT" value="0" />
   <parameter name="USE_UP_CORE" value="0" />
   <parameter name="USE_DOWN_CORE" value="1" />
@@ -3049,15 +3075,17 @@
    name="pipeline_intel_vvp_pipeline2_0_intel_vvp_crs_h_2451_iwzkw7i">
   <parameter name="USE_PASSTHROUGH" value="1" />
   <parameter name="BPS" value="8" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="ALGORITHM" value="NEAREST_NEIGHBOUR" />
   <parameter name="PIPELINE_READY" value="0" />
   <parameter name="PIXELS_IN_PARALLEL" value="1" />
   <parameter name="PASSTHROUGH_COLOURS" value="3" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="CO_SITING" value="LEFT" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
   <parameter name="ENABLE_LUMA_ADAPT" value="0" />
   <parameter name="USE_UP_CORE" value="1" />
   <parameter name="USE_DOWN_CORE" value="0" />
@@ -3183,16 +3211,18 @@
    name="pipeline_intel_vvp_pipeline2_0_intel_vvp_slave_front_end_2441_g2g5nbi">
   <parameter name="AV_MAX_PENDING_READS" value="2" />
   <parameter name="ENABLE_DATA" value="0" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="P_VID_PID" value="1794572846" />
   <parameter name="SEPARATE_SLAVE_CLOCK" value="0" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="NUM_DATA_REG" value="0" />
   <parameter name="P_PARAM_LIST" value="0,0,1,1,1,1,1,1,1,1,1" />
   <parameter name="CC_USE_ALM_FIFO" value="0" />
   <parameter name="P_NUM_ADDR_REGS" value="3" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
   <parameter name="CC_FIFO_DEPTH" value="8" />
   <parameter name="P_VERSION_NUMBER" value="402981121" />
   <parameter name="CC_USE_FIFO" value="1" />
@@ -3244,9 +3274,11 @@
    kind="altera_mm_interconnect"
    version="19.2.0"
    name="pipeline_intel_vvp_pipeline2_0_altera_mm_interconnect_1920_7yc6fii">
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="" />
   <parameter
      name="COMPOSE_CONTENTS"
@@ -3291,7 +3323,7 @@
   <parameter name="COEFF_A2" value="0" />
   <parameter name="COEFF_A1" value="0" />
   <parameter name="COEFF_C0" value="0" />
-  <parameter name="DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="DEVICE_FAMILY" value="Agilex 5" />
   <parameter name="SUMMAND_INTEGER_BITS" value="10" />
   <parameter name="PIXELS_IN_PARALLEL" value="1" />
   <parameter name="ROUNDING_METHOD" value="ROUND_HALF_UP" />
@@ -3505,16 +3537,18 @@
    name="pipeline_intel_vvp_pipeline2_0_intel_vvp_slave_front_end_2441_isffcyy">
   <parameter name="AV_MAX_PENDING_READS" value="2" />
   <parameter name="ENABLE_DATA" value="0" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="P_VID_PID" value="1794572847" />
   <parameter name="SEPARATE_SLAVE_CLOCK" value="0" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="NUM_DATA_REG" value="0" />
   <parameter name="P_PARAM_LIST" value="0,0,8,8,21,1,10,1,10,0,1" />
   <parameter name="CC_USE_ALM_FIFO" value="0" />
   <parameter name="P_NUM_ADDR_REGS" value="15" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
   <parameter name="CC_FIFO_DEPTH" value="8" />
   <parameter name="P_VERSION_NUMBER" value="402981121" />
   <parameter name="CC_USE_FIFO" value="1" />
@@ -3566,9 +3600,11 @@
    kind="altera_mm_interconnect"
    version="19.2.0"
    name="pipeline_intel_vvp_pipeline2_0_altera_mm_interconnect_1920_e4nv6vy">
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="" />
   <parameter
      name="COMPOSE_CONTENTS"
@@ -3779,16 +3815,18 @@
    name="pipeline_intel_vvp_pipeline2_0_intel_vvp_slave_front_end_2441_pty7jna">
   <parameter name="AV_MAX_PENDING_READS" value="2" />
   <parameter name="ENABLE_DATA" value="0" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="P_VID_PID" value="1794572845" />
   <parameter name="SEPARATE_SLAVE_CLOCK" value="0" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="NUM_DATA_REG" value="0" />
   <parameter name="P_PARAM_LIST" value="0,0,0" />
   <parameter name="CC_USE_ALM_FIFO" value="0" />
   <parameter name="P_NUM_ADDR_REGS" value="6" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
   <parameter name="CC_FIFO_DEPTH" value="8" />
   <parameter name="P_VERSION_NUMBER" value="402981121" />
   <parameter name="CC_USE_FIFO" value="1" />
@@ -4030,7 +4068,9 @@
    version="24.5.1"
    name="pipeline_intel_vvp_pipeline2_0_intel_vvp_scaler_h_macro_2451_q2m6fuy">
   <parameter name="FIFO_DEPTH" value="8192" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="ALGORITHM" value="NEAREST_NEIGHBOUR" />
   <parameter name="H_COEFF_SIGNED" value="1" />
   <parameter name="ENABLE_H" value="1" />
@@ -4043,7 +4083,7 @@
   <parameter name="H_INIT_FILE" value="" />
   <parameter name="NUMBER_OF_COLOR_PLANES" value="3" />
   <parameter name="ENABLE_420" value="0" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
   <parameter name="HALF_RATE_420" value="0" />
   <parameter name="BPS_OUT" value="8" />
   <parameter name="H_PARTIAL_SCALING" value="0" />
@@ -4052,11 +4092,11 @@
   <parameter name="ENABLE_422" value="0" />
   <parameter name="H_COEFF_INT_BITS" value="2" />
   <parameter name="SIGNED_IN" value="0" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="RUNTIME_LOAD" value="0" />
   <parameter name="BPS_IN" value="8" />
   <parameter name="H_PHASES" value="64" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
   <parameter name="H_COEFF_FRAC_BITS" value="6" />
   <parameter name="H_TAPS" value="4" />
   <parameter name="H_BANKS" value="1" />
@@ -4091,7 +4131,7 @@
    <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: pipeline_intel_vvp_pipeline2_0_intel_vvp_scaler_h_macro_2451_q2m6fuy"</message>
    <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: intel_vvp_reset_bridge"</message>
    <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: intel_vvp_horiz_scaler_cmd"</message>
-   <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: pipeline_intel_vvp_pipeline2_0_intel_vvp_horiz_scaler_algo_comp_2451_z5ma6zi"</message>
+   <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: pipeline_intel_vvp_pipeline2_0_intel_vvp_horiz_scaler_algo_comp_2451_yz36aui"</message>
   </messages>
  </entity>
  <entity
@@ -4100,18 +4140,20 @@
    name="pipeline_intel_vvp_pipeline2_0_intel_vvp_slave_front_end_2441_de7mlfy">
   <parameter name="AV_MAX_PENDING_READS" value="2" />
   <parameter name="ENABLE_DATA" value="0" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="P_VID_PID" value="1794572852" />
   <parameter name="SEPARATE_SLAVE_CLOCK" value="0" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="NUM_DATA_REG" value="0" />
   <parameter
      name="P_PARAM_LIST"
      value="1,0,1,4095,8191,0,0,0,1,1,1,0,0,1,1,1,1,1,0,0,1,1,0,0,0,0" />
   <parameter name="CC_USE_ALM_FIFO" value="0" />
   <parameter name="P_NUM_ADDR_REGS" value="48" />
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
   <parameter name="CC_FIFO_DEPTH" value="8" />
   <parameter name="P_VERSION_NUMBER" value="402981121" />
   <parameter name="CC_USE_FIFO" value="1" />
@@ -4163,9 +4205,11 @@
    kind="altera_mm_interconnect"
    version="19.2.0"
    name="pipeline_intel_vvp_pipeline2_0_altera_mm_interconnect_1920_vevxpda">
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="" />
   <parameter
      name="COMPOSE_CONTENTS"
@@ -4704,9 +4748,11 @@
    kind="altera_mm_interconnect"
    version="19.2.0"
    name="pipeline_intel_vvp_pipeline2_0_altera_mm_interconnect_1920_epi4vay">
-  <parameter name="AUTO_DEVICE" value="10CX220YF780I5G" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
-  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
+  <parameter
+     name="AUTO_BOARD"
+     value="Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="" />
   <parameter
      name="COMPOSE_CONTENTS"
@@ -5176,7 +5222,7 @@
   <parameter name="BPS" value="8" />
   <parameter name="ENABLE_LUMA_ADAPT" value="0" />
   <parameter name="ALGORITHM" value="NEAREST_NEIGHBOUR" />
-  <parameter name="DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="DEVICE_FAMILY" value="Agilex 5" />
   <parameter name="PIPELINE_READY" value="0" />
   <parameter name="PIXELS_IN_PARALLEL" value="2" />
   <generatedFiles>
@@ -5719,7 +5765,7 @@
   <parameter name="BPS" value="8" />
   <parameter name="ENABLE_LUMA_ADAPT" value="0" />
   <parameter name="ALGORITHM" value="NEAREST_NEIGHBOUR" />
-  <parameter name="DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="DEVICE_FAMILY" value="Agilex 5" />
   <parameter name="PIPELINE_READY" value="0" />
   <parameter name="PIXELS_IN_PARALLEL" value="1" />
   <generatedFiles>
@@ -6101,10 +6147,10 @@
  <entity
    kind="intel_vvp_horiz_scaler_algo_comp"
    version="24.5.1"
-   name="pipeline_intel_vvp_pipeline2_0_intel_vvp_horiz_scaler_algo_comp_2451_z5ma6zi">
+   name="pipeline_intel_vvp_pipeline2_0_intel_vvp_horiz_scaler_algo_comp_2451_yz36aui">
   <parameter name="NUM_BANKS" value="1" />
   <parameter name="ALGORITHM" value="NEAREST_NEIGHBOUR" />
-  <parameter name="DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="DEVICE_FAMILY" value="Agilex 5" />
   <parameter name="BPS_OUT" value="8" />
   <parameter name="PIPELINE_READY" value="0" />
   <parameter name="PARTIAL_IMAGE_SCALING" value="0" />
@@ -6267,7 +6313,7 @@
        path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_pipeline2_0/intel_vvp_horiz_scaler_algo_comp_2451/synth/src_hdl/intel_vvp_horiz_scaler_algo_comp.ocp"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_pipeline2_0/intel_vvp_horiz_scaler_algo_comp_2451/synth/pipeline_intel_vvp_pipeline2_0_intel_vvp_horiz_scaler_algo_comp_2451_z5ma6zi.v"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_pipeline2_0/intel_vvp_horiz_scaler_algo_comp_2451/synth/pipeline_intel_vvp_pipeline2_0_intel_vvp_horiz_scaler_algo_comp_2451_yz36aui.v"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
@@ -6413,7 +6459,7 @@
        path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_pipeline2_0/intel_vvp_horiz_scaler_algo_comp_2451/synth/src_hdl/intel_vvp_horiz_scaler_algo_comp.ocp"
        attributes="" />
    <file
-       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_pipeline2_0/intel_vvp_horiz_scaler_algo_comp_2451/synth/pipeline_intel_vvp_pipeline2_0_intel_vvp_horiz_scaler_algo_comp_2451_z5ma6zi.v"
+       path="/mnt/ssd2/hamza/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_pipeline2_0/intel_vvp_horiz_scaler_algo_comp_2451/synth/pipeline_intel_vvp_pipeline2_0_intel_vvp_horiz_scaler_algo_comp_2451_yz36aui.v"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
@@ -6427,7 +6473,7 @@
      instantiator="pipeline_intel_vvp_pipeline2_0_intel_vvp_scaler_h_macro_2451_q2m6fuy"
      as="luma_algo_comp" />
   <messages>
-   <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: pipeline_intel_vvp_pipeline2_0_intel_vvp_horiz_scaler_algo_comp_2451_z5ma6zi"</message>
+   <message level="Info" culprit="pipeline_intel_vvp_pipeline2_0">"Generating: pipeline_intel_vvp_pipeline2_0_intel_vvp_horiz_scaler_algo_comp_2451_yz36aui"</message>
   </messages>
  </entity>
  <entity

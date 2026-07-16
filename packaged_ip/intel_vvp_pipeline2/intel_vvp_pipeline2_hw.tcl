@@ -1393,7 +1393,8 @@ DIL: 0x0000-0x01FF &nbsp;|&nbsp; CRS: 0x0200-0x03FF &nbsp;|&nbsp;
 CSC: 0x0400-0x05FF &nbsp;|&nbsp; Clipper: 0x0600-0x07FF &nbsp;|&nbsp; Scaler: 0x0800-0x0BFF<br>
 <b>Feature agents (only when enabled):</b><br>
 FRC Lite&rarr;Full conv: 0x0C00-0x0DFF &nbsp;|&nbsp; FRC Frame Buffer: 0x0E00-0x0FFF &nbsp;|&nbsp;
-PIP Mixer: 0x1000-0x13FF &nbsp;|&nbsp; PIP background TPG: 0x1400-0x15FF<br><br>
+PIP Mixer: 0x1000-0x13FF &nbsp;|&nbsp; PIP background TPG: 0x1400-0x15FF<br>
+EMIF CSR (AXI4-Lite calibration/status, internal EMIF only): 0x800_0000-0xFFF_FFFF (s0 grows to 28-bit)<br><br>
 <b>Features:</b><br>
 FRC (frame rate conversion): chain output &rarr; (Lite&rarr;Full conv) &rarr; Video Frame Buffer &rarr; output.
 A DDR4 EMIF (IO96B) is included in the subsystem by default; its memory I/Os (mem, mem_ck, mem_reset_n, oct, ref_clk)
@@ -1986,10 +1987,13 @@ proc compose {} {
     # -- MM bridge -----------------------------------------------------------
     # 12-bit byte addressed (4KB) covers the 5 core IPs x 512B.
     # With FRC/PIP the map extends to 0x15FF, so grow to 13-bit (8KB).
+    # With the internal EMIF its AXI4-Lite CSR agent (27-bit / 128MB span)
+    # also lives on the bridge at 0x800_0000, so grow to 28-bit.
     if {$need_mm} {
+        set frc_emif_int [expr {$do_frc && [get_parameter_value FRC_INCLUDE_EMIF]}]
         add_instance mm_bridge_0 altera_avalon_mm_bridge 20.1.0
         set_instance_parameter_value mm_bridge_0 DATA_WIDTH            32
-        set_instance_parameter_value mm_bridge_0 ADDRESS_WIDTH         [expr {($do_frc || $do_pip) ? 13 : 12}]
+        set_instance_parameter_value mm_bridge_0 ADDRESS_WIDTH         [expr {$frc_emif_int ? 28 : (($do_frc || $do_pip) ? 13 : 12)}]
         set_instance_parameter_value mm_bridge_0 ADDRESS_UNITS         SYMBOLS
         set_instance_parameter_value mm_bridge_0 MAX_BURST_SIZE        1
         set_instance_parameter_value mm_bridge_0 MAX_PENDING_RESPONSES 4
@@ -2447,6 +2451,9 @@ proc compose {} {
             add_connection reset_in.out_reset frc_emif_0.s0_axi4lite_reset_n
             add_connection intel_vvp_vfb_0.av_mm_mem_write_host frc_emif_0.s0_axi4
             add_connection intel_vvp_vfb_0.av_mm_mem_read_host  frc_emif_0.s0_axi4
+            # EMIF AXI4-Lite CSR agent (calibration/status) on the control
+            # bridge - 27-bit span, so it sits alone at 0x800_0000-0xFFF_FFFF
+            mm_connect frc_emif_0 s0_axi4lite 0x8000000
             if {[get_parameter_value FRC_CLOCKS_ARE_SEPARATE]} {
                 add_connection clock_in.out_clk   intel_vvp_vfb_0.mem_clock
                 add_connection reset_in.out_reset intel_vvp_vfb_0.mem_reset

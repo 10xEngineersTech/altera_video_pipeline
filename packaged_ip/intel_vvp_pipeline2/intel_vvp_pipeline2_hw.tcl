@@ -865,6 +865,444 @@ set_parameter_property FRC_ENABLE_DEBUG DISPLAY_HINT         boolean
 set_parameter_property FRC_ENABLE_DEBUG HDL_PARAMETER        false
 
 # ============================================================================
+# EMIF (DDR4 IO96B) parameters - passed through to the internal EMIF when
+# FRC_INCLUDE_EMIF is enabled. Dropdown option lists mirror the real
+# emif_io96b_ddr4comp 4.0.0 parameter editor. Defaults match the validated
+# frame_buf_addition configuration (DDR4-3200W, one x32 channel of 8Gb x16
+# dies). JEDEC timing values follow the speedbin automatically unless
+# "Override JEDEC timing values" is enabled.
+# ============================================================================
+# -- High-level configuration - Memory device ----------------------------------
+add_parameter EMIF_MEM_CHANNEL_DATA_DQ_WIDTH INTEGER 32
+set_parameter_property EMIF_MEM_CHANNEL_DATA_DQ_WIDTH DISPLAY_NAME "Data DQ width"
+set_parameter_property EMIF_MEM_CHANNEL_DATA_DQ_WIDTH ALLOWED_RANGES {16 32}
+set_parameter_property EMIF_MEM_CHANNEL_DATA_DQ_WIDTH HDL_PARAMETER false
+
+add_parameter EMIF_MEM_CHANNEL_ECC_DQ_WIDTH INTEGER 0
+set_parameter_property EMIF_MEM_CHANNEL_ECC_DQ_WIDTH DISPLAY_NAME "ECC DQ width"
+set_parameter_property EMIF_MEM_CHANNEL_ECC_DQ_WIDTH ALLOWED_RANGES {0 8}
+set_parameter_property EMIF_MEM_CHANNEL_ECC_DQ_WIDTH HDL_PARAMETER false
+
+add_parameter EMIF_MEM_DIE_DQ_WIDTH INTEGER 16
+set_parameter_property EMIF_MEM_DIE_DQ_WIDTH DISPLAY_NAME "Die DQ width"
+set_parameter_property EMIF_MEM_DIE_DQ_WIDTH ALLOWED_RANGES {8 16}
+set_parameter_property EMIF_MEM_DIE_DQ_WIDTH HDL_PARAMETER false
+
+add_parameter EMIF_MEM_DIE_DENSITY_GBITS INTEGER 8
+set_parameter_property EMIF_MEM_DIE_DENSITY_GBITS DISPLAY_NAME "Die density"
+set_parameter_property EMIF_MEM_DIE_DENSITY_GBITS ALLOWED_RANGES {"2:2Gbits" "4:4Gbits" "8:8Gbits" "16:16Gbits"}
+set_parameter_property EMIF_MEM_DIE_DENSITY_GBITS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_CHANNEL_CS_WIDTH INTEGER 1
+set_parameter_property EMIF_MEM_CHANNEL_CS_WIDTH DISPLAY_NAME "CS width"
+set_parameter_property EMIF_MEM_CHANNEL_CS_WIDTH ALLOWED_RANGES {1 2}
+set_parameter_property EMIF_MEM_CHANNEL_CS_WIDTH HDL_PARAMETER false
+
+add_parameter EMIF_MEM_SPEEDBIN STRING "3200W"
+set_parameter_property EMIF_MEM_SPEEDBIN DISPLAY_NAME "Memory speedbin"
+set_parameter_property EMIF_MEM_SPEEDBIN ALLOWED_RANGES {"1600J:1600J (CL10)" "1600K:1600K (CL11)" "1600L:1600L (CL12)" "1866L:1866L (CL12)" "1866M:1866M (CL13)" "1866N:1866N (CL14)" "2133N:2133N (CL14)" "2133P:2133P (CL15)" "2133R:2133R (CL16)" "2400P:2400P (CL15)" "2400R:2400R (CL16)" "2400T:2400T (CL17)" "2400U:2400U (CL18)" "2666T:2666T (CL17)" "2666U:2666U (CL18)" "2666V:2666V (CL19)" "2666W:2666W (CL20)" "2933V:2933V (CL19)" "2933W:2933W (CL20)" "2933Y:2933Y (CL21)" "2933AA:2933AA (CL22)" "3200W:3200W (CL20)" "3200AA:3200AA (CL22)" "3200AC:3200AC (CL24)"}
+set_parameter_property EMIF_MEM_SPEEDBIN HDL_PARAMETER false
+
+add_parameter EMIF_MEM_AC_PARITY_EN INTEGER 0
+set_parameter_property EMIF_MEM_AC_PARITY_EN DISPLAY_NAME "Use AC parity"
+set_parameter_property EMIF_MEM_AC_PARITY_EN DISPLAY_HINT boolean
+set_parameter_property EMIF_MEM_AC_PARITY_EN HDL_PARAMETER false
+
+add_parameter EMIF_MEM_OPERATING_FREQ_AUTOSET INTEGER 1
+set_parameter_property EMIF_MEM_OPERATING_FREQ_AUTOSET DISPLAY_NAME "Auto-set memory operating frequency"
+set_parameter_property EMIF_MEM_OPERATING_FREQ_AUTOSET DISPLAY_HINT boolean
+set_parameter_property EMIF_MEM_OPERATING_FREQ_AUTOSET HDL_PARAMETER false
+
+add_parameter EMIF_MEM_OPERATING_FREQ_MHZ STRING "800"
+set_parameter_property EMIF_MEM_OPERATING_FREQ_MHZ DISPLAY_NAME "Memory operating frequency (MHz)"
+set_parameter_property EMIF_MEM_OPERATING_FREQ_MHZ ALLOWED_RANGES {800 666.667}
+set_parameter_property EMIF_MEM_OPERATING_FREQ_MHZ DESCRIPTION "Applied to the EMIF only when the auto-set option is disabled"
+set_parameter_property EMIF_MEM_OPERATING_FREQ_MHZ HDL_PARAMETER false
+
+# -- High-level configuration - PHY --------------------------------------------
+add_parameter EMIF_PHY_REFCLK_FREQ_AUTOSET INTEGER 1
+set_parameter_property EMIF_PHY_REFCLK_FREQ_AUTOSET DISPLAY_NAME "Auto-set PLL reference clock frequency"
+set_parameter_property EMIF_PHY_REFCLK_FREQ_AUTOSET DISPLAY_HINT boolean
+set_parameter_property EMIF_PHY_REFCLK_FREQ_AUTOSET HDL_PARAMETER false
+
+add_parameter EMIF_PHY_REFCLK_ADVANCED_SELECT INTEGER 0
+set_parameter_property EMIF_PHY_REFCLK_ADVANCED_SELECT DISPLAY_NAME "Enable advanced list of PLL reference clock frequencies"
+set_parameter_property EMIF_PHY_REFCLK_ADVANCED_SELECT DISPLAY_HINT boolean
+set_parameter_property EMIF_PHY_REFCLK_ADVANCED_SELECT HDL_PARAMETER false
+
+add_parameter EMIF_PHY_REFCLK_FREQ_MHZ STRING "200.0"
+set_parameter_property EMIF_PHY_REFCLK_FREQ_MHZ DISPLAY_NAME "Reference clock frequency (MHz)"
+set_parameter_property EMIF_PHY_REFCLK_FREQ_MHZ ALLOWED_RANGES {200.0 192.0 180.0 175.0 160.0 150.0 140.0 128.0 125.0 120.0 112.0 100.0 96.0 80.0 75.0}
+set_parameter_property EMIF_PHY_REFCLK_FREQ_MHZ DESCRIPTION "Applied to the EMIF only when the auto-set option is disabled"
+set_parameter_property EMIF_PHY_REFCLK_FREQ_MHZ HDL_PARAMETER false
+
+add_parameter EMIF_PHY_AC_PLACEMENT STRING "BOT"
+set_parameter_property EMIF_PHY_AC_PLACEMENT DISPLAY_NAME "AC placement"
+set_parameter_property EMIF_PHY_AC_PLACEMENT ALLOWED_RANGES {"BOT:AC Bottom Sub-bank (lanes 0-3)"}
+set_parameter_property EMIF_PHY_AC_PLACEMENT HDL_PARAMETER false
+
+add_parameter EMIF_PHY_ALERT_N_PLACEMENT STRING "AC2"
+set_parameter_property EMIF_PHY_ALERT_N_PLACEMENT DISPLAY_NAME "Alert_n AC-lane index"
+set_parameter_property EMIF_PHY_ALERT_N_PLACEMENT ALLOWED_RANGES {AC2 AC3}
+set_parameter_property EMIF_PHY_ALERT_N_PLACEMENT HDL_PARAMETER false
+
+add_parameter EMIF_PHY_FORCE_MIN_4_AC_LANES INTEGER 0
+set_parameter_property EMIF_PHY_FORCE_MIN_4_AC_LANES DISPLAY_NAME "Force using 4 AC lanes"
+set_parameter_property EMIF_PHY_FORCE_MIN_4_AC_LANES DISPLAY_HINT boolean
+set_parameter_property EMIF_PHY_FORCE_MIN_4_AC_LANES HDL_PARAMETER false
+
+add_parameter EMIF_PHY_MAINBAND_AUTOSET INTEGER 0
+set_parameter_property EMIF_PHY_MAINBAND_AUTOSET DISPLAY_NAME "Auto-set mainband access mode"
+set_parameter_property EMIF_PHY_MAINBAND_AUTOSET DISPLAY_HINT boolean
+set_parameter_property EMIF_PHY_MAINBAND_AUTOSET HDL_PARAMETER false
+
+add_parameter EMIF_PHY_MAINBAND_ACCESS_MODE STRING "ASYNC"
+set_parameter_property EMIF_PHY_MAINBAND_ACCESS_MODE DISPLAY_NAME "Mainband access mode"
+set_parameter_property EMIF_PHY_MAINBAND_ACCESS_MODE ALLOWED_RANGES {"ASYNC:Fabric Direct - User Clock Asynchronous to PHY" "SYNC:Fabric Direct - User Clock Synchronous to PHY"}
+set_parameter_property EMIF_PHY_MAINBAND_ACCESS_MODE HDL_PARAMETER false
+
+add_parameter EMIF_PHY_SIDEBAND_AUTOSET INTEGER 1
+set_parameter_property EMIF_PHY_SIDEBAND_AUTOSET DISPLAY_NAME "Auto-set sideband access mode"
+set_parameter_property EMIF_PHY_SIDEBAND_AUTOSET DISPLAY_HINT boolean
+set_parameter_property EMIF_PHY_SIDEBAND_AUTOSET HDL_PARAMETER false
+
+add_parameter EMIF_PHY_SIDEBAND_ACCESS_MODE STRING "FABRIC"
+set_parameter_property EMIF_PHY_SIDEBAND_ACCESS_MODE DISPLAY_NAME "Sideband access mode"
+set_parameter_property EMIF_PHY_SIDEBAND_ACCESS_MODE ALLOWED_RANGES {"FABRIC:Fabric Direct"}
+set_parameter_property EMIF_PHY_SIDEBAND_ACCESS_MODE HDL_PARAMETER false
+
+add_parameter EMIF_PHY_SWIZZLE_MAP STRING ""
+set_parameter_property EMIF_PHY_SWIZZLE_MAP DISPLAY_NAME "Pin swizzle map"
+set_parameter_property EMIF_PHY_SWIZZLE_MAP HDL_PARAMETER false
+
+add_parameter EMIF_DEBUG_TOOLS_EN INTEGER 0
+set_parameter_property EMIF_DEBUG_TOOLS_EN DISPLAY_NAME "Use debug toolkit"
+set_parameter_property EMIF_DEBUG_TOOLS_EN DISPLAY_HINT boolean
+set_parameter_property EMIF_DEBUG_TOOLS_EN HDL_PARAMETER false
+
+add_parameter EMIF_INSTANCE_ID INTEGER 0
+set_parameter_property EMIF_INSTANCE_ID DISPLAY_NAME "Instance ID"
+set_parameter_property EMIF_INSTANCE_ID ALLOWED_RANGES "0:6"
+set_parameter_property EMIF_INSTANCE_ID HDL_PARAMETER false
+
+# -- High-level configuration - Controller -------------------------------------
+add_parameter EMIF_CTRL_DM_EN INTEGER 0
+set_parameter_property EMIF_CTRL_DM_EN DISPLAY_NAME "Use data masking"
+set_parameter_property EMIF_CTRL_DM_EN DISPLAY_HINT boolean
+set_parameter_property EMIF_CTRL_DM_EN HDL_PARAMETER false
+
+add_parameter EMIF_CTRL_WR_DBI_EN INTEGER 0
+set_parameter_property EMIF_CTRL_WR_DBI_EN DISPLAY_NAME "Use WDBI"
+set_parameter_property EMIF_CTRL_WR_DBI_EN DISPLAY_HINT boolean
+set_parameter_property EMIF_CTRL_WR_DBI_EN HDL_PARAMETER false
+
+add_parameter EMIF_CTRL_RD_DBI_EN INTEGER 0
+set_parameter_property EMIF_CTRL_RD_DBI_EN DISPLAY_NAME "Use RDBI"
+set_parameter_property EMIF_CTRL_RD_DBI_EN DISPLAY_HINT boolean
+set_parameter_property EMIF_CTRL_RD_DBI_EN HDL_PARAMETER false
+
+add_parameter EMIF_CTRL_PERFORMANCE_PROFILE STRING "SEQ"
+set_parameter_property EMIF_CTRL_PERFORMANCE_PROFILE DISPLAY_NAME "Controller performance profile"
+set_parameter_property EMIF_CTRL_PERFORMANCE_PROFILE ALLOWED_RANGES {"SEQ:Sequential Access Optimized" "RAND:Random Access Optimized" "CUSTOM:Custom"}
+set_parameter_property EMIF_CTRL_PERFORMANCE_PROFILE HDL_PARAMETER false
+
+# -- High-level configuration - Data bus turnaround times ----------------------
+add_parameter EMIF_TURNAROUND_R2W_SAMECS_CYC INTEGER 0
+set_parameter_property EMIF_TURNAROUND_R2W_SAMECS_CYC DISPLAY_NAME "Additional read-to-write turnaround time (same rank, cycles)"
+set_parameter_property EMIF_TURNAROUND_R2W_SAMECS_CYC ALLOWED_RANGES "0:16"
+set_parameter_property EMIF_TURNAROUND_R2W_SAMECS_CYC HDL_PARAMETER false
+
+add_parameter EMIF_TURNAROUND_R2R_SAMECS_CYC INTEGER 0
+set_parameter_property EMIF_TURNAROUND_R2R_SAMECS_CYC DISPLAY_NAME "Additional read-to-read turnaround time (same rank, cycles)"
+set_parameter_property EMIF_TURNAROUND_R2R_SAMECS_CYC ALLOWED_RANGES "0:16"
+set_parameter_property EMIF_TURNAROUND_R2R_SAMECS_CYC HDL_PARAMETER false
+
+add_parameter EMIF_TURNAROUND_W2W_SAMECS_CYC INTEGER 0
+set_parameter_property EMIF_TURNAROUND_W2W_SAMECS_CYC DISPLAY_NAME "Additional write-to-write turnaround time (same rank, cycles)"
+set_parameter_property EMIF_TURNAROUND_W2W_SAMECS_CYC ALLOWED_RANGES "0:16"
+set_parameter_property EMIF_TURNAROUND_W2W_SAMECS_CYC HDL_PARAMETER false
+
+add_parameter EMIF_TURNAROUND_W2R_SAMECS_CYC INTEGER 0
+set_parameter_property EMIF_TURNAROUND_W2R_SAMECS_CYC DISPLAY_NAME "Additional write-to-read turnaround time (same rank, cycles)"
+set_parameter_property EMIF_TURNAROUND_W2R_SAMECS_CYC ALLOWED_RANGES "0:16"
+set_parameter_property EMIF_TURNAROUND_W2R_SAMECS_CYC HDL_PARAMETER false
+
+# -- High-level configuration - Advanced calibration ---------------------------
+add_parameter EMIF_ADV_CAL_ENABLE_MARGIN INTEGER 0
+set_parameter_property EMIF_ADV_CAL_ENABLE_MARGIN DISPLAY_NAME "Enable margining during calibration"
+set_parameter_property EMIF_ADV_CAL_ENABLE_MARGIN DISPLAY_HINT boolean
+set_parameter_property EMIF_ADV_CAL_ENABLE_MARGIN HDL_PARAMETER false
+
+# -- Advanced: Memory timing ---------------------------------------------------
+add_parameter EMIF_TIMING_OVERRIDE_EN INTEGER 0
+set_parameter_property EMIF_TIMING_OVERRIDE_EN DISPLAY_NAME "Override JEDEC timing values"
+set_parameter_property EMIF_TIMING_OVERRIDE_EN DISPLAY_HINT boolean
+set_parameter_property EMIF_TIMING_OVERRIDE_EN HDL_PARAMETER false
+
+add_parameter EMIF_MEM_WR_PREAMBLE_MODE FLOAT 1.0
+set_parameter_property EMIF_MEM_WR_PREAMBLE_MODE DISPLAY_NAME "Write preamble length"
+set_parameter_property EMIF_MEM_WR_PREAMBLE_MODE HDL_PARAMETER false
+
+add_parameter EMIF_MEM_RD_PREAMBLE_MODE FLOAT 1.0
+set_parameter_property EMIF_MEM_RD_PREAMBLE_MODE DISPLAY_NAME "Read preamble length"
+set_parameter_property EMIF_MEM_RD_PREAMBLE_MODE HDL_PARAMETER false
+
+add_parameter EMIF_MEM_CL_CYC FLOAT 11.0
+set_parameter_property EMIF_MEM_CL_CYC DISPLAY_NAME "Read latency"
+set_parameter_property EMIF_MEM_CL_CYC HDL_PARAMETER false
+
+add_parameter EMIF_MEM_CWL_CYC FLOAT 9.0
+set_parameter_property EMIF_MEM_CWL_CYC DISPLAY_NAME "Write latency"
+set_parameter_property EMIF_MEM_CWL_CYC HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TREFI_NS FLOAT 7800.0
+set_parameter_property EMIF_MEM_TREFI_NS DISPLAY_NAME "tREFI (ns)"
+set_parameter_property EMIF_MEM_TREFI_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TRAS_NS FLOAT 32.0
+set_parameter_property EMIF_MEM_TRAS_NS DISPLAY_NAME "tRAS (ns)"
+set_parameter_property EMIF_MEM_TRAS_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TRCD_NS FLOAT 12.5
+set_parameter_property EMIF_MEM_TRCD_NS DISPLAY_NAME "tRCD (ns)"
+set_parameter_property EMIF_MEM_TRCD_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TRP_NS FLOAT 12.5
+set_parameter_property EMIF_MEM_TRP_NS DISPLAY_NAME "tRP (ns)"
+set_parameter_property EMIF_MEM_TRP_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TRC_NS FLOAT 44.5
+set_parameter_property EMIF_MEM_TRC_NS DISPLAY_NAME "tRC (ns)"
+set_parameter_property EMIF_MEM_TRC_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TCCD_L_NS FLOAT 6.25
+set_parameter_property EMIF_MEM_TCCD_L_NS DISPLAY_NAME "tCCD_L (ns)"
+set_parameter_property EMIF_MEM_TCCD_L_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TCCD_S_NS FLOAT 5.0
+set_parameter_property EMIF_MEM_TCCD_S_NS DISPLAY_NAME "tCCD_S (ns)"
+set_parameter_property EMIF_MEM_TCCD_S_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TRRD_L_NS FLOAT 6.4
+set_parameter_property EMIF_MEM_TRRD_L_NS DISPLAY_NAME "tRRD_L (ns)"
+set_parameter_property EMIF_MEM_TRRD_L_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TRRD_S_NS FLOAT 5.3
+set_parameter_property EMIF_MEM_TRRD_S_NS DISPLAY_NAME "tRRD_S (ns)"
+set_parameter_property EMIF_MEM_TRRD_S_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TFAW_NS FLOAT 35.0
+set_parameter_property EMIF_MEM_TFAW_NS DISPLAY_NAME "tFAW (ns)"
+set_parameter_property EMIF_MEM_TFAW_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TWTR_L_NS FLOAT 7.5
+set_parameter_property EMIF_MEM_TWTR_L_NS DISPLAY_NAME "tWTR_L (ns)"
+set_parameter_property EMIF_MEM_TWTR_L_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TWTR_S_NS FLOAT 2.5
+set_parameter_property EMIF_MEM_TWTR_S_NS DISPLAY_NAME "tWTR_S (ns)"
+set_parameter_property EMIF_MEM_TWTR_S_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TWR_NS FLOAT 15.0
+set_parameter_property EMIF_MEM_TWR_NS DISPLAY_NAME "tWR (ns)"
+set_parameter_property EMIF_MEM_TWR_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TMRD_NS FLOAT 10.0
+set_parameter_property EMIF_MEM_TMRD_NS DISPLAY_NAME "tMRD (ns)"
+set_parameter_property EMIF_MEM_TMRD_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TCKSRE_NS FLOAT 10.0
+set_parameter_property EMIF_MEM_TCKSRE_NS DISPLAY_NAME "tCKSRE (ns)"
+set_parameter_property EMIF_MEM_TCKSRE_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TCKSRX_NS FLOAT 10.0
+set_parameter_property EMIF_MEM_TCKSRX_NS DISPLAY_NAME "tCKSRX (ns)"
+set_parameter_property EMIF_MEM_TCKSRX_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TCKE_NS FLOAT 5.0
+set_parameter_property EMIF_MEM_TCKE_NS DISPLAY_NAME "tCKE (ns)"
+set_parameter_property EMIF_MEM_TCKE_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TCKESR_CYC FLOAT 5.0
+set_parameter_property EMIF_MEM_TCKESR_CYC DISPLAY_NAME "tCKESR (cycles)"
+set_parameter_property EMIF_MEM_TCKESR_CYC HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TMPRR_NS FLOAT 1.25
+set_parameter_property EMIF_MEM_TMPRR_NS DISPLAY_NAME "tMPRR (ns)"
+set_parameter_property EMIF_MEM_TMPRR_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TRFC_NS FLOAT 350.0
+set_parameter_property EMIF_MEM_TRFC_NS DISPLAY_NAME "tRFC (ns)"
+set_parameter_property EMIF_MEM_TRFC_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TDQSCK_NS FLOAT 0.0
+set_parameter_property EMIF_MEM_TDQSCK_NS DISPLAY_NAME "tDQSCK (ns)"
+set_parameter_property EMIF_MEM_TDQSCK_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TRFC_DLR_NS FLOAT 0.0
+set_parameter_property EMIF_MEM_TRFC_DLR_NS DISPLAY_NAME "tRFC_DLR (ns)"
+set_parameter_property EMIF_MEM_TRFC_DLR_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TRRD_DLR_NS FLOAT 0.0
+set_parameter_property EMIF_MEM_TRRD_DLR_NS DISPLAY_NAME "tRRD_DLR (ns)"
+set_parameter_property EMIF_MEM_TRRD_DLR_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TFAW_DLR_NS FLOAT 0.0
+set_parameter_property EMIF_MEM_TFAW_DLR_NS DISPLAY_NAME "tFAW_DLR (ns)"
+set_parameter_property EMIF_MEM_TFAW_DLR_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TCCD_DLR_NS FLOAT 0.0
+set_parameter_property EMIF_MEM_TCCD_DLR_NS DISPLAY_NAME "tCCD_DLR (ns)"
+set_parameter_property EMIF_MEM_TCCD_DLR_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TXP_NS FLOAT 6.0
+set_parameter_property EMIF_MEM_TXP_NS DISPLAY_NAME "tXP (ns)"
+set_parameter_property EMIF_MEM_TXP_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TXS_NS FLOAT 360.0
+set_parameter_property EMIF_MEM_TXS_NS DISPLAY_NAME "tXS (ns)"
+set_parameter_property EMIF_MEM_TXS_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TXS_DLL_NS FLOAT 1280.0
+set_parameter_property EMIF_MEM_TXS_DLL_NS DISPLAY_NAME "tXSDLL (ns)"
+set_parameter_property EMIF_MEM_TXS_DLL_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TCPDED_NS FLOAT 5.0
+set_parameter_property EMIF_MEM_TCPDED_NS DISPLAY_NAME "tCPDED (ns)"
+set_parameter_property EMIF_MEM_TCPDED_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TMOD_NS FLOAT 30.0
+set_parameter_property EMIF_MEM_TMOD_NS DISPLAY_NAME "tMOD (ns)"
+set_parameter_property EMIF_MEM_TMOD_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TZQCS_NS FLOAT 160.0
+set_parameter_property EMIF_MEM_TZQCS_NS DISPLAY_NAME "tZQCS (ns)"
+set_parameter_property EMIF_MEM_TZQCS_NS HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TZQINIT_CYC FLOAT 1024.0
+set_parameter_property EMIF_MEM_TZQINIT_CYC DISPLAY_NAME "tZQINIT (cycles)"
+set_parameter_property EMIF_MEM_TZQINIT_CYC HDL_PARAMETER false
+
+add_parameter EMIF_MEM_TZQOPER_CYC FLOAT 512.0
+set_parameter_property EMIF_MEM_TZQOPER_CYC DISPLAY_NAME "tZQOPER (cycles)"
+set_parameter_property EMIF_MEM_TZQOPER_CYC HDL_PARAMETER false
+
+# -- Advanced: Analog overrides ------------------------------------------------
+add_parameter EMIF_PHY_AC_DRIVE STRING "SERIES_34_OHM_CAL"
+set_parameter_property EMIF_PHY_AC_DRIVE DISPLAY_NAME "Phy AC drive strength"
+set_parameter_property EMIF_PHY_AC_DRIVE ALLOWED_RANGES {"SERIES_34_OHM_CAL:34 Ohm (with calibration)" "SERIES_40_OHM_CAL:40 Ohm (with calibration)"}
+set_parameter_property EMIF_PHY_AC_DRIVE HDL_PARAMETER false
+
+add_parameter EMIF_PHY_CK_DRIVE STRING "SERIES_34_OHM_CAL"
+set_parameter_property EMIF_PHY_CK_DRIVE DISPLAY_NAME "Phy CK drive strength"
+set_parameter_property EMIF_PHY_CK_DRIVE ALLOWED_RANGES {"SERIES_34_OHM_CAL:34 Ohm (with calibration)" "SERIES_40_OHM_CAL:40 Ohm (with calibration)"}
+set_parameter_property EMIF_PHY_CK_DRIVE HDL_PARAMETER false
+
+add_parameter EMIF_PHY_DQ_DRIVE STRING "SERIES_34_OHM_CAL"
+set_parameter_property EMIF_PHY_DQ_DRIVE DISPLAY_NAME "Phy DQ drive strength"
+set_parameter_property EMIF_PHY_DQ_DRIVE ALLOWED_RANGES {"SERIES_34_OHM_CAL:34 Ohm (with calibration)" "SERIES_40_OHM_CAL:40 Ohm (with calibration)"}
+set_parameter_property EMIF_PHY_DQ_DRIVE HDL_PARAMETER false
+
+add_parameter EMIF_PHY_DQ_SLEW_RATE STRING "FASTEST"
+set_parameter_property EMIF_PHY_DQ_SLEW_RATE DISPLAY_NAME "Phy DQ slew rate"
+set_parameter_property EMIF_PHY_DQ_SLEW_RATE ALLOWED_RANGES {"SLOW:Slow" "MEDIUM:Medium" "FAST:Fast" "FASTEST:Fastest"}
+set_parameter_property EMIF_PHY_DQ_SLEW_RATE HDL_PARAMETER false
+
+add_parameter EMIF_PHY_DQ_INPUT_TERM STRING "RT_50_OHM_CAL"
+set_parameter_property EMIF_PHY_DQ_INPUT_TERM DISPLAY_NAME "Phy DQ input termination"
+set_parameter_property EMIF_PHY_DQ_INPUT_TERM ALLOWED_RANGES {"RT_40_OHM_CAL:40 Ohm (with calibration)" "RT_50_OHM_CAL:50 Ohm (with calibration)" "RT_60_OHM_CAL:60 Ohm (with calibration)"}
+set_parameter_property EMIF_PHY_DQ_INPUT_TERM HDL_PARAMETER false
+
+add_parameter EMIF_PHY_DQ_VREF FLOAT 68.3
+set_parameter_property EMIF_PHY_DQ_VREF DISPLAY_NAME "Phy DQ initial Vrefin (%)"
+set_parameter_property EMIF_PHY_DQ_VREF ALLOWED_RANGES "0.0:100.0"
+set_parameter_property EMIF_PHY_DQ_VREF HDL_PARAMETER false
+
+add_parameter EMIF_PHY_REFCLK_INPUT_TERM STRING "RT_DIFF"
+set_parameter_property EMIF_PHY_REFCLK_INPUT_TERM DISPLAY_NAME "Phy PLL reference clock input termination"
+set_parameter_property EMIF_PHY_REFCLK_INPUT_TERM ALLOWED_RANGES {"RT_OFF:No Termination" "RT_DIFF:Differential Termination"}
+set_parameter_property EMIF_PHY_REFCLK_INPUT_TERM HDL_PARAMETER false
+
+add_parameter EMIF_MEM_ODT_TGT_WR STRING "4"
+set_parameter_property EMIF_MEM_ODT_TGT_WR DISPLAY_NAME "Mem target write termination"
+set_parameter_property EMIF_MEM_ODT_TGT_WR ALLOWED_RANGES {"off:Dynamic ODT Off" "1:240 Ohm (RZQ/1)" "2:120 Ohm (RZQ/2)" "3:80 Ohm (RZQ/3)" "4:60 Ohm (RZQ/4)" "5:48 Ohm (RZQ/5)" "6:40 Ohm (RZQ/6)" "7:34 Ohm (RZQ/7)"}
+set_parameter_property EMIF_MEM_ODT_TGT_WR HDL_PARAMETER false
+
+add_parameter EMIF_MEM_ODT_NON_TGT_WR STRING "off"
+set_parameter_property EMIF_MEM_ODT_NON_TGT_WR DISPLAY_NAME "Mem non-target write termination"
+set_parameter_property EMIF_MEM_ODT_NON_TGT_WR ALLOWED_RANGES {"off:Disable"}
+set_parameter_property EMIF_MEM_ODT_NON_TGT_WR HDL_PARAMETER false
+
+add_parameter EMIF_MEM_ODT_NON_TGT_RD STRING "off"
+set_parameter_property EMIF_MEM_ODT_NON_TGT_RD DISPLAY_NAME "Mem non-target read termination"
+set_parameter_property EMIF_MEM_ODT_NON_TGT_RD ALLOWED_RANGES {"off:Disable"}
+set_parameter_property EMIF_MEM_ODT_NON_TGT_RD HDL_PARAMETER false
+
+add_parameter EMIF_MEM_DQ_DRIVE STRING "7"
+set_parameter_property EMIF_MEM_DQ_DRIVE DISPLAY_NAME "Mem DQ drive strength"
+set_parameter_property EMIF_MEM_DQ_DRIVE ALLOWED_RANGES {"7:34 Ohm (RZQ/7)" "5:48 Ohm (RZQ/5)"}
+set_parameter_property EMIF_MEM_DQ_DRIVE HDL_PARAMETER false
+
+add_parameter EMIF_MEM_VREF_DQ_RANGE INTEGER 2
+set_parameter_property EMIF_MEM_VREF_DQ_RANGE DISPLAY_NAME "Mem VrefDQ range"
+set_parameter_property EMIF_MEM_VREF_DQ_RANGE ALLOWED_RANGES {"1:Range 1: 60%-92.5%" "2:Range 2: 45%-77.5%"}
+set_parameter_property EMIF_MEM_VREF_DQ_RANGE HDL_PARAMETER false
+
+add_parameter EMIF_MEM_VREF_DQ_VALUE FLOAT 67.75
+set_parameter_property EMIF_MEM_VREF_DQ_VALUE DISPLAY_NAME "Mem VrefDQ value (%)"
+set_parameter_property EMIF_MEM_VREF_DQ_VALUE ALLOWED_RANGES "45.0:75.0"
+set_parameter_property EMIF_MEM_VREF_DQ_VALUE HDL_PARAMETER false
+
+# -- Example design ------------------------------------------------------------
+add_parameter EMIF_EX_DESIGN_HDL_FORMAT STRING "VERILOG"
+set_parameter_property EMIF_EX_DESIGN_HDL_FORMAT DISPLAY_NAME "HDL selection"
+set_parameter_property EMIF_EX_DESIGN_HDL_FORMAT ALLOWED_RANGES {"VERILOG:Verilog" "VHDL:VHDL"}
+set_parameter_property EMIF_EX_DESIGN_HDL_FORMAT HDL_PARAMETER false
+
+add_parameter EMIF_EX_DESIGN_GEN_SYNTH INTEGER 1
+set_parameter_property EMIF_EX_DESIGN_GEN_SYNTH DISPLAY_NAME "Generate synthesis fileset"
+set_parameter_property EMIF_EX_DESIGN_GEN_SYNTH DISPLAY_HINT boolean
+set_parameter_property EMIF_EX_DESIGN_GEN_SYNTH HDL_PARAMETER false
+
+add_parameter EMIF_EX_DESIGN_GEN_SIM INTEGER 1
+set_parameter_property EMIF_EX_DESIGN_GEN_SIM DISPLAY_NAME "Generate simulation fileset"
+set_parameter_property EMIF_EX_DESIGN_GEN_SIM DISPLAY_HINT boolean
+set_parameter_property EMIF_EX_DESIGN_GEN_SIM HDL_PARAMETER false
+
+add_parameter EMIF_EX_DESIGN_USER_PLL_AUTOSET INTEGER 1
+set_parameter_property EMIF_EX_DESIGN_USER_PLL_AUTOSET DISPLAY_NAME "Auto-set user PLL output clock frequency"
+set_parameter_property EMIF_EX_DESIGN_USER_PLL_AUTOSET DISPLAY_HINT boolean
+set_parameter_property EMIF_EX_DESIGN_USER_PLL_AUTOSET HDL_PARAMETER false
+
+add_parameter EMIF_EX_DESIGN_USER_PLL_OUTPUT_FREQ_MHZ FLOAT 220.0
+set_parameter_property EMIF_EX_DESIGN_USER_PLL_OUTPUT_FREQ_MHZ DISPLAY_NAME "User PLL output clock frequency (MHz)"
+set_parameter_property EMIF_EX_DESIGN_USER_PLL_OUTPUT_FREQ_MHZ HDL_PARAMETER false
+
+add_parameter EMIF_EX_DESIGN_USER_PLL_REFCLK_FREQ_MHZ FLOAT 100.0
+set_parameter_property EMIF_EX_DESIGN_USER_PLL_REFCLK_FREQ_MHZ DISPLAY_NAME "User PLL reference clock frequency (MHz)"
+set_parameter_property EMIF_EX_DESIGN_USER_PLL_REFCLK_FREQ_MHZ HDL_PARAMETER false
+
+add_parameter EMIF_EX_DESIGN_NOC_PLL_REFCLK_FREQ_MHZ INTEGER 100
+set_parameter_property EMIF_EX_DESIGN_NOC_PLL_REFCLK_FREQ_MHZ DISPLAY_NAME "NOC reference clock frequency (MHz)"
+set_parameter_property EMIF_EX_DESIGN_NOC_PLL_REFCLK_FREQ_MHZ ALLOWED_RANGES {25 100 125}
+set_parameter_property EMIF_EX_DESIGN_NOC_PLL_REFCLK_FREQ_MHZ HDL_PARAMETER false
+
+add_parameter EMIF_EX_DESIGN_TG_CSR_ACCESS_MODE STRING "JTAG"
+set_parameter_property EMIF_EX_DESIGN_TG_CSR_ACCESS_MODE DISPLAY_NAME "Traffic generator remote access"
+set_parameter_property EMIF_EX_DESIGN_TG_CSR_ACCESS_MODE ALLOWED_RANGES {"EXPORT:Exported for Onchip control" "JTAG:Remote through JTAG"}
+set_parameter_property EMIF_EX_DESIGN_TG_CSR_ACCESS_MODE HDL_PARAMETER false
+
+add_parameter EMIF_EX_DESIGN_TG_PROGRAM STRING "MEDIUM"
+set_parameter_property EMIF_EX_DESIGN_TG_PROGRAM DISPLAY_NAME "Traffic generator program"
+set_parameter_property EMIF_EX_DESIGN_TG_PROGRAM ALLOWED_RANGES {"SHORT:Short Traffic Pattern" "MEDIUM:Medium-length Traffic Pattern" "LONG:Long Traffic Pattern" "INFINITE:Infinite Traffic Pattern"}
+set_parameter_property EMIF_EX_DESIGN_TG_PROGRAM HDL_PARAMETER false
+
+add_parameter EMIF_EX_DESIGN_PMON_CH0_EN INTEGER 0
+set_parameter_property EMIF_EX_DESIGN_PMON_CH0_EN DISPLAY_NAME "Enable performance monitor for channel 0"
+set_parameter_property EMIF_EX_DESIGN_PMON_CH0_EN DISPLAY_HINT boolean
+set_parameter_property EMIF_EX_DESIGN_PMON_CH0_EN HDL_PARAMETER false
+
+# ============================================================================
 # PIP (Picture-in-Picture / Mixer) parameters
 # Defaults match the configuration validated on the frame_buf_addition branch
 # (2-layer mixer, uniform-color background TPG, runtime programmed).
@@ -1196,6 +1634,127 @@ add_display_item frc_ctrl FRC_RUNTIME_CONTROL      parameter
 add_display_item frc_ctrl FRC_SEPARATE_SLAVE_CLOCK parameter
 add_display_item frc_ctrl FRC_ENABLE_DEBUG         parameter
 
+# -- EMIF (DDR4) tab ------------------------------------------------------------
+# Four sub-tabs mirroring the real EMIF parameter editor
+add_display_item "" emif_tab group "EMIF (DDR4)"
+set_display_item_property emif_tab DISPLAY_HINT "tab"
+
+add_display_item emif_tab emif_hl_tab group "High-level Configuration"
+set_display_item_property emif_hl_tab DISPLAY_HINT "tab"
+add_display_item emif_hl_tab emif_memdev group "Memory Device"
+add_display_item emif_memdev EMIF_MEM_CHANNEL_DATA_DQ_WIDTH parameter
+add_display_item emif_memdev EMIF_MEM_CHANNEL_ECC_DQ_WIDTH parameter
+add_display_item emif_memdev EMIF_MEM_DIE_DQ_WIDTH parameter
+add_display_item emif_memdev EMIF_MEM_DIE_DENSITY_GBITS parameter
+add_display_item emif_memdev EMIF_MEM_CHANNEL_CS_WIDTH parameter
+add_display_item emif_memdev EMIF_MEM_SPEEDBIN parameter
+add_display_item emif_memdev EMIF_MEM_AC_PARITY_EN parameter
+add_display_item emif_memdev EMIF_MEM_OPERATING_FREQ_AUTOSET parameter
+add_display_item emif_memdev EMIF_MEM_OPERATING_FREQ_MHZ parameter
+
+add_display_item emif_hl_tab emif_phy group "PHY"
+add_display_item emif_phy EMIF_PHY_REFCLK_FREQ_AUTOSET parameter
+add_display_item emif_phy EMIF_PHY_REFCLK_ADVANCED_SELECT parameter
+add_display_item emif_phy EMIF_PHY_REFCLK_FREQ_MHZ parameter
+add_display_item emif_phy EMIF_PHY_AC_PLACEMENT parameter
+add_display_item emif_phy EMIF_PHY_ALERT_N_PLACEMENT parameter
+add_display_item emif_phy EMIF_PHY_FORCE_MIN_4_AC_LANES parameter
+add_display_item emif_phy EMIF_PHY_MAINBAND_AUTOSET parameter
+add_display_item emif_phy EMIF_PHY_MAINBAND_ACCESS_MODE parameter
+add_display_item emif_phy EMIF_PHY_SIDEBAND_AUTOSET parameter
+add_display_item emif_phy EMIF_PHY_SIDEBAND_ACCESS_MODE parameter
+add_display_item emif_phy EMIF_PHY_SWIZZLE_MAP parameter
+add_display_item emif_phy EMIF_DEBUG_TOOLS_EN parameter
+add_display_item emif_phy EMIF_INSTANCE_ID parameter
+
+add_display_item emif_hl_tab emif_ctrlg group "Controller"
+add_display_item emif_ctrlg EMIF_CTRL_DM_EN parameter
+add_display_item emif_ctrlg EMIF_CTRL_WR_DBI_EN parameter
+add_display_item emif_ctrlg EMIF_CTRL_RD_DBI_EN parameter
+add_display_item emif_ctrlg EMIF_CTRL_PERFORMANCE_PROFILE parameter
+
+add_display_item emif_hl_tab emif_turn group "Data Bus Turnaround Times"
+add_display_item emif_turn EMIF_TURNAROUND_R2W_SAMECS_CYC parameter
+add_display_item emif_turn EMIF_TURNAROUND_R2R_SAMECS_CYC parameter
+add_display_item emif_turn EMIF_TURNAROUND_W2W_SAMECS_CYC parameter
+add_display_item emif_turn EMIF_TURNAROUND_W2R_SAMECS_CYC parameter
+
+add_display_item emif_hl_tab emif_cal group "Advanced Calibration Settings"
+add_display_item emif_cal EMIF_ADV_CAL_ENABLE_MARGIN parameter
+
+add_display_item emif_tab emif_timing_tab group "Advanced: Memory Timing"
+set_display_item_property emif_timing_tab DISPLAY_HINT "tab"
+add_display_item emif_timing_tab emif_timing group "Values"
+add_display_item emif_timing EMIF_TIMING_OVERRIDE_EN parameter
+add_display_item emif_timing EMIF_MEM_WR_PREAMBLE_MODE parameter
+add_display_item emif_timing EMIF_MEM_RD_PREAMBLE_MODE parameter
+add_display_item emif_timing EMIF_MEM_CL_CYC parameter
+add_display_item emif_timing EMIF_MEM_CWL_CYC parameter
+add_display_item emif_timing EMIF_MEM_TREFI_NS parameter
+add_display_item emif_timing EMIF_MEM_TRAS_NS parameter
+add_display_item emif_timing EMIF_MEM_TRCD_NS parameter
+add_display_item emif_timing EMIF_MEM_TRP_NS parameter
+add_display_item emif_timing EMIF_MEM_TRC_NS parameter
+add_display_item emif_timing EMIF_MEM_TCCD_L_NS parameter
+add_display_item emif_timing EMIF_MEM_TCCD_S_NS parameter
+add_display_item emif_timing EMIF_MEM_TRRD_L_NS parameter
+add_display_item emif_timing EMIF_MEM_TRRD_S_NS parameter
+add_display_item emif_timing EMIF_MEM_TFAW_NS parameter
+add_display_item emif_timing EMIF_MEM_TWTR_L_NS parameter
+add_display_item emif_timing EMIF_MEM_TWTR_S_NS parameter
+add_display_item emif_timing EMIF_MEM_TWR_NS parameter
+add_display_item emif_timing EMIF_MEM_TMRD_NS parameter
+add_display_item emif_timing EMIF_MEM_TCKSRE_NS parameter
+add_display_item emif_timing EMIF_MEM_TCKSRX_NS parameter
+add_display_item emif_timing EMIF_MEM_TCKE_NS parameter
+add_display_item emif_timing EMIF_MEM_TCKESR_CYC parameter
+add_display_item emif_timing EMIF_MEM_TMPRR_NS parameter
+add_display_item emif_timing EMIF_MEM_TRFC_NS parameter
+add_display_item emif_timing EMIF_MEM_TDQSCK_NS parameter
+add_display_item emif_timing EMIF_MEM_TRFC_DLR_NS parameter
+add_display_item emif_timing EMIF_MEM_TRRD_DLR_NS parameter
+add_display_item emif_timing EMIF_MEM_TFAW_DLR_NS parameter
+add_display_item emif_timing EMIF_MEM_TCCD_DLR_NS parameter
+add_display_item emif_timing EMIF_MEM_TXP_NS parameter
+add_display_item emif_timing EMIF_MEM_TXS_NS parameter
+add_display_item emif_timing EMIF_MEM_TXS_DLL_NS parameter
+add_display_item emif_timing EMIF_MEM_TCPDED_NS parameter
+add_display_item emif_timing EMIF_MEM_TMOD_NS parameter
+add_display_item emif_timing EMIF_MEM_TZQCS_NS parameter
+add_display_item emif_timing EMIF_MEM_TZQINIT_CYC parameter
+add_display_item emif_timing EMIF_MEM_TZQOPER_CYC parameter
+
+add_display_item emif_tab emif_analog_tab group "Advanced: Analog Overrides"
+set_display_item_property emif_analog_tab DISPLAY_HINT "tab"
+add_display_item emif_analog_tab emif_analog group "Values"
+add_display_item emif_analog EMIF_PHY_AC_DRIVE parameter
+add_display_item emif_analog EMIF_PHY_CK_DRIVE parameter
+add_display_item emif_analog EMIF_PHY_DQ_DRIVE parameter
+add_display_item emif_analog EMIF_PHY_DQ_SLEW_RATE parameter
+add_display_item emif_analog EMIF_PHY_DQ_INPUT_TERM parameter
+add_display_item emif_analog EMIF_PHY_DQ_VREF parameter
+add_display_item emif_analog EMIF_PHY_REFCLK_INPUT_TERM parameter
+add_display_item emif_analog EMIF_MEM_ODT_TGT_WR parameter
+add_display_item emif_analog EMIF_MEM_ODT_NON_TGT_WR parameter
+add_display_item emif_analog EMIF_MEM_ODT_NON_TGT_RD parameter
+add_display_item emif_analog EMIF_MEM_DQ_DRIVE parameter
+add_display_item emif_analog EMIF_MEM_VREF_DQ_RANGE parameter
+add_display_item emif_analog EMIF_MEM_VREF_DQ_VALUE parameter
+
+add_display_item emif_tab emif_exdes_tab group "Example Design"
+set_display_item_property emif_exdes_tab DISPLAY_HINT "tab"
+add_display_item emif_exdes_tab emif_exdes group "Settings"
+add_display_item emif_exdes EMIF_EX_DESIGN_HDL_FORMAT parameter
+add_display_item emif_exdes EMIF_EX_DESIGN_GEN_SYNTH parameter
+add_display_item emif_exdes EMIF_EX_DESIGN_GEN_SIM parameter
+add_display_item emif_exdes EMIF_EX_DESIGN_USER_PLL_AUTOSET parameter
+add_display_item emif_exdes EMIF_EX_DESIGN_USER_PLL_OUTPUT_FREQ_MHZ parameter
+add_display_item emif_exdes EMIF_EX_DESIGN_USER_PLL_REFCLK_FREQ_MHZ parameter
+add_display_item emif_exdes EMIF_EX_DESIGN_NOC_PLL_REFCLK_FREQ_MHZ parameter
+add_display_item emif_exdes EMIF_EX_DESIGN_TG_CSR_ACCESS_MODE parameter
+add_display_item emif_exdes EMIF_EX_DESIGN_TG_PROGRAM parameter
+add_display_item emif_exdes EMIF_EX_DESIGN_PMON_CH0_EN parameter
+
 # -- PIP / Mixer tab -----------------------------------------------------------
 add_display_item "" pip_tab group "PIP / Mixer"
 set_display_item_property pip_tab DISPLAY_HINT "tab"
@@ -1299,6 +1858,56 @@ proc validate {} {
     }
     if {$frc_on && ![get_parameter_value FRC_RUNTIME_CONTROL]} {
         send_message warning "FRC: the frame buffer output is started by a runtime register write (OUTPUT_CONTROL.GO). Without the memory-mapped control interface no frames will be produced."
+    }
+
+    # EMIF params only relevant when FRC is on and the EMIF is internal
+    set emif_on [expr {$frc_on && [get_parameter_value FRC_INCLUDE_EMIF]}]
+    foreach p {
+        EMIF_MEM_CHANNEL_DATA_DQ_WIDTH EMIF_MEM_CHANNEL_ECC_DQ_WIDTH EMIF_MEM_DIE_DQ_WIDTH EMIF_MEM_DIE_DENSITY_GBITS
+        EMIF_MEM_CHANNEL_CS_WIDTH EMIF_MEM_SPEEDBIN EMIF_MEM_AC_PARITY_EN EMIF_MEM_OPERATING_FREQ_AUTOSET
+        EMIF_PHY_REFCLK_FREQ_AUTOSET EMIF_PHY_AC_PLACEMENT EMIF_PHY_ALERT_N_PLACEMENT EMIF_PHY_FORCE_MIN_4_AC_LANES
+        EMIF_PHY_MAINBAND_AUTOSET EMIF_PHY_SIDEBAND_AUTOSET EMIF_PHY_SWIZZLE_MAP EMIF_DEBUG_TOOLS_EN
+        EMIF_INSTANCE_ID EMIF_CTRL_DM_EN EMIF_CTRL_WR_DBI_EN EMIF_CTRL_RD_DBI_EN
+        EMIF_CTRL_PERFORMANCE_PROFILE EMIF_TURNAROUND_R2W_SAMECS_CYC EMIF_TURNAROUND_R2R_SAMECS_CYC EMIF_TURNAROUND_W2W_SAMECS_CYC
+        EMIF_TURNAROUND_W2R_SAMECS_CYC EMIF_ADV_CAL_ENABLE_MARGIN EMIF_TIMING_OVERRIDE_EN EMIF_PHY_AC_DRIVE
+        EMIF_PHY_CK_DRIVE EMIF_PHY_DQ_DRIVE EMIF_PHY_DQ_SLEW_RATE EMIF_PHY_DQ_INPUT_TERM
+        EMIF_PHY_DQ_VREF EMIF_PHY_REFCLK_INPUT_TERM EMIF_MEM_ODT_TGT_WR EMIF_MEM_ODT_NON_TGT_WR
+        EMIF_MEM_ODT_NON_TGT_RD EMIF_MEM_DQ_DRIVE EMIF_MEM_VREF_DQ_RANGE EMIF_MEM_VREF_DQ_VALUE
+        EMIF_EX_DESIGN_HDL_FORMAT EMIF_EX_DESIGN_GEN_SYNTH EMIF_EX_DESIGN_GEN_SIM EMIF_EX_DESIGN_USER_PLL_AUTOSET
+        EMIF_EX_DESIGN_USER_PLL_REFCLK_FREQ_MHZ EMIF_EX_DESIGN_NOC_PLL_REFCLK_FREQ_MHZ EMIF_EX_DESIGN_TG_CSR_ACCESS_MODE EMIF_EX_DESIGN_TG_PROGRAM
+        EMIF_EX_DESIGN_PMON_CH0_EN
+    } {
+        set_parameter_property $p ENABLED $emif_on
+    }
+    # Greying mirrors the real EMIF parameter editor:
+    #  - frequency dropdowns stay selectable (values apply when auto-set is off)
+    #  - the advanced-refclk-list checkbox is only available with auto-set off
+    #  - the sideband/mainband mode dropdowns follow their auto-set checkboxes
+    set_parameter_property EMIF_MEM_OPERATING_FREQ_MHZ ENABLED $emif_on
+    set_parameter_property EMIF_PHY_REFCLK_FREQ_MHZ    ENABLED $emif_on
+    set_parameter_property EMIF_PHY_REFCLK_ADVANCED_SELECT ENABLED \
+        [expr {$emif_on && ![get_parameter_value EMIF_PHY_REFCLK_FREQ_AUTOSET]}]
+    set_parameter_property EMIF_PHY_MAINBAND_ACCESS_MODE ENABLED \
+        [expr {$emif_on && ![get_parameter_value EMIF_PHY_MAINBAND_AUTOSET]}]
+    set_parameter_property EMIF_PHY_SIDEBAND_ACCESS_MODE ENABLED \
+        [expr {$emif_on && ![get_parameter_value EMIF_PHY_SIDEBAND_AUTOSET]}]
+    set_parameter_property EMIF_EX_DESIGN_USER_PLL_OUTPUT_FREQ_MHZ ENABLED \
+        [expr {$emif_on && ![get_parameter_value EMIF_EX_DESIGN_USER_PLL_AUTOSET]}]
+    # JEDEC timing values are editable only when the override is enabled
+    set emif_time_on [expr {$emif_on && [get_parameter_value EMIF_TIMING_OVERRIDE_EN]}]
+    foreach p {
+        EMIF_MEM_WR_PREAMBLE_MODE EMIF_MEM_RD_PREAMBLE_MODE EMIF_MEM_CL_CYC EMIF_MEM_CWL_CYC
+        EMIF_MEM_TREFI_NS EMIF_MEM_TRAS_NS EMIF_MEM_TRCD_NS EMIF_MEM_TRP_NS
+        EMIF_MEM_TRC_NS EMIF_MEM_TCCD_L_NS EMIF_MEM_TCCD_S_NS EMIF_MEM_TRRD_L_NS
+        EMIF_MEM_TRRD_S_NS EMIF_MEM_TFAW_NS EMIF_MEM_TWTR_L_NS EMIF_MEM_TWTR_S_NS
+        EMIF_MEM_TWR_NS EMIF_MEM_TMRD_NS EMIF_MEM_TCKSRE_NS EMIF_MEM_TCKSRX_NS
+        EMIF_MEM_TCKE_NS EMIF_MEM_TCKESR_CYC EMIF_MEM_TMPRR_NS EMIF_MEM_TRFC_NS
+        EMIF_MEM_TDQSCK_NS EMIF_MEM_TRFC_DLR_NS EMIF_MEM_TRRD_DLR_NS EMIF_MEM_TFAW_DLR_NS
+        EMIF_MEM_TCCD_DLR_NS EMIF_MEM_TXP_NS EMIF_MEM_TXS_NS EMIF_MEM_TXS_DLL_NS
+        EMIF_MEM_TCPDED_NS EMIF_MEM_TMOD_NS EMIF_MEM_TZQCS_NS EMIF_MEM_TZQINIT_CYC
+        EMIF_MEM_TZQOPER_CYC
+    } {
+        set_parameter_property $p ENABLED $emif_time_on
     }
 
     # PIP params only relevant when the feature is on
@@ -1722,12 +2331,116 @@ proc compose {} {
         # DDR4 device / memory model connects to them at system level.
         if {[get_parameter_value FRC_INCLUDE_EMIF]} {
             add_instance frc_emif_0 emif_io96b_ddr4comp 4.0.0
-            # DDR4-3200W, one x32 channel of 8Gb x16 dies - timing auto-derives
-            set_instance_parameter_value frc_emif_0 MEM_SPEEDBIN               "3200W"
-            set_instance_parameter_value frc_emif_0 MEM_DIE_DENSITY_GBITS      8
-            set_instance_parameter_value frc_emif_0 MEM_DIE_DQ_WIDTH           16
-            set_instance_parameter_value frc_emif_0 MEM_CHANNEL_DATA_DQ_WIDTH  32
-            set_instance_parameter_value frc_emif_0 CTRL_PERFORMANCE_PROFILE   "SEQ"
+            # helper: wrapper boolean (0/1) -> EMIF bit parameter (false/true)
+            proc emif_bool {v} { return [expr {$v ? "true" : "false"}] }
+            # -- High-level configuration (JEDEC timing auto-derives from the
+            #    speedbin unless the timing override below is enabled) --------
+            set_instance_parameter_value frc_emif_0 MEM_CHANNEL_DATA_DQ_WIDTH          [get_parameter_value EMIF_MEM_CHANNEL_DATA_DQ_WIDTH]
+            set_instance_parameter_value frc_emif_0 MEM_CHANNEL_ECC_DQ_WIDTH           [get_parameter_value EMIF_MEM_CHANNEL_ECC_DQ_WIDTH]
+            set_instance_parameter_value frc_emif_0 MEM_DIE_DQ_WIDTH                   [get_parameter_value EMIF_MEM_DIE_DQ_WIDTH]
+            set_instance_parameter_value frc_emif_0 MEM_DIE_DENSITY_GBITS              [get_parameter_value EMIF_MEM_DIE_DENSITY_GBITS]
+            set_instance_parameter_value frc_emif_0 MEM_CHANNEL_CS_WIDTH               [get_parameter_value EMIF_MEM_CHANNEL_CS_WIDTH]
+            set_instance_parameter_value frc_emif_0 MEM_SPEEDBIN                       [get_parameter_value EMIF_MEM_SPEEDBIN]
+            set_instance_parameter_value frc_emif_0 MEM_AC_PARITY_EN                   [emif_bool [get_parameter_value EMIF_MEM_AC_PARITY_EN]]
+            set_instance_parameter_value frc_emif_0 PHY_AC_PLACEMENT                   [get_parameter_value EMIF_PHY_AC_PLACEMENT]
+            set_instance_parameter_value frc_emif_0 PHY_ALERT_N_PLACEMENT              [get_parameter_value EMIF_PHY_ALERT_N_PLACEMENT]
+            set_instance_parameter_value frc_emif_0 PHY_FORCE_MIN_4_AC_LANES_EN        [emif_bool [get_parameter_value EMIF_PHY_FORCE_MIN_4_AC_LANES]]
+            set_instance_parameter_value frc_emif_0 PHY_SWIZZLE_MAP                    [get_parameter_value EMIF_PHY_SWIZZLE_MAP]
+            set_instance_parameter_value frc_emif_0 DEBUG_TOOLS_EN                     [emif_bool [get_parameter_value EMIF_DEBUG_TOOLS_EN]]
+            set_instance_parameter_value frc_emif_0 INSTANCE_ID                        [get_parameter_value EMIF_INSTANCE_ID]
+            set_instance_parameter_value frc_emif_0 CTRL_DM_EN                         [emif_bool [get_parameter_value EMIF_CTRL_DM_EN]]
+            set_instance_parameter_value frc_emif_0 CTRL_WR_DBI_EN                     [emif_bool [get_parameter_value EMIF_CTRL_WR_DBI_EN]]
+            set_instance_parameter_value frc_emif_0 CTRL_RD_DBI_EN                     [emif_bool [get_parameter_value EMIF_CTRL_RD_DBI_EN]]
+            set_instance_parameter_value frc_emif_0 CTRL_PERFORMANCE_PROFILE           [get_parameter_value EMIF_CTRL_PERFORMANCE_PROFILE]
+            set_instance_parameter_value frc_emif_0 TURNAROUND_R2W_SAMECS_CYC          [get_parameter_value EMIF_TURNAROUND_R2W_SAMECS_CYC]
+            set_instance_parameter_value frc_emif_0 TURNAROUND_R2R_SAMECS_CYC          [get_parameter_value EMIF_TURNAROUND_R2R_SAMECS_CYC]
+            set_instance_parameter_value frc_emif_0 TURNAROUND_W2W_SAMECS_CYC          [get_parameter_value EMIF_TURNAROUND_W2W_SAMECS_CYC]
+            set_instance_parameter_value frc_emif_0 TURNAROUND_W2R_SAMECS_CYC          [get_parameter_value EMIF_TURNAROUND_W2R_SAMECS_CYC]
+            set_instance_parameter_value frc_emif_0 ADV_CAL_ENABLE_MARGIN              [emif_bool [get_parameter_value EMIF_ADV_CAL_ENABLE_MARGIN]]
+            set_instance_parameter_value frc_emif_0 PHY_TERM_X_R_S_AC_OUTPUT_OHM       [get_parameter_value EMIF_PHY_AC_DRIVE]
+            set_instance_parameter_value frc_emif_0 PHY_TERM_X_R_S_CK_OUTPUT_OHM       [get_parameter_value EMIF_PHY_CK_DRIVE]
+            set_instance_parameter_value frc_emif_0 PHY_TERM_X_R_S_DQ_OUTPUT_OHM       [get_parameter_value EMIF_PHY_DQ_DRIVE]
+            set_instance_parameter_value frc_emif_0 PHY_TERM_X_DQ_SLEW_RATE            [get_parameter_value EMIF_PHY_DQ_SLEW_RATE]
+            set_instance_parameter_value frc_emif_0 PHY_TERM_X_R_T_DQ_INPUT_OHM        [get_parameter_value EMIF_PHY_DQ_INPUT_TERM]
+            set_instance_parameter_value frc_emif_0 PHY_TERM_X_DQ_VREF                 [get_parameter_value EMIF_PHY_DQ_VREF]
+            set_instance_parameter_value frc_emif_0 PHY_TERM_X_R_T_REFCLK_INPUT_OHM    [get_parameter_value EMIF_PHY_REFCLK_INPUT_TERM]
+            set_instance_parameter_value frc_emif_0 MEM_ODT_DQ_X_TGT_WR                [get_parameter_value EMIF_MEM_ODT_TGT_WR]
+            set_instance_parameter_value frc_emif_0 MEM_ODT_DQ_X_NON_TGT_WR            [get_parameter_value EMIF_MEM_ODT_NON_TGT_WR]
+            set_instance_parameter_value frc_emif_0 MEM_ODT_DQ_X_NON_TGT_RD            [get_parameter_value EMIF_MEM_ODT_NON_TGT_RD]
+            set_instance_parameter_value frc_emif_0 MEM_ODT_DQ_X_RON                   [get_parameter_value EMIF_MEM_DQ_DRIVE]
+            set_instance_parameter_value frc_emif_0 MEM_VREF_DQ_X_RANGE                [get_parameter_value EMIF_MEM_VREF_DQ_RANGE]
+            set_instance_parameter_value frc_emif_0 MEM_VREF_DQ_X_VALUE                [get_parameter_value EMIF_MEM_VREF_DQ_VALUE]
+            set_instance_parameter_value frc_emif_0 EX_DESIGN_HDL_FORMAT               [get_parameter_value EMIF_EX_DESIGN_HDL_FORMAT]
+            set_instance_parameter_value frc_emif_0 EX_DESIGN_GEN_SYNTH                [emif_bool [get_parameter_value EMIF_EX_DESIGN_GEN_SYNTH]]
+            set_instance_parameter_value frc_emif_0 EX_DESIGN_GEN_SIM                  [emif_bool [get_parameter_value EMIF_EX_DESIGN_GEN_SIM]]
+            set_instance_parameter_value frc_emif_0 EX_DESIGN_USER_PLL_REFCLK_FREQ_MHZ [get_parameter_value EMIF_EX_DESIGN_USER_PLL_REFCLK_FREQ_MHZ]
+            set_instance_parameter_value frc_emif_0 EX_DESIGN_NOC_PLL_REFCLK_FREQ_MHZ  [get_parameter_value EMIF_EX_DESIGN_NOC_PLL_REFCLK_FREQ_MHZ]
+            set_instance_parameter_value frc_emif_0 EX_DESIGN_TG_CSR_ACCESS_MODE       [get_parameter_value EMIF_EX_DESIGN_TG_CSR_ACCESS_MODE]
+            set_instance_parameter_value frc_emif_0 EX_DESIGN_TG_PROGRAM               [get_parameter_value EMIF_EX_DESIGN_TG_PROGRAM]
+            set_instance_parameter_value frc_emif_0 EX_DESIGN_PMON_CH0_EN              [emif_bool [get_parameter_value EMIF_EX_DESIGN_PMON_CH0_EN]]
+            # value fields paired with an auto-set checkbox are only pushed
+            # when their auto-set is off (mirrors the EMIF parameter editor)
+            set_instance_parameter_value frc_emif_0 MEM_OPERATING_FREQ_MHZ_AUTOSET_EN [emif_bool [get_parameter_value EMIF_MEM_OPERATING_FREQ_AUTOSET]]
+            if {![get_parameter_value EMIF_MEM_OPERATING_FREQ_AUTOSET]} {
+                set_instance_parameter_value frc_emif_0 MEM_OPERATING_FREQ_MHZ [get_parameter_value EMIF_MEM_OPERATING_FREQ_MHZ]
+            }
+            set_instance_parameter_value frc_emif_0 PHY_REFCLK_FREQ_MHZ_AUTOSET_EN [emif_bool [get_parameter_value EMIF_PHY_REFCLK_FREQ_AUTOSET]]
+            if {![get_parameter_value EMIF_PHY_REFCLK_FREQ_AUTOSET]} {
+                set_instance_parameter_value frc_emif_0 PHY_REFCLK_ADVANCED_SELECT_EN [emif_bool [get_parameter_value EMIF_PHY_REFCLK_ADVANCED_SELECT]]
+                set_instance_parameter_value frc_emif_0 PHY_REFCLK_FREQ_MHZ [get_parameter_value EMIF_PHY_REFCLK_FREQ_MHZ]
+            }
+            set_instance_parameter_value frc_emif_0 PHY_MAINBAND_ACCESS_MODE_AUTOSET_EN [emif_bool [get_parameter_value EMIF_PHY_MAINBAND_AUTOSET]]
+            if {![get_parameter_value EMIF_PHY_MAINBAND_AUTOSET]} {
+                set_instance_parameter_value frc_emif_0 PHY_MAINBAND_ACCESS_MODE [get_parameter_value EMIF_PHY_MAINBAND_ACCESS_MODE]
+            }
+            set_instance_parameter_value frc_emif_0 PHY_SIDEBAND_ACCESS_MODE_AUTOSET_EN [emif_bool [get_parameter_value EMIF_PHY_SIDEBAND_AUTOSET]]
+            if {![get_parameter_value EMIF_PHY_SIDEBAND_AUTOSET]} {
+                set_instance_parameter_value frc_emif_0 PHY_SIDEBAND_ACCESS_MODE [get_parameter_value EMIF_PHY_SIDEBAND_ACCESS_MODE]
+            }
+            set_instance_parameter_value frc_emif_0 EX_DESIGN_USER_PLL_OUTPUT_FREQ_MHZ_AUTOSET_EN [emif_bool [get_parameter_value EMIF_EX_DESIGN_USER_PLL_AUTOSET]]
+            if {![get_parameter_value EMIF_EX_DESIGN_USER_PLL_AUTOSET]} {
+                set_instance_parameter_value frc_emif_0 EX_DESIGN_USER_PLL_OUTPUT_FREQ_MHZ [get_parameter_value EMIF_EX_DESIGN_USER_PLL_OUTPUT_FREQ_MHZ]
+            }
+            # -- Advanced: memory timing (JEDEC values) - only when overridden --
+            if {[get_parameter_value EMIF_TIMING_OVERRIDE_EN]} {
+                set_instance_parameter_value frc_emif_0 MEM_WR_PREAMBLE_MODE               [get_parameter_value EMIF_MEM_WR_PREAMBLE_MODE]
+                set_instance_parameter_value frc_emif_0 MEM_RD_PREAMBLE_MODE               [get_parameter_value EMIF_MEM_RD_PREAMBLE_MODE]
+                set_instance_parameter_value frc_emif_0 MEM_CL_CYC                         [get_parameter_value EMIF_MEM_CL_CYC]
+                set_instance_parameter_value frc_emif_0 MEM_CWL_CYC                        [get_parameter_value EMIF_MEM_CWL_CYC]
+                set_instance_parameter_value frc_emif_0 MEM_TREFI_NS                       [get_parameter_value EMIF_MEM_TREFI_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TRAS_NS                        [get_parameter_value EMIF_MEM_TRAS_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TRCD_NS                        [get_parameter_value EMIF_MEM_TRCD_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TRP_NS                         [get_parameter_value EMIF_MEM_TRP_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TRC_NS                         [get_parameter_value EMIF_MEM_TRC_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TCCD_L_NS                      [get_parameter_value EMIF_MEM_TCCD_L_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TCCD_S_NS                      [get_parameter_value EMIF_MEM_TCCD_S_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TRRD_L_NS                      [get_parameter_value EMIF_MEM_TRRD_L_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TRRD_S_NS                      [get_parameter_value EMIF_MEM_TRRD_S_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TFAW_NS                        [get_parameter_value EMIF_MEM_TFAW_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TWTR_L_NS                      [get_parameter_value EMIF_MEM_TWTR_L_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TWTR_S_NS                      [get_parameter_value EMIF_MEM_TWTR_S_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TWR_NS                         [get_parameter_value EMIF_MEM_TWR_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TMRD_NS                        [get_parameter_value EMIF_MEM_TMRD_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TCKSRE_NS                      [get_parameter_value EMIF_MEM_TCKSRE_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TCKSRX_NS                      [get_parameter_value EMIF_MEM_TCKSRX_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TCKE_NS                        [get_parameter_value EMIF_MEM_TCKE_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TCKESR_CYC                     [get_parameter_value EMIF_MEM_TCKESR_CYC]
+                set_instance_parameter_value frc_emif_0 MEM_TMPRR_NS                       [get_parameter_value EMIF_MEM_TMPRR_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TRFC_NS                        [get_parameter_value EMIF_MEM_TRFC_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TDQSCK_NS                      [get_parameter_value EMIF_MEM_TDQSCK_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TRFC_DLR_NS                    [get_parameter_value EMIF_MEM_TRFC_DLR_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TRRD_DLR_NS                    [get_parameter_value EMIF_MEM_TRRD_DLR_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TFAW_DLR_NS                    [get_parameter_value EMIF_MEM_TFAW_DLR_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TCCD_DLR_NS                    [get_parameter_value EMIF_MEM_TCCD_DLR_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TXP_NS                         [get_parameter_value EMIF_MEM_TXP_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TXS_NS                         [get_parameter_value EMIF_MEM_TXS_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TXS_DLL_NS                     [get_parameter_value EMIF_MEM_TXS_DLL_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TCPDED_NS                      [get_parameter_value EMIF_MEM_TCPDED_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TMOD_NS                        [get_parameter_value EMIF_MEM_TMOD_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TZQCS_NS                       [get_parameter_value EMIF_MEM_TZQCS_NS]
+                set_instance_parameter_value frc_emif_0 MEM_TZQINIT_CYC                    [get_parameter_value EMIF_MEM_TZQINIT_CYC]
+                set_instance_parameter_value frc_emif_0 MEM_TZQOPER_CYC                    [get_parameter_value EMIF_MEM_TZQOPER_CYC]
+            }
             add_connection clock_in.out_clk   frc_emif_0.s0_axi4_clock_in
             add_connection clock_in.out_clk   frc_emif_0.s0_axi4lite_clock
             add_connection reset_in.out_reset frc_emif_0.core_init_n

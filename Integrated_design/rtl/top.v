@@ -84,11 +84,20 @@ module top #(
 
     // Number of color planes on the scaler datapath (must match the generated
     // pipeline IP's NUMBER_OF_COLOR_PLANES): 3 for RGB/4:4:4, 2 for 4:2:2/4:2:0.
-    parameter [31:0] VID_PLANES = 32'd3
+    parameter [31:0] VID_PLANES = 32'd3,
+
+    // ---- Memory+Mixer datapath (scaler -> conv1 -> VFB -> mixer) ----
+    // Mixer background canvas (TPG#2 solid colour). The VFB read frame
+    // (SCALER_OUT_W x SCALER_OUT_H) is centered on it, so make it >= scaler out.
+    parameter [31:0] MIXER_W   = 32'd48,
+    parameter [31:0] MIXER_H   = 32'd72,
+    parameter [23:0] TPG2_RGB  = 24'hFF0000   // solid red {R,G,B}
 )(
     input  wire        clk,
     input  wire        reset,
+    input  wire        emif_ref_clk,   // EMIF PHY reference clock (~200 MHz)
 
+    // Final output = MIXER output (composited frame that round-trips through DDR4)
     output wire [23:0] out_tdata,
     output wire        out_tvalid,
     input  wire        out_tready,
@@ -187,7 +196,51 @@ module top #(
     localparam [6:0] TPG_ADDR_COMMIT    = 7'h53;
     localparam [6:0] TPG_ADDR_PATTERN   = 7'h54;
     localparam [6:0] TPG_ADDR_BAR_SEL   = 7'h5A;
-	 
+
+    // =========================================================================
+    // Memory+Mixer datapath register addresses (each IP has its own Avalon-MM
+    // control agent exported at the pipeline boundary, WORD-addressed).
+    //   conv1/vfb/tpg2 : 7-bit word address ; mixer : 8-bit word address.
+    // Word offsets taken from the reference design (UG-20344 regmaps).
+    // =========================================================================
+    // Center the VFB read frame (scaler output) on the mixer background canvas
+    localparam [31:0] MIX_L1_HOFF = (MIXER_W - SCALER_OUT_W) >> 1;
+    localparam [31:0] MIX_L1_VOFF = (MIXER_H - SCALER_OUT_H) >> 1;
+
+    // --- Lite->Full Converter #2 (conv_1, own port; protocol_conv regmap) ---
+    localparam [6:0] CV_ADDR_WIDTH       = 7'h48;
+    localparam [6:0] CV_ADDR_HEIGHT      = 7'h49;
+    localparam [6:0] CV_ADDR_INTERLACE   = 7'h4A;
+    localparam [6:0] CV_ADDR_COLORSPACE  = 7'h4C;
+    localparam [6:0] CV_ADDR_SUBSAMPLING = 7'h4D;
+    localparam [6:0] CV_ADDR_CTRL        = 7'h55;
+
+    // --- Video Frame Buffer (vfb_0, own port) ---
+    // OUTPUT_CONTROL word 0x57, bit0 = GO (read side won't emit until set)
+    localparam [6:0] VFB_OUT_CTRL_ADDR   = 7'h57;
+
+    // --- Mixer (mixer_0, own port, 8-bit word address) ---
+    localparam [7:0] MIX_STATUS_ADDR = 8'h50;
+    localparam [7:0] MIX_COMMIT_ADDR = 8'h51;
+    localparam [7:0] MIX_L1_MODE     = 8'h52; // bit0 = layer 1 enable
+    localparam [7:0] MIX_L1_BLEND    = 8'h53; // 1 = opaque
+    localparam [7:0] MIX_L1_ALPHA    = 8'h54;
+    localparam [7:0] MIX_L1_H_OFF    = 8'h55;
+    localparam [7:0] MIX_L1_V_OFF    = 8'h56;
+
+    // --- TPG#2 (tpg_2, own port; same regmap as TPG#1) ---
+    localparam [6:0] TPG2_ADDR_WIDTH   = 7'h48;
+    localparam [6:0] TPG2_ADDR_HEIGHT  = 7'h49;
+    localparam [6:0] TPG2_ADDR_INTL    = 7'h4A;
+    localparam [6:0] TPG2_ADDR_STATUS  = 7'h50;
+    localparam [6:0] TPG2_ADDR_CONTROL = 7'h52;
+    localparam [6:0] TPG2_ADDR_COMMIT  = 7'h53;
+    localparam [6:0] TPG2_ADDR_PATTERN = 7'h54;
+    localparam [6:0] TPG2_ADDR_C0      = 7'h57; // B
+    localparam [6:0] TPG2_ADDR_C1      = 7'h58; // G
+    localparam [6:0] TPG2_ADDR_C2      = 7'h59; // R
+    localparam [6:0] TPG2_ADDR_BAR_SEL = 7'h5A;
+
     // =========================================================================
     // State encoding
     // =========================================================================
@@ -215,7 +268,15 @@ module top #(
         ST_TPG_POLL_ISS  = 5'd8,
         ST_TPG_POLL_W    = 5'd9,
         ST_TPG_IP_RST    = 5'd10,
-        ST_TPG_CTRL_3    = 5'd11;
+        ST_TPG_CTRL_3    = 5'd11,
+
+        // Memory+Mixer downstream config (own Avalon ports), run first from reset
+        ST_CFG_CONV1     = 5'd12,
+        ST_CFG_VFB       = 5'd13,
+        ST_CFG_MIX       = 5'd14,
+        ST_CFG_TPG2      = 5'd15,
+        ST_TPG2_POLL_ISS = 5'd16,
+        ST_TPG2_POLL_W   = 5'd17;
 
     // =========================================================================
     // CSC coefficient ROMs
@@ -288,20 +349,151 @@ module top #(
     wire        tpg_readdatavalid;
     wire        tpg_wait;
 	 reg [6:0]  tpg_addr;   reg        tpg_write,  tpg_read;   reg [31:0] tpg_wdata;
-	 
+
+    // ---- Memory+Mixer downstream control ports (each its own Avalon agent) ----
+    reg  [6:0]  cv_addr;   reg cv_write;   reg [31:0] cv_wdata;   wire cv_wait;
+    reg  [6:0]  vfb_addr;  reg vfb_write;  reg [31:0] vfb_wdata;  wire vfb_wait;
+    reg  [7:0]  mix_addr;  reg mix_write;  reg [31:0] mix_wdata;  wire mix_wait;
+    reg  [6:0]  tpg2_addr; reg tpg2_write, tpg2_read; reg [31:0] tpg2_wdata;
+    wire        tpg2_wait; wire [31:0] tpg2_readdata; wire tpg2_readdatavalid;
+
     // =========================================================================
     // Configuration FSM
     // =========================================================================
     always @(posedge clk or posedge reset) begin
         if (reset) begin
-            current_state <= ST_TPG_CTRL_1;
+            // Configure the memory+mixer downstream chain first, then fall into
+            // the existing upstream (TPG#1 + packaged-IP) config. Data only flows
+            // at ST_WORKING, so everything is programmed before frames move.
+            current_state <= ST_CFG_CONV1;
+            cv_addr       <= CV_ADDR_WIDTH;   // preload first conv_1 write
+            cv_wdata      <= SCALER_OUT_W;
             pc1_write     <= 1'b0;
             bridge_write  <= 1'b0;
             bridge_read   <= 1'b0;
+            cv_write      <= 1'b0;
+            vfb_write     <= 1'b0;
+            mix_write     <= 1'b0;
+            tpg2_write    <= 1'b0;
+            tpg2_read     <= 1'b0;
             cfg_step      <= 4'd0;
             wait_counter  <= 16'd0;
         end else begin
             case (current_state)
+
+                // ══════════════════════════════════════════════════════════════
+                // MEMORY+MIXER DOWNSTREAM CONFIG (own Avalon ports)
+                // conv1(lite->full) -> VFB GO -> mixer layer1 -> TPG#2 background.
+                // Ordering mirrors the reference: VFB read started before the
+                // mixer/background so the overlay is present in the first frame.
+                // Chain ends by entering the existing ST_TPG_CTRL_1 (upstream).
+                // ══════════════════════════════════════════════════════════════
+                // conv_1: image info must match the scaler output, since the
+                // converter regenerates the Full-protocol control packets the
+                // frame buffer consumes.
+                ST_CFG_CONV1: begin
+                    cv_write <= 1'b1;
+                    if (cv_write && !cv_wait) begin
+                        if (cfg_step == 4'd5) begin
+                            cv_write      <= 1'b0;
+                            cfg_step      <= 4'd0;
+                            vfb_addr      <= VFB_OUT_CTRL_ADDR;
+                            vfb_wdata     <= 32'h1;   // OUTPUT_CONTROL.GO
+                            current_state <= ST_CFG_VFB;
+                        end else begin
+                            cfg_step <= cfg_step + 1'b1;
+                            case (cfg_step + 1'b1)
+                                4'd1: begin cv_addr <= CV_ADDR_HEIGHT;      cv_wdata <= SCALER_OUT_H; end
+                                4'd2: begin cv_addr <= CV_ADDR_INTERLACE;   cv_wdata <= 32'h0;        end
+                                4'd3: begin cv_addr <= CV_ADDR_COLORSPACE;  cv_wdata <= 32'h0;        end
+                                4'd4: begin cv_addr <= CV_ADDR_SUBSAMPLING; cv_wdata <= 32'h3;        end
+                                4'd5: begin cv_addr <= CV_ADDR_CTRL;        cv_wdata <= 32'h1;        end
+                                default: ;
+                            endcase
+                        end
+                    end
+                end
+
+                // VFB: set OUTPUT_CONTROL.GO (addr/data preloaded above).
+                ST_CFG_VFB: begin
+                    vfb_write <= 1'b1;
+                    if (vfb_write && !vfb_wait) begin
+                        vfb_write     <= 1'b0;
+                        mix_addr      <= MIX_L1_MODE;
+                        mix_wdata     <= 32'h1;       // layer 1 enable
+                        current_state <= ST_CFG_MIX;
+                    end
+                end
+
+                // Mixer: layer 1 = VFB read frame, opaque, centered; then COMMIT.
+                ST_CFG_MIX: begin
+                    mix_write <= 1'b1;
+                    if (mix_write && !mix_wait) begin
+                        if (cfg_step == 4'd5) begin
+                            mix_write     <= 1'b0;
+                            cfg_step      <= 4'd0;
+                            tpg2_addr     <= TPG2_ADDR_CONTROL;
+                            tpg2_wdata    <= 32'h0;
+                            current_state <= ST_CFG_TPG2;
+                        end else begin
+                            cfg_step <= cfg_step + 1'b1;
+                            case (cfg_step + 1'b1)
+                                4'd1: begin mix_addr <= MIX_L1_BLEND;    mix_wdata <= 32'h1;       end
+                                4'd2: begin mix_addr <= MIX_L1_ALPHA;    mix_wdata <= 32'd255;     end
+                                4'd3: begin mix_addr <= MIX_L1_H_OFF;    mix_wdata <= MIX_L1_HOFF; end
+                                4'd4: begin mix_addr <= MIX_L1_V_OFF;    mix_wdata <= MIX_L1_VOFF; end
+                                4'd5: begin mix_addr <= MIX_COMMIT_ADDR; mix_wdata <= 32'h1;       end
+                                default: ;
+                            endcase
+                        end
+                    end
+                end
+
+                // TPG#2: MIXER_W x MIXER_H uniform colour (C0/C1/C2 = B/G/R).
+                ST_CFG_TPG2: begin
+                    tpg2_write <= 1'b1;
+                    if (tpg2_write && !tpg2_wait) begin
+                        if (cfg_step == 4'd10) begin
+                            tpg2_write    <= 1'b0;
+                            cfg_step      <= 4'd0;
+                            current_state <= ST_TPG2_POLL_ISS;
+                        end else begin
+                            cfg_step <= cfg_step + 1'b1;
+                            case (cfg_step + 1'b1)
+                                4'd1:  begin tpg2_addr <= TPG2_ADDR_INTL;    tpg2_wdata <= 32'h0;   end
+                                4'd2:  begin tpg2_addr <= TPG2_ADDR_WIDTH;   tpg2_wdata <= MIXER_W; end
+                                4'd3:  begin tpg2_addr <= TPG2_ADDR_HEIGHT;  tpg2_wdata <= MIXER_H; end
+                                4'd4:  begin tpg2_addr <= TPG2_ADDR_BAR_SEL; tpg2_wdata <= 32'h0;   end
+                                4'd5:  begin tpg2_addr <= TPG2_ADDR_PATTERN; tpg2_wdata <= 32'h0;   end
+                                4'd6:  begin tpg2_addr <= TPG2_ADDR_C0;      tpg2_wdata <= {24'd0, TPG2_RGB[7:0]};   end
+                                4'd7:  begin tpg2_addr <= TPG2_ADDR_C1;      tpg2_wdata <= {24'd0, TPG2_RGB[15:8]};  end
+                                4'd8:  begin tpg2_addr <= TPG2_ADDR_C2;      tpg2_wdata <= {24'd0, TPG2_RGB[23:16]}; end
+                                4'd9:  begin tpg2_addr <= TPG2_ADDR_COMMIT;  tpg2_wdata <= 32'h1;   end
+                                4'd10: begin tpg2_addr <= TPG2_ADDR_CONTROL; tpg2_wdata <= 32'h1;   end
+                                default: ;
+                            endcase
+                        end
+                    end
+                end
+
+                // Poll TPG#2 STATUS bit[1] (pending commit) until clear.
+                ST_TPG2_POLL_ISS: begin
+                    tpg2_read <= 1'b1;
+                    tpg2_addr <= TPG2_ADDR_STATUS;
+                    if (!tpg2_wait) begin
+                        tpg2_read     <= 1'b0;
+                        current_state <= ST_TPG2_POLL_W;
+                    end
+                end
+
+                ST_TPG2_POLL_W: begin
+                    if (tpg2_readdatavalid) begin
+                        if (tpg2_readdata[1] == 1'b0)
+                            current_state <= ST_TPG_CTRL_1;   // -> upstream config
+                        else
+                            current_state <= ST_TPG2_POLL_ISS;
+                    end
+                end
 
                 // ??????????????????????????????????????????????????????????????????
                 // TPG configuration (own Avalon port)
@@ -777,11 +969,22 @@ module top #(
     assign pc1_tready = INPUT_SEL ? (vid_in_tready & ready_to_start) : 1'b1;
 
     // =========================================================================
+    // Memory+Mixer datapath wires (24-bit Full AXI4-S):
+    //   scaler (m_axis, LITE) -> conv1 (lite->full) -> VFB write
+    //   VFB read -> mixer layer1 ; TPG#2 -> mixer layer0 (internal in qsys)
+    //   mixer out -> out_*
+    // =========================================================================
+    wire [23:0] scl_out_tdata; wire scl_out_tvalid; wire scl_out_tready; wire scl_out_tlast; wire [2:0] scl_out_tuser;
+    wire [23:0] cv_out_tdata;  wire cv_out_tvalid;  wire cv_out_tready;  wire cv_out_tlast;  wire [2:0] cv_out_tuser;
+    wire [23:0] vfb_out_tdata; wire vfb_out_tvalid; wire vfb_out_tready; wire vfb_out_tlast; wire [2:0] vfb_out_tuser;
+
+    // =========================================================================
     // Platform Designer instantiation
     // =========================================================================
     pipeline u0 (
         .clk_clk                           (clk),
         .reset_reset                       (reset),
+        .emif_ref_clk_clk                  (emif_ref_clk),
         .intel_vvp_pipeline2_0_reset_reset (reset),
 
         .s0_address       (bridge_addr),
@@ -801,11 +1004,12 @@ module top #(
         .s_axis_video_in_tlast  (vid_in_tlast),
         .s_axis_video_in_tuser  (vid_in_tuser),
 
-        .m_axis_video_out_tdata  (out_tdata),
-        .m_axis_video_out_tvalid (out_tvalid),
-        .m_axis_video_out_tready (out_tready),
-        .m_axis_video_out_tlast  (out_tlast),
-        .m_axis_video_out_tuser  (out_tuser),
+        // Scaler LITE output -> conv1 input (lite->full)
+        .m_axis_video_out_tdata  (scl_out_tdata),
+        .m_axis_video_out_tvalid (scl_out_tvalid),
+        .m_axis_video_out_tready (scl_out_tready),
+        .m_axis_video_out_tlast  (scl_out_tlast),
+        .m_axis_video_out_tuser  (scl_out_tuser),
 
         .axi4s_vid_in_tdata  (pc1_in_tdata),
         .axi4s_vid_in_tvalid (pc1_in_tvalid),
@@ -842,7 +1046,81 @@ module top #(
         .intel_vvp_tpg_1_av_mm_control_agent_writedata     (tpg_wdata),
         .intel_vvp_tpg_1_av_mm_control_agent_readdata      (tpg_readdata),
         .intel_vvp_tpg_1_av_mm_control_agent_readdatavalid (tpg_readdatavalid),
-        .intel_vvp_tpg_1_av_mm_control_agent_waitrequest   (tpg_wait)
+        .intel_vvp_tpg_1_av_mm_control_agent_waitrequest   (tpg_wait),
+
+        // ===== Memory+Mixer datapath =====
+        // conv_1 (lite->full): scaler LITE out -> Full out -> VFB write
+        .conv1_axi4s_vid_in_tdata   (scl_out_tdata),
+        .conv1_axi4s_vid_in_tvalid  (scl_out_tvalid),
+        .conv1_axi4s_vid_in_tready  (scl_out_tready),
+        .conv1_axi4s_vid_in_tlast   (scl_out_tlast),
+        .conv1_axi4s_vid_in_tuser   (scl_out_tuser),
+        .conv1_axi4s_vid_out_tdata  (cv_out_tdata),
+        .conv1_axi4s_vid_out_tvalid (cv_out_tvalid),
+        .conv1_axi4s_vid_out_tready (cv_out_tready),
+        .conv1_axi4s_vid_out_tlast  (cv_out_tlast),
+        .conv1_axi4s_vid_out_tuser  (cv_out_tuser),
+
+        .conv1_av_mm_control_agent_address       (cv_addr),
+        .conv1_av_mm_control_agent_write         (cv_write),
+        .conv1_av_mm_control_agent_read          (1'b0),
+        .conv1_av_mm_control_agent_byteenable    (4'hF),
+        .conv1_av_mm_control_agent_writedata     (cv_wdata),
+        .conv1_av_mm_control_agent_readdata      (),
+        .conv1_av_mm_control_agent_readdatavalid (),
+        .conv1_av_mm_control_agent_waitrequest   (cv_wait),
+
+        // VFB: write side <- conv_1 ; read side -> mixer layer 1
+        .vfb0_axi4s_vid_in_tdata   (cv_out_tdata),
+        .vfb0_axi4s_vid_in_tvalid  (cv_out_tvalid),
+        .vfb0_axi4s_vid_in_tready  (cv_out_tready),
+        .vfb0_axi4s_vid_in_tlast   (cv_out_tlast),
+        .vfb0_axi4s_vid_in_tuser   (cv_out_tuser),
+        .vfb0_axi4s_vid_out_tdata  (vfb_out_tdata),
+        .vfb0_axi4s_vid_out_tvalid (vfb_out_tvalid),
+        .vfb0_axi4s_vid_out_tready (vfb_out_tready),
+        .vfb0_axi4s_vid_out_tlast  (vfb_out_tlast),
+        .vfb0_axi4s_vid_out_tuser  (vfb_out_tuser),
+
+        .vfb0_av_mm_control_agent_address       (vfb_addr),
+        .vfb0_av_mm_control_agent_write         (vfb_write),
+        .vfb0_av_mm_control_agent_read          (1'b0),
+        .vfb0_av_mm_control_agent_byteenable    (4'hF),
+        .vfb0_av_mm_control_agent_writedata     (vfb_wdata),
+        .vfb0_av_mm_control_agent_readdata      (),
+        .vfb0_av_mm_control_agent_readdatavalid (),
+        .vfb0_av_mm_control_agent_waitrequest   (vfb_wait),
+
+        // Mixer: layer 1 <- VFB read (layer 0 = TPG#2, internal) ; out -> dump
+        .mixer0_axi4s_vid_1_in_tdata  (vfb_out_tdata),
+        .mixer0_axi4s_vid_1_in_tvalid (vfb_out_tvalid),
+        .mixer0_axi4s_vid_1_in_tready (vfb_out_tready),
+        .mixer0_axi4s_vid_1_in_tlast  (vfb_out_tlast),
+        .mixer0_axi4s_vid_1_in_tuser  (vfb_out_tuser),
+        .mixer0_axi4s_vid_out_tdata   (out_tdata),
+        .mixer0_axi4s_vid_out_tvalid  (out_tvalid),
+        .mixer0_axi4s_vid_out_tready  (out_tready),
+        .mixer0_axi4s_vid_out_tlast   (out_tlast),
+        .mixer0_axi4s_vid_out_tuser   (out_tuser),
+
+        .mixer0_av_mm_control_agent_address       (mix_addr),
+        .mixer0_av_mm_control_agent_write         (mix_write),
+        .mixer0_av_mm_control_agent_read          (1'b0),
+        .mixer0_av_mm_control_agent_byteenable    (4'hF),
+        .mixer0_av_mm_control_agent_writedata     (mix_wdata),
+        .mixer0_av_mm_control_agent_readdata      (),
+        .mixer0_av_mm_control_agent_readdatavalid (),
+        .mixer0_av_mm_control_agent_waitrequest   (mix_wait),
+
+        // TPG#2 control (its video output feeds mixer layer 0 inside the qsys)
+        .tpg2_av_mm_control_agent_address       (tpg2_addr),
+        .tpg2_av_mm_control_agent_write         (tpg2_write),
+        .tpg2_av_mm_control_agent_read          (tpg2_read),
+        .tpg2_av_mm_control_agent_byteenable    (4'hF),
+        .tpg2_av_mm_control_agent_writedata     (tpg2_wdata),
+        .tpg2_av_mm_control_agent_readdata      (tpg2_readdata),
+        .tpg2_av_mm_control_agent_readdatavalid (tpg2_readdatavalid),
+        .tpg2_av_mm_control_agent_waitrequest   (tpg2_wait)
     );
 
 endmodule

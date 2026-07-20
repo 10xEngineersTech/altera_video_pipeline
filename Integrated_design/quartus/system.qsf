@@ -50,3 +50,9 @@ set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_reset_in.ip
 set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_clock_in.ip
 set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_intel_vvp_tpg_1.ip
 set_global_assignment -name QSYS_FILE ../platform/pipeline.qsys
+set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_mem_2.ip
+set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_intel_vvp_tpg_4.ip
+set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_emif_2.ip
+set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_intel_vvp_vfb_2.ip
+set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_intel_vvp_mixer_2.ip
+set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_3.ip

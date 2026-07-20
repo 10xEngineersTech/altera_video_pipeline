@@ -14,8 +14,8 @@ refer to the applicable agreement for further details, at
 https://fpgasoftware.intel.com/eula.-->
 <ipxact:component xmlns:altera="http://www.altera.com/XMLSchema/IPXact2014/extensions" xmlns:ipxact="http://www.accellera.org/XMLSchema/IPXACT/1685-2014">
   <ipxact:vendor>Intel Corporation</ipxact:vendor>
-  <ipxact:library>pipeline_intel_vvp_protocol_conv_0</ipxact:library>
-  <ipxact:name>intel_vvp_protocol_conv_0</ipxact:name>
+  <ipxact:library>pipeline_intel_vvp_protocol_conv_5</ipxact:library>
+  <ipxact:name>intel_vvp_protocol_conv_1</ipxact:name>
   <ipxact:version>24.6.0</ipxact:version>
   <ipxact:busInterfaces>
     <ipxact:busInterface>
@@ -648,7 +648,6 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:fileSetRef>
           <ipxact:localName>QUARTUS_SYNTH</ipxact:localName>
         </ipxact:fileSetRef>
-        <ipxact:parameters></ipxact:parameters>
       </ipxact:componentInstantiation>
     </ipxact:instantiations>
     <ipxact:ports>
@@ -656,7 +655,6 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:name>main_clock_clk</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -669,7 +667,6 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:name>main_reset_reset</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -700,7 +697,6 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:name>axi4s_vid_in_tvalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -713,7 +709,6 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:name>axi4s_vid_in_tready</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -726,7 +721,6 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:name>axi4s_vid_in_tlast</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -775,7 +769,6 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:name>axi4s_vid_out_tvalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -788,7 +781,6 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:name>axi4s_vid_out_tready</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -801,7 +793,6 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:name>axi4s_vid_out_tlast</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -850,7 +841,6 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:name>av_mm_control_agent_write</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -899,7 +889,6 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:name>av_mm_control_agent_read</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>in</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -930,7 +919,6 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:name>av_mm_control_agent_readdatavalid</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -943,7 +931,6 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:name>av_mm_control_agent_waitrequest</ipxact:name>
         <ipxact:wire>
           <ipxact:direction>out</ipxact:direction>
-          <ipxact:vectors></ipxact:vectors>
           <ipxact:wireTypeDefs>
             <ipxact:wireTypeDef>
               <ipxact:typeName>STD_LOGIC</ipxact:typeName>
@@ -957,7 +944,7 @@ https://fpgasoftware.intel.com/eula.-->
   <ipxact:vendorExtensions>
     <altera:entity_info>
       <ipxact:vendor>Intel Corporation</ipxact:vendor>
-      <ipxact:library>pipeline_intel_vvp_protocol_conv_0</ipxact:library>
+      <ipxact:library>pipeline_intel_vvp_protocol_conv_5</ipxact:library>
       <ipxact:name>intel_vvp_protocol_conv</ipxact:name>
       <ipxact:version>24.6.0</ipxact:version>
     </altera:entity_info>
@@ -1162,22 +1149,6 @@ https://fpgasoftware.intel.com/eula.-->
           <ipxact:displayName>bonusData</ipxact:displayName>
           <ipxact:value>bonusData 
 {
-   element $system
-   {
-      datum _originalDeviceFamily
-      {
-         value = "Agilex 5";
-         type = "String";
-      }
-   }
-   element intel_vvp_protocol_conv_0
-   {
-      datum _sortIndex
-      {
-         value = "0";
-         type = "int";
-      }
-   }
 }
 </ipxact:value>
         </ipxact:parameter>
@@ -1786,7 +1757,7 @@ https://fpgasoftware.intel.com/eula.-->
       </ipxact:parameters>
     </altera:altera_system_parameters>
     <altera:altera_interface_boundary>
-      <altera:interface_mapping altera:name="av_mm_control_agent" altera:internal="intel_vvp_protocol_conv_0.av_mm_control_agent" altera:type="avalon" altera:dir="end">
+      <altera:interface_mapping altera:name="av_mm_control_agent" altera:internal="intel_vvp_protocol_conv_1.av_mm_control_agent" altera:type="avalon" altera:dir="end">
         <altera:port_mapping altera:name="av_mm_control_agent_address" altera:internal="av_mm_control_agent_address"></altera:port_mapping>
         <altera:port_mapping altera:name="av_mm_control_agent_byteenable" altera:internal="av_mm_control_agent_byteenable"></altera:port_mapping>
         <altera:port_mapping altera:name="av_mm_control_agent_read" altera:internal="av_mm_control_agent_read"></altera:port_mapping>
@@ -1796,24 +1767,24 @@ https://fpgasoftware.intel.com/eula.-->
         <altera:port_mapping altera:name="av_mm_control_agent_write" altera:internal="av_mm_control_agent_write"></altera:port_mapping>
         <altera:port_mapping altera:name="av_mm_control_agent_writedata" altera:internal="av_mm_control_agent_writedata"></altera:port_mapping>
       </altera:interface_mapping>
-      <altera:interface_mapping altera:name="axi4s_vid_in" altera:internal="intel_vvp_protocol_conv_0.axi4s_vid_in" altera:type="axi4stream" altera:dir="end">
+      <altera:interface_mapping altera:name="axi4s_vid_in" altera:internal="intel_vvp_protocol_conv_1.axi4s_vid_in" altera:type="axi4stream" altera:dir="end">
         <altera:port_mapping altera:name="axi4s_vid_in_tdata" altera:internal="axi4s_vid_in_tdata"></altera:port_mapping>
         <altera:port_mapping altera:name="axi4s_vid_in_tlast" altera:internal="axi4s_vid_in_tlast"></altera:port_mapping>
         <altera:port_mapping altera:name="axi4s_vid_in_tready" altera:internal="axi4s_vid_in_tready"></altera:port_mapping>
         <altera:port_mapping altera:name="axi4s_vid_in_tuser" altera:internal="axi4s_vid_in_tuser"></altera:port_mapping>
         <altera:port_mapping altera:name="axi4s_vid_in_tvalid" altera:internal="axi4s_vid_in_tvalid"></altera:port_mapping>
       </altera:interface_mapping>
-      <altera:interface_mapping altera:name="axi4s_vid_out" altera:internal="intel_vvp_protocol_conv_0.axi4s_vid_out" altera:type="axi4stream" altera:dir="start">
+      <altera:interface_mapping altera:name="axi4s_vid_out" altera:internal="intel_vvp_protocol_conv_1.axi4s_vid_out" altera:type="axi4stream" altera:dir="start">
         <altera:port_mapping altera:name="axi4s_vid_out_tdata" altera:internal="axi4s_vid_out_tdata"></altera:port_mapping>
         <altera:port_mapping altera:name="axi4s_vid_out_tlast" altera:internal="axi4s_vid_out_tlast"></altera:port_mapping>
         <altera:port_mapping altera:name="axi4s_vid_out_tready" altera:internal="axi4s_vid_out_tready"></altera:port_mapping>
         <altera:port_mapping altera:name="axi4s_vid_out_tuser" altera:internal="axi4s_vid_out_tuser"></altera:port_mapping>
         <altera:port_mapping altera:name="axi4s_vid_out_tvalid" altera:internal="axi4s_vid_out_tvalid"></altera:port_mapping>
       </altera:interface_mapping>
-      <altera:interface_mapping altera:name="main_clock" altera:internal="intel_vvp_protocol_conv_0.main_clock" altera:type="clock" altera:dir="end">
+      <altera:interface_mapping altera:name="main_clock" altera:internal="intel_vvp_protocol_conv_1.main_clock" altera:type="clock" altera:dir="end">
         <altera:port_mapping altera:name="main_clock_clk" altera:internal="main_clock_clk"></altera:port_mapping>
       </altera:interface_mapping>
-      <altera:interface_mapping altera:name="main_reset" altera:internal="intel_vvp_protocol_conv_0.main_reset" altera:type="reset" altera:dir="end">
+      <altera:interface_mapping altera:name="main_reset" altera:internal="intel_vvp_protocol_conv_1.main_reset" altera:type="reset" altera:dir="end">
         <altera:port_mapping altera:name="main_reset_reset" altera:internal="main_reset_reset"></altera:port_mapping>
       </altera:interface_mapping>
     </altera:altera_interface_boundary>

@@ -44,9 +44,14 @@ module tb();
     localparam CAP_H   = HAS_SCL ? SCALER_OUT_H : IMG_HEIGHT;
     localparam IS_FULL = HAS_PC0 ? 0 : 1;
 
-    localparam [63:0] END_TIME = (CAP_H * CAP_W > TPG_WIDTH * TPG_HEIGHT) ?
-                                  CAP_H * CAP_W * 500 :
-                                  TPG_WIDTH * TPG_HEIGHT * 500;
+    // DDR4 (abbreviated sim model) calibration runs before the first frame can
+    // round-trip through the EMIF, so pad the watchdog with a fixed margin.
+    // The captured frame is now the MIXER output (MIXER_WIDTH x MIXER_HEIGHT).
+    localparam CAL_MARGIN = 1000000; // 1 ms
+    localparam [63:0] END_TIME =
+        ((CAP_H * CAP_W > TPG_WIDTH * TPG_HEIGHT) ? CAP_H * CAP_W * 1000
+                                                  : TPG_WIDTH * TPG_HEIGHT * 1000)
+        + MIXER_WIDTH * MIXER_HEIGHT * 1000 + CAL_MARGIN;
 
     localparam CLK_PERIOD = 10;
 
@@ -56,6 +61,10 @@ module tb();
     reg clk   = 0;
     reg reset = 1;
     always #(CLK_PERIOD/2) clk = ~clk;
+
+    // EMIF PHY reference clock: 200 MHz (PHY_REFCLK_FREQ_MHZ) -> 5 ns period
+    reg emif_ref_clk = 0;
+    always #2.5 emif_ref_clk = ~emif_ref_clk;
 
     wire [23:0] out_tdata;
     wire        out_tvalid;
@@ -75,13 +84,13 @@ module tb();
     // frame_controller auto-resets on every SOF so no special gating needed.
     // It will capture whichever complete frame arrives first after ST_WORKING.
     // =========================================================================
+    // Capture the MIXER output (MIXER_WIDTH x MIXER_HEIGHT, Full protocol).
     make_file #(
-        .IMG_H    (CAP_H),
-        .IMG_W    (CAP_W),
-        .IS_FULL  (IS_FULL),
-        //.FILE_NAME("../../../../app/crs_yuv422.txt")
+        .IMG_H    (MIXER_HEIGHT),
+        .IMG_W    (MIXER_WIDTH),
+        .IS_FULL  (1),
         .FILE_NAME("../../../../app/sc_data.txt")
-    ) scaler_out (
+    ) mixer_out_capture (
         .clk       (clk),
         .reset     (reset),
         .tdata     (out_tdata),
@@ -108,10 +117,13 @@ module tb();
         .SCALER_OUT_W(SCALER_OUT_W),
         .SCALER_OUT_H(SCALER_OUT_H),
         .TPG_MODE    (TPG_COLORSPACE),
-        .VID_PLANES  (VID_PLANES)
+        .VID_PLANES  (VID_PLANES),
+        .MIXER_W     (MIXER_WIDTH),
+        .MIXER_H     (MIXER_HEIGHT)
     ) dut (
         .clk          (clk),
         .reset        (reset),
+        .emif_ref_clk (emif_ref_clk),
         .out_tdata    (out_tdata),
         .out_tvalid   (out_tvalid),
         .out_tready   (out_tready),

@@ -28,7 +28,7 @@ module pipeline_intel_vvp_pipeline2_0 (
 		output wire [2:0]  m_axis_video_out_tuser   //                 .tuser
 	);
 
-	pipeline_intel_vvp_pipeline2_0_intel_vvp_pipeline2_10_74s4dbi intel_vvp_pipeline2_0 (
+	pipeline_intel_vvp_pipeline2_0_intel_vvp_pipeline2_10_ozmcfhq intel_vvp_pipeline2_0 (
 		.clk_clk                 (clk_clk),                 //   input,   width = 1,              clk.clk
 		.reset_reset             (reset_reset),             //   input,   width = 1,            reset.reset
 		.s0_waitrequest          (s0_waitrequest),          //  output,   width = 1,               s0.waitrequest

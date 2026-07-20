@@ -1,0 +1,80 @@
+# ==========================================================================
+# .gitignore for Intel/Altera Quartus + Platform Designer (Qsys) + QuestaSim
+# Ignores files generated during synthesis, simulation, and IP generation.
+# Source is kept: *.qsys, *.ip, *.qpf, *.qsf, RTL (*.v/*.sv/*.vhd), scripts.
+# ==========================================================================
+
+# --- Quartus build / compile output ---
+db/
+incremental_db/
+output_files/
+greybox_tmp/
+qdb/
+dni/
+.qsys_edit/
+*.qws
+*.done
+*.rpt
+*.summary
+*.smsg
+*.pin
+*.jdi
+*.sld
+*.cdf
+serv_req_info.txt
+
+# --- Programming / bitstream files ---
+*.sof
+*.pof
+*.jic
+*.rbf
+*.jam
+*.jbc
+*.svf
+*.hexout
+
+# --- Platform Designer (Qsys) generation cache & locks ---
+*.qgsimc
+*.qgsynthc
+*_generation.rpt
+*_generation_previous.rpt
+*.rpt.lck
+*.rpt.[0-9]*
+*.mtx.flock
+.*.flock
+
+# --- ModelSim / QuestaSim simulation artifacts ---
+work/
+libraries/
+transcript
+*.wlf
+vsim.wlf
+modelsim.ini
+vish_stacktrace.vstf
+*.mti
+*.mpf
+wlf*
+vsim_stacktrace.vstf
+.modelsim
+
+# --- Simulation output data / results ---
+sc_data.txt
+result.png
+run_sim.do
+
+# --- Stitched device simulation libraries (rebuilt by setup_sim_libs.sh) ---
+sim_libs_c10gx/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+
+# --- Editor / OS / backup junk ---
+*.bak
+*.BAK.*
+*.tmp
+*.swp
+*~
+.DS_Store

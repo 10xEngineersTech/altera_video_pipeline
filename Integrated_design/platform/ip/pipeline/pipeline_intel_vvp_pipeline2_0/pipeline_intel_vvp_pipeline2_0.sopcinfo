@@ -5,7 +5,7 @@
  version="1.0"
  fabric="QSYS">
  <!-- Format version 25.1.1 125 (Future versions may contain additional information.) -->
- <!-- 2026.07.16.16:37:47 -->
+ <!-- 2026.07.20.22:44:46 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
@@ -122,7 +122,7 @@
    name="intel_vvp_pipeline2_0"
    kind="intel_vvp_pipeline2"
    version="1.0"
-   entity="pipeline_intel_vvp_pipeline2_0_intel_vvp_pipeline2_10_74s4dbi"
+   entity="pipeline_intel_vvp_pipeline2_0_intel_vvp_pipeline2_10_ozmcfhq"
    library="intel_vvp_pipeline2_10"
    path="intel_vvp_pipeline2_0"
    hpath="intel_vvp_pipeline2_0"
@@ -131,7 +131,7 @@
 the requested settings for a module instance. -->
   <parameter name="TOPOLOGY">
    <type>java.lang.String</type>
-   <value>FULL</value>
+   <value>SCALER_ONLY</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -177,6 +177,22 @@ the requested settings for a module instance. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
+  <parameter name="ENABLE_FRC">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="ENABLE_PIP">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
   <parameter name="DIL_MODE">
    <type>java.lang.String</type>
    <value>BOB</value>
@@ -187,7 +203,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="DIL_BOB_MODE">
    <type>java.lang.String</type>
-   <value>DEINTERLACE_F0_ONLY</value>
+   <value>DEINTERLACE_F0_AND_F1</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -347,7 +363,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CRS_SUPPORT_420_PASS">
    <type>int</type>
-   <value>1</value>
+   <value>0</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -355,7 +371,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CRS_SUPPORT_420_TO_422">
    <type>int</type>
-   <value>1</value>
+   <value>0</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -363,7 +379,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CRS_SUPPORT_420_TO_444">
    <type>int</type>
-   <value>1</value>
+   <value>0</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -371,7 +387,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CRS_SUPPORT_422_PASS">
    <type>int</type>
-   <value>1</value>
+   <value>0</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -379,7 +395,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CRS_SUPPORT_422_TO_420">
    <type>int</type>
-   <value>1</value>
+   <value>0</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -403,7 +419,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CRS_SUPPORT_444_TO_420">
    <type>int</type>
-   <value>1</value>
+   <value>0</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -419,7 +435,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CRS_HORIZ_ALGORITHM">
    <type>java.lang.String</type>
-   <value>NEAREST_NEIGHBOUR</value>
+   <value>BILINEAR</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -443,7 +459,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CRS_VERT_ALGORITHM">
    <type>java.lang.String</type>
-   <value>NEAREST_NEIGHBOUR</value>
+   <value>BILINEAR</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -523,7 +539,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CSC_COLOR_SPACE_OUT">
    <type>java.lang.String</type>
-   <value>RGB</value>
+   <value>YCbCr</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -531,7 +547,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CSC_COEFF_FRAC_BITS">
    <type>int</type>
-   <value>21</value>
+   <value>12</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -547,7 +563,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CSC_COEFF_INT_BITS">
    <type>int</type>
-   <value>10</value>
+   <value>2</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -563,7 +579,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CSC_SUMMAND_INT_BITS">
    <type>int</type>
-   <value>10</value>
+   <value>8</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -755,7 +771,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CL_CLIPPING_METHOD">
    <type>java.lang.String</type>
-   <value>OFFSETS</value>
+   <value>RECTANGLE</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -781,7 +797,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>0</value>
    <derived>false</derived>
-   <enabled>true</enabled>
+   <enabled>false</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -789,23 +805,23 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>0</value>
    <derived>false</derived>
-   <enabled>true</enabled>
+   <enabled>false</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
   <parameter name="CL_OUTPUT_WIDTH">
    <type>int</type>
-   <value>8</value>
+   <value>1920</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
   <parameter name="CL_OUTPUT_HEIGHT">
    <type>int</type>
-   <value>8</value>
+   <value>1080</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -835,7 +851,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="PC0_COLOR_SPACE">
    <type>java.lang.String</type>
-   <value>RGB</value>
+   <value>YCbCr</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -843,7 +859,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="PC0_CHROMA_SAMPLING">
    <type>java.lang.String</type>
-   <value>444</value>
+   <value>422</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -955,7 +971,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="SC_MAX_IN_WIDTH">
    <type>int</type>
-   <value>2200</value>
+   <value>1920</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -963,7 +979,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="SC_MAX_OUT_WIDTH">
    <type>int</type>
-   <value>4400</value>
+   <value>1280</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -971,7 +987,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="SC_OUTPUT_HEIGHT">
    <type>int</type>
-   <value>2200</value>
+   <value>720</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -1011,7 +1027,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="SC_ALGORITHM">
    <type>java.lang.String</type>
-   <value>NEAREST_NEIGHBOUR</value>
+   <value>POLYPHASE</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -1021,7 +1037,7 @@ the requested settings for a module instance. -->
    <type>java.lang.String</type>
    <value>REPLICATE</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1029,7 +1045,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>1</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1037,7 +1053,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>1</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1069,15 +1085,15 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>4</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
   <parameter name="SC_V_PHASES">
    <type>int</type>
-   <value>64</value>
+   <value>16</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1085,7 +1101,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>1</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1093,7 +1109,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>1</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1101,7 +1117,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>2</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1109,7 +1125,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>10</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1117,7 +1133,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>6</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1125,7 +1141,7 @@ the requested settings for a module instance. -->
    <type>java.lang.String</type>
    <value>LANCZOS_3</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1165,15 +1181,15 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>4</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
   <parameter name="SC_H_PHASES">
    <type>int</type>
-   <value>64</value>
+   <value>16</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1181,7 +1197,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>1</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1189,7 +1205,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>1</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1197,7 +1213,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>2</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1205,7 +1221,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>6</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1213,7 +1229,7 @@ the requested settings for a module instance. -->
    <type>java.lang.String</type>
    <value>LANCZOS_3</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1222,6 +1238,966 @@ the requested settings for a module instance. -->
    <value></value>
    <derived>false</derived>
    <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="FRC_MAX_WIDTH">
+   <type>int</type>
+   <value>128</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="FRC_MAX_HEIGHT">
+   <type>int</type>
+   <value>96</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="FRC_FRAME_DROP_ENABLE">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="FRC_FRAME_REPEAT_ENABLE">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="FRC_DROP_BROKEN_FRAMES">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="FRC_DROP_RPT_AUX">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="FRC_MAX_CONTROL_PACKETS">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="FRC_INCLUDE_EMIF">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="FRC_AV_MM_DATA_WIDTH">
+   <type>int</type>
+   <value>256</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="FRC_AV_MM_ADDR_WIDTH">
+   <type>int</type>
+   <value>32</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="FRC_WRITE_FIFO_DEPTH">
+   <type>int</type>
+   <value>64</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="FRC_WRITE_BURST_TARGET">
+   <type>int</type>
+   <value>8</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="FRC_READ_FIFO_DEPTH">
+   <type>int</type>
+   <value>64</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="FRC_READ_BURST_TARGET">
+   <type>int</type>
+   <value>8</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="FRC_PACKING">
+   <type>java.lang.String</type>
+   <value>PERFECT</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="FRC_CLOCKS_ARE_SEPARATE">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="FRC_MEM_BUFF_BASE_ADDR">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="FRC_MEM_BUFF_LINE_STRIDE">
+   <type>int</type>
+   <value>512</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="FRC_RUNTIME_CONTROL">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="FRC_SEPARATE_SLAVE_CLOCK">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="FRC_ENABLE_DEBUG">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_CHANNEL_DATA_DQ_WIDTH">
+   <type>int</type>
+   <value>32</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_CHANNEL_ECC_DQ_WIDTH">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_DIE_DQ_WIDTH">
+   <type>int</type>
+   <value>16</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_DIE_DENSITY_GBITS">
+   <type>int</type>
+   <value>8</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_CHANNEL_CS_WIDTH">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_SPEEDBIN">
+   <type>java.lang.String</type>
+   <value>3200W</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_AC_PARITY_EN">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_OPERATING_FREQ_AUTOSET">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_OPERATING_FREQ_MHZ">
+   <type>java.lang.String</type>
+   <value>800</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_PHY_REFCLK_FREQ_AUTOSET">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_PHY_REFCLK_ADVANCED_SELECT">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_PHY_REFCLK_FREQ_MHZ">
+   <type>java.lang.String</type>
+   <value>200.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_PHY_AC_PLACEMENT">
+   <type>java.lang.String</type>
+   <value>BOT</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_PHY_ALERT_N_PLACEMENT">
+   <type>java.lang.String</type>
+   <value>AC2</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_PHY_FORCE_MIN_4_AC_LANES">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_PHY_MAINBAND_AUTOSET">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_PHY_MAINBAND_ACCESS_MODE">
+   <type>java.lang.String</type>
+   <value>ASYNC</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_PHY_SIDEBAND_AUTOSET">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_PHY_SIDEBAND_ACCESS_MODE">
+   <type>java.lang.String</type>
+   <value>FABRIC</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_PHY_SWIZZLE_MAP">
+   <type>java.lang.String</type>
+   <value></value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_DEBUG_TOOLS_EN">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_INSTANCE_ID">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_CTRL_DM_EN">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_CTRL_WR_DBI_EN">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_CTRL_RD_DBI_EN">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_CTRL_PERFORMANCE_PROFILE">
+   <type>java.lang.String</type>
+   <value>SEQ</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_TURNAROUND_R2W_SAMECS_CYC">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_TURNAROUND_R2R_SAMECS_CYC">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_TURNAROUND_W2W_SAMECS_CYC">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_TURNAROUND_W2R_SAMECS_CYC">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_ADV_CAL_ENABLE_MARGIN">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_TIMING_OVERRIDE_EN">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_WR_PREAMBLE_MODE">
+   <type>double</type>
+   <value>1.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_RD_PREAMBLE_MODE">
+   <type>double</type>
+   <value>1.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_CL_CYC">
+   <type>double</type>
+   <value>11.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_CWL_CYC">
+   <type>double</type>
+   <value>9.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TREFI_NS">
+   <type>double</type>
+   <value>7800.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TRAS_NS">
+   <type>double</type>
+   <value>32.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TRCD_NS">
+   <type>double</type>
+   <value>12.5</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TRP_NS">
+   <type>double</type>
+   <value>12.5</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TRC_NS">
+   <type>double</type>
+   <value>44.5</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TCCD_L_NS">
+   <type>double</type>
+   <value>6.25</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TCCD_S_NS">
+   <type>double</type>
+   <value>5.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TRRD_L_NS">
+   <type>double</type>
+   <value>6.4</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TRRD_S_NS">
+   <type>double</type>
+   <value>5.3</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TFAW_NS">
+   <type>double</type>
+   <value>35.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TWTR_L_NS">
+   <type>double</type>
+   <value>7.5</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TWTR_S_NS">
+   <type>double</type>
+   <value>2.5</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TWR_NS">
+   <type>double</type>
+   <value>15.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TMRD_NS">
+   <type>double</type>
+   <value>10.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TCKSRE_NS">
+   <type>double</type>
+   <value>10.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TCKSRX_NS">
+   <type>double</type>
+   <value>10.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TCKE_NS">
+   <type>double</type>
+   <value>5.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TCKESR_CYC">
+   <type>double</type>
+   <value>5.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TMPRR_NS">
+   <type>double</type>
+   <value>1.25</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TRFC_NS">
+   <type>double</type>
+   <value>350.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TDQSCK_NS">
+   <type>double</type>
+   <value>0.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TRFC_DLR_NS">
+   <type>double</type>
+   <value>0.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TRRD_DLR_NS">
+   <type>double</type>
+   <value>0.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TFAW_DLR_NS">
+   <type>double</type>
+   <value>0.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TCCD_DLR_NS">
+   <type>double</type>
+   <value>0.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TXP_NS">
+   <type>double</type>
+   <value>6.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TXS_NS">
+   <type>double</type>
+   <value>360.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TXS_DLL_NS">
+   <type>double</type>
+   <value>1280.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TCPDED_NS">
+   <type>double</type>
+   <value>5.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TMOD_NS">
+   <type>double</type>
+   <value>30.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TZQCS_NS">
+   <type>double</type>
+   <value>160.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TZQINIT_CYC">
+   <type>double</type>
+   <value>1024.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_TZQOPER_CYC">
+   <type>double</type>
+   <value>512.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_PHY_AC_DRIVE">
+   <type>java.lang.String</type>
+   <value>SERIES_34_OHM_CAL</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_PHY_CK_DRIVE">
+   <type>java.lang.String</type>
+   <value>SERIES_34_OHM_CAL</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_PHY_DQ_DRIVE">
+   <type>java.lang.String</type>
+   <value>SERIES_34_OHM_CAL</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_PHY_DQ_SLEW_RATE">
+   <type>java.lang.String</type>
+   <value>FASTEST</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_PHY_DQ_INPUT_TERM">
+   <type>java.lang.String</type>
+   <value>RT_50_OHM_CAL</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_PHY_DQ_VREF">
+   <type>double</type>
+   <value>68.3</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_PHY_REFCLK_INPUT_TERM">
+   <type>java.lang.String</type>
+   <value>RT_DIFF</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_ODT_TGT_WR">
+   <type>java.lang.String</type>
+   <value>4</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_ODT_NON_TGT_WR">
+   <type>java.lang.String</type>
+   <value>off</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_ODT_NON_TGT_RD">
+   <type>java.lang.String</type>
+   <value>off</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_DQ_DRIVE">
+   <type>java.lang.String</type>
+   <value>7</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_VREF_DQ_RANGE">
+   <type>int</type>
+   <value>2</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_MEM_VREF_DQ_VALUE">
+   <type>double</type>
+   <value>67.75</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_EX_DESIGN_HDL_FORMAT">
+   <type>java.lang.String</type>
+   <value>VERILOG</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_EX_DESIGN_GEN_SYNTH">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_EX_DESIGN_GEN_SIM">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_EX_DESIGN_USER_PLL_AUTOSET">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_EX_DESIGN_USER_PLL_OUTPUT_FREQ_MHZ">
+   <type>double</type>
+   <value>220.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_EX_DESIGN_USER_PLL_REFCLK_FREQ_MHZ">
+   <type>double</type>
+   <value>100.0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_EX_DESIGN_NOC_PLL_REFCLK_FREQ_MHZ">
+   <type>int</type>
+   <value>100</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_EX_DESIGN_TG_CSR_ACCESS_MODE">
+   <type>java.lang.String</type>
+   <value>JTAG</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_EX_DESIGN_TG_PROGRAM">
+   <type>java.lang.String</type>
+   <value>MEDIUM</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="EMIF_EX_DESIGN_PMON_CH0_EN">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="PIP_NUM_LAYERS">
+   <type>int</type>
+   <value>2</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="PIP_BLENDING_MODE_1">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="PIP_BLENDING_MODE_2">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="PIP_BLENDING_MODE_3">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="PIP_RUNTIME_CONTROL">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="PIP_SEPARATE_SLAVE_CLOCK">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="PIP_ENABLE_DEBUG">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>false</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>

@@ -5,7 +5,7 @@
  version="1.0"
  fabric="QSYS">
  <!-- Format version 25.1.1 125 (Future versions may contain additional information.) -->
- <!-- 2026.07.20.22:44:46 -->
+ <!-- 2026.07.21.11:40:59 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
@@ -122,7 +122,7 @@
    name="intel_vvp_pipeline2_0"
    kind="intel_vvp_pipeline2"
    version="1.0"
-   entity="pipeline_intel_vvp_pipeline2_0_intel_vvp_pipeline2_10_ozmcfhq"
+   entity="pipeline_intel_vvp_pipeline2_0_intel_vvp_pipeline2_10_pix4n2y"
    library="intel_vvp_pipeline2_10"
    path="intel_vvp_pipeline2_0"
    hpath="intel_vvp_pipeline2_0"
@@ -131,7 +131,7 @@
 the requested settings for a module instance. -->
   <parameter name="TOPOLOGY">
    <type>java.lang.String</type>
-   <value>SCALER_ONLY</value>
+   <value>FULL</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -363,7 +363,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CRS_SUPPORT_420_PASS">
    <type>int</type>
-   <value>0</value>
+   <value>1</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -371,7 +371,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CRS_SUPPORT_420_TO_422">
    <type>int</type>
-   <value>0</value>
+   <value>1</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -379,7 +379,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CRS_SUPPORT_420_TO_444">
    <type>int</type>
-   <value>0</value>
+   <value>1</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -387,7 +387,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CRS_SUPPORT_422_PASS">
    <type>int</type>
-   <value>0</value>
+   <value>1</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -395,7 +395,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CRS_SUPPORT_422_TO_420">
    <type>int</type>
-   <value>0</value>
+   <value>1</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -419,7 +419,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CRS_SUPPORT_444_TO_420">
    <type>int</type>
-   <value>0</value>
+   <value>1</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -435,7 +435,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CRS_HORIZ_ALGORITHM">
    <type>java.lang.String</type>
-   <value>BILINEAR</value>
+   <value>NEAREST_NEIGHBOUR</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -459,7 +459,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CRS_VERT_ALGORITHM">
    <type>java.lang.String</type>
-   <value>BILINEAR</value>
+   <value>NEAREST_NEIGHBOUR</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -547,7 +547,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CSC_COEFF_FRAC_BITS">
    <type>int</type>
-   <value>12</value>
+   <value>21</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -563,7 +563,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CSC_COEFF_INT_BITS">
    <type>int</type>
-   <value>2</value>
+   <value>10</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -579,7 +579,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CSC_SUMMAND_INT_BITS">
    <type>int</type>
-   <value>8</value>
+   <value>10</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -771,7 +771,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CL_CLIPPING_METHOD">
    <type>java.lang.String</type>
-   <value>RECTANGLE</value>
+   <value>OFFSETS</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -797,7 +797,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>0</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -805,7 +805,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>0</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -813,7 +813,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>1920</value>
    <derived>false</derived>
-   <enabled>true</enabled>
+   <enabled>false</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -821,7 +821,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>1080</value>
    <derived>false</derived>
-   <enabled>true</enabled>
+   <enabled>false</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -971,7 +971,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="SC_MAX_IN_WIDTH">
    <type>int</type>
-   <value>1920</value>
+   <value>4096</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -979,7 +979,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="SC_MAX_OUT_WIDTH">
    <type>int</type>
-   <value>1280</value>
+   <value>4096</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -987,7 +987,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="SC_OUTPUT_HEIGHT">
    <type>int</type>
-   <value>720</value>
+   <value>2196</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -1027,7 +1027,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="SC_ALGORITHM">
    <type>java.lang.String</type>
-   <value>POLYPHASE</value>
+   <value>NEAREST_NEIGHBOUR</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -1037,7 +1037,7 @@ the requested settings for a module instance. -->
    <type>java.lang.String</type>
    <value>REPLICATE</value>
    <derived>false</derived>
-   <enabled>true</enabled>
+   <enabled>false</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1045,7 +1045,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>1</value>
    <derived>false</derived>
-   <enabled>true</enabled>
+   <enabled>false</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1053,7 +1053,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>1</value>
    <derived>false</derived>
-   <enabled>true</enabled>
+   <enabled>false</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1085,7 +1085,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>4</value>
    <derived>false</derived>
-   <enabled>true</enabled>
+   <enabled>false</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1093,7 +1093,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>16</value>
    <derived>false</derived>
-   <enabled>true</enabled>
+   <enabled>false</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1101,7 +1101,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>1</value>
    <derived>false</derived>
-   <enabled>true</enabled>
+   <enabled>false</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1109,7 +1109,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>1</value>
    <derived>false</derived>
-   <enabled>true</enabled>
+   <enabled>false</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1117,7 +1117,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>2</value>
    <derived>false</derived>
-   <enabled>true</enabled>
+   <enabled>false</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1125,7 +1125,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>10</value>
    <derived>false</derived>
-   <enabled>true</enabled>
+   <enabled>false</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1133,7 +1133,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>6</value>
    <derived>false</derived>
-   <enabled>true</enabled>
+   <enabled>false</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1141,7 +1141,7 @@ the requested settings for a module instance. -->
    <type>java.lang.String</type>
    <value>LANCZOS_3</value>
    <derived>false</derived>
-   <enabled>true</enabled>
+   <enabled>false</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1181,7 +1181,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>4</value>
    <derived>false</derived>
-   <enabled>true</enabled>
+   <enabled>false</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1189,7 +1189,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>16</value>
    <derived>false</derived>
-   <enabled>true</enabled>
+   <enabled>false</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1197,7 +1197,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>1</value>
    <derived>false</derived>
-   <enabled>true</enabled>
+   <enabled>false</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1205,7 +1205,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>1</value>
    <derived>false</derived>
-   <enabled>true</enabled>
+   <enabled>false</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1213,7 +1213,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>2</value>
    <derived>false</derived>
-   <enabled>true</enabled>
+   <enabled>false</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1221,7 +1221,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>6</value>
    <derived>false</derived>
-   <enabled>true</enabled>
+   <enabled>false</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -1229,7 +1229,7 @@ the requested settings for a module instance. -->
    <type>java.lang.String</type>
    <value>LANCZOS_3</value>
    <derived>false</derived>
-   <enabled>true</enabled>
+   <enabled>false</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>

@@ -57,6 +57,7 @@
 module top #(
     parameter        TOPOLOGY        = "FULL",
     parameter [0:0]  INPUT_SEL       = 1'b0,
+    parameter [0:0]  ENABLE_PIP      = 1'b0,
 
     parameter [31:0] IMG_WIDTH       = 32'd640,
     parameter [31:0] IMG_HEIGHT      = 32'd480,
@@ -70,8 +71,20 @@ module top #(
     parameter [31:0] SCALER_OUT_W    = 32'd640,
     parameter [31:0] SCALER_OUT_H    = 32'd480,
 
+    // PIP: background canvas size (the whole picture the inset video sits
+    // inside of) and the inset's position within that canvas. Independent
+    // of the pipeline's own output size (SCALER_OUT_W/H or IMG_WIDTH/HEIGHT)
+    // so the inset can be smaller than the background. Only used when
+    // ENABLE_PIP=1; defaults match the pipeline's own output size with a
+    // zero offset (full-frame overlay, no inset) for backward compatibility.
+    parameter [31:0] PIP_BG_WIDTH   = 32'd0,  // 0 = default to pipeline output size
+    parameter [31:0] PIP_BG_HEIGHT  = 32'd0,  // 0 = default to pipeline output size
+    parameter [31:0] PIP_H_OFFSET   = 32'd0,
+    parameter [31:0] PIP_V_OFFSET   = 32'd0,
+    parameter [1:0]  PIP_BG_COLOR   = 2'd2,  // 0=Red, 1=Green, 2=Blue (VPSS R/G/B convention)
+
     // CRS output mode: 0=420, 2=422, 3=444
-    parameter [31:0] CRS_OUTPUT_MODE =                                                                                                                32'd3,
+    parameter [31:0] CRS_OUTPUT_MODE =                                                                                                                                                      32'd3,
 
     // CSC mode: 0=passthrough, 1=RGB->YCbCrHD, 2=YCbCrHD->RGB,
     //           3=RGB->YCbCrSD, 4=YCbCrSD->RGB
@@ -170,6 +183,101 @@ module top #(
     localparam [11:0] SCL_OUT_WIDTH   = SCL_BASE | 12'h148;  // 0x948 OUTPUT_WIDTH
     localparam [11:0] SCL_OUT_HEIGHT  = SCL_BASE | 12'h14C;  // 0x94C OUTPUT_HEIGHT
 
+    // --- PIP: Mixer base = 0x1000 (13-bit byte address, only reachable once
+    // bridge_addr is widened - see below). Word offsets from Intel's
+    // intel_vvp_mixer_regs.h (RT_BASE=0x50), byte = word*4.
+    // No global mixer "GO": output flows once layer 1 (pipeline video) is
+    // ENABLEd. LITE_MODE must be read at runtime - the register-file RTL is
+    // IP-Protect encrypted so it can't be confirmed statically.
+    localparam [12:0] MIX_BASE       = 13'h1000;
+    localparam [12:0] MIX_LITE_MODE  = MIX_BASE | 13'h008;  // 0x1008 RO
+    localparam [12:0] MIX_STATUS     = MIX_BASE | 13'h140;  // 0x1140 RO, bit1=pending commit
+    localparam [12:0] MIX_COMMIT     = MIX_BASE | 13'h144;  // 0x1144 WO, full mode only
+    localparam [12:0] MIX_L1_MODE    = MIX_BASE | 13'h148;  // 0x1148 bit0=ENABLE
+    localparam [12:0] MIX_L1_BLEND   = MIX_BASE | 13'h14C;  // 0x114C
+    localparam [12:0] MIX_L1_ALPHA   = MIX_BASE | 13'h150;  // 0x1150
+    localparam [12:0] MIX_L1_H_OFF   = MIX_BASE | 13'h154;  // 0x1154
+    localparam [12:0] MIX_L1_V_OFF   = MIX_BASE | 13'h158;  // 0x1158
+
+    // --- PIP: Lite->Full protocol converter base = 0x0C00. Inserted by the
+    // packager whenever the main chain's last stage outputs Lite protocol
+    // (true for FULL/SCALER_ONLY/CLIP_SCL, whose last stage is the scaler)
+    // and PIP/FRC is enabled - the mixer only accepts Full protocol. It has
+    // no width/height setter (derives geometry from the incoming stream);
+    // it only needs its GO bit set to start passing data through.
+    localparam [12:0] LTFCONV_BASE      = 13'h0C00;
+    localparam [12:0] LTFCONV_IMG_WIDTH = LTFCONV_BASE | 13'h120;  // 0x0D20 expected width  (Lite input, RW)
+    localparam [12:0] LTFCONV_IMG_HEIGHT= LTFCONV_BASE | 13'h124;  // 0x0D24 expected height (Lite input, RW)
+    localparam [12:0] LTFCONV_STATUS    = LTFCONV_BASE | 13'h140;  // 0x0D40 bit0=RUNNING (diagnostic)
+    localparam [12:0] LTFCONV_VIP_WIDTH = LTFCONV_BASE | 13'h148;  // 0x0D48 (diagnostic readback)
+    localparam [12:0] LTFCONV_CTRL      = LTFCONV_BASE | 13'h154;  // 0x0D54 bit0=GO
+
+    // --- PIP: background TPG base = 0x1400 (same core/regmap as intel_vvp_tpg_1,
+    // reached through the shared bridge instead of its own dedicated port).
+    localparam [12:0] PIPTPG_BASE    = 13'h1400;
+    localparam [12:0] PIPTPG_WIDTH   = PIPTPG_BASE | 13'h120;  // 0x1520
+    localparam [12:0] PIPTPG_HEIGHT  = PIPTPG_BASE | 13'h124;  // 0x1524
+    localparam [12:0] PIPTPG_INTL    = PIPTPG_BASE | 13'h128;  // 0x1528
+    localparam [12:0] PIPTPG_STATUS  = PIPTPG_BASE | 13'h140;  // 0x1540
+    localparam [12:0] PIPTPG_CONTROL = PIPTPG_BASE | 13'h148;  // 0x1548
+    localparam [12:0] PIPTPG_COMMIT  = PIPTPG_BASE | 13'h14C;  // 0x154C
+    localparam [12:0] PIPTPG_PATTERN = PIPTPG_BASE | 13'h150;  // 0x1550
+    localparam [12:0] PIPTPG_C0      = PIPTPG_BASE | 13'h15C;  // 0x155C - Cb
+    localparam [12:0] PIPTPG_C1      = PIPTPG_BASE | 13'h160;  // 0x1560 - Y
+    localparam [12:0] PIPTPG_C2      = PIPTPG_BASE | 13'h164;  // 0x1564 - Cr
+    localparam [12:0] PIPTPG_BAR_SEL = PIPTPG_BASE | 13'h168;  // 0x1568
+
+    // PIP background color, selected by PIP_BG_COLOR (matches AMD/Xilinx
+    // VPSS's R/G/B-only convention). This core outputs YCbCr (confirmed by
+    // the un-configured default Y=Cb=Cr=0 rendering green) using the same
+    // studio-range, 75%-amplitude color-bar values the TPG's own built-in
+    // pattern generator uses - extracted directly from its actual output
+    // (White/Yellow/Cyan/Green/Magenta/Red/Blue/Black bars) so the
+    // background matches the TPG's own red/green/blue exactly, not an
+    // independently-computed full-range approximation.
+    //
+    // When the TPG runs in RGB mode (TPG_MODE==0), its RGB bars go through
+    // CSC (RGB->YCbCr SD/BT.601) before reaching the mixer, which lands on
+    // slightly different YCbCr values than the native YCbCr generator's own
+    // fixed bars (different quantization path) - confirmed by direct capture
+    // of the mixer's own output (e.g. native Red = Y65/Cb100/Cr212, but the
+    // same nominal red bar sourced via RGB+CSC lands at Y72/Cb104/Cr200).
+    // Using the native-calibrated constants for RGB mode produced a visibly
+    // different shade than the TPG's own bar, so select per TPG_MODE.
+    localparam [0:0]  PIP_BG_IS_RGB_SRC = (TPG_MODE == 32'd0);
+    localparam [31:0] PIP_BG_Y  = PIP_BG_IS_RGB_SRC ?
+                                   ((PIP_BG_COLOR == 2'd0) ? 32'd72  :  // Red (RGB+CSC)
+                                    (PIP_BG_COLOR == 2'd1) ? 32'd112 :  // Green (RGB+CSC)
+                                                              32'd46) : // Blue (RGB+CSC)
+                                   ((PIP_BG_COLOR == 2'd0) ? 32'd65  :  // Red (native YUV)
+                                    (PIP_BG_COLOR == 2'd1) ? 32'd112 :  // Green (native YUV)
+                                                              32'd35);  // Blue (native YUV)
+    localparam [31:0] PIP_BG_CB = PIP_BG_IS_RGB_SRC ?
+                                   ((PIP_BG_COLOR == 2'd0) ? 32'd104 :  // Red (RGB+CSC)
+                                    (PIP_BG_COLOR == 2'd1) ? 32'd80  :  // Green (RGB+CSC)
+                                                              32'd200) : // Blue (RGB+CSC)
+                                   ((PIP_BG_COLOR == 2'd0) ? 32'd100 :  // Red (native YUV)
+                                    (PIP_BG_COLOR == 2'd1) ? 32'd72  :  // Green (native YUV)
+                                                              32'd212); // Blue (native YUV)
+    localparam [31:0] PIP_BG_CR = PIP_BG_IS_RGB_SRC ?
+                                   ((PIP_BG_COLOR == 2'd0) ? 32'd200 :  // Red (RGB+CSC)
+                                    (PIP_BG_COLOR == 2'd1) ? 32'd68  :  // Green (RGB+CSC)
+                                                              32'd116) : // Blue (RGB+CSC)
+                                   ((PIP_BG_COLOR == 2'd0) ? 32'd212 :  // Red (native YUV)
+                                    (PIP_BG_COLOR == 2'd1) ? 32'd58  :  // Green (native YUV)
+                                                              32'd114); // Blue (native YUV)
+
+    // Foreground (layer 1) geometry = the pipeline's own actual output frame
+    // size. ltf_conv_0 needs this - not the background size - to find line
+    // boundaries in the real incoming Lite stream.
+    localparam [31:0] PIP_FG_W = DO_SCL ? SCALER_OUT_W : IMG_WIDTH;
+    localparam [31:0] PIP_FG_H = DO_SCL ? SCALER_OUT_H : IMG_HEIGHT;
+
+    // Background layer (layer 0) canvas geometry - independent of the
+    // foreground size so the inset can be smaller than the background.
+    localparam [31:0] PIP_BG_W = (PIP_BG_WIDTH  != 0) ? PIP_BG_WIDTH  : PIP_FG_W;
+    localparam [31:0] PIP_BG_H = (PIP_BG_HEIGHT != 0) ? PIP_BG_HEIGHT : PIP_FG_H;
+
     // --- PC1 (7-bit word addressed, own Avalon port) ---
     localparam [6:0] PC1_ADDR_WIDTH       = 7'h48;
     localparam [6:0] PC1_ADDR_HEIGHT      = 7'h49;
@@ -191,31 +299,72 @@ module top #(
     // =========================================================================
     // State encoding
     // =========================================================================
-    localparam [4:0]
-        ST_IDLE        = 5'd20,
-        ST_CONFIG_CLIP = 5'd21,
-        ST_CONFIG_SCL  = 5'd22,
-        ST_CONFIG_CRS  = 5'd23,
-        ST_POLL_CRS    = 5'd24,
-        ST_CONFIG_CSC  = 5'd25,
-        ST_POLL_CSC    = 5'd26,
-        ST_CONFIG_PC1  = 5'd27,
-        ST_WORKING     = 5'd28,
-        ST_WAIT_CRS    = 5'd29,
-		  
+    localparam [5:0]
+        ST_IDLE        = 6'd20,
+        ST_CONFIG_CLIP = 6'd21,
+        ST_CONFIG_SCL  = 6'd22,
+        ST_CONFIG_CRS  = 6'd23,
+        ST_POLL_CRS    = 6'd24,
+        ST_CONFIG_CSC  = 6'd25,
+        ST_POLL_CSC    = 6'd26,
+        ST_CONFIG_PC1  = 6'd27,
+        ST_WORKING     = 6'd28,
+        ST_WAIT_CRS    = 6'd29,
+
 		  // TPG (own Avalon port)
-        ST_TPG_CTRL_1    = 5'd0,
-        ST_TPG_WR_INTL   = 5'd1,
-        ST_TPG_WR_W      = 5'd2,
-        ST_TPG_WR_H      = 5'd3,
-        ST_TPG_WR_PAT_T  = 5'd4,
-        ST_TPG_WR_PAT_S  = 5'd5,
-        ST_TPG_WR_CMT    = 5'd6,
-        ST_TPG_CTRL_2    = 5'd7,
-        ST_TPG_POLL_ISS  = 5'd8,
-        ST_TPG_POLL_W    = 5'd9,
-        ST_TPG_IP_RST    = 5'd10,
-        ST_TPG_CTRL_3    = 5'd11;
+        ST_TPG_CTRL_1    = 6'd0,
+        ST_TPG_WR_INTL   = 6'd1,
+        ST_TPG_WR_W      = 6'd2,
+        ST_TPG_WR_H      = 6'd3,
+        ST_TPG_WR_PAT_T  = 6'd4,
+        ST_TPG_WR_PAT_S  = 6'd5,
+        ST_TPG_WR_CMT    = 6'd6,
+        ST_TPG_CTRL_2    = 6'd7,
+        ST_TPG_POLL_ISS  = 6'd8,
+        ST_TPG_POLL_W    = 6'd9,
+        ST_TPG_IP_RST    = 6'd10,
+        ST_TPG_CTRL_3    = 6'd11,
+
+        // PIP: background TPG config (mirrors ST_TPG_* above, over bridge_*)
+        ST_PIPTPG_CTRL_1   = 6'd30,
+        ST_PIPTPG_WR_INTL  = 6'd31,
+        ST_PIPTPG_WR_W     = 6'd32,
+        ST_PIPTPG_WR_H     = 6'd33,
+        ST_PIPTPG_WR_PAT_T = 6'd34,
+        ST_PIPTPG_WR_PAT_S = 6'd35,
+        ST_PIPTPG_WR_C0    = 6'd54,
+        ST_PIPTPG_WR_C1    = 6'd55,
+        ST_PIPTPG_WR_C2    = 6'd51,
+        ST_PIPTPG_WR_CMT   = 6'd36,
+        ST_PIPTPG_CTRL_2   = 6'd37,
+        ST_PIPTPG_POLL_ISS = 6'd38,
+        ST_PIPTPG_POLL_W   = 6'd39,
+        ST_PIPTPG_CTRL_3   = 6'd40,
+        ST_PIPTPG_GAP      = 6'd52,
+
+        // PIP: Mixer layer-1 (pipeline video) config
+        ST_CONFIG_MIXER_LITE   = 6'd41,
+        ST_CONFIG_MIXER_HOFF   = 6'd42,
+        ST_CONFIG_MIXER_VOFF   = 6'd43,
+        ST_CONFIG_MIXER_BLEND  = 6'd44,
+        ST_CONFIG_MIXER_MODE   = 6'd45,
+        ST_CONFIG_MIXER_COMMIT = 6'd46,
+        ST_CONFIG_MIXER_ALPHA  = 6'd53,
+
+        // PIP: start the Lite->Full converter ahead of the mixer (harmless
+        // no-op write if this particular topology's chain is already Full
+        // and the converter wasn't instantiated - unmapped bridge writes
+        // are silently absorbed by the interconnect's default responder).
+        // It needs its expected frame WIDTH/HEIGHT (so it can find line
+        // boundaries in the incoming Lite stream) before GO.
+        ST_CONFIG_LTFCONV_W    = 6'd49,
+        ST_CONFIG_LTFCONV_H    = 6'd50,
+        ST_CONFIG_LTFCONV      = 6'd48;
+
+    // When ENABLE_PIP=0 (default) this is the constant ST_WORKING - every
+    // "topology config done, go live" transition below is then bit-for-bit
+    // identical to the pre-PIP behavior.
+    localparam [5:0] POST_TOPOLOGY_STATE = ENABLE_PIP ? ST_CONFIG_MIXER_LITE : ST_WORKING;
 
     // =========================================================================
     // CSC coefficient ROMs
@@ -263,7 +412,7 @@ module top #(
     // =========================================================================
     // Registers
     // =========================================================================
-    reg [4:0]  current_state;
+    reg [5:0]  current_state;
     reg [3:0]  cfg_step;
     reg [15:0] wait_counter;
 
@@ -271,10 +420,11 @@ module top #(
     reg        pc1_write;
     reg [31:0] pc1_wdata;
 
-    reg [11:0] bridge_addr;
+    reg [12:0] bridge_addr;
     reg [31:0] bridge_wdata;
     reg        bridge_write;
     reg        bridge_read;
+    reg        mixer_lite_mode;
 
     wire        pc1_wait;
     wire [31:0] pc1_readdata;
@@ -300,6 +450,7 @@ module top #(
             bridge_read   <= 1'b0;
             cfg_step      <= 4'd0;
             wait_counter  <= 16'd0;
+            mixer_lite_mode <= 1'b0;
         end else begin
             case (current_state)
 
@@ -444,7 +595,7 @@ module top #(
                         pc1_wdata     <= IMG_WIDTH;
                         current_state <= ST_CONFIG_PC1;
                     end else begin
-                        current_state <= ST_WORKING;
+                        current_state <= POST_TOPOLOGY_STATE;
                     end
                 end
 
@@ -512,7 +663,7 @@ module top #(
                                 pc1_wdata     <= IMG_WIDTH;
                                 current_state <= ST_CONFIG_PC1;
                             end else begin
-                                current_state <= ST_WORKING;
+                                current_state <= POST_TOPOLOGY_STATE;
                             end
                         end else begin
                             cfg_step <= cfg_step + 1'b1;
@@ -576,7 +727,7 @@ module top #(
 												pc1_wdata     <= IMG_WIDTH;
 												current_state <= ST_CONFIG_PC1;
 										  end else begin
-												current_state <= ST_WORKING;
+												current_state <= POST_TOPOLOGY_STATE;
 										  end
                             end
                             // else: pending still set, re-poll
@@ -597,7 +748,7 @@ module top #(
                             pc1_wdata     <= IMG_WIDTH;
                             current_state <= ST_CONFIG_PC1;
                         end else begin
-                            current_state <= ST_WORKING;
+                            current_state <= POST_TOPOLOGY_STATE;
                         end
                     end else begin
                         wait_counter <= wait_counter + 1'b1;
@@ -626,7 +777,7 @@ module top #(
                             end else if (DO_CRS) begin
                                 // Combined: no data flowing, CSC applies immediately.
                                 // Skip STATUS poll, go straight to WORKING.
-                                current_state <= ST_WORKING;
+                                current_state <= POST_TOPOLOGY_STATE;
                             end else begin
                                 current_state <= ST_POLL_CSC;
                             end
@@ -671,7 +822,7 @@ module top #(
                         if (bridge_readdatavalid) begin
                             cfg_step <= 4'd0;
                             if (bridge_readdata[1] == 1'b0) begin
-                                current_state <= ST_WORKING;
+                                current_state <= POST_TOPOLOGY_STATE;
                             end
                             // else: pending still set, re-poll
                         end
@@ -687,7 +838,7 @@ module top #(
                         if (cfg_step == 4'd5) begin
                             pc1_write     <= 1'b0;
                             cfg_step      <= 4'd0;
-                            current_state <= ST_WORKING;
+                            current_state <= POST_TOPOLOGY_STATE;
                         end else begin
                             cfg_step <= cfg_step + 1'b1;
                             case (cfg_step + 1'b1)
@@ -699,6 +850,312 @@ module top #(
                                 default: ;
                             endcase
                         end
+                    end
+                end
+
+                // --------------------------------------------------------------
+                // PIP: configure the Mixer's layer 1 (pipeline video) FIRST,
+                // before any source is started - mirrors the working
+                // reference exactly (mixer layers configured + committed,
+                // THEN TPGs configured/started). LITE_MODE is read first
+                // since it can't be determined statically; only full mode
+                // needs COMMIT (fire-and-forget, matching the reference,
+                // which never polls STATUS after the mixer commit).
+                // --------------------------------------------------------------
+                ST_CONFIG_MIXER_LITE: begin
+                    if (cfg_step == 4'd0) begin
+                        bridge_read <= 1'b1;
+                        bridge_addr <= MIX_LITE_MODE;
+                        if (bridge_read && !bridge_wait) begin
+                            bridge_read <= 1'b0;
+                            cfg_step    <= 4'd1;
+                        end
+                    end else begin
+                        if (bridge_readdatavalid) begin
+                            cfg_step        <= 4'd0;
+                            mixer_lite_mode <= bridge_readdata[0];
+                            bridge_addr     <= MIX_L1_H_OFF;
+                            bridge_wdata    <= PIP_H_OFFSET;
+                            current_state   <= ST_CONFIG_MIXER_HOFF;
+                        end
+                    end
+                end
+
+                ST_CONFIG_MIXER_HOFF: begin
+                    bridge_write <= 1'b1;
+                    if (bridge_write && !bridge_wait) begin
+                        bridge_write  <= 1'b0;
+                        bridge_addr   <= MIX_L1_V_OFF;
+                        bridge_wdata  <= PIP_V_OFFSET;
+                        current_state <= ST_CONFIG_MIXER_VOFF;
+                    end
+                end
+
+                ST_CONFIG_MIXER_VOFF: begin
+                    bridge_write <= 1'b1;
+                    if (bridge_write && !bridge_wait) begin
+                        bridge_write  <= 1'b0;
+                        bridge_addr   <= MIX_L1_BLEND;
+                        bridge_wdata  <= 32'h1;  // OPAQUE overlay
+                        current_state <= ST_CONFIG_MIXER_BLEND;
+                    end
+                end
+
+                ST_CONFIG_MIXER_BLEND: begin
+                    bridge_write <= 1'b1;
+                    if (bridge_write && !bridge_wait) begin
+                        bridge_write  <= 1'b0;
+                        bridge_addr   <= MIX_L1_ALPHA;
+                        bridge_wdata  <= 32'd255;  // fully opaque
+                        current_state <= ST_CONFIG_MIXER_ALPHA;
+                    end
+                end
+
+                ST_CONFIG_MIXER_ALPHA: begin
+                    bridge_write <= 1'b1;
+                    if (bridge_write && !bridge_wait) begin
+                        bridge_write  <= 1'b0;
+                        bridge_addr   <= MIX_L1_MODE;
+                        // Soft-start (bit2=1): per the Mixer UG, hard-start slaves
+                        // the mixer's OUTPUT timing to whenever layer 1 happens to
+                        // become ready - valid only for a single unstallable source,
+                        // and empirically deadlocks for any offset but exact center
+                        // since our layer 1 (scaler + protocol converter chain) is
+                        // stallable. Soft-start keeps output on the base layer's own
+                        // timing and lets layer 1 align at each field boundary -
+                        // confirmed via simulation to correctly composite arbitrary
+                        // offsets (tested near-center and extreme top-left corner,
+                        // both landing pixel-exact with no deadlock) under FULL
+                        // topology. Do not revert to hard-start (32'h1).
+                        bridge_wdata  <= 32'h5;  // ENABLE | SOFT_START
+                        current_state <= ST_CONFIG_MIXER_MODE;
+                    end
+                end
+
+                ST_CONFIG_MIXER_MODE: begin
+                    bridge_write <= 1'b1;
+                    if (bridge_write && !bridge_wait) begin
+                        bridge_write <= 1'b0;
+                        if (mixer_lite_mode) begin
+                            current_state <= ST_CONFIG_LTFCONV_W;
+                        end else begin
+                            bridge_addr   <= MIX_COMMIT;
+                            bridge_wdata  <= 32'h1;
+                            current_state <= ST_CONFIG_MIXER_COMMIT;
+                        end
+                    end
+                end
+
+                ST_CONFIG_MIXER_COMMIT: begin
+                    bridge_write <= 1'b1;
+                    if (bridge_write && !bridge_wait) begin
+                        bridge_write  <= 1'b0;
+                        // Fire-and-forget: matches the working reference's own
+                        // ST_MIX_COMMIT exactly - it never polls STATUS after
+                        // committing, it just moves straight on to configuring
+                        // the sources.
+                        current_state <= ST_CONFIG_LTFCONV_W;
+                    end
+                end
+
+                // --------------------------------------------------------------
+                // PIP: start the Lite->Full converter (layer 1 / overlay
+                // source), now that the mixer is configured and committed.
+                // Its input is Lite protocol (no embedded metapackets), so it
+                // must be told the expected frame WIDTH/HEIGHT before GO or it
+                // can't find line boundaries in the incoming stream.
+                // --------------------------------------------------------------
+                ST_CONFIG_LTFCONV_W: begin
+                    bridge_write <= 1'b1;
+                    bridge_addr  <= LTFCONV_IMG_WIDTH;
+                    bridge_wdata <= PIP_FG_W;
+                    if (bridge_write && !bridge_wait) begin
+                        bridge_write  <= 1'b0;
+                        current_state <= ST_CONFIG_LTFCONV_H;
+                    end
+                end
+
+                ST_CONFIG_LTFCONV_H: begin
+                    bridge_write <= 1'b1;
+                    bridge_addr  <= LTFCONV_IMG_HEIGHT;
+                    bridge_wdata <= PIP_FG_H;
+                    if (bridge_write && !bridge_wait) begin
+                        bridge_write  <= 1'b0;
+                        current_state <= ST_CONFIG_LTFCONV;
+                    end
+                end
+
+                ST_CONFIG_LTFCONV: begin
+                    bridge_write <= 1'b1;
+                    bridge_addr  <= LTFCONV_CTRL;
+                    bridge_wdata <= 32'h1;  // GO
+                    if (bridge_write && !bridge_wait) begin
+                        bridge_write  <= 1'b0;
+                        current_state <= ST_PIPTPG_CTRL_1;
+                    end
+                end
+
+                // --------------------------------------------------------------
+                // PIP: configure+start the internal background TPG (layer 0 /
+                // base), started LAST - mirrors the working reference exactly
+                // (base TPG configured/started after all overlays, and after
+                // the mixer is already committed). Mirrors the proven
+                // ST_TPG_* sequence above, retargeted to bridge_addr/
+                // bridge_write/bridge_read (shared-bridge handshake, like
+                // CRS/CSC/CLIP/SCL) instead of the dedicated TPG port. The
+                // pending-commit poll after CTRL_2 genuinely does clear here
+                // (confirmed in the reference) - it does not depend on
+                // downstream tready.
+                // --------------------------------------------------------------
+                ST_PIPTPG_CTRL_1: begin
+                    bridge_write <= 1'b1;
+                    bridge_addr  <= PIPTPG_CONTROL;
+                    bridge_wdata <= 32'h0;
+                    if (bridge_write && !bridge_wait) begin
+                        bridge_write  <= 1'b0;
+                        current_state <= ST_PIPTPG_WR_INTL;
+                    end
+                end
+
+                ST_PIPTPG_WR_INTL: begin
+                    bridge_write <= 1'b1;
+                    bridge_addr  <= PIPTPG_INTL;
+                    bridge_wdata <= 32'h0;
+                    if (bridge_write && !bridge_wait) begin
+                        bridge_write  <= 1'b0;
+                        current_state <= ST_PIPTPG_WR_W;
+                    end
+                end
+
+                ST_PIPTPG_WR_W: begin
+                    bridge_write <= 1'b1;
+                    bridge_addr  <= PIPTPG_WIDTH;
+                    bridge_wdata <= PIP_BG_W;
+                    if (bridge_write && !bridge_wait) begin
+                        bridge_write  <= 1'b0;
+                        current_state <= ST_PIPTPG_WR_H;
+                    end
+                end
+
+                ST_PIPTPG_WR_H: begin
+                    bridge_write <= 1'b1;
+                    bridge_addr  <= PIPTPG_HEIGHT;
+                    bridge_wdata <= PIP_BG_H;
+                    if (bridge_write && !bridge_wait) begin
+                        bridge_write  <= 1'b0;
+                        current_state <= ST_PIPTPG_WR_PAT_T;
+                    end
+                end
+
+                ST_PIPTPG_WR_PAT_T: begin
+                    bridge_write <= 1'b1;
+                    bridge_addr  <= PIPTPG_BAR_SEL;
+                    bridge_wdata <= 32'h0;
+                    if (bridge_write && !bridge_wait) begin
+                        bridge_write  <= 1'b0;
+                        current_state <= ST_PIPTPG_WR_PAT_S;
+                    end
+                end
+
+                ST_PIPTPG_WR_PAT_S: begin
+                    bridge_write <= 1'b1;
+                    bridge_addr  <= PIPTPG_PATTERN;
+                    // pip_bg_tpg_0 is generated with NUM_CORES=1, CORE_PATTERN_0=1
+                    // (Constant colour). PATTERN_SELECT_REG selects a CORE INDEX
+                    // (0..NUM_CORES-1), not the pattern-type value - with only
+                    // core 0 compiled in, the runtime select must be 0.
+                    bridge_wdata <= 32'h0;
+                    if (bridge_write && !bridge_wait) begin
+                        bridge_write  <= 1'b0;
+                        current_state <= ST_PIPTPG_WR_C0;
+                    end
+                end
+
+                // Fixed background color (blue, matching AMD/Xilinx VPSS's
+                // R/G/B-only PIP convention). Core outputs YCbCr: C0=Cb, C1=Y, C2=Cr.
+                ST_PIPTPG_WR_C0: begin
+                    bridge_write <= 1'b1;
+                    bridge_addr  <= PIPTPG_C0;
+                    bridge_wdata <= PIP_BG_CB;
+                    if (bridge_write && !bridge_wait) begin
+                        bridge_write  <= 1'b0;
+                        current_state <= ST_PIPTPG_WR_C1;
+                    end
+                end
+
+                ST_PIPTPG_WR_C1: begin
+                    bridge_write <= 1'b1;
+                    bridge_addr  <= PIPTPG_C1;
+                    bridge_wdata <= PIP_BG_Y;
+                    if (bridge_write && !bridge_wait) begin
+                        bridge_write  <= 1'b0;
+                        current_state <= ST_PIPTPG_WR_C2;
+                    end
+                end
+
+                ST_PIPTPG_WR_C2: begin
+                    bridge_write <= 1'b1;
+                    bridge_addr  <= PIPTPG_C2;
+                    bridge_wdata <= PIP_BG_CR;
+                    if (bridge_write && !bridge_wait) begin
+                        bridge_write  <= 1'b0;
+                        current_state <= ST_PIPTPG_WR_CMT;
+                    end
+                end
+
+                ST_PIPTPG_WR_CMT: begin
+                    bridge_write <= 1'b1;
+                    bridge_addr  <= PIPTPG_COMMIT;
+                    bridge_wdata <= 32'h1;
+                    if (bridge_write && !bridge_wait) begin
+                        bridge_write  <= 1'b0;
+                        current_state <= ST_PIPTPG_CTRL_2;
+                    end
+                end
+
+                ST_PIPTPG_CTRL_2: begin
+                    bridge_write <= 1'b1;
+                    bridge_addr  <= PIPTPG_CONTROL;
+                    bridge_wdata <= 32'h1;  // GO
+                    if (bridge_write && !bridge_wait) begin
+                        bridge_write  <= 1'b0;
+                        current_state <= ST_PIPTPG_POLL_ISS;
+                    end
+                end
+
+                ST_PIPTPG_POLL_ISS: begin
+                    bridge_read <= 1'b1;
+                    bridge_addr <= PIPTPG_STATUS;
+                    if (bridge_read && !bridge_wait) begin
+                        bridge_read   <= 1'b0;
+                        current_state <= ST_PIPTPG_POLL_W;
+                    end
+                end
+
+                ST_PIPTPG_POLL_W: begin
+                    if (bridge_readdatavalid) begin
+                        if (bridge_readdata[1] == 1'b0) begin
+                            wait_counter  <= 16'd0;
+                            current_state <= ST_PIPTPG_GAP;
+                        end else begin
+                            current_state <= ST_PIPTPG_POLL_ISS;
+                        end
+                    end
+                end
+
+                ST_PIPTPG_GAP: begin
+                    wait_counter <= wait_counter + 1'b1;
+                    if (wait_counter == 16'h7)
+                        current_state <= ST_PIPTPG_CTRL_3;
+                end
+
+                ST_PIPTPG_CTRL_3: begin
+                    bridge_write <= 1'b1;
+                    bridge_addr  <= PIPTPG_CONTROL;
+                    bridge_wdata <= 32'h1;
+                    if (bridge_write && !bridge_wait) begin
+                        bridge_write  <= 1'b0;
+                        current_state <= ST_WORKING;
                     end
                 end
 
@@ -730,7 +1187,10 @@ module top #(
         end else if (DO_CSC) begin : gen_rts_csc
             // Combined CRS+CSC: both committed with no live data; start at WORKING.
             // CSC_ONLY: start at ST_CONFIG_CSC (first frame absorbs commit).
-            assign ready_to_start = (DO_CRS ? (current_state == ST_WORKING) : (current_state >= ST_CONFIG_CSC));
+            // With PIP enabled the numeric ">=" would also match the PIP config
+            // states (encoded above ST_CONFIG_CSC), so always require the exact
+            // ST_WORKING match once PIP is in the picture.
+            assign ready_to_start = (ENABLE_PIP || DO_CRS) ? (current_state == ST_WORKING) : (current_state >= ST_CONFIG_CSC);
         end else if (DO_SCL) begin : gen_rts_scl
             assign ready_to_start = (current_state == ST_WORKING);
         end else if (DO_CRS) begin : gen_rts_crs

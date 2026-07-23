@@ -49,25 +49,39 @@ def ycbcr_to_rgb(y, cb, cr):
             max(0, min(255, int(g))),
             max(0, min(255, int(b))))
 
-def load_and_clean(filename):
+def load_and_clean(filename, width=None):
     try:
         with open(filename, 'r') as f:
-            raw = f.read().split()
+            raw_lines = f.readlines()
     except FileNotFoundError:
         print(f"Error: {filename} not found.")
         sys.exit(1)
-    # Keep only the meaningful low nibbles. On a 2-plane (16-bit) datapath the
-    # capture bus is still 24-bit, so the undriven high byte shows up as x/z;
-    # trimming first prevents those words from being discarded as invalid.
-    if MEANINGFUL_NIBBLES:
-        raw = [w[-MEANINGFUL_NIBBLES:] if len(w) >= MEANINGFUL_NIBBLES else w
-               for w in raw]
-    valid   = [w for w in raw if is_valid_hex(w)]
-    skipped = len(raw) - len(valid)
+    # Parse per capture line (row), not as one flattened token stream - a
+    # capture row occasionally has a few extra/short words (e.g. a harmless
+    # one-time capture-startup artifact on the first row). Flattening the
+    # whole file and reshaping by a fixed width lets that discrepancy shift
+    # every subsequent row, which looks like a positioning/wrap-around bug
+    # in the rendered image even though the underlying data is correct.
+    # Clamping/padding each line to exactly `width` words keeps rows aligned.
+    all_words = []
+    skipped   = 0
+    for raw_line in raw_lines:
+        words = raw_line.split()
+        if MEANINGFUL_NIBBLES:
+            words = [w[-MEANINGFUL_NIBBLES:] if len(w) >= MEANINGFUL_NIBBLES else w
+                     for w in words]
+        valid = [w for w in words if is_valid_hex(w)]
+        skipped += len(words) - len(valid)
+        if width is not None and len(valid) != width:
+            if len(valid) > width:
+                valid = valid[:width]
+            else:
+                valid = valid + ['000000'] * (width - len(valid))
+        all_words.extend(valid)
     if skipped:
         print(f"  Skipped {skipped} invalid (x/z) words.")
-    print(f"  Found {len(valid)} pixel words.")
-    return valid
+    print(f"  Found {len(all_words)} pixel words.")
+    return all_words
 
 # =============================================================================
 # Conversion Functions
@@ -77,7 +91,7 @@ def convert_rgb(input_file, output_file, width, height):
     RGB packed: tdata[23:0] = { R[7:0], G[7:0], B[7:0] }
     Used for: SCALER_ONLY, CLIP_SCL, FULL/CSC with RGB output
     """
-    pixel_words = load_and_clean(input_file)
+    pixel_words = load_and_clean(input_file, width=width)
     total       = width * height
     raw_list    = []
     for i in range(total):
@@ -99,7 +113,7 @@ def convert_yuv444(input_file, output_file, width, height):
     YUV444 packed: tdata[23:0] = { Cr[7:0], Y[7:0], Cb[7:0] }
     Used for: CRS 444 output, CSC YCbCr output
     """
-    pixel_words = load_and_clean(input_file)
+    pixel_words = load_and_clean(input_file, width=width)
     total       = width * height
     pixels      = []
     for i in range(total):
@@ -124,7 +138,7 @@ def convert_yuv422(input_file, output_file, width, height):
       Odd  pixels: { 8'b0, Y[7:0], Cr[7:0] }
     Used for: CRS 422 output
     """
-    pixel_words = load_and_clean(input_file)
+    pixel_words = load_and_clean(input_file, width=width)
     total       = width * height
     pixels      = []
     for i in range(0, len(pixel_words), 2):
@@ -166,7 +180,7 @@ def convert_yuv420(input_file, output_file, width, height):
       - Cr from odd  line, same column (bits 7:0)
     Pair even+odd lines to get full color for both rows.
     """
-    pixel_words = load_and_clean(input_file)
+    pixel_words = load_and_clean(input_file, width=width)
     total       = width * height
 
     # Reshape into lines

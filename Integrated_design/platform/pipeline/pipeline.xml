@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2026.07.21.11:41:13"
- outputDirectory="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/pipeline/">
+ date="2026.07.24.15:38:41"
+ outputDirectory="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/pipeline/">
  <perimeter>
   <parameter
      name="AUTO_GENERATION_ID"
@@ -473,21 +473,21 @@
   <parameter name="AUTO_INTEL_VVP_TPG_1_AV_MM_CONTROL_AGENT_CPU_INFO_ID" value="" />
   <generatedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/pipeline/synth/pipeline.v"
+       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/pipeline/synth/pipeline.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/pipeline/synth/pipeline.v"
+       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/pipeline/synth/pipeline.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/pipeline.qsys" />
+       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/pipeline.qsys" />
   </sourceFiles>
   <childSourceFiles>
    <file
-       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_reset_controller/altera_reset_controller_hw.tcl" />
+       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_reset_controller/altera_reset_controller_hw.tcl" />
   </childSourceFiles>
   <messages>
    <message level="Info" culprit="pipeline">"Generating: pipeline"</message>
@@ -4727,29 +4727,29 @@
    name="altera_reset_controller">
   <generatedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_controller.v"
+       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_controller.v"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_synchronizer.v"
+       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_synchronizer.v"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_controller.sdc"
+       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_controller.sdc"
        attributes="NO_SDC_PROMOTION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_controller.v"
+       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_controller.v"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_synchronizer.v"
+       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_synchronizer.v"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_controller.sdc"
+       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/pipeline/altera_reset_controller_1924/synth/altera_reset_controller.sdc"
        attributes="NO_SDC_PROMOTION" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_reset_controller/altera_reset_controller_hw.tcl" />
+       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_reset_controller/altera_reset_controller_hw.tcl" />
   </sourceFiles>
   <childSourceFiles/>
   <instantiator instantiator="pipeline" as="rst_controller" />

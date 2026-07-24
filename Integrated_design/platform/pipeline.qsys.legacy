@@ -4329,10 +4329,10 @@ https://fpgasoftware.intel.com/eula.-->
    kind="reset"
    version="25.1"
    start="reset_in.out_reset"
-   end="intel_vvp_protocol_conv_0.main_reset" />
+   end="intel_vvp_tpg_1.main_reset" />
  <connection
    kind="reset"
    version="25.1"
    start="reset_in.out_reset"
-   end="intel_vvp_tpg_1.main_reset" />
+   end="intel_vvp_protocol_conv_0.main_reset" />
 </system>

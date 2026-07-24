@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="pipeline" kind="pipeline" version="1.0" fabric="QSYS">
  <!-- Format version 25.1.1 125 (Future versions may contain additional information.) -->
- <!-- 2026.07.21.11:41:13 -->
+ <!-- 2026.07.24.15:38:41 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
@@ -7803,60 +7803,6 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>main_clock</endConnectionPoint>
  </connection>
  <connection
-   name="reset_in.out_reset/intel_vvp_protocol_conv_0.main_reset"
-   kind="reset"
-   version="25.1"
-   start="reset_in.out_reset"
-   end="intel_vvp_protocol_conv_0.main_reset">
-  <parameter name="resetDomainSysInfo">
-   <type>java.lang.Integer</type>
-   <value>-1</value>
-   <derived>true</derived>
-   <enabled>true</enabled>
-   <visible>false</visible>
-   <valid>true</valid>
-   <sysinfo_type>RESET_DOMAIN</sysinfo_type>
-  </parameter>
-  <parameter name="clockDomainSysInfo">
-   <type>java.lang.Integer</type>
-   <value>-1</value>
-   <derived>true</derived>
-   <enabled>true</enabled>
-   <visible>false</visible>
-   <valid>true</valid>
-   <sysinfo_type>CLOCK_DOMAIN</sysinfo_type>
-  </parameter>
-  <parameter name="clockResetSysInfo">
-   <type>java.lang.String</type>
-   <value></value>
-   <derived>true</derived>
-   <enabled>true</enabled>
-   <visible>false</visible>
-   <valid>true</valid>
-   <sysinfo_type>CLOCK_RESET_INFO</sysinfo_type>
-  </parameter>
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>reset_in</startModule>
-  <startConnectionPoint>out_reset</startConnectionPoint>
-  <endModule>intel_vvp_protocol_conv_0</endModule>
-  <endConnectionPoint>main_reset</endConnectionPoint>
- </connection>
- <connection
    name="reset_in.out_reset/intel_vvp_tpg_1.main_reset"
    kind="reset"
    version="25.1"
@@ -7908,6 +7854,60 @@ parameters are a RESULT of the module parameters. -->
   <startModule>reset_in</startModule>
   <startConnectionPoint>out_reset</startConnectionPoint>
   <endModule>intel_vvp_tpg_1</endModule>
+  <endConnectionPoint>main_reset</endConnectionPoint>
+ </connection>
+ <connection
+   name="reset_in.out_reset/intel_vvp_protocol_conv_0.main_reset"
+   kind="reset"
+   version="25.1"
+   start="reset_in.out_reset"
+   end="intel_vvp_protocol_conv_0.main_reset">
+  <parameter name="resetDomainSysInfo">
+   <type>java.lang.Integer</type>
+   <value>-1</value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>RESET_DOMAIN</sysinfo_type>
+  </parameter>
+  <parameter name="clockDomainSysInfo">
+   <type>java.lang.Integer</type>
+   <value>-1</value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>CLOCK_DOMAIN</sysinfo_type>
+  </parameter>
+  <parameter name="clockResetSysInfo">
+   <type>java.lang.String</type>
+   <value></value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>CLOCK_RESET_INFO</sysinfo_type>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>reset_in</startModule>
+  <startConnectionPoint>out_reset</startConnectionPoint>
+  <endModule>intel_vvp_protocol_conv_0</endModule>
   <endConnectionPoint>main_reset</endConnectionPoint>
  </connection>
  <plugin>

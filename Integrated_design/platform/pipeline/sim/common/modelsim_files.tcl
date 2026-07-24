@@ -1,17 +1,17 @@
+source [file join [file dirname [info script]] ./../../../ip/pipeline/pipeline_clock_in/sim/common/modelsim_files.tcl]
 source [file join [file dirname [info script]] ./../../../ip/pipeline/pipeline_intel_vvp_pipeline2_0/sim/common/modelsim_files.tcl]
 source [file join [file dirname [info script]] ./../../../ip/pipeline/pipeline_intel_vvp_protocol_conv_0/sim/common/modelsim_files.tcl]
-source [file join [file dirname [info script]] ./../../../ip/pipeline/pipeline_intel_vvp_tpg_1/sim/common/modelsim_files.tcl]
-source [file join [file dirname [info script]] ./../../../ip/pipeline/pipeline_clock_in/sim/common/modelsim_files.tcl]
 source [file join [file dirname [info script]] ./../../../ip/pipeline/pipeline_reset_in/sim/common/modelsim_files.tcl]
+source [file join [file dirname [info script]] ./../../../ip/pipeline/pipeline_intel_vvp_tpg_1/sim/common/modelsim_files.tcl]
 
 namespace eval pipeline {
   proc get_design_libraries {} {
     set libraries [dict create]
+    set libraries [dict merge $libraries [pipeline_clock_in::get_design_libraries]]
     set libraries [dict merge $libraries [pipeline_intel_vvp_pipeline2_0::get_design_libraries]]
     set libraries [dict merge $libraries [pipeline_intel_vvp_protocol_conv_0::get_design_libraries]]
-    set libraries [dict merge $libraries [pipeline_intel_vvp_tpg_1::get_design_libraries]]
-    set libraries [dict merge $libraries [pipeline_clock_in::get_design_libraries]]
     set libraries [dict merge $libraries [pipeline_reset_in::get_design_libraries]]
+    set libraries [dict merge $libraries [pipeline_intel_vvp_tpg_1::get_design_libraries]]
     dict set libraries altera_reset_controller_1924 1
     dict set libraries pipeline                     1
     return $libraries
@@ -19,31 +19,31 @@ namespace eval pipeline {
   
   proc get_memory_files {QSYS_SIMDIR QUARTUS_INSTALL_DIR} {
     set memory_files [list]
+    set memory_files [concat $memory_files [pipeline_clock_in::get_memory_files "$QSYS_SIMDIR/../../ip/pipeline/pipeline_clock_in/sim/" "$QUARTUS_INSTALL_DIR"]]
     set memory_files [concat $memory_files [pipeline_intel_vvp_pipeline2_0::get_memory_files "$QSYS_SIMDIR/../../ip/pipeline/pipeline_intel_vvp_pipeline2_0/sim/" "$QUARTUS_INSTALL_DIR"]]
     set memory_files [concat $memory_files [pipeline_intel_vvp_protocol_conv_0::get_memory_files "$QSYS_SIMDIR/../../ip/pipeline/pipeline_intel_vvp_protocol_conv_0/sim/" "$QUARTUS_INSTALL_DIR"]]
-    set memory_files [concat $memory_files [pipeline_intel_vvp_tpg_1::get_memory_files "$QSYS_SIMDIR/../../ip/pipeline/pipeline_intel_vvp_tpg_1/sim/" "$QUARTUS_INSTALL_DIR"]]
-    set memory_files [concat $memory_files [pipeline_clock_in::get_memory_files "$QSYS_SIMDIR/../../ip/pipeline/pipeline_clock_in/sim/" "$QUARTUS_INSTALL_DIR"]]
     set memory_files [concat $memory_files [pipeline_reset_in::get_memory_files "$QSYS_SIMDIR/../../ip/pipeline/pipeline_reset_in/sim/" "$QUARTUS_INSTALL_DIR"]]
+    set memory_files [concat $memory_files [pipeline_intel_vvp_tpg_1::get_memory_files "$QSYS_SIMDIR/../../ip/pipeline/pipeline_intel_vvp_tpg_1/sim/" "$QUARTUS_INSTALL_DIR"]]
     return $memory_files
   }
   
   proc get_common_design_files {USER_DEFINED_COMPILE_OPTIONS USER_DEFINED_VERILOG_COMPILE_OPTIONS USER_DEFINED_VHDL_COMPILE_OPTIONS QSYS_SIMDIR} {
     set design_files [dict create]
+    set design_files [dict merge $design_files [pipeline_clock_in::get_common_design_files $USER_DEFINED_COMPILE_OPTIONS $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_VHDL_COMPILE_OPTIONS "$QSYS_SIMDIR/../../ip/pipeline/pipeline_clock_in/sim/"]]
     set design_files [dict merge $design_files [pipeline_intel_vvp_pipeline2_0::get_common_design_files $USER_DEFINED_COMPILE_OPTIONS $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_VHDL_COMPILE_OPTIONS "$QSYS_SIMDIR/../../ip/pipeline/pipeline_intel_vvp_pipeline2_0/sim/"]]
     set design_files [dict merge $design_files [pipeline_intel_vvp_protocol_conv_0::get_common_design_files $USER_DEFINED_COMPILE_OPTIONS $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_VHDL_COMPILE_OPTIONS "$QSYS_SIMDIR/../../ip/pipeline/pipeline_intel_vvp_protocol_conv_0/sim/"]]
-    set design_files [dict merge $design_files [pipeline_intel_vvp_tpg_1::get_common_design_files $USER_DEFINED_COMPILE_OPTIONS $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_VHDL_COMPILE_OPTIONS "$QSYS_SIMDIR/../../ip/pipeline/pipeline_intel_vvp_tpg_1/sim/"]]
-    set design_files [dict merge $design_files [pipeline_clock_in::get_common_design_files $USER_DEFINED_COMPILE_OPTIONS $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_VHDL_COMPILE_OPTIONS "$QSYS_SIMDIR/../../ip/pipeline/pipeline_clock_in/sim/"]]
     set design_files [dict merge $design_files [pipeline_reset_in::get_common_design_files $USER_DEFINED_COMPILE_OPTIONS $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_VHDL_COMPILE_OPTIONS "$QSYS_SIMDIR/../../ip/pipeline/pipeline_reset_in/sim/"]]
+    set design_files [dict merge $design_files [pipeline_intel_vvp_tpg_1::get_common_design_files $USER_DEFINED_COMPILE_OPTIONS $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_VHDL_COMPILE_OPTIONS "$QSYS_SIMDIR/../../ip/pipeline/pipeline_intel_vvp_tpg_1/sim/"]]
     return $design_files
   }
   
   proc get_design_files {USER_DEFINED_COMPILE_OPTIONS USER_DEFINED_VERILOG_COMPILE_OPTIONS USER_DEFINED_VHDL_COMPILE_OPTIONS QSYS_SIMDIR QUARTUS_INSTALL_DIR} {
     set design_files [list]
+    set design_files [concat $design_files [pipeline_clock_in::get_design_files $USER_DEFINED_COMPILE_OPTIONS $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_VHDL_COMPILE_OPTIONS "$QSYS_SIMDIR/../../ip/pipeline/pipeline_clock_in/sim/" "$QUARTUS_INSTALL_DIR"]]
     set design_files [concat $design_files [pipeline_intel_vvp_pipeline2_0::get_design_files $USER_DEFINED_COMPILE_OPTIONS $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_VHDL_COMPILE_OPTIONS "$QSYS_SIMDIR/../../ip/pipeline/pipeline_intel_vvp_pipeline2_0/sim/" "$QUARTUS_INSTALL_DIR"]]
     set design_files [concat $design_files [pipeline_intel_vvp_protocol_conv_0::get_design_files $USER_DEFINED_COMPILE_OPTIONS $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_VHDL_COMPILE_OPTIONS "$QSYS_SIMDIR/../../ip/pipeline/pipeline_intel_vvp_protocol_conv_0/sim/" "$QUARTUS_INSTALL_DIR"]]
-    set design_files [concat $design_files [pipeline_intel_vvp_tpg_1::get_design_files $USER_DEFINED_COMPILE_OPTIONS $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_VHDL_COMPILE_OPTIONS "$QSYS_SIMDIR/../../ip/pipeline/pipeline_intel_vvp_tpg_1/sim/" "$QUARTUS_INSTALL_DIR"]]
-    set design_files [concat $design_files [pipeline_clock_in::get_design_files $USER_DEFINED_COMPILE_OPTIONS $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_VHDL_COMPILE_OPTIONS "$QSYS_SIMDIR/../../ip/pipeline/pipeline_clock_in/sim/" "$QUARTUS_INSTALL_DIR"]]
     set design_files [concat $design_files [pipeline_reset_in::get_design_files $USER_DEFINED_COMPILE_OPTIONS $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_VHDL_COMPILE_OPTIONS "$QSYS_SIMDIR/../../ip/pipeline/pipeline_reset_in/sim/" "$QUARTUS_INSTALL_DIR"]]
+    set design_files [concat $design_files [pipeline_intel_vvp_tpg_1::get_design_files $USER_DEFINED_COMPILE_OPTIONS $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_VHDL_COMPILE_OPTIONS "$QSYS_SIMDIR/../../ip/pipeline/pipeline_intel_vvp_tpg_1/sim/" "$QUARTUS_INSTALL_DIR"]]
     lappend design_files "vlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS  \"[normalize_path "$QSYS_SIMDIR/../altera_reset_controller_1924/sim/altera_reset_controller.v"]\"  -work altera_reset_controller_1924"  
     lappend design_files "vlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS  \"[normalize_path "$QSYS_SIMDIR/../altera_reset_controller_1924/sim/altera_reset_synchronizer.v"]\"  -work altera_reset_controller_1924"
     lappend design_files "vlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS  \"[normalize_path "$QSYS_SIMDIR/pipeline.v"]\"  -work pipeline"                                                                         
@@ -62,11 +62,11 @@ namespace eval pipeline {
   
   proc get_elab_options {SIMULATOR_TOOL_BITNESS} {
     set ELAB_OPTIONS ""
+    append ELAB_OPTIONS [get_non_duplicate_elab_option $ELAB_OPTIONS [pipeline_clock_in::get_elab_options $SIMULATOR_TOOL_BITNESS]]
     append ELAB_OPTIONS [get_non_duplicate_elab_option $ELAB_OPTIONS [pipeline_intel_vvp_pipeline2_0::get_elab_options $SIMULATOR_TOOL_BITNESS]]
     append ELAB_OPTIONS [get_non_duplicate_elab_option $ELAB_OPTIONS [pipeline_intel_vvp_protocol_conv_0::get_elab_options $SIMULATOR_TOOL_BITNESS]]
-    append ELAB_OPTIONS [get_non_duplicate_elab_option $ELAB_OPTIONS [pipeline_intel_vvp_tpg_1::get_elab_options $SIMULATOR_TOOL_BITNESS]]
-    append ELAB_OPTIONS [get_non_duplicate_elab_option $ELAB_OPTIONS [pipeline_clock_in::get_elab_options $SIMULATOR_TOOL_BITNESS]]
     append ELAB_OPTIONS [get_non_duplicate_elab_option $ELAB_OPTIONS [pipeline_reset_in::get_elab_options $SIMULATOR_TOOL_BITNESS]]
+    append ELAB_OPTIONS [get_non_duplicate_elab_option $ELAB_OPTIONS [pipeline_intel_vvp_tpg_1::get_elab_options $SIMULATOR_TOOL_BITNESS]]
     if ![ string match "bit_64" $SIMULATOR_TOOL_BITNESS ] {
     } else {
     }
@@ -76,11 +76,11 @@ namespace eval pipeline {
   
   proc get_sim_options {SIMULATOR_TOOL_BITNESS} {
     set SIM_OPTIONS ""
+    append SIM_OPTIONS [pipeline_clock_in::get_sim_options $SIMULATOR_TOOL_BITNESS]
     append SIM_OPTIONS [pipeline_intel_vvp_pipeline2_0::get_sim_options $SIMULATOR_TOOL_BITNESS]
     append SIM_OPTIONS [pipeline_intel_vvp_protocol_conv_0::get_sim_options $SIMULATOR_TOOL_BITNESS]
-    append SIM_OPTIONS [pipeline_intel_vvp_tpg_1::get_sim_options $SIMULATOR_TOOL_BITNESS]
-    append SIM_OPTIONS [pipeline_clock_in::get_sim_options $SIMULATOR_TOOL_BITNESS]
     append SIM_OPTIONS [pipeline_reset_in::get_sim_options $SIMULATOR_TOOL_BITNESS]
+    append SIM_OPTIONS [pipeline_intel_vvp_tpg_1::get_sim_options $SIMULATOR_TOOL_BITNESS]
     if ![ string match "bit_64" $SIMULATOR_TOOL_BITNESS ] {
     } else {
     }
@@ -91,11 +91,11 @@ namespace eval pipeline {
   proc get_env_variables {SIMULATOR_TOOL_BITNESS} {
     set ENV_VARIABLES [dict create]
     set LD_LIBRARY_PATH [dict create]
+    set LD_LIBRARY_PATH [dict merge $LD_LIBRARY_PATH [dict get [pipeline_clock_in::get_env_variables $SIMULATOR_TOOL_BITNESS] "LD_LIBRARY_PATH"]]
     set LD_LIBRARY_PATH [dict merge $LD_LIBRARY_PATH [dict get [pipeline_intel_vvp_pipeline2_0::get_env_variables $SIMULATOR_TOOL_BITNESS] "LD_LIBRARY_PATH"]]
     set LD_LIBRARY_PATH [dict merge $LD_LIBRARY_PATH [dict get [pipeline_intel_vvp_protocol_conv_0::get_env_variables $SIMULATOR_TOOL_BITNESS] "LD_LIBRARY_PATH"]]
-    set LD_LIBRARY_PATH [dict merge $LD_LIBRARY_PATH [dict get [pipeline_intel_vvp_tpg_1::get_env_variables $SIMULATOR_TOOL_BITNESS] "LD_LIBRARY_PATH"]]
-    set LD_LIBRARY_PATH [dict merge $LD_LIBRARY_PATH [dict get [pipeline_clock_in::get_env_variables $SIMULATOR_TOOL_BITNESS] "LD_LIBRARY_PATH"]]
     set LD_LIBRARY_PATH [dict merge $LD_LIBRARY_PATH [dict get [pipeline_reset_in::get_env_variables $SIMULATOR_TOOL_BITNESS] "LD_LIBRARY_PATH"]]
+    set LD_LIBRARY_PATH [dict merge $LD_LIBRARY_PATH [dict get [pipeline_intel_vvp_tpg_1::get_env_variables $SIMULATOR_TOOL_BITNESS] "LD_LIBRARY_PATH"]]
     dict set ENV_VARIABLES "LD_LIBRARY_PATH" $LD_LIBRARY_PATH
     if ![ string match "bit_64" $SIMULATOR_TOOL_BITNESS ] {
     } else {
@@ -116,11 +116,11 @@ namespace eval pipeline {
   } 
   proc get_dpi_libraries {QSYS_SIMDIR} {
     set libraries [dict create]
+    set libraries [dict merge $libraries [pipeline_clock_in::get_dpi_libraries "$QSYS_SIMDIR/../../ip/pipeline/pipeline_clock_in/sim/"]]
     set libraries [dict merge $libraries [pipeline_intel_vvp_pipeline2_0::get_dpi_libraries "$QSYS_SIMDIR/../../ip/pipeline/pipeline_intel_vvp_pipeline2_0/sim/"]]
     set libraries [dict merge $libraries [pipeline_intel_vvp_protocol_conv_0::get_dpi_libraries "$QSYS_SIMDIR/../../ip/pipeline/pipeline_intel_vvp_protocol_conv_0/sim/"]]
-    set libraries [dict merge $libraries [pipeline_intel_vvp_tpg_1::get_dpi_libraries "$QSYS_SIMDIR/../../ip/pipeline/pipeline_intel_vvp_tpg_1/sim/"]]
-    set libraries [dict merge $libraries [pipeline_clock_in::get_dpi_libraries "$QSYS_SIMDIR/../../ip/pipeline/pipeline_clock_in/sim/"]]
     set libraries [dict merge $libraries [pipeline_reset_in::get_dpi_libraries "$QSYS_SIMDIR/../../ip/pipeline/pipeline_reset_in/sim/"]]
+    set libraries [dict merge $libraries [pipeline_intel_vvp_tpg_1::get_dpi_libraries "$QSYS_SIMDIR/../../ip/pipeline/pipeline_intel_vvp_tpg_1/sim/"]]
     
     return $libraries
   }

@@ -1008,7 +1008,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="TOPOLOGY" type="string">
           <ipxact:name>TOPOLOGY</ipxact:name>
           <ipxact:displayName>Video processing mode</ipxact:displayName>
-          <ipxact:value>FULL</ipxact:value>
+          <ipxact:value>CRS_ONLY</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="BPS" type="int">
           <ipxact:name>BPS</ipxact:name>
@@ -1543,7 +1543,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="SC_OUTPUT_HEIGHT" type="int">
           <ipxact:name>SC_OUTPUT_HEIGHT</ipxact:name>
           <ipxact:displayName>Output picture height</ipxact:displayName>
-          <ipxact:value>2196</ipxact:value>
+          <ipxact:value>2160</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SC_RUNTIME_CONTROL" type="int">
           <ipxact:name>SC_RUNTIME_CONTROL</ipxact:name>
@@ -1785,9 +1785,14 @@ https://fpgasoftware.intel.com/eula.-->
           <ipxact:displayName>Frame buffer memory base address</ipxact:displayName>
           <ipxact:value>0</ipxact:value>
         </ipxact:parameter>
+        <ipxact:parameter parameterId="FRC_MEM_BUFF_STRIDE" type="int">
+          <ipxact:name>FRC_MEM_BUFF_STRIDE</ipxact:name>
+          <ipxact:displayName>Inter-buffer stride (bytes)</ipxact:displayName>
+          <ipxact:value>49152</ipxact:value>
+        </ipxact:parameter>
         <ipxact:parameter parameterId="FRC_MEM_BUFF_LINE_STRIDE" type="int">
           <ipxact:name>FRC_MEM_BUFF_LINE_STRIDE</ipxact:name>
-          <ipxact:displayName>Interline stride (bytes)</ipxact:displayName>
+          <ipxact:displayName>Inter-line stride (bytes)</ipxact:displayName>
           <ipxact:value>512</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="FRC_RUNTIME_CONTROL" type="int">
@@ -1934,6 +1939,26 @@ https://fpgasoftware.intel.com/eula.-->
           <ipxact:name>EMIF_CTRL_PERFORMANCE_PROFILE</ipxact:name>
           <ipxact:displayName>Controller performance profile</ipxact:displayName>
           <ipxact:value>SEQ</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_CTRL_ECC_AUTOCORRECT_EN" type="int">
+          <ipxact:name>EMIF_CTRL_ECC_AUTOCORRECT_EN</ipxact:name>
+          <ipxact:displayName>Use ECC autocorrection</ipxact:displayName>
+          <ipxact:value>1</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_CTRL_AUTO_PRECHARGE_EN" type="int">
+          <ipxact:name>EMIF_CTRL_AUTO_PRECHARGE_EN</ipxact:name>
+          <ipxact:displayName>Force auto-precharge (Custom profile)</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_CTRL_BG_ROTATE_EN" type="string">
+          <ipxact:name>EMIF_CTRL_BG_ROTATE_EN</ipxact:name>
+          <ipxact:displayName>Bank group rotation (Custom profile)</ipxact:displayName>
+          <ipxact:value>1</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_CTRL_DIAG_HMC_ADDR_SWAP_EN" type="int">
+          <ipxact:name>EMIF_CTRL_DIAG_HMC_ADDR_SWAP_EN</ipxact:name>
+          <ipxact:displayName>Enable row/CS swap (Custom profile)</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="EMIF_TURNAROUND_R2W_SAMECS_CYC" type="int">
           <ipxact:name>EMIF_TURNAROUND_R2W_SAMECS_CYC</ipxact:name>
@@ -2994,6 +3019,11 @@ https://fpgasoftware.intel.com/eula.-->
       <altera:interface_mapping altera:name="clk" altera:internal="intel_vvp_pipeline2_0.clk" altera:type="clock" altera:dir="end">
         <altera:port_mapping altera:name="clk_clk" altera:internal="clk_clk"></altera:port_mapping>
       </altera:interface_mapping>
+      <altera:interface_mapping altera:name="frc_emif_mem" altera:internal="intel_vvp_pipeline2_0.frc_emif_mem"></altera:interface_mapping>
+      <altera:interface_mapping altera:name="frc_emif_mem_ck" altera:internal="intel_vvp_pipeline2_0.frc_emif_mem_ck"></altera:interface_mapping>
+      <altera:interface_mapping altera:name="frc_emif_mem_reset_n" altera:internal="intel_vvp_pipeline2_0.frc_emif_mem_reset_n"></altera:interface_mapping>
+      <altera:interface_mapping altera:name="frc_emif_oct" altera:internal="intel_vvp_pipeline2_0.frc_emif_oct"></altera:interface_mapping>
+      <altera:interface_mapping altera:name="frc_emif_ref_clk" altera:internal="intel_vvp_pipeline2_0.frc_emif_ref_clk"></altera:interface_mapping>
       <altera:interface_mapping altera:name="m_axis_video_out" altera:internal="intel_vvp_pipeline2_0.m_axis_video_out" altera:type="axi4stream" altera:dir="start">
         <altera:port_mapping altera:name="m_axis_video_out_tdata" altera:internal="m_axis_video_out_tdata"></altera:port_mapping>
         <altera:port_mapping altera:name="m_axis_video_out_tlast" altera:internal="m_axis_video_out_tlast"></altera:port_mapping>

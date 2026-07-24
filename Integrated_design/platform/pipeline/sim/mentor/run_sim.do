@@ -1,11 +1,11 @@
 
 # Move to sim directory
-cd /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/../platform/pipeline/sim/mentor
+cd /home/izaan-10xe/altera_video_pipeline/Integrated_design/app/../platform/pipeline/sim/mentor
 
 # Setup and Compile IP
-set QUARTUS_INSTALL_DIR /home/lpt-10xe/altera_pro/25.1.1/quartus
+set QUARTUS_INSTALL_DIR /home/izaan-10xe/altera_pro/25.1.1/quartus
 # 25.1.1 scatters the sim-lib sources; use the stitched dir built by setup_sim_libs.sh
-set QUARTUS_SIM_LIB_DIR /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/../sim_libs_c10gx
+set QUARTUS_SIM_LIB_DIR /home/izaan-10xe/altera_video_pipeline/Integrated_design/app/../sim_libs_c10gx
 source msim_setup.tcl
 
 # Compile Device Libraries
@@ -15,10 +15,10 @@ dev_com
 com
 
 # Compile RTL and TB
-vlog /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/../rtl/tb.v
-vlog /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/../rtl/top.v
-vlog /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/../rtl/make_file.v
-vlog /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/../rtl/controller.v
+vlog /home/izaan-10xe/altera_video_pipeline/Integrated_design/app/../rtl/tb.v
+vlog /home/izaan-10xe/altera_video_pipeline/Integrated_design/app/../rtl/top.v
+vlog /home/izaan-10xe/altera_video_pipeline/Integrated_design/app/../rtl/make_file.v
+vlog /home/izaan-10xe/altera_video_pipeline/Integrated_design/app/../rtl/controller.v
 
 # Elaborate
 set TOP_LEVEL_NAME work.tb

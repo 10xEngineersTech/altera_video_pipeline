@@ -55,7 +55,7 @@
 // =============================================================================
 
 module top #(
-    parameter        TOPOLOGY        = "FULL",
+    parameter        TOPOLOGY        = "CRS_ONLY",
     parameter [0:0]  INPUT_SEL       = 1'b0,
     parameter [0:0]  ENABLE_PIP      = 1'b0,
 
@@ -84,11 +84,11 @@ module top #(
     parameter [1:0]  PIP_BG_COLOR   = 2'd2,  // 0=Red, 1=Green, 2=Blue (VPSS R/G/B convention)
 
     // CRS output mode: 0=420, 2=422, 3=444
-    parameter [31:0] CRS_OUTPUT_MODE =                                                                                                                                                      32'd3,
+    parameter [31:0] CRS_OUTPUT_MODE =                                                                                                                                                                          32'd2,
 
     // CSC mode: 0=passthrough, 1=RGB->YCbCrHD, 2=YCbCrHD->RGB,
     //           3=RGB->YCbCrSD, 4=YCbCrSD->RGB
-    parameter [2:0]  CSC_MODE =                                                                                                                3'd2,
+    parameter [2:0]  CSC_MODE =                                                                                                                                    3'd0,
     parameter [31:0] CSC_COLOR_SPACE = 32'd2,
 	 
 	 
@@ -244,22 +244,49 @@ module top #(
     // same nominal red bar sourced via RGB+CSC lands at Y72/Cb104/Cr200).
     // Using the native-calibrated constants for RGB mode produced a visibly
     // different shade than the TPG's own bar, so select per TPG_MODE.
-    localparam [0:0]  PIP_BG_IS_RGB_SRC = (TPG_MODE == 32'd0);
-    localparam [31:0] PIP_BG_Y  = PIP_BG_IS_RGB_SRC ?
+    //
+    // A third case: when CSC converts the main video YCbCr->RGB (CSC_MODE 2
+    // or 4), the stream reaching the mixer is genuinely RGB, not YCbCr - a
+    // fixed-YCbCr-calibrated background would show as a wrong color (e.g.
+    // Blue's YCbCr bytes 0x72/0x23/0xd4 read as literal RGB are a violet
+    // shade, not blue). This core is a constant-color pattern - its "C0/C1/
+    // C2 -> Cb/Y/Cr" labeling is only a convention for the YCbCr case; for
+    // this case the same three registers instead hold literal B/G/R bytes
+    // directly (matching the {R,G,B} packing convert_rgb() expects), with
+    // no YCbCr math applied at all. Values are the BT.709 studio-range RGB
+    // equivalents of the TPG's own native Red/Green/Blue bars (confirmed by
+    // direct capture: e.g. native Blue Y35/Cb212/Cr114 -> CSC's own output
+    // (0,12,200), matched here exactly) so the background is seamless with
+    // the post-CSC video regardless of what TPG variant feeds it.
+    localparam [0:0]  PIP_BG_IS_RGB_SRC     = (TPG_MODE == 32'd0);
+    localparam [0:0]  PIP_BG_IS_YCBCR_TO_RGB = (CSC_MODE == 3'd2) || (CSC_MODE == 3'd4);
+    localparam [31:0] PIP_BG_Y  = PIP_BG_IS_YCBCR_TO_RGB ?
+                                   ((PIP_BG_COLOR == 2'd0) ? 32'd18  :  // Red   G (YCbCr->RGB)
+                                    (PIP_BG_COLOR == 2'd1) ? 32'd161 :  // Green G (YCbCr->RGB)
+                                                              32'd12) : // Blue  G (YCbCr->RGB)
+                                   PIP_BG_IS_RGB_SRC ?
                                    ((PIP_BG_COLOR == 2'd0) ? 32'd72  :  // Red (RGB+CSC)
                                     (PIP_BG_COLOR == 2'd1) ? 32'd112 :  // Green (RGB+CSC)
                                                               32'd46) : // Blue (RGB+CSC)
                                    ((PIP_BG_COLOR == 2'd0) ? 32'd65  :  // Red (native YUV)
                                     (PIP_BG_COLOR == 2'd1) ? 32'd112 :  // Green (native YUV)
                                                               32'd35);  // Blue (native YUV)
-    localparam [31:0] PIP_BG_CB = PIP_BG_IS_RGB_SRC ?
+    localparam [31:0] PIP_BG_CB = PIP_BG_IS_YCBCR_TO_RGB ?
+                                   ((PIP_BG_COLOR == 2'd0) ? 32'd0   :  // Red   B (YCbCr->RGB)
+                                    (PIP_BG_COLOR == 2'd1) ? 32'd0   :  // Green B (YCbCr->RGB)
+                                                              32'd200) : // Blue  B (YCbCr->RGB)
+                                   PIP_BG_IS_RGB_SRC ?
                                    ((PIP_BG_COLOR == 2'd0) ? 32'd104 :  // Red (RGB+CSC)
                                     (PIP_BG_COLOR == 2'd1) ? 32'd80  :  // Green (RGB+CSC)
                                                               32'd200) : // Blue (RGB+CSC)
                                    ((PIP_BG_COLOR == 2'd0) ? 32'd100 :  // Red (native YUV)
                                     (PIP_BG_COLOR == 2'd1) ? 32'd72  :  // Green (native YUV)
                                                               32'd212); // Blue (native YUV)
-    localparam [31:0] PIP_BG_CR = PIP_BG_IS_RGB_SRC ?
+    localparam [31:0] PIP_BG_CR = PIP_BG_IS_YCBCR_TO_RGB ?
+                                   ((PIP_BG_COLOR == 2'd0) ? 32'd208 :  // Red   R (YCbCr->RGB)
+                                    (PIP_BG_COLOR == 2'd1) ? 32'd0   :  // Green R (YCbCr->RGB)
+                                                              32'd0) : // Blue  R (YCbCr->RGB)
+                                   PIP_BG_IS_RGB_SRC ?
                                    ((PIP_BG_COLOR == 2'd0) ? 32'd200 :  // Red (RGB+CSC)
                                     (PIP_BG_COLOR == 2'd1) ? 32'd68  :  // Green (RGB+CSC)
                                                               32'd116) : // Blue (RGB+CSC)

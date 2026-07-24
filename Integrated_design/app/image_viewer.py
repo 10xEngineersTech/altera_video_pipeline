@@ -343,7 +343,7 @@ class ImageViewerWindow(Gtk.Window):
         self.tpg_cs_combo.append_text("2 - YUV 4:2:2")
         self.tpg_cs_combo.append_text("3 - YUV 4:2:0")
         self.tpg_cs_combo.set_active(1)  # default YUV 4:4:4
-        self.tpg_cs_combo.connect("changed", lambda w: self._update_pip_colorspace_lock())
+        self.tpg_cs_combo.connect("changed", self._on_tpg_cs_changed)
         self.tpg_cs_group_box.pack_start(self.tpg_cs_combo, False, False, 0)
         sidebar.pack_start(self.tpg_cs_group_box, False, False, 0)
 
@@ -457,6 +457,20 @@ class ImageViewerWindow(Gtk.Window):
         enabled = self.pip_checkbox.get_active()
         self.params['pip_h_off'].set_sensitive(enabled and is_custom)
         self.params['pip_v_off'].set_sensitive(enabled and is_custom)
+
+    def _on_tpg_cs_changed(self, widget):
+        # The CSC dropdown has no memory of which TPG format it was last set
+        # up for - if the user manually picked a YCbCr<->RGB conversion for
+        # one test, then changed the TPG format for a different test without
+        # touching CSC again, the stale conversion silently carried over and
+        # produced a broken composite (confirmed: reproduced byte-for-byte
+        # identical output this way). Snap CSC back to passthrough on every
+        # TPG format change so each test starts from a safe, explicit choice
+        # - RGB's own case still gets auto-forced to the correct conversion
+        # by _update_pip_colorspace_lock right after.
+        if hasattr(self, "csc_combo"):
+            self.csc_combo.set_active(0)  # passthrough
+        self._update_pip_colorspace_lock()
 
     def _update_pip_colorspace_lock(self):
         # The PIP background TPG is hardware-fixed to YCbCr (4:4:4) - the main
@@ -753,13 +767,21 @@ class ImageViewerWindow(Gtk.Window):
             self._patch_topology_in_rtl(topology, csc_mode, self._get_crs_mode())
 
             # When PIP is on, the mixer's output canvas is the PIP background
-            # size, not the pipeline's own output size - and the final stream
-            # is always YCbCr 4:4:4 (native TPG or CSC-converted), so the
-            # render step needs that size/format regardless of the topology's
-            # own settings.
+            # size, not the pipeline's own output size, so the render step
+            # needs that size regardless of the topology's own settings.
+            # The final stream is YCbCr 4:4:4 in every case except one: CSC
+            # set to a YCbCr->RGB mode (2 or 4) genuinely converts the video
+            # to RGB before it reaches the mixer, and top.v calibrates the
+            # PIP background to match with literal RGB values in that case
+            # too - so the render step must decode as RGB here, not YCbCr,
+            # or the (correct) captured bytes get mis-decoded.
+            pip_csc_to_rgb = pip_enabled and csc_mode in (2, 4)
             render_w      = values["pip_bg_w"] if pip_enabled else out_w
             render_h      = values["pip_bg_h"] if pip_enabled else out_h
-            output_format = 1 if pip_enabled else self._get_output_format()
+            if pip_enabled:
+                output_format = 0 if pip_csc_to_rgb else 1
+            else:
+                output_format = self._get_output_format()
 
             # Inset position within the background canvas.
             max_h_off = max(0, values["pip_bg_w"] - out_w)

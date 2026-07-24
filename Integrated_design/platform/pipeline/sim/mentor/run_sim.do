@@ -20,14 +20,10 @@ vlog /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/
 vlog /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/../rtl/make_file.v
 vlog /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/../rtl/controller.v
 
-# Elaborate
+# Elaborate (optimized)
 set TOP_LEVEL_NAME work.tb
-set USER_DEFINED_ELAB_OPTIONS {-voptargs="+acc"}
-elab_debug
-
-# Add Waves (only useful if GUI opens, but harmless in command line)
-add wave /tb/dut/*
-add wave -r /*
+set USER_DEFINED_ELAB_OPTIONS {}
+elab
 
 # Run simulation
 run -all

@@ -179,7 +179,7 @@
                 <ipxact:parameter parameterId="addressSpan" type="string">
                     <ipxact:name>addressSpan</ipxact:name>
                     <ipxact:displayName>Address span</ipxact:displayName>
-                    <ipxact:value>4096</ipxact:value>
+                    <ipxact:value>268435456</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="addressUnits" type="string">
                     <ipxact:name>addressUnits</ipxact:name>
@@ -634,6 +634,43 @@
                     </ipxact:parameters>
                 </altera:altera_assignments>
             </ipxact:vendorExtensions>
+        </ipxact:busInterface>
+        <ipxact:busInterface>
+            <ipxact:name>emif_ref_clk</ipxact:name>
+            <ipxact:busType vendor="intel" library="intel" name="clock" version="25.1"/>
+            <ipxact:abstractionTypes>
+                <ipxact:abstractionType>
+                    <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="25.1"/>
+                    <ipxact:portMaps>
+                        <ipxact:portMap>
+                            <ipxact:logicalPort>
+                                <ipxact:name>clk</ipxact:name>
+                            </ipxact:logicalPort>
+                            <ipxact:physicalPort>
+                                <ipxact:name>emif_ref_clk_clk</ipxact:name>
+                            </ipxact:physicalPort>
+                        </ipxact:portMap>
+                    </ipxact:portMaps>
+                </ipxact:abstractionType>
+            </ipxact:abstractionTypes>
+            <ipxact:slave/>
+            <ipxact:parameters>
+                <ipxact:parameter parameterId="clockRate" type="longint">
+                    <ipxact:name>clockRate</ipxact:name>
+                    <ipxact:displayName>Clock rate</ipxact:displayName>
+                    <ipxact:value>0</ipxact:value>
+                </ipxact:parameter>
+                <ipxact:parameter parameterId="externallyDriven" type="bit">
+                    <ipxact:name>externallyDriven</ipxact:name>
+                    <ipxact:displayName>Externally driven</ipxact:displayName>
+                    <ipxact:value>false</ipxact:value>
+                </ipxact:parameter>
+                <ipxact:parameter parameterId="ptfSchematicName" type="string">
+                    <ipxact:name>ptfSchematicName</ipxact:name>
+                    <ipxact:displayName>PTF schematic name</ipxact:displayName>
+                    <ipxact:value></ipxact:value>
+                </ipxact:parameter>
+            </ipxact:parameters>
         </ipxact:busInterface>
         <ipxact:busInterface>
             <ipxact:name>axi4s_vid_in</ipxact:name>
@@ -1789,7 +1826,7 @@
                     <ipxact:vectors>
                         <ipxact:vector>
                             <ipxact:left>0</ipxact:left>
-                            <ipxact:right>11</ipxact:right>
+                            <ipxact:right>27</ipxact:right>
                         </ipxact:vector>
                     </ipxact:vectors>
                     <ipxact:wireTypeDefs>
@@ -1993,6 +2030,18 @@
                     <ipxact:wireTypeDefs>
                         <ipxact:wireTypeDef>
                             <ipxact:typeName>STD_LOGIC_VECTOR</ipxact:typeName>
+                            <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+                        </ipxact:wireTypeDef>
+                    </ipxact:wireTypeDefs>
+                </ipxact:wire>
+            </ipxact:port>
+            <ipxact:port>
+                <ipxact:name>emif_ref_clk_clk</ipxact:name>
+                <ipxact:wire>
+                    <ipxact:direction>in</ipxact:direction>
+                    <ipxact:wireTypeDefs>
+                        <ipxact:wireTypeDef>
+                            <ipxact:typeName>STD_LOGIC</ipxact:typeName>
                             <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
                         </ipxact:wireTypeDef>
                     </ipxact:wireTypeDefs>
@@ -2563,6 +2612,21 @@
                     <ipxact:name>AUTO_S0_CPU_INFO_ID</ipxact:name>
                     <ipxact:displayName>Auto CPU_INFO_ID</ipxact:displayName>
                     <ipxact:value></ipxact:value>
+                </ipxact:parameter>
+                <ipxact:parameter parameterId="AUTO_EMIF_REF_CLK_CLOCK_RATE" type="longint">
+                    <ipxact:name>AUTO_EMIF_REF_CLK_CLOCK_RATE</ipxact:name>
+                    <ipxact:displayName>Auto CLOCK_RATE</ipxact:displayName>
+                    <ipxact:value>-1</ipxact:value>
+                </ipxact:parameter>
+                <ipxact:parameter parameterId="AUTO_EMIF_REF_CLK_CLOCK_DOMAIN" type="longint">
+                    <ipxact:name>AUTO_EMIF_REF_CLK_CLOCK_DOMAIN</ipxact:name>
+                    <ipxact:displayName>Auto CLOCK_DOMAIN</ipxact:displayName>
+                    <ipxact:value>-1</ipxact:value>
+                </ipxact:parameter>
+                <ipxact:parameter parameterId="AUTO_EMIF_REF_CLK_RESET_DOMAIN" type="longint">
+                    <ipxact:name>AUTO_EMIF_REF_CLK_RESET_DOMAIN</ipxact:name>
+                    <ipxact:displayName>Auto RESET_DOMAIN</ipxact:displayName>
+                    <ipxact:value>-1</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="AUTO_AV_MM_CONTROL_AGENT_CPU_INFO_ID" type="string">
                     <ipxact:name>AUTO_AV_MM_CONTROL_AGENT_CPU_INFO_ID</ipxact:name>

@@ -71,11 +71,11 @@ module top #(
     parameter [31:0] SCALER_OUT_H    = 32'd480,
 
     // CRS output mode: 0=420, 2=422, 3=444
-    parameter [31:0] CRS_OUTPUT_MODE =                                                                                                                32'd3,
+    parameter [31:0] CRS_OUTPUT_MODE =                                                                                                                       32'd3,
 
     // CSC mode: 0=passthrough, 1=RGB->YCbCrHD, 2=YCbCrHD->RGB,
     //           3=RGB->YCbCrSD, 4=YCbCrSD->RGB
-    parameter [2:0]  CSC_MODE =                                                                                                                3'd2,
+    parameter [2:0]  CSC_MODE =                                                                                                                       3'd0,
     parameter [31:0] CSC_COLOR_SPACE = 32'd2,
 	 
 	 
@@ -84,10 +84,25 @@ module top #(
 
     // Number of color planes on the scaler datapath (must match the generated
     // pipeline IP's NUMBER_OF_COLOR_PLANES): 3 for RGB/4:4:4, 2 for 4:2:2/4:2:0.
-    parameter [31:0] VID_PLANES = 32'd3
+    parameter [31:0] VID_PLANES = 32'd3,
+
+    // Frame Rate Conversion select. Mirrors the packaged-IP build:
+    //   1 = build INCLUDES the VFB frame buffer (SCL->ltf->VFB->out). The FSM
+    //       must start the VFB read side (OUTPUT_CONTROL GO) or nothing is
+    //       emitted; m_axis_video_out then carries the FRAME READ from DDR4.
+    //   0 = build has NO VFB; the scaler output goes straight to
+    //       m_axis_video_out (original behaviour, no VFB register writes).
+    // Driven from app/configuration.vh via tb.v. No platform-design change:
+    // the top-level Qsys wiring is identical for both builds.
+    parameter [0:0]  FRC_ENABLE = 1'b0
 )(
     input  wire        clk,
     input  wire        reset,
+
+    // Dedicated EMIF reference clock (must be 200 MHz - the io96b EMIF PHY is
+    // built for a 200 MHz refclk; feeding it the 100 MHz video clock stalls
+    // calibration so the VFB never writes). Separate from the video clock.
+    input  wire        emif_ref_clk,
 
     output wire [23:0] out_tdata,
     output wire        out_tvalid,
@@ -170,6 +185,29 @@ module top #(
     localparam [11:0] SCL_OUT_WIDTH   = SCL_BASE | 12'h148;  // 0x948 OUTPUT_WIDTH
     localparam [11:0] SCL_OUT_HEIGHT  = SCL_BASE | 12'h14C;  // 0x94C OUTPUT_HEIGHT
 
+    // --- VFB / Frame Rate Converter base = 0xE00 (last datapath stage) ---
+    // Register offsets are word<<2 | base over the s0 bridge.
+    //   OUTPUT_CONTROL word 87 -> 0xF5C, bit0 = GO (start read side)
+    //   OUTPUT_STATUS  word 84 -> 0xF50, bit0 = RUNNING (read side active)
+    localparam [11:0] VFB_BASE        = 12'hE00;
+    localparam [11:0] VFB_IN_FIELDS   = VFB_BASE | 12'h144;  // 0xF44 NUM_INPUT_FIELDS (write side)
+    localparam [11:0] VFB_OUT_CTRL    = VFB_BASE | 12'h15C;  // 0xF5C OUTPUT_CONTROL bit0=GO
+    localparam [11:0] VFB_OUT_STATUS  = VFB_BASE | 12'h150;  // 0xF50 OUTPUT_STATUS  bit0=RUNNING
+
+    // --- L2F (Lite->Full) protocol converter ltf_conv_0, base = 0xC00 ---
+    // Sits between scaler (Lite out) and VFB (Full in); it needs its image-info
+    // programmed + GO set or it swallows one beat and stalls (scaler backs up).
+    // Same VVP protocol-converter regmap as PC1: word<<2 | base.
+    //   IMG_INFO width 0x48 / height 0x49 / interlace 0x4A / colorspace 0x4C /
+    //   subsampling 0x4D ; CTRL 0x55 bit0 = GO.
+    localparam [11:0] LTF_BASE        = 12'hC00;
+    localparam [11:0] LTF_WIDTH       = LTF_BASE | 12'h120;  // 0xD20 IMG_INFO width
+    localparam [11:0] LTF_HEIGHT      = LTF_BASE | 12'h124;  // 0xD24 IMG_INFO height
+    localparam [11:0] LTF_INTERLACE   = LTF_BASE | 12'h128;  // 0xD28 IMG_INFO interlace
+    localparam [11:0] LTF_COLORSPACE  = LTF_BASE | 12'h130;  // 0xD30 IMG_INFO colorspace
+    localparam [11:0] LTF_SUBSAMP     = LTF_BASE | 12'h134;  // 0xD34 IMG_INFO subsampling
+    localparam [11:0] LTF_CTRL        = LTF_BASE | 12'h154;  // 0xD54 CTRL bit0=GO
+
     // --- PC1 (7-bit word addressed, own Avalon port) ---
     localparam [6:0] PC1_ADDR_WIDTH       = 7'h48;
     localparam [6:0] PC1_ADDR_HEIGHT      = 7'h49;
@@ -202,7 +240,10 @@ module top #(
         ST_CONFIG_PC1  = 5'd27,
         ST_WORKING     = 5'd28,
         ST_WAIT_CRS    = 5'd29,
-		  
+        ST_FRC_WR_WAIT = 5'd30,   // FRC: let write side fill DDR4; poll NUM_INPUT_FIELDS
+        ST_FRC_GO      = 5'd31,   // FRC: full frame written -> start VFB read (GO)
+        ST_CONFIG_LTF  = 5'd19,   // FRC: program the L2F (ltf_conv) after the scaler
+
 		  // TPG (own Avalon port)
         ST_TPG_CTRL_1    = 5'd0,
         ST_TPG_WR_INTL   = 5'd1,
@@ -216,6 +257,12 @@ module top #(
         ST_TPG_POLL_W    = 5'd9,
         ST_TPG_IP_RST    = 5'd10,
         ST_TPG_CTRL_3    = 5'd11;
+
+    // Where the config FSM goes once the datapath is set up. In an FRC build we
+    // first program the L2F converter (ST_CONFIG_LTF), then let the write side
+    // fill DDR4 (ST_FRC_WR_WAIT) and start the read once a full frame is in
+    // memory (ST_FRC_GO); otherwise we go straight to ST_WORKING.
+    localparam [4:0] POST_CFG = FRC_ENABLE ? ST_CONFIG_LTF : ST_WORKING;
 
     // =========================================================================
     // CSC coefficient ROMs
@@ -271,7 +318,14 @@ module top #(
     reg        pc1_write;
     reg [31:0] pc1_wdata;
 
-    reg [11:0] bridge_addr;
+    // The pipeline's s0 control bus widens when the internal EMIF is present:
+    // its AXI4-Lite calibration/status CSR sits on the bridge at 0x0800_0000
+    // (27-bit span), so s0_address grows to 28-bit for the FRC/EMIF build; the
+    // non-FRC build keeps the original 12-bit (4KB) control map. All register
+    // offsets used below are <= 0xFFF, so the high bits are simply driven to 0.
+    localparam integer S0_AW = FRC_ENABLE ? 28 : 12;
+
+    reg [S0_AW-1:0] bridge_addr;
     reg [31:0] bridge_wdata;
     reg        bridge_write;
     reg        bridge_read;
@@ -444,7 +498,7 @@ module top #(
                         pc1_wdata     <= IMG_WIDTH;
                         current_state <= ST_CONFIG_PC1;
                     end else begin
-                        current_state <= ST_WORKING;
+                        current_state <= POST_CFG;
                     end
                 end
 
@@ -512,7 +566,7 @@ module top #(
                                 pc1_wdata     <= IMG_WIDTH;
                                 current_state <= ST_CONFIG_PC1;
                             end else begin
-                                current_state <= ST_WORKING;
+                                current_state <= POST_CFG;
                             end
                         end else begin
                             cfg_step <= cfg_step + 1'b1;
@@ -576,7 +630,7 @@ module top #(
 												pc1_wdata     <= IMG_WIDTH;
 												current_state <= ST_CONFIG_PC1;
 										  end else begin
-												current_state <= ST_WORKING;
+												current_state <= POST_CFG;
 										  end
                             end
                             // else: pending still set, re-poll
@@ -597,7 +651,7 @@ module top #(
                             pc1_wdata     <= IMG_WIDTH;
                             current_state <= ST_CONFIG_PC1;
                         end else begin
-                            current_state <= ST_WORKING;
+                            current_state <= POST_CFG;
                         end
                     end else begin
                         wait_counter <= wait_counter + 1'b1;
@@ -626,7 +680,7 @@ module top #(
                             end else if (DO_CRS) begin
                                 // Combined: no data flowing, CSC applies immediately.
                                 // Skip STATUS poll, go straight to WORKING.
-                                current_state <= ST_WORKING;
+                                current_state <= POST_CFG;
                             end else begin
                                 current_state <= ST_POLL_CSC;
                             end
@@ -671,7 +725,7 @@ module top #(
                         if (bridge_readdatavalid) begin
                             cfg_step <= 4'd0;
                             if (bridge_readdata[1] == 1'b0) begin
-                                current_state <= ST_WORKING;
+                                current_state <= POST_CFG;
                             end
                             // else: pending still set, re-poll
                         end
@@ -687,7 +741,7 @@ module top #(
                         if (cfg_step == 4'd5) begin
                             pc1_write     <= 1'b0;
                             cfg_step      <= 4'd0;
-                            current_state <= ST_WORKING;
+                            current_state <= POST_CFG;
                         end else begin
                             cfg_step <= cfg_step + 1'b1;
                             case (cfg_step + 1'b1)
@@ -699,6 +753,83 @@ module top #(
                                 default: ;
                             endcase
                         end
+                    end
+                end
+
+                // --------------------------------------------------------------
+                // Program the L2F (ltf_conv_0) converter after the scaler.
+                // It converts the scaler's Lite output to Full for the VFB, but
+                // it needs its image-info written and GO set or it stalls after
+                // one beat (backpressuring the scaler). Video is gated here
+                // (frc_video_phase excludes this state), so we configure with the
+                // pipeline idle, then open the gate at ST_FRC_WR_WAIT.
+                // Regs (base 0xC00): width/height = scaler output, subsampling
+                // = 3 (4:4:4), colorspace = 1 (YCbCr), then CTRL GO = 1 last.
+                // --------------------------------------------------------------
+                ST_CONFIG_LTF: begin
+                    bridge_write <= 1'b1;
+                    case (cfg_step)
+                        4'd0: begin bridge_addr <= LTF_WIDTH;      bridge_wdata <= SCALER_OUT_W; end
+                        4'd1: begin bridge_addr <= LTF_HEIGHT;     bridge_wdata <= SCALER_OUT_H; end
+                        4'd2: begin bridge_addr <= LTF_INTERLACE;  bridge_wdata <= 32'h0;        end
+                        4'd3: begin bridge_addr <= LTF_COLORSPACE; bridge_wdata <= 32'h1;        end
+                        4'd4: begin bridge_addr <= LTF_SUBSAMP;    bridge_wdata <= 32'h3;        end
+                        4'd5: begin bridge_addr <= LTF_CTRL;       bridge_wdata <= 32'h1;        end
+                        default: ;
+                    endcase
+                    if (bridge_write && !bridge_wait) begin
+                        if (cfg_step == 4'd5) begin
+                            bridge_write  <= 1'b0;
+                            cfg_step      <= 4'd0;
+                            current_state <= ST_FRC_WR_WAIT;
+                        end else begin
+                            cfg_step <= cfg_step + 1'b1;
+                        end
+                    end
+                end
+
+                // --------------------------------------------------------------
+                // FRC write phase (FRC build only, entered via POST_CFG).
+                // Video is already flowing here (ready_to_start covers this state)
+                // so the VFB write side stores incoming frames into the DDR4
+                // memory model. The write side auto-runs (no GO); it stalls until
+                // DDR4 calibration completes, then writes. We poll NUM_INPUT_FIELDS
+                // (0xF44) and only advance once a full field/frame has been written
+                // to memory (counter != 0). This is an event-driven handshake -
+                // "write a complete frame, THEN read" - not a fixed timer.
+                // --------------------------------------------------------------
+                ST_FRC_WR_WAIT: begin
+                    if (cfg_step == 4'd0) begin
+                        bridge_read <= 1'b1;
+                        bridge_addr <= VFB_IN_FIELDS;
+                        if (bridge_read && !bridge_wait) begin
+                            bridge_read <= 1'b0;
+                            cfg_step    <= 4'd1;
+                        end
+                    end else begin
+                        if (bridge_readdatavalid) begin
+                            cfg_step <= 4'd0;
+                            // A complete input field has been written to DDR4.
+                            if (bridge_readdata != 32'd0)
+                                current_state <= ST_FRC_GO;
+                            // else: nothing written yet (still calibrating), re-poll
+                        end
+                    end
+                end
+
+                // --------------------------------------------------------------
+                // FRC read start: a full frame is now in memory, so start the VFB
+                // read side. Single 32-bit write of GO=1 to OUTPUT_CONTROL (0xF5C).
+                // The VFB scheduler only hands completed buffers to the reader, so
+                // m_axis_video_out now carries the frame read back from DDR4.
+                // --------------------------------------------------------------
+                ST_FRC_GO: begin
+                    bridge_write <= 1'b1;
+                    bridge_addr  <= VFB_OUT_CTRL;
+                    bridge_wdata <= 32'h00000001;   // OUTPUT_CONTROL.GO = 1
+                    if (bridge_write && !bridge_wait) begin
+                        bridge_write  <= 1'b0;
+                        current_state <= ST_WORKING;
                     end
                 end
 
@@ -723,21 +854,30 @@ module top #(
     //   Image mode:   always wait for ST_WORKING
     // =========================================================================
     wire ready_to_start;
+    // FRC build: video must keep flowing through the write phase so the VFB write
+    // side can fill DDR4 (ST_FRC_WR_WAIT/ST_FRC_GO) and on through ST_WORKING.
+    wire frc_video_phase = (current_state == ST_FRC_WR_WAIT) ||
+                           (current_state == ST_FRC_GO)      ||
+                           (current_state == ST_WORKING);
     generate
         if (DO_PC1) begin : gen_rts_image
-            // Image: only start when fully configured
-            assign ready_to_start = (current_state == ST_WORKING);
+            // Image: only start when fully configured (or, FRC, once the write
+            // phase begins so frames reach the VFB write side).
+            assign ready_to_start = FRC_ENABLE ? frc_video_phase
+                                               : (current_state == ST_WORKING);
         end else if (DO_CSC) begin : gen_rts_csc
             // Combined CRS+CSC: both committed with no live data; start at WORKING.
             // CSC_ONLY: start at ST_CONFIG_CSC (first frame absorbs commit).
-            assign ready_to_start = (DO_CRS ? (current_state == ST_WORKING) : (current_state >= ST_CONFIG_CSC));
+            assign ready_to_start = FRC_ENABLE ? frc_video_phase
+                                    : (DO_CRS ? (current_state == ST_WORKING) : (current_state >= ST_CONFIG_CSC));
         end else if (DO_SCL) begin : gen_rts_scl
-            assign ready_to_start = (current_state == ST_WORKING);
+            assign ready_to_start = FRC_ENABLE ? frc_video_phase
+                                               : (current_state == ST_WORKING);
         end else if (DO_CRS) begin : gen_rts_crs
             // CRS_ONLY: wait for full settling (ST_WAIT_CRS counts 32k cycles).
-            assign ready_to_start = (current_state == ST_WORKING);
+            assign ready_to_start = FRC_ENABLE ? frc_video_phase : (current_state == ST_WORKING);
         end else begin : gen_rts_default
-            assign ready_to_start = (current_state == ST_WORKING);
+            assign ready_to_start = FRC_ENABLE ? frc_video_phase : (current_state == ST_WORKING);
         end
     endgenerate
 
@@ -781,6 +921,7 @@ module top #(
     // =========================================================================
     pipeline u0 (
         .clk_clk                           (clk),
+        .emif_ref_clk_clk                  (emif_ref_clk),
         .reset_reset                       (reset),
         .intel_vvp_pipeline2_0_reset_reset (reset),
 

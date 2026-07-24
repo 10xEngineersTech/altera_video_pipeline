@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy
+ date="2026.07.24.10:15:37"
+ outputDirectory="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/">
+ <perimeter>
+  <parameter
+     name="AUTO_GENERATION_ID"
+     type="Integer"
+     defaultValue="0"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_UNIQUE_ID"
+     type="String"
+     defaultValue=""
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_FAMILY"
+     type="String"
+     defaultValue="Agilex 5"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE"
+     type="String"
+     defaultValue="A5ED065BB32AE6SR0"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_SPEEDGRADE"
+     type="String"
+     defaultValue="1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_BOARD"
+     type="String"
+     defaultValue="default"
+     onHdl="0"
+     affectsHdl="1" />
+  <interface name="mem_0" kind="conduit" start="0">
+   <property name="associatedClock" value="" />
+   <property name="associatedReset" value="" />
+   <property name="prSafe" value="false" />
+   <port name="mem_cke_0" direction="input" role="mem_cke" width="1" />
+   <port name="mem_odt_0" direction="input" role="mem_odt" width="1" />
+   <port name="mem_cs_n_0" direction="input" role="mem_cs_n" width="1" />
+   <port name="mem_a_0" direction="input" role="mem_a" width="17" />
+   <port name="mem_ba_0" direction="input" role="mem_ba" width="2" />
+   <port name="mem_bg_0" direction="input" role="mem_bg" width="1" />
+   <port name="mem_act_n_0" direction="input" role="mem_act_n" width="1" />
+   <port name="mem_par_0" direction="input" role="mem_par" width="1" />
+   <port name="mem_dq_0" direction="bidir" role="mem_dq" width="32" />
+   <port name="mem_dqs_t_0" direction="bidir" role="mem_dqs_t" width="4" />
+   <port name="mem_dqs_c_0" direction="bidir" role="mem_dqs_c" width="4" />
+   <port name="mem_alert_n_0" direction="output" role="mem_alert_n" width="1" />
+  </interface>
+  <interface name="mem_ck_0" kind="conduit" start="0">
+   <property name="associatedClock" value="" />
+   <property name="associatedReset" value="" />
+   <property name="prSafe" value="false" />
+   <port name="mem_ck_t_0" direction="input" role="mem_ck_t" width="1" />
+   <port name="mem_ck_c_0" direction="input" role="mem_ck_c" width="1" />
+  </interface>
+  <interface name="mem_reset_n" kind="conduit" start="0">
+   <property name="associatedClock" value="" />
+   <property name="associatedReset" value="" />
+   <property name="prSafe" value="false" />
+   <port name="mem_reset_n_0" direction="input" role="mem_reset_n" width="1" />
+  </interface>
+  <interface name="oct_0" kind="conduit" start="0">
+   <property name="associatedClock" value="" />
+   <property name="associatedReset" value="" />
+   <property name="prSafe" value="false" />
+   <port name="oct_rzqin_0" direction="output" role="oct_rzqin" width="1" />
+  </interface>
+ </perimeter>
+ <entity kind="pipeline_mem_0" version="1.0" name="pipeline_mem_0">
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_DEVICE" value="A5ED065BB32AE6SR0" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 5" />
+  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_UNIQUE_ID" value="" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
+  <generatedFiles>
+   <file
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/synth/pipeline_mem_0.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/synth/pipeline_mem_0.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0.ip" />
+  </sourceFiles>
+  <childSourceFiles>
+   <file
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/emif_io96b/ip_mem_model/ddr4/emif_io96b_mem_model_ddr4_hw.tcl" />
+  </childSourceFiles>
+  <messages>
+   <message level="Info" culprit="pipeline_mem_0">"Generating: pipeline_mem_0"</message>
+   <message level="Info" culprit="pipeline_mem_0">"Generating: altera_emif_ddr4_model_top"</message>
+   <message level="Debug" culprit="mem_0">quartus_synth fileset time: 9.07 ms</message>
+  </messages>
+ </entity>
+ <entity
+   kind="emif_io96b_mem_model_ddr4"
+   version="1.0.0"
+   name="altera_emif_ddr4_model_top">
+  <parameter name="MEM_RD_PREAMBLE_MODE" value="1.0" />
+  <parameter name="SYSINFO_DEVICE_GROUP" value="B" />
+  <parameter name="MEM_TWTR_L_CRC_DM_NS" value="3.75" />
+  <parameter name="MEM_ACT_N_WIDTH" value="1" />
+  <parameter name="MEM_TZQINIT_CYC" value="1024.0" />
+  <parameter name="MEM_TREFI_NS" value="7800.0" />
+  <parameter name="MEM_TWR_CRC_DM_NS" value="3.75" />
+  <parameter name="MEM_TMPRR_NS" value="0.625" />
+  <parameter name="MEM_TRRD_DLR_NS" value="0.0" />
+  <parameter name="MEM_RANKS_PER_DIMM_HDL" value="0" />
+  <parameter name="MEM_CS_N_WIDTH" value="1" />
+  <parameter name="SYSINFO_DEVICE_FAMILY" value="Agilex 5" />
+  <parameter name="MEM_SPD138_RCD_CK_DRV" value="0.0" />
+  <parameter name="MEM_AC_MIRROR_EN" value="false" />
+  <parameter name="MEM_TRFC_NS" value="350.0" />
+  <parameter name="MEM_TCCD_S_NS" value="2.5" />
+  <parameter name="MEM_WR_PREAMBLE_MODE" value="1.0" />
+  <parameter name="MEM_COL_ADDR_WIDTH" value="10" />
+  <parameter name="MEM_TRCD_NS" value="12.5" />
+  <parameter name="MEM_TXS_DLL_NS" value="640.0" />
+  <parameter name="CTRL_DMDBI_EN" value="0" />
+  <parameter name="MEM_CLAMSHELL_EN" value="false" />
+  <parameter name="MEM_TWTR_S_CRC_DM_NS" value="3.75" />
+  <parameter name="SYSINFO_DEVICE_DIE_REVISIONS" value="MAIN_SM7_REVA" />
+  <parameter name="MEM_FORMAT_ENUM" value="MEM_FORMAT_DISCRETE" />
+  <parameter name="MEM_TRC_NS" value="44.5" />
+  <parameter name="MEM_TRAS_MAX_NS" value="70200.0" />
+  <parameter name="MEM_TMOD_NS" value="15.0" />
+  <parameter name="MEM_A_WIDTH" value="17" />
+  <parameter name="MEM_ODT_WIDTH" value="1" />
+  <parameter name="MEM_TRRD_L_NS" value="6.4" />
+  <parameter name="MEM_TFAW_DLR_NS" value="0.0" />
+  <parameter name="MEM_TCCD_DLR_NS" value="0.0" />
+  <parameter name="MEM_TCPDED_NS" value="2.5" />
+  <parameter name="MEM_TCK_CL_CWL_MIN_NS" value="0.625" />
+  <parameter name="MEM_AL_CYC" value="0.0" />
+  <parameter name="SYSINFO_SUPPORTS_VID" value="0" />
+  <parameter name="MEM_DBI_N_WIDTH" value="0" />
+  <parameter name="MEM_TCCD_L_NS" value="5.0" />
+  <parameter name="MEM_TMRD_NS" value="5.0" />
+  <parameter name="MEM_TRRD_S_NS" value="5.3" />
+  <parameter name="MEM_NUM_DIMMS" value="0" />
+  <parameter name="MEM_TRAS_NS" value="32.0" />
+  <parameter name="MEM_TFAW_NS" value="30.0" />
+  <parameter name="MEM_TDQSCK_NS" value="0.0" />
+  <parameter name="SYSINFO_DEVICE_IOBANK_REVISION" value="IO96B" />
+  <parameter name="MEM_FINE_GRANULARITY_REFRESH_MODE" value="1.0" />
+  <parameter name="MEM_RCD_PARITY_LATENCY_CONTROL_WORD" value="0.0" />
+  <parameter name="MEM_TDQSCK_MAX_MIN_NS" value="0.16" />
+  <parameter name="MEM_TWTR_S_NS" value="2.5" />
+  <parameter name="MEM_ROW_ADDR_WIDTH" value="16" />
+  <parameter name="MEM_CWL_CYC" value="16.0" />
+  <parameter name="SYSINFO_BOARD" value="default" />
+  <parameter name="MEM_CK_T_WIDTH" value="1" />
+  <parameter name="MEM_SPD137_RCD_CA_DRV" value="0.0" />
+  <parameter name="SYSINFO_DEVICE_BASE_DIE" value="SM7" />
+  <parameter name="MEM_TRTP_NS" value="7.5" />
+  <parameter name="MEM_TRAS_MIN_NS" value="32.0" />
+  <parameter name="MEM_BANK_ADDR_WIDTH" value="2" />
+  <parameter name="SYSINFO_DEVICE_SPEEDGRADE" value="6" />
+  <parameter name="MEM_BANK_GROUP_ADDR_WIDTH" value="1" />
+  <parameter name="MEM_TZQCS_NS" value="80.0" />
+  <parameter name="MEM_TZQOPER_CYC" value="512.0" />
+  <parameter name="MEM_CL_CYC" value="20.0" />
+  <parameter name="MEM_TCKSRE_NS" value="10.0" />
+  <parameter name="MEM_TWR_NS" value="15.0" />
+  <parameter name="MEM_AC_PARITY_LATENCY_MODE" value="0.0" />
+  <parameter name="MEM_DQS_C_WIDTH" value="4" />
+  <parameter name="MEM_CHIP_ID_WIDTH" value="0" />
+  <parameter name="MEM_TCKSRX_NS" value="10.0" />
+  <parameter name="MEM_RCD_PARITY_LATENCY_CYC" value="0.0" />
+  <parameter name="MEM_RESET_N_WIDTH" value="1" />
+  <parameter name="MEM_TXP_NS" value="6.0" />
+  <parameter name="MEM_TWTR_L_NS" value="7.5" />
+  <parameter name="MEM_TCKE_NS" value="5.0" />
+  <parameter name="MEM_TCKESR_CYC" value="9.0" />
+  <parameter name="MEM_CK_C_WIDTH" value="1" />
+  <parameter name="MEM_TRP_NS" value="12.5" />
+  <parameter name="MEM_WR_CRC_EN" value="0.0" />
+  <parameter name="SYSINFO_DEVICE_POWER_MODEL" value="STANDARD_POWER_FIXED" />
+  <parameter name="MEM_DQS_T_WIDTH" value="4" />
+  <parameter name="MEM_TRFC_DLR_NS" value="0.0" />
+  <parameter name="MEM_PAR_WIDTH" value="1" />
+  <parameter name="MEM_TXS_NS" value="360.0" />
+  <parameter name="SYSINFO_BOARD_TRAIT" value="" />
+  <parameter name="MEM_CKE_WIDTH" value="1" />
+  <parameter name="MEM_PAGE_SIZE" value="2048.0" />
+  <parameter name="SYSINFO_DEVICE" value="A5ED065BB32AE6SR0" />
+  <parameter name="SYSINFO_DEVICE_TEMPERATURE_GRADE" value="EXTENDED" />
+  <parameter name="MEM_ALERT_N_WIDTH" value="1" />
+  <parameter name="MEM_DQ_WIDTH" value="32" />
+  <parameter name="MEM_TCK_CL_CWL_MAX_NS" value="0.682" />
+  <generatedFiles>
+   <file
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddr4_model_top.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddr4_model_db_chip.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddr4_model_rcd_chip.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model_bidir_delay.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model_per_device.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model_per_ping_pong.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model_rank.sv"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddr4_model_top.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddr4_model_db_chip.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddr4_model_rcd_chip.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model_bidir_delay.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model_per_device.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model_per_ping_pong.sv"
+       attributes="" />
+   <file
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model_rank.sv"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/emif_io96b/ip_mem_model/ddr4/emif_io96b_mem_model_ddr4_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator instantiator="pipeline_mem_0" as="mem_0" />
+  <messages>
+   <message level="Info" culprit="pipeline_mem_0">"Generating: altera_emif_ddr4_model_top"</message>
+   <message level="Debug" culprit="mem_0">quartus_synth fileset time: 9.07 ms</message>
+  </messages>
+ </entity>
+</deploy>

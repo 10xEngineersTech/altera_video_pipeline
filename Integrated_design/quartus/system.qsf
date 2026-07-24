@@ -50,3 +50,5 @@ set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_clock_in.ip
 set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_intel_vvp_tpg_1.ip
 set_global_assignment -name QSYS_FILE ../platform/pipeline.qsys
 set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_intel_vvp_pipeline2_0.ip
+set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_mem_0.ip
+set_global_assignment -name IP_FILE ../platform/ip/pipeline/pipeline_intel_vvp_vfb_0.ip

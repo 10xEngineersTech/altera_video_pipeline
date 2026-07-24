@@ -279,6 +279,17 @@ class ImageViewerWindow(Gtk.Window):
         self.tpg_cs_group_box.pack_start(self.tpg_cs_combo, False, False, 0)
         sidebar.pack_start(self.tpg_cs_group_box, False, False, 0)
 
+        # Frame Rate Conversion checkbox.
+        # Checked  -> packaged IP build INCLUDES the VFB frame buffer; the RTL
+        #             starts the VFB read side and sc_data.txt holds the frame
+        #             read from DDR4 (note: requires DDR4 calibration, hours of
+        #             sim wall-time).
+        # Unchecked -> build has no VFB; sc_data.txt holds the scaler output.
+        self.frc_checkbox = Gtk.CheckButton(
+            label="Frame Rate Conversion (dump frame read)")
+        self.frc_checkbox.get_style_context().add_class("debug-checkbox")
+        sidebar.pack_start(self.frc_checkbox, False, False, 5)
+
         # Debug checkbox
         self.debug_checkbox = Gtk.CheckButton(label="Enable Debugging Mode")
         self.debug_checkbox.get_style_context().add_class("debug-checkbox")
@@ -419,6 +430,7 @@ class ImageViewerWindow(Gtk.Window):
             "input_sel": self.radio_image.get_active(),
             "params":    {k: v.get_value_as_int() for k, v in self.params.items()},
             "debug":     self.debug_checkbox.get_active(),
+            "frc":       self.frc_checkbox.get_active(),
             "crs_mode":  self._get_crs_mode(),
             "csc_mode":  self._get_csc_mode(),
             "tpg_cs":    self._get_tpg_colorspace(),
@@ -458,6 +470,9 @@ class ImageViewerWindow(Gtk.Window):
 
         # Restore debug
         self.debug_checkbox.set_active(data.get("debug", False))
+
+        # Restore Frame Rate Conversion
+        self.frc_checkbox.set_active(data.get("frc", False))
 
         # Restore CRS mode
         crs = data.get("crs_mode", 3)
@@ -577,6 +592,7 @@ class ImageViewerWindow(Gtk.Window):
 
     def on_apply_clicked(self, widget):
         is_debugging = self.debug_checkbox.get_active()
+        frc_on       = self.frc_checkbox.get_active()
         use_image    = self.radio_image.get_active()
         topology     = self._get_topology()
         values       = {k: v.get_value_as_int() for k, v in self.params.items()}
@@ -627,6 +643,8 @@ class ImageViewerWindow(Gtk.Window):
                 f.write(f"vid_planes = {self._get_vid_planes()}\n")
                 # Actual pipeline OUTPUT format for the decoder (after CSC/CRS)
                 f.write(f"output_format = {self._get_output_format()}\n")
+                # Frame Rate Conversion: True -> dump VFB frame read, else scaler out
+                f.write(f"frame_rate_conversion = {frc_on}\n")
 
             # 3. Write configuration.vh
             with open(vh_path, "w") as f:
@@ -643,6 +661,7 @@ class ImageViewerWindow(Gtk.Window):
                 f.write(f"parameter SCALER_HEIGHT   = {out_h};\n")
                 f.write(f"parameter TPG_COLORSPACE  = {self._get_tpg_colorspace()};\n")
                 f.write(f"parameter VID_PLANES      = {self._get_vid_planes()};\n")
+                f.write(f"parameter FRC_ENABLE      = {1 if frc_on else 0};\n")
 
             def run_pipeline():
                 try:

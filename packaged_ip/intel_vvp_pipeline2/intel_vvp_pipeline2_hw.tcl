@@ -759,12 +759,12 @@ set_parameter_property SC_H_INIT_FILE HDL_PARAMETER        false
 # ============================================================================
 add_parameter FRC_MAX_WIDTH INTEGER 128
 set_parameter_property FRC_MAX_WIDTH DISPLAY_NAME        "Maximum frame width"
-set_parameter_property FRC_MAX_WIDTH ALLOWED_RANGES       "1:16384"
+set_parameter_property FRC_MAX_WIDTH ALLOWED_RANGES       "32:16384"
 set_parameter_property FRC_MAX_WIDTH HDL_PARAMETER        false
 
 add_parameter FRC_MAX_HEIGHT INTEGER 96
 set_parameter_property FRC_MAX_HEIGHT DISPLAY_NAME        "Maximum frame height"
-set_parameter_property FRC_MAX_HEIGHT ALLOWED_RANGES       "1:16384"
+set_parameter_property FRC_MAX_HEIGHT ALLOWED_RANGES       "32:16384"
 set_parameter_property FRC_MAX_HEIGHT HDL_PARAMETER        false
 
 add_parameter FRC_FRAME_DROP_ENABLE INTEGER 1
@@ -789,7 +789,7 @@ set_parameter_property FRC_DROP_RPT_AUX HDL_PARAMETER        false
 
 add_parameter FRC_MAX_CONTROL_PACKETS INTEGER 0
 set_parameter_property FRC_MAX_CONTROL_PACKETS DISPLAY_NAME        "Maximum stored control packets"
-set_parameter_property FRC_MAX_CONTROL_PACKETS ALLOWED_RANGES       "0:16"
+set_parameter_property FRC_MAX_CONTROL_PACKETS ALLOWED_RANGES       {0 8 16 32 64 128 256}
 set_parameter_property FRC_MAX_CONTROL_PACKETS HDL_PARAMETER        false
 
 add_parameter FRC_INCLUDE_EMIF INTEGER 1
@@ -806,7 +806,7 @@ set_parameter_property FRC_AV_MM_DATA_WIDTH HDL_PARAMETER        false
 
 add_parameter FRC_AV_MM_ADDR_WIDTH INTEGER 32
 set_parameter_property FRC_AV_MM_ADDR_WIDTH DISPLAY_NAME        "Memory port address width (bits)"
-set_parameter_property FRC_AV_MM_ADDR_WIDTH ALLOWED_RANGES       "8:32"
+set_parameter_property FRC_AV_MM_ADDR_WIDTH ALLOWED_RANGES       "16:32"
 set_parameter_property FRC_AV_MM_ADDR_WIDTH HDL_PARAMETER        false
 
 add_parameter FRC_WRITE_FIFO_DEPTH INTEGER 64
@@ -842,10 +842,22 @@ set_parameter_property FRC_CLOCKS_ARE_SEPARATE HDL_PARAMETER        false
 
 add_parameter FRC_MEM_BUFF_BASE_ADDR INTEGER 0
 set_parameter_property FRC_MEM_BUFF_BASE_ADDR DISPLAY_NAME        "Frame buffer memory base address"
+set_parameter_property FRC_MEM_BUFF_BASE_ADDR DISPLAY_HINT         hexadecimal
+set_parameter_property FRC_MEM_BUFF_BASE_ADDR DESCRIPTION          "The base address for the frame buffer in memory."
 set_parameter_property FRC_MEM_BUFF_BASE_ADDR HDL_PARAMETER        false
 
+add_parameter FRC_MEM_BUFF_STRIDE INTEGER 49152
+set_parameter_property FRC_MEM_BUFF_STRIDE DISPLAY_NAME        "Inter-buffer stride (bytes)"
+set_parameter_property FRC_MEM_BUFF_STRIDE DISPLAY_HINT         hexadecimal
+set_parameter_property FRC_MEM_BUFF_STRIDE ALLOWED_RANGES       0:0x30000000
+set_parameter_property FRC_MEM_BUFF_STRIDE DESCRIPTION          "Size in bytes of each buffer in memory. Stride must be greater than the size of the largest frames to be buffered."
+set_parameter_property FRC_MEM_BUFF_STRIDE HDL_PARAMETER        false
+
 add_parameter FRC_MEM_BUFF_LINE_STRIDE INTEGER 512
-set_parameter_property FRC_MEM_BUFF_LINE_STRIDE DISPLAY_NAME        "Interline stride (bytes)"
+set_parameter_property FRC_MEM_BUFF_LINE_STRIDE DISPLAY_NAME        "Inter-line stride (bytes)"
+set_parameter_property FRC_MEM_BUFF_LINE_STRIDE DISPLAY_HINT         hexadecimal
+set_parameter_property FRC_MEM_BUFF_LINE_STRIDE ALLOWED_RANGES       0:0x7FFFF
+set_parameter_property FRC_MEM_BUFF_LINE_STRIDE DESCRIPTION          "Size in bytes of each line in memory. Stride must be greater than or equal to the size of the largest lines to be buffered."
 set_parameter_property FRC_MEM_BUFF_LINE_STRIDE HDL_PARAMETER        false
 
 add_parameter FRC_RUNTIME_CONTROL INTEGER 1
@@ -1005,6 +1017,31 @@ add_parameter EMIF_CTRL_PERFORMANCE_PROFILE STRING "SEQ"
 set_parameter_property EMIF_CTRL_PERFORMANCE_PROFILE DISPLAY_NAME "Controller performance profile"
 set_parameter_property EMIF_CTRL_PERFORMANCE_PROFILE ALLOWED_RANGES {"SEQ:Sequential Access Optimized" "RAND:Random Access Optimized" "CUSTOM:Custom"}
 set_parameter_property EMIF_CTRL_PERFORMANCE_PROFILE HDL_PARAMETER false
+
+# Controller knobs that the real EMIF editor reveals only for specific settings:
+#  - ECC autocorrection appears when ECC DQ width is non-zero
+#  - the three CUSTOM-profile knobs appear when the performance profile is Custom
+# They are greyed out (and not pushed to the EMIF) unless their condition holds,
+# exactly mirroring the emif_io96b_ddr4comp parameter editor.
+add_parameter EMIF_CTRL_ECC_AUTOCORRECT_EN INTEGER 1
+set_parameter_property EMIF_CTRL_ECC_AUTOCORRECT_EN DISPLAY_NAME "Use ECC autocorrection"
+set_parameter_property EMIF_CTRL_ECC_AUTOCORRECT_EN DISPLAY_HINT boolean
+set_parameter_property EMIF_CTRL_ECC_AUTOCORRECT_EN HDL_PARAMETER false
+
+add_parameter EMIF_CTRL_AUTO_PRECHARGE_EN INTEGER 0
+set_parameter_property EMIF_CTRL_AUTO_PRECHARGE_EN DISPLAY_NAME "Force auto-precharge (Custom profile)"
+set_parameter_property EMIF_CTRL_AUTO_PRECHARGE_EN DISPLAY_HINT boolean
+set_parameter_property EMIF_CTRL_AUTO_PRECHARGE_EN HDL_PARAMETER false
+
+add_parameter EMIF_CTRL_BG_ROTATE_EN STRING "1"
+set_parameter_property EMIF_CTRL_BG_ROTATE_EN DISPLAY_NAME "Bank group rotation (Custom profile)"
+set_parameter_property EMIF_CTRL_BG_ROTATE_EN ALLOWED_RANGES {"0:No BGs (disabled)" "1:Two BGs (BG[0])" "2:Four BGs (BG[1:0])" "3:Eight BGs (BG[2:0])"}
+set_parameter_property EMIF_CTRL_BG_ROTATE_EN HDL_PARAMETER false
+
+add_parameter EMIF_CTRL_DIAG_HMC_ADDR_SWAP_EN INTEGER 0
+set_parameter_property EMIF_CTRL_DIAG_HMC_ADDR_SWAP_EN DISPLAY_NAME "Enable row/CS swap (Custom profile)"
+set_parameter_property EMIF_CTRL_DIAG_HMC_ADDR_SWAP_EN DISPLAY_HINT boolean
+set_parameter_property EMIF_CTRL_DIAG_HMC_ADDR_SWAP_EN HDL_PARAMETER false
 
 # -- High-level configuration - Data bus turnaround times ----------------------
 add_parameter EMIF_TURNAROUND_R2W_SAMECS_CYC INTEGER 0
@@ -1628,6 +1665,7 @@ add_display_item frc_mem FRC_READ_BURST_TARGET    parameter
 add_display_item frc_mem FRC_PACKING              parameter
 add_display_item frc_mem FRC_CLOCKS_ARE_SEPARATE  parameter
 add_display_item frc_mem FRC_MEM_BUFF_BASE_ADDR   parameter
+add_display_item frc_mem FRC_MEM_BUFF_STRIDE      parameter
 add_display_item frc_mem FRC_MEM_BUFF_LINE_STRIDE parameter
 
 add_display_item frc_tab frc_ctrl group "Control"
@@ -1672,7 +1710,11 @@ add_display_item emif_hl_tab emif_ctrlg group "Controller"
 add_display_item emif_ctrlg EMIF_CTRL_DM_EN parameter
 add_display_item emif_ctrlg EMIF_CTRL_WR_DBI_EN parameter
 add_display_item emif_ctrlg EMIF_CTRL_RD_DBI_EN parameter
+add_display_item emif_ctrlg EMIF_CTRL_ECC_AUTOCORRECT_EN parameter
 add_display_item emif_ctrlg EMIF_CTRL_PERFORMANCE_PROFILE parameter
+add_display_item emif_ctrlg EMIF_CTRL_AUTO_PRECHARGE_EN parameter
+add_display_item emif_ctrlg EMIF_CTRL_BG_ROTATE_EN parameter
+add_display_item emif_ctrlg EMIF_CTRL_DIAG_HMC_ADDR_SWAP_EN parameter
 
 add_display_item emif_hl_tab emif_turn group "Data Bus Turnaround Times"
 add_display_item emif_turn EMIF_TURNAROUND_R2W_SAMECS_CYC parameter
@@ -1853,7 +1895,7 @@ proc validate {} {
                FRC_AV_MM_DATA_WIDTH FRC_AV_MM_ADDR_WIDTH
                FRC_WRITE_FIFO_DEPTH FRC_WRITE_BURST_TARGET FRC_READ_FIFO_DEPTH
                FRC_READ_BURST_TARGET FRC_PACKING FRC_CLOCKS_ARE_SEPARATE
-               FRC_MEM_BUFF_BASE_ADDR FRC_MEM_BUFF_LINE_STRIDE
+               FRC_MEM_BUFF_BASE_ADDR FRC_MEM_BUFF_STRIDE FRC_MEM_BUFF_LINE_STRIDE
                FRC_RUNTIME_CONTROL FRC_SEPARATE_SLAVE_CLOCK FRC_ENABLE_DEBUG} {
         set_parameter_property $p ENABLED $frc_on
     }
@@ -1894,6 +1936,15 @@ proc validate {} {
         [expr {$emif_on && ![get_parameter_value EMIF_PHY_SIDEBAND_AUTOSET]}]
     set_parameter_property EMIF_EX_DESIGN_USER_PLL_OUTPUT_FREQ_MHZ ENABLED \
         [expr {$emif_on && ![get_parameter_value EMIF_EX_DESIGN_USER_PLL_AUTOSET]}]
+    # Conditionally-revealed controller knobs (mirror the EMIF editor):
+    #  - ECC autocorrection: only with out-of-band ECC (ECC DQ width != 0)
+    #  - auto-precharge / bank-group rotation / row-CS swap: only for Custom profile
+    set emif_ecc_on    [expr {$emif_on && [get_parameter_value EMIF_MEM_CHANNEL_ECC_DQ_WIDTH] != 0}]
+    set emif_custom_on [expr {$emif_on && [get_parameter_value EMIF_CTRL_PERFORMANCE_PROFILE] eq "CUSTOM"}]
+    set_parameter_property EMIF_CTRL_ECC_AUTOCORRECT_EN    ENABLED $emif_ecc_on
+    set_parameter_property EMIF_CTRL_AUTO_PRECHARGE_EN     ENABLED $emif_custom_on
+    set_parameter_property EMIF_CTRL_BG_ROTATE_EN          ENABLED $emif_custom_on
+    set_parameter_property EMIF_CTRL_DIAG_HMC_ADDR_SWAP_EN ENABLED $emif_custom_on
     # JEDEC timing values are editable only when the override is enabled
     set emif_time_on [expr {$emif_on && [get_parameter_value EMIF_TIMING_OVERRIDE_EN]}]
     foreach p {
@@ -2319,6 +2370,7 @@ proc compose {} {
         set_instance_parameter_value intel_vvp_vfb_0 PACKING                       [get_parameter_value FRC_PACKING]
         set_instance_parameter_value intel_vvp_vfb_0 CLOCKS_ARE_SEPARATE           [get_parameter_value FRC_CLOCKS_ARE_SEPARATE]
         set_instance_parameter_value intel_vvp_vfb_0 MEM_BUFF_BASE_ADDR            [get_parameter_value FRC_MEM_BUFF_BASE_ADDR]
+        set_instance_parameter_value intel_vvp_vfb_0 MEM_BUFF_STRIDE               [get_parameter_value FRC_MEM_BUFF_STRIDE]
         set_instance_parameter_value intel_vvp_vfb_0 MEM_BUFF_LINE_STRIDE          [get_parameter_value FRC_MEM_BUFF_LINE_STRIDE]
         add_connection clock_in.out_clk   intel_vvp_vfb_0.main_clock
         add_connection reset_in.out_reset intel_vvp_vfb_0.main_reset
@@ -2356,6 +2408,16 @@ proc compose {} {
             set_instance_parameter_value frc_emif_0 CTRL_WR_DBI_EN                     [emif_bool [get_parameter_value EMIF_CTRL_WR_DBI_EN]]
             set_instance_parameter_value frc_emif_0 CTRL_RD_DBI_EN                     [emif_bool [get_parameter_value EMIF_CTRL_RD_DBI_EN]]
             set_instance_parameter_value frc_emif_0 CTRL_PERFORMANCE_PROFILE           [get_parameter_value EMIF_CTRL_PERFORMANCE_PROFILE]
+            # Conditionally-revealed controller knobs - only pushed when the EMIF
+            # editor would expose them, otherwise the EMIF applies its own default.
+            if {[get_parameter_value EMIF_MEM_CHANNEL_ECC_DQ_WIDTH] != 0} {
+                set_instance_parameter_value frc_emif_0 CTRL_ECC_AUTOCORRECT_EN [emif_bool [get_parameter_value EMIF_CTRL_ECC_AUTOCORRECT_EN]]
+            }
+            if {[get_parameter_value EMIF_CTRL_PERFORMANCE_PROFILE] eq "CUSTOM"} {
+                set_instance_parameter_value frc_emif_0 CTRL_AUTO_PRECHARGE_EN [emif_bool [get_parameter_value EMIF_CTRL_AUTO_PRECHARGE_EN]]
+                set_instance_parameter_value frc_emif_0 CTRL_BG_ROTATE_EN      [get_parameter_value EMIF_CTRL_BG_ROTATE_EN]
+                set_instance_parameter_value frc_emif_0 DIAG_HMC_ADDR_SWAP_EN  [emif_bool [get_parameter_value EMIF_CTRL_DIAG_HMC_ADDR_SWAP_EN]]
+            }
             set_instance_parameter_value frc_emif_0 TURNAROUND_R2W_SAMECS_CYC          [get_parameter_value EMIF_TURNAROUND_R2W_SAMECS_CYC]
             set_instance_parameter_value frc_emif_0 TURNAROUND_R2R_SAMECS_CYC          [get_parameter_value EMIF_TURNAROUND_R2R_SAMECS_CYC]
             set_instance_parameter_value frc_emif_0 TURNAROUND_W2W_SAMECS_CYC          [get_parameter_value EMIF_TURNAROUND_W2W_SAMECS_CYC]

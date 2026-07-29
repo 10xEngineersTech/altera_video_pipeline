@@ -1,0 +1,1 @@
+/home/lpt-10xe/altera_pro/25.1.1/questa_fse/intel/verilog/src/tennm_atoms.sv

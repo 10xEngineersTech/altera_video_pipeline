@@ -11,7 +11,7 @@ module pipeline_intel_vvp_pipeline2_0 (
 		output wire        s0_readdatavalid,        //                 .readdatavalid, Valid read data indication from Avalon Memory Mapped Agent
 		input  wire [0:0]  s0_burstcount,           //                 .burstcount,    Indicates number of burst transfers in each burst
 		input  wire [31:0] s0_writedata,            //                 .writedata,     Write Data from Avalon Memory Mapped Host
-		input  wire [12:0] s0_address,              //                 .address,       Address output from Avalon Memory Mapped Host
+		input  wire [11:0] s0_address,              //                 .address,       Address output from Avalon Memory Mapped Host
 		input  wire        s0_write,                //                 .write,         Write command from Avalon Memory Mapped Host
 		input  wire        s0_read,                 //                 .read,          Read command from Avalon Memory Mapped Host
 		input  wire [3:0]  s0_byteenable,           //                 .byteenable,    Indicates valid read/write data location
@@ -21,14 +21,14 @@ module pipeline_intel_vvp_pipeline2_0 (
 		output wire        s_axis_video_in_tready,  //                 .tready
 		input  wire        s_axis_video_in_tlast,   //                 .tlast
 		input  wire [2:0]  s_axis_video_in_tuser,   //                 .tuser
-		output wire [15:0] m_axis_video_out_tdata,  // m_axis_video_out.tdata
+		output wire [23:0] m_axis_video_out_tdata,  // m_axis_video_out.tdata
 		output wire        m_axis_video_out_tvalid, //                 .tvalid
 		input  wire        m_axis_video_out_tready, //                 .tready
 		output wire        m_axis_video_out_tlast,  //                 .tlast
-		output wire [1:0]  m_axis_video_out_tuser   //                 .tuser
+		output wire [2:0]  m_axis_video_out_tuser   //                 .tuser
 	);
 
-	pipeline_intel_vvp_pipeline2_0_intel_vvp_pipeline2_10_6bzmviq intel_vvp_pipeline2_0 (
+	pipeline_intel_vvp_pipeline2_0_intel_vvp_pipeline2_10_6uesdey intel_vvp_pipeline2_0 (
 		.clk_clk                 (clk_clk),                 //   input,   width = 1,              clk.clk
 		.reset_reset             (reset_reset),             //   input,   width = 1,            reset.reset
 		.s0_waitrequest          (s0_waitrequest),          //  output,   width = 1,               s0.waitrequest
@@ -36,7 +36,7 @@ module pipeline_intel_vvp_pipeline2_0 (
 		.s0_readdatavalid        (s0_readdatavalid),        //  output,   width = 1,                 .readdatavalid
 		.s0_burstcount           (s0_burstcount),           //   input,   width = 1,                 .burstcount
 		.s0_writedata            (s0_writedata),            //   input,  width = 32,                 .writedata
-		.s0_address              (s0_address),              //   input,  width = 13,                 .address
+		.s0_address              (s0_address),              //   input,  width = 12,                 .address
 		.s0_write                (s0_write),                //   input,   width = 1,                 .write
 		.s0_read                 (s0_read),                 //   input,   width = 1,                 .read
 		.s0_byteenable           (s0_byteenable),           //   input,   width = 4,                 .byteenable
@@ -46,11 +46,11 @@ module pipeline_intel_vvp_pipeline2_0 (
 		.s_axis_video_in_tready  (s_axis_video_in_tready),  //  output,   width = 1,                 .tready
 		.s_axis_video_in_tlast   (s_axis_video_in_tlast),   //   input,   width = 1,                 .tlast
 		.s_axis_video_in_tuser   (s_axis_video_in_tuser),   //   input,   width = 3,                 .tuser
-		.m_axis_video_out_tdata  (m_axis_video_out_tdata),  //  output,  width = 16, m_axis_video_out.tdata
+		.m_axis_video_out_tdata  (m_axis_video_out_tdata),  //  output,  width = 24, m_axis_video_out.tdata
 		.m_axis_video_out_tvalid (m_axis_video_out_tvalid), //  output,   width = 1,                 .tvalid
 		.m_axis_video_out_tready (m_axis_video_out_tready), //   input,   width = 1,                 .tready
 		.m_axis_video_out_tlast  (m_axis_video_out_tlast),  //  output,   width = 1,                 .tlast
-		.m_axis_video_out_tuser  (m_axis_video_out_tuser)   //  output,   width = 2,                 .tuser
+		.m_axis_video_out_tuser  (m_axis_video_out_tuser)   //  output,   width = 3,                 .tuser
 	);
 
 endmodule

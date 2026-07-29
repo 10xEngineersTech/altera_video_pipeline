@@ -1,0 +1,1 @@
+/home/lpt-10xe/altera_pro/25.1.1/quartus/eda/sim_lib/fmica_atoms_ncrypt.sv

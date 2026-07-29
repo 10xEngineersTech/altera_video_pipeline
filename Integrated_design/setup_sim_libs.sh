@@ -2,51 +2,67 @@
 #
 # setup_sim_libs.sh
 # ------------------
-# Builds a "stitched" simulation library directory (sim_libs_c10gx/) that
-# presents the classic Quartus  eda/sim_lib/{*, mentor/*}  layout that
+# Builds a "stitched" simulation library directory (sim_libs/) that presents the
+# classic Quartus  eda/sim_lib/{*, mentor/*}  layout that
 # platform/pipeline/sim/mentor/msim_setup.tcl (dev_com) expects.
 #
 # Quartus 25.1.1 scatters these source files across questa_fse/...,
-# quartus/libraries/vhdl/... and quartus/eda/sim_lib/common/ instead of a
-# single flat eda/sim_lib/ dir. This script auto-locates each file dev_com
-# needs (by basename) in the 25.1.1 tree and symlinks it into a flat dir,
-# plus a mentor/ subdir for the encrypted atoms. The two Cyclone 10 GX
-# HIP/HSSI *_ncrypt.v files are NOT shipped in 25.1.1, so they are stubbed
-# with empty files (unused by the video pipeline).
+# quartus/libraries/vhdl/... and quartus/eda/sim_lib/common/ instead of a single
+# flat eda/sim_lib/ dir -- only 2 of the ~24 files dev_com wants actually live
+# there. This script locates each file by basename in the install tree and
+# symlinks it into a flat dir, mirroring any subdirectory prefix (e.g. mentor/).
+#
+# The file list is NOT hardcoded -- it is parsed out of the generated
+# msim_setup.tcl, so it follows the design automatically when the target device
+# changes. (This script used to hardcode a Cyclone 10 GX list, which went
+# silently stale when the platform moved to Agilex 5 / tennm atoms.)
 #
 # After running, point QUARTUS_SIM_LIB_DIR at the generated dir:
-#   set QUARTUS_SIM_LIB_DIR .../Integrated_design/sim_libs_c10gx
+#   set QUARTUS_SIM_LIB_DIR .../Integrated_design/sim_libs
+# app/runProject.py already does this.
+#
+# Usage: ./setup_sim_libs.sh [path/to/msim_setup.tcl]
 #
 set -euo pipefail
 
-# Override by exporting QUARTUS_ROOT in ~/.bashrc; falls back to the local path.
-QUARTUS_ROOT="${QUARTUS_ROOT:-/mnt/ssd2/Quartus_25_1_1_Setup_Installation}"
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-OUT="$HERE/sim_libs_c10gx"
+OUT="$HERE/sim_libs"
 
-# Files dev_com opens directly under $QUARTUS_SIM_LIB_DIR/
-FLAT=(
-  220model.v 220model.vhd 220pack.vhd
-  alt_dspbuilder_package.vhd altera_europa_support_lib.vhd
-  altera_lnsim.sv altera_lnsim_components.vhd
-  altera_mf.v altera_mf.vhd altera_mf_components.vhd
-  altera_primitives.v altera_primitives.vhd altera_primitives_components.vhd
-  altera_standard_functions.vhd altera_syn_attributes.vhd
-  cyclone10gx_atoms.v cyclone10gx_atoms.vhd cyclone10gx_components.vhd
-  cyclone10gx_hip_atoms.v cyclone10gx_hip_atoms.vhd cyclone10gx_hip_components.vhd
-  cyclone10gx_hssi_atoms.v cyclone10gx_hssi_atoms.vhd cyclone10gx_hssi_components.vhd
-  sgate.v sgate.vhd sgate_pack.vhd
-  simsf_dpi.cpp
+# Resolve the Quartus install root: an explicit QUARTUS_ROOT wins, else derive it
+# from QUARTUS_ROOTDIR (which is <root>/quartus), else fall back to the local path.
+if [ -n "${QUARTUS_ROOT:-}" ]; then
+  :
+elif [ -n "${QUARTUS_ROOTDIR:-}" ]; then
+  QUARTUS_ROOT="$(dirname "$QUARTUS_ROOTDIR")"
+else
+  QUARTUS_ROOT="/home/lpt-10xe/altera_pro/25.1.1"
+fi
+
+if [ ! -d "$QUARTUS_ROOT" ]; then
+  echo "ERROR: Quartus install root not found: $QUARTUS_ROOT" >&2
+  echo "       Export QUARTUS_ROOT (or QUARTUS_ROOTDIR) and re-run." >&2
+  exit 1
+fi
+
+MSIM_SETUP="${1:-$HERE/platform/pipeline/sim/mentor/msim_setup.tcl}"
+if [ ! -f "$MSIM_SETUP" ]; then
+  echo "ERROR: msim_setup.tcl not found: $MSIM_SETUP" >&2
+  echo "       Generate the platform simulation model first." >&2
+  exit 1
+fi
+
+# Every device-library file dev_com opens, as a path relative to
+# $QUARTUS_SIM_LIB_DIR (entries may carry a subdir prefix, e.g. "mentor/").
+mapfile -t NEED < <(
+  grep -oE '\$QUARTUS_SIM_LIB_DIR/[A-Za-z0-9_./]+' "$MSIM_SETUP" \
+    | sed 's|^\$QUARTUS_SIM_LIB_DIR/||' \
+    | sort -u
 )
 
-# Files dev_com opens under $QUARTUS_SIM_LIB_DIR/mentor/
-MENTOR=( cyclone10gx_atoms_ncrypt.v )
-
-# Not shipped in 25.1.1 -> stub as empty (unused by this design)
-MENTOR_STUB=( cyclone10gx_hip_atoms_ncrypt.v cyclone10gx_hssi_atoms_ncrypt.v )
-
-rm -rf "$OUT"
-mkdir -p "$OUT/mentor"
+if [ "${#NEED[@]}" -eq 0 ]; then
+  echo "ERROR: parsed 0 device-library files out of $MSIM_SETUP" >&2
+  exit 1
+fi
 
 # Prefer the canonical simulation-source trees over scattered example-project
 # copies (e.g. ip/altera/.../example_project/common) which may be trimmed.
@@ -55,36 +71,54 @@ PREFERRED_ROOTS=(
   "$QUARTUS_ROOT/questa_fse/intel/vhdl/src"
   "$QUARTUS_ROOT/quartus/libraries/vhdl"
   "$QUARTUS_ROOT/quartus/eda/sim_lib"
+  "$QUARTUS_ROOT/quartus/eda/sim_lib/common"
   "$QUARTUS_ROOT/quartus/eda/fv_lib"
 )
 
-link_one() {  # $1 = basename, $2 = dest dir
-  local base="$1" dest="$2" hit=""
-  local root
+MISSING=()
+
+link_one() {  # $1 = path relative to $OUT (may include a subdir prefix)
+  local rel="$1" base dest hit="" root
+  base="$(basename "$rel")"
+  dest="$OUT/$(dirname "$rel")"
+  mkdir -p "$dest"
+
   for root in "${PREFERRED_ROOTS[@]}"; do
     [ -d "$root" ] || continue
-    hit="$(find "$root" -type f -name "$base" 2>/dev/null | head -1)"
+    hit="$(find "$root" -type f -name "$base" 2>/dev/null | head -1 || true)"
     [ -n "$hit" ] && break
   done
   # Fallback: anywhere in the install tree
   if [ -z "$hit" ]; then
-    hit="$(find "$QUARTUS_ROOT" -type f -name "$base" 2>/dev/null | head -1)"
+    hit="$(find "$QUARTUS_ROOT" -type f -name "$base" 2>/dev/null | head -1 || true)"
   fi
+
   if [ -z "$hit" ]; then
-    echo "  MISSING: $base (not found in $QUARTUS_ROOT)" >&2
-    return 1
+    echo "  MISSING: $rel (no '$base' under $QUARTUS_ROOT)" >&2
+    MISSING+=("$rel")
+    return 0
   fi
-  ln -sf "$hit" "$dest/$base"
-  echo "  linked : $base -> $hit"
+
+  ln -sfn "$hit" "$OUT/$rel"
+  printf '  linked : %-32s -> %s\n' "$rel" "${hit#"$QUARTUS_ROOT"/}"
 }
 
-echo "Building $OUT ..."
-for f in "${FLAT[@]}";   do link_one "$f" "$OUT";        done
-for f in "${MENTOR[@]}"; do link_one "$f" "$OUT/mentor"; done
+echo "Quartus root : $QUARTUS_ROOT"
+echo "msim_setup   : $MSIM_SETUP"
+echo "Building     : $OUT  (${#NEED[@]} files)"
+echo
 
-for f in "${MENTOR_STUB[@]}"; do
-  printf '// Stub: %s is not shipped in Quartus 25.1.1 and is unused by the video pipeline.\n' "$f" > "$OUT/mentor/$f"
-  echo "  stubbed: mentor/$f"
-done
+rm -rf "$OUT"
+mkdir -p "$OUT"
 
-echo "Done. Set QUARTUS_SIM_LIB_DIR to: $OUT"
+for rel in "${NEED[@]}"; do link_one "$rel"; done
+
+echo
+if [ "${#MISSING[@]}" -gt 0 ]; then
+  echo "FAILED: ${#MISSING[@]} of ${#NEED[@]} file(s) could not be located:" >&2
+  printf '  - %s\n' "${MISSING[@]}" >&2
+  exit 1
+fi
+
+echo "Done. All ${#NEED[@]} files linked."
+echo "Set QUARTUS_SIM_LIB_DIR to: $OUT"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2026.07.28.14:24:58"
- outputDirectory="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/">
+ date="2026.07.29.16:41:18"
+ outputDirectory="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/">
  <perimeter>
   <parameter
      name="AUTO_GENERATION_ID"
@@ -210,49 +210,49 @@
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <generatedFiles>
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/synth/pipeline_intel_vvp_protocol_conv_0.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/synth/pipeline_intel_vvp_protocol_conv_0.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/synth/pipeline_intel_vvp_protocol_conv_0.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/synth/pipeline_intel_vvp_protocol_conv_0.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0.ip" />
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0.ip" />
   </sourceFiles>
   <childSourceFiles>
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/cores/vvp/protocol_conv/intel_vvp_protocol_conv/intel_vvp_protocol_conv_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/mtm/cores/vvp/protocol_conv/intel_vvp_protocol_conv/intel_vvp_protocol_conv_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/components/resets/intel_vvp_reset_sync/intel_vvp_reset_sync_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/mtm/components/resets/intel_vvp_reset_sync/intel_vvp_reset_sync_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/components/in_out_bridges/intel_vvp_input_interface_bridge/intel_vvp_input_interface_bridge_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/mtm/components/in_out_bridges/intel_vvp_input_interface_bridge/intel_vvp_input_interface_bridge_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/cores/vvp/protocol_conv/intel_vvp_ext_to_int_scheduler/intel_vvp_ext_to_int_scheduler_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/mtm/cores/vvp/protocol_conv/intel_vvp_ext_to_int_scheduler/intel_vvp_ext_to_int_scheduler_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/components/in_out_bridges/intel_vvp_output_interface_bridge/intel_vvp_output_interface_bridge_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/mtm/components/in_out_bridges/intel_vvp_output_interface_bridge/intel_vvp_output_interface_bridge_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/components/mm_agent/intel_vvp_slave_front_end/intel_vvp_slave_front_end_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/mtm/components/mm_agent/intel_vvp_slave_front_end/intel_vvp_slave_front_end_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/components/resets/intel_vvp_reset_bridge/intel_vvp_reset_bridge_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/mtm/components/resets/intel_vvp_reset_bridge/intel_vvp_reset_bridge_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/components/mm_agent/intel_vvp_ro_reg_servicer/intel_vvp_ro_reg_servicer_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/mtm/components/mm_agent/intel_vvp_ro_reg_servicer/intel_vvp_ro_reg_servicer_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/components/resets/intel_vvp_mm_agent_reset_hold/intel_vvp_mm_agent_reset_hold_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/mtm/components/resets/intel_vvp_mm_agent_reset_hold/intel_vvp_mm_agent_reset_hold_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_mm_interconnect/altera_mm_interconnect_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_mm_interconnect/altera_mm_interconnect_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_master_translator/altera_merlin_master_translator_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_master_translator/altera_merlin_master_translator_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_slave_translator/altera_merlin_slave_translator_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_slave_translator/altera_merlin_slave_translator_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_mm_interconnect/altera_mm_interconnect_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_mm_interconnect/altera_mm_interconnect_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_master_translator/altera_merlin_master_translator_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_master_translator/altera_merlin_master_translator_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_slave_translator/altera_merlin_slave_translator_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_slave_translator/altera_merlin_slave_translator_hw.tcl" />
   </childSourceFiles>
   <messages>
    <message level="Info" culprit="pipeline_intel_vvp_protocol_conv_0">"Generating: pipeline_intel_vvp_protocol_conv_0"</message>
@@ -316,47 +316,47 @@
   <parameter name="CLIP_LONG_FIELDS" value="0" />
   <generatedFiles>
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_protocol_conv_2460/synth/pipeline_intel_vvp_protocol_conv_0_intel_vvp_protocol_conv_2460_xsgrh3i.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_protocol_conv_2460/synth/pipeline_intel_vvp_protocol_conv_0_intel_vvp_protocol_conv_2460_xsgrh3i.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_protocol_conv_2460/synth/pipeline_intel_vvp_protocol_conv_0_intel_vvp_protocol_conv_2460_xsgrh3i.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_protocol_conv_2460/synth/pipeline_intel_vvp_protocol_conv_0_intel_vvp_protocol_conv_2460_xsgrh3i.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/cores/vvp/protocol_conv/intel_vvp_protocol_conv/intel_vvp_protocol_conv_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/mtm/cores/vvp/protocol_conv/intel_vvp_protocol_conv/intel_vvp_protocol_conv_hw.tcl" />
   </sourceFiles>
   <childSourceFiles>
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/components/resets/intel_vvp_reset_sync/intel_vvp_reset_sync_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/mtm/components/resets/intel_vvp_reset_sync/intel_vvp_reset_sync_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/components/in_out_bridges/intel_vvp_input_interface_bridge/intel_vvp_input_interface_bridge_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/mtm/components/in_out_bridges/intel_vvp_input_interface_bridge/intel_vvp_input_interface_bridge_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/cores/vvp/protocol_conv/intel_vvp_ext_to_int_scheduler/intel_vvp_ext_to_int_scheduler_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/mtm/cores/vvp/protocol_conv/intel_vvp_ext_to_int_scheduler/intel_vvp_ext_to_int_scheduler_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/components/in_out_bridges/intel_vvp_output_interface_bridge/intel_vvp_output_interface_bridge_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/mtm/components/in_out_bridges/intel_vvp_output_interface_bridge/intel_vvp_output_interface_bridge_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/components/mm_agent/intel_vvp_slave_front_end/intel_vvp_slave_front_end_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/mtm/components/mm_agent/intel_vvp_slave_front_end/intel_vvp_slave_front_end_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/components/resets/intel_vvp_reset_bridge/intel_vvp_reset_bridge_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/mtm/components/resets/intel_vvp_reset_bridge/intel_vvp_reset_bridge_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/components/mm_agent/intel_vvp_ro_reg_servicer/intel_vvp_ro_reg_servicer_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/mtm/components/mm_agent/intel_vvp_ro_reg_servicer/intel_vvp_ro_reg_servicer_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/components/resets/intel_vvp_mm_agent_reset_hold/intel_vvp_mm_agent_reset_hold_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/mtm/components/resets/intel_vvp_mm_agent_reset_hold/intel_vvp_mm_agent_reset_hold_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_mm_interconnect/altera_mm_interconnect_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_mm_interconnect/altera_mm_interconnect_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_master_translator/altera_merlin_master_translator_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_master_translator/altera_merlin_master_translator_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_slave_translator/altera_merlin_slave_translator_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_slave_translator/altera_merlin_slave_translator_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_mm_interconnect/altera_mm_interconnect_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_mm_interconnect/altera_mm_interconnect_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_master_translator/altera_merlin_master_translator_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_master_translator/altera_merlin_master_translator_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_slave_translator/altera_merlin_slave_translator_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_slave_translator/altera_merlin_slave_translator_hw.tcl" />
   </childSourceFiles>
   <instantiator
      instantiator="pipeline_intel_vvp_protocol_conv_0"
@@ -386,17 +386,17 @@
   <parameter name="SYNC_LEN" value="3" />
   <generatedFiles>
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_reset_sync_2440/synth/src_hdl/intel_vvp_reset_sync.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_reset_sync_2440/synth/src_hdl/intel_vvp_reset_sync.sv"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_reset_sync_2440/synth/src_hdl/intel_vvp_reset_sync.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_reset_sync_2440/synth/src_hdl/intel_vvp_reset_sync.sv"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/components/resets/intel_vvp_reset_sync/intel_vvp_reset_sync_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/mtm/components/resets/intel_vvp_reset_sync/intel_vvp_reset_sync_hw.tcl" />
   </sourceFiles>
   <childSourceFiles/>
   <instantiator
@@ -417,35 +417,35 @@
   <parameter name="PIXELS_IN_PARALLEL" value="1" />
   <generatedFiles>
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_input_interface_bridge_2440/synth/src_hdl/intel_vvp_input_interface_bridge.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_input_interface_bridge_2440/synth/src_hdl/intel_vvp_input_interface_bridge.sv"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_input_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_input_interface_bridge_2440/synth/src_hdl/intel_vvp_input_interface_bridge.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_input_interface_bridge_2440/synth/src_hdl/intel_vvp_input_interface_bridge.sv"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/components/in_out_bridges/intel_vvp_input_interface_bridge/intel_vvp_input_interface_bridge_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/mtm/components/in_out_bridges/intel_vvp_input_interface_bridge/intel_vvp_input_interface_bridge_hw.tcl" />
   </sourceFiles>
   <childSourceFiles/>
   <instantiator
@@ -467,71 +467,71 @@
   <parameter name="CLIP_LONG_FIELDS" value="0" />
   <generatedFiles>
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_mtm_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_mtm_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_vvp_utility_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_vvp_utility_pkg.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_vvp_protocol_conv_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_vvp_protocol_conv_pkg.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_vvp_axi_master.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_vvp_axi_master.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_vvp_pipelined_mux.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_vvp_pipelined_mux.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_vvp_common_slave_interface.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_vvp_common_slave_interface.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/src_hdl/intel_vvp_ext_to_int_scheduler.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/src_hdl/intel_vvp_ext_to_int_scheduler.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/src_hdl/intel_vvp_ext_to_int_scheduler.ocp"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/src_hdl/intel_vvp_ext_to_int_scheduler.ocp"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_mtm_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_mtm_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_vvp_utility_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_vvp_utility_pkg.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_vvp_protocol_conv_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_vvp_protocol_conv_pkg.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_vvp_axi_master.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_vvp_axi_master.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_vvp_pipelined_mux.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_vvp_pipelined_mux.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_vvp_common_slave_interface.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/intel_vvp_common_slave_interface.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/src_hdl/intel_vvp_ext_to_int_scheduler.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/src_hdl/intel_vvp_ext_to_int_scheduler.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/src_hdl/intel_vvp_ext_to_int_scheduler.ocp"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ext_to_int_scheduler_2460/synth/src_hdl/intel_vvp_ext_to_int_scheduler.ocp"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/cores/vvp/protocol_conv/intel_vvp_ext_to_int_scheduler/intel_vvp_ext_to_int_scheduler_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/mtm/cores/vvp/protocol_conv/intel_vvp_ext_to_int_scheduler/intel_vvp_ext_to_int_scheduler_hw.tcl" />
   </sourceFiles>
   <childSourceFiles/>
   <instantiator
@@ -552,35 +552,35 @@
   <parameter name="PIXELS_IN_PARALLEL" value="1" />
   <generatedFiles>
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/src_hdl/intel_vvp_output_interface_bridge.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/src_hdl/intel_vvp_output_interface_bridge.sv"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_pipeline_stage.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/intel_vvp_axi_master.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/src_hdl/intel_vvp_output_interface_bridge.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_output_interface_bridge_2440/synth/src_hdl/intel_vvp_output_interface_bridge.sv"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/components/in_out_bridges/intel_vvp_output_interface_bridge/intel_vvp_output_interface_bridge_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/mtm/components/in_out_bridges/intel_vvp_output_interface_bridge/intel_vvp_output_interface_bridge_hw.tcl" />
   </sourceFiles>
   <childSourceFiles/>
   <instantiator
@@ -616,31 +616,31 @@
   <parameter name="SLAVE_PROTOCOL" value="Avalon" />
   <generatedFiles>
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_slave_front_end_2441/synth/pipeline_intel_vvp_protocol_conv_0_intel_vvp_slave_front_end_2441_i4nwqui.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_slave_front_end_2441/synth/pipeline_intel_vvp_protocol_conv_0_intel_vvp_slave_front_end_2441_i4nwqui.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_slave_front_end_2441/synth/pipeline_intel_vvp_protocol_conv_0_intel_vvp_slave_front_end_2441_i4nwqui.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_slave_front_end_2441/synth/pipeline_intel_vvp_protocol_conv_0_intel_vvp_slave_front_end_2441_i4nwqui.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/components/mm_agent/intel_vvp_slave_front_end/intel_vvp_slave_front_end_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/mtm/components/mm_agent/intel_vvp_slave_front_end/intel_vvp_slave_front_end_hw.tcl" />
   </sourceFiles>
   <childSourceFiles>
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/components/resets/intel_vvp_reset_bridge/intel_vvp_reset_bridge_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/mtm/components/resets/intel_vvp_reset_bridge/intel_vvp_reset_bridge_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/components/mm_agent/intel_vvp_ro_reg_servicer/intel_vvp_ro_reg_servicer_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/mtm/components/mm_agent/intel_vvp_ro_reg_servicer/intel_vvp_ro_reg_servicer_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/components/resets/intel_vvp_mm_agent_reset_hold/intel_vvp_mm_agent_reset_hold_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/mtm/components/resets/intel_vvp_mm_agent_reset_hold/intel_vvp_mm_agent_reset_hold_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_mm_interconnect/altera_mm_interconnect_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_mm_interconnect/altera_mm_interconnect_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_master_translator/altera_merlin_master_translator_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_master_translator/altera_merlin_master_translator_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_slave_translator/altera_merlin_slave_translator_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_slave_translator/altera_merlin_slave_translator_hw.tcl" />
   </childSourceFiles>
   <instantiator
      instantiator="pipeline_intel_vvp_protocol_conv_0_intel_vvp_protocol_conv_2460_xsgrh3i"
@@ -670,23 +670,23 @@
      value="add_instance {slave_interface_av_mm_master_translator} {altera_merlin_master_translator};set_instance_parameter_value {slave_interface_av_mm_master_translator} {AV_ADDRESS_W} {7};set_instance_parameter_value {slave_interface_av_mm_master_translator} {AV_DATA_W} {32};set_instance_parameter_value {slave_interface_av_mm_master_translator} {AV_BURSTCOUNT_W} {1};set_instance_parameter_value {slave_interface_av_mm_master_translator} {AV_BYTEENABLE_W} {4};set_instance_parameter_value {slave_interface_av_mm_master_translator} {UAV_ADDRESS_W} {7};set_instance_parameter_value {slave_interface_av_mm_master_translator} {UAV_BURSTCOUNT_W} {3};set_instance_parameter_value {slave_interface_av_mm_master_translator} {AV_READLATENCY} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator} {AV_WRITE_WAIT} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator} {AV_READ_WAIT} {1};set_instance_parameter_value {slave_interface_av_mm_master_translator} {AV_DATA_HOLD} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator} {AV_SETUP_WAIT} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator} {USE_READDATA} {1};set_instance_parameter_value {slave_interface_av_mm_master_translator} {USE_WRITEDATA} {1};set_instance_parameter_value {slave_interface_av_mm_master_translator} {USE_READ} {1};set_instance_parameter_value {slave_interface_av_mm_master_translator} {USE_WRITE} {1};set_instance_parameter_value {slave_interface_av_mm_master_translator} {USE_BEGINBURSTTRANSFER} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator} {USE_BEGINTRANSFER} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator} {USE_BYTEENABLE} {1};set_instance_parameter_value {slave_interface_av_mm_master_translator} {USE_CHIPSELECT} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator} {USE_ADDRESS} {1};set_instance_parameter_value {slave_interface_av_mm_master_translator} {USE_BURSTCOUNT} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator} {USE_DEBUGACCESS} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator} {USE_CLKEN} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator} {USE_READDATAVALID} {1};set_instance_parameter_value {slave_interface_av_mm_master_translator} {USE_WAITREQUEST} {1};set_instance_parameter_value {slave_interface_av_mm_master_translator} {USE_LOCK} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator} {USE_READRESPONSE} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator} {USE_WRITERESPONSE} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator} {AV_SYMBOLS_PER_WORD} {4};set_instance_parameter_value {slave_interface_av_mm_master_translator} {AV_ADDRESS_SYMBOLS} {1};set_instance_parameter_value {slave_interface_av_mm_master_translator} {AV_BURSTCOUNT_SYMBOLS} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator} {AV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator} {UAV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator} {AV_LINEWRAPBURSTS} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator} {AV_MAX_PENDING_READ_TRANSACTIONS} {64};set_instance_parameter_value {slave_interface_av_mm_master_translator} {AV_BURSTBOUNDARIES} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator} {AV_INTERLEAVEBURSTS} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator} {AV_BITS_PER_SYMBOL} {8};set_instance_parameter_value {slave_interface_av_mm_master_translator} {AV_ISBIGENDIAN} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator} {AV_ADDRESSGROUP} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator} {UAV_ADDRESSGROUP} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator} {AV_REGISTEROUTGOINGSIGNALS} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator} {AV_REGISTERINCOMINGSIGNALS} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator} {AV_ALWAYSBURSTMAXBURST} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator} {SYNC_RESET} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator} {WAITREQUEST_ALLOWANCE} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator} {USE_OUTPUTENABLE} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator} {OPTIMIZED_READS_WITH_BE} {0};add_instance {scheduler_av_mm_slave_translator} {altera_merlin_slave_translator};set_instance_parameter_value {scheduler_av_mm_slave_translator} {AV_ADDRESS_W} {5};set_instance_parameter_value {scheduler_av_mm_slave_translator} {AV_DATA_W} {32};set_instance_parameter_value {scheduler_av_mm_slave_translator} {UAV_DATA_W} {32};set_instance_parameter_value {scheduler_av_mm_slave_translator} {AV_BURSTCOUNT_W} {1};set_instance_parameter_value {scheduler_av_mm_slave_translator} {AV_BYTEENABLE_W} {4};set_instance_parameter_value {scheduler_av_mm_slave_translator} {UAV_BYTEENABLE_W} {4};set_instance_parameter_value {scheduler_av_mm_slave_translator} {UAV_ADDRESS_W} {7};set_instance_parameter_value {scheduler_av_mm_slave_translator} {UAV_BURSTCOUNT_W} {3};set_instance_parameter_value {scheduler_av_mm_slave_translator} {AV_READLATENCY} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {AV_SETUP_WAIT} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {AV_WRITE_WAIT} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {AV_READ_WAIT} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {AV_DATA_HOLD} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {AV_TIMING_UNITS} {1};set_instance_parameter_value {scheduler_av_mm_slave_translator} {USE_READDATA} {1};set_instance_parameter_value {scheduler_av_mm_slave_translator} {USE_WRITEDATA} {1};set_instance_parameter_value {scheduler_av_mm_slave_translator} {USE_READ} {1};set_instance_parameter_value {scheduler_av_mm_slave_translator} {USE_WRITE} {1};set_instance_parameter_value {scheduler_av_mm_slave_translator} {USE_BEGINBURSTTRANSFER} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {USE_BEGINTRANSFER} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {USE_BYTEENABLE} {1};set_instance_parameter_value {scheduler_av_mm_slave_translator} {USE_CHIPSELECT} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {USE_ADDRESS} {1};set_instance_parameter_value {scheduler_av_mm_slave_translator} {USE_BURSTCOUNT} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {USE_READDATAVALID} {1};set_instance_parameter_value {scheduler_av_mm_slave_translator} {USE_WAITREQUEST} {1};set_instance_parameter_value {scheduler_av_mm_slave_translator} {USE_WRITEBYTEENABLE} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {USE_LOCK} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {USE_AV_CLKEN} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {USE_UAV_CLKEN} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {USE_OUTPUTENABLE} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {USE_DEBUGACCESS} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {USE_READRESPONSE} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {USE_WRITERESPONSE} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {AV_SYMBOLS_PER_WORD} {4};set_instance_parameter_value {scheduler_av_mm_slave_translator} {AV_ADDRESS_SYMBOLS} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {AV_BURSTCOUNT_SYMBOLS} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {AV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {UAV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {AV_REQUIRE_UNALIGNED_ADDRESSES} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {AV_LINEWRAPBURSTS} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {AV_MAX_PENDING_READ_TRANSACTIONS} {4};set_instance_parameter_value {scheduler_av_mm_slave_translator} {AV_MAX_PENDING_WRITE_TRANSACTIONS} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {AV_BURSTBOUNDARIES} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {AV_INTERLEAVEBURSTS} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {AV_BITS_PER_SYMBOL} {8};set_instance_parameter_value {scheduler_av_mm_slave_translator} {AV_ISBIGENDIAN} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {AV_ADDRESSGROUP} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {UAV_ADDRESSGROUP} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {AV_REGISTEROUTGOINGSIGNALS} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {AV_REGISTERINCOMINGSIGNALS} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {AV_ALWAYSBURSTMAXBURST} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {CHIPSELECT_THROUGH_READLATENCY} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {WAITREQUEST_ALLOWANCE} {0};set_instance_parameter_value {scheduler_av_mm_slave_translator} {SYNC_RESET} {0};add_instance {slave_interface_av_mm_master_translator_reset_reset_bridge} {altera_reset_bridge};set_instance_parameter_value {slave_interface_av_mm_master_translator_reset_reset_bridge} {ACTIVE_LOW_RESET} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator_reset_reset_bridge} {SYNCHRONOUS_EDGES} {deassert};set_instance_parameter_value {slave_interface_av_mm_master_translator_reset_reset_bridge} {NUM_RESET_OUTPUTS} {1};set_instance_parameter_value {slave_interface_av_mm_master_translator_reset_reset_bridge} {USE_RESET_REQUEST} {0};set_instance_parameter_value {slave_interface_av_mm_master_translator_reset_reset_bridge} {SYNC_RESET} {0};add_instance {main_clk_bridge_out_clk_clock_bridge} {altera_clock_bridge};set_instance_parameter_value {main_clk_bridge_out_clk_clock_bridge} {EXPLICIT_CLOCK_RATE} {0};set_instance_parameter_value {main_clk_bridge_out_clk_clock_bridge} {NUM_CLOCK_OUTPUTS} {1};add_connection {slave_interface_av_mm_master_translator.avalon_universal_master_0} {scheduler_av_mm_slave_translator.avalon_universal_slave_0} {avalon};set_connection_parameter_value {slave_interface_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_slave_translator.avalon_universal_slave_0} {arbitrationPriority} {1};set_connection_parameter_value {slave_interface_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_slave_translator.avalon_universal_slave_0} {baseAddress} {0x0000};set_connection_parameter_value {slave_interface_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_slave_translator.avalon_universal_slave_0} {defaultConnection} {false};set_connection_parameter_value {slave_interface_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_slave_translator.avalon_universal_slave_0} {domainAlias} {};set_connection_parameter_value {slave_interface_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.piplineType} {PIPELINE_STAGE};set_connection_parameter_value {slave_interface_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.enableAllPipelines} {FALSE};set_connection_parameter_value {slave_interface_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.maxAdditionalLatency} {1};set_connection_parameter_value {slave_interface_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.clockCrossingAdapter} {HANDSHAKE};set_connection_parameter_value {slave_interface_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.insertDefaultSlave} {FALSE};set_connection_parameter_value {slave_interface_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.enableInstrumentation} {FALSE};set_connection_parameter_value {slave_interface_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.interconnectResetSource} {DEFAULT};set_connection_parameter_value {slave_interface_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.burstAdapterImplementation} {GENERIC_CONVERTER};set_connection_parameter_value {slave_interface_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.widthAdapterImplementation} {GENERIC_CONVERTER};set_connection_parameter_value {slave_interface_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.enableEccProtection} {FALSE};set_connection_parameter_value {slave_interface_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.interconnectType} {STANDARD};set_connection_parameter_value {slave_interface_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.syncResets} {FALSE};set_connection_parameter_value {slave_interface_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.optimizeRdFifoSize} {FALSE};set_connection_parameter_value {slave_interface_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.responseFifoType} {REGISTER_BASED};set_connection_parameter_value {slave_interface_av_mm_master_translator.avalon_universal_master_0/scheduler_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.enableOutOfOrderSupport} {FALSE};add_connection {slave_interface_av_mm_master_translator_reset_reset_bridge.out_reset} {slave_interface_av_mm_master_translator.reset} {reset};add_connection {slave_interface_av_mm_master_translator_reset_reset_bridge.out_reset} {scheduler_av_mm_slave_translator.reset} {reset};add_connection {main_clk_bridge_out_clk_clock_bridge.out_clk} {slave_interface_av_mm_master_translator.clk} {clock};add_connection {main_clk_bridge_out_clk_clock_bridge.out_clk} {scheduler_av_mm_slave_translator.clk} {clock};add_connection {main_clk_bridge_out_clk_clock_bridge.out_clk} {slave_interface_av_mm_master_translator_reset_reset_bridge.clk} {clock};add_interface {slave_interface_av_mm_master} {avalon} {slave};set_interface_property {slave_interface_av_mm_master} {EXPORT_OF} {slave_interface_av_mm_master_translator.avalon_anti_master_0};add_interface {scheduler_av_mm_slave} {avalon} {master};set_interface_property {scheduler_av_mm_slave} {EXPORT_OF} {scheduler_av_mm_slave_translator.avalon_anti_slave_0};add_interface {slave_interface_av_mm_master_translator_reset_reset_bridge_in_reset} {reset} {slave};set_interface_property {slave_interface_av_mm_master_translator_reset_reset_bridge_in_reset} {EXPORT_OF} {slave_interface_av_mm_master_translator_reset_reset_bridge.in_reset};add_interface {main_clk_bridge_out_clk} {clock} {slave};set_interface_property {main_clk_bridge_out_clk} {EXPORT_OF} {main_clk_bridge_out_clk_clock_bridge.in_clk};set_module_assignment {interconnect_id.scheduler.av_mm_slave} {0};set_module_assignment {interconnect_id.slave_interface.av_mm_master} {0};" />
   <generatedFiles>
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/altera_mm_interconnect_1920/synth/pipeline_intel_vvp_protocol_conv_0_altera_mm_interconnect_1920_fcggkmy.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/altera_mm_interconnect_1920/synth/pipeline_intel_vvp_protocol_conv_0_altera_mm_interconnect_1920_fcggkmy.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/altera_mm_interconnect_1920/synth/pipeline_intel_vvp_protocol_conv_0_altera_mm_interconnect_1920_fcggkmy.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/altera_mm_interconnect_1920/synth/pipeline_intel_vvp_protocol_conv_0_altera_mm_interconnect_1920_fcggkmy.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_mm_interconnect/altera_mm_interconnect_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_mm_interconnect/altera_mm_interconnect_hw.tcl" />
   </sourceFiles>
   <childSourceFiles>
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_master_translator/altera_merlin_master_translator_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_master_translator/altera_merlin_master_translator_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_slave_translator/altera_merlin_slave_translator_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_slave_translator/altera_merlin_slave_translator_hw.tcl" />
   </childSourceFiles>
   <instantiator
      instantiator="pipeline_intel_vvp_protocol_conv_0_intel_vvp_protocol_conv_2460_xsgrh3i"
@@ -703,17 +703,17 @@
    name="intel_vvp_reset_bridge">
   <generatedFiles>
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_reset_bridge_2440/synth/src_hdl/intel_vvp_reset_bridge.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_reset_bridge_2440/synth/src_hdl/intel_vvp_reset_bridge.sv"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_reset_bridge_2440/synth/src_hdl/intel_vvp_reset_bridge.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_reset_bridge_2440/synth/src_hdl/intel_vvp_reset_bridge.sv"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/components/resets/intel_vvp_reset_bridge/intel_vvp_reset_bridge_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/mtm/components/resets/intel_vvp_reset_bridge/intel_vvp_reset_bridge_hw.tcl" />
   </sourceFiles>
   <childSourceFiles/>
   <instantiator
@@ -735,29 +735,29 @@
   <parameter name="P_AV_MM_MASTER_ADDR_WIDTH" value="7" />
   <generatedFiles>
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ro_reg_servicer_2441/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ro_reg_servicer_2441/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ro_reg_servicer_2441/synth/src_hdl/intel_vvp_ro_reg_servicer.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ro_reg_servicer_2441/synth/src_hdl/intel_vvp_ro_reg_servicer.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ro_reg_servicer_2441/synth/pipeline_intel_vvp_protocol_conv_0_intel_vvp_ro_reg_servicer_2441_a3koqqa.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ro_reg_servicer_2441/synth/pipeline_intel_vvp_protocol_conv_0_intel_vvp_ro_reg_servicer_2441_a3koqqa.sv"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ro_reg_servicer_2441/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ro_reg_servicer_2441/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ro_reg_servicer_2441/synth/src_hdl/intel_vvp_ro_reg_servicer.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ro_reg_servicer_2441/synth/src_hdl/intel_vvp_ro_reg_servicer.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ro_reg_servicer_2441/synth/pipeline_intel_vvp_protocol_conv_0_intel_vvp_ro_reg_servicer_2441_a3koqqa.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_ro_reg_servicer_2441/synth/pipeline_intel_vvp_protocol_conv_0_intel_vvp_ro_reg_servicer_2441_a3koqqa.sv"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/components/mm_agent/intel_vvp_ro_reg_servicer/intel_vvp_ro_reg_servicer_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/mtm/components/mm_agent/intel_vvp_ro_reg_servicer/intel_vvp_ro_reg_servicer_hw.tcl" />
   </sourceFiles>
   <childSourceFiles/>
   <instantiator
@@ -774,23 +774,23 @@
   <parameter name="WORD_ADDR_WIDTH" value="7" />
   <generatedFiles>
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_mm_agent_reset_hold_2440/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_mm_agent_reset_hold_2440/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_mm_agent_reset_hold_2440/synth/src_hdl/intel_vvp_mm_agent_reset_hold.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_mm_agent_reset_hold_2440/synth/src_hdl/intel_vvp_mm_agent_reset_hold.sv"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_mm_agent_reset_hold_2440/synth/intel_vvp_common_pkg.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_mm_agent_reset_hold_2440/synth/intel_vvp_common_pkg.sv"
        attributes="" />
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_mm_agent_reset_hold_2440/synth/src_hdl/intel_vvp_mm_agent_reset_hold.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/intel_vvp_mm_agent_reset_hold_2440/synth/src_hdl/intel_vvp_mm_agent_reset_hold.sv"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/components/resets/intel_vvp_mm_agent_reset_hold/intel_vvp_mm_agent_reset_hold_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/mtm/components/resets/intel_vvp_mm_agent_reset_hold/intel_vvp_mm_agent_reset_hold_hw.tcl" />
   </sourceFiles>
   <childSourceFiles/>
   <instantiator
@@ -815,23 +815,23 @@
      value="add_instance {mm_reset_hold_av_mm_master_translator} {altera_merlin_master_translator};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {AV_ADDRESS_W} {9};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {AV_DATA_W} {32};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {AV_BURSTCOUNT_W} {1};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {AV_BYTEENABLE_W} {4};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {UAV_ADDRESS_W} {9};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {UAV_BURSTCOUNT_W} {3};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {AV_READLATENCY} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {AV_WRITE_WAIT} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {AV_READ_WAIT} {1};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {AV_DATA_HOLD} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {AV_SETUP_WAIT} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {USE_READDATA} {1};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {USE_WRITEDATA} {1};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {USE_READ} {1};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {USE_WRITE} {1};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {USE_BEGINBURSTTRANSFER} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {USE_BEGINTRANSFER} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {USE_BYTEENABLE} {1};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {USE_CHIPSELECT} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {USE_ADDRESS} {1};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {USE_BURSTCOUNT} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {USE_DEBUGACCESS} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {USE_CLKEN} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {USE_READDATAVALID} {1};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {USE_WAITREQUEST} {1};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {USE_LOCK} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {USE_READRESPONSE} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {USE_WRITERESPONSE} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {AV_SYMBOLS_PER_WORD} {4};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {AV_ADDRESS_SYMBOLS} {1};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {AV_BURSTCOUNT_SYMBOLS} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {AV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {UAV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {AV_LINEWRAPBURSTS} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {AV_MAX_PENDING_READ_TRANSACTIONS} {64};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {AV_BURSTBOUNDARIES} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {AV_INTERLEAVEBURSTS} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {AV_BITS_PER_SYMBOL} {8};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {AV_ISBIGENDIAN} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {AV_ADDRESSGROUP} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {UAV_ADDRESSGROUP} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {AV_REGISTEROUTGOINGSIGNALS} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {AV_REGISTERINCOMINGSIGNALS} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {AV_ALWAYSBURSTMAXBURST} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {SYNC_RESET} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {WAITREQUEST_ALLOWANCE} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {USE_OUTPUTENABLE} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator} {OPTIMIZED_READS_WITH_BE} {0};add_instance {ro_reg_av_mm_slave_translator} {altera_merlin_slave_translator};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {AV_ADDRESS_W} {7};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {AV_DATA_W} {32};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {UAV_DATA_W} {32};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {AV_BURSTCOUNT_W} {1};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {AV_BYTEENABLE_W} {4};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {UAV_BYTEENABLE_W} {4};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {UAV_ADDRESS_W} {9};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {UAV_BURSTCOUNT_W} {3};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {AV_READLATENCY} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {AV_SETUP_WAIT} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {AV_WRITE_WAIT} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {AV_READ_WAIT} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {AV_DATA_HOLD} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {AV_TIMING_UNITS} {1};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {USE_READDATA} {1};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {USE_WRITEDATA} {1};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {USE_READ} {1};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {USE_WRITE} {1};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {USE_BEGINBURSTTRANSFER} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {USE_BEGINTRANSFER} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {USE_BYTEENABLE} {1};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {USE_CHIPSELECT} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {USE_ADDRESS} {1};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {USE_BURSTCOUNT} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {USE_READDATAVALID} {1};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {USE_WAITREQUEST} {1};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {USE_WRITEBYTEENABLE} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {USE_LOCK} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {USE_AV_CLKEN} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {USE_UAV_CLKEN} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {USE_OUTPUTENABLE} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {USE_DEBUGACCESS} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {USE_READRESPONSE} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {USE_WRITERESPONSE} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {AV_SYMBOLS_PER_WORD} {4};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {AV_ADDRESS_SYMBOLS} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {AV_BURSTCOUNT_SYMBOLS} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {AV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {UAV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {AV_REQUIRE_UNALIGNED_ADDRESSES} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {AV_LINEWRAPBURSTS} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {AV_MAX_PENDING_READ_TRANSACTIONS} {1};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {AV_MAX_PENDING_WRITE_TRANSACTIONS} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {AV_BURSTBOUNDARIES} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {AV_INTERLEAVEBURSTS} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {AV_BITS_PER_SYMBOL} {8};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {AV_ISBIGENDIAN} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {AV_ADDRESSGROUP} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {UAV_ADDRESSGROUP} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {AV_REGISTEROUTGOINGSIGNALS} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {AV_REGISTERINCOMINGSIGNALS} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {AV_ALWAYSBURSTMAXBURST} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {CHIPSELECT_THROUGH_READLATENCY} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {WAITREQUEST_ALLOWANCE} {0};set_instance_parameter_value {ro_reg_av_mm_slave_translator} {SYNC_RESET} {0};add_instance {mm_reset_hold_av_mm_master_translator_reset_reset_bridge} {altera_reset_bridge};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator_reset_reset_bridge} {ACTIVE_LOW_RESET} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator_reset_reset_bridge} {SYNCHRONOUS_EDGES} {deassert};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator_reset_reset_bridge} {NUM_RESET_OUTPUTS} {1};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator_reset_reset_bridge} {USE_RESET_REQUEST} {0};set_instance_parameter_value {mm_reset_hold_av_mm_master_translator_reset_reset_bridge} {SYNC_RESET} {0};add_instance {main_clk_bridge_out_clk_clock_bridge} {altera_clock_bridge};set_instance_parameter_value {main_clk_bridge_out_clk_clock_bridge} {EXPLICIT_CLOCK_RATE} {0};set_instance_parameter_value {main_clk_bridge_out_clk_clock_bridge} {NUM_CLOCK_OUTPUTS} {1};add_connection {mm_reset_hold_av_mm_master_translator.avalon_universal_master_0} {ro_reg_av_mm_slave_translator.avalon_universal_slave_0} {avalon};set_connection_parameter_value {mm_reset_hold_av_mm_master_translator.avalon_universal_master_0/ro_reg_av_mm_slave_translator.avalon_universal_slave_0} {arbitrationPriority} {1};set_connection_parameter_value {mm_reset_hold_av_mm_master_translator.avalon_universal_master_0/ro_reg_av_mm_slave_translator.avalon_universal_slave_0} {baseAddress} {0x0000};set_connection_parameter_value {mm_reset_hold_av_mm_master_translator.avalon_universal_master_0/ro_reg_av_mm_slave_translator.avalon_universal_slave_0} {defaultConnection} {false};set_connection_parameter_value {mm_reset_hold_av_mm_master_translator.avalon_universal_master_0/ro_reg_av_mm_slave_translator.avalon_universal_slave_0} {domainAlias} {};set_connection_parameter_value {mm_reset_hold_av_mm_master_translator.avalon_universal_master_0/ro_reg_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.piplineType} {PIPELINE_STAGE};set_connection_parameter_value {mm_reset_hold_av_mm_master_translator.avalon_universal_master_0/ro_reg_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.enableAllPipelines} {FALSE};set_connection_parameter_value {mm_reset_hold_av_mm_master_translator.avalon_universal_master_0/ro_reg_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.maxAdditionalLatency} {1};set_connection_parameter_value {mm_reset_hold_av_mm_master_translator.avalon_universal_master_0/ro_reg_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.clockCrossingAdapter} {HANDSHAKE};set_connection_parameter_value {mm_reset_hold_av_mm_master_translator.avalon_universal_master_0/ro_reg_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.insertDefaultSlave} {FALSE};set_connection_parameter_value {mm_reset_hold_av_mm_master_translator.avalon_universal_master_0/ro_reg_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.enableInstrumentation} {FALSE};set_connection_parameter_value {mm_reset_hold_av_mm_master_translator.avalon_universal_master_0/ro_reg_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.interconnectResetSource} {DEFAULT};set_connection_parameter_value {mm_reset_hold_av_mm_master_translator.avalon_universal_master_0/ro_reg_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.burstAdapterImplementation} {GENERIC_CONVERTER};set_connection_parameter_value {mm_reset_hold_av_mm_master_translator.avalon_universal_master_0/ro_reg_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.widthAdapterImplementation} {GENERIC_CONVERTER};set_connection_parameter_value {mm_reset_hold_av_mm_master_translator.avalon_universal_master_0/ro_reg_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.enableEccProtection} {FALSE};set_connection_parameter_value {mm_reset_hold_av_mm_master_translator.avalon_universal_master_0/ro_reg_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.interconnectType} {STANDARD};set_connection_parameter_value {mm_reset_hold_av_mm_master_translator.avalon_universal_master_0/ro_reg_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.syncResets} {FALSE};set_connection_parameter_value {mm_reset_hold_av_mm_master_translator.avalon_universal_master_0/ro_reg_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.optimizeRdFifoSize} {FALSE};set_connection_parameter_value {mm_reset_hold_av_mm_master_translator.avalon_universal_master_0/ro_reg_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.responseFifoType} {REGISTER_BASED};set_connection_parameter_value {mm_reset_hold_av_mm_master_translator.avalon_universal_master_0/ro_reg_av_mm_slave_translator.avalon_universal_slave_0} {qsys_mm.enableOutOfOrderSupport} {FALSE};add_connection {mm_reset_hold_av_mm_master_translator_reset_reset_bridge.out_reset} {mm_reset_hold_av_mm_master_translator.reset} {reset};add_connection {mm_reset_hold_av_mm_master_translator_reset_reset_bridge.out_reset} {ro_reg_av_mm_slave_translator.reset} {reset};add_connection {main_clk_bridge_out_clk_clock_bridge.out_clk} {mm_reset_hold_av_mm_master_translator.clk} {clock};add_connection {main_clk_bridge_out_clk_clock_bridge.out_clk} {ro_reg_av_mm_slave_translator.clk} {clock};add_connection {main_clk_bridge_out_clk_clock_bridge.out_clk} {mm_reset_hold_av_mm_master_translator_reset_reset_bridge.clk} {clock};add_interface {mm_reset_hold_av_mm_master} {avalon} {slave};set_interface_property {mm_reset_hold_av_mm_master} {EXPORT_OF} {mm_reset_hold_av_mm_master_translator.avalon_anti_master_0};add_interface {ro_reg_av_mm_slave} {avalon} {master};set_interface_property {ro_reg_av_mm_slave} {EXPORT_OF} {ro_reg_av_mm_slave_translator.avalon_anti_slave_0};add_interface {mm_reset_hold_av_mm_master_translator_reset_reset_bridge_in_reset} {reset} {slave};set_interface_property {mm_reset_hold_av_mm_master_translator_reset_reset_bridge_in_reset} {EXPORT_OF} {mm_reset_hold_av_mm_master_translator_reset_reset_bridge.in_reset};add_interface {main_clk_bridge_out_clk} {clock} {slave};set_interface_property {main_clk_bridge_out_clk} {EXPORT_OF} {main_clk_bridge_out_clk_clock_bridge.in_clk};set_module_assignment {interconnect_id.mm_reset_hold.av_mm_master} {0};set_module_assignment {interconnect_id.ro_reg.av_mm_slave} {0};" />
   <generatedFiles>
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/altera_mm_interconnect_1920/synth/pipeline_intel_vvp_protocol_conv_0_altera_mm_interconnect_1920_epi4vay.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/altera_mm_interconnect_1920/synth/pipeline_intel_vvp_protocol_conv_0_altera_mm_interconnect_1920_epi4vay.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/altera_mm_interconnect_1920/synth/pipeline_intel_vvp_protocol_conv_0_altera_mm_interconnect_1920_epi4vay.v"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/altera_mm_interconnect_1920/synth/pipeline_intel_vvp_protocol_conv_0_altera_mm_interconnect_1920_epi4vay.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_mm_interconnect/altera_mm_interconnect_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_mm_interconnect/altera_mm_interconnect_hw.tcl" />
   </sourceFiles>
   <childSourceFiles>
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_master_translator/altera_merlin_master_translator_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_master_translator/altera_merlin_master_translator_hw.tcl" />
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_slave_translator/altera_merlin_slave_translator_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_slave_translator/altera_merlin_slave_translator_hw.tcl" />
   </childSourceFiles>
   <instantiator
      instantiator="pipeline_intel_vvp_protocol_conv_0_intel_vvp_slave_front_end_2441_i4nwqui"
@@ -849,17 +849,17 @@
   <parameter name="WAITREQUEST_ALLOWANCE" value="0" />
   <generatedFiles>
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/altera_merlin_master_translator_193/synth/pipeline_intel_vvp_protocol_conv_0_altera_merlin_master_translator_193_lgcew2q.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/altera_merlin_master_translator_193/synth/pipeline_intel_vvp_protocol_conv_0_altera_merlin_master_translator_193_lgcew2q.sv"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/altera_merlin_master_translator_193/synth/pipeline_intel_vvp_protocol_conv_0_altera_merlin_master_translator_193_lgcew2q.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/altera_merlin_master_translator_193/synth/pipeline_intel_vvp_protocol_conv_0_altera_merlin_master_translator_193_lgcew2q.sv"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_master_translator/altera_merlin_master_translator_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_master_translator/altera_merlin_master_translator_hw.tcl" />
   </sourceFiles>
   <childSourceFiles/>
   <instantiator
@@ -878,17 +878,17 @@
    name="pipeline_intel_vvp_protocol_conv_0_altera_merlin_slave_translator_191_xg7rzxi">
   <generatedFiles>
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/altera_merlin_slave_translator_191/synth/pipeline_intel_vvp_protocol_conv_0_altera_merlin_slave_translator_191_xg7rzxi.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/altera_merlin_slave_translator_191/synth/pipeline_intel_vvp_protocol_conv_0_altera_merlin_slave_translator_191_xg7rzxi.sv"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/izaan-10xe/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/altera_merlin_slave_translator_191/synth/pipeline_intel_vvp_protocol_conv_0_altera_merlin_slave_translator_191_xg7rzxi.sv"
+       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_intel_vvp_protocol_conv_0/altera_merlin_slave_translator_191/synth/pipeline_intel_vvp_protocol_conv_0_altera_merlin_slave_translator_191_xg7rzxi.sv"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_slave_translator/altera_merlin_slave_translator_hw.tcl" />
+       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/merlin/altera_merlin_slave_translator/altera_merlin_slave_translator_hw.tcl" />
   </sourceFiles>
   <childSourceFiles/>
   <instantiator

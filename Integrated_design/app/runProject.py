@@ -39,7 +39,7 @@ cd {sim_path}
 # Setup and Compile IP
 set QUARTUS_INSTALL_DIR {QUARTUS_INSTALL_DIR}
 # 25.1.1 scatters the sim-lib sources; use the stitched dir built by setup_sim_libs.sh
-set QUARTUS_SIM_LIB_DIR {os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'sim_libs_c10gx')}
+set QUARTUS_SIM_LIB_DIR {os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'sim_libs')}
 source msim_setup.tcl
 
 # Compile Device Libraries

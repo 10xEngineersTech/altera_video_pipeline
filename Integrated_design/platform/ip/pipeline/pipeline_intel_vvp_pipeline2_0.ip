@@ -192,7 +192,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="addressSpan" type="string">
           <ipxact:name>addressSpan</ipxact:name>
           <ipxact:displayName>Address span</ipxact:displayName>
-          <ipxact:value>8192</ipxact:value>
+          <ipxact:value>4096</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="addressUnits" type="string">
           <ipxact:name>addressUnits</ipxact:name>
@@ -634,7 +634,7 @@ https://fpgasoftware.intel.com/eula.-->
             </ipxact:parameter>
             <ipxact:parameter parameterId="intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES" type="string">
               <ipxact:name>intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES</ipxact:name>
-              <ipxact:value>2</ipxact:value>
+              <ipxact:value>3</ipxact:value>
             </ipxact:parameter>
             <ipxact:parameter parameterId="intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL" type="string">
               <ipxact:name>intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL</ipxact:name>
@@ -776,7 +776,7 @@ https://fpgasoftware.intel.com/eula.-->
           <ipxact:vectors>
             <ipxact:vector>
               <ipxact:left>0</ipxact:left>
-              <ipxact:right>12</ipxact:right>
+              <ipxact:right>11</ipxact:right>
             </ipxact:vector>
           </ipxact:vectors>
           <ipxact:wireTypeDefs>
@@ -926,7 +926,7 @@ https://fpgasoftware.intel.com/eula.-->
           <ipxact:vectors>
             <ipxact:vector>
               <ipxact:left>0</ipxact:left>
-              <ipxact:right>15</ipxact:right>
+              <ipxact:right>23</ipxact:right>
             </ipxact:vector>
           </ipxact:vectors>
           <ipxact:wireTypeDefs>
@@ -983,7 +983,7 @@ https://fpgasoftware.intel.com/eula.-->
           <ipxact:vectors>
             <ipxact:vector>
               <ipxact:left>0</ipxact:left>
-              <ipxact:right>1</ipxact:right>
+              <ipxact:right>2</ipxact:right>
             </ipxact:vector>
           </ipxact:vectors>
           <ipxact:wireTypeDefs>
@@ -1018,7 +1018,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="NUMBER_OF_COLOR_PLANES" type="int">
           <ipxact:name>NUMBER_OF_COLOR_PLANES</ipxact:name>
           <ipxact:displayName>Number of color planes</ipxact:displayName>
-          <ipxact:value>2</ipxact:value>
+          <ipxact:value>3</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="PIXELS_IN_PARALLEL" type="int">
           <ipxact:name>PIXELS_IN_PARALLEL</ipxact:name>
@@ -1043,7 +1043,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="ENABLE_PIP" type="int">
           <ipxact:name>ENABLE_PIP</ipxact:name>
           <ipxact:displayName>Picture-in-picture (mixer overlay)</ipxact:displayName>
-          <ipxact:value>1</ipxact:value>
+          <ipxact:value>0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="DIL_MODE" type="string">
           <ipxact:name>DIL_MODE</ipxact:name>
@@ -1153,7 +1153,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="CRS_SUPPORT_420_PASS" type="int">
           <ipxact:name>CRS_SUPPORT_420_PASS</ipxact:name>
           <ipxact:displayName>4:2:0 passthrough</ipxact:displayName>
-          <ipxact:value>0</ipxact:value>
+          <ipxact:value>1</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="CRS_SUPPORT_420_TO_422" type="int">
           <ipxact:name>CRS_SUPPORT_420_TO_422</ipxact:name>
@@ -1163,7 +1163,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="CRS_SUPPORT_420_TO_444" type="int">
           <ipxact:name>CRS_SUPPORT_420_TO_444</ipxact:name>
           <ipxact:displayName>4:2:0 to 4:4:4 conversion</ipxact:displayName>
-          <ipxact:value>0</ipxact:value>
+          <ipxact:value>1</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="CRS_SUPPORT_422_PASS" type="int">
           <ipxact:name>CRS_SUPPORT_422_PASS</ipxact:name>
@@ -1173,22 +1173,22 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="CRS_SUPPORT_422_TO_420" type="int">
           <ipxact:name>CRS_SUPPORT_422_TO_420</ipxact:name>
           <ipxact:displayName>4:2:2 to 4:2:0 conversion</ipxact:displayName>
-          <ipxact:value>0</ipxact:value>
+          <ipxact:value>1</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="CRS_SUPPORT_422_TO_444" type="int">
           <ipxact:name>CRS_SUPPORT_422_TO_444</ipxact:name>
           <ipxact:displayName>4:2:2 to 4:4:4 conversion</ipxact:displayName>
-          <ipxact:value>0</ipxact:value>
+          <ipxact:value>1</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="CRS_SUPPORT_444_PASS" type="int">
           <ipxact:name>CRS_SUPPORT_444_PASS</ipxact:name>
           <ipxact:displayName>4:4:4 passthrough</ipxact:displayName>
-          <ipxact:value>0</ipxact:value>
+          <ipxact:value>1</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="CRS_SUPPORT_444_TO_420" type="int">
           <ipxact:name>CRS_SUPPORT_444_TO_420</ipxact:name>
           <ipxact:displayName>4:4:4 to 4:2:0 conversion</ipxact:displayName>
-          <ipxact:value>0</ipxact:value>
+          <ipxact:value>1</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="CRS_SUPPORT_444_TO_422" type="int">
           <ipxact:name>CRS_SUPPORT_444_TO_422</ipxact:name>
@@ -1513,12 +1513,12 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="SC_ENABLE_444" type="int">
           <ipxact:name>SC_ENABLE_444</ipxact:name>
           <ipxact:displayName>4:4:4 chroma sampling</ipxact:displayName>
-          <ipxact:value>0</ipxact:value>
+          <ipxact:value>1</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SC_ENABLE_422" type="int">
           <ipxact:name>SC_ENABLE_422</ipxact:name>
           <ipxact:displayName>4:2:2 chroma sampling</ipxact:displayName>
-          <ipxact:value>1</ipxact:value>
+          <ipxact:value>0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SC_ENABLE_420" type="int">
           <ipxact:name>SC_ENABLE_420</ipxact:name>
@@ -2522,7 +2522,7 @@ https://fpgasoftware.intel.com/eula.-->
                     &lt;name&gt;s0_address&lt;/name&gt;
                     &lt;role&gt;address&lt;/role&gt;
                     &lt;direction&gt;Input&lt;/direction&gt;
-                    &lt;width&gt;13&lt;/width&gt;
+                    &lt;width&gt;12&lt;/width&gt;
                     &lt;lowerBound&gt;0&lt;/lowerBound&gt;
                     &lt;vhdlType&gt;STD_LOGIC_VECTOR&lt;/vhdlType&gt;
                     &lt;terminationValue&gt;0&lt;/terminationValue&gt;
@@ -2596,7 +2596,7 @@ https://fpgasoftware.intel.com/eula.-->
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;addressSpan&lt;/key&gt;
-                        &lt;value&gt;8192&lt;/value&gt;
+                        &lt;value&gt;4096&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;addressUnits&lt;/key&gt;
@@ -2892,7 +2892,7 @@ https://fpgasoftware.intel.com/eula.-->
                     &lt;name&gt;m_axis_video_out_tdata&lt;/name&gt;
                     &lt;role&gt;tdata&lt;/role&gt;
                     &lt;direction&gt;Output&lt;/direction&gt;
-                    &lt;width&gt;16&lt;/width&gt;
+                    &lt;width&gt;24&lt;/width&gt;
                     &lt;lowerBound&gt;0&lt;/lowerBound&gt;
                     &lt;vhdlType&gt;STD_LOGIC_VECTOR&lt;/vhdlType&gt;
                     &lt;terminationValue&gt;0&lt;/terminationValue&gt;
@@ -2928,7 +2928,7 @@ https://fpgasoftware.intel.com/eula.-->
                     &lt;name&gt;m_axis_video_out_tuser&lt;/name&gt;
                     &lt;role&gt;tuser&lt;/role&gt;
                     &lt;direction&gt;Output&lt;/direction&gt;
-                    &lt;width&gt;2&lt;/width&gt;
+                    &lt;width&gt;3&lt;/width&gt;
                     &lt;lowerBound&gt;0&lt;/lowerBound&gt;
                     &lt;vhdlType&gt;STD_LOGIC_VECTOR&lt;/vhdlType&gt;
                     &lt;terminationValue&gt;0&lt;/terminationValue&gt;
@@ -2946,7 +2946,7 @@ https://fpgasoftware.intel.com/eula.-->
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES&lt;/key&gt;
-                        &lt;value&gt;2&lt;/value&gt;
+                        &lt;value&gt;3&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL&lt;/key&gt;
@@ -2987,11 +2987,11 @@ https://fpgasoftware.intel.com/eula.-->
                 &lt;consumedSystemInfos&gt;
                     &lt;entry&gt;
                         &lt;key&gt;ADDRESS_MAP&lt;/key&gt;
-                        &lt;value&gt;&amp;lt;address-map&amp;gt;&amp;lt;slave name='s0' start='0x0' end='0x2000' datawidth='32' /&amp;gt;&amp;lt;/address-map&amp;gt;&lt;/value&gt;
+                        &lt;value&gt;&amp;lt;address-map&amp;gt;&amp;lt;slave name='s0' start='0x0' end='0x1000' datawidth='32' /&amp;gt;&amp;lt;/address-map&amp;gt;&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;ADDRESS_WIDTH&lt;/key&gt;
-                        &lt;value&gt;13&lt;/value&gt;
+                        &lt;value&gt;12&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;MAX_SLAVE_DATA_WIDTH&lt;/key&gt;
@@ -3019,6 +3019,11 @@ https://fpgasoftware.intel.com/eula.-->
       <altera:interface_mapping altera:name="clk" altera:internal="intel_vvp_pipeline2_0.clk" altera:type="clock" altera:dir="end">
         <altera:port_mapping altera:name="clk_clk" altera:internal="clk_clk"></altera:port_mapping>
       </altera:interface_mapping>
+      <altera:interface_mapping altera:name="frc_emif_mem" altera:internal="intel_vvp_pipeline2_0.frc_emif_mem"></altera:interface_mapping>
+      <altera:interface_mapping altera:name="frc_emif_mem_ck" altera:internal="intel_vvp_pipeline2_0.frc_emif_mem_ck"></altera:interface_mapping>
+      <altera:interface_mapping altera:name="frc_emif_mem_reset_n" altera:internal="intel_vvp_pipeline2_0.frc_emif_mem_reset_n"></altera:interface_mapping>
+      <altera:interface_mapping altera:name="frc_emif_oct" altera:internal="intel_vvp_pipeline2_0.frc_emif_oct"></altera:interface_mapping>
+      <altera:interface_mapping altera:name="frc_emif_ref_clk" altera:internal="intel_vvp_pipeline2_0.frc_emif_ref_clk"></altera:interface_mapping>
       <altera:interface_mapping altera:name="m_axis_video_out" altera:internal="intel_vvp_pipeline2_0.m_axis_video_out" altera:type="axi4stream" altera:dir="start">
         <altera:port_mapping altera:name="m_axis_video_out_tdata" altera:internal="m_axis_video_out_tdata"></altera:port_mapping>
         <altera:port_mapping altera:name="m_axis_video_out_tlast" altera:internal="m_axis_video_out_tlast"></altera:port_mapping>

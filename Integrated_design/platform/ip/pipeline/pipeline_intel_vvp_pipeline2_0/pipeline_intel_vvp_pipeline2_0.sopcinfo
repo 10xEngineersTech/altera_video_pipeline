@@ -5,7 +5,7 @@
  version="1.0"
  fabric="QSYS">
  <!-- Format version 25.1.1 125 (Future versions may contain additional information.) -->
- <!-- 2026.07.24.15:38:33 -->
+ <!-- 2026.07.28.14:24:48 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
@@ -122,7 +122,7 @@
    name="intel_vvp_pipeline2_0"
    kind="intel_vvp_pipeline2"
    version="1.0"
-   entity="pipeline_intel_vvp_pipeline2_0_intel_vvp_pipeline2_10_yfn4jti"
+   entity="pipeline_intel_vvp_pipeline2_0_intel_vvp_pipeline2_10_6bzmviq"
    library="intel_vvp_pipeline2_10"
    path="intel_vvp_pipeline2_0"
    hpath="intel_vvp_pipeline2_0"
@@ -131,7 +131,7 @@
 the requested settings for a module instance. -->
   <parameter name="TOPOLOGY">
    <type>java.lang.String</type>
-   <value>CRS_ONLY</value>
+   <value>FULL</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -147,7 +147,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="NUMBER_OF_COLOR_PLANES">
    <type>int</type>
-   <value>3</value>
+   <value>2</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -187,7 +187,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="ENABLE_PIP">
    <type>int</type>
-   <value>0</value>
+   <value>1</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -363,7 +363,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CRS_SUPPORT_420_PASS">
    <type>int</type>
-   <value>1</value>
+   <value>0</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -379,7 +379,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CRS_SUPPORT_420_TO_444">
    <type>int</type>
-   <value>1</value>
+   <value>0</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -395,7 +395,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CRS_SUPPORT_422_TO_420">
    <type>int</type>
-   <value>1</value>
+   <value>0</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -403,7 +403,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CRS_SUPPORT_422_TO_444">
    <type>int</type>
-   <value>1</value>
+   <value>0</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -411,7 +411,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CRS_SUPPORT_444_PASS">
    <type>int</type>
-   <value>1</value>
+   <value>0</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -419,7 +419,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CRS_SUPPORT_444_TO_420">
    <type>int</type>
-   <value>1</value>
+   <value>0</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -939,7 +939,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="SC_ENABLE_444">
    <type>int</type>
-   <value>1</value>
+   <value>0</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -947,7 +947,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="SC_ENABLE_422">
    <type>int</type>
-   <value>0</value>
+   <value>1</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -971,7 +971,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="SC_MAX_IN_WIDTH">
    <type>int</type>
-   <value>4096</value>
+   <value>1920</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -979,7 +979,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="SC_MAX_OUT_WIDTH">
    <type>int</type>
-   <value>4096</value>
+   <value>1280</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -987,7 +987,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="SC_OUTPUT_HEIGHT">
    <type>int</type>
-   <value>2160</value>
+   <value>720</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -2189,7 +2189,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>2</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -2197,7 +2197,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>0</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -2221,7 +2221,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>1</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -2229,7 +2229,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>0</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -2237,7 +2237,7 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>0</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -2424,7 +2424,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="addressSpan">
     <type>java.math.BigInteger</type>
-    <value>4096</value>
+    <value>8192</value>
     <derived>true</derived>
     <enabled>true</enabled>
     <visible>false</visible>
@@ -2847,7 +2847,7 @@ parameters are a RESULT of the module parameters. -->
     <valid>true</valid>
    </parameter>
    <type>avalon</type>
-   <span>4096</span>
+   <span>8192</span>
    <isStart>false</isStart>
    <port>
     <name>s0_waitrequest</name>
@@ -2882,7 +2882,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>s0_address</name>
     <direction>Input</direction>
-    <width>12</width>
+    <width>13</width>
     <role>address</role>
    </port>
    <port>
@@ -3014,7 +3014,7 @@ parameters are a RESULT of the module parameters. -->
    </assignment>
    <assignment>
     <name>intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES</name>
-    <value>3</value>
+    <value>2</value>
    </assignment>
    <assignment>
     <name>intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL</name>
@@ -3062,7 +3062,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>m_axis_video_out_tdata</name>
     <direction>Output</direction>
-    <width>24</width>
+    <width>16</width>
     <role>tdata</role>
    </port>
    <port>
@@ -3086,7 +3086,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>m_axis_video_out_tuser</name>
     <direction>Output</direction>
-    <width>3</width>
+    <width>2</width>
     <role>tuser</role>
    </port>
   </interface>

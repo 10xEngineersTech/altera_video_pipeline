@@ -2006,17 +2006,88 @@ proc compose {} {
     set do_frc [get_parameter_value ENABLE_FRC]
     set do_pip [get_parameter_value ENABLE_PIP]
 
-    # When CRS or CSC are in the chain the internal pipeline runs at 3 planes
-    # (444).  DIL and CRS input see $npl; Clipper and beyond see $internal_npl.
-    set internal_npl [expr {($do_crs || $do_csc) ? 3 : $npl}]
+    # CSC's ports are hardwired to exactly 3 color planes (a property of its
+    # RGB<->YCbCr math, not a parameter) - so whenever CSC actually sits in the
+    # chain, everything from CSC onward (Clipper/PC0/Scaler in FULL/CRS_CSC)
+    # is forced onto that 3-plane bus too, regardless of what CRS produces.
+    # If the build's own NUMBER_OF_COLOR_PLANES is 2 (a genuine 4:2:2 build,
+    # no RGB<->YCbCr conversion needed), skip instantiating CSC entirely in
+    # topologies where CRS precedes it (FULL/CRS_CSC) so CRS connects straight
+    # to Clipper and the whole downstream chain gets a real, unpadded 2-plane
+    # bus - avoiding the corruption that a CSC-forced 3-plane container causes
+    # once Clipper/Scaler apply real (non-identity) crop/scale math to
+    # genuinely-subsampled data. CSC_ONLY/CRS_CSC-as-CSC's-own-topology-entry
+    # (no CRS before it) is unaffected - that topology's entire purpose is the
+    # CSC conversion, so it always keeps CSC regardless of $npl.
+    set csc_active [expr {$do_csc && (!$do_crs || $npl == 3)}]
+
+    # CRS's own input/output plane counts are decided entirely inside CRS's
+    # own hw.tcl, from its SUPPORT_* conversion checkboxes - completely
+    # independent of this pipeline's NUMBER_OF_COLOR_PLANES/internal_npl.
+    # Mirror that same formula here so DIL (which must match CRS's input) and
+    # Clipper/PC0/Scaler when CSC is skipped (which must match CRS's output)
+    # are never blindly assumed to be $npl-wide when CRS itself requires 3.
+    set crs_cols_in  2
+    set crs_cols_out 2
+    if {$do_crs} {
+        set en_420_in  [expr {
+            [get_parameter_value CRS_SUPPORT_420_TO_422] ||
+            [get_parameter_value CRS_SUPPORT_420_TO_444] ||
+            [get_parameter_value CRS_SUPPORT_420_PASS]
+        }]
+        set en_444_in  [expr {
+            [get_parameter_value CRS_SUPPORT_444_TO_422] ||
+            [get_parameter_value CRS_SUPPORT_444_TO_420] ||
+            [get_parameter_value CRS_SUPPORT_444_PASS]
+        }]
+        set en_420_out [expr {
+            [get_parameter_value CRS_SUPPORT_422_TO_420] ||
+            [get_parameter_value CRS_SUPPORT_444_TO_420] ||
+            [get_parameter_value CRS_SUPPORT_420_PASS]
+        }]
+        set en_444_out [expr {
+            [get_parameter_value CRS_SUPPORT_422_TO_444] ||
+            [get_parameter_value CRS_SUPPORT_420_TO_444] ||
+            [get_parameter_value CRS_SUPPORT_444_PASS]
+        }]
+        if {$en_420_in  || $en_444_in}  { set crs_cols_in  3 }
+        if {$en_420_out || $en_444_out} { set crs_cols_out 3 }
+    }
+
+    # DIL sees CRS's real input width; Clipper and beyond see $internal_npl
+    # (CSC's forced 3, or CRS's real output width when CSC is skipped, or
+    # plain $npl for topologies with no CRS at all).
+    set dil_npl      [expr {$do_crs ? $crs_cols_in : $npl}]
+    set internal_npl [expr {$csc_active ? 3 : ($do_crs ? $crs_cols_out : $npl)}]
+
+    # CRS's own hw.tcl silently forces its own RUNTIME_CONTROL (and therefore
+    # whether its av_mm_control_agent interface even exists) to 0 whenever
+    # only one output chroma-sampling format is enabled and external_mode is
+    # 0 - with a single fixed output format there's nothing to select at
+    # runtime. Mirror that exact condition here, or mm_connect below fails
+    # with "no such interface" once CRS's output support is narrowed to just
+    # 4:2:2 (needed for csc_active/genuine-2-plane builds).
+    set crs_has_mm 0
+    if {$do_crs} {
+        set en_422_out [expr {
+            [get_parameter_value CRS_SUPPORT_444_TO_422] ||
+            [get_parameter_value CRS_SUPPORT_420_TO_422] ||
+            [get_parameter_value CRS_SUPPORT_422_PASS]
+        }]
+        set crs_enabled_outputs [expr {$en_420_out + $en_422_out + $en_444_out}]
+        set crs_has_mm [expr {
+            [get_parameter_value CRS_RUNTIME_CONTROL] &&
+            ([get_parameter_value CRS_EXTERNAL_MODE] != 0 || $crs_enabled_outputs != 1)
+        }]
+    }
 
     # -- Determine if MM bridge needed ---------------------------------------
     # FRC and PIP always bring the bridge: the frame buffer is started and the
     # lite->full converter / background TPG are programmed at runtime.
     set need_mm [expr {
         ($do_dil  && [get_parameter_value DIL_RUNTIME_CONTROL])  ||
-        ($do_crs  && [get_parameter_value CRS_RUNTIME_CONTROL])  ||
-        ($do_csc  && [get_parameter_value CSC_RUNTIME_CONTROL])  ||
+        $crs_has_mm ||
+        ($csc_active && [get_parameter_value CSC_RUNTIME_CONTROL])  ||
         ($do_clip && [get_parameter_value CL_RUNTIME_CONTROL])   ||
         ($do_scl  && [get_parameter_value SC_RUNTIME_CONTROL])   ||
         $do_frc || $do_pip
@@ -2070,7 +2141,7 @@ proc compose {} {
         add_instance intel_vvp_dil_0 intel_vvp_dil 24.5.1
         set_instance_parameter_value intel_vvp_dil_0 EXTERNAL_MODE          [get_parameter_value DIL_EXTERNAL_MODE]
         set_instance_parameter_value intel_vvp_dil_0 BPS                    $bps
-        set_instance_parameter_value intel_vvp_dil_0 NUMBER_OF_COLOR_PLANES $internal_npl
+        set_instance_parameter_value intel_vvp_dil_0 NUMBER_OF_COLOR_PLANES $dil_npl
         set_instance_parameter_value intel_vvp_dil_0 PIXELS_IN_PARALLEL     $pip
         set_instance_parameter_value intel_vvp_dil_0 MAX_WIDTH              [get_parameter_value DIL_MAX_WIDTH]
         set_instance_parameter_value intel_vvp_dil_0 DIL_MODE               [get_parameter_value DIL_MODE]
@@ -2126,13 +2197,13 @@ proc compose {} {
         set_instance_parameter_value intel_vvp_crs_0 PIPELINE_READY           [get_parameter_value CRS_PIPELINE_READY]
         add_connection clock_in.out_clk   intel_vvp_crs_0.main_clock
         add_connection reset_in.out_reset intel_vvp_crs_0.main_reset
-        if {$need_mm && [get_parameter_value CRS_RUNTIME_CONTROL]} {
+        if {$need_mm && $crs_has_mm} {
             mm_connect intel_vvp_crs_0 av_mm_control_agent 0x0200
         }
     }
 
     # -- CSC -----------------------------------------------------------------
-    if {$do_csc} {
+    if {$csc_active} {
         add_instance intel_vvp_csc_0 intel_vvp_csc 24.5.1
         set_instance_parameter_value intel_vvp_csc_0 EXTERNAL_MODE              [get_parameter_value CSC_EXTERNAL_MODE]
         set_instance_parameter_value intel_vvp_csc_0 BPS_IN                     [get_parameter_value CSC_BPS_IN]
@@ -2214,10 +2285,35 @@ proc compose {} {
         set_instance_parameter_value intel_vvp_scaler_0 PIXELS_IN_PARALLEL     $pip
         # When the internal pipeline runs at 3 planes (444), the scaler input is
         # always 444 — force ENABLE_444 on so the scaler accepts that format.
-        set sc_enable_444 [expr {($internal_npl == 3) ? 1 : [get_parameter_value SC_ENABLE_444]}]
+        # ENABLE_444 requires a genuine 3-plane bus (444 conceptually needs 3
+        # full-resolution planes) - forcing it on while internal_npl is only 2
+        # is an invalid combination. When internal_npl is 2 (CSC skipped, CRS's
+        # own output narrowed to a real 2-plane 4:2:2 stream) force ENABLE_422
+        # instead, matching what's actually on the bus.
+        #
+        # When internal_npl is 3 (CSC active), CRS's own OUTPUT_MODE is
+        # runtime-switchable across 4:2:0/4:2:2/4:4:4, so in principle the
+        # scaler should handle whichever one CRS is actually programmed for.
+        # In practice, forcing ENABLE_420 on unconditionally broke previously-
+        # working 4:2:2/4:4:4/CSC-RGB tests: the scaler's metadata-driven
+        # format auto-detection appears to unreliably pick 4:2:0 once it's a
+        # valid option at all (confirmed via IMG_INFO_SUBSAMPLING readback
+        # returning 0/4:2:0 regardless of the actual runtime format in an
+        # earlier debug session), corrupting anything that isn't genuinely
+        # 4:2:0. So ENABLE_420/HALF_RATE_420 are deliberately NOT forced here -
+        # leave them as an explicit, manual opt-in (tick "4:2:0 chroma
+        # sampling" in the scaler tab) only for a build specifically dedicated
+        # to testing 4:2:0 output, same as any other narrowed single-purpose
+        # build in this pipeline. ENABLE_422 forcing is unaffected by this -
+        # confirmed safe on its own (CSC-RGB tests worked fine with it before
+        # ENABLE_420 was added).
+        set sc_enable_444 [expr {($internal_npl == 3) ? 1 : 0}]
+        set sc_enable_422 [expr {($internal_npl == 2 || $internal_npl == 3) ? 1 : [get_parameter_value SC_ENABLE_422]}]
+        set sc_enable_420      [get_parameter_value SC_ENABLE_420]
+        set sc_half_rate_420   [get_parameter_value SC_HALF_RATE_420]
         set_instance_parameter_value intel_vvp_scaler_0 ENABLE_444             $sc_enable_444
-        set_instance_parameter_value intel_vvp_scaler_0 ENABLE_422             [get_parameter_value SC_ENABLE_422]
-        set_instance_parameter_value intel_vvp_scaler_0 ENABLE_420             [get_parameter_value SC_ENABLE_420]
+        set_instance_parameter_value intel_vvp_scaler_0 ENABLE_422             $sc_enable_422
+        set_instance_parameter_value intel_vvp_scaler_0 ENABLE_420             $sc_enable_420
         set_instance_parameter_value intel_vvp_scaler_0 NO_BLANKING            [get_parameter_value SC_NO_BLANKING]
         set_instance_parameter_value intel_vvp_scaler_0 MAX_IN_WIDTH           [get_parameter_value SC_MAX_IN_WIDTH]
         set_instance_parameter_value intel_vvp_scaler_0 MAX_OUT_WIDTH          [get_parameter_value SC_MAX_OUT_WIDTH]
@@ -2244,7 +2340,7 @@ proc compose {} {
         set_instance_parameter_value intel_vvp_scaler_0 V_INIT_FILE            [get_parameter_value SC_V_INIT_FILE]
         set_instance_parameter_value intel_vvp_scaler_0 ENABLE_H               [get_parameter_value SC_ENABLE_H]
         set_instance_parameter_value intel_vvp_scaler_0 H_PARTIAL_SCALING      [get_parameter_value SC_H_PARTIAL_SCALING]
-        set_instance_parameter_value intel_vvp_scaler_0 HALF_RATE_420          [get_parameter_value SC_HALF_RATE_420]
+        set_instance_parameter_value intel_vvp_scaler_0 HALF_RATE_420          $sc_half_rate_420
         set_instance_parameter_value intel_vvp_scaler_0 H_TAPS                 [get_parameter_value SC_H_TAPS]
         set_instance_parameter_value intel_vvp_scaler_0 H_PHASES               [get_parameter_value SC_H_PHASES]
         set_instance_parameter_value intel_vvp_scaler_0 H_BANKS                [get_parameter_value SC_H_BANKS]
@@ -2265,7 +2361,7 @@ proc compose {} {
 
     if {$do_crs} { set last_out "intel_vvp_crs_0.axi4s_vid_out" }
 
-    if {$do_csc} {
+    if {$csc_active} {
         if {$last_out ne ""} { add_connection $last_out intel_vvp_csc_0.axi4s_vid_in }
         set last_out "intel_vvp_csc_0.axi4s_vid_out"
     }
@@ -2309,7 +2405,7 @@ proc compose {} {
         set chain_is_lite 1
     } elseif {$do_clip} {
         set chain_is_lite [get_parameter_value CL_EXTERNAL_MODE]
-    } elseif {$do_csc} {
+    } elseif {$csc_active} {
         set chain_is_lite [get_parameter_value CSC_EXTERNAL_MODE]
     } elseif {$do_crs} {
         set chain_is_lite [get_parameter_value CRS_EXTERNAL_MODE]
@@ -2532,10 +2628,39 @@ proc compose {} {
         set_instance_parameter_value pip_bg_tpg_0 PIXELS_IN_PARALLEL $pip
         set_instance_parameter_value pip_bg_tpg_0 RUNTIME_CONTROL    1
         set_instance_parameter_value pip_bg_tpg_0 EXTERNAL_MODE      0
-        set_instance_parameter_value pip_bg_tpg_0 NUM_CORES          1
-        set_instance_parameter_value pip_bg_tpg_0 CORE_PATTERN_0     1
-        set_instance_parameter_value pip_bg_tpg_0 CORE_COL_SPACE_0   0
-        set_instance_parameter_value pip_bg_tpg_0 OUTPUT_FORMAT      [expr {($internal_npl == 2) ? "4.2.2" : "4.4.4"}]
+        # CORE_COL_SPACE_N sets each compiled pattern's native colorspace -
+        # a compile-time choice that can't track the runtime CSC_MODE/CRS
+        # OUTPUT_MODE registers on its own (the Mixer does no colorspace
+        # conversion, it just overlays pixels - background and foreground
+        # must be genuinely the same native format or neither decodes
+        # correctly afterward). For the npl==2 build (CSC skipped, CRS
+        # locked to 4:2:2-only output) there's only ever one possible
+        # format, so a single core is enough. For the npl==3 build, CRS's
+        # OUTPUT_MODE is runtime-switchable across 4:2:0/4:2:2/4:4:4, so we
+        # compile all three as separate cores and let top.v pick the
+        # matching one at runtime via PATTERN_SELECT_REG (PIPTPG_PATTERN),
+        # tied to CRS_OUTPUT_MODE - core 0=4:4:4, 1=4:2:2, 2=4:2:0. This
+        # still assumes CSC stays in passthrough; if you want PIP with CSC
+        # actively converting to RGB, that needs a dedicated RGB-only build
+        # instead (core col space 0), same as before.
+        if {$internal_npl == 2} {
+            set_instance_parameter_value pip_bg_tpg_0 NUM_CORES          1
+            set_instance_parameter_value pip_bg_tpg_0 CORE_PATTERN_0     1
+            set_instance_parameter_value pip_bg_tpg_0 CORE_COL_SPACE_0   2
+            set_instance_parameter_value pip_bg_tpg_0 OUTPUT_FORMAT      "4.2.2"
+        } else {
+            set_instance_parameter_value pip_bg_tpg_0 NUM_CORES          3
+            set_instance_parameter_value pip_bg_tpg_0 CORE_PATTERN_0     1
+            set_instance_parameter_value pip_bg_tpg_0 CORE_COL_SPACE_0   1
+            set_instance_parameter_value pip_bg_tpg_0 CORE_PATTERN_1     1
+            set_instance_parameter_value pip_bg_tpg_0 CORE_COL_SPACE_1   2
+            set_instance_parameter_value pip_bg_tpg_0 CORE_PATTERN_2     1
+            set_instance_parameter_value pip_bg_tpg_0 CORE_COL_SPACE_2   3
+            # "VAR" yields 3 planes (matching the mixer's NUMBER_OF_COLOR_
+            # PLANES below) without enforcing "all patterns must be one
+            # single fixed format" the way "4.4.4" would.
+            set_instance_parameter_value pip_bg_tpg_0 OUTPUT_FORMAT      "VAR"
+        }
         add_connection clock_in.out_clk   pip_bg_tpg_0.main_clock
         add_connection reset_in.out_reset pip_bg_tpg_0.main_reset
 
@@ -2610,7 +2735,7 @@ proc compose {} {
         if {$do_crs} {
             add_interface s_axis_video_in axi4stream end
             set_interface_property s_axis_video_in EXPORT_OF intel_vvp_crs_0.axi4s_vid_in
-        } elseif {$do_csc} {
+        } elseif {$csc_active} {
             add_interface s_axis_video_in axi4stream end
             set_interface_property s_axis_video_in EXPORT_OF intel_vvp_csc_0.axi4s_vid_in
         } elseif {$do_clip} {

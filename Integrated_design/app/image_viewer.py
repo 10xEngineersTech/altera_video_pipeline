@@ -417,8 +417,26 @@ class ImageViewerWindow(Gtk.Window):
         return idx if idx >= 0 else 1
 
     def _get_vid_planes(self):
-        # Datapath color planes: 3 for RGB/4:4:4, 2 for 4:2:2/4:2:0.
-        # Must match the generated pipeline IP's NUMBER_OF_COLOR_PLANES.
+        # Datapath color planes must match whatever NUMBER_OF_COLOR_PLANES the
+        # packaged pipeline IP was actually generated with in Platform Designer
+        # (that's a separate, out-of-band regeneration step - it isn't
+        # something this app controls). Read it directly from the generated
+        # .ip descriptor rather than guessing from the TPG colorspace, since
+        # the two aren't reliably related (e.g. a 3-plane/CSC-capable build
+        # can carry a 4:2:2 TPG source just as well as a 2-plane build can).
+        ip_path = os.path.join(BASE_DIR, "..", "platform", "ip", "pipeline",
+                                "pipeline_intel_vvp_pipeline2_0.ip")
+        try:
+            with open(ip_path) as f:
+                content = f.read()
+            m = re.search(
+                r'<ipxact:name>NUMBER_OF_COLOR_PLANES</ipxact:name>.*?'
+                r'<ipxact:value>(\d+)</ipxact:value>', content, re.DOTALL)
+            if m:
+                return int(m.group(1))
+        except OSError:
+            pass
+        # Fallback if the .ip file can't be read for some reason.
         return 2 if self._get_tpg_colorspace() in (2, 3) else 3
 
     def _get_output_format(self):

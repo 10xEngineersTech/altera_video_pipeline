@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd /home/izaan-10xe/altera_video_pipeline *)",
+      "Read(//home/izaan-10xe/**)",
+      "Bash(find /home/izaan-10xe/altera_pro -ipath \"*intel_vvp_crs*_hw.tcl\" 2>/dev/null | head -3 *)",
+      "Read(//home/izaan-10xe/altera_pro/**)",
+      "Bash(find /home/izaan-10xe/altera_pro -ipath \"*chroma_resampler/intel_vvp_crs/*_hw.tcl\" 2>/dev/null *)",
+      "Bash(timeout 180 python3 runProject.py False)",
+      "Bash(grep -v '^$')",
+      "Bash(awk '{print substr\\($0,1,2\\)}')",
+      "Bash(python3 -c ' *)",
+      "Bash(sed -i 's/parameter SCALER_WIDTH    = 38;/parameter SCALER_WIDTH    = 28;/;s/parameter SCALER_HEIGHT   = 38;/parameter SCALER_HEIGHT   = 28;/' configuration.vh)",
+      "Bash(grep -n \"ENABLE_444\\\\|CHROMA_SIT\\\\|chroma\" /home/izaan-10xe/altera_pro/25.1.1/ip/altera/mtm/cores/vvp/scaler/intel_vvp_scaler/intel_vvp_scaler_hw.tcl 2>/dev/null | head -20 *)"
+    ]
+  }
+}

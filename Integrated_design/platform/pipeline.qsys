@@ -225,11 +225,11 @@ https://fpgasoftware.intel.com/eula.-->
                 &lt;consumedSystemInfos&gt;
                     &lt;entry&gt;
                         &lt;key&gt;ADDRESS_MAP&lt;/key&gt;
-                        &lt;value&gt;&amp;lt;address-map&amp;gt;&amp;lt;slave name='intel_vvp_pipeline2_0.s0' start='0x0' end='0x1000' datawidth='32' /&amp;gt;&amp;lt;/address-map&amp;gt;&lt;/value&gt;
+                        &lt;value&gt;&amp;lt;address-map&amp;gt;&amp;lt;slave name='intel_vvp_pipeline2_0.s0' start='0x0' end='0x2000' datawidth='32' /&amp;gt;&amp;lt;/address-map&amp;gt;&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;ADDRESS_WIDTH&lt;/key&gt;
-                        &lt;value&gt;12&lt;/value&gt;
+                        &lt;value&gt;13&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;MAX_SLAVE_DATA_WIDTH&lt;/key&gt;
@@ -719,7 +719,7 @@ https://fpgasoftware.intel.com/eula.-->
                         &lt;name&gt;s0_address&lt;/name&gt;
                         &lt;role&gt;address&lt;/role&gt;
                         &lt;direction&gt;Input&lt;/direction&gt;
-                        &lt;width&gt;12&lt;/width&gt;
+                        &lt;width&gt;13&lt;/width&gt;
                         &lt;lowerBound&gt;0&lt;/lowerBound&gt;
                         &lt;vhdlType&gt;STD_LOGIC_VECTOR&lt;/vhdlType&gt;
                         &lt;terminationValue&gt;0&lt;/terminationValue&gt;
@@ -793,7 +793,7 @@ https://fpgasoftware.intel.com/eula.-->
                         &lt;/entry&gt;
                         &lt;entry&gt;
                             &lt;key&gt;addressSpan&lt;/key&gt;
-                            &lt;value&gt;4096&lt;/value&gt;
+                            &lt;value&gt;8192&lt;/value&gt;
                         &lt;/entry&gt;
                         &lt;entry&gt;
                             &lt;key&gt;addressUnits&lt;/key&gt;
@@ -1089,7 +1089,7 @@ https://fpgasoftware.intel.com/eula.-->
                         &lt;name&gt;m_axis_video_out_tdata&lt;/name&gt;
                         &lt;role&gt;tdata&lt;/role&gt;
                         &lt;direction&gt;Output&lt;/direction&gt;
-                        &lt;width&gt;24&lt;/width&gt;
+                        &lt;width&gt;16&lt;/width&gt;
                         &lt;lowerBound&gt;0&lt;/lowerBound&gt;
                         &lt;vhdlType&gt;STD_LOGIC_VECTOR&lt;/vhdlType&gt;
                         &lt;terminationValue&gt;0&lt;/terminationValue&gt;
@@ -1125,7 +1125,7 @@ https://fpgasoftware.intel.com/eula.-->
                         &lt;name&gt;m_axis_video_out_tuser&lt;/name&gt;
                         &lt;role&gt;tuser&lt;/role&gt;
                         &lt;direction&gt;Output&lt;/direction&gt;
-                        &lt;width&gt;3&lt;/width&gt;
+                        &lt;width&gt;2&lt;/width&gt;
                         &lt;lowerBound&gt;0&lt;/lowerBound&gt;
                         &lt;vhdlType&gt;STD_LOGIC_VECTOR&lt;/vhdlType&gt;
                         &lt;terminationValue&gt;0&lt;/terminationValue&gt;
@@ -1143,7 +1143,7 @@ https://fpgasoftware.intel.com/eula.-->
                         &lt;/entry&gt;
                         &lt;entry&gt;
                             &lt;key&gt;intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES&lt;/key&gt;
-                            &lt;value&gt;3&lt;/value&gt;
+                            &lt;value&gt;2&lt;/value&gt;
                         &lt;/entry&gt;
                         &lt;entry&gt;
                             &lt;key&gt;intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL&lt;/key&gt;
@@ -1212,11 +1212,11 @@ https://fpgasoftware.intel.com/eula.-->
                     &lt;suppliedSystemInfos&gt;
                         &lt;entry&gt;
                             &lt;key&gt;ADDRESS_MAP&lt;/key&gt;
-                            &lt;value&gt;&amp;lt;address-map&amp;gt;&amp;lt;slave name='s0' start='0x0' end='0x1000' datawidth='32' /&amp;gt;&amp;lt;/address-map&amp;gt;&lt;/value&gt;
+                            &lt;value&gt;&amp;lt;address-map&amp;gt;&amp;lt;slave name='s0' start='0x0' end='0x2000' datawidth='32' /&amp;gt;&amp;lt;/address-map&amp;gt;&lt;/value&gt;
                         &lt;/entry&gt;
                         &lt;entry&gt;
                             &lt;key&gt;ADDRESS_WIDTH&lt;/key&gt;
-                            &lt;value&gt;12&lt;/value&gt;
+                            &lt;value&gt;13&lt;/value&gt;
                         &lt;/entry&gt;
                         &lt;entry&gt;
                             &lt;key&gt;MAX_SLAVE_DATA_WIDTH&lt;/key&gt;
@@ -1359,7 +1359,7 @@ https://fpgasoftware.intel.com/eula.-->
                     &lt;name&gt;s0_address&lt;/name&gt;
                     &lt;role&gt;address&lt;/role&gt;
                     &lt;direction&gt;Input&lt;/direction&gt;
-                    &lt;width&gt;12&lt;/width&gt;
+                    &lt;width&gt;13&lt;/width&gt;
                     &lt;lowerBound&gt;0&lt;/lowerBound&gt;
                     &lt;vhdlType&gt;STD_LOGIC_VECTOR&lt;/vhdlType&gt;
                     &lt;terminationValue&gt;0&lt;/terminationValue&gt;
@@ -1433,7 +1433,7 @@ https://fpgasoftware.intel.com/eula.-->
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;addressSpan&lt;/key&gt;
-                        &lt;value&gt;4096&lt;/value&gt;
+                        &lt;value&gt;8192&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;addressUnits&lt;/key&gt;
@@ -1729,7 +1729,7 @@ https://fpgasoftware.intel.com/eula.-->
                     &lt;name&gt;m_axis_video_out_tdata&lt;/name&gt;
                     &lt;role&gt;tdata&lt;/role&gt;
                     &lt;direction&gt;Output&lt;/direction&gt;
-                    &lt;width&gt;24&lt;/width&gt;
+                    &lt;width&gt;16&lt;/width&gt;
                     &lt;lowerBound&gt;0&lt;/lowerBound&gt;
                     &lt;vhdlType&gt;STD_LOGIC_VECTOR&lt;/vhdlType&gt;
                     &lt;terminationValue&gt;0&lt;/terminationValue&gt;
@@ -1765,7 +1765,7 @@ https://fpgasoftware.intel.com/eula.-->
                     &lt;name&gt;m_axis_video_out_tuser&lt;/name&gt;
                     &lt;role&gt;tuser&lt;/role&gt;
                     &lt;direction&gt;Output&lt;/direction&gt;
-                    &lt;width&gt;3&lt;/width&gt;
+                    &lt;width&gt;2&lt;/width&gt;
                     &lt;lowerBound&gt;0&lt;/lowerBound&gt;
                     &lt;vhdlType&gt;STD_LOGIC_VECTOR&lt;/vhdlType&gt;
                     &lt;terminationValue&gt;0&lt;/terminationValue&gt;
@@ -1783,7 +1783,7 @@ https://fpgasoftware.intel.com/eula.-->
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES&lt;/key&gt;
-                        &lt;value&gt;3&lt;/value&gt;
+                        &lt;value&gt;2&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL&lt;/key&gt;

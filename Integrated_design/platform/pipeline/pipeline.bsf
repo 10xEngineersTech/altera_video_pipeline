@@ -55,8 +55,8 @@ on the Quartus Prime software download page.
 	(port
 		(pt 0 301)
 		(input)
-		(text "s0_address[11..0]" (rect 0 0 69 12)(font "SansSerif" (font_size 8)))
-		(text "s0_address[11..0]" (rect 4 290 106 301)(font "SansSerif" (font_size 8)))
+		(text "s0_address[12..0]" (rect 0 0 70 12)(font "SansSerif" (font_size 8)))
+		(text "s0_address[12..0]" (rect 4 290 106 301)(font "SansSerif" (font_size 8)))
 		(line (pt 0 301)(pt 289 301)(line_width 3))
 	)
 	(port
@@ -268,8 +268,8 @@ on the Quartus Prime software download page.
 	(port
 		(pt 680 76)
 		(output)
-		(text "m_axis_video_out_tdata[23..0]" (rect 0 0 123 12)(font "SansSerif" (font_size 8)))
-		(text "m_axis_video_out_tdata[23..0]" (rect 527 65 701 76)(font "SansSerif" (font_size 8)))
+		(text "m_axis_video_out_tdata[15..0]" (rect 0 0 122 12)(font "SansSerif" (font_size 8)))
+		(text "m_axis_video_out_tdata[15..0]" (rect 529 65 703 76)(font "SansSerif" (font_size 8)))
 		(line (pt 680 76)(pt 391 76)(line_width 3))
 	)
 	(port
@@ -289,8 +289,8 @@ on the Quartus Prime software download page.
 	(port
 		(pt 680 176)
 		(output)
-		(text "m_axis_video_out_tuser[2..0]" (rect 0 0 120 12)(font "SansSerif" (font_size 8)))
-		(text "m_axis_video_out_tuser[2..0]" (rect 532 165 700 176)(font "SansSerif" (font_size 8)))
+		(text "m_axis_video_out_tuser[1..0]" (rect 0 0 119 12)(font "SansSerif" (font_size 8)))
+		(text "m_axis_video_out_tuser[1..0]" (rect 534 165 702 176)(font "SansSerif" (font_size 8)))
 		(line (pt 680 176)(pt 289 176)(line_width 1))
 	)
 	(port

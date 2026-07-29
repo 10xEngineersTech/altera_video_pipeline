@@ -55,7 +55,7 @@
 // =============================================================================
 
 module top #(
-    parameter        TOPOLOGY        = "CRS_ONLY",
+    parameter        TOPOLOGY        = "FULL",
     parameter [0:0]  INPUT_SEL       = 1'b0,
     parameter [0:0]  ENABLE_PIP      = 1'b0,
 
@@ -84,11 +84,11 @@ module top #(
     parameter [1:0]  PIP_BG_COLOR   = 2'd2,  // 0=Red, 1=Green, 2=Blue (VPSS R/G/B convention)
 
     // CRS output mode: 0=420, 2=422, 3=444
-    parameter [31:0] CRS_OUTPUT_MODE =                                                                                                                                                                          32'd2,
+    parameter [31:0] CRS_OUTPUT_MODE =                                                                                                                                                                                                                                             32'd2,
 
     // CSC mode: 0=passthrough, 1=RGB->YCbCrHD, 2=YCbCrHD->RGB,
     //           3=RGB->YCbCrSD, 4=YCbCrSD->RGB
-    parameter [2:0]  CSC_MODE =                                                                                                                                    3'd0,
+    parameter [2:0]  CSC_MODE =                                                                                                                                                                                                       3'd0,
     parameter [31:0] CSC_COLOR_SPACE = 32'd2,
 	 
 	 
@@ -122,7 +122,21 @@ module top #(
     // =========================================================================
     localparam DO_DIL  = (TOPOLOGY=="FULL"||TOPOLOGY=="DIL_ONLY")                        ? 1 : 0;
     localparam DO_CRS  = (TOPOLOGY=="FULL"||TOPOLOGY=="CRS_CSC"||TOPOLOGY=="CRS_ONLY")   ? 1 : 0;
-    localparam DO_CSC  = (TOPOLOGY=="FULL"||TOPOLOGY=="CSC_ONLY"||TOPOLOGY=="CRS_CSC")   ? 1 : 0;
+    localparam DO_CSC_TOPO = (TOPOLOGY=="FULL"||TOPOLOGY=="CSC_ONLY"||TOPOLOGY=="CRS_CSC") ? 1 : 0;
+    // Packaged IP skips CSC entirely (see csc_active in intel_vvp_pipeline2_hw.tcl)
+    // whenever CRS precedes it (FULL/CRS_CSC) and this build's VID_PLANES is 2 -
+    // CSC's ports are hardwired to 3 planes, so a genuine 2-plane build can't
+    // carry it in the chain. Must mirror that condition here or this FSM would
+    // try to configure a CSC register block that was never generated.
+    localparam DO_CSC  = DO_CSC_TOPO && (!DO_CRS || VID_PLANES == 32'd3);
+    // For the same genuine-2-plane build (VID_PLANES==2), the packaged IP's
+    // CRS is generated with its output support narrowed to a single fixed
+    // format (4:2:2 only) - CRS's own core then automatically disables its
+    // runtime-control interface (nothing to select at runtime with only one
+    // possible output), so this FSM must skip writing any CRS registers at
+    // all in that case, or it would stall waiting on a bridge_wait/readdata
+    // response from a control interface that no longer exists.
+    localparam DO_CRS_MM = DO_CRS && (VID_PLANES == 32'd3);
     localparam DO_CLIP = (TOPOLOGY=="FULL"||TOPOLOGY=="CLIP_SCL")                        ? 1 : 0;
     localparam DO_SCL  = (TOPOLOGY=="FULL"||TOPOLOGY=="SCALER_ONLY"||TOPOLOGY=="CLIP_SCL") ? 1 : 0;
     localparam DO_PC1  = (INPUT_SEL==1'b1) ? 1 : 0;
@@ -293,6 +307,23 @@ module top #(
                                    ((PIP_BG_COLOR == 2'd0) ? 32'd212 :  // Red (native YUV)
                                     (PIP_BG_COLOR == 2'd1) ? 32'd58  :  // Green (native YUV)
                                                               32'd114); // Blue (native YUV)
+
+    // pip_bg_tpg_0's compiled cores (see intel_vvp_pipeline2_hw.tcl): the
+    // VID_PLANES==2 build only ever has core 0 (locked to 4:2:2, its only
+    // possible format). The VID_PLANES==3 build compiles all three chroma
+    // formats as separate cores (0=4:4:4, 1=4:2:2, 2=4:2:0) so the runtime-
+    // selected one can always match whatever CRS_OUTPUT_MODE actually is
+    // (assumes CSC stays in passthrough - a build with CSC actively
+    // converting to RGB needs a dedicated RGB-only build instead).
+    localparam [31:0] PIP_BG_CORE_SEL = (VID_PLANES == 32'd2) ? 32'd0 :
+                                         (CRS_OUTPUT_MODE == 32'd0) ? 32'd2 :  // 4:2:0 -> core 2
+                                         (CRS_OUTPUT_MODE == 32'd2) ? 32'd1 :  // 4:2:2 -> core 1
+                                                                       32'd0;  // 4:4:4 -> core 0
+    // The background's own Cb/Cr line-role alternation runs one line out of
+    // phase relative to the main video's whenever it's genuine 4:2:0
+    // (confirmed by direct capture - see PIP_BG_IS_420 usage below), so C0/
+    // C2 must be swapped specifically for that core.
+    localparam [0:0]  PIP_BG_IS_420 = (VID_PLANES == 32'd3) && (CRS_OUTPUT_MODE == 32'd0);
 
     // Foreground (layer 1) geometry = the pipeline's own actual output frame
     // size. ltf_conv_0 needs this - not the background size - to find line
@@ -609,7 +640,7 @@ module top #(
                         bridge_addr   <= SCL_IN_WIDTH;
                         bridge_wdata  <= SCL_IN_W;
                         current_state <= ST_CONFIG_SCL;
-                    end else if (DO_CRS) begin
+                    end else if (DO_CRS_MM) begin
                         bridge_addr   <= CRS_OUT_MODE;
                         bridge_wdata  <= CRS_OUTPUT_MODE;
                         current_state <= ST_CONFIG_CRS;
@@ -677,7 +708,7 @@ module top #(
                         if (cfg_step == 4'd3) begin
                             bridge_write  <= 1'b0;
                             cfg_step      <= 4'd0;
-                            if (DO_CRS) begin
+                            if (DO_CRS_MM) begin
                                 bridge_addr   <= CRS_OUT_MODE;
                                 bridge_wdata  <= CRS_OUTPUT_MODE;
                                 current_state <= ST_CONFIG_CRS;
@@ -1087,11 +1118,13 @@ module top #(
                 ST_PIPTPG_WR_PAT_S: begin
                     bridge_write <= 1'b1;
                     bridge_addr  <= PIPTPG_PATTERN;
-                    // pip_bg_tpg_0 is generated with NUM_CORES=1, CORE_PATTERN_0=1
-                    // (Constant colour). PATTERN_SELECT_REG selects a CORE INDEX
-                    // (0..NUM_CORES-1), not the pattern-type value - with only
-                    // core 0 compiled in, the runtime select must be 0.
-                    bridge_wdata <= 32'h0;
+                    // pip_bg_tpg_0's cores (see intel_vvp_pipeline2_hw.tcl):
+                    // VID_PLANES==2 build has only core 0 (4:2:2-only, matches
+                    // that build's sole possible format). VID_PLANES==3 build
+                    // has 3 cores (0=4:4:4, 1=4:2:2, 2=4:2:0) - select the one
+                    // matching CRS's actual runtime OUTPUT_MODE so the PIP
+                    // background always matches the foreground's real format.
+                    bridge_wdata <= PIP_BG_CORE_SEL;
                     if (bridge_write && !bridge_wait) begin
                         bridge_write  <= 1'b0;
                         current_state <= ST_PIPTPG_WR_C0;
@@ -1099,11 +1132,12 @@ module top #(
                 end
 
                 // Fixed background color (blue, matching AMD/Xilinx VPSS's
-                // R/G/B-only PIP convention). Core outputs YCbCr: C0=Cb, C1=Y, C2=Cr.
+                // R/G/B-only PIP convention). Core outputs YCbCr: C0=Cb, C1=Y, C2=Cr -
+                // except when PIP_BG_IS_420, where C0/C2 are swapped (see param doc).
                 ST_PIPTPG_WR_C0: begin
                     bridge_write <= 1'b1;
                     bridge_addr  <= PIPTPG_C0;
-                    bridge_wdata <= PIP_BG_CB;
+                    bridge_wdata <= PIP_BG_IS_420 ? PIP_BG_CR : PIP_BG_CB;
                     if (bridge_write && !bridge_wait) begin
                         bridge_write  <= 1'b0;
                         current_state <= ST_PIPTPG_WR_C1;
@@ -1123,7 +1157,7 @@ module top #(
                 ST_PIPTPG_WR_C2: begin
                     bridge_write <= 1'b1;
                     bridge_addr  <= PIPTPG_C2;
-                    bridge_wdata <= PIP_BG_CR;
+                    bridge_wdata <= PIP_BG_IS_420 ? PIP_BG_CB : PIP_BG_CR;
                     if (bridge_write && !bridge_wait) begin
                         bridge_write  <= 1'b0;
                         current_state <= ST_PIPTPG_WR_CMT;
@@ -1255,10 +1289,22 @@ module top #(
     wire        vid_in_tlast  = INPUT_SEL  ? pc1_tlast  : tpg_tlast;
     wire [2:0]  vid_in_tuser  = INPUT_SEL  ? pc1_tuser  : (TPG_MODE == 32'd2) ? {1'b0,tpg_tuser[1:0]} : tpg_tuser;
 	 
-//	 // Video datapath width = color planes * 8 bits/sample (16 or 24).
-//    localparam VID_BITS = (CRS_OUTPUT_MODE == 32'd2) ? 32'd15 : 32'd23;
-//    wire [VID_BITS:0] pl_out_tdata;
-//    assign out_tdata = pl_out_tdata;   // narrower RHS zero-extends to [23:0]
+    // Output datapath width mirrors the input-side narrowing above: for a
+    // 2-plane build (VID_PLANES==2) the packaged pipeline's actual
+    // m_axis_video_out ports are genuinely 16-bit/2-bit (not 24-bit/3-bit),
+    // since NUMBER_OF_COLOR_PLANES now really is 2 all the way to the
+    // exported interface. Connecting that narrower real output straight to
+    // the fixed 24-bit/3-bit out_tdata/out_tuser ports leaves their upper
+    // bits permanently undriven (X) - previously harmless because the build
+    // was always genuinely 3-plane, so the widths already matched. Widen
+    // explicitly here instead of relying on the simulator's port-size-
+    // mismatch handling.
+    localparam OUT_TDATA_BITS = (VID_PLANES == 32'd2) ? 16 : 24;
+    localparam OUT_TUSER_BITS = (VID_PLANES == 32'd2) ? 2  : 3;
+    wire [OUT_TDATA_BITS-1:0] pl_out_tdata;
+    wire [OUT_TUSER_BITS-1:0] pl_out_tuser;
+    assign out_tdata = {{(24-OUT_TDATA_BITS){1'b0}}, pl_out_tdata};
+    assign out_tuser = {{(3-OUT_TUSER_BITS){1'b0}},  pl_out_tuser};
 
     assign tpg_tready = INPUT_SEL ? 1'b1 : (vid_in_tready & ready_to_start);
     assign pc1_tready = INPUT_SEL ? (vid_in_tready & ready_to_start) : 1'b1;
@@ -1288,11 +1334,11 @@ module top #(
         .s_axis_video_in_tlast  (vid_in_tlast),
         .s_axis_video_in_tuser  (vid_in_tuser),
 
-        .m_axis_video_out_tdata  (out_tdata),
+        .m_axis_video_out_tdata  (pl_out_tdata),
         .m_axis_video_out_tvalid (out_tvalid),
         .m_axis_video_out_tready (out_tready),
         .m_axis_video_out_tlast  (out_tlast),
-        .m_axis_video_out_tuser  (out_tuser),
+        .m_axis_video_out_tuser  (pl_out_tuser),
 
         .axi4s_vid_in_tdata  (pc1_in_tdata),
         .axi4s_vid_in_tvalid (pc1_in_tvalid),

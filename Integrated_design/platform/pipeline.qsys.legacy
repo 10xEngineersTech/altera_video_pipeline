@@ -145,11 +145,11 @@ https://fpgasoftware.intel.com/eula.-->
                 <consumedSystemInfos>
                     <entry>
                         <key>ADDRESS_MAP</key>
-                        <value>&lt;address-map&gt;&lt;slave name='intel_vvp_pipeline2_0.s0' start='0x0' end='0x1000' datawidth='32' /&gt;&lt;/address-map&gt;</value>
+                        <value>&lt;address-map&gt;&lt;slave name='intel_vvp_pipeline2_0.s0' start='0x0' end='0x2000' datawidth='32' /&gt;&lt;/address-map&gt;</value>
                     </entry>
                     <entry>
                         <key>ADDRESS_WIDTH</key>
-                        <value>12</value>
+                        <value>13</value>
                     </entry>
                     <entry>
                         <key>MAX_SLAVE_DATA_WIDTH</key>
@@ -596,7 +596,7 @@ https://fpgasoftware.intel.com/eula.-->
                         <name>s0_address</name>
                         <role>address</role>
                         <direction>Input</direction>
-                        <width>12</width>
+                        <width>13</width>
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                         <terminationValue>0</terminationValue>
@@ -670,7 +670,7 @@ https://fpgasoftware.intel.com/eula.-->
                         </entry>
                         <entry>
                             <key>addressSpan</key>
-                            <value>4096</value>
+                            <value>8192</value>
                         </entry>
                         <entry>
                             <key>addressUnits</key>
@@ -966,7 +966,7 @@ https://fpgasoftware.intel.com/eula.-->
                         <name>m_axis_video_out_tdata</name>
                         <role>tdata</role>
                         <direction>Output</direction>
-                        <width>24</width>
+                        <width>16</width>
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                         <terminationValue>0</terminationValue>
@@ -1002,7 +1002,7 @@ https://fpgasoftware.intel.com/eula.-->
                         <name>m_axis_video_out_tuser</name>
                         <role>tuser</role>
                         <direction>Output</direction>
-                        <width>3</width>
+                        <width>2</width>
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                         <terminationValue>0</terminationValue>
@@ -1020,7 +1020,7 @@ https://fpgasoftware.intel.com/eula.-->
                         </entry>
                         <entry>
                             <key>intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES</key>
-                            <value>3</value>
+                            <value>2</value>
                         </entry>
                         <entry>
                             <key>intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL</key>
@@ -1089,11 +1089,11 @@ https://fpgasoftware.intel.com/eula.-->
                     <suppliedSystemInfos>
                         <entry>
                             <key>ADDRESS_MAP</key>
-                            <value>&lt;address-map&gt;&lt;slave name='s0' start='0x0' end='0x1000' datawidth='32' /&gt;&lt;/address-map&gt;</value>
+                            <value>&lt;address-map&gt;&lt;slave name='s0' start='0x0' end='0x2000' datawidth='32' /&gt;&lt;/address-map&gt;</value>
                         </entry>
                         <entry>
                             <key>ADDRESS_WIDTH</key>
-                            <value>12</value>
+                            <value>13</value>
                         </entry>
                         <entry>
                             <key>MAX_SLAVE_DATA_WIDTH</key>
@@ -1228,7 +1228,7 @@ https://fpgasoftware.intel.com/eula.-->
                     <name>s0_address</name>
                     <role>address</role>
                     <direction>Input</direction>
-                    <width>12</width>
+                    <width>13</width>
                     <lowerBound>0</lowerBound>
                     <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                     <terminationValue>0</terminationValue>
@@ -1302,7 +1302,7 @@ https://fpgasoftware.intel.com/eula.-->
                     </entry>
                     <entry>
                         <key>addressSpan</key>
-                        <value>4096</value>
+                        <value>8192</value>
                     </entry>
                     <entry>
                         <key>addressUnits</key>
@@ -1598,7 +1598,7 @@ https://fpgasoftware.intel.com/eula.-->
                     <name>m_axis_video_out_tdata</name>
                     <role>tdata</role>
                     <direction>Output</direction>
-                    <width>24</width>
+                    <width>16</width>
                     <lowerBound>0</lowerBound>
                     <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                     <terminationValue>0</terminationValue>
@@ -1634,7 +1634,7 @@ https://fpgasoftware.intel.com/eula.-->
                     <name>m_axis_video_out_tuser</name>
                     <role>tuser</role>
                     <direction>Output</direction>
-                    <width>3</width>
+                    <width>2</width>
                     <lowerBound>0</lowerBound>
                     <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                     <terminationValue>0</terminationValue>
@@ -1652,7 +1652,7 @@ https://fpgasoftware.intel.com/eula.-->
                     </entry>
                     <entry>
                         <key>intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES</key>
-                        <value>3</value>
+                        <value>2</value>
                     </entry>
                     <entry>
                         <key>intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL</key>

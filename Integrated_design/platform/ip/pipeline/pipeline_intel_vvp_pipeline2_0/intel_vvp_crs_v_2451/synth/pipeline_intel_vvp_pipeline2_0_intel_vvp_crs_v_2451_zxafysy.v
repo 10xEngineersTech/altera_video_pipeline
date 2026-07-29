@@ -272,7 +272,7 @@ module pipeline_intel_vvp_pipeline2_0_intel_vvp_crs_v_2451_zxafysy (
 		.CO_SITING          ("TOP"),
 		.ENABLE_LUMA_ADAPT  (0),
 		.PIPELINE_READY     (0),
-		.DEVICE_FAMILY      ("Cyclone 10 GX")
+		.DEVICE_FAMILY      ("Agilex 5")
 	) up_core (
 		.clk                    (main_clock_clk),                   //   input,   width = 1,      main_clock.clk
 		.rst                    (main_rst_bridge_out_reset_reset),  //   input,   width = 1,      main_reset.reset

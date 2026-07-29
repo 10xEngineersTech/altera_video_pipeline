@@ -1035,6 +1035,16 @@ https://fpgasoftware.intel.com/eula.-->
           <ipxact:displayName>Output protocol variant</ipxact:displayName>
           <ipxact:value>ALTERA_SV_LITE</ipxact:value>
         </ipxact:parameter>
+        <ipxact:parameter parameterId="ENABLE_FRC" type="int">
+          <ipxact:name>ENABLE_FRC</ipxact:name>
+          <ipxact:displayName>Frame rate conversion (memory frame buffer)</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="ENABLE_PIP" type="int">
+          <ipxact:name>ENABLE_PIP</ipxact:name>
+          <ipxact:displayName>Picture-in-picture (mixer overlay)</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
         <ipxact:parameter parameterId="DIL_MODE" type="string">
           <ipxact:name>DIL_MODE</ipxact:name>
           <ipxact:displayName>Deinterlacing mode</ipxact:displayName>
@@ -1043,7 +1053,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="DIL_BOB_MODE" type="string">
           <ipxact:name>DIL_BOB_MODE</ipxact:name>
           <ipxact:displayName>Bob deinterlacing mode</ipxact:displayName>
-          <ipxact:value>DEINTERLACE_F0_ONLY</ipxact:value>
+          <ipxact:value>DEINTERLACE_F0_AND_F1</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="DIL_MAX_WIDTH" type="int">
           <ipxact:name>DIL_MAX_WIDTH</ipxact:name>
@@ -1253,7 +1263,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="CSC_COLOR_SPACE_OUT" type="string">
           <ipxact:name>CSC_COLOR_SPACE_OUT</ipxact:name>
           <ipxact:displayName>Output color space</ipxact:displayName>
-          <ipxact:value>RGB</ipxact:value>
+          <ipxact:value>YCbCr</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="CSC_COEFF_FRAC_BITS" type="int">
           <ipxact:name>CSC_COEFF_FRAC_BITS</ipxact:name>
@@ -1423,12 +1433,12 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="CL_OUTPUT_WIDTH" type="int">
           <ipxact:name>CL_OUTPUT_WIDTH</ipxact:name>
           <ipxact:displayName>Output width</ipxact:displayName>
-          <ipxact:value>8</ipxact:value>
+          <ipxact:value>1920</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="CL_OUTPUT_HEIGHT" type="int">
           <ipxact:name>CL_OUTPUT_HEIGHT</ipxact:name>
           <ipxact:displayName>Output height</ipxact:displayName>
-          <ipxact:value>8</ipxact:value>
+          <ipxact:value>1080</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="PC0_ENABLE_YCBCR_SWAP" type="int">
           <ipxact:name>PC0_ENABLE_YCBCR_SWAP</ipxact:name>
@@ -1448,12 +1458,12 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="PC0_COLOR_SPACE" type="string">
           <ipxact:name>PC0_COLOR_SPACE</ipxact:name>
           <ipxact:displayName>Video color space</ipxact:displayName>
-          <ipxact:value>RGB</ipxact:value>
+          <ipxact:value>YCbCr</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="PC0_CHROMA_SAMPLING" type="string">
           <ipxact:name>PC0_CHROMA_SAMPLING</ipxact:name>
           <ipxact:displayName>Video chroma sampling</ipxact:displayName>
-          <ipxact:value>444</ipxact:value>
+          <ipxact:value>422</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="PC0_CHROMA_SITING" type="string">
           <ipxact:name>PC0_CHROMA_SITING</ipxact:name>
@@ -1523,17 +1533,17 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="SC_MAX_IN_WIDTH" type="int">
           <ipxact:name>SC_MAX_IN_WIDTH</ipxact:name>
           <ipxact:displayName>Maximum input field width</ipxact:displayName>
-          <ipxact:value>2200</ipxact:value>
+          <ipxact:value>1920</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SC_MAX_OUT_WIDTH" type="int">
           <ipxact:name>SC_MAX_OUT_WIDTH</ipxact:name>
           <ipxact:displayName>Maximum output field width</ipxact:displayName>
-          <ipxact:value>4400</ipxact:value>
+          <ipxact:value>1280</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SC_OUTPUT_HEIGHT" type="int">
           <ipxact:name>SC_OUTPUT_HEIGHT</ipxact:name>
           <ipxact:displayName>Output picture height</ipxact:displayName>
-          <ipxact:value>2200</ipxact:value>
+          <ipxact:value>720</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SC_RUNTIME_CONTROL" type="int">
           <ipxact:name>SC_RUNTIME_CONTROL</ipxact:name>
@@ -1598,7 +1608,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="SC_V_PHASES" type="int">
           <ipxact:name>SC_V_PHASES</ipxact:name>
           <ipxact:displayName>Number of vertical phases</ipxact:displayName>
-          <ipxact:value>64</ipxact:value>
+          <ipxact:value>16</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SC_V_BANKS" type="int">
           <ipxact:name>SC_V_BANKS</ipxact:name>
@@ -1658,7 +1668,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="SC_H_PHASES" type="int">
           <ipxact:name>SC_H_PHASES</ipxact:name>
           <ipxact:displayName>Number of horizontal phases</ipxact:displayName>
-          <ipxact:value>64</ipxact:value>
+          <ipxact:value>16</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="SC_H_BANKS" type="int">
           <ipxact:name>SC_H_BANKS</ipxact:name>
@@ -1690,25 +1700,650 @@ https://fpgasoftware.intel.com/eula.-->
           <ipxact:displayName>Horizontal coefficient init file</ipxact:displayName>
           <ipxact:value></ipxact:value>
         </ipxact:parameter>
+        <ipxact:parameter parameterId="FRC_MAX_WIDTH" type="int">
+          <ipxact:name>FRC_MAX_WIDTH</ipxact:name>
+          <ipxact:displayName>Maximum frame width</ipxact:displayName>
+          <ipxact:value>128</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="FRC_MAX_HEIGHT" type="int">
+          <ipxact:name>FRC_MAX_HEIGHT</ipxact:name>
+          <ipxact:displayName>Maximum frame height</ipxact:displayName>
+          <ipxact:value>96</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="FRC_FRAME_DROP_ENABLE" type="int">
+          <ipxact:name>FRC_FRAME_DROP_ENABLE</ipxact:name>
+          <ipxact:displayName>Enable dropping of input frames</ipxact:displayName>
+          <ipxact:value>1</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="FRC_FRAME_REPEAT_ENABLE" type="int">
+          <ipxact:name>FRC_FRAME_REPEAT_ENABLE</ipxact:name>
+          <ipxact:displayName>Enable repeating of output frames</ipxact:displayName>
+          <ipxact:value>1</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="FRC_DROP_BROKEN_FRAMES" type="int">
+          <ipxact:name>FRC_DROP_BROKEN_FRAMES</ipxact:name>
+          <ipxact:displayName>Drop broken frames</ipxact:displayName>
+          <ipxact:value>1</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="FRC_DROP_RPT_AUX" type="int">
+          <ipxact:name>FRC_DROP_RPT_AUX</ipxact:name>
+          <ipxact:displayName>Drop/repeat aux packets with frames</ipxact:displayName>
+          <ipxact:value>1</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="FRC_MAX_CONTROL_PACKETS" type="int">
+          <ipxact:name>FRC_MAX_CONTROL_PACKETS</ipxact:name>
+          <ipxact:displayName>Maximum stored control packets</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="FRC_INCLUDE_EMIF" type="int">
+          <ipxact:name>FRC_INCLUDE_EMIF</ipxact:name>
+          <ipxact:displayName>Include DDR4 EMIF (IO96B) inside the subsystem</ipxact:displayName>
+          <ipxact:value>1</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="FRC_AV_MM_DATA_WIDTH" type="int">
+          <ipxact:name>FRC_AV_MM_DATA_WIDTH</ipxact:name>
+          <ipxact:displayName>Memory port data width (bits)</ipxact:displayName>
+          <ipxact:value>256</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="FRC_AV_MM_ADDR_WIDTH" type="int">
+          <ipxact:name>FRC_AV_MM_ADDR_WIDTH</ipxact:name>
+          <ipxact:displayName>Memory port address width (bits)</ipxact:displayName>
+          <ipxact:value>32</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="FRC_WRITE_FIFO_DEPTH" type="int">
+          <ipxact:name>FRC_WRITE_FIFO_DEPTH</ipxact:name>
+          <ipxact:displayName>Write FIFO depth</ipxact:displayName>
+          <ipxact:value>64</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="FRC_WRITE_BURST_TARGET" type="int">
+          <ipxact:name>FRC_WRITE_BURST_TARGET</ipxact:name>
+          <ipxact:displayName>Write burst target</ipxact:displayName>
+          <ipxact:value>8</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="FRC_READ_FIFO_DEPTH" type="int">
+          <ipxact:name>FRC_READ_FIFO_DEPTH</ipxact:name>
+          <ipxact:displayName>Read FIFO depth</ipxact:displayName>
+          <ipxact:value>64</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="FRC_READ_BURST_TARGET" type="int">
+          <ipxact:name>FRC_READ_BURST_TARGET</ipxact:name>
+          <ipxact:displayName>Read burst target</ipxact:displayName>
+          <ipxact:value>8</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="FRC_PACKING" type="string">
+          <ipxact:name>FRC_PACKING</ipxact:name>
+          <ipxact:displayName>Packing method</ipxact:displayName>
+          <ipxact:value>PERFECT</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="FRC_CLOCKS_ARE_SEPARATE" type="int">
+          <ipxact:name>FRC_CLOCKS_ARE_SEPARATE</ipxact:name>
+          <ipxact:displayName>Separate clock for memory interface</ipxact:displayName>
+          <ipxact:value>1</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="FRC_MEM_BUFF_BASE_ADDR" type="int">
+          <ipxact:name>FRC_MEM_BUFF_BASE_ADDR</ipxact:name>
+          <ipxact:displayName>Frame buffer memory base address</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="FRC_MEM_BUFF_STRIDE" type="int">
+          <ipxact:name>FRC_MEM_BUFF_STRIDE</ipxact:name>
+          <ipxact:displayName>Inter-buffer stride (bytes)</ipxact:displayName>
+          <ipxact:value>49152</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="FRC_MEM_BUFF_LINE_STRIDE" type="int">
+          <ipxact:name>FRC_MEM_BUFF_LINE_STRIDE</ipxact:name>
+          <ipxact:displayName>Inter-line stride (bytes)</ipxact:displayName>
+          <ipxact:value>512</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="FRC_RUNTIME_CONTROL" type="int">
+          <ipxact:name>FRC_RUNTIME_CONTROL</ipxact:name>
+          <ipxact:displayName>Memory-mapped control interface</ipxact:displayName>
+          <ipxact:value>1</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="FRC_SEPARATE_SLAVE_CLOCK" type="int">
+          <ipxact:name>FRC_SEPARATE_SLAVE_CLOCK</ipxact:name>
+          <ipxact:displayName>Separate clock for control interface</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="FRC_ENABLE_DEBUG" type="int">
+          <ipxact:name>FRC_ENABLE_DEBUG</ipxact:name>
+          <ipxact:displayName>Debug features</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_CHANNEL_DATA_DQ_WIDTH" type="int">
+          <ipxact:name>EMIF_MEM_CHANNEL_DATA_DQ_WIDTH</ipxact:name>
+          <ipxact:displayName>Data DQ width</ipxact:displayName>
+          <ipxact:value>32</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_CHANNEL_ECC_DQ_WIDTH" type="int">
+          <ipxact:name>EMIF_MEM_CHANNEL_ECC_DQ_WIDTH</ipxact:name>
+          <ipxact:displayName>ECC DQ width</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_DIE_DQ_WIDTH" type="int">
+          <ipxact:name>EMIF_MEM_DIE_DQ_WIDTH</ipxact:name>
+          <ipxact:displayName>Die DQ width</ipxact:displayName>
+          <ipxact:value>16</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_DIE_DENSITY_GBITS" type="int">
+          <ipxact:name>EMIF_MEM_DIE_DENSITY_GBITS</ipxact:name>
+          <ipxact:displayName>Die density</ipxact:displayName>
+          <ipxact:value>8</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_CHANNEL_CS_WIDTH" type="int">
+          <ipxact:name>EMIF_MEM_CHANNEL_CS_WIDTH</ipxact:name>
+          <ipxact:displayName>CS width</ipxact:displayName>
+          <ipxact:value>1</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_SPEEDBIN" type="string">
+          <ipxact:name>EMIF_MEM_SPEEDBIN</ipxact:name>
+          <ipxact:displayName>Memory speedbin</ipxact:displayName>
+          <ipxact:value>3200W</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_AC_PARITY_EN" type="int">
+          <ipxact:name>EMIF_MEM_AC_PARITY_EN</ipxact:name>
+          <ipxact:displayName>Use AC parity</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_OPERATING_FREQ_AUTOSET" type="int">
+          <ipxact:name>EMIF_MEM_OPERATING_FREQ_AUTOSET</ipxact:name>
+          <ipxact:displayName>Auto-set memory operating frequency</ipxact:displayName>
+          <ipxact:value>1</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_OPERATING_FREQ_MHZ" type="string">
+          <ipxact:name>EMIF_MEM_OPERATING_FREQ_MHZ</ipxact:name>
+          <ipxact:displayName>Memory operating frequency (MHz)</ipxact:displayName>
+          <ipxact:value>800</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_PHY_REFCLK_FREQ_AUTOSET" type="int">
+          <ipxact:name>EMIF_PHY_REFCLK_FREQ_AUTOSET</ipxact:name>
+          <ipxact:displayName>Auto-set PLL reference clock frequency</ipxact:displayName>
+          <ipxact:value>1</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_PHY_REFCLK_ADVANCED_SELECT" type="int">
+          <ipxact:name>EMIF_PHY_REFCLK_ADVANCED_SELECT</ipxact:name>
+          <ipxact:displayName>Enable advanced list of PLL reference clock frequencies</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_PHY_REFCLK_FREQ_MHZ" type="string">
+          <ipxact:name>EMIF_PHY_REFCLK_FREQ_MHZ</ipxact:name>
+          <ipxact:displayName>Reference clock frequency (MHz)</ipxact:displayName>
+          <ipxact:value>200.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_PHY_AC_PLACEMENT" type="string">
+          <ipxact:name>EMIF_PHY_AC_PLACEMENT</ipxact:name>
+          <ipxact:displayName>AC placement</ipxact:displayName>
+          <ipxact:value>BOT</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_PHY_ALERT_N_PLACEMENT" type="string">
+          <ipxact:name>EMIF_PHY_ALERT_N_PLACEMENT</ipxact:name>
+          <ipxact:displayName>Alert_n AC-lane index</ipxact:displayName>
+          <ipxact:value>AC2</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_PHY_FORCE_MIN_4_AC_LANES" type="int">
+          <ipxact:name>EMIF_PHY_FORCE_MIN_4_AC_LANES</ipxact:name>
+          <ipxact:displayName>Force using 4 AC lanes</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_PHY_MAINBAND_AUTOSET" type="int">
+          <ipxact:name>EMIF_PHY_MAINBAND_AUTOSET</ipxact:name>
+          <ipxact:displayName>Auto-set mainband access mode</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_PHY_MAINBAND_ACCESS_MODE" type="string">
+          <ipxact:name>EMIF_PHY_MAINBAND_ACCESS_MODE</ipxact:name>
+          <ipxact:displayName>Mainband access mode</ipxact:displayName>
+          <ipxact:value>ASYNC</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_PHY_SIDEBAND_AUTOSET" type="int">
+          <ipxact:name>EMIF_PHY_SIDEBAND_AUTOSET</ipxact:name>
+          <ipxact:displayName>Auto-set sideband access mode</ipxact:displayName>
+          <ipxact:value>1</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_PHY_SIDEBAND_ACCESS_MODE" type="string">
+          <ipxact:name>EMIF_PHY_SIDEBAND_ACCESS_MODE</ipxact:name>
+          <ipxact:displayName>Sideband access mode</ipxact:displayName>
+          <ipxact:value>FABRIC</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_PHY_SWIZZLE_MAP" type="string">
+          <ipxact:name>EMIF_PHY_SWIZZLE_MAP</ipxact:name>
+          <ipxact:displayName>Pin swizzle map</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_DEBUG_TOOLS_EN" type="int">
+          <ipxact:name>EMIF_DEBUG_TOOLS_EN</ipxact:name>
+          <ipxact:displayName>Use debug toolkit</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_INSTANCE_ID" type="int">
+          <ipxact:name>EMIF_INSTANCE_ID</ipxact:name>
+          <ipxact:displayName>Instance ID</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_CTRL_DM_EN" type="int">
+          <ipxact:name>EMIF_CTRL_DM_EN</ipxact:name>
+          <ipxact:displayName>Use data masking</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_CTRL_WR_DBI_EN" type="int">
+          <ipxact:name>EMIF_CTRL_WR_DBI_EN</ipxact:name>
+          <ipxact:displayName>Use WDBI</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_CTRL_RD_DBI_EN" type="int">
+          <ipxact:name>EMIF_CTRL_RD_DBI_EN</ipxact:name>
+          <ipxact:displayName>Use RDBI</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_CTRL_PERFORMANCE_PROFILE" type="string">
+          <ipxact:name>EMIF_CTRL_PERFORMANCE_PROFILE</ipxact:name>
+          <ipxact:displayName>Controller performance profile</ipxact:displayName>
+          <ipxact:value>SEQ</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_CTRL_ECC_AUTOCORRECT_EN" type="int">
+          <ipxact:name>EMIF_CTRL_ECC_AUTOCORRECT_EN</ipxact:name>
+          <ipxact:displayName>Use ECC autocorrection</ipxact:displayName>
+          <ipxact:value>1</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_CTRL_AUTO_PRECHARGE_EN" type="int">
+          <ipxact:name>EMIF_CTRL_AUTO_PRECHARGE_EN</ipxact:name>
+          <ipxact:displayName>Force auto-precharge (Custom profile)</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_CTRL_BG_ROTATE_EN" type="string">
+          <ipxact:name>EMIF_CTRL_BG_ROTATE_EN</ipxact:name>
+          <ipxact:displayName>Bank group rotation (Custom profile)</ipxact:displayName>
+          <ipxact:value>1</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_CTRL_DIAG_HMC_ADDR_SWAP_EN" type="int">
+          <ipxact:name>EMIF_CTRL_DIAG_HMC_ADDR_SWAP_EN</ipxact:name>
+          <ipxact:displayName>Enable row/CS swap (Custom profile)</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_TURNAROUND_R2W_SAMECS_CYC" type="int">
+          <ipxact:name>EMIF_TURNAROUND_R2W_SAMECS_CYC</ipxact:name>
+          <ipxact:displayName>Additional read-to-write turnaround time (same rank, cycles)</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_TURNAROUND_R2R_SAMECS_CYC" type="int">
+          <ipxact:name>EMIF_TURNAROUND_R2R_SAMECS_CYC</ipxact:name>
+          <ipxact:displayName>Additional read-to-read turnaround time (same rank, cycles)</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_TURNAROUND_W2W_SAMECS_CYC" type="int">
+          <ipxact:name>EMIF_TURNAROUND_W2W_SAMECS_CYC</ipxact:name>
+          <ipxact:displayName>Additional write-to-write turnaround time (same rank, cycles)</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_TURNAROUND_W2R_SAMECS_CYC" type="int">
+          <ipxact:name>EMIF_TURNAROUND_W2R_SAMECS_CYC</ipxact:name>
+          <ipxact:displayName>Additional write-to-read turnaround time (same rank, cycles)</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_ADV_CAL_ENABLE_MARGIN" type="int">
+          <ipxact:name>EMIF_ADV_CAL_ENABLE_MARGIN</ipxact:name>
+          <ipxact:displayName>Enable margining during calibration</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_TIMING_OVERRIDE_EN" type="int">
+          <ipxact:name>EMIF_TIMING_OVERRIDE_EN</ipxact:name>
+          <ipxact:displayName>Override JEDEC timing values</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_WR_PREAMBLE_MODE" type="real">
+          <ipxact:name>EMIF_MEM_WR_PREAMBLE_MODE</ipxact:name>
+          <ipxact:displayName>Write preamble length</ipxact:displayName>
+          <ipxact:value>1.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_RD_PREAMBLE_MODE" type="real">
+          <ipxact:name>EMIF_MEM_RD_PREAMBLE_MODE</ipxact:name>
+          <ipxact:displayName>Read preamble length</ipxact:displayName>
+          <ipxact:value>1.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_CL_CYC" type="real">
+          <ipxact:name>EMIF_MEM_CL_CYC</ipxact:name>
+          <ipxact:displayName>Read latency</ipxact:displayName>
+          <ipxact:value>11.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_CWL_CYC" type="real">
+          <ipxact:name>EMIF_MEM_CWL_CYC</ipxact:name>
+          <ipxact:displayName>Write latency</ipxact:displayName>
+          <ipxact:value>9.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TREFI_NS" type="real">
+          <ipxact:name>EMIF_MEM_TREFI_NS</ipxact:name>
+          <ipxact:displayName>tREFI (ns)</ipxact:displayName>
+          <ipxact:value>7800.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TRAS_NS" type="real">
+          <ipxact:name>EMIF_MEM_TRAS_NS</ipxact:name>
+          <ipxact:displayName>tRAS (ns)</ipxact:displayName>
+          <ipxact:value>32.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TRCD_NS" type="real">
+          <ipxact:name>EMIF_MEM_TRCD_NS</ipxact:name>
+          <ipxact:displayName>tRCD (ns)</ipxact:displayName>
+          <ipxact:value>12.5</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TRP_NS" type="real">
+          <ipxact:name>EMIF_MEM_TRP_NS</ipxact:name>
+          <ipxact:displayName>tRP (ns)</ipxact:displayName>
+          <ipxact:value>12.5</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TRC_NS" type="real">
+          <ipxact:name>EMIF_MEM_TRC_NS</ipxact:name>
+          <ipxact:displayName>tRC (ns)</ipxact:displayName>
+          <ipxact:value>44.5</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TCCD_L_NS" type="real">
+          <ipxact:name>EMIF_MEM_TCCD_L_NS</ipxact:name>
+          <ipxact:displayName>tCCD_L (ns)</ipxact:displayName>
+          <ipxact:value>6.25</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TCCD_S_NS" type="real">
+          <ipxact:name>EMIF_MEM_TCCD_S_NS</ipxact:name>
+          <ipxact:displayName>tCCD_S (ns)</ipxact:displayName>
+          <ipxact:value>5.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TRRD_L_NS" type="real">
+          <ipxact:name>EMIF_MEM_TRRD_L_NS</ipxact:name>
+          <ipxact:displayName>tRRD_L (ns)</ipxact:displayName>
+          <ipxact:value>6.4</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TRRD_S_NS" type="real">
+          <ipxact:name>EMIF_MEM_TRRD_S_NS</ipxact:name>
+          <ipxact:displayName>tRRD_S (ns)</ipxact:displayName>
+          <ipxact:value>5.3</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TFAW_NS" type="real">
+          <ipxact:name>EMIF_MEM_TFAW_NS</ipxact:name>
+          <ipxact:displayName>tFAW (ns)</ipxact:displayName>
+          <ipxact:value>35.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TWTR_L_NS" type="real">
+          <ipxact:name>EMIF_MEM_TWTR_L_NS</ipxact:name>
+          <ipxact:displayName>tWTR_L (ns)</ipxact:displayName>
+          <ipxact:value>7.5</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TWTR_S_NS" type="real">
+          <ipxact:name>EMIF_MEM_TWTR_S_NS</ipxact:name>
+          <ipxact:displayName>tWTR_S (ns)</ipxact:displayName>
+          <ipxact:value>2.5</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TWR_NS" type="real">
+          <ipxact:name>EMIF_MEM_TWR_NS</ipxact:name>
+          <ipxact:displayName>tWR (ns)</ipxact:displayName>
+          <ipxact:value>15.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TMRD_NS" type="real">
+          <ipxact:name>EMIF_MEM_TMRD_NS</ipxact:name>
+          <ipxact:displayName>tMRD (ns)</ipxact:displayName>
+          <ipxact:value>10.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TCKSRE_NS" type="real">
+          <ipxact:name>EMIF_MEM_TCKSRE_NS</ipxact:name>
+          <ipxact:displayName>tCKSRE (ns)</ipxact:displayName>
+          <ipxact:value>10.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TCKSRX_NS" type="real">
+          <ipxact:name>EMIF_MEM_TCKSRX_NS</ipxact:name>
+          <ipxact:displayName>tCKSRX (ns)</ipxact:displayName>
+          <ipxact:value>10.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TCKE_NS" type="real">
+          <ipxact:name>EMIF_MEM_TCKE_NS</ipxact:name>
+          <ipxact:displayName>tCKE (ns)</ipxact:displayName>
+          <ipxact:value>5.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TCKESR_CYC" type="real">
+          <ipxact:name>EMIF_MEM_TCKESR_CYC</ipxact:name>
+          <ipxact:displayName>tCKESR (cycles)</ipxact:displayName>
+          <ipxact:value>5.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TMPRR_NS" type="real">
+          <ipxact:name>EMIF_MEM_TMPRR_NS</ipxact:name>
+          <ipxact:displayName>tMPRR (ns)</ipxact:displayName>
+          <ipxact:value>1.25</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TRFC_NS" type="real">
+          <ipxact:name>EMIF_MEM_TRFC_NS</ipxact:name>
+          <ipxact:displayName>tRFC (ns)</ipxact:displayName>
+          <ipxact:value>350.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TDQSCK_NS" type="real">
+          <ipxact:name>EMIF_MEM_TDQSCK_NS</ipxact:name>
+          <ipxact:displayName>tDQSCK (ns)</ipxact:displayName>
+          <ipxact:value>0.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TRFC_DLR_NS" type="real">
+          <ipxact:name>EMIF_MEM_TRFC_DLR_NS</ipxact:name>
+          <ipxact:displayName>tRFC_DLR (ns)</ipxact:displayName>
+          <ipxact:value>0.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TRRD_DLR_NS" type="real">
+          <ipxact:name>EMIF_MEM_TRRD_DLR_NS</ipxact:name>
+          <ipxact:displayName>tRRD_DLR (ns)</ipxact:displayName>
+          <ipxact:value>0.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TFAW_DLR_NS" type="real">
+          <ipxact:name>EMIF_MEM_TFAW_DLR_NS</ipxact:name>
+          <ipxact:displayName>tFAW_DLR (ns)</ipxact:displayName>
+          <ipxact:value>0.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TCCD_DLR_NS" type="real">
+          <ipxact:name>EMIF_MEM_TCCD_DLR_NS</ipxact:name>
+          <ipxact:displayName>tCCD_DLR (ns)</ipxact:displayName>
+          <ipxact:value>0.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TXP_NS" type="real">
+          <ipxact:name>EMIF_MEM_TXP_NS</ipxact:name>
+          <ipxact:displayName>tXP (ns)</ipxact:displayName>
+          <ipxact:value>6.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TXS_NS" type="real">
+          <ipxact:name>EMIF_MEM_TXS_NS</ipxact:name>
+          <ipxact:displayName>tXS (ns)</ipxact:displayName>
+          <ipxact:value>360.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TXS_DLL_NS" type="real">
+          <ipxact:name>EMIF_MEM_TXS_DLL_NS</ipxact:name>
+          <ipxact:displayName>tXSDLL (ns)</ipxact:displayName>
+          <ipxact:value>1280.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TCPDED_NS" type="real">
+          <ipxact:name>EMIF_MEM_TCPDED_NS</ipxact:name>
+          <ipxact:displayName>tCPDED (ns)</ipxact:displayName>
+          <ipxact:value>5.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TMOD_NS" type="real">
+          <ipxact:name>EMIF_MEM_TMOD_NS</ipxact:name>
+          <ipxact:displayName>tMOD (ns)</ipxact:displayName>
+          <ipxact:value>30.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TZQCS_NS" type="real">
+          <ipxact:name>EMIF_MEM_TZQCS_NS</ipxact:name>
+          <ipxact:displayName>tZQCS (ns)</ipxact:displayName>
+          <ipxact:value>160.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TZQINIT_CYC" type="real">
+          <ipxact:name>EMIF_MEM_TZQINIT_CYC</ipxact:name>
+          <ipxact:displayName>tZQINIT (cycles)</ipxact:displayName>
+          <ipxact:value>1024.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_TZQOPER_CYC" type="real">
+          <ipxact:name>EMIF_MEM_TZQOPER_CYC</ipxact:name>
+          <ipxact:displayName>tZQOPER (cycles)</ipxact:displayName>
+          <ipxact:value>512.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_PHY_AC_DRIVE" type="string">
+          <ipxact:name>EMIF_PHY_AC_DRIVE</ipxact:name>
+          <ipxact:displayName>Phy AC drive strength</ipxact:displayName>
+          <ipxact:value>SERIES_34_OHM_CAL</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_PHY_CK_DRIVE" type="string">
+          <ipxact:name>EMIF_PHY_CK_DRIVE</ipxact:name>
+          <ipxact:displayName>Phy CK drive strength</ipxact:displayName>
+          <ipxact:value>SERIES_34_OHM_CAL</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_PHY_DQ_DRIVE" type="string">
+          <ipxact:name>EMIF_PHY_DQ_DRIVE</ipxact:name>
+          <ipxact:displayName>Phy DQ drive strength</ipxact:displayName>
+          <ipxact:value>SERIES_34_OHM_CAL</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_PHY_DQ_SLEW_RATE" type="string">
+          <ipxact:name>EMIF_PHY_DQ_SLEW_RATE</ipxact:name>
+          <ipxact:displayName>Phy DQ slew rate</ipxact:displayName>
+          <ipxact:value>FASTEST</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_PHY_DQ_INPUT_TERM" type="string">
+          <ipxact:name>EMIF_PHY_DQ_INPUT_TERM</ipxact:name>
+          <ipxact:displayName>Phy DQ input termination</ipxact:displayName>
+          <ipxact:value>RT_50_OHM_CAL</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_PHY_DQ_VREF" type="real">
+          <ipxact:name>EMIF_PHY_DQ_VREF</ipxact:name>
+          <ipxact:displayName>Phy DQ initial Vrefin (%)</ipxact:displayName>
+          <ipxact:value>68.3</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_PHY_REFCLK_INPUT_TERM" type="string">
+          <ipxact:name>EMIF_PHY_REFCLK_INPUT_TERM</ipxact:name>
+          <ipxact:displayName>Phy PLL reference clock input termination</ipxact:displayName>
+          <ipxact:value>RT_DIFF</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_ODT_TGT_WR" type="string">
+          <ipxact:name>EMIF_MEM_ODT_TGT_WR</ipxact:name>
+          <ipxact:displayName>Mem target write termination</ipxact:displayName>
+          <ipxact:value>4</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_ODT_NON_TGT_WR" type="string">
+          <ipxact:name>EMIF_MEM_ODT_NON_TGT_WR</ipxact:name>
+          <ipxact:displayName>Mem non-target write termination</ipxact:displayName>
+          <ipxact:value>off</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_ODT_NON_TGT_RD" type="string">
+          <ipxact:name>EMIF_MEM_ODT_NON_TGT_RD</ipxact:name>
+          <ipxact:displayName>Mem non-target read termination</ipxact:displayName>
+          <ipxact:value>off</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_DQ_DRIVE" type="string">
+          <ipxact:name>EMIF_MEM_DQ_DRIVE</ipxact:name>
+          <ipxact:displayName>Mem DQ drive strength</ipxact:displayName>
+          <ipxact:value>7</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_VREF_DQ_RANGE" type="int">
+          <ipxact:name>EMIF_MEM_VREF_DQ_RANGE</ipxact:name>
+          <ipxact:displayName>Mem VrefDQ range</ipxact:displayName>
+          <ipxact:value>2</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_MEM_VREF_DQ_VALUE" type="real">
+          <ipxact:name>EMIF_MEM_VREF_DQ_VALUE</ipxact:name>
+          <ipxact:displayName>Mem VrefDQ value (%)</ipxact:displayName>
+          <ipxact:value>67.75</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_EX_DESIGN_HDL_FORMAT" type="string">
+          <ipxact:name>EMIF_EX_DESIGN_HDL_FORMAT</ipxact:name>
+          <ipxact:displayName>HDL selection</ipxact:displayName>
+          <ipxact:value>VERILOG</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_EX_DESIGN_GEN_SYNTH" type="int">
+          <ipxact:name>EMIF_EX_DESIGN_GEN_SYNTH</ipxact:name>
+          <ipxact:displayName>Generate synthesis fileset</ipxact:displayName>
+          <ipxact:value>1</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_EX_DESIGN_GEN_SIM" type="int">
+          <ipxact:name>EMIF_EX_DESIGN_GEN_SIM</ipxact:name>
+          <ipxact:displayName>Generate simulation fileset</ipxact:displayName>
+          <ipxact:value>1</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_EX_DESIGN_USER_PLL_AUTOSET" type="int">
+          <ipxact:name>EMIF_EX_DESIGN_USER_PLL_AUTOSET</ipxact:name>
+          <ipxact:displayName>Auto-set user PLL output clock frequency</ipxact:displayName>
+          <ipxact:value>1</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_EX_DESIGN_USER_PLL_OUTPUT_FREQ_MHZ" type="real">
+          <ipxact:name>EMIF_EX_DESIGN_USER_PLL_OUTPUT_FREQ_MHZ</ipxact:name>
+          <ipxact:displayName>User PLL output clock frequency (MHz)</ipxact:displayName>
+          <ipxact:value>220.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_EX_DESIGN_USER_PLL_REFCLK_FREQ_MHZ" type="real">
+          <ipxact:name>EMIF_EX_DESIGN_USER_PLL_REFCLK_FREQ_MHZ</ipxact:name>
+          <ipxact:displayName>User PLL reference clock frequency (MHz)</ipxact:displayName>
+          <ipxact:value>100.0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_EX_DESIGN_NOC_PLL_REFCLK_FREQ_MHZ" type="int">
+          <ipxact:name>EMIF_EX_DESIGN_NOC_PLL_REFCLK_FREQ_MHZ</ipxact:name>
+          <ipxact:displayName>NOC reference clock frequency (MHz)</ipxact:displayName>
+          <ipxact:value>100</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_EX_DESIGN_TG_CSR_ACCESS_MODE" type="string">
+          <ipxact:name>EMIF_EX_DESIGN_TG_CSR_ACCESS_MODE</ipxact:name>
+          <ipxact:displayName>Traffic generator remote access</ipxact:displayName>
+          <ipxact:value>JTAG</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_EX_DESIGN_TG_PROGRAM" type="string">
+          <ipxact:name>EMIF_EX_DESIGN_TG_PROGRAM</ipxact:name>
+          <ipxact:displayName>Traffic generator program</ipxact:displayName>
+          <ipxact:value>MEDIUM</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EMIF_EX_DESIGN_PMON_CH0_EN" type="int">
+          <ipxact:name>EMIF_EX_DESIGN_PMON_CH0_EN</ipxact:name>
+          <ipxact:displayName>Enable performance monitor for channel 0</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="PIP_NUM_LAYERS" type="int">
+          <ipxact:name>PIP_NUM_LAYERS</ipxact:name>
+          <ipxact:displayName>Number of mixer layers</ipxact:displayName>
+          <ipxact:value>2</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="PIP_BLENDING_MODE_1" type="int">
+          <ipxact:name>PIP_BLENDING_MODE_1</ipxact:name>
+          <ipxact:displayName>Layer 1 blending mode</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="PIP_BLENDING_MODE_2" type="int">
+          <ipxact:name>PIP_BLENDING_MODE_2</ipxact:name>
+          <ipxact:displayName>Layer 2 blending mode</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="PIP_BLENDING_MODE_3" type="int">
+          <ipxact:name>PIP_BLENDING_MODE_3</ipxact:name>
+          <ipxact:displayName>Layer 3 blending mode</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="PIP_RUNTIME_CONTROL" type="int">
+          <ipxact:name>PIP_RUNTIME_CONTROL</ipxact:name>
+          <ipxact:displayName>Memory-mapped control interface</ipxact:displayName>
+          <ipxact:value>1</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="PIP_SEPARATE_SLAVE_CLOCK" type="int">
+          <ipxact:name>PIP_SEPARATE_SLAVE_CLOCK</ipxact:name>
+          <ipxact:displayName>Separate clock for control interface</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="PIP_ENABLE_DEBUG" type="int">
+          <ipxact:name>PIP_ENABLE_DEBUG</ipxact:name>
+          <ipxact:displayName>Debug features</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
         <ipxact:parameter parameterId="AUTO_DEVICE_FAMILY" type="string">
           <ipxact:name>AUTO_DEVICE_FAMILY</ipxact:name>
           <ipxact:displayName>Auto DEVICE_FAMILY</ipxact:displayName>
-          <ipxact:value>Cyclone 10 GX</ipxact:value>
+          <ipxact:value>Agilex 5</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="AUTO_DEVICE" type="string">
           <ipxact:name>AUTO_DEVICE</ipxact:name>
           <ipxact:displayName>Auto DEVICE</ipxact:displayName>
-          <ipxact:value>10CX220YF780I5G</ipxact:value>
+          <ipxact:value>A5ED065BB32AE6SR0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="AUTO_DEVICE_SPEEDGRADE" type="string">
           <ipxact:name>AUTO_DEVICE_SPEEDGRADE</ipxact:name>
           <ipxact:displayName>Auto DEVICE_SPEEDGRADE</ipxact:displayName>
-          <ipxact:value>5</ipxact:value>
+          <ipxact:value>6</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="AUTO_BOARD" type="string">
           <ipxact:name>AUTO_BOARD</ipxact:name>
           <ipxact:displayName>Auto BOARD</ipxact:displayName>
-          <ipxact:value>default</ipxact:value>
+          <ipxact:value>Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1</ipxact:value>
         </ipxact:parameter>
       </ipxact:parameters>
     </altera:altera_module_parameters>
@@ -1717,22 +2352,22 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="board" type="string">
           <ipxact:name>board</ipxact:name>
           <ipxact:displayName>Board</ipxact:displayName>
-          <ipxact:value>default</ipxact:value>
+          <ipxact:value>Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="device" type="string">
           <ipxact:name>device</ipxact:name>
           <ipxact:displayName>Device</ipxact:displayName>
-          <ipxact:value>10CX220YF780I5G</ipxact:value>
+          <ipxact:value>A5ED065BB32AE6SR0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="deviceFamily" type="string">
           <ipxact:name>deviceFamily</ipxact:name>
           <ipxact:displayName>Device family</ipxact:displayName>
-          <ipxact:value>Cyclone 10 GX</ipxact:value>
+          <ipxact:value>Agilex 5</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="deviceSpeedGrade" type="string">
           <ipxact:name>deviceSpeedGrade</ipxact:name>
           <ipxact:displayName>Device Speed Grade</ipxact:displayName>
-          <ipxact:value>5</ipxact:value>
+          <ipxact:value>6</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="generationId" type="int">
           <ipxact:name>generationId</ipxact:name>
@@ -1748,7 +2383,7 @@ https://fpgasoftware.intel.com/eula.-->
    {
       datum _originalDeviceFamily
       {
-         value = "Cyclone 10 GX";
+         value = "Agilex 5";
          type = "String";
       }
    }
@@ -2384,6 +3019,11 @@ https://fpgasoftware.intel.com/eula.-->
       <altera:interface_mapping altera:name="clk" altera:internal="intel_vvp_pipeline2_0.clk" altera:type="clock" altera:dir="end">
         <altera:port_mapping altera:name="clk_clk" altera:internal="clk_clk"></altera:port_mapping>
       </altera:interface_mapping>
+      <altera:interface_mapping altera:name="frc_emif_mem" altera:internal="intel_vvp_pipeline2_0.frc_emif_mem"></altera:interface_mapping>
+      <altera:interface_mapping altera:name="frc_emif_mem_ck" altera:internal="intel_vvp_pipeline2_0.frc_emif_mem_ck"></altera:interface_mapping>
+      <altera:interface_mapping altera:name="frc_emif_mem_reset_n" altera:internal="intel_vvp_pipeline2_0.frc_emif_mem_reset_n"></altera:interface_mapping>
+      <altera:interface_mapping altera:name="frc_emif_oct" altera:internal="intel_vvp_pipeline2_0.frc_emif_oct"></altera:interface_mapping>
+      <altera:interface_mapping altera:name="frc_emif_ref_clk" altera:internal="intel_vvp_pipeline2_0.frc_emif_ref_clk"></altera:interface_mapping>
       <altera:interface_mapping altera:name="m_axis_video_out" altera:internal="intel_vvp_pipeline2_0.m_axis_video_out" altera:type="axi4stream" altera:dir="start">
         <altera:port_mapping altera:name="m_axis_video_out_tdata" altera:internal="m_axis_video_out_tdata"></altera:port_mapping>
         <altera:port_mapping altera:name="m_axis_video_out_tlast" altera:internal="m_axis_video_out_tlast"></altera:port_mapping>

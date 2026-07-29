@@ -3,7 +3,14 @@
 module frame_controller #(
     parameter IMG_H   = 1080,
     parameter IMG_W   = 1920,
-    parameter IS_FULL = 1      // 1: Full mode, 0: Lite mode
+    parameter IS_FULL = 1,     // 1: Full mode, 0: Lite mode
+    // Real hardware rows to capture-but-discard at the start of every frame,
+    // before the IMG_H visible rows. Used by PIP: the mixer has a one-time
+    // settling artifact on the very first row it composites in a field; the
+    // caller configures SKIP_ROWS hidden guard rows above the real content
+    // (background canvas + offset both grown by SKIP_ROWS) so the glitchy
+    // row is never part of what gets written out.
+    parameter SKIP_ROWS = 0
 )(
     input  wire        clk,
     input  wire        reset,
@@ -56,7 +63,7 @@ module frame_controller #(
             end else if (frame_active) begin
                 if (last) begin
                     pixel_count <= 0;
-                    if (line_count == (IMG_H - 1)) begin
+                    if (line_count == (IMG_H + SKIP_ROWS - 1)) begin
                         frame_done <= 1'b1;
                         sof        <= 1'b0;
                     end else begin
@@ -70,9 +77,11 @@ module frame_controller #(
     end
 
     // write_flag: capture pixel when handshake active, inside frame,
-    // not done, within bounds, not a metapacket
+    // not done, within bounds, not a metapacket, and past the discarded
+    // SKIP_ROWS guard rows at the top of the frame.
     assign write_flag = (frame_active || start_of_frame) && !frame_done &&
                         (pixel_count < IMG_W) &&
-                        (line_count  < IMG_H);
+                        (line_count  >= SKIP_ROWS) &&
+                        (line_count  < (IMG_H + SKIP_ROWS));
 
 endmodule

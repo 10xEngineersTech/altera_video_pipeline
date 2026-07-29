@@ -21,6 +21,7 @@ module tb();
     // Change these per test
     // =========================================================================
     localparam TOPOLOGY    = "FULL";   // FULL/SCALER_ONLY/CSC_ONLY/CRS_ONLY/CRS_CSC/CLIP_SCL/DIL_ONLY
+    localparam ENABLE_PIP  = PIP_ENABLE;      // from configuration.vh (GUI-controlled)
 
     // =========================================================================
     // Geometry from configuration.vh
@@ -34,14 +35,37 @@ module tb();
     localparam SCALER_OUT_W = SCALER_WIDTH;
     localparam SCALER_OUT_H = SCALER_HEIGHT;
 
+    // PIP: background canvas bigger than the pipeline's own output, so the
+    // pipeline video shows as a smaller inset instead of fully covering the
+    // background. Size, color and position all come from configuration.vh
+    // (GUI-controlled) - position is an explicit pixel offset, not auto-centered.
+    localparam PIP_BG_WIDTH  = ENABLE_PIP ? PIP_BG_W : 32'd0;
+    localparam PIP_BG_HEIGHT = ENABLE_PIP ? PIP_BG_H : 32'd0;
+    localparam PIP_H_OFFSET  = ENABLE_PIP ? PIP_H_OFF : 32'd0;
+    localparam PIP_V_OFFSET  = ENABLE_PIP ? PIP_V_OFF : 32'd0;
+
+    // The mixer has a confirmed one-time settling artifact on the very first
+    // row it composites in a field (proven NOT to be a capture/reset-timing
+    // race - see PIP_ROW_GUARD usage below). Grow the REAL hardware canvas by
+    // one hidden row above the visible one and push both the real background
+    // height and the real V offset down by that same guard row, so the
+    // glitchy row always lands in the hidden guard row - never in the
+    // visible image - regardless of what V offset the user actually wants
+    // (including 0, flush at the very top).
+    localparam [31:0] PIP_ROW_GUARD  = ENABLE_PIP ? 32'd1 : 32'd0;
+    localparam        REAL_BG_HEIGHT = PIP_BG_HEIGHT + PIP_ROW_GUARD;
+    localparam        REAL_V_OFFSET  = PIP_V_OFFSET  + PIP_ROW_GUARD;
+
     // =========================================================================
     // Topology-derived constants
     // =========================================================================
     localparam HAS_SCL = (TOPOLOGY=="FULL"||TOPOLOGY=="SCALER_ONLY"||TOPOLOGY=="CLIP_SCL") ? 1 : 0;
     localparam HAS_PC0 = HAS_SCL;
 
-    localparam CAP_W   = HAS_SCL ? SCALER_OUT_W : IMG_WIDTH;
-    localparam CAP_H   = HAS_SCL ? SCALER_OUT_H : IMG_HEIGHT;
+    // Capture geometry: when PIP is enabled, the mixer's output is the full
+    // background canvas, not the pipeline's own (smaller, inset) output size.
+    localparam CAP_W   = ENABLE_PIP ? PIP_BG_WIDTH  : (HAS_SCL ? SCALER_OUT_W : IMG_WIDTH);
+    localparam CAP_H   = ENABLE_PIP ? PIP_BG_HEIGHT : (HAS_SCL ? SCALER_OUT_H : IMG_HEIGHT);
     localparam IS_FULL = HAS_PC0 ? 0 : 1;
 
     localparam [63:0] END_TIME = (CAP_H * CAP_W > TPG_WIDTH * TPG_HEIGHT) ?
@@ -64,6 +88,28 @@ module tb();
     wire [2:0]  out_tuser;
     wire        frame_done;
 
+    // PIP: the mixer's first output cycle after out_tready goes high is a
+    // one-time startup transient (confirmed via waveform inspection - every
+    // cycle after the first is a clean, complete frame, repeating forever).
+    // Hold the capture module in reset through that first cycle so its
+    // first-ever SOF sighting lands in a clean frame, not the glitchy one.
+    localparam [31:0] PIP_SETTLE_CYCLES = (CAP_W * CAP_H * 3);
+    reg         cap_reset = 1'b1;
+    reg  [31:0] pip_settle_count = 32'd0;
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            cap_reset        <= 1'b1;
+            pip_settle_count <= 32'd0;
+        end else if (!ENABLE_PIP) begin
+            cap_reset <= 1'b0;
+        end else if (out_tready) begin
+            if (pip_settle_count < PIP_SETTLE_CYCLES)
+                pip_settle_count <= pip_settle_count + 1'b1;
+            else
+                cap_reset <= 1'b0;
+        end
+    end
+
     reg  [23:0] pc1_in_tdata  = 24'h0;
     reg         pc1_in_tvalid = 1'b0;
     wire        pc1_in_tready;
@@ -79,11 +125,12 @@ module tb();
         .IMG_H    (CAP_H),
         .IMG_W    (CAP_W),
         .IS_FULL  (IS_FULL),
+        .SKIP_ROWS(PIP_ROW_GUARD),
         //.FILE_NAME("../../../../app/crs_yuv422.txt")
         .FILE_NAME("../../../../app/sc_data.txt")
     ) scaler_out (
         .clk       (clk),
-        .reset     (reset),
+        .reset     (cap_reset),
         .tdata     (out_tdata),
         .tvalid    (out_tvalid),
         .tready    (out_tready & (dut.current_state == dut.ST_WORKING)),
@@ -99,6 +146,7 @@ module tb();
     top #(
         .TOPOLOGY    (TOPOLOGY),
         .INPUT_SEL   (INPUT_SEL),
+        .ENABLE_PIP  (ENABLE_PIP),
         .IMG_WIDTH   (IMG_WIDTH),
         .IMG_HEIGHT  (IMG_HEIGHT),
         .IMG_L_OFF   (IMG_L_OFF),
@@ -107,6 +155,11 @@ module tb();
         .IMG_B_OFF   (IMG_B_OFF),
         .SCALER_OUT_W(SCALER_OUT_W),
         .SCALER_OUT_H(SCALER_OUT_H),
+        .PIP_BG_WIDTH (PIP_BG_WIDTH),
+        .PIP_BG_HEIGHT(REAL_BG_HEIGHT),
+        .PIP_H_OFFSET (PIP_H_OFFSET),
+        .PIP_V_OFFSET (REAL_V_OFFSET),
+        .PIP_BG_COLOR (PIP_BG_COLOR),
         .TPG_MODE    (TPG_COLORSPACE),
         .VID_PLANES  (VID_PLANES)
     ) dut (
@@ -134,14 +187,25 @@ module tb();
         reset = 0;
         $display("[%0t] Reset released.", $time);
 
-        // Set out_tready=1 immediately after reset.
-        // CRITICAL for CSC modes: pipeline must drain during ST_POLL_CSC.
-        @(posedge clk);
-        out_tready = 1;
+        if (!ENABLE_PIP) begin
+            // Set out_tready=1 immediately after reset.
+            // CRITICAL for CSC modes: pipeline must drain during ST_POLL_CSC.
+            @(posedge clk);
+            out_tready = 1;
+        end
 
         // Wait for FSM to complete configuration (includes CSC poll for TPG)
         wait(dut.current_state == dut.ST_WORKING);
         $display("[%0t] ST_WORKING - pipeline configured.", $time);
+
+        if (ENABLE_PIP) begin
+            // Matches the working mixer reference: don't assert ready until
+            // config is fully complete - the mixer's own output must never
+            // see "ready" while its layer/blend/offset registers are still
+            // being written, or it can latch onto an inconsistent internal
+            // state that never recovers.
+            out_tready = 1;
+        end
 
 
         // Wait for first clean SOF after ST_WORKING.
@@ -196,7 +260,7 @@ module tb();
     // =========================================================================
     // State trace
     // =========================================================================
-    reg [4:0] last_state = 5'h1F;
+    reg [5:0] last_state = 6'h3F;
     always @(posedge clk) begin
         if (!reset && dut.current_state !== last_state) begin
             $display("[%0t] STATE %0d->%0d cfg_step=%0d",

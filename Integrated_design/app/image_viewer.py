@@ -231,6 +231,73 @@ class ImageViewerWindow(Gtk.Window):
             self.scl_group_box.pack_start(hbox, False, False, 0)
         sidebar.pack_start(self.scl_group_box, False, False, 0)
 
+        # ?? PIP (Picture-in-Picture) ?????????????????????????????????????????
+        self.pip_group_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+        self.pip_group_box.get_style_context().add_class("param-group")
+        pip_lbl = Gtk.Label(label="PIP (Picture-in-Picture)")
+        pip_lbl.set_xalign(0)
+        pip_lbl.get_style_context().add_class("group-label")
+        self.pip_group_box.pack_start(pip_lbl, False, False, 0)
+
+        self.pip_checkbox = Gtk.CheckButton(label="Enable PIP")
+        self.pip_checkbox.connect("toggled", self._on_pip_toggled)
+        self.pip_group_box.pack_start(self.pip_checkbox, False, False, 0)
+
+        pip_color_hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+        pip_color_lbl = Gtk.Label(label="Background Color")
+        pip_color_lbl.set_xalign(0)
+        pip_color_hbox.pack_start(pip_color_lbl, True, True, 0)
+        self.pip_color_combo = Gtk.ComboBoxText()
+        self.pip_color_combo.append_text("Red")
+        self.pip_color_combo.append_text("Green")
+        self.pip_color_combo.append_text("Blue")
+        self.pip_color_combo.set_active(2)  # default Blue
+        pip_color_hbox.pack_end(self.pip_color_combo, False, False, 0)
+        self.pip_group_box.pack_start(pip_color_hbox, False, False, 0)
+
+        for name, key, default in [
+            ("Background Width",  "pip_bg_w", 1280),
+            ("Background Height", "pip_bg_h", 960),
+        ]:
+            hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+            lbl  = Gtk.Label(label=name)
+            lbl.set_xalign(0)
+            hbox.pack_start(lbl, True, True, 0)
+            adj  = Gtk.Adjustment(value=default, lower=1, upper=8192, step_increment=1)
+            spin = Gtk.SpinButton(adjustment=adj, climb_rate=1, digits=0)
+            spin.set_width_chars(6)
+            hbox.pack_end(spin, False, False, 0)
+            self.params[key] = spin
+            self.pip_group_box.pack_start(hbox, False, False, 0)
+
+        pip_pos_hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+        pip_pos_lbl = Gtk.Label(label="Position")
+        pip_pos_lbl.set_xalign(0)
+        pip_pos_hbox.pack_start(pip_pos_lbl, True, True, 0)
+        self.pip_pos_combo = Gtk.ComboBoxText()
+        for p in ("Center", "Top-Left", "Top-Right", "Bottom-Left", "Bottom-Right", "Custom"):
+            self.pip_pos_combo.append_text(p)
+        self.pip_pos_combo.set_active(0)  # default Center
+        self.pip_pos_combo.connect("changed", self._on_pip_pos_changed)
+        pip_pos_hbox.pack_end(self.pip_pos_combo, False, False, 0)
+        self.pip_group_box.pack_start(pip_pos_hbox, False, False, 0)
+
+        for name, key, default in [
+            ("Custom H Offset", "pip_h_off", 0),
+            ("Custom V Offset", "pip_v_off", 0),
+        ]:
+            hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+            lbl  = Gtk.Label(label=name)
+            lbl.set_xalign(0)
+            hbox.pack_start(lbl, True, True, 0)
+            adj  = Gtk.Adjustment(value=default, lower=0, upper=8192, step_increment=1)
+            spin = Gtk.SpinButton(adjustment=adj, climb_rate=1, digits=0)
+            spin.set_width_chars(6)
+            hbox.pack_end(spin, False, False, 0)
+            self.params[key] = spin
+            self.pip_group_box.pack_start(hbox, False, False, 0)
+        sidebar.pack_start(self.pip_group_box, False, False, 0)
+
         # ?? CRS Output Mode ???????????????????????????????????????????????????
         self.crs_group_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
         self.crs_group_box.get_style_context().add_class("param-group")
@@ -276,6 +343,7 @@ class ImageViewerWindow(Gtk.Window):
         self.tpg_cs_combo.append_text("2 - YUV 4:2:2")
         self.tpg_cs_combo.append_text("3 - YUV 4:2:0")
         self.tpg_cs_combo.set_active(1)  # default YUV 4:4:4
+        self.tpg_cs_combo.connect("changed", self._on_tpg_cs_changed)
         self.tpg_cs_group_box.pack_start(self.tpg_cs_combo, False, False, 0)
         sidebar.pack_start(self.tpg_cs_group_box, False, False, 0)
 
@@ -316,6 +384,7 @@ class ImageViewerWindow(Gtk.Window):
         # Initial UI state
         self._update_topology_ui()
         self._show_source_image(self.radio_image.get_active())
+        self._on_pip_toggled(None)
 
     # ?? Topology UI ???????????????????????????????????????????????????????????
 
@@ -348,8 +417,26 @@ class ImageViewerWindow(Gtk.Window):
         return idx if idx >= 0 else 1
 
     def _get_vid_planes(self):
-        # Datapath color planes: 3 for RGB/4:4:4, 2 for 4:2:2/4:2:0.
-        # Must match the generated pipeline IP's NUMBER_OF_COLOR_PLANES.
+        # Datapath color planes must match whatever NUMBER_OF_COLOR_PLANES the
+        # packaged pipeline IP was actually generated with in Platform Designer
+        # (that's a separate, out-of-band regeneration step - it isn't
+        # something this app controls). Read it directly from the generated
+        # .ip descriptor rather than guessing from the TPG colorspace, since
+        # the two aren't reliably related (e.g. a 3-plane/CSC-capable build
+        # can carry a 4:2:2 TPG source just as well as a 2-plane build can).
+        ip_path = os.path.join(BASE_DIR, "..", "platform", "ip", "pipeline",
+                                "pipeline_intel_vvp_pipeline2_0.ip")
+        try:
+            with open(ip_path) as f:
+                content = f.read()
+            m = re.search(
+                r'<ipxact:name>NUMBER_OF_COLOR_PLANES</ipxact:name>.*?'
+                r'<ipxact:value>(\d+)</ipxact:value>', content, re.DOTALL)
+            if m:
+                return int(m.group(1))
+        except OSError:
+            pass
+        # Fallback if the .ip file can't be read for some reason.
         return 2 if self._get_tpg_colorspace() in (2, 3) else 3
 
     def _get_output_format(self):
@@ -373,6 +460,67 @@ class ImageViewerWindow(Gtk.Window):
             # mode 0 (passthrough): keep current fmt
         return fmt
 
+    def _get_pip_color(self):
+        # 0=Red, 1=Green, 2=Blue (VPSS R/G/B-only convention)
+        idx = self.pip_color_combo.get_active()
+        return idx if idx >= 0 else 2  # default Blue
+
+    def _get_pip_position(self):
+        idx = self.pip_pos_combo.get_active()
+        names = ("center", "top-left", "top-right", "bottom-left", "bottom-right", "custom")
+        return names[idx] if 0 <= idx < len(names) else "center"
+
+    def _on_pip_pos_changed(self, widget):
+        is_custom = self._get_pip_position() == "custom"
+        enabled = self.pip_checkbox.get_active()
+        self.params['pip_h_off'].set_sensitive(enabled and is_custom)
+        self.params['pip_v_off'].set_sensitive(enabled and is_custom)
+
+    def _on_tpg_cs_changed(self, widget):
+        # The CSC dropdown has no memory of which TPG format it was last set
+        # up for - if the user manually picked a YCbCr<->RGB conversion for
+        # one test, then changed the TPG format for a different test without
+        # touching CSC again, the stale conversion silently carried over and
+        # produced a broken composite (confirmed: reproduced byte-for-byte
+        # identical output this way). Snap CSC back to passthrough on every
+        # TPG format change so each test starts from a safe, explicit choice
+        # - RGB's own case still gets auto-forced to the correct conversion
+        # by _update_pip_colorspace_lock right after.
+        if hasattr(self, "csc_combo"):
+            self.csc_combo.set_active(0)  # passthrough
+        self._update_pip_colorspace_lock()
+
+    def _update_pip_colorspace_lock(self):
+        # The PIP background TPG is hardware-fixed to YCbCr (4:4:4) - the main
+        # video must reach the mixer in the same encoding or the two layers
+        # decode inconsistently.
+        #  - CSC-capable topology (FULL/CSC_ONLY/CRS_CSC): TPG can be RGB (or
+        #    any YCbCr variant) - CSC is force-set to convert RGB->YCbCr (SD/
+        #    BT.601) whenever RGB is chosen, so the final stream entering the
+        #    mixer is always YCbCr 4:4:4.
+        #  - No-CSC topology: there's no way to convert RGB, so lock to
+        #    YUV444 (the TPG's native encoding, matching the background).
+        enabled = self.pip_checkbox.get_active()
+        has_csc = TOPOLOGY_META[self._get_topology()]["csc"]
+        if enabled and not has_csc:
+            self.tpg_cs_combo.set_active(1)  # force YUV444
+        self.tpg_cs_combo.set_sensitive(
+            not self.radio_image.get_active() and (not enabled or has_csc))
+        if hasattr(self, "csc_combo"):
+            pip_rgb = enabled and has_csc and self._get_tpg_colorspace() == 0
+            if pip_rgb:
+                self.csc_combo.set_active(3)  # force RGB -> YCbCr SD (BT.601)
+            self.csc_combo.set_sensitive(has_csc and not pip_rgb)
+
+    def _on_pip_toggled(self, widget):
+        enabled = self.pip_checkbox.get_active()
+        self.pip_color_combo.set_sensitive(enabled)
+        self.params['pip_bg_w'].set_sensitive(enabled)
+        self.params['pip_bg_h'].set_sensitive(enabled)
+        self.pip_pos_combo.set_sensitive(enabled)
+        self._on_pip_pos_changed(None)
+        self._update_pip_colorspace_lock()
+
     def _update_topology_ui(self):
         topo = self._get_topology()
         meta = TOPOLOGY_META[topo]
@@ -383,11 +531,10 @@ class ImageViewerWindow(Gtk.Window):
         for key in ["scale_w", "scale_h"]:
             if key in self.params:
                 self.params[key].set_sensitive(meta["scl"])
-        # CRS and CSC dropdowns
+        # CRS dropdown (CSC sensitivity handled by _update_pip_colorspace_lock)
         if hasattr(self, 'crs_combo'):
             self.crs_combo.set_sensitive(meta["crs"])
-        if hasattr(self, 'csc_combo'):
-            self.csc_combo.set_sensitive(meta["csc"])
+        self._update_pip_colorspace_lock()
         # When no scaler: auto-set scaler spinners to match input resolution
         # so user sees the actual output dimensions even though they're grayed out
         if not meta["scl"] and "scale_w" in self.params and "tpg_w" in self.params:
@@ -422,6 +569,9 @@ class ImageViewerWindow(Gtk.Window):
             "crs_mode":  self._get_crs_mode(),
             "csc_mode":  self._get_csc_mode(),
             "tpg_cs":    self._get_tpg_colorspace(),
+            "pip_enabled":  self.pip_checkbox.get_active(),
+            "pip_color":    self._get_pip_color(),
+            "pip_position": self._get_pip_position(),
         }
         with open(self._preset_path(name), "w") as f:
             json.dump(data, f, indent=2)
@@ -473,6 +623,17 @@ class ImageViewerWindow(Gtk.Window):
         tpg_cs = data.get("tpg_cs", 1)
         if 0 <= tpg_cs <= 3:
             self.tpg_cs_combo.set_active(tpg_cs)
+
+        # Restore PIP settings
+        self.pip_checkbox.set_active(data.get("pip_enabled", False))
+        pip_color = data.get("pip_color", 2)
+        if 0 <= pip_color <= 2:
+            self.pip_color_combo.set_active(pip_color)
+        pip_pos = data.get("pip_position", "center")
+        pos_names = ("center", "top-left", "top-right", "bottom-left", "bottom-right", "custom")
+        if pip_pos in pos_names:
+            self.pip_pos_combo.set_active(pos_names.index(pip_pos))
+        self._on_pip_toggled(None)
 
         self.status_badge.set_text(f"Loaded: {name}")
 
@@ -596,10 +757,7 @@ class ImageViewerWindow(Gtk.Window):
             values['tpg_h'] = img_h
 
         try:
-            # 1. Patch topology, CSC mode, CRS mode in RTL files
-            self._patch_topology_in_rtl(topology, self._get_csc_mode(), self._get_crs_mode())
-
-            # 2. Compute correct output dimensions based on topology
+            # 1. Compute correct output dimensions based on topology
             meta = TOPOLOGY_META[topology]
             if meta["scl"]:
                 out_w = values["scale_w"]
@@ -608,6 +766,63 @@ class ImageViewerWindow(Gtk.Window):
                 # No scaler - output dims = input dims
                 out_w = values["tpg_w"]
                 out_h = values["tpg_h"]
+
+            pip_enabled = self.pip_checkbox.get_active()
+            pip_color   = self._get_pip_color()
+            pip_pos     = self._get_pip_position()
+            has_csc     = meta["csc"]
+
+            # PIP background TPG is hardware-fixed to YCbCr 4:4:4. On a
+            # CSC-capable topology the main video can be RGB (or any YCbCr
+            # variant) since CSC converts it to YCbCr before the mixer; on a
+            # topology without CSC there's no way to convert RGB, so it's
+            # locked to YUV444 to match the background.
+            tpg_cs   = self._get_tpg_colorspace() if (not pip_enabled or has_csc) else 1
+            pip_rgb  = pip_enabled and has_csc and tpg_cs == 0
+            csc_mode = 3 if pip_rgb else self._get_csc_mode()  # 3 = RGB->YCbCr SD (BT.601)
+
+            # 2. Patch topology, CSC mode, CRS mode in RTL files
+            self._patch_topology_in_rtl(topology, csc_mode, self._get_crs_mode())
+
+            # When PIP is on, the mixer's output canvas is the PIP background
+            # size, not the pipeline's own output size, so the render step
+            # needs that size regardless of the topology's own settings.
+            # The final stream is YCbCr 4:4:4 in every case except one: CSC
+            # set to a YCbCr->RGB mode (2 or 4) genuinely converts the video
+            # to RGB before it reaches the mixer, and top.v calibrates the
+            # PIP background to match with literal RGB values in that case
+            # too - so the render step must decode as RGB here, not YCbCr,
+            # or the (correct) captured bytes get mis-decoded.
+            pip_csc_to_rgb = pip_enabled and csc_mode in (2, 4)
+            render_w      = values["pip_bg_w"] if pip_enabled else out_w
+            render_h      = values["pip_bg_h"] if pip_enabled else out_h
+            if pip_enabled:
+                output_format = 0 if pip_csc_to_rgb else 1
+            else:
+                output_format = self._get_output_format()
+
+            # Inset position within the background canvas.
+            max_h_off = max(0, values["pip_bg_w"] - out_w)
+            max_v_off = max(0, values["pip_bg_h"] - out_h)
+            if pip_pos == "custom":
+                pip_h_off = min(values["pip_h_off"], max_h_off)
+                pip_v_off = min(values["pip_v_off"], max_v_off)
+            elif pip_pos == "top-left":
+                pip_h_off, pip_v_off = 0, 0
+            elif pip_pos == "top-right":
+                pip_h_off, pip_v_off = max_h_off, 0
+            elif pip_pos == "bottom-left":
+                pip_h_off, pip_v_off = 0, max_v_off
+            elif pip_pos == "bottom-right":
+                pip_h_off, pip_v_off = max_h_off, max_v_off
+            else:  # center
+                pip_h_off, pip_v_off = max_h_off // 2, max_v_off // 2
+
+            # Note: the mixer's one-time settling artifact on the first row it
+            # composites in a field is now handled transparently in tb.v (a
+            # hidden guard row is added to the real hardware canvas/offset and
+            # cropped from the capture) - no compromise needed here, V offset
+            # 0 (flush at the very top) works exactly as requested.
 
             # Write pipeline_config.txt
             with open(config_path, "w") as f:
@@ -618,15 +833,21 @@ class ImageViewerWindow(Gtk.Window):
                     if k not in ("scale_w", "scale_h"):
                         f.write(f"{k} = {v}\n")
                 # Always write correct output dims for hex_to_png.py
-                # For non-scaler modes this = input dims, for scaler modes = scaler output
-                f.write(f"scale_w = {out_w}\n")
-                f.write(f"scale_h = {out_h}\n")
+                # For non-scaler modes this = input dims, for scaler modes = scaler
+                # output (or the PIP background canvas size, when PIP is enabled)
+                f.write(f"scale_w = {render_w}\n")
+                f.write(f"scale_h = {render_h}\n")
                 # TPG color space: 0=RGB, 1=YUV444, 2=YUV422, 3=YUV420
-                f.write(f"tpg_colorspace = {self._get_tpg_colorspace()}\n")
+                f.write(f"tpg_colorspace = {tpg_cs}\n")
                 # Datapath color planes (3 for RGB/444, 2 for 422/420)
                 f.write(f"vid_planes = {self._get_vid_planes()}\n")
                 # Actual pipeline OUTPUT format for the decoder (after CSC/CRS)
-                f.write(f"output_format = {self._get_output_format()}\n")
+                f.write(f"output_format = {output_format}\n")
+                f.write(f"pip_enable = {1 if pip_enabled else 0}\n")
+                f.write(f"pip_bg_color = {pip_color}\n")
+                f.write(f"pip_position = {pip_pos}\n")
+                f.write(f"pip_h_offset = {pip_h_off}\n")
+                f.write(f"pip_v_offset = {pip_v_off}\n")
 
             # 3. Write configuration.vh
             with open(vh_path, "w") as f:
@@ -641,8 +862,14 @@ class ImageViewerWindow(Gtk.Window):
                 f.write(f"parameter CLIPPER_RIGHT   = {values['clip_right']};\n")
                 f.write(f"parameter SCALER_WIDTH    = {out_w};\n")
                 f.write(f"parameter SCALER_HEIGHT   = {out_h};\n")
-                f.write(f"parameter TPG_COLORSPACE  = {self._get_tpg_colorspace()};\n")
+                f.write(f"parameter TPG_COLORSPACE  = {tpg_cs};\n")
                 f.write(f"parameter VID_PLANES      = {self._get_vid_planes()};\n")
+                f.write(f"parameter PIP_ENABLE      = {1 if pip_enabled else 0};\n")
+                f.write(f"parameter PIP_BG_COLOR    = {pip_color};\n")
+                f.write(f"parameter PIP_BG_W        = {values['pip_bg_w']};\n")
+                f.write(f"parameter PIP_BG_H        = {values['pip_bg_h']};\n")
+                f.write(f"parameter PIP_H_OFF       = {pip_h_off};\n")
+                f.write(f"parameter PIP_V_OFF       = {pip_v_off};\n")
 
             def run_pipeline():
                 try:

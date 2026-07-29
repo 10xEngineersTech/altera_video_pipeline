@@ -94,7 +94,7 @@
 # within the Quartus project, and generate a unified
 # script which supports all the Intel IP within the design.
 # ----------------------------------------
-# ACDS 25.1.1 125 linux 2026.07.14.16:49:41
+# ACDS 25.1.1 125 linux 2026.07.29.16:41:40
 
 # ----------------------------------------
 # Initialize variables
@@ -113,7 +113,7 @@ if ![info exists QSYS_SIMDIR] {
 }
 
 if ![info exists QUARTUS_INSTALL_DIR] { 
-  set QUARTUS_INSTALL_DIR "/mnt/ssd2/Quartus_25_1_1_Setup_Installation/quartus/"
+  set QUARTUS_INSTALL_DIR "/home/lpt-10xe/altera_pro/25.1.1/quartus/"
 }
 
 if ![info exists QUARTUS_SIM_LIB_DIR] { 
@@ -251,7 +251,7 @@ if { $PRECOMP_DEVICE_LIB_FILE ne "" } {
 # ----------------------------------------
 # Create compilation libraries
 
-set logical_libraries [list "work" "work_lib" "lpm_ver" "sgate_ver" "altera_ver" "altera_mf_ver" "altera_lnsim_ver" "cyclone10gx_ver" "cyclone10gx_hip_ver" "cyclone10gx_hssi_ver" "lpm" "sgate" "altera" "altera_mf" "altera_lnsim" "cyclone10gx" "cyclone10gx_hip" "cyclone10gx_hssi"]
+set logical_libraries [list "work" "work_lib" "lpm_ver" "sgate_ver" "altera_ver" "altera_mf_ver" "altera_lnsim_ver" "tennm_ver" "tennm_hvio_ver" "tennm_sm_hps_ver" "tennm_agilex5_io96_ver" "tennm_agilex5_hssi_a_ver" "lpm" "sgate" "altera" "altera_mf" "altera_lnsim" "tennm" "tennm_hvio" "tennm_sm_hps" "tennm_agilex5_io96" "tennm_agilex5_hssi_a"]
 
 proc ensure_lib { lib } { if ![file isdirectory $lib] { vlib $lib } }
 ensure_lib          ./libraries/     
@@ -276,38 +276,46 @@ if { [llength $dpi_libraries] != 0 } {
 }
 
 if [ check_precomp_device $PRECOMP_DEVICE_LIB_FILE $FORCE_MODELSIM_AE_SELECTION ] {
-  ensure_lib                      ./libraries/lpm_ver/             
-  vmap       lpm_ver              ./libraries/lpm_ver/             
-  ensure_lib                      ./libraries/sgate_ver/           
-  vmap       sgate_ver            ./libraries/sgate_ver/           
-  ensure_lib                      ./libraries/altera_ver/          
-  vmap       altera_ver           ./libraries/altera_ver/          
-  ensure_lib                      ./libraries/altera_mf_ver/       
-  vmap       altera_mf_ver        ./libraries/altera_mf_ver/       
-  ensure_lib                      ./libraries/altera_lnsim_ver/    
-  vmap       altera_lnsim_ver     ./libraries/altera_lnsim_ver/    
-  ensure_lib                      ./libraries/cyclone10gx_ver/     
-  vmap       cyclone10gx_ver      ./libraries/cyclone10gx_ver/     
-  ensure_lib                      ./libraries/cyclone10gx_hip_ver/ 
-  vmap       cyclone10gx_hip_ver  ./libraries/cyclone10gx_hip_ver/ 
-  ensure_lib                      ./libraries/cyclone10gx_hssi_ver/
-  vmap       cyclone10gx_hssi_ver ./libraries/cyclone10gx_hssi_ver/
-  ensure_lib                      ./libraries/lpm/                 
-  vmap       lpm                  ./libraries/lpm/                 
-  ensure_lib                      ./libraries/sgate/               
-  vmap       sgate                ./libraries/sgate/               
-  ensure_lib                      ./libraries/altera/              
-  vmap       altera               ./libraries/altera/              
-  ensure_lib                      ./libraries/altera_mf/           
-  vmap       altera_mf            ./libraries/altera_mf/           
-  ensure_lib                      ./libraries/altera_lnsim/        
-  vmap       altera_lnsim         ./libraries/altera_lnsim/        
-  ensure_lib                      ./libraries/cyclone10gx/         
-  vmap       cyclone10gx          ./libraries/cyclone10gx/         
-  ensure_lib                      ./libraries/cyclone10gx_hip/     
-  vmap       cyclone10gx_hip      ./libraries/cyclone10gx_hip/     
-  ensure_lib                      ./libraries/cyclone10gx_hssi/    
-  vmap       cyclone10gx_hssi     ./libraries/cyclone10gx_hssi/    
+  ensure_lib                          ./libraries/lpm_ver/                 
+  vmap       lpm_ver                  ./libraries/lpm_ver/                 
+  ensure_lib                          ./libraries/sgate_ver/               
+  vmap       sgate_ver                ./libraries/sgate_ver/               
+  ensure_lib                          ./libraries/altera_ver/              
+  vmap       altera_ver               ./libraries/altera_ver/              
+  ensure_lib                          ./libraries/altera_mf_ver/           
+  vmap       altera_mf_ver            ./libraries/altera_mf_ver/           
+  ensure_lib                          ./libraries/altera_lnsim_ver/        
+  vmap       altera_lnsim_ver         ./libraries/altera_lnsim_ver/        
+  ensure_lib                          ./libraries/tennm_ver/               
+  vmap       tennm_ver                ./libraries/tennm_ver/               
+  ensure_lib                          ./libraries/tennm_hvio_ver/          
+  vmap       tennm_hvio_ver           ./libraries/tennm_hvio_ver/          
+  ensure_lib                          ./libraries/tennm_sm_hps_ver/        
+  vmap       tennm_sm_hps_ver         ./libraries/tennm_sm_hps_ver/        
+  ensure_lib                          ./libraries/tennm_agilex5_io96_ver/  
+  vmap       tennm_agilex5_io96_ver   ./libraries/tennm_agilex5_io96_ver/  
+  ensure_lib                          ./libraries/tennm_agilex5_hssi_a_ver/
+  vmap       tennm_agilex5_hssi_a_ver ./libraries/tennm_agilex5_hssi_a_ver/
+  ensure_lib                          ./libraries/lpm/                     
+  vmap       lpm                      ./libraries/lpm/                     
+  ensure_lib                          ./libraries/sgate/                   
+  vmap       sgate                    ./libraries/sgate/                   
+  ensure_lib                          ./libraries/altera/                  
+  vmap       altera                   ./libraries/altera/                  
+  ensure_lib                          ./libraries/altera_mf/               
+  vmap       altera_mf                ./libraries/altera_mf/               
+  ensure_lib                          ./libraries/altera_lnsim/            
+  vmap       altera_lnsim             ./libraries/altera_lnsim/            
+  ensure_lib                          ./libraries/tennm/                   
+  vmap       tennm                    ./libraries/tennm/                   
+  ensure_lib                          ./libraries/tennm_hvio/              
+  vmap       tennm_hvio               ./libraries/tennm_hvio/              
+  ensure_lib                          ./libraries/tennm_sm_hps/            
+  vmap       tennm_sm_hps             ./libraries/tennm_sm_hps/            
+  ensure_lib                          ./libraries/tennm_agilex5_io96/      
+  vmap       tennm_agilex5_io96       ./libraries/tennm_agilex5_io96/      
+  ensure_lib                          ./libraries/tennm_agilex5_hssi_a/    
+  vmap       tennm_agilex5_hssi_a     ./libraries/tennm_agilex5_hssi_a/    
 }
 set design_libraries [dict create]
 set design_libraries [dict merge $design_libraries [pipeline::get_design_libraries]]
@@ -325,42 +333,49 @@ alias dev_com {
     echo "\[exec\] dev_com"
   }
   if [ check_precomp_device $PRECOMP_DEVICE_LIB_FILE $FORCE_MODELSIM_AE_SELECTION ] {
-    eval  vlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QUARTUS_SIM_LIB_DIR/220model.v"                             -work lpm_ver             
-    eval  vlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QUARTUS_SIM_LIB_DIR/sgate.v"                                -work sgate_ver           
-    eval  vlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QUARTUS_SIM_LIB_DIR/altera_primitives.v"                    -work altera_ver          
-    eval  vlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QUARTUS_SIM_LIB_DIR/altera_mf.v"                            -work altera_mf_ver       
-    eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QUARTUS_SIM_LIB_DIR/altera_lnsim.sv"                        -work altera_lnsim_ver    
-    eval  vlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QUARTUS_SIM_LIB_DIR/cyclone10gx_atoms.v"                    -work cyclone10gx_ver     
-    eval  vlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QUARTUS_SIM_LIB_DIR/mentor/cyclone10gx_atoms_ncrypt.v"      -work cyclone10gx_ver     
-    eval  vlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QUARTUS_SIM_LIB_DIR/mentor/cyclone10gx_hip_atoms_ncrypt.v"  -work cyclone10gx_hip_ver 
-    eval  vlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QUARTUS_SIM_LIB_DIR/cyclone10gx_hip_atoms.v"                -work cyclone10gx_hip_ver 
-    eval  vlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QUARTUS_SIM_LIB_DIR/mentor/cyclone10gx_hssi_atoms_ncrypt.v" -work cyclone10gx_hssi_ver
-    eval  vlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QUARTUS_SIM_LIB_DIR/cyclone10gx_hssi_atoms.v"               -work cyclone10gx_hssi_ver
-    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS        "$QUARTUS_SIM_LIB_DIR/220pack.vhd"                            -work lpm                 
-    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS        "$QUARTUS_SIM_LIB_DIR/220model.vhd"                           -work lpm                 
-    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS        "$QUARTUS_SIM_LIB_DIR/sgate_pack.vhd"                         -work sgate               
-    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS        "$QUARTUS_SIM_LIB_DIR/sgate.vhd"                              -work sgate               
-    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS        "$QUARTUS_SIM_LIB_DIR/altera_syn_attributes.vhd"              -work altera              
-    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS        "$QUARTUS_SIM_LIB_DIR/altera_standard_functions.vhd"          -work altera              
-    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS        "$QUARTUS_SIM_LIB_DIR/alt_dspbuilder_package.vhd"             -work altera              
-    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS        "$QUARTUS_SIM_LIB_DIR/altera_europa_support_lib.vhd"          -work altera              
-    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS        "$QUARTUS_SIM_LIB_DIR/altera_primitives_components.vhd"       -work altera              
-    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS        "$QUARTUS_SIM_LIB_DIR/altera_primitives.vhd"                  -work altera              
-    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS        "$QUARTUS_SIM_LIB_DIR/altera_mf_components.vhd"               -work altera_mf           
-    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS        "$QUARTUS_SIM_LIB_DIR/altera_mf.vhd"                          -work altera_mf           
-    eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QUARTUS_SIM_LIB_DIR/altera_lnsim.sv"                        -work altera_lnsim        
-    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS        "$QUARTUS_SIM_LIB_DIR/altera_lnsim_components.vhd"            -work altera_lnsim        
-    eval  vlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QUARTUS_SIM_LIB_DIR/mentor/cyclone10gx_atoms_ncrypt.v"      -work cyclone10gx         
-    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS        "$QUARTUS_SIM_LIB_DIR/cyclone10gx_atoms.vhd"                  -work cyclone10gx         
-    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS        "$QUARTUS_SIM_LIB_DIR/cyclone10gx_components.vhd"             -work cyclone10gx         
-    eval  vlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QUARTUS_SIM_LIB_DIR/mentor/cyclone10gx_hip_atoms_ncrypt.v"  -work cyclone10gx_hip     
-    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS        "$QUARTUS_SIM_LIB_DIR/cyclone10gx_hip_components.vhd"         -work cyclone10gx_hip     
-    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS        "$QUARTUS_SIM_LIB_DIR/cyclone10gx_hip_atoms.vhd"              -work cyclone10gx_hip     
-    eval  vlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QUARTUS_SIM_LIB_DIR/mentor/cyclone10gx_hssi_atoms_ncrypt.v" -work cyclone10gx_hssi    
-    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS        "$QUARTUS_SIM_LIB_DIR/cyclone10gx_hssi_components.vhd"        -work cyclone10gx_hssi    
-    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS        "$QUARTUS_SIM_LIB_DIR/cyclone10gx_hssi_atoms.vhd"             -work cyclone10gx_hssi    
+    eval  vlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                                   "$QUARTUS_SIM_LIB_DIR/220model.v"                       -work lpm_ver                 
+    eval  vlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                                   "$QUARTUS_SIM_LIB_DIR/sgate.v"                          -work sgate_ver               
+    eval  vlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                                   "$QUARTUS_SIM_LIB_DIR/altera_primitives.v"              -work altera_ver              
+    eval  vlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                                   "$QUARTUS_SIM_LIB_DIR/altera_mf.v"                      -work altera_mf_ver           
+    eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                               "$QUARTUS_SIM_LIB_DIR/altera_lnsim.sv"                  -work altera_lnsim_ver        
+    eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                               "$QUARTUS_SIM_LIB_DIR/tennm_atoms.sv"                   -work tennm_ver               
+    eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                               "$QUARTUS_SIM_LIB_DIR/mentor/tennm_atoms_ncrypt.sv"     -work tennm_ver               
+    eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                               "$QUARTUS_SIM_LIB_DIR/fmica_atoms_ncrypt.sv"            -work tennm_ver               
+    eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                               "$DEVICES_SIM_LIB_DIR/tennm_hvio.sv"                    -work tennm_hvio_ver          
+    eval  vlog -sv -suppress 2583 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                "$DEVICES_SIM_LIB_DIR/tennm_hvio_ncrypt.sv"             -work tennm_hvio_ver          
+    eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                               "$DEVICES_SIM_LIB_DIR/tennm_sm_hps.sv"                  -work tennm_sm_hps_ver        
+    eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                               "$DEVICES_SIM_LIB_DIR/tennm_sm_hps_ncrypt.sv"           -work tennm_sm_hps_ver        
+    eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                               "$DEVICES_SIM_LIB_DIR/tennm_agilex5_io96.sv"            -work tennm_agilex5_io96_ver  
+    eval  vlog -sv -suppress 2583,13314 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                          "$DEVICES_SIM_LIB_DIR/tennm_agilex5_io96_ncrypt.sv"     -work tennm_agilex5_io96_ver  
+    eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                               "$DEVICES_SIM_LIB_DIR/tennm_agilex5_hssi_a.sv"          -work tennm_agilex5_hssi_a_ver
+    eval  vlog -sv -suppress 7061,2583,13314,2244,2283,2600,3691 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$DEVICES_SIM_LIB_DIR/tennm_agilex5_hssi_a_ncrypt.sv"   -work tennm_agilex5_hssi_a_ver
+    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                                      "$QUARTUS_SIM_LIB_DIR/220pack.vhd"                      -work lpm                     
+    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                                      "$QUARTUS_SIM_LIB_DIR/220model.vhd"                     -work lpm                     
+    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                                      "$QUARTUS_SIM_LIB_DIR/sgate_pack.vhd"                   -work sgate                   
+    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                                      "$QUARTUS_SIM_LIB_DIR/sgate.vhd"                        -work sgate                   
+    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                                      "$QUARTUS_SIM_LIB_DIR/altera_syn_attributes.vhd"        -work altera                  
+    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                                      "$QUARTUS_SIM_LIB_DIR/altera_standard_functions.vhd"    -work altera                  
+    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                                      "$QUARTUS_SIM_LIB_DIR/alt_dspbuilder_package.vhd"       -work altera                  
+    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                                      "$QUARTUS_SIM_LIB_DIR/altera_europa_support_lib.vhd"    -work altera                  
+    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                                      "$QUARTUS_SIM_LIB_DIR/altera_primitives_components.vhd" -work altera                  
+    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                                      "$QUARTUS_SIM_LIB_DIR/altera_primitives.vhd"            -work altera                  
+    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                                      "$QUARTUS_SIM_LIB_DIR/altera_mf_components.vhd"         -work altera_mf               
+    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                                      "$QUARTUS_SIM_LIB_DIR/altera_mf.vhd"                    -work altera_mf               
+    eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                               "$QUARTUS_SIM_LIB_DIR/altera_lnsim.sv"                  -work altera_lnsim            
+    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                                      "$QUARTUS_SIM_LIB_DIR/altera_lnsim_components.vhd"      -work altera_lnsim            
+    eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                               "$QUARTUS_SIM_LIB_DIR/mentor/tennm_atoms_ncrypt.sv"     -work tennm                   
+    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                                      "$QUARTUS_SIM_LIB_DIR/tennm_atoms.vhd"                  -work tennm                   
+    eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                                      "$QUARTUS_SIM_LIB_DIR/tennm_components.vhd"             -work tennm                   
+    eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                               "$DEVICES_SIM_LIB_DIR/tennm_hvio.sv"                    -work tennm_hvio              
+    eval  vlog -sv -suppress 2583 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                "$DEVICES_SIM_LIB_DIR/tennm_hvio_ncrypt.sv"             -work tennm_hvio              
+    eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                               "$DEVICES_SIM_LIB_DIR/tennm_sm_hps.sv"                  -work tennm_sm_hps            
+    eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                               "$DEVICES_SIM_LIB_DIR/tennm_sm_hps_ncrypt.sv"           -work tennm_sm_hps            
+    eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                               "$DEVICES_SIM_LIB_DIR/tennm_agilex5_io96.sv"            -work tennm_agilex5_io96      
+    eval  vlog -sv -suppress 2583,13314 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                          "$DEVICES_SIM_LIB_DIR/tennm_agilex5_io96_ncrypt.sv"     -work tennm_agilex5_io96      
+    eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS                                               "$DEVICES_SIM_LIB_DIR/tennm_agilex5_hssi_a.sv"          -work tennm_agilex5_hssi_a    
+    eval  vlog -sv -suppress 7061,2583,13314,2244,2283,2600,3691 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$DEVICES_SIM_LIB_DIR/tennm_agilex5_hssi_a_ncrypt.sv"   -work tennm_agilex5_hssi_a    
   }
-  
+  eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QUARTUS_SIM_LIB_DIR/simsf_dpi.cpp"
 }
 
 # ----------------------------------------

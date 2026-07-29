@@ -4,6 +4,7 @@ module make_file #(
     parameter IMG_H     = 1080,
     parameter IMG_W     = 1920,
     parameter IS_FULL   = 1,      // 1: Full mode, 0: Lite mode
+    parameter SKIP_ROWS = 0,      // hidden guard rows discarded at top of frame
     parameter FILE_NAME = "output_data.txt"
 )(
     input wire        clk,
@@ -24,7 +25,8 @@ module make_file #(
     frame_controller #(
         .IMG_H(IMG_H),
         .IMG_W(IMG_W),
-        .IS_FULL(IS_FULL)
+        .IS_FULL(IS_FULL),
+        .SKIP_ROWS(SKIP_ROWS)
     ) controller (
         .clk        (clk),
         .reset      (reset),

@@ -49,25 +49,39 @@ def ycbcr_to_rgb(y, cb, cr):
             max(0, min(255, int(g))),
             max(0, min(255, int(b))))
 
-def load_and_clean(filename):
+def load_and_clean(filename, width=None):
     try:
         with open(filename, 'r') as f:
-            raw = f.read().split()
+            raw_lines = f.readlines()
     except FileNotFoundError:
         print(f"Error: {filename} not found.")
         sys.exit(1)
-    # Keep only the meaningful low nibbles. On a 2-plane (16-bit) datapath the
-    # capture bus is still 24-bit, so the undriven high byte shows up as x/z;
-    # trimming first prevents those words from being discarded as invalid.
-    if MEANINGFUL_NIBBLES:
-        raw = [w[-MEANINGFUL_NIBBLES:] if len(w) >= MEANINGFUL_NIBBLES else w
-               for w in raw]
-    valid   = [w for w in raw if is_valid_hex(w)]
-    skipped = len(raw) - len(valid)
+    # Parse per capture line (row), not as one flattened token stream - a
+    # capture row occasionally has a few extra/short words (e.g. a harmless
+    # one-time capture-startup artifact on the first row). Flattening the
+    # whole file and reshaping by a fixed width lets that discrepancy shift
+    # every subsequent row, which looks like a positioning/wrap-around bug
+    # in the rendered image even though the underlying data is correct.
+    # Clamping/padding each line to exactly `width` words keeps rows aligned.
+    all_words = []
+    skipped   = 0
+    for raw_line in raw_lines:
+        words = raw_line.split()
+        if MEANINGFUL_NIBBLES:
+            words = [w[-MEANINGFUL_NIBBLES:] if len(w) >= MEANINGFUL_NIBBLES else w
+                     for w in words]
+        valid = [w for w in words if is_valid_hex(w)]
+        skipped += len(words) - len(valid)
+        if width is not None and len(valid) != width:
+            if len(valid) > width:
+                valid = valid[:width]
+            else:
+                valid = valid + ['000000'] * (width - len(valid))
+        all_words.extend(valid)
     if skipped:
         print(f"  Skipped {skipped} invalid (x/z) words.")
-    print(f"  Found {len(valid)} pixel words.")
-    return valid
+    print(f"  Found {len(all_words)} pixel words.")
+    return all_words
 
 # =============================================================================
 # Conversion Functions
@@ -77,7 +91,7 @@ def convert_rgb(input_file, output_file, width, height):
     RGB packed: tdata[23:0] = { R[7:0], G[7:0], B[7:0] }
     Used for: SCALER_ONLY, CLIP_SCL, FULL/CSC with RGB output
     """
-    pixel_words = load_and_clean(input_file)
+    pixel_words = load_and_clean(input_file, width=width)
     total       = width * height
     raw_list    = []
     for i in range(total):
@@ -99,7 +113,7 @@ def convert_yuv444(input_file, output_file, width, height):
     YUV444 packed: tdata[23:0] = { Cr[7:0], Y[7:0], Cb[7:0] }
     Used for: CRS 444 output, CSC YCbCr output
     """
-    pixel_words = load_and_clean(input_file)
+    pixel_words = load_and_clean(input_file, width=width)
     total       = width * height
     pixels      = []
     for i in range(total):
@@ -124,7 +138,7 @@ def convert_yuv422(input_file, output_file, width, height):
       Odd  pixels: { 8'b0, Y[7:0], Cr[7:0] }
     Used for: CRS 422 output
     """
-    pixel_words = load_and_clean(input_file)
+    pixel_words = load_and_clean(input_file, width=width)
     total       = width * height
     pixels      = []
     for i in range(0, len(pixel_words), 2):
@@ -155,77 +169,53 @@ def convert_yuv422(input_file, output_file, width, height):
 
 def convert_yuv420(input_file, output_file, width, height):
     """
-    Intel VVP 420 passthrough interleaved packing:
-      Every pixel word: { Cr_or_Cb[7:0], Y[7:0], Cr_or_Cb[7:0] }
-      Even lines: { Cb[7:0], Y[7:0], Cb[7:0] }  -> Cb line
-      Odd  lines: { Cr[7:0], Y[7:0], Cr[7:0] }  -> Cr line
-
-    To reconstruct full YCbCr per pixel:
-      - Y  from current pixel word (bits 15:8)
-      - Cb from even line, same column (bits 7:0)
-      - Cr from odd  line, same column (bits 7:0)
-    Pair even+odd lines to get full color for both rows.
+    Intel VVP 4:2:0 packing (per UG-20344 39.3.5): chroma is subsampled 2x1
+    in both directions, but luma is NOT subsampled at all - so the IP packs
+    two full-resolution luma samples into the word's 3 color planes, plus
+    one shared chroma sample:
+      word = { chroma[7:0], Y_odd[7:0], Y_even[7:0] }
+    Each raw line carries its own (non-subsampled) luma for its own row, but
+    only ONE chroma component (Cb or Cr) - lines alternate Cb/Cr role, and
+    that chroma is shared vertically across each line pair. Raw capture is
+    `height` lines x (width/2) words (half as many words per line as real
+    pixels, since two luma samples share one word).
     """
-    pixel_words = load_and_clean(input_file)
-    total       = width * height
+    half_width = width // 2
+    pixel_words = load_and_clean(input_file, width=half_width)
 
-    # Reshape into lines
     lines = []
     for row in range(height):
-        start = row * width
-        end   = start + width
+        start = row * half_width
+        end   = start + half_width
         line  = pixel_words[start:end] if end <= len(pixel_words) else \
-                pixel_words[start:] + ['808080'] * (width - len(pixel_words[start:]))
+                pixel_words[start:] + ['000000'] * (half_width - len(pixel_words[start:]))
         lines.append(line)
 
-    # Intel VVP 420 field-based stream:
-    #   Field 0 (even rows): lines 0  .. height//2 - 1  -> pixel rows 0,2,4,...
-    #   Field 1 (odd  rows): lines height//2 .. height-1 -> pixel rows 1,3,5,...
-    #   Within each field, lines alternate: Cb line, Cr line, Cb line, Cr line
-    #   Each Cb/Cr pair reconstructs one pixel row of the field
-    #
-    # Total output: width x height pixels (full frame)
+    rows = []
+    for pair in range(0, height, 2):
+        line_a = lines[pair]
+        line_b = lines[pair + 1] if pair + 1 < height else lines[pair]
+        row_a, row_b = [], []
+        for col in range(half_width):
+            wa = int(line_a[col], 16)
+            wb = int(line_b[col], 16)
+            y0_a, y1_a, chroma_a = (wa >> 16) & 0xFF, (wa >> 8) & 0xFF, wa & 0xFF
+            y0_b, y1_b, chroma_b = (wb >> 16) & 0xFF, (wb >> 8) & 0xFF, wb & 0xFF
+            cb, cr = chroma_a, chroma_b  # even line = Cb, odd line = Cr
+            row_a.append(ycbcr_to_rgb(y0_a, cb, cr))
+            row_a.append(ycbcr_to_rgb(y1_a, cb, cr))
+            row_b.append(ycbcr_to_rgb(y0_b, cb, cr))
+            row_b.append(ycbcr_to_rgb(y1_b, cb, cr))
+        rows.append(row_a)
+        rows.append(row_b)
 
-    field0 = lines[:height // 2]   # even field: rows 0,2,4,...
-    field1 = lines[height // 2:]   # odd  field: rows 1,3,5,...
-
-    def reconstruct_field(field_lines, width):
-        """Reconstruct pixels from alternating Cb/Cr lines in one field."""
-        result = []
-        for row in range(0, len(field_lines), 2):
-            cb_line = field_lines[row]
-            cr_line = field_lines[row+1] if row+1 < len(field_lines) else field_lines[row]
-            for col in range(width):
-                val_cb = int(cb_line[col], 16)
-                val_cr = int(cr_line[col], 16)
-                y  = (val_cb >> 8) & 0xFF
-                cb =  val_cb       & 0xFF
-                cr =  val_cr       & 0xFF
-                result.append(ycbcr_to_rgb(y, cb, cr))
-        return result
-
-    even_pixels = reconstruct_field(field0, width)  # rows 0,2,4,...
-    odd_pixels  = reconstruct_field(field1, width)  # rows 1,3,5,...
-
-    # Interleave even and odd field rows to reconstruct full frame
-    rows_per_field = len(even_pixels) // width
-    pixels = []
-    for r in range(rows_per_field):
-        start = r * width
-        end   = start + width
-        pixels.extend(even_pixels[start:end])  # even row
-        if r < len(odd_pixels) // width:
-            pixels.extend(odd_pixels[start:end])  # odd row
-
-    out_h    = len(pixels) // width
-    total_px = width * out_h
-    if len(pixels) < total_px:
-        pixels += [(0, 0, 0)] * (total_px - len(pixels))
-    pixels   = pixels[:total_px]
-    bgr_list = [[b, g, r] for r, g, b in pixels]
-    bgr      = np.array(bgr_list, dtype=np.uint8).reshape((out_h, width, 3))
+    bgr = np.zeros((height, width, 3), dtype=np.uint8)
+    for r in range(height):
+        for c in range(width):
+            rr, gg, bb = rows[r][c]
+            bgr[r, c] = [bb, gg, rr]
     cv2.imwrite(output_file, bgr)
-    print(f"  Saved {output_file}  ({width}x{out_h})")
+    print(f"  Saved {output_file}  ({width}x{height})")
 
 
 # =============================================================================

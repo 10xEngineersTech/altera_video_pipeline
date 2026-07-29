@@ -179,7 +179,7 @@
                 <ipxact:parameter parameterId="addressSpan" type="string">
                     <ipxact:name>addressSpan</ipxact:name>
                     <ipxact:displayName>Address span</ipxact:displayName>
-                    <ipxact:value>4096</ipxact:value>
+                    <ipxact:value>8192</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="addressUnits" type="string">
                     <ipxact:name>addressUnits</ipxact:name>
@@ -621,7 +621,7 @@
                         </ipxact:parameter>
                         <ipxact:parameter parameterId="intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES" type="string">
                             <ipxact:name>intel_vvp_st_format.ccd.NUMBER_OF_COLOR_PLANES</ipxact:name>
-                            <ipxact:value>3</ipxact:value>
+                            <ipxact:value>2</ipxact:value>
                         </ipxact:parameter>
                         <ipxact:parameter parameterId="intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL" type="string">
                             <ipxact:name>intel_vvp_st_format.ccd.PIXELS_IN_PARALLEL</ipxact:name>
@@ -1789,7 +1789,7 @@
                     <ipxact:vectors>
                         <ipxact:vector>
                             <ipxact:left>0</ipxact:left>
-                            <ipxact:right>11</ipxact:right>
+                            <ipxact:right>12</ipxact:right>
                         </ipxact:vector>
                     </ipxact:vectors>
                     <ipxact:wireTypeDefs>
@@ -1933,7 +1933,7 @@
                     <ipxact:vectors>
                         <ipxact:vector>
                             <ipxact:left>0</ipxact:left>
-                            <ipxact:right>23</ipxact:right>
+                            <ipxact:right>15</ipxact:right>
                         </ipxact:vector>
                     </ipxact:vectors>
                     <ipxact:wireTypeDefs>
@@ -1987,7 +1987,7 @@
                     <ipxact:vectors>
                         <ipxact:vector>
                             <ipxact:left>0</ipxact:left>
-                            <ipxact:right>2</ipxact:right>
+                            <ipxact:right>1</ipxact:right>
                         </ipxact:vector>
                     </ipxact:vectors>
                     <ipxact:wireTypeDefs>
@@ -2527,22 +2527,22 @@
                 <ipxact:parameter parameterId="AUTO_DEVICE_FAMILY" type="string">
                     <ipxact:name>AUTO_DEVICE_FAMILY</ipxact:name>
                     <ipxact:displayName>Auto DEVICE_FAMILY</ipxact:displayName>
-                    <ipxact:value>Cyclone 10 GX</ipxact:value>
+                    <ipxact:value>Agilex 5</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="AUTO_DEVICE" type="string">
                     <ipxact:name>AUTO_DEVICE</ipxact:name>
                     <ipxact:displayName>Auto DEVICE</ipxact:displayName>
-                    <ipxact:value>10CX220YF780I5G</ipxact:value>
+                    <ipxact:value>A5ED065BB32AE6SR0</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="AUTO_DEVICE_SPEEDGRADE" type="string">
                     <ipxact:name>AUTO_DEVICE_SPEEDGRADE</ipxact:name>
                     <ipxact:displayName>Auto DEVICE_SPEEDGRADE</ipxact:displayName>
-                    <ipxact:value>5</ipxact:value>
+                    <ipxact:value>6</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="AUTO_BOARD" type="string">
                     <ipxact:name>AUTO_BOARD</ipxact:name>
                     <ipxact:displayName>Auto BOARD</ipxact:displayName>
-                    <ipxact:value>default</ipxact:value>
+                    <ipxact:value>Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1</ipxact:value>
                 </ipxact:parameter>
                 <ipxact:parameter parameterId="AUTO_CLK_CLOCK_RATE" type="longint">
                     <ipxact:name>AUTO_CLK_CLOCK_RATE</ipxact:name>

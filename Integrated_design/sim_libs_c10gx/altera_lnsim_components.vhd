@@ -1,1 +1,0 @@
-/mnt/ssd2/Quartus_25_1_1_Setup_Installation/questa_fse/intel/vhdl/src/altera_lnsim/altera_lnsim_components.vhd

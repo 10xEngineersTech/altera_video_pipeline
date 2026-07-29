@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="pipeline" kind="pipeline" version="1.0" fabric="QSYS">
  <!-- Format version 25.1.1 125 (Future versions may contain additional information.) -->
- <!-- 2026.07.14.16:49:42 -->
+ <!-- 2026.07.29.16:41:41 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
@@ -23,7 +23,7 @@
  </parameter>
  <parameter name="AUTO_DEVICE_FAMILY">
   <type>java.lang.String</type>
-  <value>Cyclone 10 GX</value>
+  <value>Agilex 5</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -32,7 +32,7 @@
  </parameter>
  <parameter name="AUTO_DEVICE">
   <type>java.lang.String</type>
-  <value>10CX220YF780I5G</value>
+  <value>A5ED065BB32AE6SR0</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -41,7 +41,7 @@
  </parameter>
  <parameter name="AUTO_DEVICE_SPEEDGRADE">
   <type>java.lang.String</type>
-  <value>5</value>
+  <value>6</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -50,7 +50,7 @@
  </parameter>
  <parameter name="AUTO_BOARD">
   <type>java.lang.String</type>
-  <value>default</value>
+  <value>Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -119,7 +119,7 @@
  </parameter>
  <parameter name="deviceFamily">
   <type>java.lang.String</type>
-  <value>Cyclone 10 GX</value>
+  <value>Agilex 5</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -495,7 +495,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_DEVICE_FAMILY">
    <type>java.lang.String</type>
-   <value>Cyclone 10 GX</value>
+   <value>Agilex 5</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -504,7 +504,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_DEVICE">
    <type>java.lang.String</type>
-   <value>10CX220YF780I5G</value>
+   <value>A5ED065BB32AE6SR0</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -513,7 +513,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
-   <value>Cyclone 10 GX</value>
+   <value>Agilex 5</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -2032,7 +2032,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_BOARD">
    <type>java.lang.String</type>
-   <value>default</value>
+   <value>Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -2041,7 +2041,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_DEVICE">
    <type>java.lang.String</type>
-   <value>10CX220YF780I5G</value>
+   <value>A5ED065BB32AE6SR0</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -2050,7 +2050,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_DEVICE_FAMILY">
    <type>java.lang.String</type>
-   <value>Cyclone 10 GX</value>
+   <value>Agilex 5</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -2059,7 +2059,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_DEVICE_SPEEDGRADE">
    <type>java.lang.String</type>
-   <value>5</value>
+   <value>6</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -2068,7 +2068,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
-   <value>Cyclone 10 GX</value>
+   <value>Agilex 5</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -4198,7 +4198,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_BOARD">
    <type>java.lang.String</type>
-   <value>default</value>
+   <value>Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -4207,7 +4207,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_DEVICE">
    <type>java.lang.String</type>
-   <value>10CX220YF780I5G</value>
+   <value>A5ED065BB32AE6SR0</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -4216,7 +4216,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_DEVICE_FAMILY">
    <type>java.lang.String</type>
-   <value>Cyclone 10 GX</value>
+   <value>Agilex 5</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -4225,7 +4225,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_DEVICE_SPEEDGRADE">
    <type>java.lang.String</type>
-   <value>5</value>
+   <value>6</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -4244,7 +4244,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
-   <value>Cyclone 10 GX</value>
+   <value>Agilex 5</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -6186,7 +6186,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_BOARD">
    <type>java.lang.String</type>
-   <value>default</value>
+   <value>Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -6195,7 +6195,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_DEVICE">
    <type>java.lang.String</type>
-   <value>10CX220YF780I5G</value>
+   <value>A5ED065BB32AE6SR0</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -6204,7 +6204,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_DEVICE_FAMILY">
    <type>java.lang.String</type>
-   <value>Cyclone 10 GX</value>
+   <value>Agilex 5</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -6213,7 +6213,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_DEVICE_SPEEDGRADE">
    <type>java.lang.String</type>
-   <value>5</value>
+   <value>6</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -6232,7 +6232,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
-   <value>Cyclone 10 GX</value>
+   <value>Agilex 5</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -7346,7 +7346,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_DEVICE_FAMILY">
    <type>java.lang.String</type>
-   <value>Cyclone 10 GX</value>
+   <value>Agilex 5</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -7355,7 +7355,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_DEVICE">
    <type>java.lang.String</type>
-   <value>10CX220YF780I5G</value>
+   <value>A5ED065BB32AE6SR0</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -7364,7 +7364,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
-   <value>Cyclone 10 GX</value>
+   <value>Agilex 5</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -7803,60 +7803,6 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>main_clock</endConnectionPoint>
  </connection>
  <connection
-   name="reset_in.out_reset/intel_vvp_protocol_conv_0.main_reset"
-   kind="reset"
-   version="25.1"
-   start="reset_in.out_reset"
-   end="intel_vvp_protocol_conv_0.main_reset">
-  <parameter name="resetDomainSysInfo">
-   <type>java.lang.Integer</type>
-   <value>-1</value>
-   <derived>true</derived>
-   <enabled>true</enabled>
-   <visible>false</visible>
-   <valid>true</valid>
-   <sysinfo_type>RESET_DOMAIN</sysinfo_type>
-  </parameter>
-  <parameter name="clockDomainSysInfo">
-   <type>java.lang.Integer</type>
-   <value>-1</value>
-   <derived>true</derived>
-   <enabled>true</enabled>
-   <visible>false</visible>
-   <valid>true</valid>
-   <sysinfo_type>CLOCK_DOMAIN</sysinfo_type>
-  </parameter>
-  <parameter name="clockResetSysInfo">
-   <type>java.lang.String</type>
-   <value></value>
-   <derived>true</derived>
-   <enabled>true</enabled>
-   <visible>false</visible>
-   <valid>true</valid>
-   <sysinfo_type>CLOCK_RESET_INFO</sysinfo_type>
-  </parameter>
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>reset_in</startModule>
-  <startConnectionPoint>out_reset</startConnectionPoint>
-  <endModule>intel_vvp_protocol_conv_0</endModule>
-  <endConnectionPoint>main_reset</endConnectionPoint>
- </connection>
- <connection
    name="reset_in.out_reset/intel_vvp_tpg_1.main_reset"
    kind="reset"
    version="25.1"
@@ -7908,6 +7854,60 @@ parameters are a RESULT of the module parameters. -->
   <startModule>reset_in</startModule>
   <startConnectionPoint>out_reset</startConnectionPoint>
   <endModule>intel_vvp_tpg_1</endModule>
+  <endConnectionPoint>main_reset</endConnectionPoint>
+ </connection>
+ <connection
+   name="reset_in.out_reset/intel_vvp_protocol_conv_0.main_reset"
+   kind="reset"
+   version="25.1"
+   start="reset_in.out_reset"
+   end="intel_vvp_protocol_conv_0.main_reset">
+  <parameter name="resetDomainSysInfo">
+   <type>java.lang.Integer</type>
+   <value>-1</value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>RESET_DOMAIN</sysinfo_type>
+  </parameter>
+  <parameter name="clockDomainSysInfo">
+   <type>java.lang.Integer</type>
+   <value>-1</value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>CLOCK_DOMAIN</sysinfo_type>
+  </parameter>
+  <parameter name="clockResetSysInfo">
+   <type>java.lang.String</type>
+   <value></value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>CLOCK_RESET_INFO</sysinfo_type>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>reset_in</startModule>
+  <startConnectionPoint>out_reset</startConnectionPoint>
+  <endModule>intel_vvp_protocol_conv_0</endModule>
   <endConnectionPoint>main_reset</endConnectionPoint>
  </connection>
  <plugin>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file
+   path="emif_io96b_mem_model_ddr4_100/sim/altera_emif_ddr4_model_top.sv"
+   type="SYSTEM_VERILOG"
+   library="emif_io96b_mem_model_ddr4_100" />
+ <file
+   path="emif_io96b_mem_model_ddr4_100/sim/altera_emif_ddrx_model.sv"
+   type="SYSTEM_VERILOG"
+   library="emif_io96b_mem_model_ddr4_100" />
+ <file
+   path="emif_io96b_mem_model_ddr4_100/sim/altera_emif_ddr4_model_db_chip.sv"
+   type="SYSTEM_VERILOG"
+   library="emif_io96b_mem_model_ddr4_100" />
+ <file
+   path="emif_io96b_mem_model_ddr4_100/sim/altera_emif_ddr4_model_rcd_chip.sv"
+   type="SYSTEM_VERILOG"
+   library="emif_io96b_mem_model_ddr4_100" />
+ <file
+   path="emif_io96b_mem_model_ddr4_100/sim/altera_emif_ddrx_model_bidir_delay.sv"
+   type="SYSTEM_VERILOG"
+   library="emif_io96b_mem_model_ddr4_100" />
+ <file
+   path="emif_io96b_mem_model_ddr4_100/sim/altera_emif_ddrx_model_per_device.sv"
+   type="SYSTEM_VERILOG"
+   library="emif_io96b_mem_model_ddr4_100" />
+ <file
+   path="emif_io96b_mem_model_ddr4_100/sim/altera_emif_ddrx_model_per_ping_pong.sv"
+   type="SYSTEM_VERILOG"
+   library="emif_io96b_mem_model_ddr4_100" />
+ <file
+   path="emif_io96b_mem_model_ddr4_100/sim/altera_emif_ddrx_model_rank.sv"
+   type="SYSTEM_VERILOG"
+   library="emif_io96b_mem_model_ddr4_100" />
+ <file
+   path="sim/pipeline_mem_0.v"
+   type="VERILOG"
+   library="pipeline_mem_0"
+   hasInlineConfiguration="true" />
+ <topLevel name="pipeline_mem_0.pipeline_mem_0" />
+ <deviceFamily name="agilex5" />
+ <device name="A5ED065BB32AE6SR0" />
+</simPackage>

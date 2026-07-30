@@ -1,0 +1,19 @@
+set ::GLOBAL_phy_arch_name                  pipeline_intel_vvp_pipeline2_0_emif_io96b_ddr4comp_400_pftbeyi
+
+set var(MEM_TECHNOLOGY)                     DDR4
+set var(MEM_NUM_IO96)                       1
+set var(PHY_REFCLK_FREQ_MHZ)                200.0
+set var(MEM_OPERATING_FREQ_MHZ)             800
+set var(MEM_DQ_WIDTH)                       32
+set var(PHY_NOC_EN)                         0
+set var(MEM_CLK_ASYNC)                      1
+set var(CLK_DIV_VCO_MEM)                    1
+set var(CLK_DIV_MEM_PHY)                    2
+set var(PLL_C_DIV_0)                        2
+set var(PLL_C_DIV_1)                        8
+set var(PLL_N_DIV)                          1
+set var(PLL_M_DIV)                          4
+set var(CLK_DIV_VCO_CORE)                   4
+set var(DQ_PER_DQS)                         8
+set var(LOCKSTEP_ROLE)                      OFF
+set var(MEM_CHANNEL_DATA_DQ_WIDTH)          32

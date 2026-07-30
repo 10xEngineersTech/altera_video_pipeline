@@ -4,53 +4,87 @@
 
 `timescale 1 ps / 1 ps
 module pipeline_intel_vvp_pipeline2_0 (
-		input  wire        clk_clk,                 //              clk.clk,           Clock Input
-		input  wire        reset_reset,             //            reset.reset,         Reset Input
-		output wire        s0_waitrequest,          //               s0.waitrequest,   Wait request to Avalon Memory Mapped Host, indicates agent is not ready
-		output wire [31:0] s0_readdata,             //                 .readdata,      Read Data output from Avalon Memory Mapped Agent
-		output wire        s0_readdatavalid,        //                 .readdatavalid, Valid read data indication from Avalon Memory Mapped Agent
-		input  wire [0:0]  s0_burstcount,           //                 .burstcount,    Indicates number of burst transfers in each burst
-		input  wire [31:0] s0_writedata,            //                 .writedata,     Write Data from Avalon Memory Mapped Host
-		input  wire [11:0] s0_address,              //                 .address,       Address output from Avalon Memory Mapped Host
-		input  wire        s0_write,                //                 .write,         Write command from Avalon Memory Mapped Host
-		input  wire        s0_read,                 //                 .read,          Read command from Avalon Memory Mapped Host
-		input  wire [3:0]  s0_byteenable,           //                 .byteenable,    Indicates valid read/write data location
-		input  wire        s0_debugaccess,          //                 .debugaccess
-		input  wire [23:0] s_axis_video_in_tdata,   //  s_axis_video_in.tdata
-		input  wire        s_axis_video_in_tvalid,  //                 .tvalid
-		output wire        s_axis_video_in_tready,  //                 .tready
-		input  wire        s_axis_video_in_tlast,   //                 .tlast
-		input  wire [2:0]  s_axis_video_in_tuser,   //                 .tuser
-		output wire [23:0] m_axis_video_out_tdata,  // m_axis_video_out.tdata
-		output wire        m_axis_video_out_tvalid, //                 .tvalid
-		input  wire        m_axis_video_out_tready, //                 .tready
-		output wire        m_axis_video_out_tlast,  //                 .tlast
-		output wire [2:0]  m_axis_video_out_tuser   //                 .tuser
+		input  wire        clk_clk,                          //                  clk.clk,           Clock Input
+		input  wire        reset_reset,                      //                reset.reset,         Reset Input
+		output wire        s0_waitrequest,                   //                   s0.waitrequest,   Wait request to Avalon Memory Mapped Host, indicates agent is not ready
+		output wire [31:0] s0_readdata,                      //                     .readdata,      Read Data output from Avalon Memory Mapped Agent
+		output wire        s0_readdatavalid,                 //                     .readdatavalid, Valid read data indication from Avalon Memory Mapped Agent
+		input  wire [0:0]  s0_burstcount,                    //                     .burstcount,    Indicates number of burst transfers in each burst
+		input  wire [31:0] s0_writedata,                     //                     .writedata,     Write Data from Avalon Memory Mapped Host
+		input  wire [27:0] s0_address,                       //                     .address,       Address output from Avalon Memory Mapped Host
+		input  wire        s0_write,                         //                     .write,         Write command from Avalon Memory Mapped Host
+		input  wire        s0_read,                          //                     .read,          Read command from Avalon Memory Mapped Host
+		input  wire [3:0]  s0_byteenable,                    //                     .byteenable,    Indicates valid read/write data location
+		input  wire        s0_debugaccess,                   //                     .debugaccess
+		input  wire [23:0] s_axis_video_in_tdata,            //      s_axis_video_in.tdata
+		input  wire        s_axis_video_in_tvalid,           //                     .tvalid
+		output wire        s_axis_video_in_tready,           //                     .tready
+		input  wire        s_axis_video_in_tlast,            //                     .tlast
+		input  wire [2:0]  s_axis_video_in_tuser,            //                     .tuser
+		output wire [23:0] m_axis_video_out_tdata,           //     m_axis_video_out.tdata
+		output wire        m_axis_video_out_tvalid,          //                     .tvalid
+		input  wire        m_axis_video_out_tready,          //                     .tready
+		output wire        m_axis_video_out_tlast,           //                     .tlast
+		output wire [2:0]  m_axis_video_out_tuser,           //                     .tuser
+		output wire [0:0]  frc_emif_mem_mem_cke,             //         frc_emif_mem.mem_cke,       Clock Enable channel 0.
+		output wire [0:0]  frc_emif_mem_mem_odt,             //                     .mem_odt,       On-Die Termination channel 0.
+		output wire [0:0]  frc_emif_mem_mem_cs_n,            //                     .mem_cs_n,      Chip Select channel 0.
+		output wire [16:0] frc_emif_mem_mem_a,               //                     .mem_a,         Address channel 0.
+		output wire [1:0]  frc_emif_mem_mem_ba,              //                     .mem_ba,        Bank Address channel 0.
+		output wire [0:0]  frc_emif_mem_mem_bg,              //                     .mem_bg,        Bank Group channel 0.
+		output wire        frc_emif_mem_mem_act_n,           //                     .mem_act_n,     Activation Command channel 0.
+		output wire        frc_emif_mem_mem_par,             //                     .mem_par,       Command/Address Parity channel 0.
+		inout  wire [31:0] frc_emif_mem_mem_dq,              //                     .mem_dq,        Data (read/write) channel 0.
+		inout  wire [3:0]  frc_emif_mem_mem_dqs_t,           //                     .mem_dqs_t,     Data Strobe (true) channel 0.
+		inout  wire [3:0]  frc_emif_mem_mem_dqs_c,           //                     .mem_dqs_c,     Data Strobe (complement) channel 0.
+		input  wire        frc_emif_mem_mem_alert_n,         //                     .mem_alert_n,   Indicates Write CRC Error channel 0.
+		output wire [0:0]  frc_emif_mem_ck_mem_ck_t,         //      frc_emif_mem_ck.mem_ck_t,      CK Clock (true) channel 0.
+		output wire [0:0]  frc_emif_mem_ck_mem_ck_c,         //                     .mem_ck_c,      CK Clock (complement) channel 0.
+		output wire        frc_emif_mem_reset_n_mem_reset_n, // frc_emif_mem_reset_n.mem_reset_n,   Asynchronous Reset channel 0.
+		input  wire        frc_emif_oct_oct_rzqin,           //         frc_emif_oct.oct_rzqin,     Calibrated On-Chip Termination (OCT) input pin channel 0.
+		input  wire        frc_emif_ref_clk_clk              //     frc_emif_ref_clk.clk,           PLL reference clock input.
 	);
 
-	pipeline_intel_vvp_pipeline2_0_intel_vvp_pipeline2_10_6uesdey intel_vvp_pipeline2_0 (
-		.clk_clk                 (clk_clk),                 //   input,   width = 1,              clk.clk
-		.reset_reset             (reset_reset),             //   input,   width = 1,            reset.reset
-		.s0_waitrequest          (s0_waitrequest),          //  output,   width = 1,               s0.waitrequest
-		.s0_readdata             (s0_readdata),             //  output,  width = 32,                 .readdata
-		.s0_readdatavalid        (s0_readdatavalid),        //  output,   width = 1,                 .readdatavalid
-		.s0_burstcount           (s0_burstcount),           //   input,   width = 1,                 .burstcount
-		.s0_writedata            (s0_writedata),            //   input,  width = 32,                 .writedata
-		.s0_address              (s0_address),              //   input,  width = 12,                 .address
-		.s0_write                (s0_write),                //   input,   width = 1,                 .write
-		.s0_read                 (s0_read),                 //   input,   width = 1,                 .read
-		.s0_byteenable           (s0_byteenable),           //   input,   width = 4,                 .byteenable
-		.s0_debugaccess          (s0_debugaccess),          //   input,   width = 1,                 .debugaccess
-		.s_axis_video_in_tdata   (s_axis_video_in_tdata),   //   input,  width = 24,  s_axis_video_in.tdata
-		.s_axis_video_in_tvalid  (s_axis_video_in_tvalid),  //   input,   width = 1,                 .tvalid
-		.s_axis_video_in_tready  (s_axis_video_in_tready),  //  output,   width = 1,                 .tready
-		.s_axis_video_in_tlast   (s_axis_video_in_tlast),   //   input,   width = 1,                 .tlast
-		.s_axis_video_in_tuser   (s_axis_video_in_tuser),   //   input,   width = 3,                 .tuser
-		.m_axis_video_out_tdata  (m_axis_video_out_tdata),  //  output,  width = 24, m_axis_video_out.tdata
-		.m_axis_video_out_tvalid (m_axis_video_out_tvalid), //  output,   width = 1,                 .tvalid
-		.m_axis_video_out_tready (m_axis_video_out_tready), //   input,   width = 1,                 .tready
-		.m_axis_video_out_tlast  (m_axis_video_out_tlast),  //  output,   width = 1,                 .tlast
-		.m_axis_video_out_tuser  (m_axis_video_out_tuser)   //  output,   width = 3,                 .tuser
+	pipeline_intel_vvp_pipeline2_0_intel_vvp_pipeline2_10_s53v24q intel_vvp_pipeline2_0 (
+		.clk_clk                          (clk_clk),                          //   input,   width = 1,                  clk.clk
+		.reset_reset                      (reset_reset),                      //   input,   width = 1,                reset.reset
+		.s0_waitrequest                   (s0_waitrequest),                   //  output,   width = 1,                   s0.waitrequest
+		.s0_readdata                      (s0_readdata),                      //  output,  width = 32,                     .readdata
+		.s0_readdatavalid                 (s0_readdatavalid),                 //  output,   width = 1,                     .readdatavalid
+		.s0_burstcount                    (s0_burstcount),                    //   input,   width = 1,                     .burstcount
+		.s0_writedata                     (s0_writedata),                     //   input,  width = 32,                     .writedata
+		.s0_address                       (s0_address),                       //   input,  width = 28,                     .address
+		.s0_write                         (s0_write),                         //   input,   width = 1,                     .write
+		.s0_read                          (s0_read),                          //   input,   width = 1,                     .read
+		.s0_byteenable                    (s0_byteenable),                    //   input,   width = 4,                     .byteenable
+		.s0_debugaccess                   (s0_debugaccess),                   //   input,   width = 1,                     .debugaccess
+		.s_axis_video_in_tdata            (s_axis_video_in_tdata),            //   input,  width = 24,      s_axis_video_in.tdata
+		.s_axis_video_in_tvalid           (s_axis_video_in_tvalid),           //   input,   width = 1,                     .tvalid
+		.s_axis_video_in_tready           (s_axis_video_in_tready),           //  output,   width = 1,                     .tready
+		.s_axis_video_in_tlast            (s_axis_video_in_tlast),            //   input,   width = 1,                     .tlast
+		.s_axis_video_in_tuser            (s_axis_video_in_tuser),            //   input,   width = 3,                     .tuser
+		.m_axis_video_out_tdata           (m_axis_video_out_tdata),           //  output,  width = 24,     m_axis_video_out.tdata
+		.m_axis_video_out_tvalid          (m_axis_video_out_tvalid),          //  output,   width = 1,                     .tvalid
+		.m_axis_video_out_tready          (m_axis_video_out_tready),          //   input,   width = 1,                     .tready
+		.m_axis_video_out_tlast           (m_axis_video_out_tlast),           //  output,   width = 1,                     .tlast
+		.m_axis_video_out_tuser           (m_axis_video_out_tuser),           //  output,   width = 3,                     .tuser
+		.frc_emif_mem_mem_cke             (frc_emif_mem_mem_cke),             //  output,   width = 1,         frc_emif_mem.mem_cke
+		.frc_emif_mem_mem_odt             (frc_emif_mem_mem_odt),             //  output,   width = 1,                     .mem_odt
+		.frc_emif_mem_mem_cs_n            (frc_emif_mem_mem_cs_n),            //  output,   width = 1,                     .mem_cs_n
+		.frc_emif_mem_mem_a               (frc_emif_mem_mem_a),               //  output,  width = 17,                     .mem_a
+		.frc_emif_mem_mem_ba              (frc_emif_mem_mem_ba),              //  output,   width = 2,                     .mem_ba
+		.frc_emif_mem_mem_bg              (frc_emif_mem_mem_bg),              //  output,   width = 1,                     .mem_bg
+		.frc_emif_mem_mem_act_n           (frc_emif_mem_mem_act_n),           //  output,   width = 1,                     .mem_act_n
+		.frc_emif_mem_mem_par             (frc_emif_mem_mem_par),             //  output,   width = 1,                     .mem_par
+		.frc_emif_mem_mem_dq              (frc_emif_mem_mem_dq),              //   inout,  width = 32,                     .mem_dq
+		.frc_emif_mem_mem_dqs_t           (frc_emif_mem_mem_dqs_t),           //   inout,   width = 4,                     .mem_dqs_t
+		.frc_emif_mem_mem_dqs_c           (frc_emif_mem_mem_dqs_c),           //   inout,   width = 4,                     .mem_dqs_c
+		.frc_emif_mem_mem_alert_n         (frc_emif_mem_mem_alert_n),         //   input,   width = 1,                     .mem_alert_n
+		.frc_emif_mem_ck_mem_ck_t         (frc_emif_mem_ck_mem_ck_t),         //  output,   width = 1,      frc_emif_mem_ck.mem_ck_t
+		.frc_emif_mem_ck_mem_ck_c         (frc_emif_mem_ck_mem_ck_c),         //  output,   width = 1,                     .mem_ck_c
+		.frc_emif_mem_reset_n_mem_reset_n (frc_emif_mem_reset_n_mem_reset_n), //  output,   width = 1, frc_emif_mem_reset_n.mem_reset_n
+		.frc_emif_oct_oct_rzqin           (frc_emif_oct_oct_rzqin),           //   input,   width = 1,         frc_emif_oct.oct_rzqin
+		.frc_emif_ref_clk_clk             (frc_emif_ref_clk_clk)              //   input,   width = 1,     frc_emif_ref_clk.clk
 	);
 
 endmodule

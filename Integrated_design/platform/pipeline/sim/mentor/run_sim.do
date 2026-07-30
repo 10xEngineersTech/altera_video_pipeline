@@ -4,12 +4,10 @@ cd /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/..
 
 # Setup and Compile IP
 set QUARTUS_INSTALL_DIR /home/lpt-10xe/altera_pro/25.1.1/quartus
-# 25.1.1 scatters the sim-lib sources; use the stitched dir built by setup_sim_libs.sh
-set QUARTUS_SIM_LIB_DIR /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/../sim_libs
 source msim_setup.tcl
 
-# Compile Device Libraries
-dev_com
+# DPI required by the io96b EMIF model (see runProject.py notes)
+vlog -sv /home/lpt-10xe/altera_pro/25.1.1/quartus/eda/sim_lib/simsf_dpi.cpp
 
 # Compile IP
 com
@@ -22,12 +20,10 @@ vlog /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/
 
 # Elaborate
 set TOP_LEVEL_NAME work.tb
-set USER_DEFINED_ELAB_OPTIONS {-voptargs="+acc"}
+set USER_DEFINED_ELAB_OPTIONS {-voptargs="+acc" -suppress 7041 -suppress 7033}
 elab_debug
 
-# Add Waves (only useful if GUI opens, but harmless in command line)
-add wave /tb/dut/*
-add wave -r /*
+# Waves skipped: headless run. Set FRC_WAVES=1 to force them on.
 
 # Run simulation
 run -all

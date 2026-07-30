@@ -1,0 +1,25 @@
+# system info pipeline_mem_0 on 2026.07.30.13:12:11
+system_info:
+name,value
+DEVICE,A5ED065BB32AE6SR0
+DEVICE_FAMILY,Agilex 5
+GENERATION_ID,0
+#
+#
+# Files generated for pipeline_mem_0 on 2026.07.30.13:12:11
+files:
+filepath,kind,attributes,module,is_top
+sim/pipeline_mem_0.v,VERILOG,CONTAINS_INLINE_CONFIGURATION,pipeline_mem_0,true
+emif_io96b_mem_model_ddr4_100/sim/altera_emif_ddr4_model_top.sv,SYSTEM_VERILOG,,altera_emif_ddr4_model_top,false
+emif_io96b_mem_model_ddr4_100/sim/altera_emif_ddrx_model.sv,SYSTEM_VERILOG,,altera_emif_ddr4_model_top,false
+emif_io96b_mem_model_ddr4_100/sim/altera_emif_ddr4_model_db_chip.sv,SYSTEM_VERILOG,,altera_emif_ddr4_model_top,false
+emif_io96b_mem_model_ddr4_100/sim/altera_emif_ddr4_model_rcd_chip.sv,SYSTEM_VERILOG,,altera_emif_ddr4_model_top,false
+emif_io96b_mem_model_ddr4_100/sim/altera_emif_ddrx_model_bidir_delay.sv,SYSTEM_VERILOG,,altera_emif_ddr4_model_top,false
+emif_io96b_mem_model_ddr4_100/sim/altera_emif_ddrx_model_per_device.sv,SYSTEM_VERILOG,,altera_emif_ddr4_model_top,false
+emif_io96b_mem_model_ddr4_100/sim/altera_emif_ddrx_model_per_ping_pong.sv,SYSTEM_VERILOG,,altera_emif_ddr4_model_top,false
+emif_io96b_mem_model_ddr4_100/sim/altera_emif_ddrx_model_rank.sv,SYSTEM_VERILOG,,altera_emif_ddr4_model_top,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+pipeline_mem_0.mem_0,altera_emif_ddr4_model_top

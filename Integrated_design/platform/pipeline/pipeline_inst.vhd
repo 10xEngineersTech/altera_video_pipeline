@@ -7,7 +7,7 @@
 			s0_readdatavalid                                  : out std_logic;                                        -- readdatavalid
 			s0_burstcount                                     : in  std_logic_vector(0 downto 0)  := (others => 'X'); -- burstcount
 			s0_writedata                                      : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
-			s0_address                                        : in  std_logic_vector(11 downto 0) := (others => 'X'); -- address
+			s0_address                                        : in  std_logic_vector(27 downto 0) := (others => 'X'); -- address
 			s0_write                                          : in  std_logic                     := 'X';             -- write
 			s0_read                                           : in  std_logic                     := 'X';             -- read
 			s0_byteenable                                     : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
@@ -22,6 +22,7 @@
 			m_axis_video_out_tready                           : in  std_logic                     := 'X';             -- tready
 			m_axis_video_out_tlast                            : out std_logic;                                        -- tlast
 			m_axis_video_out_tuser                            : out std_logic_vector(2 downto 0);                     -- tuser
+			emif_ref_clk_clk                                  : in  std_logic                     := 'X';             -- clk
 			axi4s_vid_in_tdata                                : in  std_logic_vector(23 downto 0) := (others => 'X'); -- tdata
 			axi4s_vid_in_tvalid                               : in  std_logic                     := 'X';             -- tvalid
 			axi4s_vid_in_tready                               : out std_logic;                                        -- tready
@@ -81,6 +82,7 @@
 			m_axis_video_out_tready                           => CONNECTED_TO_m_axis_video_out_tready,                           --                                    .tready
 			m_axis_video_out_tlast                            => CONNECTED_TO_m_axis_video_out_tlast,                            --                                    .tlast
 			m_axis_video_out_tuser                            => CONNECTED_TO_m_axis_video_out_tuser,                            --                                    .tuser
+			emif_ref_clk_clk                                  => CONNECTED_TO_emif_ref_clk_clk,                                  --                        emif_ref_clk.clk
 			axi4s_vid_in_tdata                                => CONNECTED_TO_axi4s_vid_in_tdata,                                --                        axi4s_vid_in.tdata
 			axi4s_vid_in_tvalid                               => CONNECTED_TO_axi4s_vid_in_tvalid,                               --                                    .tvalid
 			axi4s_vid_in_tready                               => CONNECTED_TO_axi4s_vid_in_tready,                               --                                    .tready

@@ -59,6 +59,28 @@ module top #(
     parameter [0:0]  INPUT_SEL       = 1'b0,
     parameter [0:0]  ENABLE_PIP      = 1'b0,
 
+    // Frame Rate Conversion. When 1 the packaged IP carries the video frame
+    // buffer (VFB) writing through the internal DDR4 EMIF to the external
+    // memory model and reading back out. Adds the Lite->Full converter
+    // configuration + the VFB output-side GO handshake, and widens the
+    // control bridge to 28 bits (the EMIF's AXI4-Lite CSR at 0x0800_0000
+    // forces ADDRESS_WIDTH=28 on the generated s0 port - see note at
+    // bridge_addr below).
+    parameter [0:0]  ENABLE_FRC      = 1'b0,
+
+    // FRC WRITE (input) frame rate control.
+    //
+    // The frame buffer has no rate register - the write rate is simply how fast
+    // complete frames arrive at its input. This inserts FRC_IN_GAP_CYCLES idle
+    // cycles for every frame's worth of accepted input beats, by backpressuring
+    // the source. Frame period therefore becomes:
+    //
+    //     period_cycles = IMG_WIDTH*IMG_HEIGHT + FRC_IN_GAP_CYCLES
+    //     write_fps     = clk_hz / period_cycles
+    //
+    // 0 = no gap = maximum write rate (one frame every W*H cycles).
+    parameter [31:0] FRC_IN_GAP_CYCLES = 32'd0,
+
     parameter [31:0] IMG_WIDTH       = 32'd640,
     parameter [31:0] IMG_HEIGHT      = 32'd480,
 
@@ -101,6 +123,24 @@ module top #(
 )(
     input  wire        clk,
     input  wire        reset,
+
+    // EMIF reference clock - MUST be 200 MHz (the packaged IP's EMIF is
+    // configured EMIF_PHY_REFCLK_FREQ_MHZ=200.0). Only meaningful when
+    // ENABLE_FRC=1; tie low otherwise. Feeding it the 100 MHz video clock
+    // makes DDR4 calibration never complete.
+    input  wire        emif_ref_clk,
+
+    // FRC statistics readback (ENABLE_FRC only). Pulse frc_stats_req once the
+    // captured frame is safely out; the FSM then reads the VFB's four field
+    // counters over the same control bridge and raises frc_stats_valid.
+    // These are how write-rate vs read-rate behaviour is measured: dropped
+    // fields prove down-conversion, repeated fields prove up-conversion.
+    input  wire        frc_stats_req,
+    output reg         frc_stats_valid,
+    output reg  [31:0] frc_in_fields,
+    output reg  [31:0] frc_dropped_fields,
+    output reg  [31:0] frc_out_fields,
+    output reg  [31:0] frc_repeated_fields,
 
     output wire [23:0] out_tdata,
     output wire        out_tvalid,
@@ -225,6 +265,59 @@ module top #(
     localparam [12:0] LTFCONV_STATUS    = LTFCONV_BASE | 13'h140;  // 0x0D40 bit0=RUNNING (diagnostic)
     localparam [12:0] LTFCONV_VIP_WIDTH = LTFCONV_BASE | 13'h148;  // 0x0D48 (diagnostic readback)
     localparam [12:0] LTFCONV_CTRL      = LTFCONV_BASE | 13'h154;  // 0x0D54 bit0=GO
+
+    // FRC path additionally programs the rest of the IMG_INFO block before GO.
+    // The Lite->Full converter re-inserts the image-info metapacket the VFB
+    // needs downstream, so these fields are what the frame buffer (and
+    // everything after it) sees as the stream's declared geometry/format.
+    // Offsets are IMG_INFO base word 0x48 (=byte 0x120), byte = word*4:
+    // width 0x48, height 0x49, interlace 0x4A, colorspace 0x4C, subsampling 0x4D.
+    localparam [12:0] LTFCONV_IMG_INTL  = LTFCONV_BASE | 13'h128;  // 0x0D28 interlace
+    localparam [12:0] LTFCONV_IMG_BPS   = LTFCONV_BASE | 13'h12C;  // 0x0D2C bits per sample
+    localparam [12:0] LTFCONV_IMG_CS    = LTFCONV_BASE | 13'h130;  // 0x0D30 colorspace
+    localparam [12:0] LTFCONV_IMG_SS    = LTFCONV_BASE | 13'h134;  // 0x0D34 subsampling
+    localparam [12:0] LTFCONV_IMG_COS   = LTFCONV_BASE | 13'h138;  // 0x0D38 cositing
+
+    // The IMG_INFO block is EIGHT registers (intel_vvp_core_regs.h,
+    // INTEL_VVP_CORE_IMG_INFO_BASE_REG = word 72 = 0x48):
+    //   +0 WIDTH  +1 HEIGHT  +2 INTERLACE  +3 BPS
+    //   +4 COLORSPACE  +5 SUBSAMPLING  +6 COSITING  +7 FIELD_COUNT (RO)
+    // All but FIELD_COUNT must be written on a Lite->Full converter, because it
+    // SYNTHESIZES the image-info metapacket from these registers - and the frame
+    // buffer downstream has NO geometry registers of its own (its only writable
+    // register is OUTPUT_CONTROL.GO), so it derives bytes-per-line and field
+    // size entirely from that metapacket. Leaving BPS unwritten therefore makes
+    // the VFB compute a wrong field size: the field never completes,
+    // NUM_INPUT_FIELDS stays 0, and the memory bursts it does issue are the
+    // wrong shape.
+    localparam [31:0] LTF_BPS      = 32'd8;  // packaged IP datapath is 8 bits/sample
+    localparam [31:0] LTF_COSITING = 32'd0;  // irrelevant for 4:4:4; 0 = defined default
+
+    // Colorspace enum (CSC regs): 0=RGB, 1=YCC, 2=YCC_SD, 3=YCC_HD.
+    // Subsampling enum (CRS regs): 0=4:2:0, 2=4:2:2, 3=4:4:4 - CRS_OUTPUT_MODE
+    // already uses exactly this encoding, so it passes straight through.
+    localparam [31:0] LTF_COLORSPACE  = ((CSC_MODE == 3'd2) || (CSC_MODE == 3'd4)) ? 32'd0 : 32'd1;
+    localparam [31:0] LTF_SUBSAMPLING = DO_CRS ? CRS_OUTPUT_MODE : 32'd3;
+
+    // --- FRC: video frame buffer base = 0x0E00 ---
+    // Word offsets from intel_vvp_vfb_regs.h: COMPILE_TIME_BASE=word 2,
+    // RT_BASE=word 0x50. byte = word*4. The VFB has NO frame-rate registers -
+    // its only writable runtime register is OUTPUT_CONTROL.GO. Write rate and
+    // read rate are set by how fast the source supplies and the sink consumes;
+    // these counters are how you observe the result.
+    localparam [12:0] VFB_BASE          = 13'h0E00;
+    localparam [12:0] VFB_MAX_WIDTH     = VFB_BASE | 13'h010;  // 0x0E10 RO compile-time
+    localparam [12:0] VFB_MAX_HEIGHT    = VFB_BASE | 13'h014;  // 0x0E14 RO compile-time
+    localparam [12:0] VFB_DROP_EN       = VFB_BASE | 13'h018;  // 0x0E18 RO compile-time
+    localparam [12:0] VFB_REPEAT_EN     = VFB_BASE | 13'h01C;  // 0x0E1C RO compile-time
+    localparam [12:0] VFB_IN_STATUS     = VFB_BASE | 13'h140;  // 0x0F40 RO bit0=RUNNING
+    localparam [12:0] VFB_IN_FIELDS     = VFB_BASE | 13'h144;  // 0x0F44 RO write-side count
+    localparam [12:0] VFB_DROP_FIELDS   = VFB_BASE | 13'h148;  // 0x0F48 RO dropped (down-convert)
+    localparam [12:0] VFB_INVAL_FIELDS  = VFB_BASE | 13'h14C;  // 0x0F4C RO invalid/broken
+    localparam [12:0] VFB_OUT_STATUS    = VFB_BASE | 13'h150;  // 0x0F50 RO bit0=RUNNING
+    localparam [12:0] VFB_OUT_FIELDS    = VFB_BASE | 13'h154;  // 0x0F54 RO read-side count
+    localparam [12:0] VFB_RPT_FIELDS    = VFB_BASE | 13'h158;  // 0x0F58 RO repeated (up-convert)
+    localparam [12:0] VFB_OUT_CTRL      = VFB_BASE | 13'h15C;  // 0x0F5C WO bit0=GO
 
     // --- PIP: background TPG base = 0x1400 (same core/regmap as intel_vvp_tpg_1,
     // reached through the shared bridge instead of its own dedicated port).
@@ -417,12 +510,39 @@ module top #(
         // boundaries in the incoming Lite stream) before GO.
         ST_CONFIG_LTFCONV_W    = 6'd49,
         ST_CONFIG_LTFCONV_H    = 6'd50,
-        ST_CONFIG_LTFCONV      = 6'd48;
+        ST_CONFIG_LTFCONV      = 6'd48,
+
+        // FRC: rest of the Lite->Full converter's IMG_INFO block (PIP gets by
+        // without these; the frame buffer needs a fully-declared stream).
+        ST_CONFIG_LTFCONV_INTL = 6'd12,
+        ST_CONFIG_LTFCONV_BPS  = 6'd56,
+        ST_CONFIG_LTFCONV_CS   = 6'd13,
+        ST_CONFIG_LTFCONV_SS   = 6'd14,
+        ST_CONFIG_LTFCONV_COS  = 6'd57,
+
+        // FRC: the write->read handshake. The VFB write side auto-runs (no GO)
+        // but stalls until DDR4 calibration completes, so poll NUM_INPUT_FIELDS
+        // until a whole field has actually landed in memory before releasing
+        // the read side. Starting the read side early makes it read a buffer
+        // that was never written.
+        ST_FRC_WR_WAIT         = 6'd15,
+        ST_FRC_GO              = 6'd16,
+
+        // FRC: counter readback (write rate vs read rate evidence).
+        ST_FRC_RD_IN           = 6'd17,
+        ST_FRC_RD_DROP         = 6'd18,
+        ST_FRC_RD_OUT          = 6'd19,
+        ST_FRC_RD_RPT          = 6'd47;
 
     // When ENABLE_PIP=0 (default) this is the constant ST_WORKING - every
     // "topology config done, go live" transition below is then bit-for-bit
     // identical to the pre-PIP behavior.
-    localparam [5:0] POST_TOPOLOGY_STATE = ENABLE_PIP ? ST_CONFIG_MIXER_LITE : ST_WORKING;
+    // Where every topology-config-done transition lands. PIP and FRC both hang
+    // extra bring-up off the end of the main chain; FRC's starts at the same
+    // Lite->Full converter PIP uses (it sits right after the scaler either way),
+    // then continues into the VFB GO handshake instead of the background TPG.
+    localparam [5:0] POST_TOPOLOGY_STATE = ENABLE_PIP ? ST_CONFIG_MIXER_LITE :
+                                           ENABLE_FRC ? ST_CONFIG_LTFCONV_W  : ST_WORKING;
 
     // =========================================================================
     // CSC coefficient ROMs
@@ -478,7 +598,17 @@ module top #(
     reg        pc1_write;
     reg [31:0] pc1_wdata;
 
-    reg [12:0] bridge_addr;
+    // bridge_addr MUST match the generated pipeline's s0_address width exactly.
+    // The packaged IP sets ADDRESS_WIDTH = frc_emif_int ? 28 : (do_frc||do_pip ? 13 : 12),
+    // so including the internal EMIF forces 28 bits (its AXI4-Lite CSR sits at
+    // 0x0800_0000 = bit 27). Driving a narrower reg into the 28-bit port gives
+    // vsim-3015 "Port size does not match connection size" and leaves the upper
+    // bits at X - the interconnect then decodes garbage and EVERY register write
+    // silently goes nowhere. All offsets actually used here are <= 0x1FFF, so the
+    // high bits simply drive 0.
+    localparam integer S0_AW = ENABLE_FRC ? 28 : 13;
+
+    reg [S0_AW-1:0] bridge_addr;
     reg [31:0] bridge_wdata;
     reg        bridge_write;
     reg        bridge_read;
@@ -509,6 +639,11 @@ module top #(
             cfg_step      <= 4'd0;
             wait_counter  <= 16'd0;
             mixer_lite_mode <= 1'b0;
+            frc_stats_valid     <= 1'b0;
+            frc_in_fields       <= 32'd0;
+            frc_dropped_fields  <= 32'd0;
+            frc_out_fields      <= 32'd0;
+            frc_repeated_fields <= 32'd0;
         end else begin
             case (current_state)
 
@@ -1026,7 +1161,9 @@ module top #(
                 ST_CONFIG_LTFCONV_W: begin
                     bridge_write <= 1'b1;
                     bridge_addr  <= LTFCONV_IMG_WIDTH;
-                    bridge_wdata <= PIP_FG_W;
+                    // PIP feeds the mixer's overlay layer (inset geometry); FRC
+                    // feeds the frame buffer, whose stream is the scaler output.
+                    bridge_wdata <= ENABLE_PIP ? PIP_FG_W : SCALER_OUT_W;
                     if (bridge_write && !bridge_wait) begin
                         bridge_write  <= 1'b0;
                         current_state <= ST_CONFIG_LTFCONV_H;
@@ -1036,7 +1173,63 @@ module top #(
                 ST_CONFIG_LTFCONV_H: begin
                     bridge_write <= 1'b1;
                     bridge_addr  <= LTFCONV_IMG_HEIGHT;
-                    bridge_wdata <= PIP_FG_H;
+                    bridge_wdata <= ENABLE_PIP ? PIP_FG_H : SCALER_OUT_H;
+                    if (bridge_write && !bridge_wait) begin
+                        bridge_write  <= 1'b0;
+                        // PIP works with width/height alone; the frame buffer
+                        // needs the full IMG_INFO block declared.
+                        current_state <= ENABLE_PIP ? ST_CONFIG_LTFCONV
+                                                    : ST_CONFIG_LTFCONV_INTL;
+                    end
+                end
+
+                ST_CONFIG_LTFCONV_INTL: begin
+                    bridge_write <= 1'b1;
+                    bridge_addr  <= LTFCONV_IMG_INTL;
+                    bridge_wdata <= 32'd0;  // progressive
+                    if (bridge_write && !bridge_wait) begin
+                        bridge_write  <= 1'b0;
+                        current_state <= ST_CONFIG_LTFCONV_BPS;
+                    end
+                end
+
+                // Bits per sample. Without this the synthesized metapacket
+                // declares the reset value, and the frame buffer sizes its
+                // fields from that - see the IMG_INFO note above.
+                ST_CONFIG_LTFCONV_BPS: begin
+                    bridge_write <= 1'b1;
+                    bridge_addr  <= LTFCONV_IMG_BPS;
+                    bridge_wdata <= LTF_BPS;
+                    if (bridge_write && !bridge_wait) begin
+                        bridge_write  <= 1'b0;
+                        current_state <= ST_CONFIG_LTFCONV_CS;
+                    end
+                end
+
+                ST_CONFIG_LTFCONV_CS: begin
+                    bridge_write <= 1'b1;
+                    bridge_addr  <= LTFCONV_IMG_CS;
+                    bridge_wdata <= LTF_COLORSPACE;
+                    if (bridge_write && !bridge_wait) begin
+                        bridge_write  <= 1'b0;
+                        current_state <= ST_CONFIG_LTFCONV_SS;
+                    end
+                end
+
+                ST_CONFIG_LTFCONV_SS: begin
+                    bridge_write <= 1'b1;
+                    bridge_addr  <= LTFCONV_IMG_SS;
+                    bridge_wdata <= LTF_SUBSAMPLING;
+                    if (bridge_write && !bridge_wait) begin
+                        bridge_write  <= 1'b0;
+                        current_state <= ST_CONFIG_LTFCONV_COS;
+                    end
+                end
+
+                ST_CONFIG_LTFCONV_COS: begin
+                    bridge_write <= 1'b1;
+                    bridge_addr  <= LTFCONV_IMG_COS;
+                    bridge_wdata <= LTF_COSITING;
                     if (bridge_write && !bridge_wait) begin
                         bridge_write  <= 1'b0;
                         current_state <= ST_CONFIG_LTFCONV;
@@ -1049,7 +1242,120 @@ module top #(
                     bridge_wdata <= 32'h1;  // GO
                     if (bridge_write && !bridge_wait) begin
                         bridge_write  <= 1'b0;
-                        current_state <= ST_PIPTPG_CTRL_1;
+                        current_state <= ENABLE_PIP ? ST_PIPTPG_CTRL_1
+                                                    : ST_FRC_WR_WAIT;
+                    end
+                end
+
+                // --------------------------------------------------------------
+                // FRC write->read handshake.
+                //
+                // The VFB write side needs no GO - it starts buffering as soon
+                // as video arrives - but it cannot actually reach DDR4 until the
+                // EMIF finishes calibration (the AXI bridge to the EMIF is held
+                // in reset until cal_done, ~119us of sim time). So poll
+                // NUM_INPUT_FIELDS until a complete field has genuinely landed
+                // in the memory model, and only then release the read side.
+                //
+                // Video MUST be flowing while we sit here or the counter never
+                // moves - see frc_video_phase in ready_to_start below.
+                // --------------------------------------------------------------
+                ST_FRC_WR_WAIT: begin
+                    if (cfg_step == 4'd0) begin
+                        bridge_read <= 1'b1;
+                        bridge_addr <= VFB_IN_FIELDS;
+                        if (bridge_read && !bridge_wait) begin
+                            bridge_read <= 1'b0;
+                            cfg_step    <= 4'd1;
+                        end
+                    end else begin
+                        if (bridge_readdatavalid) begin
+                            cfg_step <= 4'd0;
+                            if (bridge_readdata != 32'd0) begin
+                                frc_in_fields <= bridge_readdata;
+                                current_state <= ST_FRC_GO;
+                            end
+                            // else: nothing buffered yet, re-poll
+                        end
+                    end
+                end
+
+                ST_FRC_GO: begin
+                    bridge_write <= 1'b1;
+                    bridge_addr  <= VFB_OUT_CTRL;
+                    bridge_wdata <= 32'h1;  // GO - start the read side
+                    if (bridge_write && !bridge_wait) begin
+                        bridge_write  <= 1'b0;
+                        current_state <= ST_WORKING;
+                    end
+                end
+
+                // --------------------------------------------------------------
+                // FRC counter readback, on request from the testbench once the
+                // frame has been captured. This is the measurement that shows
+                // what the write rate and read rate actually did:
+                //   dropped  > 0  -> input was faster than output (down-convert)
+                //   repeated > 0  -> output was faster than input (up-convert)
+                //   in == out, both 0 -> rates matched, pure pass-through
+                // --------------------------------------------------------------
+                ST_FRC_RD_IN: begin
+                    if (cfg_step == 4'd0) begin
+                        bridge_read <= 1'b1;
+                        bridge_addr <= VFB_IN_FIELDS;
+                        if (bridge_read && !bridge_wait) begin
+                            bridge_read <= 1'b0;
+                            cfg_step    <= 4'd1;
+                        end
+                    end else if (bridge_readdatavalid) begin
+                        frc_in_fields <= bridge_readdata;
+                        cfg_step      <= 4'd0;
+                        current_state <= ST_FRC_RD_DROP;
+                    end
+                end
+
+                ST_FRC_RD_DROP: begin
+                    if (cfg_step == 4'd0) begin
+                        bridge_read <= 1'b1;
+                        bridge_addr <= VFB_DROP_FIELDS;
+                        if (bridge_read && !bridge_wait) begin
+                            bridge_read <= 1'b0;
+                            cfg_step    <= 4'd1;
+                        end
+                    end else if (bridge_readdatavalid) begin
+                        frc_dropped_fields <= bridge_readdata;
+                        cfg_step           <= 4'd0;
+                        current_state      <= ST_FRC_RD_OUT;
+                    end
+                end
+
+                ST_FRC_RD_OUT: begin
+                    if (cfg_step == 4'd0) begin
+                        bridge_read <= 1'b1;
+                        bridge_addr <= VFB_OUT_FIELDS;
+                        if (bridge_read && !bridge_wait) begin
+                            bridge_read <= 1'b0;
+                            cfg_step    <= 4'd1;
+                        end
+                    end else if (bridge_readdatavalid) begin
+                        frc_out_fields <= bridge_readdata;
+                        cfg_step       <= 4'd0;
+                        current_state  <= ST_FRC_RD_RPT;
+                    end
+                end
+
+                ST_FRC_RD_RPT: begin
+                    if (cfg_step == 4'd0) begin
+                        bridge_read <= 1'b1;
+                        bridge_addr <= VFB_RPT_FIELDS;
+                        if (bridge_read && !bridge_wait) begin
+                            bridge_read <= 1'b0;
+                            cfg_step    <= 4'd1;
+                        end
+                    end else if (bridge_readdatavalid) begin
+                        frc_repeated_fields <= bridge_readdata;
+                        frc_stats_valid     <= 1'b1;
+                        cfg_step            <= 4'd0;
+                        current_state       <= ST_WORKING;
                     end
                 end
 
@@ -1224,6 +1530,12 @@ module top #(
                     pc1_write    <= 1'b0;
                     bridge_write <= 1'b0;
                     bridge_read  <= 1'b0;
+                    // FRC: one-shot counter readback when the testbench asks.
+                    // Video keeps flowing throughout (ready_to_start holds
+                    // during the ST_FRC_RD_* states too), so the counters are
+                    // sampled live rather than after the stream has stopped.
+                    if (ENABLE_FRC && frc_stats_req && !frc_stats_valid)
+                        current_state <= ST_FRC_RD_IN;
                 end
 
                 default: current_state <= ST_IDLE;
@@ -1240,27 +1552,73 @@ module top #(
     //   TPG + no CSC: start at first config state (SCL or CRS or WORKING)
     //   Image mode:   always wait for ST_WORKING
     // =========================================================================
-    wire ready_to_start;
+    // FRC: the VFB write side must be fed BEFORE the read side can be released,
+    // so video has to flow during the Lite->Full config states and the whole
+    // ST_FRC_WR_WAIT poll - not just at ST_WORKING. Gating on ST_WORKING alone
+    // deadlocks: NUM_INPUT_FIELDS stays 0 forever and the poll never exits.
+    // Also held through the ST_FRC_RD_* readback so the counters are sampled on
+    // a live stream. This override applies to EVERY branch below - an earlier
+    // version only patched the scaler/image branches and FULL topology (which
+    // takes gen_rts_csc) silently stayed gated.
+    wire frc_video_phase = (current_state == ST_CONFIG_LTFCONV_W)    ||
+                           (current_state == ST_CONFIG_LTFCONV_H)    ||
+                           (current_state == ST_CONFIG_LTFCONV_INTL) ||
+                           (current_state == ST_CONFIG_LTFCONV_BPS)  ||
+                           (current_state == ST_CONFIG_LTFCONV_CS)   ||
+                           (current_state == ST_CONFIG_LTFCONV_SS)   ||
+                           (current_state == ST_CONFIG_LTFCONV_COS)  ||
+                           (current_state == ST_CONFIG_LTFCONV)      ||
+                           (current_state == ST_FRC_WR_WAIT)         ||
+                           (current_state == ST_FRC_GO)              ||
+                           (current_state == ST_FRC_RD_IN)           ||
+                           (current_state == ST_FRC_RD_DROP)         ||
+                           (current_state == ST_FRC_RD_OUT)          ||
+                           (current_state == ST_FRC_RD_RPT)          ||
+                           (current_state == ST_WORKING);
+
+    wire ready_to_start_raw;
     generate
         if (DO_PC1) begin : gen_rts_image
             // Image: only start when fully configured
-            assign ready_to_start = (current_state == ST_WORKING);
+            assign ready_to_start_raw = ENABLE_FRC ? frc_video_phase
+                                               : (current_state == ST_WORKING);
         end else if (DO_CSC) begin : gen_rts_csc
             // Combined CRS+CSC: both committed with no live data; start at WORKING.
             // CSC_ONLY: start at ST_CONFIG_CSC (first frame absorbs commit).
             // With PIP enabled the numeric ">=" would also match the PIP config
             // states (encoded above ST_CONFIG_CSC), so always require the exact
             // ST_WORKING match once PIP is in the picture.
-            assign ready_to_start = (ENABLE_PIP || DO_CRS) ? (current_state == ST_WORKING) : (current_state >= ST_CONFIG_CSC);
+            assign ready_to_start_raw = ENABLE_FRC ? frc_video_phase :
+                                    (ENABLE_PIP || DO_CRS) ? (current_state == ST_WORKING) : (current_state >= ST_CONFIG_CSC);
         end else if (DO_SCL) begin : gen_rts_scl
-            assign ready_to_start = (current_state == ST_WORKING);
+            assign ready_to_start_raw = ENABLE_FRC ? frc_video_phase
+                                               : (current_state == ST_WORKING);
         end else if (DO_CRS) begin : gen_rts_crs
             // CRS_ONLY: wait for full settling (ST_WAIT_CRS counts 32k cycles).
-            assign ready_to_start = (current_state == ST_WORKING);
+            assign ready_to_start_raw = ENABLE_FRC ? frc_video_phase
+                                               : (current_state == ST_WORKING);
         end else begin : gen_rts_default
-            assign ready_to_start = (current_state == ST_WORKING);
+            assign ready_to_start_raw = ENABLE_FRC ? frc_video_phase
+                                               : (current_state == ST_WORKING);
         end
     endgenerate
+
+    // -------------------------------------------------------------------------
+    // FRC write-rate pacing.
+    //
+    // Backpressures the source for FRC_IN_GAP_CYCLES after every frame's worth
+    // of accepted beats, which is what actually sets the WRITE frame rate.
+    // frc_in_gate is driven from registers only, so gating vid_in_tvalid with it
+    // creates no combinational loop. Mid-frame backpressure is legal AXI4-Stream
+    // and does not produce a "broken field" - it only stretches the frame in
+    // time, which is precisely what a lower frame rate means.
+    // -------------------------------------------------------------------------
+    localparam [31:0] FRC_IN_FRAME_BEATS = IMG_WIDTH * IMG_HEIGHT;
+
+    reg [31:0] frc_in_beats;
+    reg [31:0] frc_in_gap;
+    wire       frc_in_paused = ENABLE_FRC && (FRC_IN_GAP_CYCLES != 32'd0) && (frc_in_gap != 32'd0);
+    wire ready_to_start = ready_to_start_raw && !frc_in_paused;
 
     // =========================================================================
     // Video wires (all 24-bit/3-bit - TPG configured for 444 YCbCr)
@@ -1288,6 +1646,29 @@ module top #(
     wire        vid_in_tvalid = (INPUT_SEL ? pc1_tvalid : tpg_tvalid) & ready_to_start;
     wire        vid_in_tlast  = INPUT_SEL  ? pc1_tlast  : tpg_tlast;
     wire [2:0]  vid_in_tuser  = INPUT_SEL  ? pc1_tuser  : (TPG_MODE == 32'd2) ? {1'b0,tpg_tuser[1:0]} : tpg_tuser;
+
+    // FRC write-rate pacer state update (declared above; placed here because it
+    // samples the input handshake, which only exists at this point).
+    wire       frc_in_beat   = vid_in_tvalid && vid_in_tready;
+
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            frc_in_beats <= 32'd0;
+            frc_in_gap   <= 32'd0;
+        end else if (ENABLE_FRC && (FRC_IN_GAP_CYCLES != 32'd0)) begin
+            if (frc_in_gap != 32'd0) begin
+                frc_in_gap <= frc_in_gap - 32'd1;
+            end else if (frc_in_beat) begin
+                if (frc_in_beats >= (FRC_IN_FRAME_BEATS - 32'd1)) begin
+                    frc_in_beats <= 32'd0;
+                    frc_in_gap   <= FRC_IN_GAP_CYCLES;
+                end else begin
+                    frc_in_beats <= frc_in_beats + 32'd1;
+                end
+            end
+        end
+    end
+
 	 
     // Output datapath width mirrors the input-side narrowing above: for a
     // 2-plane build (VID_PLANES==2) the packaged pipeline's actual
@@ -1316,6 +1697,11 @@ module top #(
         .clk_clk                           (clk),
         .reset_reset                       (reset),
         .intel_vvp_pipeline2_0_reset_reset (reset),
+
+        // 200 MHz EMIF reference clock. Exported to the boundary by
+        // pipeline.qsys (interface "emif_ref_clk" -> intel_vvp_pipeline2_0
+        // .frc_emif_ref_clk); the DDR4 memory model does NOT supply it.
+        .emif_ref_clk_clk                  (emif_ref_clk),
 
         .s0_address       (bridge_addr),
         .s0_write         (bridge_write),

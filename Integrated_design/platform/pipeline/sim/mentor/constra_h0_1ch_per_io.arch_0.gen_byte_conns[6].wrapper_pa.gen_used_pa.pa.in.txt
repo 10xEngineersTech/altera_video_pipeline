@@ -1,0 +1,14 @@
+base_address == 16'b0000000000000000000000000000000000000000000000000000000100010110
+controller == CONTROLLER_HARD
+ddr_lane_mode == DDR_LANE_MODE_DQ
+mipi_func == MIPI_FUNC_OFF
+pin0_swizzle == PIN0_SWIZZLE_DQ0
+pin10_swizzle == PIN10_SWIZZLE_DQ6
+pin11_swizzle == PIN11_SWIZZLE_DQ7
+pin1_swizzle == PIN1_SWIZZLE_DQ1
+pin2_swizzle == PIN2_SWIZZLE_DQ2
+pin3_swizzle == PIN3_SWIZZLE_DQ3
+pin8_swizzle == PIN8_SWIZZLE_DQ4
+pin9_swizzle == PIN9_SWIZZLE_DQ5
+powerdown_mode == FALSE
+rate_conv == RATE_CONV_OFF

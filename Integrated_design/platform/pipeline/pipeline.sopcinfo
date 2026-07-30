@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="pipeline" kind="pipeline" version="1.0" fabric="QSYS">
  <!-- Format version 25.1.1 125 (Future versions may contain additional information.) -->
- <!-- 2026.07.29.16:41:41 -->
+ <!-- 2026.07.30.13:12:48 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
@@ -96,6 +96,36 @@
   <valid>true</valid>
   <sysinfo_type>CPU_INFO_ID</sysinfo_type>
   <sysinfo_arg>s0</sysinfo_arg>
+ </parameter>
+ <parameter name="AUTO_EMIF_REF_CLK_CLOCK_RATE">
+  <type>java.lang.Long</type>
+  <value>-1</value>
+  <derived>false</derived>
+  <enabled>true</enabled>
+  <visible>false</visible>
+  <valid>true</valid>
+  <sysinfo_type>CLOCK_RATE</sysinfo_type>
+  <sysinfo_arg>emif_ref_clk</sysinfo_arg>
+ </parameter>
+ <parameter name="AUTO_EMIF_REF_CLK_CLOCK_DOMAIN">
+  <type>java.lang.Integer</type>
+  <value>-1</value>
+  <derived>false</derived>
+  <enabled>true</enabled>
+  <visible>false</visible>
+  <valid>true</valid>
+  <sysinfo_type>CLOCK_DOMAIN</sysinfo_type>
+  <sysinfo_arg>emif_ref_clk</sysinfo_arg>
+ </parameter>
+ <parameter name="AUTO_EMIF_REF_CLK_RESET_DOMAIN">
+  <type>java.lang.Integer</type>
+  <value>-1</value>
+  <derived>false</derived>
+  <enabled>true</enabled>
+  <visible>false</visible>
+  <valid>true</valid>
+  <sysinfo_type>RESET_DOMAIN</sysinfo_type>
+  <sysinfo_arg>emif_ref_clk</sysinfo_arg>
  </parameter>
  <parameter name="AUTO_AV_MM_CONTROL_AGENT_CPU_INFO_ID">
   <type>java.lang.String</type>
@@ -820,7 +850,7 @@ the requested settings for a module instance. -->
                         <name>s0_address</name>
                         <role>address</role>
                         <direction>Input</direction>
-                        <width>12</width>
+                        <width>28</width>
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                         <terminationValue>0</terminationValue>
@@ -894,7 +924,7 @@ the requested settings for a module instance. -->
                         </entry>
                         <entry>
                             <key>addressSpan</key>
-                            <value>4096</value>
+                            <value>268435456</value>
                         </entry>
                         <entry>
                             <key>addressUnits</key>
@@ -1269,6 +1299,280 @@ the requested settings for a module instance. -->
                     </parameterValueMap>
                 </parameters>
             </interface>
+            <interface>
+                <name>frc_emif_mem</name>
+                <type>conduit</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>frc_emif_mem_mem_cke</name>
+                        <role>mem_cke</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>frc_emif_mem_mem_odt</name>
+                        <role>mem_odt</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>frc_emif_mem_mem_cs_n</name>
+                        <role>mem_cs_n</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>frc_emif_mem_mem_a</name>
+                        <role>mem_a</role>
+                        <direction>Output</direction>
+                        <width>17</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>frc_emif_mem_mem_ba</name>
+                        <role>mem_ba</role>
+                        <direction>Output</direction>
+                        <width>2</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>frc_emif_mem_mem_bg</name>
+                        <role>mem_bg</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>frc_emif_mem_mem_act_n</name>
+                        <role>mem_act_n</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>frc_emif_mem_mem_par</name>
+                        <role>mem_par</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>frc_emif_mem_mem_dq</name>
+                        <role>mem_dq</role>
+                        <direction>Bidir</direction>
+                        <width>32</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>frc_emif_mem_mem_dqs_t</name>
+                        <role>mem_dqs_t</role>
+                        <direction>Bidir</direction>
+                        <width>4</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>frc_emif_mem_mem_dqs_c</name>
+                        <role>mem_dqs_c</role>
+                        <direction>Bidir</direction>
+                        <width>4</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>frc_emif_mem_mem_alert_n</name>
+                        <role>mem_alert_n</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>associatedClock</key>
+                        </entry>
+                        <entry>
+                            <key>associatedReset</key>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+            <interface>
+                <name>frc_emif_mem_ck</name>
+                <type>conduit</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>frc_emif_mem_ck_mem_ck_t</name>
+                        <role>mem_ck_t</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>frc_emif_mem_ck_mem_ck_c</name>
+                        <role>mem_ck_c</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>associatedClock</key>
+                        </entry>
+                        <entry>
+                            <key>associatedReset</key>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+            <interface>
+                <name>frc_emif_mem_reset_n</name>
+                <type>conduit</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>frc_emif_mem_reset_n_mem_reset_n</name>
+                        <role>mem_reset_n</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>associatedClock</key>
+                        </entry>
+                        <entry>
+                            <key>associatedReset</key>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+            <interface>
+                <name>frc_emif_oct</name>
+                <type>conduit</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>frc_emif_oct_oct_rzqin</name>
+                        <role>oct_rzqin</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>associatedClock</key>
+                        </entry>
+                        <entry>
+                            <key>associatedReset</key>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+            <interface>
+                <name>frc_emif_ref_clk</name>
+                <type>clock</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>frc_emif_ref_clk_clk</name>
+                        <role>clk</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>clockRate</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>externallyDriven</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>ptfSchematicName</key>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
         </interfaces>
     </boundary>
     <originalModuleInfo>
@@ -1313,11 +1617,11 @@ the requested settings for a module instance. -->
                     <suppliedSystemInfos>
                         <entry>
                             <key>ADDRESS_MAP</key>
-                            <value>&lt;address-map&gt;&lt;slave name='s0' start='0x0' end='0x1000' datawidth='32' /&gt;&lt;/address-map&gt;</value>
+                            <value>&lt;address-map&gt;&lt;slave name='s0' start='0x0' end='0x10000000' datawidth='32' /&gt;&lt;/address-map&gt;</value>
                         </entry>
                         <entry>
                             <key>ADDRESS_WIDTH</key>
-                            <value>12</value>
+                            <value>28</value>
                         </entry>
                         <entry>
                             <key>MAX_SLAVE_DATA_WIDTH</key>
@@ -1516,7 +1820,7 @@ the requested settings for a module instance. -->
                     <name>s0_address</name>
                     <role>address</role>
                     <direction>Input</direction>
-                    <width>12</width>
+                    <width>28</width>
                     <lowerBound>0</lowerBound>
                     <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                     <terminationValue>0</terminationValue>
@@ -1590,7 +1894,7 @@ the requested settings for a module instance. -->
                     </entry>
                     <entry>
                         <key>addressSpan</key>
-                        <value>4096</value>
+                        <value>268435456</value>
                     </entry>
                     <entry>
                         <key>addressUnits</key>
@@ -1965,6 +2269,280 @@ the requested settings for a module instance. -->
                 </parameterValueMap>
             </parameters>
         </interface>
+        <interface>
+            <name>frc_emif_mem</name>
+            <type>conduit</type>
+            <isStart>false</isStart>
+            <ports>
+                <port>
+                    <name>frc_emif_mem_mem_cke</name>
+                    <role>mem_cke</role>
+                    <direction>Output</direction>
+                    <width>1</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>frc_emif_mem_mem_odt</name>
+                    <role>mem_odt</role>
+                    <direction>Output</direction>
+                    <width>1</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>frc_emif_mem_mem_cs_n</name>
+                    <role>mem_cs_n</role>
+                    <direction>Output</direction>
+                    <width>1</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>frc_emif_mem_mem_a</name>
+                    <role>mem_a</role>
+                    <direction>Output</direction>
+                    <width>17</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>frc_emif_mem_mem_ba</name>
+                    <role>mem_ba</role>
+                    <direction>Output</direction>
+                    <width>2</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>frc_emif_mem_mem_bg</name>
+                    <role>mem_bg</role>
+                    <direction>Output</direction>
+                    <width>1</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>frc_emif_mem_mem_act_n</name>
+                    <role>mem_act_n</role>
+                    <direction>Output</direction>
+                    <width>1</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>frc_emif_mem_mem_par</name>
+                    <role>mem_par</role>
+                    <direction>Output</direction>
+                    <width>1</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>frc_emif_mem_mem_dq</name>
+                    <role>mem_dq</role>
+                    <direction>Bidir</direction>
+                    <width>32</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>frc_emif_mem_mem_dqs_t</name>
+                    <role>mem_dqs_t</role>
+                    <direction>Bidir</direction>
+                    <width>4</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>frc_emif_mem_mem_dqs_c</name>
+                    <role>mem_dqs_c</role>
+                    <direction>Bidir</direction>
+                    <width>4</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>frc_emif_mem_mem_alert_n</name>
+                    <role>mem_alert_n</role>
+                    <direction>Input</direction>
+                    <width>1</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+            </ports>
+            <assignments>
+                <assignmentValueMap/>
+            </assignments>
+            <parameters>
+                <parameterValueMap>
+                    <entry>
+                        <key>associatedClock</key>
+                    </entry>
+                    <entry>
+                        <key>associatedReset</key>
+                    </entry>
+                    <entry>
+                        <key>prSafe</key>
+                        <value>false</value>
+                    </entry>
+                </parameterValueMap>
+            </parameters>
+        </interface>
+        <interface>
+            <name>frc_emif_mem_ck</name>
+            <type>conduit</type>
+            <isStart>false</isStart>
+            <ports>
+                <port>
+                    <name>frc_emif_mem_ck_mem_ck_t</name>
+                    <role>mem_ck_t</role>
+                    <direction>Output</direction>
+                    <width>1</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>frc_emif_mem_ck_mem_ck_c</name>
+                    <role>mem_ck_c</role>
+                    <direction>Output</direction>
+                    <width>1</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+            </ports>
+            <assignments>
+                <assignmentValueMap/>
+            </assignments>
+            <parameters>
+                <parameterValueMap>
+                    <entry>
+                        <key>associatedClock</key>
+                    </entry>
+                    <entry>
+                        <key>associatedReset</key>
+                    </entry>
+                    <entry>
+                        <key>prSafe</key>
+                        <value>false</value>
+                    </entry>
+                </parameterValueMap>
+            </parameters>
+        </interface>
+        <interface>
+            <name>frc_emif_mem_reset_n</name>
+            <type>conduit</type>
+            <isStart>false</isStart>
+            <ports>
+                <port>
+                    <name>frc_emif_mem_reset_n_mem_reset_n</name>
+                    <role>mem_reset_n</role>
+                    <direction>Output</direction>
+                    <width>1</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+            </ports>
+            <assignments>
+                <assignmentValueMap/>
+            </assignments>
+            <parameters>
+                <parameterValueMap>
+                    <entry>
+                        <key>associatedClock</key>
+                    </entry>
+                    <entry>
+                        <key>associatedReset</key>
+                    </entry>
+                    <entry>
+                        <key>prSafe</key>
+                        <value>false</value>
+                    </entry>
+                </parameterValueMap>
+            </parameters>
+        </interface>
+        <interface>
+            <name>frc_emif_oct</name>
+            <type>conduit</type>
+            <isStart>false</isStart>
+            <ports>
+                <port>
+                    <name>frc_emif_oct_oct_rzqin</name>
+                    <role>oct_rzqin</role>
+                    <direction>Input</direction>
+                    <width>1</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+            </ports>
+            <assignments>
+                <assignmentValueMap/>
+            </assignments>
+            <parameters>
+                <parameterValueMap>
+                    <entry>
+                        <key>associatedClock</key>
+                    </entry>
+                    <entry>
+                        <key>associatedReset</key>
+                    </entry>
+                    <entry>
+                        <key>prSafe</key>
+                        <value>false</value>
+                    </entry>
+                </parameterValueMap>
+            </parameters>
+        </interface>
+        <interface>
+            <name>frc_emif_ref_clk</name>
+            <type>clock</type>
+            <isStart>false</isStart>
+            <ports>
+                <port>
+                    <name>frc_emif_ref_clk_clk</name>
+                    <role>clk</role>
+                    <direction>Input</direction>
+                    <width>1</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+            </ports>
+            <assignments>
+                <assignmentValueMap/>
+            </assignments>
+            <parameters>
+                <parameterValueMap>
+                    <entry>
+                        <key>clockRate</key>
+                        <value>0</value>
+                    </entry>
+                    <entry>
+                        <key>externallyDriven</key>
+                        <value>false</value>
+                    </entry>
+                    <entry>
+                        <key>ptfSchematicName</key>
+                    </entry>
+                </parameterValueMap>
+            </parameters>
+        </interface>
     </interfaces>
 </boundaryDefinition>]]></value>
    <derived>false</derived>
@@ -2213,7 +2791,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="addressSpan">
     <type>java.math.BigInteger</type>
-    <value>4096</value>
+    <value>268435456</value>
     <derived>true</derived>
     <enabled>true</enabled>
     <visible>false</visible>
@@ -2636,7 +3214,7 @@ parameters are a RESULT of the module parameters. -->
     <valid>true</valid>
    </parameter>
    <type>avalon</type>
-   <span>4096</span>
+   <span>268435456</span>
    <isStart>false</isStart>
    <port>
     <name>s0_waitrequest</name>
@@ -2671,7 +3249,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>s0_address</name>
     <direction>Input</direction>
-    <width>12</width>
+    <width>28</width>
     <role>address</role>
    </port>
    <port>
@@ -2877,6 +3455,340 @@ parameters are a RESULT of the module parameters. -->
     <direction>Output</direction>
     <width>3</width>
     <role>tuser</role>
+   </port>
+  </interface>
+  <interface name="frc_emif_mem" kind="conduit_end" version="25.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedReset">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="prSafe">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>conduit</type>
+   <span>0</span>
+   <isStart>false</isStart>
+   <port>
+    <name>frc_emif_mem_mem_cke</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>mem_cke</role>
+   </port>
+   <port>
+    <name>frc_emif_mem_mem_odt</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>mem_odt</role>
+   </port>
+   <port>
+    <name>frc_emif_mem_mem_cs_n</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>mem_cs_n</role>
+   </port>
+   <port>
+    <name>frc_emif_mem_mem_a</name>
+    <direction>Output</direction>
+    <width>17</width>
+    <role>mem_a</role>
+   </port>
+   <port>
+    <name>frc_emif_mem_mem_ba</name>
+    <direction>Output</direction>
+    <width>2</width>
+    <role>mem_ba</role>
+   </port>
+   <port>
+    <name>frc_emif_mem_mem_bg</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>mem_bg</role>
+   </port>
+   <port>
+    <name>frc_emif_mem_mem_act_n</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>mem_act_n</role>
+   </port>
+   <port>
+    <name>frc_emif_mem_mem_par</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>mem_par</role>
+   </port>
+   <port>
+    <name>frc_emif_mem_mem_dq</name>
+    <direction>Bidir</direction>
+    <width>32</width>
+    <role>mem_dq</role>
+   </port>
+   <port>
+    <name>frc_emif_mem_mem_dqs_t</name>
+    <direction>Bidir</direction>
+    <width>4</width>
+    <role>mem_dqs_t</role>
+   </port>
+   <port>
+    <name>frc_emif_mem_mem_dqs_c</name>
+    <direction>Bidir</direction>
+    <width>4</width>
+    <role>mem_dqs_c</role>
+   </port>
+   <port>
+    <name>frc_emif_mem_mem_alert_n</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>mem_alert_n</role>
+   </port>
+  </interface>
+  <interface name="frc_emif_mem_ck" kind="conduit_end" version="25.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedReset">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="prSafe">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>conduit</type>
+   <span>0</span>
+   <isStart>false</isStart>
+   <port>
+    <name>frc_emif_mem_ck_mem_ck_t</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>mem_ck_t</role>
+   </port>
+   <port>
+    <name>frc_emif_mem_ck_mem_ck_c</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>mem_ck_c</role>
+   </port>
+  </interface>
+  <interface name="frc_emif_mem_reset_n" kind="conduit_end" version="25.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedReset">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="prSafe">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>conduit</type>
+   <span>0</span>
+   <isStart>false</isStart>
+   <port>
+    <name>frc_emif_mem_reset_n_mem_reset_n</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>mem_reset_n</role>
+   </port>
+  </interface>
+  <interface name="frc_emif_oct" kind="conduit_end" version="25.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedReset">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="prSafe">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>conduit</type>
+   <span>0</span>
+   <isStart>false</isStart>
+   <port>
+    <name>frc_emif_oct_oct_rzqin</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>oct_rzqin</role>
+   </port>
+  </interface>
+  <interface name="frc_emif_ref_clk" kind="clock_sink" version="25.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="externallyDriven">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="ptfSchematicName">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>clock</type>
+   <span>0</span>
+   <isStart>false</isStart>
+   <port>
+    <name>frc_emif_ref_clk_clk</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>clk</role>
    </port>
   </interface>
  </module>
@@ -6943,6 +7855,1165 @@ parameters are a RESULT of the module parameters. -->
   </interface>
  </module>
  <module
+   name="mem_0"
+   kind="emif_io96b_mem_model_ddr4"
+   version="1.0.0"
+   entity="pipeline_mem_0"
+   library="pipeline_mem_0"
+   path="mem_0"
+   hpath="mem_0"
+   className="altera_generic_component">
+  <!-- Describes a single module. Module parameters are
+the requested settings for a module instance. -->
+  <parameter name="componentDefinition">
+   <type>com.altera.qsys.blackboxmodule.definitions.ComponentDefinition</type>
+   <value><![CDATA[<componentDefinition>
+    <boundary>
+        <interfaces>
+            <interface>
+                <name>mem_0</name>
+                <type>conduit</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>mem_cke_0</name>
+                        <role>mem_cke</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>mem_odt_0</name>
+                        <role>mem_odt</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>mem_cs_n_0</name>
+                        <role>mem_cs_n</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>mem_a_0</name>
+                        <role>mem_a</role>
+                        <direction>Input</direction>
+                        <width>17</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>mem_ba_0</name>
+                        <role>mem_ba</role>
+                        <direction>Input</direction>
+                        <width>2</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>mem_bg_0</name>
+                        <role>mem_bg</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>mem_act_n_0</name>
+                        <role>mem_act_n</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>mem_par_0</name>
+                        <role>mem_par</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>mem_dq_0</name>
+                        <role>mem_dq</role>
+                        <direction>Bidir</direction>
+                        <width>32</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>mem_dqs_t_0</name>
+                        <role>mem_dqs_t</role>
+                        <direction>Bidir</direction>
+                        <width>4</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>mem_dqs_c_0</name>
+                        <role>mem_dqs_c</role>
+                        <direction>Bidir</direction>
+                        <width>4</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>mem_alert_n_0</name>
+                        <role>mem_alert_n</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>associatedClock</key>
+                        </entry>
+                        <entry>
+                            <key>associatedReset</key>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+            <interface>
+                <name>mem_ck_0</name>
+                <type>conduit</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>mem_ck_t_0</name>
+                        <role>mem_ck_t</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                    <port>
+                        <name>mem_ck_c_0</name>
+                        <role>mem_ck_c</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>associatedClock</key>
+                        </entry>
+                        <entry>
+                            <key>associatedReset</key>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+            <interface>
+                <name>mem_reset_n</name>
+                <type>conduit</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>mem_reset_n_0</name>
+                        <role>mem_reset_n</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>associatedClock</key>
+                        </entry>
+                        <entry>
+                            <key>associatedReset</key>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+            <interface>
+                <name>oct_0</name>
+                <type>conduit</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>oct_rzqin_0</name>
+                        <role>oct_rzqin</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                        <terminationValue>0</terminationValue>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>associatedClock</key>
+                        </entry>
+                        <entry>
+                            <key>associatedReset</key>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+        </interfaces>
+    </boundary>
+    <originalModuleInfo>
+        <className>emif_io96b_mem_model_ddr4</className>
+        <version>1.0.0</version>
+        <displayName>MODULE_DISPLAY_NAME</displayName>
+    </originalModuleInfo>
+    <systemInfoParameterDescriptors>
+        <descriptors>
+            <descriptor>
+                <parameterDefaultValue></parameterDefaultValue>
+                <parameterName>SYSINFO_BOARD</parameterName>
+                <parameterType>java.lang.String</parameterType>
+                <systemInfotype>BOARD</systemInfotype>
+            </descriptor>
+            <descriptor>
+                <parameterDefaultValue></parameterDefaultValue>
+                <parameterName>SYSINFO_BOARD_TRAIT</parameterName>
+                <parameterType>java.lang.String</parameterType>
+                <systemInfotype>BOARD_TRAIT</systemInfotype>
+            </descriptor>
+            <descriptor>
+                <parameterDefaultValue></parameterDefaultValue>
+                <parameterName>SYSINFO_DEVICE</parameterName>
+                <parameterType>java.lang.String</parameterType>
+                <systemInfotype>DEVICE</systemInfotype>
+            </descriptor>
+            <descriptor>
+                <parameterDefaultValue></parameterDefaultValue>
+                <parameterName>SYSINFO_DEVICE_BASE_DIE</parameterName>
+                <parameterType>java.lang.String</parameterType>
+                <systemInfoArgs>BASE_DEVICE</systemInfoArgs>
+                <systemInfotype>PART_TRAIT</systemInfotype>
+            </descriptor>
+            <descriptor>
+                <parameterDefaultValue></parameterDefaultValue>
+                <parameterName>SYSINFO_DEVICE_DIE_REVISIONS</parameterName>
+                <parameterType>[Ljava.lang.String;</parameterType>
+                <systemInfotype>DEVICE_DIE_REVISIONS</systemInfotype>
+            </descriptor>
+            <descriptor>
+                <parameterDefaultValue></parameterDefaultValue>
+                <parameterName>SYSINFO_DEVICE_FAMILY</parameterName>
+                <parameterType>java.lang.String</parameterType>
+                <systemInfotype>DEVICE_FAMILY</systemInfotype>
+            </descriptor>
+            <descriptor>
+                <parameterDefaultValue></parameterDefaultValue>
+                <parameterName>SYSINFO_DEVICE_GROUP</parameterName>
+                <parameterType>[Ljava.lang.String;</parameterType>
+                <systemInfoArgs>DEVICE_GROUP</systemInfoArgs>
+                <systemInfotype>DEVICE_INFO</systemInfotype>
+            </descriptor>
+            <descriptor>
+                <parameterDefaultValue></parameterDefaultValue>
+                <parameterName>SYSINFO_DEVICE_IOBANK_REVISION</parameterName>
+                <parameterType>java.lang.String</parameterType>
+                <systemInfoArgs>DEVICE_IOBANK_REVISION</systemInfoArgs>
+                <systemInfotype>PART_TRAIT</systemInfotype>
+            </descriptor>
+            <descriptor>
+                <parameterDefaultValue></parameterDefaultValue>
+                <parameterName>SYSINFO_DEVICE_POWER_MODEL</parameterName>
+                <parameterType>java.lang.String</parameterType>
+                <systemInfoArgs>DEVICE_POWER_MODEL</systemInfoArgs>
+                <systemInfotype>PART_TRAIT</systemInfotype>
+            </descriptor>
+            <descriptor>
+                <parameterDefaultValue></parameterDefaultValue>
+                <parameterName>SYSINFO_DEVICE_SPEEDGRADE</parameterName>
+                <parameterType>java.lang.String</parameterType>
+                <systemInfotype>DEVICE_SPEEDGRADE</systemInfotype>
+            </descriptor>
+            <descriptor>
+                <parameterDefaultValue></parameterDefaultValue>
+                <parameterName>SYSINFO_DEVICE_TEMPERATURE_GRADE</parameterName>
+                <parameterType>java.lang.String</parameterType>
+                <systemInfoArgs>DEVICE_TEMPERATURE_GRADE</systemInfoArgs>
+                <systemInfotype>PART_TRAIT</systemInfotype>
+            </descriptor>
+            <descriptor>
+                <parameterDefaultValue></parameterDefaultValue>
+                <parameterName>SYSINFO_SUPPORTS_VID</parameterName>
+                <parameterType>java.lang.String</parameterType>
+                <systemInfoArgs>SUPPORTS_VID</systemInfoArgs>
+                <systemInfotype>PART_TRAIT</systemInfotype>
+            </descriptor>
+        </descriptors>
+    </systemInfoParameterDescriptors>
+    <systemInfos>
+        <connPtSystemInfos/>
+    </systemInfos>
+</componentDefinition>]]></value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generationInfoDefinition">
+   <type>com.altera.qsys.blackboxmodule.definitions.GenerationInfoDefinition</type>
+   <value><![CDATA[<generationInfoDefinition>
+    <hdlLibraryName>pipeline_mem_0</hdlLibraryName>
+    <fileSets>
+        <fileSet>
+            <fileSetName>pipeline_mem_0</fileSetName>
+            <fileSetFixedName>pipeline_mem_0</fileSetFixedName>
+            <fileSetKind>QUARTUS_SYNTH</fileSetKind>
+            <fileSetFiles/>
+        </fileSet>
+        <fileSet>
+            <fileSetName>pipeline_mem_0</fileSetName>
+            <fileSetFixedName>pipeline_mem_0</fileSetFixedName>
+            <fileSetKind>SIM_VERILOG</fileSetKind>
+            <fileSetFiles/>
+        </fileSet>
+        <fileSet>
+            <fileSetName>pipeline_mem_0</fileSetName>
+            <fileSetFixedName>pipeline_mem_0</fileSetFixedName>
+            <fileSetKind>SIM_VHDL</fileSetKind>
+            <fileSetFiles/>
+        </fileSet>
+        <fileSet>
+            <fileSetName>pipeline_mem_0</fileSetName>
+            <fileSetFixedName>pipeline_mem_0</fileSetFixedName>
+            <fileSetKind>CDC</fileSetKind>
+            <fileSetFiles/>
+        </fileSet>
+        <fileSet>
+            <fileSetName>pipeline_mem_0</fileSetName>
+            <fileSetFixedName>pipeline_mem_0</fileSetFixedName>
+            <fileSetKind>CDC_VHDL</fileSetKind>
+            <fileSetFiles/>
+        </fileSet>
+    </fileSets>
+</generationInfoDefinition>]]></value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="hlsFile">
+   <type>java.lang.String</type>
+   <value></value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="logicalView">
+   <type>java.lang.String</type>
+   <value>ip/pipeline/pipeline_mem_0.ip</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="defaultBoundary">
+   <type>com.altera.sopcmodel.definition.BoundaryDefinition</type>
+   <value><![CDATA[<boundaryDefinition>
+    <interfaces>
+        <interface>
+            <name>mem_0</name>
+            <type>conduit</type>
+            <isStart>false</isStart>
+            <ports>
+                <port>
+                    <name>mem_cke_0</name>
+                    <role>mem_cke</role>
+                    <direction>Input</direction>
+                    <width>1</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>mem_odt_0</name>
+                    <role>mem_odt</role>
+                    <direction>Input</direction>
+                    <width>1</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>mem_cs_n_0</name>
+                    <role>mem_cs_n</role>
+                    <direction>Input</direction>
+                    <width>1</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>mem_a_0</name>
+                    <role>mem_a</role>
+                    <direction>Input</direction>
+                    <width>17</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>mem_ba_0</name>
+                    <role>mem_ba</role>
+                    <direction>Input</direction>
+                    <width>2</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>mem_bg_0</name>
+                    <role>mem_bg</role>
+                    <direction>Input</direction>
+                    <width>1</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>mem_act_n_0</name>
+                    <role>mem_act_n</role>
+                    <direction>Input</direction>
+                    <width>1</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>mem_par_0</name>
+                    <role>mem_par</role>
+                    <direction>Input</direction>
+                    <width>1</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>mem_dq_0</name>
+                    <role>mem_dq</role>
+                    <direction>Bidir</direction>
+                    <width>32</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>mem_dqs_t_0</name>
+                    <role>mem_dqs_t</role>
+                    <direction>Bidir</direction>
+                    <width>4</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>mem_dqs_c_0</name>
+                    <role>mem_dqs_c</role>
+                    <direction>Bidir</direction>
+                    <width>4</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>mem_alert_n_0</name>
+                    <role>mem_alert_n</role>
+                    <direction>Output</direction>
+                    <width>1</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+            </ports>
+            <assignments>
+                <assignmentValueMap/>
+            </assignments>
+            <parameters>
+                <parameterValueMap>
+                    <entry>
+                        <key>associatedClock</key>
+                    </entry>
+                    <entry>
+                        <key>associatedReset</key>
+                    </entry>
+                    <entry>
+                        <key>prSafe</key>
+                        <value>false</value>
+                    </entry>
+                </parameterValueMap>
+            </parameters>
+        </interface>
+        <interface>
+            <name>mem_ck_0</name>
+            <type>conduit</type>
+            <isStart>false</isStart>
+            <ports>
+                <port>
+                    <name>mem_ck_t_0</name>
+                    <role>mem_ck_t</role>
+                    <direction>Input</direction>
+                    <width>1</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+                <port>
+                    <name>mem_ck_c_0</name>
+                    <role>mem_ck_c</role>
+                    <direction>Input</direction>
+                    <width>1</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+            </ports>
+            <assignments>
+                <assignmentValueMap/>
+            </assignments>
+            <parameters>
+                <parameterValueMap>
+                    <entry>
+                        <key>associatedClock</key>
+                    </entry>
+                    <entry>
+                        <key>associatedReset</key>
+                    </entry>
+                    <entry>
+                        <key>prSafe</key>
+                        <value>false</value>
+                    </entry>
+                </parameterValueMap>
+            </parameters>
+        </interface>
+        <interface>
+            <name>mem_reset_n</name>
+            <type>conduit</type>
+            <isStart>false</isStart>
+            <ports>
+                <port>
+                    <name>mem_reset_n_0</name>
+                    <role>mem_reset_n</role>
+                    <direction>Input</direction>
+                    <width>1</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+            </ports>
+            <assignments>
+                <assignmentValueMap/>
+            </assignments>
+            <parameters>
+                <parameterValueMap>
+                    <entry>
+                        <key>associatedClock</key>
+                    </entry>
+                    <entry>
+                        <key>associatedReset</key>
+                    </entry>
+                    <entry>
+                        <key>prSafe</key>
+                        <value>false</value>
+                    </entry>
+                </parameterValueMap>
+            </parameters>
+        </interface>
+        <interface>
+            <name>oct_0</name>
+            <type>conduit</type>
+            <isStart>false</isStart>
+            <ports>
+                <port>
+                    <name>oct_rzqin_0</name>
+                    <role>oct_rzqin</role>
+                    <direction>Output</direction>
+                    <width>1</width>
+                    <lowerBound>0</lowerBound>
+                    <vhdlType>STD_LOGIC</vhdlType>
+                    <terminationValue>0</terminationValue>
+                </port>
+            </ports>
+            <assignments>
+                <assignmentValueMap/>
+            </assignments>
+            <parameters>
+                <parameterValueMap>
+                    <entry>
+                        <key>associatedClock</key>
+                    </entry>
+                    <entry>
+                        <key>associatedReset</key>
+                    </entry>
+                    <entry>
+                        <key>prSafe</key>
+                        <value>false</value>
+                    </entry>
+                </parameterValueMap>
+            </parameters>
+        </interface>
+    </interfaces>
+</boundaryDefinition>]]></value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="moduleAssignmentDefinition">
+   <type>com.altera.sopcmodel.definition.AssignmentDefinition</type>
+   <value><![CDATA[<assignmentDefinition>
+    <assignmentValueMap/>
+</assignmentDefinition>]]></value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="svInterfaceDefinition">
+   <type>com.altera.qsys.blackboxmodule.definitions.ModuleSvInterfaceDefinition</type>
+   <value></value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="hdlParameters">
+   <type>com.altera.qsys.blackboxmodule.definitions.HdlParameterDescriptorDefinitionList</type>
+   <value><![CDATA[<hdlParameterDescriptorDefinitionList/>]]></value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="transformParameters">
+   <type>com.altera.qsys.blackboxmodule.definitions.TransformParameterDescriptorDefinitionList</type>
+   <value><![CDATA[<transformParameterDescriptorDefinitionList/>]]></value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="cpuInfo">
+   <type>com.altera.sopcmodel.ensemble.cpuinfo.serializable.CpuInfoDefinition</type>
+   <value></value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="bspCpu">
+   <type>java.lang.Boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="liveModuleName">
+   <type>java.lang.String</type>
+   <value>mem_0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="SYSINFO_BOARD">
+   <type>java.lang.String</type>
+   <value>Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1</value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>BOARD</sysinfo_type>
+  </parameter>
+  <parameter name="SYSINFO_BOARD_TRAIT">
+   <type>java.lang.String</type>
+   <value></value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>BOARD_TRAIT</sysinfo_type>
+  </parameter>
+  <parameter name="SYSINFO_DEVICE">
+   <type>java.lang.String</type>
+   <value>A5ED065BB32AE6SR0</value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>DEVICE</sysinfo_type>
+  </parameter>
+  <parameter name="SYSINFO_DEVICE_BASE_DIE">
+   <type>java.lang.String</type>
+   <value>SM7</value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>PART_TRAIT</sysinfo_type>
+   <sysinfo_arg>BASE_DEVICE</sysinfo_arg>
+  </parameter>
+  <parameter name="SYSINFO_DEVICE_DIE_REVISIONS">
+   <type>[Ljava.lang.String;</type>
+   <value>MAIN_SM7_REVA</value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>DEVICE_DIE_REVISIONS</sysinfo_type>
+  </parameter>
+  <parameter name="SYSINFO_DEVICE_FAMILY">
+   <type>java.lang.String</type>
+   <value>Agilex 5</value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>DEVICE_FAMILY</sysinfo_type>
+  </parameter>
+  <parameter name="SYSINFO_DEVICE_GROUP">
+   <type>[Ljava.lang.String;</type>
+   <value>B</value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>DEVICE_INFO</sysinfo_type>
+   <sysinfo_arg>DEVICE_GROUP</sysinfo_arg>
+  </parameter>
+  <parameter name="SYSINFO_DEVICE_IOBANK_REVISION">
+   <type>java.lang.String</type>
+   <value>IO96B</value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>PART_TRAIT</sysinfo_type>
+   <sysinfo_arg>DEVICE_IOBANK_REVISION</sysinfo_arg>
+  </parameter>
+  <parameter name="SYSINFO_DEVICE_POWER_MODEL">
+   <type>java.lang.String</type>
+   <value>STANDARD_POWER_FIXED</value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>PART_TRAIT</sysinfo_type>
+   <sysinfo_arg>DEVICE_POWER_MODEL</sysinfo_arg>
+  </parameter>
+  <parameter name="SYSINFO_DEVICE_SPEEDGRADE">
+   <type>java.lang.String</type>
+   <value>6</value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>DEVICE_SPEEDGRADE</sysinfo_type>
+  </parameter>
+  <parameter name="SYSINFO_DEVICE_TEMPERATURE_GRADE">
+   <type>java.lang.String</type>
+   <value>EXTENDED</value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>PART_TRAIT</sysinfo_type>
+   <sysinfo_arg>DEVICE_TEMPERATURE_GRADE</sysinfo_arg>
+  </parameter>
+  <parameter name="SYSINFO_SUPPORTS_VID">
+   <type>java.lang.String</type>
+   <value>0</value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>PART_TRAIT</sysinfo_type>
+   <sysinfo_arg>SUPPORTS_VID</sysinfo_arg>
+  </parameter>
+  <parameter name="AUTO_DEVICE_FAMILY">
+   <type>java.lang.String</type>
+   <value>Agilex 5</value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>DEVICE_FAMILY</sysinfo_type>
+  </parameter>
+  <parameter name="AUTO_DEVICE">
+   <type>java.lang.String</type>
+   <value>A5ED065BB32AE6SR0</value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>DEVICE</sysinfo_type>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>Agilex 5</value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>DEVICE_FAMILY</sysinfo_type>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <interface name="mem_0" kind="conduit_end" version="25.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedReset">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="prSafe">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>conduit</type>
+   <span>0</span>
+   <isStart>false</isStart>
+   <port>
+    <name>mem_cke_0</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>mem_cke</role>
+   </port>
+   <port>
+    <name>mem_odt_0</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>mem_odt</role>
+   </port>
+   <port>
+    <name>mem_cs_n_0</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>mem_cs_n</role>
+   </port>
+   <port>
+    <name>mem_a_0</name>
+    <direction>Input</direction>
+    <width>17</width>
+    <role>mem_a</role>
+   </port>
+   <port>
+    <name>mem_ba_0</name>
+    <direction>Input</direction>
+    <width>2</width>
+    <role>mem_ba</role>
+   </port>
+   <port>
+    <name>mem_bg_0</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>mem_bg</role>
+   </port>
+   <port>
+    <name>mem_act_n_0</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>mem_act_n</role>
+   </port>
+   <port>
+    <name>mem_par_0</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>mem_par</role>
+   </port>
+   <port>
+    <name>mem_dq_0</name>
+    <direction>Bidir</direction>
+    <width>32</width>
+    <role>mem_dq</role>
+   </port>
+   <port>
+    <name>mem_dqs_t_0</name>
+    <direction>Bidir</direction>
+    <width>4</width>
+    <role>mem_dqs_t</role>
+   </port>
+   <port>
+    <name>mem_dqs_c_0</name>
+    <direction>Bidir</direction>
+    <width>4</width>
+    <role>mem_dqs_c</role>
+   </port>
+   <port>
+    <name>mem_alert_n_0</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>mem_alert_n</role>
+   </port>
+  </interface>
+  <interface name="mem_ck_0" kind="conduit_end" version="25.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedReset">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="prSafe">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>conduit</type>
+   <span>0</span>
+   <isStart>false</isStart>
+   <port>
+    <name>mem_ck_t_0</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>mem_ck_t</role>
+   </port>
+   <port>
+    <name>mem_ck_c_0</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>mem_ck_c</role>
+   </port>
+  </interface>
+  <interface name="mem_reset_n" kind="conduit_end" version="25.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedReset">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="prSafe">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>conduit</type>
+   <span>0</span>
+   <isStart>false</isStart>
+   <port>
+    <name>mem_reset_n_0</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>mem_reset_n</role>
+   </port>
+  </interface>
+  <interface name="oct_0" kind="conduit_end" version="25.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedReset">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="prSafe">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>conduit</type>
+   <span>0</span>
+   <isStart>false</isStart>
+   <port>
+    <name>oct_rzqin_0</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>oct_rzqin</role>
+   </port>
+  </interface>
+ </module>
+ <module
    name="reset_in"
    kind="altera_reset_bridge"
    version="19.2.0"
@@ -7803,6 +9874,274 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>main_clock</endConnectionPoint>
  </connection>
  <connection
+   name="mem_0.mem_0/intel_vvp_pipeline2_0.frc_emif_mem"
+   kind="conduit"
+   version="25.1"
+   start="mem_0.mem_0"
+   end="intel_vvp_pipeline2_0.frc_emif_mem">
+  <parameter name="endPort">
+   <type>com.altera.entityinterfaces.IPort</type>
+   <value></value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="endPortLSB">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="startPort">
+   <type>com.altera.entityinterfaces.IPort</type>
+   <value></value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="startPortLSB">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="width">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>mem_0</startModule>
+  <startConnectionPoint>mem_0</startConnectionPoint>
+  <endModule>intel_vvp_pipeline2_0</endModule>
+  <endConnectionPoint>frc_emif_mem</endConnectionPoint>
+ </connection>
+ <connection
+   name="mem_0.mem_ck_0/intel_vvp_pipeline2_0.frc_emif_mem_ck"
+   kind="conduit"
+   version="25.1"
+   start="mem_0.mem_ck_0"
+   end="intel_vvp_pipeline2_0.frc_emif_mem_ck">
+  <parameter name="endPort">
+   <type>com.altera.entityinterfaces.IPort</type>
+   <value></value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="endPortLSB">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="startPort">
+   <type>com.altera.entityinterfaces.IPort</type>
+   <value></value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="startPortLSB">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="width">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>mem_0</startModule>
+  <startConnectionPoint>mem_ck_0</startConnectionPoint>
+  <endModule>intel_vvp_pipeline2_0</endModule>
+  <endConnectionPoint>frc_emif_mem_ck</endConnectionPoint>
+ </connection>
+ <connection
+   name="mem_0.mem_reset_n/intel_vvp_pipeline2_0.frc_emif_mem_reset_n"
+   kind="conduit"
+   version="25.1"
+   start="mem_0.mem_reset_n"
+   end="intel_vvp_pipeline2_0.frc_emif_mem_reset_n">
+  <parameter name="endPort">
+   <type>com.altera.entityinterfaces.IPort</type>
+   <value></value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="endPortLSB">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="startPort">
+   <type>com.altera.entityinterfaces.IPort</type>
+   <value></value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="startPortLSB">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="width">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>mem_0</startModule>
+  <startConnectionPoint>mem_reset_n</startConnectionPoint>
+  <endModule>intel_vvp_pipeline2_0</endModule>
+  <endConnectionPoint>frc_emif_mem_reset_n</endConnectionPoint>
+ </connection>
+ <connection
+   name="mem_0.oct_0/intel_vvp_pipeline2_0.frc_emif_oct"
+   kind="conduit"
+   version="25.1"
+   start="mem_0.oct_0"
+   end="intel_vvp_pipeline2_0.frc_emif_oct">
+  <parameter name="endPort">
+   <type>com.altera.entityinterfaces.IPort</type>
+   <value></value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="endPortLSB">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="startPort">
+   <type>com.altera.entityinterfaces.IPort</type>
+   <value></value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="startPortLSB">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="width">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>mem_0</startModule>
+  <startConnectionPoint>oct_0</startConnectionPoint>
+  <endModule>intel_vvp_pipeline2_0</endModule>
+  <endConnectionPoint>frc_emif_oct</endConnectionPoint>
+ </connection>
+ <connection
    name="reset_in.out_reset/intel_vvp_tpg_1.main_reset"
    kind="reset"
    version="25.1"
@@ -7911,7 +10250,7 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>main_reset</endConnectionPoint>
  </connection>
  <plugin>
-  <instanceCount>5</instanceCount>
+  <instanceCount>6</instanceCount>
   <name>altera_generic_component</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype></subtype>
@@ -7919,7 +10258,7 @@ parameters are a RESULT of the module parameters. -->
   <version>1.0</version>
  </plugin>
  <plugin>
-  <instanceCount>5</instanceCount>
+  <instanceCount>6</instanceCount>
   <name>clock_sink</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
@@ -7967,6 +10306,14 @@ parameters are a RESULT of the module parameters. -->
   <version>25.1</version>
  </plugin>
  <plugin>
+  <instanceCount>8</instanceCount>
+  <name>conduit_end</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
+  <displayName>Conduit</displayName>
+  <version>25.1</version>
+ </plugin>
+ <plugin>
   <instanceCount>1</instanceCount>
   <name>reset_source</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
@@ -7980,6 +10327,14 @@ parameters are a RESULT of the module parameters. -->
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IConnection</subtype>
   <displayName>Clock Connection</displayName>
+  <version>25.1</version>
+ </plugin>
+ <plugin>
+  <instanceCount>4</instanceCount>
+  <name>conduit</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IConnection</subtype>
+  <displayName>Conduit Connection</displayName>
   <version>25.1</version>
  </plugin>
  <plugin>

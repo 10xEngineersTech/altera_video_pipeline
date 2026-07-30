@@ -20,8 +20,16 @@ module tb();
     // =========================================================================
     // Change these per test
     // =========================================================================
-    localparam TOPOLOGY    = "FULL";   // FULL/SCALER_ONLY/CSC_ONLY/CRS_ONLY/CRS_CSC/CLIP_SCL/DIL_ONLY
+    // MUST match the packaged IP's own TOPOLOGY parameter. The IP is built
+    // SCALER_ONLY, so its internal datapath is only
+    //   s_axis_video_in -> protocol_conv(F2L) -> scaler -> ltf_conv(L2F) -> VFB
+    // and the DIL/CRS/CSC/Clipper control agents DO NOT EXIST. Leaving this on
+    // "FULL" makes the FSM write to 0x200/0x400/0x600 and, worse, poll CRS
+    // STATUS at 0x340 - an unmapped read never returns readdatavalid, so the
+    // FSM hangs in the poll forever.
+    localparam TOPOLOGY    = "SCALER_ONLY";   // FULL/SCALER_ONLY/CSC_ONLY/CRS_ONLY/CRS_CSC/CLIP_SCL/DIL_ONLY
     localparam ENABLE_PIP  = PIP_ENABLE;      // from configuration.vh (GUI-controlled)
+    localparam ENABLE_FRC  = FRC_ENABLE;      // from configuration.vh (GUI-controlled)
 
     // =========================================================================
     // Geometry from configuration.vh
@@ -66,13 +74,49 @@ module tb();
     // background canvas, not the pipeline's own (smaller, inset) output size.
     localparam CAP_W   = ENABLE_PIP ? PIP_BG_WIDTH  : (HAS_SCL ? SCALER_OUT_W : IMG_WIDTH);
     localparam CAP_H   = ENABLE_PIP ? PIP_BG_HEIGHT : (HAS_SCL ? SCALER_OUT_H : IMG_HEIGHT);
-    localparam IS_FULL = HAS_PC0 ? 0 : 1;
+    // With FRC the captured stream comes out of the frame buffer, which sits
+    // AFTER the Lite->Full converter - so it carries image-info metapackets and
+    // must be parsed as Full protocol regardless of HAS_PC0.
+    localparam IS_FULL = ENABLE_FRC ? 1 : (HAS_PC0 ? 0 : 1);
 
-    localparam [63:0] END_TIME = (CAP_H * CAP_W > TPG_WIDTH * TPG_HEIGHT) ?
-                                  CAP_H * CAP_W * 500 :
-                                  TPG_WIDTH * TPG_HEIGHT * 500;
+    localparam [63:0] BASE_END_TIME = (CAP_H * CAP_W > TPG_WIDTH * TPG_HEIGHT) ?
+                                       CAP_H * CAP_W * 500 :
+                                       TPG_WIDTH * TPG_HEIGHT * 500;
 
-    localparam CLK_PERIOD = 10;
+    // FRC adds DDR4 calibration before any traffic can move (~119us of sim time
+    // on this EMIF - it is built full-cal/real-PHY, there is no skip-cal mode
+    // for io96b). The watchdog must clear that by a wide margin or it fires
+    // during calibration and looks like a pipeline hang. This only moves the
+    // timeout - it does not slow the run.
+    localparam [63:0] END_TIME = ENABLE_FRC ? BASE_END_TIME + 64'd50_000_000
+                                            : BASE_END_TIME;
+
+    // =========================================================================
+    // FRC frame-rate scenario
+    //
+    // The frame buffer has NO rate registers. The WRITE rate is how fast frames
+    // arrive at its input; the READ rate is how fast the sink drains its output.
+    // Both are set here as an idle-cycle gap inserted once per frame's worth of
+    // beats:
+    //     write_period = TPG_WIDTH*TPG_HEIGHT + FRC_IN_GAP_CYCLES   (cycles)
+    //     read_period  = CAP_W*CAP_H          + FRC_OUT_GAP_CYCLES  (cycles)
+    //     fps          = 100e6 / period
+    //
+    // 0/0 = both sides flat out (rates matched, no drop, no repeat).
+    // To force DOWN-conversion (dropped frames): leave IN at 0 and set OUT to
+    //   one frame time or more, e.g. FRC_OUT_GAP_CYCLES = CAP_W*CAP_H.
+    // To force UP-conversion (repeated frames): leave OUT at 0 and set IN to
+    //   one or two frame times, e.g. FRC_IN_GAP_CYCLES = 2*TPG_WIDTH*TPG_HEIGHT.
+    // The FRC FIELD COUNTERS printed at the end of the run are the evidence.
+    // =========================================================================
+    localparam [31:0] FRC_IN_GAP_CYCLES  = 32'd0;
+    localparam [31:0] FRC_OUT_GAP_CYCLES = 32'd0;
+
+    localparam CLK_PERIOD = 10;      // 100 MHz video clock
+    // EMIF reference clock: the packaged IP's EMIF is configured for a 200 MHz
+    // reference (EMIF_PHY_REFCLK_FREQ_MHZ=200.0). Feeding it the 100 MHz video
+    // clock makes calibration never complete.
+    localparam EMIF_REF_PERIOD = 5;  // 200 MHz
 
     // =========================================================================
     // Signals
@@ -81,9 +125,56 @@ module tb();
     reg reset = 1;
     always #(CLK_PERIOD/2) clk = ~clk;
 
+    // Free-running 200 MHz EMIF reference. Deliberately independent of reset -
+    // the EMIF calibration engine needs it running from t=0.
+    reg emif_ref_clk = 0;
+    always #(EMIF_REF_PERIOD/2.0) emif_ref_clk = ~emif_ref_clk;
+
+
+    // FRC counter readback handshake
+    reg         frc_stats_req = 1'b0;
+    wire        frc_stats_valid;
+    wire [31:0] frc_in_fields;
+    wire [31:0] frc_dropped_fields;
+    wire [31:0] frc_out_fields;
+    wire [31:0] frc_repeated_fields;
+
     wire [23:0] out_tdata;
     wire        out_tvalid;
-    reg         out_tready = 0;
+    reg         out_tready_en = 0;   // enabled by the stimulus block
+    wire        out_tready;          // gated by the FRC read-rate pacer below
+
+    // -------------------------------------------------------------------------
+    // FRC read-rate pacing: drop tready for FRC_OUT_GAP_CYCLES after every
+    // frame's worth of drained beats. This is the "sink" side of the rate
+    // differential - the equivalent of OUTPUT_GAP in the DDR_TPG reference's
+    // sink CSR.
+    // -------------------------------------------------------------------------
+    localparam [31:0] FRC_OUT_FRAME_BEATS = CAP_W * CAP_H;
+    reg  [31:0] out_beats = 32'd0;
+    reg  [31:0] out_gap   = 32'd0;
+    wire        out_beat  = out_tvalid && out_tready;
+    wire        out_paused = ENABLE_FRC && (FRC_OUT_GAP_CYCLES != 32'd0) && (out_gap != 32'd0);
+
+    always @(posedge clk) begin
+        if (reset) begin
+            out_beats <= 32'd0;
+            out_gap   <= 32'd0;
+        end else if (ENABLE_FRC && (FRC_OUT_GAP_CYCLES != 32'd0)) begin
+            if (out_gap != 32'd0) begin
+                out_gap <= out_gap - 32'd1;
+            end else if (out_beat) begin
+                if (out_beats >= (FRC_OUT_FRAME_BEATS - 32'd1)) begin
+                    out_beats <= 32'd0;
+                    out_gap   <= FRC_OUT_GAP_CYCLES;
+                end else begin
+                    out_beats <= out_beats + 32'd1;
+                end
+            end
+        end
+    end
+
+    assign out_tready = out_tready_en && !out_paused;
     wire        out_tlast;
     wire [2:0]  out_tuser;
     wire        frame_done;
@@ -147,6 +238,8 @@ module tb();
         .TOPOLOGY    (TOPOLOGY),
         .INPUT_SEL   (INPUT_SEL),
         .ENABLE_PIP  (ENABLE_PIP),
+        .ENABLE_FRC  (ENABLE_FRC),
+        .FRC_IN_GAP_CYCLES(FRC_IN_GAP_CYCLES),
         .IMG_WIDTH   (IMG_WIDTH),
         .IMG_HEIGHT  (IMG_HEIGHT),
         .IMG_L_OFF   (IMG_L_OFF),
@@ -165,6 +258,13 @@ module tb();
     ) dut (
         .clk          (clk),
         .reset        (reset),
+        .emif_ref_clk (emif_ref_clk),
+        .frc_stats_req      (frc_stats_req),
+        .frc_stats_valid    (frc_stats_valid),
+        .frc_in_fields      (frc_in_fields),
+        .frc_dropped_fields (frc_dropped_fields),
+        .frc_out_fields     (frc_out_fields),
+        .frc_repeated_fields(frc_repeated_fields),
         .out_tdata    (out_tdata),
         .out_tvalid   (out_tvalid),
         .out_tready   (out_tready),
@@ -182,7 +282,7 @@ module tb();
     // =========================================================================
     initial begin
         reset      = 1;
-        out_tready = 0;
+        out_tready_en = 0;
         repeat(10) @(posedge clk);
         reset = 0;
         $display("[%0t] Reset released.", $time);
@@ -191,7 +291,7 @@ module tb();
             // Set out_tready=1 immediately after reset.
             // CRITICAL for CSC modes: pipeline must drain during ST_POLL_CSC.
             @(posedge clk);
-            out_tready = 1;
+            out_tready_en = 1;
         end
 
         // Wait for FSM to complete configuration (includes CSC poll for TPG)
@@ -204,7 +304,7 @@ module tb();
             // see "ready" while its layer/blend/offset registers are still
             // being written, or it can latch onto an inconsistent internal
             // state that never recovers.
-            out_tready = 1;
+            out_tready_en = 1;
         end
 
 
@@ -215,6 +315,26 @@ module tb();
 
         wait(frame_done);
         $display("[%0t] Frame written to sc_data.txt.", $time);
+
+        if (ENABLE_FRC) begin
+            // Frame is safely dumped; now ask the FSM to read the VFB's field
+            // counters over the control bridge. Video is still running, so
+            // these are a live sample of what the write and read sides did.
+            frc_stats_req = 1'b1;
+            wait(frc_stats_valid);
+            frc_stats_req = 1'b0;
+            $display("=================== FRC FIELD COUNTERS ===================");
+            $display("  NUM_INPUT_FIELDS    (0x0F44) = %0d   (frames written to DDR4)",
+                     frc_in_fields);
+            $display("  NUM_DROPPED_FIELDS  (0x0F48) = %0d   (>0 => input faster than output)",
+                     frc_dropped_fields);
+            $display("  NUM_OUTPUT_FIELDS   (0x0F54) = %0d   (frames read back out)",
+                     frc_out_fields);
+            $display("  NUM_REPEATED_FIELDS (0x0F58) = %0d   (>0 => output faster than input)",
+                     frc_repeated_fields);
+            $display("==========================================================");
+        end
+
         $finish;
     end
 
@@ -230,7 +350,13 @@ module tb();
                 $readmemh("../../../../app/image_data.txt", img_mem);
                 $display("[IMG] Loaded %0dx%0d image.", TPG_WIDTH, TPG_HEIGHT);
 
-                wait(dut.current_state == dut.ST_WORKING);
+                // With FRC the frame buffer must be FED before its read side is
+                // released, and ST_WORKING is only reached after that handshake -
+                // so waiting for ST_WORKING here would deadlock. ready_to_start
+                // opens at the start of the FRC bring-up phase instead. Without
+                // FRC ready_to_start == (state==ST_WORKING), so this is
+                // unchanged for every existing topology.
+                wait(dut.ready_to_start);
                 repeat(5) @(posedge clk);
 
                 $display("[IMG] Sending image...");
@@ -255,6 +381,90 @@ module tb();
                 $display("[IMG] Image sent.");
             end
         end
+    endgenerate
+
+    // =========================================================================
+    // FRC / DDR4 diagnostic probes
+    //
+    // The failure mode seen previously was NOT in the video datapath: the
+    // scaler and Lite->Full converter both held tvalid high while the VFB's
+    // Avalon-MM write host sat with write=1 against a permanently asserted
+    // waitrequest, because the EMIF's AXI write-address channel stopped
+    // accepting (awvalid=1, awready=0 forever). These probes surface exactly
+    // that, live, so a stall is diagnosed from the run log instead of needing
+    // post-mortem waveform archaeology.
+    //
+    // Hierarchy: dut.u0.<system>.<subsystem>.<net>
+    // =========================================================================
+`define SUB dut.u0.intel_vvp_pipeline2_0.intel_vvp_pipeline2_0
+    generate
+    if (ENABLE_FRC) begin : gen_frc_probe
+        // running counts of accepted beats at each link
+        integer scl_beats  = 0;   // scaler   -> ltf_conv
+        integer ltf_beats  = 0;   // ltf_conv -> VFB
+        integer wr_beats   = 0;   // VFB      -> memory (Avalon write accepted)
+        integer aw_accepts = 0;   // EMIF AXI address-channel accepts
+        reg     cal_seen   = 1'b0;
+
+        always @(posedge clk) if (!reset) begin
+            if (`SUB.intel_vvp_scaler_0_axi4s_vid_out_tvalid &&
+                `SUB.intel_vvp_scaler_0_axi4s_vid_out_tready) scl_beats <= scl_beats + 1;
+            if (`SUB.ltf_conv_0_axi4s_vid_out_tvalid &&
+                `SUB.ltf_conv_0_axi4s_vid_out_tready)         ltf_beats <= ltf_beats + 1;
+            if (`SUB.intel_vvp_vfb_0_av_mm_mem_write_host_write &&
+               !`SUB.intel_vvp_vfb_0_av_mm_mem_write_host_waitrequest) wr_beats <= wr_beats + 1;
+            if (`SUB.mm_interconnect_1_frc_emif_0_s0_axi4_awvalid &&
+                `SUB.mm_interconnect_1_frc_emif_0_s0_axi4_awready) aw_accepts <= aw_accepts + 1;
+
+            // announce calibration release exactly once - this is the gate that
+            // holds all VFB traffic out of DDR4 until the PHY is trained
+            if (!cal_seen && `SUB.frc_emif_0_s0_axi4_ctrl_ready_reset) begin
+                cal_seen <= 1'b1;
+                $display("[PROBE %0t] *** EMIF ctrl_ready_reset=1 : DDR4 CALIBRATION COMPLETE, AXI bridge released ***", $time);
+            end
+        end
+
+        // periodic snapshot + stall detector
+        integer prev_wr = -1, prev_scl = -1, quiet = 0;
+        initial begin
+            forever begin
+                #(20_000);   // every 20 us of sim time
+                $display("[PROBE %0t] cal=%b | beats scl=%0d ltf=%0d wrAccepted=%0d awAccepted=%0d | state=%0d",
+                         $time, `SUB.frc_emif_0_s0_axi4_ctrl_ready_reset,
+                         scl_beats, ltf_beats, wr_beats, aw_accepts, dut.current_state);
+                if (`SUB.frc_emif_0_s0_axi4_ctrl_ready_reset) begin
+                    if (wr_beats == prev_wr && scl_beats == prev_scl) begin
+                        quiet = quiet + 1;
+                        if (quiet == 2) begin
+                            $display("[PROBE %0t] ################ STALL DETECTED ################", $time);
+                            $display("  SCL out   tvalid=%b tready=%b",
+                                     `SUB.intel_vvp_scaler_0_axi4s_vid_out_tvalid,
+                                     `SUB.intel_vvp_scaler_0_axi4s_vid_out_tready);
+                            $display("  LTF out   tvalid=%b tready=%b",
+                                     `SUB.ltf_conv_0_axi4s_vid_out_tvalid,
+                                     `SUB.ltf_conv_0_axi4s_vid_out_tready);
+                            $display("  VFB->mem  write=%b waitrequest=%b addr=0x%08h burstcount=%0d",
+                                     `SUB.intel_vvp_vfb_0_av_mm_mem_write_host_write,
+                                     `SUB.intel_vvp_vfb_0_av_mm_mem_write_host_waitrequest,
+                                     `SUB.intel_vvp_vfb_0_av_mm_mem_write_host_address,
+                                     `SUB.intel_vvp_vfb_0_av_mm_mem_write_host_burstcount);
+                            $display("  EMIF AW   awvalid=%b awready=%b awaddr=0x%08h awlen=%0d (=%0d beats)",
+                                     `SUB.mm_interconnect_1_frc_emif_0_s0_axi4_awvalid,
+                                     `SUB.mm_interconnect_1_frc_emif_0_s0_axi4_awready,
+                                     `SUB.mm_interconnect_1_frc_emif_0_s0_axi4_awaddr,
+                                     `SUB.mm_interconnect_1_frc_emif_0_s0_axi4_awlen,
+                                     `SUB.mm_interconnect_1_frc_emif_0_s0_axi4_awlen + 1);
+                            $display("  ==> if awvalid=1/awready=0 the EMIF is refusing a legal burst;");
+                            $display("      if awvalid=0 the VFB is not even requesting - look upstream.");
+                            $display("################################################");
+                        end
+                    end else quiet = 0;
+                    prev_wr  = wr_beats;
+                    prev_scl = scl_beats;
+                end
+            end
+        end
+    end
     endgenerate
 
     // =========================================================================

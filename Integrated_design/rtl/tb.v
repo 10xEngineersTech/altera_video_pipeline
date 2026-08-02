@@ -99,18 +99,35 @@ module tb();
     // Both are set here as an idle-cycle gap inserted once per frame's worth of
     // beats:
     //     write_period = TPG_WIDTH*TPG_HEIGHT + FRC_IN_GAP_CYCLES   (cycles)
-    //     read_period  = CAP_W*CAP_H          + FRC_OUT_GAP_CYCLES  (cycles)
+    //     read_period  = OTG_PERIOD_CYCLES  (set in the DESIGN, see top.v OTG)
     //     fps          = 100e6 / period
     //
     // 0/0 = both sides flat out (rates matched, no drop, no repeat).
     // To force DOWN-conversion (dropped frames): leave IN at 0 and set OUT to
-    //   one frame time or more, e.g. FRC_OUT_GAP_CYCLES = CAP_W*CAP_H.
+    //   OTG_PERIOD_CYCLES = 2*CAP_W*CAP_H (half the read rate).
     // To force UP-conversion (repeated frames): leave OUT at 0 and set IN to
     //   one or two frame times, e.g. FRC_IN_GAP_CYCLES = 2*TPG_WIDTH*TPG_HEIGHT.
     // The FRC FIELD COUNTERS printed at the end of the run are the evidence.
     // =========================================================================
-    localparam [31:0] FRC_IN_GAP_CYCLES  = 32'd0;
-    localparam [31:0] FRC_OUT_GAP_CYCLES = 32'd0;
+    // Rates come from the GUI (Source/Sink frame rate fields) via
+    // configuration.vh, which precomputes the cycle counts. Falls back to
+    // flat-out if an older configuration.vh has no FRC_* rate parameters.
+    // Rates are applied at RUN TIME, after the natural frame period has been
+    // measured - see frc_calibrate below. They start disabled so the
+    // calibration pass runs unthrottled.
+    reg [31:0] frc_in_period_r = 32'd0;
+    reg [31:0] otg_period_r  = 32'd0;
+    integer    nat_period;        // measured cycles per frame, unthrottled
+    integer    per_in, per_out;   // absolute frame periods we will impose
+
+    // READ rate is now set by the DESIGN's output timing generator, not by the
+    // testbench. output_fps = 100e6 / OTG_PERIOD_CYCLES. A frame is
+    // CAP_W*CAP_H beats, so any period at or below that runs flat out.
+    //   0                      -> no throttling (max read rate)
+    //   2*CAP_W*CAP_H          -> half rate   (e.g. 60->30 down-conversion)
+    //   CAP_W*CAP_H*12/10      -> 5/6 rate    (e.g. 60->50 down-conversion)
+    // This same register drives the rate on real hardware.
+
 
     localparam CLK_PERIOD = 10;      // 100 MHz video clock
     // EMIF reference clock: the packaged IP's EMIF is configured for a 200 MHz
@@ -124,6 +141,13 @@ module tb();
     reg clk   = 0;
     reg reset = 1;
     always #(CLK_PERIOD/2) clk = ~clk;
+
+    // Free-running cycle count. Deliberately NOT $time: assigned to an integer,
+    // $time returns the MODULE's timescale units (ns here) while %0t displays
+    // simulation precision (fs) - mixing the two silently produced nat_period=0.
+    // Counting clocks is unambiguous and is also what the period registers use.
+    reg [63:0] cyc = 64'd0;
+    always @(posedge clk) cyc <= cyc + 64'd1;
 
     // Free-running 200 MHz EMIF reference. Deliberately independent of reset -
     // the EMIF calibration engine needs it running from t=0.
@@ -144,37 +168,11 @@ module tb();
     reg         out_tready_en = 0;   // enabled by the stimulus block
     wire        out_tready;          // gated by the FRC read-rate pacer below
 
-    // -------------------------------------------------------------------------
-    // FRC read-rate pacing: drop tready for FRC_OUT_GAP_CYCLES after every
-    // frame's worth of drained beats. This is the "sink" side of the rate
-    // differential - the equivalent of OUTPUT_GAP in the DDR_TPG reference's
-    // sink CSR.
-    // -------------------------------------------------------------------------
-    localparam [31:0] FRC_OUT_FRAME_BEATS = CAP_W * CAP_H;
-    reg  [31:0] out_beats = 32'd0;
-    reg  [31:0] out_gap   = 32'd0;
-    wire        out_beat  = out_tvalid && out_tready;
-    wire        out_paused = ENABLE_FRC && (FRC_OUT_GAP_CYCLES != 32'd0) && (out_gap != 32'd0);
-
-    always @(posedge clk) begin
-        if (reset) begin
-            out_beats <= 32'd0;
-            out_gap   <= 32'd0;
-        end else if (ENABLE_FRC && (FRC_OUT_GAP_CYCLES != 32'd0)) begin
-            if (out_gap != 32'd0) begin
-                out_gap <= out_gap - 32'd1;
-            end else if (out_beat) begin
-                if (out_beats >= (FRC_OUT_FRAME_BEATS - 32'd1)) begin
-                    out_beats <= 32'd0;
-                    out_gap   <= FRC_OUT_GAP_CYCLES;
-                end else begin
-                    out_beats <= out_beats + 32'd1;
-                end
-            end
-        end
-    end
-
-    assign out_tready = out_tready_en && !out_paused;
+    // Read-rate pacing now lives in the design (top.v output timing
+    // generator), driven by OTG_PERIOD_CYCLES below - so simulation and
+    // hardware use the same logic. The testbench just presents a sink that is
+    // always ready.
+    assign out_tready = out_tready_en;
     wire        out_tlast;
     wire [2:0]  out_tuser;
     wire        frame_done;
@@ -212,11 +210,21 @@ module tb();
     // frame_controller auto-resets on every SOF so no special gating needed.
     // It will capture whichever complete frame arrives first after ST_WORKING.
     // =========================================================================
+    // FRC tests need every output frame kept, not just the first: with a
+    // per-frame tag in the video the file sequence shows exactly which input
+    // frames were dropped or repeated.
+    localparam MULTI_FRAME = ENABLE_FRC ? 1 : 0;
+    localparam MAX_FRAMES  = 64;
+    wire [31:0] frames_captured;
+
     make_file #(
         .IMG_H    (CAP_H),
         .IMG_W    (CAP_W),
         .IS_FULL  (IS_FULL),
         .SKIP_ROWS(PIP_ROW_GUARD),
+        .MULTI_FRAME(MULTI_FRAME),
+        .OUT_DIR    ("../../../../app/frames"),
+        .MAX_FRAMES (MAX_FRAMES),
         //.FILE_NAME("../../../../app/crs_yuv422.txt")
         .FILE_NAME("../../../../app/sc_data.txt")
     ) scaler_out (
@@ -227,7 +235,8 @@ module tb();
         .tready    (out_tready & (dut.current_state == dut.ST_WORKING)),
         .tlast     (out_tlast),
         .tuser     (out_tuser),
-        .frame_done(frame_done)
+        .frame_done(frame_done),
+        .frames_captured(frames_captured)
     );
 	 
 
@@ -239,7 +248,6 @@ module tb();
         .INPUT_SEL   (INPUT_SEL),
         .ENABLE_PIP  (ENABLE_PIP),
         .ENABLE_FRC  (ENABLE_FRC),
-        .FRC_IN_GAP_CYCLES(FRC_IN_GAP_CYCLES),
         .IMG_WIDTH   (IMG_WIDTH),
         .IMG_HEIGHT  (IMG_HEIGHT),
         .IMG_L_OFF   (IMG_L_OFF),
@@ -259,6 +267,8 @@ module tb();
         .clk          (clk),
         .reset        (reset),
         .emif_ref_clk (emif_ref_clk),
+        .otg_period_cycles(otg_period_r),
+        .frc_in_period_cycles(frc_in_period_r),
         .frc_stats_req      (frc_stats_req),
         .frc_stats_valid    (frc_stats_valid),
         .frc_in_fields      (frc_in_fields),
@@ -316,27 +326,266 @@ module tb();
         wait(frame_done);
         $display("[%0t] Frame written to sc_data.txt.", $time);
 
-        if (ENABLE_FRC) begin
-            // Frame is safely dumped; now ask the FSM to read the VFB's field
-            // counters over the control bridge. Video is still running, so
-            // these are a live sample of what the write and read sides did.
+        if (!ENABLE_FRC) begin
+            $finish;
+        end else begin
+            // =================================================================
+            // FRC MEASUREMENT WINDOW
+            //
+            // Absolute counter values cannot prove conversion: the write side
+            // auto-runs through the ~120us DDR4 calibration while the read side
+            // waits for GO, so the writer gets ~2 frames ahead and the triple
+            // buffer legitimately sheds one. A run at MATCHED rates really does
+            // report dropped=1 from a single early sample - which would read as
+            // down-conversion that is not happening.
+            //
+            // So: settle, snapshot, run a known number of output frames,
+            // snapshot again, and judge only the DELTAS.
+            // =================================================================
+            frc_calibrate;
+            frc_measure;
+            frc_report;
+            $finish;
+        end
+    end
+
+    // ---------------------------------------------------------------------
+    // Measurement window state
+    // ---------------------------------------------------------------------
+    localparam integer FRC_SETTLE_FRAMES = 2;    // discard startup transient
+    localparam integer FRC_WINDOW_FRAMES = 16;   // 16 sink frames (expect 32 source frames in)
+
+    integer a_in, a_drop, a_out, a_rpt;          // snapshot A (window start)
+    integer b_in, b_drop, b_out, b_rpt;          // snapshot B (window end)
+    integer d_in, d_drop, d_out, d_rpt;          // deltas
+    integer exp_drop, exp_rpt, win_frames;
+    reg     pass_dir, pass_mag, pass_inv, pass_all, pass_rate;
+    integer req_r, ach_r;   // requested / achieved ratio, x1000
+
+    task automatic frc_snapshot(output integer i, output integer dr,
+                                output integer o, output integer rp);
+        begin
             frc_stats_req = 1'b1;
             wait(frc_stats_valid);
+            i  = frc_in_fields;
+            dr = frc_dropped_fields;
+            o  = frc_out_fields;
+            rp = frc_repeated_fields;
             frc_stats_req = 1'b0;
-            $display("=================== FRC FIELD COUNTERS ===================");
-            $display("  NUM_INPUT_FIELDS    (0x0F44) = %0d   (frames written to DDR4)",
-                     frc_in_fields);
-            $display("  NUM_DROPPED_FIELDS  (0x0F48) = %0d   (>0 => input faster than output)",
-                     frc_dropped_fields);
-            $display("  NUM_OUTPUT_FIELDS   (0x0F54) = %0d   (frames read back out)",
-                     frc_out_fields);
-            $display("  NUM_REPEATED_FIELDS (0x0F58) = %0d   (>0 => output faster than input)",
-                     frc_repeated_fields);
-            $display("==========================================================");
+            @(posedge clk);           // let the FSM re-arm
         end
+    endtask
 
-        $finish;
-    end
+    // Wait until the VFB's OWN output-field counter has advanced by n.
+    //
+    // Deliberately NOT based on make_file's frames_captured: that is a
+    // testbench-side count driven by frame_controller's frame_done, and it
+    // proved unreliable (frame_done is a latched level, so a burst of spurious
+    // increments raced the counter ahead and closed the window after a single
+    // real output frame). NUM_OUTPUT_FIELDS is the frame buffer's own hardware
+    // count of frames it actually emitted - the authoritative number, and the
+    // same one available over JTAG on hardware.
+    task automatic frc_wait_out(input integer n, output integer i,
+                                output integer dr, output integer o,
+                                output integer rp);
+        integer o0, guard;
+        begin
+            frc_snapshot(i, dr, o, rp);
+            o0    = o;
+            guard = 0;
+            while ((o - o0) < n && guard < 20000) begin
+                repeat (200) @(posedge clk);      // ~1 output frame period
+                frc_snapshot(i, dr, o, rp);
+                guard = guard + 1;
+            end
+            if ((o - o0) < n)
+                $display("[FRC] WARNING: only %0d of %0d output frames arrived before guard limit",
+                         o - o0, n);
+        end
+    endtask
+
+    // ---------------------------------------------------------------------
+    // CALIBRATION: measure the natural (unthrottled) frame period.
+    //
+    // The previous run failed because the requested periods were derived from
+    // W*H payload beats (100 cycles at 10x10), but a frame actually takes ~500
+    // cycles to move through the frame buffer and DDR4 - memory latency,
+    // bursts, refresh and the metapacket add ~5x. Any period BELOW that floor
+    // is a no-op: the gate never gets a chance to shut, both sides free-run,
+    // and the requested ratio is silently not applied.
+    //
+    // So measure the floor first, then derive both periods from it. This also
+    // adapts automatically to frame size, where the fixed overhead amortises
+    // differently.
+    // ---------------------------------------------------------------------
+    task automatic frc_calibrate;
+        integer i0, dr0, o0, rp0, i1, dr1, o1, rp1;
+        reg [63:0] c0, c1;
+        integer basis, fastest;
+        begin
+            frc_in_period_r = 32'd0;   // unthrottled for the measurement
+            otg_period_r = 32'd0;
+
+            frc_wait_out(2, i0, dr0, o0, rp0);   // let it reach steady state
+            frc_snapshot(i0, dr0, o0, rp0);
+            c0 = cyc;
+            frc_wait_out(4, i1, dr1, o1, rp1);
+            frc_snapshot(i1, dr1, o1, rp1);
+            c1 = cyc;
+
+            if ((o1 - o0) > 0)
+                nat_period = (c1 - c0) / (o1 - o0);
+            else
+                nat_period = CAP_W * CAP_H;      // fallback, should not happen
+
+            $display("[FRC] natural frame period measured: %0d cycles (%0d frames in %0d cycles)",
+                     nat_period, o1 - o0, c1 - c0);
+
+            // Derive absolute periods from the measured floor, with headroom so
+            // both sides are genuinely throttled rather than sitting at the floor.
+            basis   = (nat_period * 3) / 2;
+            fastest = (FRC_SRC_FPS > FRC_SINK_FPS) ? FRC_SRC_FPS : FRC_SINK_FPS;
+            per_in  = (basis * fastest) / FRC_SRC_FPS;
+            per_out = (basis * fastest) / FRC_SINK_FPS;
+
+            if (per_in <= nat_period)
+                $display("[FRC] WARNING: input period %0d <= natural floor %0d - source will NOT be throttled",
+                         per_in, nat_period);
+            frc_in_period_r = per_in;                 // pacer is now ABSOLUTE
+
+            if (per_out <= nat_period)
+                $display("[FRC] WARNING: output period %0d <= natural floor %0d - sink will NOT be throttled",
+                         per_out, nat_period);
+            otg_period_r = per_out;                   // OTG is absolute
+
+            $display("[FRC] applying rates: in_period=%0d  out_period=%0d  -> ratio %0d.%0d%0d",
+                     per_in, per_out, per_out / per_in,
+                     (((per_out * 100) / per_in) / 10) % 10, ((per_out * 100) / per_in) % 10);
+
+            // let the new rates take effect before measuring
+            frc_wait_out(2, i1, dr1, o1, rp1);
+        end
+    endtask
+
+    task automatic frc_measure;
+        integer t_i, t_dr, t_o, t_rp;
+        begin
+            // settle: let the startup transient pass (the write side auto-runs
+            // through DDR4 calibration while the read side waits for GO, so the
+            // writer starts ~2 frames ahead - that is not conversion)
+            frc_wait_out(FRC_SETTLE_FRAMES, t_i, t_dr, t_o, t_rp);
+            frc_snapshot(a_in, a_drop, a_out, a_rpt);
+            $display("[%0t] FRC window OPEN : in=%0d drop=%0d out=%0d rpt=%0d",
+                     $time, a_in, a_drop, a_out, a_rpt);
+
+            // measure a known number of OUTPUT frames
+            frc_wait_out(FRC_WINDOW_FRAMES, b_in, b_drop, b_out, b_rpt);
+            $display("[%0t] FRC window CLOSE: in=%0d drop=%0d out=%0d rpt=%0d",
+                     $time, b_in, b_drop, b_out, b_rpt);
+
+            d_in   = b_in   - a_in;
+            d_drop = b_drop - a_drop;
+            d_out  = b_out  - a_out;
+            d_rpt  = b_rpt  - a_rpt;
+        end
+    endtask
+
+    // ---------------------------------------------------------------------
+    // Verdict + machine-readable result for the GUI popup
+    // ---------------------------------------------------------------------
+    task automatic frc_report;
+        integer fd;
+        integer tol;
+        begin
+            win_frames = d_out;
+            // expected drop/repeat from the configured rates
+            // expected from what the rates ACHIEVED (the ratio check separately
+            // verifies the rates matched the request) - otherwise a small rate
+            // drift is counted twice, once here and once in the ratio check
+            if (FRC_SRC_FPS > FRC_SINK_FPS) exp_drop = d_in - d_out;
+            else exp_drop = 0;
+            if (FRC_SINK_FPS > FRC_SRC_FPS)
+                exp_rpt  = (d_out * (FRC_SINK_FPS - FRC_SRC_FPS)) / FRC_SINK_FPS;
+            else exp_rpt = 0;
+
+            // allow +/-2 frames for frame-boundary phasing
+            tol = 2;
+
+            // 1. direction
+            if (FRC_SRC_FPS > FRC_SINK_FPS)      pass_dir = (d_drop >  0) && (d_rpt == 0);
+            else if (FRC_SRC_FPS < FRC_SINK_FPS) pass_dir = (d_rpt  >  0) && (d_drop == 0);
+            else                                 pass_dir = (d_drop == 0) && (d_rpt == 0);
+            // 2. magnitude
+            pass_mag = ((d_drop >= exp_drop - tol) && (d_drop <= exp_drop + tol) &&
+                        (d_rpt  >= exp_rpt  - tol) && (d_rpt  <= exp_rpt  + tol));
+            // 3. invariant: unique frames delivered must agree on both sides
+            // +/-1: the four counters are read as four separate bus
+            // transactions, so they are not a coherent snapshot - the input
+            // side can advance between reading IN and reading OUT. A one-frame
+            // skew is a sampling artifact, not a hardware inconsistency.
+            pass_inv = (((d_in - d_drop) - (d_out - d_rpt)) <=  1) &&
+                       (((d_in - d_drop) - (d_out - d_rpt)) >= -1);
+            // ratios x1000 for integer display
+            req_r = (FRC_SRC_FPS * 1000) / FRC_SINK_FPS;
+            ach_r = (d_out > 0) ? (d_in * 1000) / d_out : 0;
+            // achieved must be within 15% of requested, else the rates never
+            // took effect and the drop/repeat numbers are meaningless
+            pass_rate = (ach_r * 100 >= req_r * 85) && (ach_r * 100 <= req_r * 115);
+            pass_all = pass_dir && pass_mag && pass_inv && pass_rate && (d_out > 0);
+
+            $display("=========== FRC RESULT: %0d -> %0d fps ===========",
+                     FRC_SRC_FPS, FRC_SINK_FPS);
+            $display("  window          : %0d output frames", d_out);
+            $display("  dIN=%0d  dDROPPED=%0d  dOUT=%0d  dREPEATED=%0d",
+                     d_in, d_drop, d_out, d_rpt);
+            $display("  direction       : %s", pass_dir ? "PASS" : "FAIL");
+            $display("  magnitude       : drop %0d (exp ~%0d), rpt %0d (exp ~%0d) : %s",
+                     d_drop, exp_drop, d_rpt, exp_rpt, pass_mag ? "PASS" : "FAIL");
+            $display("  invariant       : %0d-%0d=%0d vs %0d-%0d=%0d : %s",
+                     d_in, d_drop, d_in-d_drop, d_out, d_rpt, d_out-d_rpt,
+                     pass_inv ? "PASS" : "FAIL");
+            // Requested vs ACHIEVED ratio. Without this a rate that was never
+            // applied looks identical to a broken conversion mechanism - which
+            // is exactly how the previous run was misread.
+            $display("  ratio           : requested %0d.%0d%0d%0d, achieved %0d.%0d%0d%0d%s",
+                     req_r/1000, (req_r/100)%10, (req_r/10)%10, req_r%10,
+                     ach_r/1000, (ach_r/100)%10, (ach_r/10)%10, ach_r%10,
+                     pass_rate ? "" : "   <-- RATES NOT APPLIED");
+            $display("  natural period  : %0d cycles/frame (measured); in=%0d out=%0d imposed",
+                     nat_period, per_in, per_out);
+            $display("================ FRC: %s ================",
+                     pass_all ? "PASS" : "FAIL");
+
+            // key=value file the app parses for its popup
+            fd = $fopen("../../../../app/frc_result.txt", "w");
+            if (fd != 0) begin
+                $fwrite(fd, "verdict=%s\n", pass_all ? "PASS" : "FAIL");
+                $fwrite(fd, "src_fps=%0d\n", FRC_SRC_FPS);
+                $fwrite(fd, "sink_fps=%0d\n", FRC_SINK_FPS);
+                $fwrite(fd, "window_frames=%0d\n", d_out);
+                $fwrite(fd, "d_in=%0d\n", d_in);
+                $fwrite(fd, "d_dropped=%0d\n", d_drop);
+                $fwrite(fd, "d_out=%0d\n", d_out);
+                $fwrite(fd, "d_repeated=%0d\n", d_rpt);
+                $fwrite(fd, "exp_dropped=%0d\n", exp_drop);
+                $fwrite(fd, "exp_repeated=%0d\n", exp_rpt);
+                $fwrite(fd, "pass_direction=%0d\n", pass_dir);
+                $fwrite(fd, "pass_magnitude=%0d\n", pass_mag);
+                $fwrite(fd, "pass_invariant=%0d\n", pass_inv);
+                $fwrite(fd, "pass_rate=%0d\n", pass_rate);
+                $fwrite(fd, "requested_ratio=%0d.%0d%0d%0d\n",
+                        req_r/1000, (req_r/100)%10, (req_r/10)%10, req_r%10);
+                $fwrite(fd, "achieved_ratio=%0d.%0d%0d%0d\n",
+                        ach_r/1000, (ach_r/100)%10, (ach_r/10)%10, ach_r%10);
+                $fwrite(fd, "natural_period=%0d\n", nat_period);
+                $fwrite(fd, "period_in=%0d\n", per_in);
+                $fwrite(fd, "period_out=%0d\n", per_out);
+                $fwrite(fd, "frames_captured=%0d\n", frames_captured);
+                $fclose(fd);
+                $display("[FRC] wrote app/frc_result.txt");
+            end
+        end
+    endtask
 
     // =========================================================================
     // Image player (INPUT_SEL=1 only)

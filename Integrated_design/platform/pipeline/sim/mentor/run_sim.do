@@ -12,11 +12,14 @@ vlog -sv /home/lpt-10xe/altera_pro/25.1.1/quartus/eda/sim_lib/simsf_dpi.cpp
 # Compile IP
 com
 
-# Compile RTL and TB
-vlog /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/../rtl/tb.v
-vlog /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/../rtl/top.v
-vlog /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/../rtl/make_file.v
-vlog /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/../rtl/controller.v
+# Compile RTL and TB.
+# -sv is REQUIRED: make_file.v builds per-frame filenames with $sformatf and a
+# string-returning function, and tb.v uses SystemVerilog constructs. Without it
+# vlog fails with "(vlog-13069) syntax error, unexpected IDENTIFIER".
+vlog -sv /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/../rtl/tb.v
+vlog -sv /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/../rtl/top.v
+vlog -sv /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/../rtl/make_file.v
+vlog -sv /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/../rtl/controller.v
 
 # Elaborate
 set TOP_LEVEL_NAME work.tb

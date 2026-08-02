@@ -250,6 +250,40 @@ class ImageViewerWindow(Gtk.Window):
         self.frc_checkbox = Gtk.CheckButton(label="Enable Frame Rate Conversion")
         self.pip_group_box.pack_start(self.frc_checkbox, False, False, 0)
 
+        # Source / sink frame rates. Only their RATIO matters to the frame
+        # buffer, which is what makes this simulatable: a real 60 fps frame is
+        # 1,666,667 clocks (16.7 ms), and DDR4 calibration alone is 120 us and
+        # already costs ~50 min of wall time - one real 60 fps frame period
+        # would be ~140x that. So these fps numbers are turned into the SMALLEST
+        # frame periods that reproduce the same ratio (the faster side runs flat
+        # out), which gives identical drop/repeat behaviour in minutes instead of
+        # weeks. On hardware the same two numbers map to real cycle counts.
+        #   source > sink  -> DOWN-conversion, frames DROPPED
+        #   source < sink  -> UP-conversion,   frames REPEATED
+        #   source = sink  -> pass-through,    neither
+        for name, key, default in [
+            ("Source frame rate (fps)", "src_fps", 60),
+            ("Sink frame rate (fps)",   "sink_fps", 30),
+        ]:
+            hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+            lbl  = Gtk.Label(label=name)
+            lbl.set_xalign(0)
+            hbox.pack_start(lbl, True, True, 0)
+            adj  = Gtk.Adjustment(value=default, lower=1, upper=240, step_increment=1)
+            spin = Gtk.SpinButton(adjustment=adj, climb_rate=1, digits=0)
+            spin.set_width_chars(6)
+            hbox.pack_end(spin, False, False, 0)
+            self.params[key] = spin
+            self.pip_group_box.pack_start(hbox, False, False, 0)
+
+        self.frc_ratio_label = Gtk.Label(label="")
+        self.frc_ratio_label.set_xalign(0)
+        self.frc_ratio_label.get_style_context().add_class("dim-hint")
+        self.pip_group_box.pack_start(self.frc_ratio_label, False, False, 0)
+        self.params["src_fps"].connect("value-changed", self._on_frc_rates_changed)
+        self.params["sink_fps"].connect("value-changed", self._on_frc_rates_changed)
+        self.frc_checkbox.connect("toggled", self._on_frc_rates_changed)
+
         pip_color_hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
         pip_color_lbl = Gtk.Label(label="Background Color")
         pip_color_lbl.set_xalign(0)
@@ -392,6 +426,7 @@ class ImageViewerWindow(Gtk.Window):
         self._update_topology_ui()
         self._show_source_image(self.radio_image.get_active())
         self._on_pip_toggled(None)
+        self._on_frc_rates_changed(None)
 
     # ?? Topology UI ???????????????????????????????????????????????????????????
 
@@ -409,6 +444,56 @@ class ImageViewerWindow(Gtk.Window):
         if not meta["scl"] and "scale_w" in self.params:
             self.params["scale_w"].set_value(self.params["tpg_w"].get_value())
             self.params["scale_h"].set_value(self.params["tpg_h"].get_value())
+
+    def _frc_cycles(self):
+        """Turn source/sink fps into the cycle counts the RTL actually uses.
+
+        The frame buffer reconciles two rates; only their ratio decides how many
+        frames get dropped or repeated. So scale both periods down until the
+        FASTER side is running flat out (one frame every W*H clocks) and the
+        slower side is stretched by the ratio. That keeps the drop/repeat
+        behaviour identical while keeping the simulated frame period ~1e4 times
+        shorter than a real one.
+
+        Returns (in_gap_cycles, otg_period_cycles, description).
+          in_gap_cycles     -> top.v FRC_IN_GAP_CYCLES  (paces the SOURCE)
+          otg_period_cycles -> top.v otg_period_cycles  (paces the SINK)
+        """
+        try:
+            w = int(self.params["scale_w"].get_value())
+            h = int(self.params["scale_h"].get_value())
+        except Exception:
+            w, h = 0, 0
+        frame_beats = max(1, w * h)
+
+        src  = max(1, int(self.params["src_fps"].get_value()))
+        sink = max(1, int(self.params["sink_fps"].get_value()))
+        fastest = max(src, sink)
+
+        # period scales inversely with rate; fastest side == frame_beats exactly
+        period_in  = int(round(frame_beats * fastest / float(src)))
+        period_out = int(round(frame_beats * fastest / float(sink)))
+
+        in_gap = max(0, period_in - frame_beats)
+        # OTG treats any period <= frame_beats as "no throttling"
+        otg    = 0 if period_out <= frame_beats else period_out
+
+        if src > sink:
+            kind = f"DOWN-conversion: expect ~{(src - sink) / float(src):.0%} of frames DROPPED"
+        elif src < sink:
+            kind = f"UP-conversion: expect ~{(sink - src) / float(sink):.0%} of frames REPEATED"
+        else:
+            kind = "pass-through: expect 0 dropped, 0 repeated"
+        desc = (f"{src}->{sink} fps (ratio {src / float(sink):.3f}) | "
+                f"frame={frame_beats} beats, in_gap={in_gap}, otg_period={otg}\n{kind}")
+        return in_gap, otg, desc
+
+    def _on_frc_rates_changed(self, _widget=None):
+        if not self.frc_checkbox.get_active():
+            self.frc_ratio_label.set_text("(enable FRC to use these rates)")
+            return
+        _, _, desc = self._frc_cycles()
+        self.frc_ratio_label.set_text(desc)
 
     def _get_crs_mode(self):
         # Returns 0, 2, or 3
@@ -578,6 +663,8 @@ class ImageViewerWindow(Gtk.Window):
             "tpg_cs":    self._get_tpg_colorspace(),
             "pip_enabled":  self.pip_checkbox.get_active(),
             "frc_enabled":  self.frc_checkbox.get_active(),
+            "src_fps":      int(self.params["src_fps"].get_value()),
+            "sink_fps":     int(self.params["sink_fps"].get_value()),
             "pip_color":    self._get_pip_color(),
             "pip_position": self._get_pip_position(),
         }
@@ -635,6 +722,8 @@ class ImageViewerWindow(Gtk.Window):
         # Restore PIP settings
         self.pip_checkbox.set_active(data.get("pip_enabled", False))
         self.frc_checkbox.set_active(data.get("frc_enabled", False))
+        self.params["src_fps"].set_value(data.get("src_fps", 60))
+        self.params["sink_fps"].set_value(data.get("sink_fps", 30))
         pip_color = data.get("pip_color", 2)
         if 0 <= pip_color <= 2:
             self.pip_color_combo.set_active(pip_color)
@@ -778,6 +867,9 @@ class ImageViewerWindow(Gtk.Window):
 
             pip_enabled = self.pip_checkbox.get_active()
             frc_enabled = self.frc_checkbox.get_active()
+            frc_in_gap, frc_otg_period, frc_desc = self._frc_cycles()
+            if frc_enabled:
+                print(f"[FRC] {frc_desc}")
             pip_color   = self._get_pip_color()
             pip_pos     = self._get_pip_position()
             has_csc     = meta["csc"]
@@ -855,6 +947,8 @@ class ImageViewerWindow(Gtk.Window):
                 f.write(f"output_format = {output_format}\n")
                 f.write(f"pip_enable = {1 if pip_enabled else 0}\n")
                 f.write(f"frame_rate_conversion = {1 if frc_enabled else 0}\n")
+                f.write(f"source_fps = {int(self.params['src_fps'].get_value())}\n")
+                f.write(f"sink_fps = {int(self.params['sink_fps'].get_value())}\n")
                 f.write(f"pip_bg_color = {pip_color}\n")
                 f.write(f"pip_position = {pip_pos}\n")
                 f.write(f"pip_h_offset = {pip_h_off}\n")
@@ -877,6 +971,10 @@ class ImageViewerWindow(Gtk.Window):
                 f.write(f"parameter VID_PLANES      = {self._get_vid_planes()};\n")
                 f.write(f"parameter PIP_ENABLE      = {1 if pip_enabled else 0};\n")
                 f.write(f"parameter FRC_ENABLE      = {1 if frc_enabled else 0};\n")
+                f.write(f"parameter FRC_SRC_FPS     = {int(self.params['src_fps'].get_value())};\n")
+                f.write(f"parameter FRC_SINK_FPS    = {int(self.params['sink_fps'].get_value())};\n")
+                f.write(f"parameter FRC_IN_GAP      = {frc_in_gap};\n")
+                f.write(f"parameter FRC_OTG_PERIOD  = {frc_otg_period};\n")
                 f.write(f"parameter PIP_BG_COLOR    = {pip_color};\n")
                 f.write(f"parameter PIP_BG_W        = {values['pip_bg_w']};\n")
                 f.write(f"parameter PIP_BG_H        = {values['pip_bg_h']};\n")
@@ -895,6 +993,10 @@ class ImageViewerWindow(Gtk.Window):
                             if line.startswith("SUCCESS"):
                                 print(f"[PNG?HEX] {line}")
 
+                    try:
+                        os.remove(os.path.join(BASE_DIR, "frc_result.txt"))
+                    except OSError:
+                        pass
                     GLib.idle_add(self.status_badge.set_text, f"SIMULATING [{topology}]...")
                     subprocess.run(
                         ["python3", run_project_script, str(is_debugging)],
@@ -902,6 +1004,8 @@ class ImageViewerWindow(Gtk.Window):
                     )
                     subprocess.run(["python3", hex_to_png_script], check=True)
                     GLib.idle_add(self.update_badge_finished, use_image, values)
+                    if frc_enabled:
+                        GLib.idle_add(self.show_frc_result_dialog)
                 except Exception as e:
                     print(f"Pipeline Error: {e}")
                     GLib.idle_add(self.update_badge_error)
@@ -912,6 +1016,96 @@ class ImageViewerWindow(Gtk.Window):
 
         except Exception as e:
             print(f"Save Error: {e}")
+
+
+    # ?? FRC result popup ?????????????????????????????????????????????????????
+    def show_frc_result_dialog(self):
+        """Popup with the frame-rate-conversion verdict and its numbers.
+
+        Reads app/frc_result.txt, written by tb.v at the end of the run. The
+        file is deleted before every run, so its absence means the simulation
+        never reached the measurement window (crash, timeout, or calibration
+        never completing) - which is itself a failure worth reporting rather
+        than silently showing nothing.
+        """
+        path = os.path.join(BASE_DIR, "frc_result.txt")
+        if not os.path.exists(path):
+            self._frc_dialog(
+                False, "Frame Rate Conversion: NO RESULT",
+                "The simulation finished without producing a measurement.\n\n"
+                "app/frc_result.txt was not written, so the run never reached the\n"
+                "FRC measurement window. Usual causes: simulation crashed, the\n"
+                "watchdog fired, or DDR4 calibration never completed.\n\n"
+                "Check the console log for '** Fatal' or 'ERROR: Timeout'.")
+            return
+        r = {}
+        try:
+            for line in open(path):
+                if "=" in line:
+                    k, v = line.strip().split("=", 1)
+                    r[k] = v
+        except Exception as e:
+            self._frc_dialog(False, "Frame Rate Conversion: UNREADABLE",
+                             f"Could not parse app/frc_result.txt:\n{e}")
+            return
+
+        ok = r.get("verdict") == "PASS"
+        src, sink = r.get("src_fps", "?"), r.get("sink_fps", "?")
+        try:
+            ratio = f"{int(src) / int(sink):.3f}"
+        except Exception:
+            ratio = "?"
+        if src != sink:
+            kind = "DOWN-conversion" if int(src) > int(sink) else "UP-conversion"
+        else:
+            kind = "pass-through"
+
+        def mark(key):
+            return "PASS" if r.get(key) == "1" else "FAIL"
+
+        body = (
+            f"{src} -> {sink} fps   (ratio {ratio})   {kind}\n"
+            f"Measured over {r.get('window_frames','?')} output frames\n"
+            f"{'-' * 46}\n"
+            f"Frames written to DDR4      {r.get('d_in','?')}\n"
+            f"Frames DROPPED              {r.get('d_dropped','?')}   "
+            f"(expected ~{r.get('exp_dropped','?')})\n"
+            f"Frames read back out        {r.get('d_out','?')}\n"
+            f"Frames REPEATED             {r.get('d_repeated','?')}   "
+            f"(expected ~{r.get('exp_repeated','?')})\n"
+            f"{'-' * 46}\n"
+            f"Rate applied  {mark('pass_rate')}   requested {r.get('requested_ratio','?')}"
+            f"  achieved {r.get('achieved_ratio','?')}\n"
+            f"Direction     {mark('pass_direction')}\n"
+            f"Magnitude     {mark('pass_magnitude')}\n"
+            f"Invariant     {mark('pass_invariant')}   "
+            f"(in-dropped must equal out-repeated)\n"
+            f"{'-' * 46}\n"
+            f"Frames captured to app/frames/  {r.get('frames_captured','?')}\n"
+            f"Natural frame period {r.get('natural_period','?')} cycles  ->  "
+            f"imposed in={r.get('period_in','?')} out={r.get('period_out','?')}"
+        )
+        self._frc_dialog(ok,
+                         "Frame Rate Conversion: PASS" if ok
+                         else "Frame Rate Conversion: FAIL",
+                         body)
+
+    def _frc_dialog(self, ok, title, body):
+        dlg = Gtk.MessageDialog(
+            transient_for=self, flags=0,
+            message_type=Gtk.MessageType.INFO if ok else Gtk.MessageType.ERROR,
+            buttons=Gtk.ButtonsType.OK, text=title)
+        dlg.format_secondary_text(body)
+        # monospace so the numbers line up
+        for lbl in dlg.get_message_area().get_children():
+            try:
+                lbl.set_selectable(True)
+                if lbl.get_text() == body:
+                    lbl.get_style_context().add_class("frc-mono")
+            except Exception:
+                pass
+        dlg.run()
+        dlg.destroy()
 
     def update_badge_finished(self, used_image, values):
         topo = self._get_topology()
@@ -961,6 +1155,7 @@ class ImageViewerWindow(Gtk.Window):
                            margin-bottom: 5px; }
             .src-radio label { color: #cbd5e1; font-size: 13px; }
             .dim-hint { color: #86efac; font-size: 11px; font-style: italic; }
+        .frc-mono { font-family: monospace; }
             button.apply-button {
                 background-image: none; background-color: #10b981;
                 border-radius: 8px; padding: 12px; margin-top: 10px;

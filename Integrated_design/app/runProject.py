@@ -134,11 +134,14 @@ source msim_setup.tcl
 # Compile IP
 com
 
-# Compile RTL and TB
-vlog {os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'rtl', 'tb.v')}
-vlog {os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'rtl', 'top.v')}
-vlog {os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'rtl', 'make_file.v')}
-vlog {os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'rtl', 'controller.v')}
+# Compile RTL and TB.
+# -sv is REQUIRED: make_file.v builds per-frame filenames with $sformatf and a
+# string-returning function, and tb.v uses SystemVerilog constructs. Without it
+# vlog fails with "(vlog-13069) syntax error, unexpected IDENTIFIER".
+vlog -sv {os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'rtl', 'tb.v')}
+vlog -sv {os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'rtl', 'top.v')}
+vlog -sv {os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'rtl', 'make_file.v')}
+vlog -sv {os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'rtl', 'controller.v')}
 
 # Elaborate
 set TOP_LEVEL_NAME work.tb

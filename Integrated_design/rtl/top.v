@@ -55,7 +55,7 @@
 // =============================================================================
 
 module top #(
-    parameter        TOPOLOGY        = "FULL",
+    parameter        TOPOLOGY        = "SCALER_ONLY",
     parameter [0:0]  INPUT_SEL       = 1'b0,
     parameter [0:0]  ENABLE_PIP      = 1'b0,
 
@@ -68,18 +68,6 @@ module top #(
     // bridge_addr below).
     parameter [0:0]  ENABLE_FRC      = 1'b0,
 
-    // FRC WRITE (input) frame rate control.
-    //
-    // The frame buffer has no rate register - the write rate is simply how fast
-    // complete frames arrive at its input. This inserts FRC_IN_GAP_CYCLES idle
-    // cycles for every frame's worth of accepted input beats, by backpressuring
-    // the source. Frame period therefore becomes:
-    //
-    //     period_cycles = IMG_WIDTH*IMG_HEIGHT + FRC_IN_GAP_CYCLES
-    //     write_fps     = clk_hz / period_cycles
-    //
-    // 0 = no gap = maximum write rate (one frame every W*H cycles).
-    parameter [31:0] FRC_IN_GAP_CYCLES = 32'd0,
 
     parameter [31:0] IMG_WIDTH       = 32'd640,
     parameter [31:0] IMG_HEIGHT      = 32'd480,
@@ -106,11 +94,11 @@ module top #(
     parameter [1:0]  PIP_BG_COLOR   = 2'd2,  // 0=Red, 1=Green, 2=Blue (VPSS R/G/B convention)
 
     // CRS output mode: 0=420, 2=422, 3=444
-    parameter [31:0] CRS_OUTPUT_MODE =                                                                                                                                                                                                                                                     32'd3,
+    parameter [31:0] CRS_OUTPUT_MODE =                                                                                                                                                                                                                                                        32'd3,
 
     // CSC mode: 0=passthrough, 1=RGB->YCbCrHD, 2=YCbCrHD->RGB,
     //           3=RGB->YCbCrSD, 4=YCbCrSD->RGB
-    parameter [2:0]  CSC_MODE =                                                                                                                                                                                                               3'd0,
+    parameter [2:0]  CSC_MODE =                                                                                                                                                                                                                  3'd0,
     parameter [31:0] CSC_COLOR_SPACE = 32'd2,
 	 
 	 
@@ -141,6 +129,22 @@ module top #(
     output reg  [31:0] frc_dropped_fields,
     output reg  [31:0] frc_out_fields,
     output reg  [31:0] frc_repeated_fields,
+
+    // Output frame period in clock cycles, for the output timing generator
+    // below. output_fps = clk_hz / otg_period_cycles. Set 0 to disable
+    // throttling (output runs flat out - the pre-existing behaviour).
+    // Runtime-settable on purpose: drive from a CSR / JTAG-to-Avalon master /
+    // board switches on hardware, or a localparam in simulation.
+    input  wire [31:0] otg_period_cycles,
+
+    // FRC WRITE (input) frame rate control - idle cycles inserted after each
+    // frame's worth of accepted input beats, backpressuring the source.
+    //   input_frame_period = frc_in_period_cycles  (absolute)
+    // A runtime INPUT (not a parameter) for the same reason as
+    // otg_period_cycles: the testbench measures the natural period first and
+    // sets this afterwards, and on hardware it comes from a CSR/JTAG.
+    // 0 = no gap = source runs at its natural maximum rate.
+    input  wire [31:0] frc_in_period_cycles,
 
     output wire [23:0] out_tdata,
     output wire        out_tvalid,
@@ -1530,12 +1534,20 @@ module top #(
                     pc1_write    <= 1'b0;
                     bridge_write <= 1'b0;
                     bridge_read  <= 1'b0;
-                    // FRC: one-shot counter readback when the testbench asks.
-                    // Video keeps flowing throughout (ready_to_start holds
-                    // during the ST_FRC_RD_* states too), so the counters are
-                    // sampled live rather than after the stream has stopped.
+                    // FRC counter readback, RE-ARMABLE so a measurement WINDOW
+                    // can be taken: pulse frc_stats_req, read the snapshot, drop
+                    // the request, run N frames, pulse again. Deltas between the
+                    // two snapshots are what actually prove conversion - absolute
+                    // counts are polluted by startup, because the write side
+                    // auto-runs through DDR4 calibration while the read side
+                    // waits for GO, so the writer legitimately gets ~2 frames
+                    // ahead and the triple buffer sheds one.
+                    // Video keeps flowing throughout (frc_video_phase covers the
+                    // ST_FRC_RD_* states), so counters are sampled live.
                     if (ENABLE_FRC && frc_stats_req && !frc_stats_valid)
                         current_state <= ST_FRC_RD_IN;
+                    else if (!frc_stats_req)
+                        frc_stats_valid <= 1'b0;   // re-arm for the next window
                 end
 
                 default: current_state <= ST_IDLE;
@@ -1604,21 +1616,6 @@ module top #(
     endgenerate
 
     // -------------------------------------------------------------------------
-    // FRC write-rate pacing.
-    //
-    // Backpressures the source for FRC_IN_GAP_CYCLES after every frame's worth
-    // of accepted beats, which is what actually sets the WRITE frame rate.
-    // frc_in_gate is driven from registers only, so gating vid_in_tvalid with it
-    // creates no combinational loop. Mid-frame backpressure is legal AXI4-Stream
-    // and does not produce a "broken field" - it only stretches the frame in
-    // time, which is precisely what a lower frame rate means.
-    // -------------------------------------------------------------------------
-    localparam [31:0] FRC_IN_FRAME_BEATS = IMG_WIDTH * IMG_HEIGHT;
-
-    reg [31:0] frc_in_beats;
-    reg [31:0] frc_in_gap;
-    wire       frc_in_paused = ENABLE_FRC && (FRC_IN_GAP_CYCLES != 32'd0) && (frc_in_gap != 32'd0);
-    wire ready_to_start = ready_to_start_raw && !frc_in_paused;
 
     // =========================================================================
     // Video wires (all 24-bit/3-bit - TPG configured for 444 YCbCr)
@@ -1637,6 +1634,36 @@ module top #(
 
     wire        vid_in_tready;
 
+    // FRC write-rate pacing - PERIOD based, symmetric with the output timing
+    // generator.
+    //
+    // This replaces an earlier ADDITIVE design (natural_period + gap) that was
+    // measurably wrong: the natural frame period is not constant. Throttling the
+    // output reduces DDR4 contention on the write side, so the natural period
+    // shrinks, and a fixed additive gap then lands at the wrong absolute period.
+    // Measured: a requested 2.000 ratio came out as 2.250 because nat fell from
+    // 545 to ~454 cycles once the output was throttled.
+    //
+    // An absolute period is immune to that - one input frame per
+    // frc_in_period_cycles regardless of what the pipeline's natural rate does.
+    // Same SOF-delimited structure as the OTG: open at the period boundary, shut
+    // when a SECOND SOF appears (that frame belongs to the next period).
+    // 0 = no throttling, source runs at its natural maximum rate.
+    // -------------------------------------------------------------------------
+    // raw (pre-gate) source handshake, so the gate cannot feed back on itself
+    wire        src_tvalid_raw = INPUT_SEL ? pc1_tvalid : tpg_tvalid;
+    wire [2:0]  src_tuser_raw  = INPUT_SEL ? pc1_tuser  :
+                                 (TPG_MODE == 32'd2) ? {1'b0, tpg_tuser[1:0]} : tpg_tuser;
+
+    reg  [31:0] frc_in_phase;
+    reg         frc_in_sof_seen;
+    wire        frc_in_enabled = ENABLE_FRC && (frc_in_period_cycles != 32'd0);
+    wire        frc_in_is_sof  = src_tvalid_raw && src_tuser_raw[0];
+    wire        frc_in_hold    = frc_in_sof_seen && frc_in_is_sof;
+    wire        frc_in_allow   = !frc_in_enabled || !frc_in_hold;
+
+    wire ready_to_start = ready_to_start_raw && frc_in_allow;
+
     // Width-generalized video mux. TPG and PC1 sources are always 24-bit; for
     // 2-plane formats (4:2:2 / 4:2:0) the meaningful samples occupy the low 16
     // bits, so a single low-slice to VID_BITS handles every format with no
@@ -1647,29 +1674,27 @@ module top #(
     wire        vid_in_tlast  = INPUT_SEL  ? pc1_tlast  : tpg_tlast;
     wire [2:0]  vid_in_tuser  = INPUT_SEL  ? pc1_tuser  : (TPG_MODE == 32'd2) ? {1'b0,tpg_tuser[1:0]} : tpg_tuser;
 
-    // FRC write-rate pacer state update (declared above; placed here because it
-    // samples the input handshake, which only exists at this point).
-    wire       frc_in_beat   = vid_in_tvalid && vid_in_tready;
-
+    // FRC input pacer state update (samples the gated input handshake).
     always @(posedge clk or posedge reset) begin
         if (reset) begin
-            frc_in_beats <= 32'd0;
-            frc_in_gap   <= 32'd0;
-        end else if (ENABLE_FRC && (FRC_IN_GAP_CYCLES != 32'd0)) begin
-            if (frc_in_gap != 32'd0) begin
-                frc_in_gap <= frc_in_gap - 32'd1;
-            end else if (frc_in_beat) begin
-                if (frc_in_beats >= (FRC_IN_FRAME_BEATS - 32'd1)) begin
-                    frc_in_beats <= 32'd0;
-                    frc_in_gap   <= FRC_IN_GAP_CYCLES;
-                end else begin
-                    frc_in_beats <= frc_in_beats + 32'd1;
-                end
+            frc_in_phase    <= 32'd0;
+            frc_in_sof_seen <= 1'b0;
+        end else if (frc_in_enabled) begin
+            if (frc_in_phase >= (frc_in_period_cycles - 32'd1)) begin
+                frc_in_phase    <= 32'd0;
+                frc_in_sof_seen <= 1'b0;      // new period: release the next frame
+            end else begin
+                frc_in_phase <= frc_in_phase + 32'd1;
+                if (vid_in_tvalid && vid_in_tready && vid_in_tuser[0])
+                    frc_in_sof_seen <= 1'b1;
             end
+        end else begin
+            frc_in_phase    <= 32'd0;
+            frc_in_sof_seen <= 1'b0;
         end
     end
 
-	 
+
     // Output datapath width mirrors the input-side narrowing above: for a
     // 2-plane build (VID_PLANES==2) the packaged pipeline's actual
     // m_axis_video_out ports are genuinely 16-bit/2-bit (not 24-bit/3-bit),
@@ -1686,6 +1711,93 @@ module top #(
     wire [OUT_TUSER_BITS-1:0] pl_out_tuser;
     assign out_tdata = {{(24-OUT_TDATA_BITS){1'b0}}, pl_out_tdata};
     assign out_tuser = {{(3-OUT_TUSER_BITS){1'b0}},  pl_out_tuser};
+    wire pl_out_tvalid;
+    wire pl_out_tlast;
+    wire pl_out_tready;
+
+    // =========================================================================
+    // OUTPUT TIMING GENERATOR (OTG)  -  sets the frame buffer's READ frame rate
+    //
+    // This is the synthesizable replacement for the testbench's old
+    // FRC_OUT_GAP_CYCLES gating of out_tready. It lives in the DESIGN so that
+    // simulation and hardware exercise the same logic.
+    //
+    // Why it is needed at all: the frame buffer has no rate registers, so its
+    // read rate is purely "how fast the sink drains m_axis_video_out". With
+    // nothing throttling that, the read side runs flat out, read rate always
+    // exceeds write rate, and you can only ever observe REPEAT (up-conversion) -
+    // controlled DOWN-conversion is impossible. This block is what makes the
+    // output rate settable, and therefore what makes down-conversion testable
+    // on real hardware and not just in a testbench.
+    //
+    // Model: a free-running frame-period counter plus a per-period beat budget.
+    //   - phase counts 0..otg_period_cycles-1 and wraps  => one frame period
+    //   - at most OTG_FRAME_BEATS output beats are let through per period
+    //   - the gate is then shut for the remainder of the period (blanking)
+    // So:  output_fps = clk_hz / otg_period_cycles
+    //
+    // otg_period_cycles is an INPUT, not a parameter, so the rate is settable at
+    // run time: drive it from a CSR / JTAG-to-Avalon master / switches on
+    // hardware, or straight from a testbench localparam in simulation. A value
+    // of 0 (or anything <= OTG_FRAME_BEATS) disables throttling and the output
+    // runs at maximum rate, which is the pre-existing behaviour.
+    //
+    // The gate blocks tvalid and tready TOGETHER, which is the only safe way to
+    // throttle an AXI4-Stream link - no beat is ever lost or duplicated.
+    // =========================================================================
+    // One frame per period, delimited by Start-Of-Frame (tuser[0]).
+    //
+    // A plain beat budget would be wrong: the payload is SCALER_OUT_W*H beats
+    // but the Full protocol adds a variable-length image-info metapacket, so any
+    // fixed budget either truncates a frame or spills into the next one, leaving
+    // frames straddling period boundaries and stalling mid-frame. Counting SOFs
+    // instead is exact and needs no knowledge of the metapacket length: let beats
+    // through from the start of the period, and shut the gate the moment a SECOND
+    // SOF appears - that is the next frame arriving, and it belongs to the next
+    // period. This mirrors how a display consumes exactly one frame per vertical
+    // period, with the remainder of the period being blanking.
+    //
+    // A frame shorter than the period therefore completes and then waits; a
+    // period shorter than a frame means the gate never shuts and the output runs
+    // at full rate (which is what otg_enabled already guards against).
+    localparam [31:0] OTG_FRAME_BEATS = SCALER_OUT_W * SCALER_OUT_H;
+
+    reg  [31:0] otg_phase;
+    reg         otg_sof_seen;     // a frame has started in this period
+    wire        otg_enabled  = (otg_period_cycles > OTG_FRAME_BEATS);
+
+    // SOF currently being offered by the pipeline
+    wire        otg_is_sof   = pl_out_tvalid && pl_out_tuser[0];
+    // second SOF of the period => start of the NEXT frame => hold it back
+    wire        otg_hold     = otg_sof_seen && otg_is_sof;
+    wire        otg_allow    = !otg_enabled || !otg_hold;
+    wire        otg_accepted = out_tvalid && out_tready;
+
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            otg_phase    <= 32'd0;
+            otg_sof_seen <= 1'b0;
+        end else if (otg_enabled) begin
+            if (otg_phase >= (otg_period_cycles - 32'd1)) begin
+                otg_phase    <= 32'd0;
+                otg_sof_seen <= 1'b0;   // new period: release the next frame
+            end else begin
+                otg_phase <= otg_phase + 32'd1;
+                // latch that this period's frame has begun
+                if (otg_accepted && pl_out_tuser[0])
+                    otg_sof_seen <= 1'b1;
+            end
+        end else begin
+            otg_phase    <= 32'd0;
+            otg_sof_seen <= 1'b0;
+        end
+    end
+
+    // Pipeline-side output handshake, gated by the OTG. Blocking tvalid and
+    // tready together is the only safe way to throttle an AXI4-Stream link.
+    assign out_tvalid    = pl_out_tvalid & otg_allow;
+    assign out_tlast     = pl_out_tlast;
+    assign pl_out_tready = out_tready    & otg_allow;
 
     assign tpg_tready = INPUT_SEL ? 1'b1 : (vid_in_tready & ready_to_start);
     assign pc1_tready = INPUT_SEL ? (vid_in_tready & ready_to_start) : 1'b1;
@@ -1721,9 +1833,9 @@ module top #(
         .s_axis_video_in_tuser  (vid_in_tuser),
 
         .m_axis_video_out_tdata  (pl_out_tdata),
-        .m_axis_video_out_tvalid (out_tvalid),
-        .m_axis_video_out_tready (out_tready),
-        .m_axis_video_out_tlast  (out_tlast),
+        .m_axis_video_out_tvalid (pl_out_tvalid),
+        .m_axis_video_out_tready (pl_out_tready),
+        .m_axis_video_out_tlast  (pl_out_tlast),
         .m_axis_video_out_tuser  (pl_out_tuser),
 
         .axi4s_vid_in_tdata  (pc1_in_tdata),

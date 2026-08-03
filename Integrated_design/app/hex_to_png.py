@@ -137,30 +137,36 @@ def convert_yuv422(input_file, output_file, width, height):
       Even pixels: { 8'b0, Y[7:0], Cb[7:0] }
       Odd  pixels: { 8'b0, Y[7:0], Cr[7:0] }
     Used for: CRS 422 output
+
+    Chroma pairing is reset at the START of every row (not carried over from
+    a flattened word stream). With an odd `width`, pairing across row
+    boundaries shifts the Cb/Cr phase by one word on every subsequent row,
+    corrupting every other output row while leaving the raw capture (and
+    even rows, where the shift happens to cancel out) untouched - confirmed
+    by the fact that adjacent raw capture lines were byte-identical while
+    only alternating rendered rows came out wrong.
     """
     pixel_words = load_and_clean(input_file, width=width)
-    total       = width * height
-    pixels      = []
-    for i in range(0, len(pixel_words), 2):
-        if len(pixels) >= total:
-            break
-        if i + 1 >= len(pixel_words):
-            val0 = int(pixel_words[i], 16)
+    pixels = []
+    for row in range(height):
+        line = pixel_words[row * width : (row + 1) * width]
+        row_pixels = []
+        for i in range(0, width, 2):
+            val0 = int(line[i], 16)
             y0   = (val0 >> 8) & 0xFF
             cb   =  val0       & 0xFF
-            pixels.append(ycbcr_to_rgb(y0, cb, 128))
-            break
-        val0 = int(pixel_words[i],   16)
-        y0   = (val0 >> 8) & 0xFF
-        cb   =  val0       & 0xFF
-        val1 = int(pixel_words[i+1], 16)
-        y1   = (val1 >> 8) & 0xFF
-        cr   =  val1       & 0xFF
-        pixels.append(ycbcr_to_rgb(y0, cb, cr))
-        pixels.append(ycbcr_to_rgb(y1, cb, cr))
-    if len(pixels) < total:
-        pixels += [(0, 0, 0)] * (total - len(pixels))
-    pixels   = pixels[:total]
+            if i + 1 < width:
+                val1 = int(line[i + 1], 16)
+                y1   = (val1 >> 8) & 0xFF
+                cr   =  val1       & 0xFF
+                row_pixels.append(ycbcr_to_rgb(y0, cb, cr))
+                row_pixels.append(ycbcr_to_rgb(y1, cb, cr))
+            else:
+                row_pixels.append(ycbcr_to_rgb(y0, cb, 128))
+        row_pixels = row_pixels[:width]
+        if len(row_pixels) < width:
+            row_pixels += [(0, 0, 0)] * (width - len(row_pixels))
+        pixels.extend(row_pixels)
     bgr_list = [[b, g, r] for r, g, b in pixels]
     bgr      = np.array(bgr_list, dtype=np.uint8).reshape((height, width, 3))
     cv2.imwrite(output_file, bgr)

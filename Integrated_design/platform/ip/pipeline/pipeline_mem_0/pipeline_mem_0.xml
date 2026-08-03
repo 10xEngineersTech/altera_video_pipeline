@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2026.07.30.13:12:14"
- outputDirectory="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/">
+ date="2026.07.31.13:49:18"
+ outputDirectory="/home/izaan-10xe/altera_video_pipeline (copy)/Integrated_design/platform/ip/pipeline/pipeline_mem_0/">
  <perimeter>
   <parameter
      name="AUTO_GENERATION_ID"
@@ -87,26 +87,26 @@
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <generatedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/synth/pipeline_mem_0.v"
+       path="/home/izaan-10xe/altera_video_pipeline (copy)/Integrated_design/platform/ip/pipeline/pipeline_mem_0/synth/pipeline_mem_0.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/synth/pipeline_mem_0.v"
+       path="/home/izaan-10xe/altera_video_pipeline (copy)/Integrated_design/platform/ip/pipeline/pipeline_mem_0/synth/pipeline_mem_0.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0.ip" />
+       path="/home/izaan-10xe/altera_video_pipeline (copy)/Integrated_design/platform/ip/pipeline/pipeline_mem_0.ip" />
   </sourceFiles>
   <childSourceFiles>
    <file
-       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/emif_io96b/ip_mem_model/ddr4/emif_io96b_mem_model_ddr4_hw.tcl" />
+       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/emif_io96b/ip_mem_model/ddr4/emif_io96b_mem_model_ddr4_hw.tcl" />
   </childSourceFiles>
   <messages>
    <message level="Info" culprit="pipeline_mem_0">"Generating: pipeline_mem_0"</message>
    <message level="Info" culprit="pipeline_mem_0">"Generating: altera_emif_ddr4_model_top"</message>
-   <message level="Debug" culprit="mem_0">quartus_synth fileset time: 8.95 ms</message>
+   <message level="Debug" culprit="mem_0">quartus_synth fileset time: 3.00 ms</message>
   </messages>
  </entity>
  <entity
@@ -209,65 +209,65 @@
   <parameter name="MEM_TCK_CL_CWL_MAX_NS" value="0.0" />
   <generatedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddr4_model_top.sv"
+       path="/home/izaan-10xe/altera_video_pipeline (copy)/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddr4_model_top.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model.sv"
+       path="/home/izaan-10xe/altera_video_pipeline (copy)/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddr4_model_db_chip.sv"
+       path="/home/izaan-10xe/altera_video_pipeline (copy)/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddr4_model_db_chip.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddr4_model_rcd_chip.sv"
+       path="/home/izaan-10xe/altera_video_pipeline (copy)/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddr4_model_rcd_chip.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model_bidir_delay.sv"
+       path="/home/izaan-10xe/altera_video_pipeline (copy)/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model_bidir_delay.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model_per_device.sv"
+       path="/home/izaan-10xe/altera_video_pipeline (copy)/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model_per_device.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model_per_ping_pong.sv"
+       path="/home/izaan-10xe/altera_video_pipeline (copy)/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model_per_ping_pong.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model_rank.sv"
+       path="/home/izaan-10xe/altera_video_pipeline (copy)/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model_rank.sv"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddr4_model_top.sv"
+       path="/home/izaan-10xe/altera_video_pipeline (copy)/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddr4_model_top.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model.sv"
+       path="/home/izaan-10xe/altera_video_pipeline (copy)/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddr4_model_db_chip.sv"
+       path="/home/izaan-10xe/altera_video_pipeline (copy)/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddr4_model_db_chip.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddr4_model_rcd_chip.sv"
+       path="/home/izaan-10xe/altera_video_pipeline (copy)/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddr4_model_rcd_chip.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model_bidir_delay.sv"
+       path="/home/izaan-10xe/altera_video_pipeline (copy)/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model_bidir_delay.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model_per_device.sv"
+       path="/home/izaan-10xe/altera_video_pipeline (copy)/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model_per_device.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model_per_ping_pong.sv"
+       path="/home/izaan-10xe/altera_video_pipeline (copy)/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model_per_ping_pong.sv"
        attributes="" />
    <file
-       path="/home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model_rank.sv"
+       path="/home/izaan-10xe/altera_video_pipeline (copy)/Integrated_design/platform/ip/pipeline/pipeline_mem_0/emif_io96b_mem_model_ddr4_100/synth/altera_emif_ddrx_model_rank.sv"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/lpt-10xe/altera_pro/25.1.1/ip/altera/emif_io96b/ip_mem_model/ddr4/emif_io96b_mem_model_ddr4_hw.tcl" />
+       path="/home/izaan-10xe/altera_pro/25.1.1/ip/altera/emif_io96b/ip_mem_model/ddr4/emif_io96b_mem_model_ddr4_hw.tcl" />
   </sourceFiles>
   <childSourceFiles/>
   <instantiator instantiator="pipeline_mem_0" as="mem_0" />
   <messages>
    <message level="Info" culprit="pipeline_mem_0">"Generating: altera_emif_ddr4_model_top"</message>
-   <message level="Debug" culprit="mem_0">quartus_synth fileset time: 8.95 ms</message>
+   <message level="Debug" culprit="mem_0">quartus_synth fileset time: 3.00 ms</message>
   </messages>
  </entity>
 </deploy>

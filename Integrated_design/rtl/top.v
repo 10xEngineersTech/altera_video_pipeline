@@ -106,11 +106,11 @@ module top #(
     parameter [1:0]  PIP_BG_COLOR   = 2'd2,  // 0=Red, 1=Green, 2=Blue (VPSS R/G/B convention)
 
     // CRS output mode: 0=420, 2=422, 3=444
-    parameter [31:0] CRS_OUTPUT_MODE =                                                                                                                                                                                                                                                     32'd3,
+    parameter [31:0] CRS_OUTPUT_MODE =                                                                                                                                                                                                                                                                            32'd2,
 
     // CSC mode: 0=passthrough, 1=RGB->YCbCrHD, 2=YCbCrHD->RGB,
     //           3=RGB->YCbCrSD, 4=YCbCrSD->RGB
-    parameter [2:0]  CSC_MODE =                                                                                                                                                                                                               3'd0,
+    parameter [2:0]  CSC_MODE =                                                                                                                                                                                                                                      3'd0,
     parameter [31:0] CSC_COLOR_SPACE = 32'd2,
 	 
 	 
@@ -405,18 +405,39 @@ module top #(
     // VID_PLANES==2 build only ever has core 0 (locked to 4:2:2, its only
     // possible format). The VID_PLANES==3 build compiles all three chroma
     // formats as separate cores (0=4:4:4, 1=4:2:2, 2=4:2:0) so the runtime-
-    // selected one can always match whatever CRS_OUTPUT_MODE actually is
-    // (assumes CSC stays in passthrough - a build with CSC actively
-    // converting to RGB needs a dedicated RGB-only build instead).
-    localparam [31:0] PIP_BG_CORE_SEL = (VID_PLANES == 32'd2) ? 32'd0 :
-                                         (CRS_OUTPUT_MODE == 32'd0) ? 32'd2 :  // 4:2:0 -> core 2
-                                         (CRS_OUTPUT_MODE == 32'd2) ? 32'd1 :  // 4:2:2 -> core 1
-                                                                       32'd0;  // 4:4:4 -> core 0
+    // selected one can always match the foreground's REAL effective format.
+    //
+    // CRS_OUTPUT_MODE is only meaningful when CRS is actually in the active
+    // topology (DO_CRS) - for CLIP_SCL/SCALER_ONLY/DIL_ONLY (no CRS at all)
+    // it's just whatever value tcl-patching last left behind from an
+    // unrelated test, and blindly trusting it picked the wrong core/format
+    // for the PIP background even though the real foreground was genuinely
+    // whatever TPG_MODE says (confirmed: CLIP_SCL + PIP corrupted exactly
+    // this way with a stale CRS_OUTPUT_MODE=0 while TPG_MODE was 4:4:4).
+    // When CSC is active it always normalizes its output to 4:4:4
+    // regardless of what CRS did upstream, so DO_CSC takes priority over
+    // DO_CRS. TPG_MODE's encoding (1=444,2=422,3=420) differs from
+    // CRS_OUTPUT_MODE's (3=444,2=422,0=420), so it needs its own branch,
+    // not a shared comparison.
+    localparam [31:0] PIP_BG_CORE_SEL =
+        (VID_PLANES == 32'd2) ? 32'd0 :
+        DO_CSC ? 32'd0 :                                  // CSC always -> 4:4:4 -> core 0
+        DO_CRS ? ((CRS_OUTPUT_MODE == 32'd0) ? 32'd2 :     // CRS 4:2:0 -> core 2
+                  (CRS_OUTPUT_MODE == 32'd2) ? 32'd1 :     // CRS 4:2:2 -> core 1
+                                                 32'd0) :   // CRS 4:4:4 -> core 0
+                 ((TPG_MODE == 32'd3) ? 32'd2 :            // no CRS/CSC: TPG 4:2:0 -> core 2
+                  (TPG_MODE == 32'd2) ? 32'd1 :            // no CRS/CSC: TPG 4:2:2 -> core 1
+                                         32'd0);            // no CRS/CSC: TPG 4:4:4/RGB -> core 0
     // The background's own Cb/Cr line-role alternation runs one line out of
     // phase relative to the main video's whenever it's genuine 4:2:0
     // (confirmed by direct capture - see PIP_BG_IS_420 usage below), so C0/
-    // C2 must be swapped specifically for that core.
-    localparam [0:0]  PIP_BG_IS_420 = (VID_PLANES == 32'd3) && (CRS_OUTPUT_MODE == 32'd0);
+    // C2 must be swapped specifically for that core. Same DO_CSC/DO_CRS
+    // priority as PIP_BG_CORE_SEL above, for the same reason.
+    localparam [0:0]  PIP_BG_IS_420 =
+        (VID_PLANES == 32'd3) &&
+        (DO_CSC ? 1'b0 :
+         DO_CRS ? (CRS_OUTPUT_MODE == 32'd0) :
+                  (TPG_MODE == 32'd3));
 
     // Foreground (layer 1) geometry = the pipeline's own actual output frame
     // size. ltf_conv_0 needs this - not the background size - to find line
@@ -543,6 +564,21 @@ module top #(
     // then continues into the VFB GO handshake instead of the background TPG.
     localparam [5:0] POST_TOPOLOGY_STATE = ENABLE_PIP ? ST_CONFIG_MIXER_LITE :
                                            ENABLE_FRC ? ST_CONFIG_LTFCONV_W  : ST_WORKING;
+
+    // ltf_conv_0 (the Lite->Full converter feeding the mixer's layer 1) only
+    // exists in the generated hardware when the topology's own last active
+    // stage produces Lite-mode output (see intel_vvp_pipeline2_hw.tcl's
+    // chain_is_lite: true when DO_SCL, since the scaler's own Lite-mode
+    // checkbox has always been on in every tested build; false for
+    // CRS_CSC/CRS_ONLY/CSC_ONLY/DIL_ONLY, whose own IPs default their Lite-
+    // mode checkboxes off, so they emit native Full-mode video CRS/CSC/DIL
+    // can feed straight into the mixer). Writing to ltf_conv_0's registers
+    // when it was never instantiated (confirmed: DO_SCL=0 topologies +
+    // ENABLE_PIP corrupted the mixer's layer-1 boundary) - skip straight to
+    // configuring the background TPG instead. FRC's own use of ltf_conv_0
+    // (via POST_TOPOLOGY_STATE above) is untouched by this - FRC has always
+    // been run on DO_SCL=1 topologies so far and is out of scope here.
+    localparam [5:0] POST_MIXER_STATE = DO_SCL ? ST_CONFIG_LTFCONV_W : ST_PIPTPG_CTRL_1;
 
     // =========================================================================
     // CSC coefficient ROMs
@@ -967,9 +1003,23 @@ module top #(
                                 pc1_addr      <= PC1_ADDR_WIDTH;
                                 pc1_wdata     <= IMG_WIDTH;
                                 current_state <= ST_CONFIG_PC1;
-                            end else if (DO_CRS) begin
-                                // Combined: no data flowing, CSC applies immediately.
-                                // Skip STATUS poll, go straight to WORKING.
+                            end else if (DO_CRS || ENABLE_PIP) begin
+                                // DO_CRS (CRS_CSC/FULL): no data flowing yet, CSC
+                                // applies immediately - skip the STATUS poll.
+                                // ENABLE_PIP: ready_to_start requires the exact
+                                // ST_WORKING match whenever PIP is active (see the
+                                // gen_rts_csc/gen_rts_crs generate blocks below),
+                                // so no data flows yet here either - and critically,
+                                // waiting for the poll to clear would deadlock
+                                // anyway, since with PIP the real output path is
+                                // CSC -> (not yet configured) Mixer, which can't
+                                // drain CSC's pending frame until it's started,
+                                // which doesn't happen until AFTER this state
+                                // (confirmed: hung forever in ST_POLL_CSC with
+                                // bridge_wait stuck for CSC_ONLY + PIP before this
+                                // fix). Same "no data flowing" justification as
+                                // the DO_CRS case, so skipping here is exactly as
+                                // safe. FRC is NOT included here - out of scope.
                                 current_state <= POST_TOPOLOGY_STATE;
                             end else begin
                                 current_state <= ST_POLL_CSC;
@@ -1130,7 +1180,7 @@ module top #(
                     if (bridge_write && !bridge_wait) begin
                         bridge_write <= 1'b0;
                         if (mixer_lite_mode) begin
-                            current_state <= ST_CONFIG_LTFCONV_W;
+                            current_state <= POST_MIXER_STATE;
                         end else begin
                             bridge_addr   <= MIX_COMMIT;
                             bridge_wdata  <= 32'h1;
@@ -1147,7 +1197,7 @@ module top #(
                         // ST_MIX_COMMIT exactly - it never polls STATUS after
                         // committing, it just moves straight on to configuring
                         // the sources.
-                        current_state <= ST_CONFIG_LTFCONV_W;
+                        current_state <= POST_MIXER_STATE;
                     end
                 end
 
@@ -1486,7 +1536,21 @@ module top #(
                     bridge_wdata <= 32'h1;  // GO
                     if (bridge_write && !bridge_wait) begin
                         bridge_write  <= 1'b0;
-                        current_state <= ST_PIPTPG_POLL_ISS;
+                        // DO_SCL topologies (FULL/SCALER_ONLY/CLIP_SCL) route
+                        // through ltf_conv_0's own GO write before reaching here
+                        // (see POST_MIXER_STATE) - that appears to be what
+                        // actually starts the mixer chain moving, since the poll
+                        // below reliably clears for those. Topologies without a
+                        // scaler never get that kick, and the mixer never starts
+                        // accepting layer0/layer1 data as a result - the pending
+                        // bit polled below then never clears (confirmed: hung
+                        // forever oscillating POLL_ISS/POLL_W for CSC_ONLY + PIP
+                        // before this fix, bridge_readdata[1] stuck at 1). Same
+                        // "fire-and-forget" reasoning already used for
+                        // ST_MIX_COMMIT above - skip the poll and let the GAP
+                        // settling delay do its job instead.
+                        current_state <= DO_SCL ? ST_PIPTPG_POLL_ISS : ST_PIPTPG_GAP;
+                        wait_counter  <= 16'd0;
                     end
                 end
 
@@ -1693,75 +1757,162 @@ module top #(
     // =========================================================================
     // Platform Designer instantiation
     // =========================================================================
-    pipeline u0 (
-        .clk_clk                           (clk),
-        .reset_reset                       (reset),
-        .intel_vvp_pipeline2_0_reset_reset (reset),
+    // Whether the packaged IP actually sitting in platform/ip/pipeline right
+    // now was generated WITH the FRC/EMIF hardware (and therefore exposes an
+    // emif_ref_clk_clk port on the "pipeline" wrapper) is a property of that
+    // specific generated build, not of ENABLE_FRC (a runtime/FSM-behavior
+    // switch - it can be 0 while the port still physically exists, or vice
+    // versa the port can be genuinely absent regardless of ENABLE_FRC's
+    // value, since Verilog port connections are static and not conditioned
+    // on a parameter). Confirmed: this build's generated pipeline.v has no
+    // emif_ref_clk_clk port at all and a 13-bit (not 28-bit) s0_address,
+    // i.e. it was generated without FRC/EMIF included. Flip this to 1'b1
+    // only once the packaged IP is regenerated with FRC/EMIF actually
+    // enabled.
+    localparam HW_HAS_FRC_EMIF = 1'b0;
 
-        // 200 MHz EMIF reference clock. Exported to the boundary by
-        // pipeline.qsys (interface "emif_ref_clk" -> intel_vvp_pipeline2_0
-        // .frc_emif_ref_clk); the DDR4 memory model does NOT supply it.
-        .emif_ref_clk_clk                  (emif_ref_clk),
+    generate
+    if (HW_HAS_FRC_EMIF) begin : gen_pipeline_with_emif
+        pipeline u0 (
+            .clk_clk                           (clk),
+            .reset_reset                       (reset),
+            .intel_vvp_pipeline2_0_reset_reset (reset),
 
-        .s0_address       (bridge_addr),
-        .s0_write         (bridge_write),
-        .s0_read          (bridge_read),
-        .s0_byteenable    (4'hF),
-        .s0_burstcount    (1'b1),
-        .s0_debugaccess   (1'b0),
-        .s0_writedata     (bridge_wdata),
-        .s0_readdata      (bridge_readdata),
-        .s0_readdatavalid (bridge_readdatavalid),
-        .s0_waitrequest   (bridge_wait),
+            // 200 MHz EMIF reference clock. Exported to the boundary by
+            // pipeline.qsys (interface "emif_ref_clk" -> intel_vvp_pipeline2_0
+            // .frc_emif_ref_clk); the DDR4 memory model does NOT supply it.
+            .emif_ref_clk_clk                  (emif_ref_clk),
 
-        .s_axis_video_in_tdata  (vid_in_tdata),
-        .s_axis_video_in_tvalid (vid_in_tvalid),
-        .s_axis_video_in_tready (vid_in_tready),
-        .s_axis_video_in_tlast  (vid_in_tlast),
-        .s_axis_video_in_tuser  (vid_in_tuser),
+            .s0_address       (bridge_addr),
+            .s0_write         (bridge_write),
+            .s0_read          (bridge_read),
+            .s0_byteenable    (4'hF),
+            .s0_burstcount    (1'b1),
+            .s0_debugaccess   (1'b0),
+            .s0_writedata     (bridge_wdata),
+            .s0_readdata      (bridge_readdata),
+            .s0_readdatavalid (bridge_readdatavalid),
+            .s0_waitrequest   (bridge_wait),
 
-        .m_axis_video_out_tdata  (pl_out_tdata),
-        .m_axis_video_out_tvalid (out_tvalid),
-        .m_axis_video_out_tready (out_tready),
-        .m_axis_video_out_tlast  (out_tlast),
-        .m_axis_video_out_tuser  (pl_out_tuser),
+            .s_axis_video_in_tdata  (vid_in_tdata),
+            .s_axis_video_in_tvalid (vid_in_tvalid),
+            .s_axis_video_in_tready (vid_in_tready),
+            .s_axis_video_in_tlast  (vid_in_tlast),
+            .s_axis_video_in_tuser  (vid_in_tuser),
 
-        .axi4s_vid_in_tdata  (pc1_in_tdata),
-        .axi4s_vid_in_tvalid (pc1_in_tvalid),
-        .axi4s_vid_in_tready (pc1_in_tready),
-        .axi4s_vid_in_tlast  (pc1_in_tlast),
-        .axi4s_vid_in_tuser  (pc1_in_tuser),
+            .m_axis_video_out_tdata  (pl_out_tdata),
+            .m_axis_video_out_tvalid (out_tvalid),
+            .m_axis_video_out_tready (out_tready),
+            .m_axis_video_out_tlast  (out_tlast),
+            .m_axis_video_out_tuser  (pl_out_tuser),
 
-        .axi4s_vid_out_1_tdata  (pc1_tdata),
-        .axi4s_vid_out_1_tvalid (pc1_tvalid),
-        .axi4s_vid_out_1_tready (pc1_tready),
-        .axi4s_vid_out_1_tlast  (pc1_tlast),
-        .axi4s_vid_out_1_tuser  (pc1_tuser),
+            .axi4s_vid_in_tdata  (pc1_in_tdata),
+            .axi4s_vid_in_tvalid (pc1_in_tvalid),
+            .axi4s_vid_in_tready (pc1_in_tready),
+            .axi4s_vid_in_tlast  (pc1_in_tlast),
+            .axi4s_vid_in_tuser  (pc1_in_tuser),
 
-        .av_mm_control_agent_address       (pc1_addr),
-        .av_mm_control_agent_write         (pc1_write),
-        .av_mm_control_agent_read          (1'b0),
-        .av_mm_control_agent_byteenable    (4'hF),
-        .av_mm_control_agent_writedata     (pc1_wdata),
-        .av_mm_control_agent_readdata      (pc1_readdata),
-        .av_mm_control_agent_readdatavalid (pc1_readdatavalid),
-        .av_mm_control_agent_waitrequest   (pc1_wait),
+            .axi4s_vid_out_1_tdata  (pc1_tdata),
+            .axi4s_vid_out_1_tvalid (pc1_tvalid),
+            .axi4s_vid_out_1_tready (pc1_tready),
+            .axi4s_vid_out_1_tlast  (pc1_tlast),
+            .axi4s_vid_out_1_tuser  (pc1_tuser),
 
-        .axi4s_vid_out_tdata  (tpg_tdata),
-        .axi4s_vid_out_tvalid (tpg_tvalid),
-        .axi4s_vid_out_tready (tpg_tready),
-        .axi4s_vid_out_tlast  (tpg_tlast),
-        .axi4s_vid_out_tuser  (tpg_tuser),
-		  
-		  // ----- TPG Avalon-MM control (own port) -----
-        .intel_vvp_tpg_1_av_mm_control_agent_address       (tpg_addr),
-        .intel_vvp_tpg_1_av_mm_control_agent_write         (tpg_write),
-        .intel_vvp_tpg_1_av_mm_control_agent_read          (tpg_read),
-        .intel_vvp_tpg_1_av_mm_control_agent_byteenable    (4'hF),
-        .intel_vvp_tpg_1_av_mm_control_agent_writedata     (tpg_wdata),
-        .intel_vvp_tpg_1_av_mm_control_agent_readdata      (tpg_readdata),
-        .intel_vvp_tpg_1_av_mm_control_agent_readdatavalid (tpg_readdatavalid),
-        .intel_vvp_tpg_1_av_mm_control_agent_waitrequest   (tpg_wait)
-    );
+            .av_mm_control_agent_address       (pc1_addr),
+            .av_mm_control_agent_write         (pc1_write),
+            .av_mm_control_agent_read          (1'b0),
+            .av_mm_control_agent_byteenable    (4'hF),
+            .av_mm_control_agent_writedata     (pc1_wdata),
+            .av_mm_control_agent_readdata      (pc1_readdata),
+            .av_mm_control_agent_readdatavalid (pc1_readdatavalid),
+            .av_mm_control_agent_waitrequest   (pc1_wait),
+
+            .axi4s_vid_out_tdata  (tpg_tdata),
+            .axi4s_vid_out_tvalid (tpg_tvalid),
+            .axi4s_vid_out_tready (tpg_tready),
+            .axi4s_vid_out_tlast  (tpg_tlast),
+            .axi4s_vid_out_tuser  (tpg_tuser),
+
+            // ----- TPG Avalon-MM control (own port) -----
+            .intel_vvp_tpg_1_av_mm_control_agent_address       (tpg_addr),
+            .intel_vvp_tpg_1_av_mm_control_agent_write         (tpg_write),
+            .intel_vvp_tpg_1_av_mm_control_agent_read          (tpg_read),
+            .intel_vvp_tpg_1_av_mm_control_agent_byteenable    (4'hF),
+            .intel_vvp_tpg_1_av_mm_control_agent_writedata     (tpg_wdata),
+            .intel_vvp_tpg_1_av_mm_control_agent_readdata      (tpg_readdata),
+            .intel_vvp_tpg_1_av_mm_control_agent_readdatavalid (tpg_readdatavalid),
+            .intel_vvp_tpg_1_av_mm_control_agent_waitrequest   (tpg_wait)
+        );
+    end else begin : gen_pipeline_no_emif
+        // Identical to the block above, minus the emif_ref_clk_clk
+        // connection - for a packaged IP generated without FRC/EMIF, that
+        // port simply does not exist on the "pipeline" module.
+        pipeline u0 (
+            .clk_clk                           (clk),
+            .reset_reset                       (reset),
+            .intel_vvp_pipeline2_0_reset_reset (reset),
+
+            .s0_address       (bridge_addr),
+            .s0_write         (bridge_write),
+            .s0_read          (bridge_read),
+            .s0_byteenable    (4'hF),
+            .s0_burstcount    (1'b1),
+            .s0_debugaccess   (1'b0),
+            .s0_writedata     (bridge_wdata),
+            .s0_readdata      (bridge_readdata),
+            .s0_readdatavalid (bridge_readdatavalid),
+            .s0_waitrequest   (bridge_wait),
+
+            .s_axis_video_in_tdata  (vid_in_tdata),
+            .s_axis_video_in_tvalid (vid_in_tvalid),
+            .s_axis_video_in_tready (vid_in_tready),
+            .s_axis_video_in_tlast  (vid_in_tlast),
+            .s_axis_video_in_tuser  (vid_in_tuser),
+
+            .m_axis_video_out_tdata  (pl_out_tdata),
+            .m_axis_video_out_tvalid (out_tvalid),
+            .m_axis_video_out_tready (out_tready),
+            .m_axis_video_out_tlast  (out_tlast),
+            .m_axis_video_out_tuser  (pl_out_tuser),
+
+            .axi4s_vid_in_tdata  (pc1_in_tdata),
+            .axi4s_vid_in_tvalid (pc1_in_tvalid),
+            .axi4s_vid_in_tready (pc1_in_tready),
+            .axi4s_vid_in_tlast  (pc1_in_tlast),
+            .axi4s_vid_in_tuser  (pc1_in_tuser),
+
+            .axi4s_vid_out_1_tdata  (pc1_tdata),
+            .axi4s_vid_out_1_tvalid (pc1_tvalid),
+            .axi4s_vid_out_1_tready (pc1_tready),
+            .axi4s_vid_out_1_tlast  (pc1_tlast),
+            .axi4s_vid_out_1_tuser  (pc1_tuser),
+
+            .av_mm_control_agent_address       (pc1_addr),
+            .av_mm_control_agent_write         (pc1_write),
+            .av_mm_control_agent_read          (1'b0),
+            .av_mm_control_agent_byteenable    (4'hF),
+            .av_mm_control_agent_writedata     (pc1_wdata),
+            .av_mm_control_agent_readdata      (pc1_readdata),
+            .av_mm_control_agent_readdatavalid (pc1_readdatavalid),
+            .av_mm_control_agent_waitrequest   (pc1_wait),
+
+            .axi4s_vid_out_tdata  (tpg_tdata),
+            .axi4s_vid_out_tvalid (tpg_tvalid),
+            .axi4s_vid_out_tready (tpg_tready),
+            .axi4s_vid_out_tlast  (tpg_tlast),
+            .axi4s_vid_out_tuser  (tpg_tuser),
+
+            // ----- TPG Avalon-MM control (own port) -----
+            .intel_vvp_tpg_1_av_mm_control_agent_address       (tpg_addr),
+            .intel_vvp_tpg_1_av_mm_control_agent_write         (tpg_write),
+            .intel_vvp_tpg_1_av_mm_control_agent_read          (tpg_read),
+            .intel_vvp_tpg_1_av_mm_control_agent_byteenable    (4'hF),
+            .intel_vvp_tpg_1_av_mm_control_agent_writedata     (tpg_wdata),
+            .intel_vvp_tpg_1_av_mm_control_agent_readdata      (tpg_readdata),
+            .intel_vvp_tpg_1_av_mm_control_agent_readdatavalid (tpg_readdatavalid),
+            .intel_vvp_tpg_1_av_mm_control_agent_waitrequest   (tpg_wait)
+        );
+    end
+    endgenerate
 
 endmodule

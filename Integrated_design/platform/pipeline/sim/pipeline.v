@@ -11,7 +11,7 @@ module pipeline (
 		output wire        s0_readdatavalid,                                  //                                    .readdatavalid
 		input  wire [0:0]  s0_burstcount,                                     //                                    .burstcount
 		input  wire [31:0] s0_writedata,                                      //                                    .writedata
-		input  wire [27:0] s0_address,                                        //                                    .address
+		input  wire [12:0] s0_address,                                        //                                    .address
 		input  wire        s0_write,                                          //                                    .write
 		input  wire        s0_read,                                           //                                    .read
 		input  wire [3:0]  s0_byteenable,                                     //                                    .byteenable
@@ -21,12 +21,11 @@ module pipeline (
 		output wire        s_axis_video_in_tready,                            //                                    .tready
 		input  wire        s_axis_video_in_tlast,                             //                                    .tlast
 		input  wire [2:0]  s_axis_video_in_tuser,                             //                                    .tuser
-		output wire [23:0] m_axis_video_out_tdata,                            //                    m_axis_video_out.tdata
+		output wire [15:0] m_axis_video_out_tdata,                            //                    m_axis_video_out.tdata
 		output wire        m_axis_video_out_tvalid,                           //                                    .tvalid
 		input  wire        m_axis_video_out_tready,                           //                                    .tready
 		output wire        m_axis_video_out_tlast,                            //                                    .tlast
-		output wire [2:0]  m_axis_video_out_tuser,                            //                                    .tuser
-		input  wire        emif_ref_clk_clk,                                  //                        emif_ref_clk.clk
+		output wire [1:0]  m_axis_video_out_tuser,                            //                                    .tuser
 		input  wire [23:0] axi4s_vid_in_tdata,                                //                        axi4s_vid_in.tdata
 		input  wire        axi4s_vid_in_tvalid,                               //                                    .tvalid
 		output wire        axi4s_vid_in_tready,                               //                                    .tready
@@ -61,25 +60,9 @@ module pipeline (
 		input  wire        reset_reset                                        //                               reset.reset
 	);
 
-	wire         clock_in_out_clk_clk;                                   // clock_in:out_clk -> [intel_vvp_pipeline2_0:clk_clk, intel_vvp_protocol_conv_0:main_clock_clk, intel_vvp_tpg_1:main_clock_clk, reset_in:clk, rst_controller:clk]
-	wire   [3:0] intel_vvp_pipeline2_0_frc_emif_mem_mem_dqs_t;           // [] -> [intel_vvp_pipeline2_0:frc_emif_mem_mem_dqs_t, mem_0:mem_dqs_t_0]
-	wire   [3:0] intel_vvp_pipeline2_0_frc_emif_mem_mem_dqs_c;           // [] -> [intel_vvp_pipeline2_0:frc_emif_mem_mem_dqs_c, mem_0:mem_dqs_c_0]
-	wire         intel_vvp_pipeline2_0_frc_emif_mem_mem_act_n;           // intel_vvp_pipeline2_0:frc_emif_mem_mem_act_n -> mem_0:mem_act_n_0
-	wire  [31:0] intel_vvp_pipeline2_0_frc_emif_mem_mem_dq;              // [] -> [intel_vvp_pipeline2_0:frc_emif_mem_mem_dq, mem_0:mem_dq_0]
-	wire   [0:0] intel_vvp_pipeline2_0_frc_emif_mem_mem_cs_n;            // intel_vvp_pipeline2_0:frc_emif_mem_mem_cs_n -> mem_0:mem_cs_n_0
-	wire   [0:0] intel_vvp_pipeline2_0_frc_emif_mem_mem_odt;             // intel_vvp_pipeline2_0:frc_emif_mem_mem_odt -> mem_0:mem_odt_0
-	wire  [16:0] intel_vvp_pipeline2_0_frc_emif_mem_mem_a;               // intel_vvp_pipeline2_0:frc_emif_mem_mem_a -> mem_0:mem_a_0
-	wire         mem_0_mem_0_mem_alert_n;                                // mem_0:mem_alert_n_0 -> intel_vvp_pipeline2_0:frc_emif_mem_mem_alert_n
-	wire         intel_vvp_pipeline2_0_frc_emif_mem_mem_par;             // intel_vvp_pipeline2_0:frc_emif_mem_mem_par -> mem_0:mem_par_0
-	wire   [1:0] intel_vvp_pipeline2_0_frc_emif_mem_mem_ba;              // intel_vvp_pipeline2_0:frc_emif_mem_mem_ba -> mem_0:mem_ba_0
-	wire   [0:0] intel_vvp_pipeline2_0_frc_emif_mem_mem_bg;              // intel_vvp_pipeline2_0:frc_emif_mem_mem_bg -> mem_0:mem_bg_0
-	wire   [0:0] intel_vvp_pipeline2_0_frc_emif_mem_mem_cke;             // intel_vvp_pipeline2_0:frc_emif_mem_mem_cke -> mem_0:mem_cke_0
-	wire   [0:0] intel_vvp_pipeline2_0_frc_emif_mem_ck_mem_ck_t;         // intel_vvp_pipeline2_0:frc_emif_mem_ck_mem_ck_t -> mem_0:mem_ck_t_0
-	wire   [0:0] intel_vvp_pipeline2_0_frc_emif_mem_ck_mem_ck_c;         // intel_vvp_pipeline2_0:frc_emif_mem_ck_mem_ck_c -> mem_0:mem_ck_c_0
-	wire         intel_vvp_pipeline2_0_frc_emif_mem_reset_n_mem_reset_n; // intel_vvp_pipeline2_0:frc_emif_mem_reset_n_mem_reset_n -> mem_0:mem_reset_n_0
-	wire         mem_0_oct_0_oct_rzqin;                                  // mem_0:oct_rzqin_0 -> intel_vvp_pipeline2_0:frc_emif_oct_oct_rzqin
-	wire         rst_controller_reset_out_reset;                         // rst_controller:reset_out -> [intel_vvp_protocol_conv_0:main_reset_reset, intel_vvp_tpg_1:main_reset_reset]
-	wire         reset_in_out_reset_reset;                               // reset_in:out_reset -> rst_controller:reset_in0
+	wire    clock_in_out_clk_clk;           // clock_in:out_clk -> [intel_vvp_pipeline2_0:clk_clk, intel_vvp_protocol_conv_0:main_clock_clk, intel_vvp_tpg_1:main_clock_clk, reset_in:clk, rst_controller:clk]
+	wire    rst_controller_reset_out_reset; // rst_controller:reset_out -> [intel_vvp_protocol_conv_0:main_reset_reset, intel_vvp_tpg_1:main_reset_reset]
+	wire    reset_in_out_reset_reset;       // reset_in:out_reset -> rst_controller:reset_in0
 
 	pipeline_clock_in clock_in (
 		.in_clk  (clk_clk),              //   input,  width = 1,  in_clk.clk
@@ -87,45 +70,28 @@ module pipeline (
 	);
 
 	pipeline_intel_vvp_pipeline2_0 intel_vvp_pipeline2_0 (
-		.clk_clk                          (clock_in_out_clk_clk),                                   //   input,   width = 1,                  clk.clk
-		.reset_reset                      (intel_vvp_pipeline2_0_reset_reset),                      //   input,   width = 1,                reset.reset
-		.s0_waitrequest                   (s0_waitrequest),                                         //  output,   width = 1,                   s0.waitrequest
-		.s0_readdata                      (s0_readdata),                                            //  output,  width = 32,                     .readdata
-		.s0_readdatavalid                 (s0_readdatavalid),                                       //  output,   width = 1,                     .readdatavalid
-		.s0_burstcount                    (s0_burstcount),                                          //   input,   width = 1,                     .burstcount
-		.s0_writedata                     (s0_writedata),                                           //   input,  width = 32,                     .writedata
-		.s0_address                       (s0_address),                                             //   input,  width = 28,                     .address
-		.s0_write                         (s0_write),                                               //   input,   width = 1,                     .write
-		.s0_read                          (s0_read),                                                //   input,   width = 1,                     .read
-		.s0_byteenable                    (s0_byteenable),                                          //   input,   width = 4,                     .byteenable
-		.s0_debugaccess                   (s0_debugaccess),                                         //   input,   width = 1,                     .debugaccess
-		.s_axis_video_in_tdata            (s_axis_video_in_tdata),                                  //   input,  width = 24,      s_axis_video_in.tdata
-		.s_axis_video_in_tvalid           (s_axis_video_in_tvalid),                                 //   input,   width = 1,                     .tvalid
-		.s_axis_video_in_tready           (s_axis_video_in_tready),                                 //  output,   width = 1,                     .tready
-		.s_axis_video_in_tlast            (s_axis_video_in_tlast),                                  //   input,   width = 1,                     .tlast
-		.s_axis_video_in_tuser            (s_axis_video_in_tuser),                                  //   input,   width = 3,                     .tuser
-		.m_axis_video_out_tdata           (m_axis_video_out_tdata),                                 //  output,  width = 24,     m_axis_video_out.tdata
-		.m_axis_video_out_tvalid          (m_axis_video_out_tvalid),                                //  output,   width = 1,                     .tvalid
-		.m_axis_video_out_tready          (m_axis_video_out_tready),                                //   input,   width = 1,                     .tready
-		.m_axis_video_out_tlast           (m_axis_video_out_tlast),                                 //  output,   width = 1,                     .tlast
-		.m_axis_video_out_tuser           (m_axis_video_out_tuser),                                 //  output,   width = 3,                     .tuser
-		.frc_emif_mem_mem_cke             (intel_vvp_pipeline2_0_frc_emif_mem_mem_cke),             //  output,   width = 1,         frc_emif_mem.mem_cke
-		.frc_emif_mem_mem_odt             (intel_vvp_pipeline2_0_frc_emif_mem_mem_odt),             //  output,   width = 1,                     .mem_odt
-		.frc_emif_mem_mem_cs_n            (intel_vvp_pipeline2_0_frc_emif_mem_mem_cs_n),            //  output,   width = 1,                     .mem_cs_n
-		.frc_emif_mem_mem_a               (intel_vvp_pipeline2_0_frc_emif_mem_mem_a),               //  output,  width = 17,                     .mem_a
-		.frc_emif_mem_mem_ba              (intel_vvp_pipeline2_0_frc_emif_mem_mem_ba),              //  output,   width = 2,                     .mem_ba
-		.frc_emif_mem_mem_bg              (intel_vvp_pipeline2_0_frc_emif_mem_mem_bg),              //  output,   width = 1,                     .mem_bg
-		.frc_emif_mem_mem_act_n           (intel_vvp_pipeline2_0_frc_emif_mem_mem_act_n),           //  output,   width = 1,                     .mem_act_n
-		.frc_emif_mem_mem_par             (intel_vvp_pipeline2_0_frc_emif_mem_mem_par),             //  output,   width = 1,                     .mem_par
-		.frc_emif_mem_mem_dq              (intel_vvp_pipeline2_0_frc_emif_mem_mem_dq),              //   inout,  width = 32,                     .mem_dq
-		.frc_emif_mem_mem_dqs_t           (intel_vvp_pipeline2_0_frc_emif_mem_mem_dqs_t),           //   inout,   width = 4,                     .mem_dqs_t
-		.frc_emif_mem_mem_dqs_c           (intel_vvp_pipeline2_0_frc_emif_mem_mem_dqs_c),           //   inout,   width = 4,                     .mem_dqs_c
-		.frc_emif_mem_mem_alert_n         (mem_0_mem_0_mem_alert_n),                                //   input,   width = 1,                     .mem_alert_n
-		.frc_emif_mem_ck_mem_ck_t         (intel_vvp_pipeline2_0_frc_emif_mem_ck_mem_ck_t),         //  output,   width = 1,      frc_emif_mem_ck.mem_ck_t
-		.frc_emif_mem_ck_mem_ck_c         (intel_vvp_pipeline2_0_frc_emif_mem_ck_mem_ck_c),         //  output,   width = 1,                     .mem_ck_c
-		.frc_emif_mem_reset_n_mem_reset_n (intel_vvp_pipeline2_0_frc_emif_mem_reset_n_mem_reset_n), //  output,   width = 1, frc_emif_mem_reset_n.mem_reset_n
-		.frc_emif_oct_oct_rzqin           (mem_0_oct_0_oct_rzqin),                                  //   input,   width = 1,         frc_emif_oct.oct_rzqin
-		.frc_emif_ref_clk_clk             (emif_ref_clk_clk)                                        //   input,   width = 1,     frc_emif_ref_clk.clk
+		.clk_clk                 (clock_in_out_clk_clk),              //   input,   width = 1,              clk.clk
+		.reset_reset             (intel_vvp_pipeline2_0_reset_reset), //   input,   width = 1,            reset.reset
+		.s0_waitrequest          (s0_waitrequest),                    //  output,   width = 1,               s0.waitrequest
+		.s0_readdata             (s0_readdata),                       //  output,  width = 32,                 .readdata
+		.s0_readdatavalid        (s0_readdatavalid),                  //  output,   width = 1,                 .readdatavalid
+		.s0_burstcount           (s0_burstcount),                     //   input,   width = 1,                 .burstcount
+		.s0_writedata            (s0_writedata),                      //   input,  width = 32,                 .writedata
+		.s0_address              (s0_address),                        //   input,  width = 13,                 .address
+		.s0_write                (s0_write),                          //   input,   width = 1,                 .write
+		.s0_read                 (s0_read),                           //   input,   width = 1,                 .read
+		.s0_byteenable           (s0_byteenable),                     //   input,   width = 4,                 .byteenable
+		.s0_debugaccess          (s0_debugaccess),                    //   input,   width = 1,                 .debugaccess
+		.s_axis_video_in_tdata   (s_axis_video_in_tdata),             //   input,  width = 24,  s_axis_video_in.tdata
+		.s_axis_video_in_tvalid  (s_axis_video_in_tvalid),            //   input,   width = 1,                 .tvalid
+		.s_axis_video_in_tready  (s_axis_video_in_tready),            //  output,   width = 1,                 .tready
+		.s_axis_video_in_tlast   (s_axis_video_in_tlast),             //   input,   width = 1,                 .tlast
+		.s_axis_video_in_tuser   (s_axis_video_in_tuser),             //   input,   width = 3,                 .tuser
+		.m_axis_video_out_tdata  (m_axis_video_out_tdata),            //  output,  width = 16, m_axis_video_out.tdata
+		.m_axis_video_out_tvalid (m_axis_video_out_tvalid),           //  output,   width = 1,                 .tvalid
+		.m_axis_video_out_tready (m_axis_video_out_tready),           //   input,   width = 1,                 .tready
+		.m_axis_video_out_tlast  (m_axis_video_out_tlast),            //  output,   width = 1,                 .tlast
+		.m_axis_video_out_tuser  (m_axis_video_out_tuser)             //  output,   width = 2,                 .tuser
 	);
 
 	pipeline_intel_vvp_protocol_conv_0 intel_vvp_protocol_conv_0 (
@@ -170,22 +136,22 @@ module pipeline (
 	);
 
 	pipeline_mem_0 mem_0 (
-		.mem_cke_0     (intel_vvp_pipeline2_0_frc_emif_mem_mem_cke),             //   input,   width = 1,       mem_0.mem_cke
-		.mem_odt_0     (intel_vvp_pipeline2_0_frc_emif_mem_mem_odt),             //   input,   width = 1,            .mem_odt
-		.mem_cs_n_0    (intel_vvp_pipeline2_0_frc_emif_mem_mem_cs_n),            //   input,   width = 1,            .mem_cs_n
-		.mem_a_0       (intel_vvp_pipeline2_0_frc_emif_mem_mem_a),               //   input,  width = 17,            .mem_a
-		.mem_ba_0      (intel_vvp_pipeline2_0_frc_emif_mem_mem_ba),              //   input,   width = 2,            .mem_ba
-		.mem_bg_0      (intel_vvp_pipeline2_0_frc_emif_mem_mem_bg),              //   input,   width = 1,            .mem_bg
-		.mem_act_n_0   (intel_vvp_pipeline2_0_frc_emif_mem_mem_act_n),           //   input,   width = 1,            .mem_act_n
-		.mem_par_0     (intel_vvp_pipeline2_0_frc_emif_mem_mem_par),             //   input,   width = 1,            .mem_par
-		.mem_dq_0      (intel_vvp_pipeline2_0_frc_emif_mem_mem_dq),              //   inout,  width = 32,            .mem_dq
-		.mem_dqs_t_0   (intel_vvp_pipeline2_0_frc_emif_mem_mem_dqs_t),           //   inout,   width = 4,            .mem_dqs_t
-		.mem_dqs_c_0   (intel_vvp_pipeline2_0_frc_emif_mem_mem_dqs_c),           //   inout,   width = 4,            .mem_dqs_c
-		.mem_alert_n_0 (mem_0_mem_0_mem_alert_n),                                //  output,   width = 1,            .mem_alert_n
-		.mem_ck_t_0    (intel_vvp_pipeline2_0_frc_emif_mem_ck_mem_ck_t),         //   input,   width = 1,    mem_ck_0.mem_ck_t
-		.mem_ck_c_0    (intel_vvp_pipeline2_0_frc_emif_mem_ck_mem_ck_c),         //   input,   width = 1,            .mem_ck_c
-		.mem_reset_n_0 (intel_vvp_pipeline2_0_frc_emif_mem_reset_n_mem_reset_n), //   input,   width = 1, mem_reset_n.mem_reset_n
-		.oct_rzqin_0   (mem_0_oct_0_oct_rzqin)                                   //  output,   width = 1,       oct_0.oct_rzqin
+		.mem_cke_0     (), //   input,   width = 1,       mem_0.mem_cke
+		.mem_odt_0     (), //   input,   width = 1,            .mem_odt
+		.mem_cs_n_0    (), //   input,   width = 1,            .mem_cs_n
+		.mem_a_0       (), //   input,  width = 17,            .mem_a
+		.mem_ba_0      (), //   input,   width = 2,            .mem_ba
+		.mem_bg_0      (), //   input,   width = 1,            .mem_bg
+		.mem_act_n_0   (), //   input,   width = 1,            .mem_act_n
+		.mem_par_0     (), //   input,   width = 1,            .mem_par
+		.mem_dq_0      (), //   inout,  width = 32,            .mem_dq
+		.mem_dqs_t_0   (), //   inout,   width = 4,            .mem_dqs_t
+		.mem_dqs_c_0   (), //   inout,   width = 4,            .mem_dqs_c
+		.mem_alert_n_0 (), //  output,   width = 1,            .mem_alert_n
+		.mem_ck_t_0    (), //   input,   width = 1,    mem_ck_0.mem_ck_t
+		.mem_ck_c_0    (), //   input,   width = 1,            .mem_ck_c
+		.mem_reset_n_0 (), //   input,   width = 1, mem_reset_n.mem_reset_n
+		.oct_rzqin_0   ()  //  output,   width = 1,       oct_0.oct_rzqin
 	);
 
 	pipeline_reset_in reset_in (

@@ -27,7 +27,7 @@ module tb();
     // "FULL" makes the FSM write to 0x200/0x400/0x600 and, worse, poll CRS
     // STATUS at 0x340 - an unmapped read never returns readdatavalid, so the
     // FSM hangs in the poll forever.
-    localparam TOPOLOGY    = "SCALER_ONLY";   // FULL/SCALER_ONLY/CSC_ONLY/CRS_ONLY/CRS_CSC/CLIP_SCL/DIL_ONLY
+    localparam TOPOLOGY    = "FULL";   // FULL/SCALER_ONLY/CSC_ONLY/CRS_ONLY/CRS_CSC/CLIP_SCL/DIL_ONLY
     localparam ENABLE_PIP  = PIP_ENABLE;      // from configuration.vh (GUI-controlled)
     localparam ENABLE_FRC  = FRC_ENABLE;      // from configuration.vh (GUI-controlled)
 

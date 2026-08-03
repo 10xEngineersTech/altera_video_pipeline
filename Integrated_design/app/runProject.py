@@ -124,10 +124,10 @@ else:
 
 tcl_commands = f"""
 # Move to sim directory
-cd {sim_path}
+cd {{{sim_path}}}
 
 # Setup and Compile IP
-set QUARTUS_INSTALL_DIR {QUARTUS_INSTALL_DIR}
+set QUARTUS_INSTALL_DIR {{{QUARTUS_INSTALL_DIR}}}
 source msim_setup.tcl
 
 {dev_com_block}
@@ -135,10 +135,14 @@ source msim_setup.tcl
 com
 
 # Compile RTL and TB
-vlog {os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'rtl', 'tb.v')}
-vlog {os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'rtl', 'top.v')}
-vlog {os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'rtl', 'make_file.v')}
-vlog {os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'rtl', 'controller.v')}
+# Paths are Tcl-brace-quoted: the containing folder can legally have spaces/
+# parens in its name (e.g. "altera_video_pipeline (copy)"), which otherwise
+# splits an unquoted path into multiple words and breaks every command that
+# takes a single path argument (cd, vlog, ...).
+vlog {{{os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'rtl', 'tb.v')}}}
+vlog {{{os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'rtl', 'top.v')}}}
+vlog {{{os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'rtl', 'make_file.v')}}}
+vlog {{{os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'rtl', 'controller.v')}}}
 
 # Elaborate
 set TOP_LEVEL_NAME work.tb

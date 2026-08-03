@@ -812,6 +812,17 @@ class ImageViewerWindow(Gtk.Window):
                 output_format = self._get_output_format()
 
             # Inset position within the background canvas.
+            # Chroma-subsampled (4:2:2/4:2:0) data shares Cb/Cr across column/
+            # line PAIRS anchored to absolute position in the composited
+            # output - an odd inset offset shifts that pairing phase for the
+            # whole foreground region, corrupting it exactly like an odd
+            # CLIPPER_LEFT/RIGHT does (confirmed: max_h_off // 2 landing on an
+            # odd number was already enough to trigger it, with no odd value
+            # ever entered directly). Round down to even everywhere an offset
+            # is produced - harmless no-op for 4:4:4/RGB, required for 4:2:2/
+            # 4:2:0.
+            def _even(n):
+                return n - (n % 2)
             max_h_off = max(0, values["pip_bg_w"] - out_w)
             max_v_off = max(0, values["pip_bg_h"] - out_h)
             if pip_pos == "custom":
@@ -827,6 +838,7 @@ class ImageViewerWindow(Gtk.Window):
                 pip_h_off, pip_v_off = max_h_off, max_v_off
             else:  # center
                 pip_h_off, pip_v_off = max_h_off // 2, max_v_off // 2
+            pip_h_off, pip_v_off = _even(pip_h_off), _even(pip_v_off)
 
             # Note: the mixer's one-time settling artifact on the first row it
             # composites in a field is now handled transparently in tb.v (a

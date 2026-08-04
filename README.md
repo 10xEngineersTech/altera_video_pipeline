@@ -3,6 +3,12 @@
 A reconfigurable video processing pipeline built from Intel/Altera VVP IPs that replicates the
 functionality of AMD's Video Processing Subsystem (VPSS) IP.
 
+The end product is a **single packaged Platform Designer IP called `A-VPSS`** (Altera Video
+Processing Subsystem). Instead of wiring up the individual VVP IPs
+yourself, you instantiate this one IP: it carries the whole processing chain inside it, and exposes one Avalon-MM port through which every stage is configured.
+In this repository it is generated as `intel_vvp_pipeline2` — see
+[packaged_ip/](packaged_ip/intel_vvp_pipeline2/).
+
 Everything is driven from a **desktop GUI**: pick a pipeline topology, set the video parameters,
 press *Run Simulation*, and the app generates the RTL configuration, runs QuestaSim, and renders
 the captured output frame as a PNG.
@@ -10,12 +16,12 @@ the captured output frame as a PNG.
 | | |
 | :--- | :--- |
 | | |
-| :--- | :--- |
+| Headers | Explaination |
 | **Topologies** | 7 selectable datapaths:<br/>`DIL_ONLY` — Deinterlacer<br/>`CRS_ONLY` — Chroma Resampler<br/>`CSC_ONLY` — Color Space Converter<br/>`CRS_CSC` — Chroma Resampler → Color Space Converter<br/>`SCALER_ONLY` — Protocol Converter (Full→Lite) → Scaler<br/>`CLIP_SCL` — Clipper → Protocol Converter (Full→Lite) → Scaler<br/>`FULL` — Deinterlacer → Chroma Resampler → Color Space Converter → Clipper → Protocol Converter (Full→Lite) → Scaler |
 | **Picture-in-Picture (PiP)** | Can be switched on with any topology. A second TPG draws a plain background picture, and the Mixer places the pipeline video on top of it as a smaller window. You choose the background size, its color, and where the small video sits |
 | **Frame Rate Conversion (FRC)** | Can be switched on with any topology. Each frame is stored in external DDR4 memory through the Frame Buffer and then read back out. If the write and read speeds differ, the Frame Buffer either drops frames or repeats them — and it counts both, so you can see exactly what happened |
 | **IPs integrated** | TPG, Deinterlacer, Chroma Resampler, Color Space Converter, Clipper, Protocol Converters, Scaler, Mixer (PiP), Video Frame Buffer + DDR4 EMIF |
-| **Verification** | End-to-end image-level comparison, plus 9 standalone per-IP testbenches |
+| **Validation** | End-to-end image-level comparison, plus 9 standalone per-IP testbenches |
 | **Target** | Agilex 5 (`A5ED065BB32AE6SR0`), simulation-only flow |
 
 Validated so far: PiP with `FULL` mode, FRC (DDR4 memory model) with `SCALER_ONLY`. The

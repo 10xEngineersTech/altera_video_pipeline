@@ -1,0 +1,178 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+*/
+(header "symbol" (version "1.1"))
+(symbol
+	(rect 0 0 320 568)
+	(text "pipeline_mem_0" (rect 107 0 171 12)(font "SansSerif" (font_size 11)))
+	(text "inst" (rect 8 552 20 564)(font "Arial" ))
+	(port
+		(pt 0 76)
+		(input)
+		(text "mem_cke_0" (rect 0 0 51 12)(font "SansSerif" (font_size 8)))
+		(text "mem_cke_0" (rect 4 65 58 76)(font "SansSerif" (font_size 8)))
+		(line (pt 0 76)(pt 119 76)(line_width 1))
+	)
+	(port
+		(pt 0 101)
+		(input)
+		(text "mem_odt_0" (rect 0 0 49 12)(font "SansSerif" (font_size 8)))
+		(text "mem_odt_0" (rect 4 90 58 101)(font "SansSerif" (font_size 8)))
+		(line (pt 0 101)(pt 119 101)(line_width 1))
+	)
+	(port
+		(pt 0 126)
+		(input)
+		(text "mem_cs_n_0" (rect 0 0 57 12)(font "SansSerif" (font_size 8)))
+		(text "mem_cs_n_0" (rect 4 115 64 126)(font "SansSerif" (font_size 8)))
+		(line (pt 0 126)(pt 119 126)(line_width 1))
+	)
+	(port
+		(pt 0 151)
+		(input)
+		(text "mem_a_0[16..0]" (rect 0 0 66 12)(font "SansSerif" (font_size 8)))
+		(text "mem_a_0[16..0]" (rect 4 140 88 151)(font "SansSerif" (font_size 8)))
+		(line (pt 0 151)(pt 119 151)(line_width 3))
+	)
+	(port
+		(pt 0 176)
+		(input)
+		(text "mem_ba_0[1..0]" (rect 0 0 66 12)(font "SansSerif" (font_size 8)))
+		(text "mem_ba_0[1..0]" (rect 4 165 88 176)(font "SansSerif" (font_size 8)))
+		(line (pt 0 176)(pt 119 176)(line_width 3))
+	)
+	(port
+		(pt 0 201)
+		(input)
+		(text "mem_bg_0" (rect 0 0 47 12)(font "SansSerif" (font_size 8)))
+		(text "mem_bg_0" (rect 4 190 52 201)(font "SansSerif" (font_size 8)))
+		(line (pt 0 201)(pt 119 201)(line_width 1))
+	)
+	(port
+		(pt 0 226)
+		(input)
+		(text "mem_act_n_0" (rect 0 0 60 12)(font "SansSerif" (font_size 8)))
+		(text "mem_act_n_0" (rect 4 215 70 226)(font "SansSerif" (font_size 8)))
+		(line (pt 0 226)(pt 119 226)(line_width 1))
+	)
+	(port
+		(pt 0 251)
+		(input)
+		(text "mem_par_0" (rect 0 0 50 12)(font "SansSerif" (font_size 8)))
+		(text "mem_par_0" (rect 4 240 58 251)(font "SansSerif" (font_size 8)))
+		(line (pt 0 251)(pt 119 251)(line_width 1))
+	)
+	(port
+		(pt 0 401)
+		(input)
+		(text "mem_ck_t_0" (rect 0 0 55 12)(font "SansSerif" (font_size 8)))
+		(text "mem_ck_t_0" (rect 4 390 64 401)(font "SansSerif" (font_size 8)))
+		(line (pt 0 401)(pt 119 401)(line_width 1))
+	)
+	(port
+		(pt 0 426)
+		(input)
+		(text "mem_ck_c_0" (rect 0 0 57 12)(font "SansSerif" (font_size 8)))
+		(text "mem_ck_c_0" (rect 4 415 64 426)(font "SansSerif" (font_size 8)))
+		(line (pt 0 426)(pt 119 426)(line_width 1))
+	)
+	(port
+		(pt 0 476)
+		(input)
+		(text "mem_reset_n_0" (rect 0 0 68 12)(font "SansSerif" (font_size 8)))
+		(text "mem_reset_n_0" (rect 4 465 82 476)(font "SansSerif" (font_size 8)))
+		(line (pt 0 476)(pt 119 476)(line_width 1))
+	)
+	(port
+		(pt 0 351)
+		(output)
+		(text "mem_alert_n_0" (rect 0 0 64 12)(font "SansSerif" (font_size 8)))
+		(text "mem_alert_n_0" (rect 4 340 82 351)(font "SansSerif" (font_size 8)))
+	)
+	(port
+		(pt 0 526)
+		(output)
+		(text "oct_rzqin_0" (rect 0 0 46 12)(font "SansSerif" (font_size 8)))
+		(text "oct_rzqin_0" (rect 4 515 70 526)(font "SansSerif" (font_size 8)))
+	)
+	(port
+		(pt 0 276)
+		(bidir)
+		(text "mem_dq_0[31..0]" (rect 0 0 70 12)(font "SansSerif" (font_size 8)))
+		(text "mem_dq_0[31..0]" (rect 4 265 94 276)(font "SansSerif" (font_size 8)))
+		(line (pt 0 276)(pt 119 276)(line_width 3))
+	)
+	(port
+		(pt 0 301)
+		(bidir)
+		(text "mem_dqs_t_0[3..0]" (rect 0 0 80 12)(font "SansSerif" (font_size 8)))
+		(text "mem_dqs_t_0[3..0]" (rect 4 290 106 301)(font "SansSerif" (font_size 8)))
+		(line (pt 0 301)(pt 119 301)(line_width 3))
+	)
+	(port
+		(pt 0 326)
+		(bidir)
+		(text "mem_dqs_c_0[3..0]" (rect 0 0 82 12)(font "SansSerif" (font_size 8)))
+		(text "mem_dqs_c_0[3..0]" (rect 4 315 106 326)(font "SansSerif" (font_size 8)))
+		(line (pt 0 326)(pt 119 326)(line_width 3))
+	)
+	(drawing
+		(text "mem_0" (rect 76 46 182 105)(font "SansSerif" (color 128 0 0)(font_size 9)))
+		(text "mem_cke" (rect 124 71 290 152)(font "SansSerif" (color 0 0 0)))
+		(text "mem_odt" (rect 124 96 290 202)(font "SansSerif" (color 0 0 0)))
+		(text "mem_cs_n" (rect 124 121 296 252)(font "SansSerif" (color 0 0 0)))
+		(text "mem_a" (rect 124 146 278 302)(font "SansSerif" (color 0 0 0)))
+		(text "mem_ba" (rect 124 171 284 352)(font "SansSerif" (color 0 0 0)))
+		(text "mem_bg" (rect 124 196 284 402)(font "SansSerif" (color 0 0 0)))
+		(text "mem_act_n" (rect 124 221 302 452)(font "SansSerif" (color 0 0 0)))
+		(text "mem_par" (rect 124 246 290 502)(font "SansSerif" (color 0 0 0)))
+		(text "mem_dq" (rect 124 271 284 552)(font "SansSerif" (color 0 0 0)))
+		(text "mem_dqs_t" (rect 124 296 302 602)(font "SansSerif" (color 0 0 0)))
+		(text "mem_dqs_c" (rect 124 321 302 652)(font "SansSerif" (color 0 0 0)))
+		(text "mem_alert_n" (rect 124 346 314 702)(font "SansSerif" (color 0 0 0)))
+		(text "mem_ck_0" (rect 55 371 158 755)(font "SansSerif" (color 128 0 0)(font_size 9)))
+		(text "mem_ck_t" (rect 124 396 296 802)(font "SansSerif" (color 0 0 0)))
+		(text "mem_ck_c" (rect 124 421 296 852)(font "SansSerif" (color 0 0 0)))
+		(text "mem_reset_n" (rect 38 446 142 905)(font "SansSerif" (color 128 0 0)(font_size 9)))
+		(text "mem_reset_n" (rect 124 471 314 952)(font "SansSerif" (color 0 0 0)))
+		(text "oct_0" (rect 88 496 206 1005)(font "SansSerif" (color 128 0 0)(font_size 9)))
+		(text "oct_rzqin" (rect 124 521 302 1052)(font "SansSerif" (color 0 0 0)))
+		(text " pipeline_mem_0 " (rect 251 551 598 1112)(font "SansSerif" ))
+		(line (pt 119 34)(pt 204 34)(line_width 1))
+		(line (pt 204 34)(pt 204 551)(line_width 1))
+		(line (pt 119 551)(pt 204 551)(line_width 1))
+		(line (pt 119 34)(pt 119 551)(line_width 1))
+		(line (pt 320 351)(pt 119 351)(line_width 1))
+		(line (pt 120 55)(pt 120 355)(line_width 1))
+		(line (pt 121 55)(pt 121 355)(line_width 1))
+		(line (pt 120 380)(pt 120 430)(line_width 1))
+		(line (pt 121 380)(pt 121 430)(line_width 1))
+		(line (pt 120 455)(pt 120 480)(line_width 1))
+		(line (pt 121 455)(pt 121 480)(line_width 1))
+		(line (pt 320 526)(pt 119 526)(line_width 1))
+		(line (pt 120 505)(pt 120 530)(line_width 1))
+		(line (pt 121 505)(pt 121 530)(line_width 1))
+		(line (pt 0 0)(pt 320 0)(line_width 1))
+		(line (pt 320 0)(pt 320 568)(line_width 1))
+		(line (pt 0 568)(pt 320 568)(line_width 1))
+		(line (pt 0 0)(pt 0 568)(line_width 1))
+	)
+)

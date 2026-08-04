@@ -1,4 +1,4 @@
-# system info pipeline on 2026.07.29.16:41:39
+# system info pipeline on 2026.07.31.13:49:44
 system_info:
 name,value
 DEVICE,A5ED065BB32AE6SR0
@@ -6,7 +6,7 @@ DEVICE_FAMILY,Agilex 5
 GENERATION_ID,0
 #
 #
-# Files generated for pipeline on 2026.07.29.16:41:39
+# Files generated for pipeline on 2026.07.31.13:49:44
 files:
 filepath,kind,attributes,module,is_top
 sim/pipeline.v,VERILOG,CONTAINS_INLINE_CONFIGURATION,pipeline,true
@@ -21,5 +21,6 @@ pipeline.clock_in,pipeline_clock_in
 pipeline.intel_vvp_pipeline2_0,pipeline_intel_vvp_pipeline2_0
 pipeline.intel_vvp_protocol_conv_0,pipeline_intel_vvp_protocol_conv_0
 pipeline.intel_vvp_tpg_1,pipeline_intel_vvp_tpg_1
+pipeline.mem_0,pipeline_mem_0
 pipeline.reset_in,pipeline_reset_in
 pipeline.rst_controller,altera_reset_controller

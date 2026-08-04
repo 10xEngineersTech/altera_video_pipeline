@@ -11,7 +11,7 @@ module pipeline (
 		output wire        s0_readdatavalid,                                  //                                    .readdatavalid
 		input  wire [0:0]  s0_burstcount,                                     //                                    .burstcount
 		input  wire [31:0] s0_writedata,                                      //                                    .writedata
-		input  wire [11:0] s0_address,                                        //                                    .address
+		input  wire [12:0] s0_address,                                        //                                    .address
 		input  wire        s0_write,                                          //                                    .write
 		input  wire        s0_read,                                           //                                    .read
 		input  wire [3:0]  s0_byteenable,                                     //                                    .byteenable
@@ -21,11 +21,11 @@ module pipeline (
 		output wire        s_axis_video_in_tready,                            //                                    .tready
 		input  wire        s_axis_video_in_tlast,                             //                                    .tlast
 		input  wire [2:0]  s_axis_video_in_tuser,                             //                                    .tuser
-		output wire [23:0] m_axis_video_out_tdata,                            //                    m_axis_video_out.tdata
+		output wire [15:0] m_axis_video_out_tdata,                            //                    m_axis_video_out.tdata
 		output wire        m_axis_video_out_tvalid,                           //                                    .tvalid
 		input  wire        m_axis_video_out_tready,                           //                                    .tready
 		output wire        m_axis_video_out_tlast,                            //                                    .tlast
-		output wire [2:0]  m_axis_video_out_tuser,                            //                                    .tuser
+		output wire [1:0]  m_axis_video_out_tuser,                            //                                    .tuser
 		input  wire [23:0] axi4s_vid_in_tdata,                                //                        axi4s_vid_in.tdata
 		input  wire        axi4s_vid_in_tvalid,                               //                                    .tvalid
 		output wire        axi4s_vid_in_tready,                               //                                    .tready
@@ -77,7 +77,7 @@ module pipeline (
 		.s0_readdatavalid        (s0_readdatavalid),                  //  output,   width = 1,                 .readdatavalid
 		.s0_burstcount           (s0_burstcount),                     //   input,   width = 1,                 .burstcount
 		.s0_writedata            (s0_writedata),                      //   input,  width = 32,                 .writedata
-		.s0_address              (s0_address),                        //   input,  width = 12,                 .address
+		.s0_address              (s0_address),                        //   input,  width = 13,                 .address
 		.s0_write                (s0_write),                          //   input,   width = 1,                 .write
 		.s0_read                 (s0_read),                           //   input,   width = 1,                 .read
 		.s0_byteenable           (s0_byteenable),                     //   input,   width = 4,                 .byteenable
@@ -87,11 +87,11 @@ module pipeline (
 		.s_axis_video_in_tready  (s_axis_video_in_tready),            //  output,   width = 1,                 .tready
 		.s_axis_video_in_tlast   (s_axis_video_in_tlast),             //   input,   width = 1,                 .tlast
 		.s_axis_video_in_tuser   (s_axis_video_in_tuser),             //   input,   width = 3,                 .tuser
-		.m_axis_video_out_tdata  (m_axis_video_out_tdata),            //  output,  width = 24, m_axis_video_out.tdata
+		.m_axis_video_out_tdata  (m_axis_video_out_tdata),            //  output,  width = 16, m_axis_video_out.tdata
 		.m_axis_video_out_tvalid (m_axis_video_out_tvalid),           //  output,   width = 1,                 .tvalid
 		.m_axis_video_out_tready (m_axis_video_out_tready),           //   input,   width = 1,                 .tready
 		.m_axis_video_out_tlast  (m_axis_video_out_tlast),            //  output,   width = 1,                 .tlast
-		.m_axis_video_out_tuser  (m_axis_video_out_tuser)             //  output,   width = 3,                 .tuser
+		.m_axis_video_out_tuser  (m_axis_video_out_tuser)             //  output,   width = 2,                 .tuser
 	);
 
 	pipeline_intel_vvp_protocol_conv_0 intel_vvp_protocol_conv_0 (
@@ -133,6 +133,25 @@ module pipeline (
 		.av_mm_control_agent_readdata      (intel_vvp_tpg_1_av_mm_control_agent_readdata),      //  output,  width = 32,                    .readdata
 		.av_mm_control_agent_readdatavalid (intel_vvp_tpg_1_av_mm_control_agent_readdatavalid), //  output,   width = 1,                    .readdatavalid
 		.av_mm_control_agent_waitrequest   (intel_vvp_tpg_1_av_mm_control_agent_waitrequest)    //  output,   width = 1,                    .waitrequest
+	);
+
+	pipeline_mem_0 mem_0 (
+		.mem_cke_0     (), //   input,   width = 1,       mem_0.mem_cke
+		.mem_odt_0     (), //   input,   width = 1,            .mem_odt
+		.mem_cs_n_0    (), //   input,   width = 1,            .mem_cs_n
+		.mem_a_0       (), //   input,  width = 17,            .mem_a
+		.mem_ba_0      (), //   input,   width = 2,            .mem_ba
+		.mem_bg_0      (), //   input,   width = 1,            .mem_bg
+		.mem_act_n_0   (), //   input,   width = 1,            .mem_act_n
+		.mem_par_0     (), //   input,   width = 1,            .mem_par
+		.mem_dq_0      (), //   inout,  width = 32,            .mem_dq
+		.mem_dqs_t_0   (), //   inout,   width = 4,            .mem_dqs_t
+		.mem_dqs_c_0   (), //   inout,   width = 4,            .mem_dqs_c
+		.mem_alert_n_0 (), //  output,   width = 1,            .mem_alert_n
+		.mem_ck_t_0    (), //   input,   width = 1,    mem_ck_0.mem_ck_t
+		.mem_ck_c_0    (), //   input,   width = 1,            .mem_ck_c
+		.mem_reset_n_0 (), //   input,   width = 1, mem_reset_n.mem_reset_n
+		.oct_rzqin_0   ()  //  output,   width = 1,       oct_0.oct_rzqin
 	);
 
 	pipeline_reset_in reset_in (

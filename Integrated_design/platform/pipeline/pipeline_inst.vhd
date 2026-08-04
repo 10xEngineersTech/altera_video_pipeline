@@ -17,11 +17,11 @@
 			s_axis_video_in_tready                            : out std_logic;                                        -- tready
 			s_axis_video_in_tlast                             : in  std_logic                     := 'X';             -- tlast
 			s_axis_video_in_tuser                             : in  std_logic_vector(2 downto 0)  := (others => 'X'); -- tuser
-			m_axis_video_out_tdata                            : out std_logic_vector(23 downto 0);                    -- tdata
+			m_axis_video_out_tdata                            : out std_logic_vector(15 downto 0);                    -- tdata
 			m_axis_video_out_tvalid                           : out std_logic;                                        -- tvalid
 			m_axis_video_out_tready                           : in  std_logic                     := 'X';             -- tready
 			m_axis_video_out_tlast                            : out std_logic;                                        -- tlast
-			m_axis_video_out_tuser                            : out std_logic_vector(2 downto 0);                     -- tuser
+			m_axis_video_out_tuser                            : out std_logic_vector(1 downto 0);                     -- tuser
 			axi4s_vid_in_tdata                                : in  std_logic_vector(23 downto 0) := (others => 'X'); -- tdata
 			axi4s_vid_in_tvalid                               : in  std_logic                     := 'X';             -- tvalid
 			axi4s_vid_in_tready                               : out std_logic;                                        -- tready

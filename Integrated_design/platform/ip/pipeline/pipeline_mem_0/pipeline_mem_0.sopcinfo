@@ -1,0 +1,1169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EnsembleReport
+ name="pipeline_mem_0"
+ kind="pipeline_mem_0"
+ version="1.0"
+ fabric="QSYS">
+ <!-- Format version 25.1.1 125 (Future versions may contain additional information.) -->
+ <!-- 2026.07.31.13:49:18 -->
+ <!-- A collection of modules and connections -->
+ <parameter name="AUTO_GENERATION_ID">
+  <type>java.lang.Integer</type>
+  <value>0</value>
+  <derived>false</derived>
+  <enabled>true</enabled>
+  <visible>false</visible>
+  <valid>true</valid>
+  <sysinfo_type>GENERATION_ID</sysinfo_type>
+ </parameter>
+ <parameter name="AUTO_UNIQUE_ID">
+  <type>java.lang.String</type>
+  <value></value>
+  <derived>false</derived>
+  <enabled>true</enabled>
+  <visible>false</visible>
+  <valid>true</valid>
+  <sysinfo_type>UNIQUE_ID</sysinfo_type>
+ </parameter>
+ <parameter name="AUTO_DEVICE_FAMILY">
+  <type>java.lang.String</type>
+  <value>Agilex 5</value>
+  <derived>false</derived>
+  <enabled>true</enabled>
+  <visible>false</visible>
+  <valid>true</valid>
+  <sysinfo_type>DEVICE_FAMILY</sysinfo_type>
+ </parameter>
+ <parameter name="AUTO_DEVICE">
+  <type>java.lang.String</type>
+  <value>A5ED065BB32AE6SR0</value>
+  <derived>false</derived>
+  <enabled>true</enabled>
+  <visible>false</visible>
+  <valid>true</valid>
+  <sysinfo_type>DEVICE</sysinfo_type>
+ </parameter>
+ <parameter name="AUTO_DEVICE_SPEEDGRADE">
+  <type>java.lang.String</type>
+  <value>6</value>
+  <derived>false</derived>
+  <enabled>true</enabled>
+  <visible>false</visible>
+  <valid>true</valid>
+  <sysinfo_type>DEVICE_SPEEDGRADE</sysinfo_type>
+ </parameter>
+ <parameter name="AUTO_BOARD">
+  <type>java.lang.String</type>
+  <value>Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1</value>
+  <derived>false</derived>
+  <enabled>true</enabled>
+  <visible>false</visible>
+  <valid>true</valid>
+  <sysinfo_type>BOARD</sysinfo_type>
+ </parameter>
+ <parameter name="deviceFamily">
+  <type>java.lang.String</type>
+  <value>Agilex 5</value>
+  <derived>false</derived>
+  <enabled>true</enabled>
+  <visible>false</visible>
+  <valid>true</valid>
+  <sysinfo_type>DEVICE_FAMILY</sysinfo_type>
+ </parameter>
+ <parameter name="generateLegacySim">
+  <type>boolean</type>
+  <value>false</value>
+  <derived>false</derived>
+  <enabled>true</enabled>
+  <visible>true</visible>
+  <valid>true</valid>
+ </parameter>
+ <module
+   name="mem_0"
+   kind="emif_io96b_mem_model_ddr4"
+   version="1.0.0"
+   entity="altera_emif_ddr4_model_top"
+   library="emif_io96b_mem_model_ddr4_100"
+   path="mem_0"
+   hpath="mem_0"
+   className="emif_io96b_mem_model_ddr4">
+  <!-- Describes a single module. Module parameters are
+the requested settings for a module instance. -->
+  <parameter name="SYSINFO_BOARD">
+   <type>java.lang.String</type>
+   <value>Agilex 5 FPGA E-Series 065B Modular Development Kit MK-A5E065BB32AES1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>BOARD</sysinfo_type>
+  </parameter>
+  <parameter name="SYSINFO_BOARD_TRAIT">
+   <type>java.lang.String</type>
+   <value></value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>BOARD_TRAIT</sysinfo_type>
+  </parameter>
+  <parameter name="SYSINFO_DEVICE">
+   <type>java.lang.String</type>
+   <value>A5ED065BB32AE6SR0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>DEVICE</sysinfo_type>
+  </parameter>
+  <parameter name="SYSINFO_DEVICE_FAMILY">
+   <type>java.lang.String</type>
+   <value>Agilex 5</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>DEVICE_FAMILY</sysinfo_type>
+  </parameter>
+  <parameter name="SYSINFO_DEVICE_SPEEDGRADE">
+   <type>java.lang.String</type>
+   <value>6</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>DEVICE_SPEEDGRADE</sysinfo_type>
+  </parameter>
+  <parameter name="SYSINFO_DEVICE_DIE_REVISIONS">
+   <type>[Ljava.lang.String;</type>
+   <value>MAIN_SM7_REVA</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>DEVICE_DIE_REVISIONS</sysinfo_type>
+  </parameter>
+  <parameter name="SYSINFO_DEVICE_TEMPERATURE_GRADE">
+   <type>java.lang.String</type>
+   <value>EXTENDED</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>PART_TRAIT</sysinfo_type>
+   <sysinfo_arg>DEVICE_TEMPERATURE_GRADE</sysinfo_arg>
+  </parameter>
+  <parameter name="SYSINFO_DEVICE_POWER_MODEL">
+   <type>java.lang.String</type>
+   <value>STANDARD_POWER_FIXED</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>PART_TRAIT</sysinfo_type>
+   <sysinfo_arg>DEVICE_POWER_MODEL</sysinfo_arg>
+  </parameter>
+  <parameter name="SYSINFO_SUPPORTS_VID">
+   <type>java.lang.String</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>PART_TRAIT</sysinfo_type>
+   <sysinfo_arg>SUPPORTS_VID</sysinfo_arg>
+  </parameter>
+  <parameter name="SYSINFO_DEVICE_IOBANK_REVISION">
+   <type>java.lang.String</type>
+   <value>IO96B</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>PART_TRAIT</sysinfo_type>
+   <sysinfo_arg>DEVICE_IOBANK_REVISION</sysinfo_arg>
+  </parameter>
+  <parameter name="SYSINFO_DEVICE_GROUP">
+   <type>[Ljava.lang.String;</type>
+   <value>B</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>DEVICE_INFO</sysinfo_type>
+   <sysinfo_arg>DEVICE_GROUP</sysinfo_arg>
+  </parameter>
+  <parameter name="SYSINFO_DEVICE_BASE_DIE">
+   <type>java.lang.String</type>
+   <value>SM7</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+   <sysinfo_type>PART_TRAIT</sysinfo_type>
+   <sysinfo_arg>BASE_DEVICE</sysinfo_arg>
+  </parameter>
+  <parameter name="CTRL_DMDBI_EN">
+   <type>java.lang.String</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_FORMAT_ENUM">
+   <type>java.lang.String</type>
+   <value>MEM_FORMAT_DISCRETE</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_NUM_DIMMS">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_RANKS_PER_DIMM_HDL">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_AC_MIRROR_EN">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_CLAMSHELL_EN">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_ROW_ADDR_WIDTH">
+   <type>int</type>
+   <value>16</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_COL_ADDR_WIDTH">
+   <type>int</type>
+   <value>10</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_CK_T_WIDTH">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_CK_C_WIDTH">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_CKE_WIDTH">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_ODT_WIDTH">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_CS_N_WIDTH">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_A_WIDTH">
+   <type>int</type>
+   <value>17</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_BANK_GROUP_ADDR_WIDTH">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_BANK_ADDR_WIDTH">
+   <type>int</type>
+   <value>2</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_DQ_WIDTH">
+   <type>int</type>
+   <value>32</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_DQS_T_WIDTH">
+   <type>int</type>
+   <value>4</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_DQS_C_WIDTH">
+   <type>int</type>
+   <value>4</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_DBI_N_WIDTH">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_ALERT_N_WIDTH">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_PAR_WIDTH">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_ACT_N_WIDTH">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_RESET_N_WIDTH">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_CHIP_ID_WIDTH">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_WR_PREAMBLE_MODE">
+   <type>double</type>
+   <value>1.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_RD_PREAMBLE_MODE">
+   <type>double</type>
+   <value>1.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_AC_PARITY_LATENCY_MODE">
+   <type>double</type>
+   <value>0.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_CL_CYC">
+   <type>double</type>
+   <value>11.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_CWL_CYC">
+   <type>double</type>
+   <value>9.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_AL_CYC">
+   <type>double</type>
+   <value>0.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_WR_CRC_EN">
+   <type>double</type>
+   <value>0.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_FINE_GRANULARITY_REFRESH_MODE">
+   <type>double</type>
+   <value>0.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TREFI_NS">
+   <type>double</type>
+   <value>7800.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TRAS_MIN_NS">
+   <type>double</type>
+   <value>0.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TRAS_MAX_NS">
+   <type>double</type>
+   <value>0.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TRAS_NS">
+   <type>double</type>
+   <value>32.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TRCD_NS">
+   <type>double</type>
+   <value>12.5</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TRP_NS">
+   <type>double</type>
+   <value>12.5</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TRC_NS">
+   <type>double</type>
+   <value>44.5</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TCCD_L_NS">
+   <type>double</type>
+   <value>6.25</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TCCD_S_NS">
+   <type>double</type>
+   <value>5.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_PAGE_SIZE">
+   <type>double</type>
+   <value>0.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TRRD_L_NS">
+   <type>double</type>
+   <value>6.4</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TRRD_S_NS">
+   <type>double</type>
+   <value>5.3</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TFAW_NS">
+   <type>double</type>
+   <value>35.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TWTR_L_NS">
+   <type>double</type>
+   <value>7.5</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TWTR_S_NS">
+   <type>double</type>
+   <value>2.5</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TWTR_L_CRC_DM_NS">
+   <type>double</type>
+   <value>0.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TWTR_S_CRC_DM_NS">
+   <type>double</type>
+   <value>0.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TRTP_NS">
+   <type>double</type>
+   <value>0.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TWR_NS">
+   <type>double</type>
+   <value>15.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TWR_CRC_DM_NS">
+   <type>double</type>
+   <value>0.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TMRD_NS">
+   <type>double</type>
+   <value>10.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TCKSRE_NS">
+   <type>double</type>
+   <value>10.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TCKSRX_NS">
+   <type>double</type>
+   <value>10.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TCKE_NS">
+   <type>double</type>
+   <value>5.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TCKESR_CYC">
+   <type>double</type>
+   <value>5.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TMPRR_NS">
+   <type>double</type>
+   <value>1.25</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TRFC_NS">
+   <type>double</type>
+   <value>350.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TDQSCK_MAX_MIN_NS">
+   <type>double</type>
+   <value>0.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TDQSCK_NS">
+   <type>double</type>
+   <value>0.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TRFC_DLR_NS">
+   <type>double</type>
+   <value>0.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TRRD_DLR_NS">
+   <type>double</type>
+   <value>0.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TFAW_DLR_NS">
+   <type>double</type>
+   <value>0.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TCCD_DLR_NS">
+   <type>double</type>
+   <value>0.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TXP_NS">
+   <type>double</type>
+   <value>6.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TXS_NS">
+   <type>double</type>
+   <value>360.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TXS_DLL_NS">
+   <type>double</type>
+   <value>1280.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TCPDED_NS">
+   <type>double</type>
+   <value>5.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TMOD_NS">
+   <type>double</type>
+   <value>30.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TZQCS_NS">
+   <type>double</type>
+   <value>160.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TZQINIT_CYC">
+   <type>double</type>
+   <value>1024.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TZQOPER_CYC">
+   <type>double</type>
+   <value>512.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TCK_CL_CWL_MIN_NS">
+   <type>double</type>
+   <value>0.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_TCK_CL_CWL_MAX_NS">
+   <type>double</type>
+   <value>0.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_SPD137_RCD_CA_DRV">
+   <type>double</type>
+   <value>0.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_SPD138_RCD_CK_DRV">
+   <type>double</type>
+   <value>0.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_RCD_PARITY_LATENCY_CONTROL_WORD">
+   <type>double</type>
+   <value>0.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MEM_RCD_PARITY_LATENCY_CYC">
+   <type>double</type>
+   <value>0.0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <interface name="mem_0" kind="conduit_end" version="25.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedReset">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="prSafe">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>conduit</type>
+   <span>0</span>
+   <isStart>false</isStart>
+   <port>
+    <name>mem_cke_0</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>mem_cke</role>
+   </port>
+   <port>
+    <name>mem_odt_0</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>mem_odt</role>
+   </port>
+   <port>
+    <name>mem_cs_n_0</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>mem_cs_n</role>
+   </port>
+   <port>
+    <name>mem_a_0</name>
+    <direction>Input</direction>
+    <width>17</width>
+    <role>mem_a</role>
+   </port>
+   <port>
+    <name>mem_ba_0</name>
+    <direction>Input</direction>
+    <width>2</width>
+    <role>mem_ba</role>
+   </port>
+   <port>
+    <name>mem_bg_0</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>mem_bg</role>
+   </port>
+   <port>
+    <name>mem_act_n_0</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>mem_act_n</role>
+   </port>
+   <port>
+    <name>mem_par_0</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>mem_par</role>
+   </port>
+   <port>
+    <name>mem_dq_0</name>
+    <direction>Bidir</direction>
+    <width>32</width>
+    <role>mem_dq</role>
+   </port>
+   <port>
+    <name>mem_dqs_t_0</name>
+    <direction>Bidir</direction>
+    <width>4</width>
+    <role>mem_dqs_t</role>
+   </port>
+   <port>
+    <name>mem_dqs_c_0</name>
+    <direction>Bidir</direction>
+    <width>4</width>
+    <role>mem_dqs_c</role>
+   </port>
+   <port>
+    <name>mem_alert_n_0</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>mem_alert_n</role>
+   </port>
+  </interface>
+  <interface name="mem_ck_0" kind="conduit_end" version="25.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedReset">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="prSafe">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>conduit</type>
+   <span>0</span>
+   <isStart>false</isStart>
+   <port>
+    <name>mem_ck_t_0</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>mem_ck_t</role>
+   </port>
+   <port>
+    <name>mem_ck_c_0</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>mem_ck_c</role>
+   </port>
+  </interface>
+  <interface name="mem_reset_n" kind="conduit_end" version="25.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedReset">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="prSafe">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>conduit</type>
+   <span>0</span>
+   <isStart>false</isStart>
+   <port>
+    <name>mem_reset_n_0</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>mem_reset_n</role>
+   </port>
+  </interface>
+  <interface name="oct_0" kind="conduit_end" version="25.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedReset">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="prSafe">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>conduit</type>
+   <span>0</span>
+   <isStart>false</isStart>
+   <port>
+    <name>oct_rzqin_0</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>oct_rzqin</role>
+   </port>
+  </interface>
+ </module>
+ <plugin>
+  <instanceCount>1</instanceCount>
+  <name>emif_io96b_mem_model_ddr4</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IModule</subtype>
+  <displayName>MODULE_DISPLAY_NAME</displayName>
+  <version>1.0.0</version>
+ </plugin>
+ <plugin>
+  <instanceCount>4</instanceCount>
+  <name>conduit_end</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
+  <displayName>Conduit</displayName>
+  <version>25.1</version>
+ </plugin>
+ <reportVersion>25.1.1 125</reportVersion>
+ <uniqueIdentifier></uniqueIdentifier>
+</EnsembleReport>

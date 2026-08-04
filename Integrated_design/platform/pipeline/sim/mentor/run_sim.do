@@ -1,33 +1,33 @@
 
 # Move to sim directory
-cd /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/../platform/pipeline/sim/mentor
+cd {/home/izaan-10xe/altera_video_pipeline (copy)/Integrated_design/app/../platform/pipeline/sim/mentor}
 
 # Setup and Compile IP
-set QUARTUS_INSTALL_DIR /home/lpt-10xe/altera_pro/25.1.1/quartus
-# 25.1.1 scatters the sim-lib sources; use the stitched dir built by setup_sim_libs.sh
-set QUARTUS_SIM_LIB_DIR /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/../sim_libs
+set QUARTUS_INSTALL_DIR {/home/izaan-10xe/altera_pro/25.1.1/quartus}
 source msim_setup.tcl
 
-# Compile Device Libraries
-dev_com
+# DPI required by the io96b EMIF model (see runProject.py notes)
+vlog -sv /home/izaan-10xe/altera_pro/25.1.1/quartus/eda/sim_lib/simsf_dpi.cpp
 
 # Compile IP
 com
 
 # Compile RTL and TB
-vlog /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/../rtl/tb.v
-vlog /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/../rtl/top.v
-vlog /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/../rtl/make_file.v
-vlog /home/lpt-10xe/altera_projects/altera_video_pipeline/Integrated_design/app/../rtl/controller.v
+# Paths are Tcl-brace-quoted: the containing folder can legally have spaces/
+# parens in its name (e.g. "altera_video_pipeline (copy)"), which otherwise
+# splits an unquoted path into multiple words and breaks every command that
+# takes a single path argument (cd, vlog, ...).
+vlog {/home/izaan-10xe/altera_video_pipeline (copy)/Integrated_design/app/../rtl/tb.v}
+vlog {/home/izaan-10xe/altera_video_pipeline (copy)/Integrated_design/app/../rtl/top.v}
+vlog {/home/izaan-10xe/altera_video_pipeline (copy)/Integrated_design/app/../rtl/make_file.v}
+vlog {/home/izaan-10xe/altera_video_pipeline (copy)/Integrated_design/app/../rtl/controller.v}
 
 # Elaborate
 set TOP_LEVEL_NAME work.tb
-set USER_DEFINED_ELAB_OPTIONS {-voptargs="+acc"}
+set USER_DEFINED_ELAB_OPTIONS {-voptargs="+acc" -suppress 7041 -suppress 7033}
 elab_debug
 
-# Add Waves (only useful if GUI opens, but harmless in command line)
-add wave /tb/dut/*
-add wave -r /*
+# Waves skipped: headless run. Set FRC_WAVES=1 to force them on.
 
 # Run simulation
 run -all

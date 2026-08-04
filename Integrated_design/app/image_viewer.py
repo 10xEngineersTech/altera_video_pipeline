@@ -243,6 +243,13 @@ class ImageViewerWindow(Gtk.Window):
         self.pip_checkbox.connect("toggled", self._on_pip_toggled)
         self.pip_group_box.pack_start(self.pip_checkbox, False, False, 0)
 
+        # Frame Rate Conversion: routes the scaler output through the Lite->Full
+        # converter into the video frame buffer, which writes it to the external
+        # DDR4 memory model through the internal EMIF and reads it back. Note the
+        # DDR4 calibration in simulation is slow (hours) - see runProject.py.
+        self.frc_checkbox = Gtk.CheckButton(label="Enable Frame Rate Conversion")
+        self.pip_group_box.pack_start(self.frc_checkbox, False, False, 0)
+
         pip_color_hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
         pip_color_lbl = Gtk.Label(label="Background Color")
         pip_color_lbl.set_xalign(0)
@@ -570,6 +577,7 @@ class ImageViewerWindow(Gtk.Window):
             "csc_mode":  self._get_csc_mode(),
             "tpg_cs":    self._get_tpg_colorspace(),
             "pip_enabled":  self.pip_checkbox.get_active(),
+            "frc_enabled":  self.frc_checkbox.get_active(),
             "pip_color":    self._get_pip_color(),
             "pip_position": self._get_pip_position(),
         }
@@ -626,6 +634,7 @@ class ImageViewerWindow(Gtk.Window):
 
         # Restore PIP settings
         self.pip_checkbox.set_active(data.get("pip_enabled", False))
+        self.frc_checkbox.set_active(data.get("frc_enabled", False))
         pip_color = data.get("pip_color", 2)
         if 0 <= pip_color <= 2:
             self.pip_color_combo.set_active(pip_color)
@@ -768,6 +777,7 @@ class ImageViewerWindow(Gtk.Window):
                 out_h = values["tpg_h"]
 
             pip_enabled = self.pip_checkbox.get_active()
+            frc_enabled = self.frc_checkbox.get_active()
             pip_color   = self._get_pip_color()
             pip_pos     = self._get_pip_position()
             has_csc     = meta["csc"]
@@ -802,6 +812,17 @@ class ImageViewerWindow(Gtk.Window):
                 output_format = self._get_output_format()
 
             # Inset position within the background canvas.
+            # Chroma-subsampled (4:2:2/4:2:0) data shares Cb/Cr across column/
+            # line PAIRS anchored to absolute position in the composited
+            # output - an odd inset offset shifts that pairing phase for the
+            # whole foreground region, corrupting it exactly like an odd
+            # CLIPPER_LEFT/RIGHT does (confirmed: max_h_off // 2 landing on an
+            # odd number was already enough to trigger it, with no odd value
+            # ever entered directly). Round down to even everywhere an offset
+            # is produced - harmless no-op for 4:4:4/RGB, required for 4:2:2/
+            # 4:2:0.
+            def _even(n):
+                return n - (n % 2)
             max_h_off = max(0, values["pip_bg_w"] - out_w)
             max_v_off = max(0, values["pip_bg_h"] - out_h)
             if pip_pos == "custom":
@@ -817,6 +838,7 @@ class ImageViewerWindow(Gtk.Window):
                 pip_h_off, pip_v_off = max_h_off, max_v_off
             else:  # center
                 pip_h_off, pip_v_off = max_h_off // 2, max_v_off // 2
+            pip_h_off, pip_v_off = _even(pip_h_off), _even(pip_v_off)
 
             # Note: the mixer's one-time settling artifact on the first row it
             # composites in a field is now handled transparently in tb.v (a
@@ -844,6 +866,7 @@ class ImageViewerWindow(Gtk.Window):
                 # Actual pipeline OUTPUT format for the decoder (after CSC/CRS)
                 f.write(f"output_format = {output_format}\n")
                 f.write(f"pip_enable = {1 if pip_enabled else 0}\n")
+                f.write(f"frame_rate_conversion = {1 if frc_enabled else 0}\n")
                 f.write(f"pip_bg_color = {pip_color}\n")
                 f.write(f"pip_position = {pip_pos}\n")
                 f.write(f"pip_h_offset = {pip_h_off}\n")
@@ -865,6 +888,7 @@ class ImageViewerWindow(Gtk.Window):
                 f.write(f"parameter TPG_COLORSPACE  = {tpg_cs};\n")
                 f.write(f"parameter VID_PLANES      = {self._get_vid_planes()};\n")
                 f.write(f"parameter PIP_ENABLE      = {1 if pip_enabled else 0};\n")
+                f.write(f"parameter FRC_ENABLE      = {1 if frc_enabled else 0};\n")
                 f.write(f"parameter PIP_BG_COLOR    = {pip_color};\n")
                 f.write(f"parameter PIP_BG_W        = {values['pip_bg_w']};\n")
                 f.write(f"parameter PIP_BG_H        = {values['pip_bg_h']};\n")

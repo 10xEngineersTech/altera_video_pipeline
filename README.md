@@ -9,7 +9,9 @@ the captured output frame as a PNG.
 
 | | |
 | :--- | :--- |
-| **Topologies** | 7 selectable datapaths:<br/>`FULL` — complete pipeline<br/>`SCALER_ONLY` — Scaler only<br/>`CLIP_SCL` — Clipper → Scaler<br/>`CSC_ONLY` — Color Space Converter only<br/>`CRS_ONLY` — Chroma Resampler only<br/>`CRS_CSC` — Chroma Resampler → Color Space Converter<br/>`DIL_ONLY` — Deinterlacer only |
+| | |
+| :--- | :--- |
+| **Topologies** | 7 selectable datapaths:<br/>`DIL_ONLY` — Deinterlacer<br/>`CRS_ONLY` — Chroma Resampler<br/>`CSC_ONLY` — Color Space Converter<br/>`CRS_CSC` — Chroma Resampler → Color Space Converter<br/>`SCALER_ONLY` — Protocol Converter (Full→Lite) → Scaler<br/>`CLIP_SCL` — Clipper → Protocol Converter (Full→Lite) → Scaler<br/>`FULL` — Deinterlacer → Chroma Resampler → Color Space Converter → Clipper → Protocol Converter (Full→Lite) → Scaler |
 | **Picture-in-Picture (PiP)** | Can be switched on with any topology. A second TPG draws a plain background picture, and the Mixer places the pipeline video on top of it as a smaller window. You choose the background size, its color, and where the small video sits |
 | **Frame Rate Conversion (FRC)** | Can be switched on with any topology. Each frame is stored in external DDR4 memory through the Frame Buffer and then read back out. If the write and read speeds differ, the Frame Buffer either drops frames or repeats them — and it counts both, so you can see exactly what happened |
 | **IPs integrated** | TPG, Deinterlacer, Chroma Resampler, Color Space Converter, Clipper, Protocol Converters, Scaler, Mixer (PiP), Video Frame Buffer + DDR4 EMIF |
@@ -67,8 +69,8 @@ python3 image_viewer.py
 2. **Choose an input source** — TPG (test pattern) or `image.png`.
 3. **Set parameters** — input resolution, clipper offsets, scaler output, CRS/CSC modes,
    optional PiP and Frame Rate Conversion. Or hit **Load** on a saved preset.
-4. **Run Simulation** — the app writes the config, patches the RTL, launches `vsim`, and
-   converts the captured frame.
+4. **Run Simulation** — the app applies your settings to the RTL, runs the simulation, and turns
+   the captured frame into a picture (details below).
 5. **View the result** — the badge turns `READY [<topology>]` and `result.png` appears in the
    viewer with its dimensions.
 
@@ -78,17 +80,55 @@ headless batch run.
 ### What happens on "Run Simulation"
 
 ```mermaid
-graph LR
-    GUI[image_viewer.py] --> VH[configuration.vh<br/>Verilog parameters]
-    GUI --> CFG[pipeline_config.txt<br/>Python-readable config]
-    GUI --> PATCH["RTL patch:<br/>TOPOLOGY / CSC_MODE / CRS_OUTPUT_MODE"]
-    VH --> SIM
+flowchart LR
+    GUI["GUI settings"] --> VH["configuration.vh<br/>Verilog parameters"]
+    GUI --> PATCH["patched tb.v / top.v<br/>TOPOLOGY, CSC_MODE, CRS_OUTPUT_MODE"]
+    GUI --> CFG["pipeline_config.txt<br/>settings for the decoder"]
+    VH --> SIM["runProject.py → vsim<br/>compile + simulate"]
     PATCH --> SIM
-    SIM[runProject.py → vsim] --> HEX[app/sc_data.txt<br/>captured frame]
-    HEX --> PNG[hex_to_png.py]
+    SIM --> HEX["sc_data.txt<br/>one captured frame, as hex"]
+    HEX --> PNG["hex_to_png.py"]
     CFG --> PNG
-    PNG --> OUT[app/result.png]
+    PNG --> OUT["result.png<br/>shown in the GUI"]
 ```
+
+The GUI is not connected to the simulator directly — it cannot "send" values to a running
+simulation. Instead it writes your settings into files that the simulator reads while
+compiling, then starts the simulator. Five steps run one after another:
+
+**1 · Write the Verilog settings file.** Your numbers (input resolution, clipper offsets,
+scaler output size, PiP settings, …) are written to `app/configuration.vh` as plain Verilog
+`parameter` lines. `tb.v` has an `` `include "../app/configuration.vh" `` at the top, so
+recompiling picks up the new values automatically.
+
+**2 · Patch the RTL.** A few settings cannot travel through that include file, because they are
+written directly inside the RTL sources: `TOPOLOGY` in `tb.v` and `top.v`, and `CSC_MODE` and
+`CRS_OUTPUT_MODE` in `top.v`. So the app opens those `.v` files, finds those lines, and rewrites
+the values in place — an ordinary text find-and-replace on the source code. That edit is what
+"patching the RTL" means. For example, choosing `SCALER_ONLY` in the GUI changes this line in
+`tb.v`:
+
+```verilog
+localparam TOPOLOGY = "FULL";          // before
+localparam TOPOLOGY = "SCALER_ONLY";   // after the patch
+```
+
+> Because these are real edits to tracked files, `tb.v` and `top.v` will show up as modified in
+> `git status` after a run. That is expected — it is your last GUI selection, not an accidental
+> change.
+
+**3 · Write the decoder config.** The same settings are written again to
+`app/pipeline_config.txt`, this time as simple `key = value` text, because the Python script
+that renders the image needs to know the frame size and the pixel format to expect.
+
+**4 · Run the simulation.** `runProject.py` generates a QuestaSim script (`run_sim.do`) that
+compiles the Platform Designer IP and the four RTL files, then launches `vsim` — headless
+(`-c`) normally, or with the GUI and waveforms (`-gui`) in debug mode. The testbench captures
+one complete output frame and dumps it as hex text to `app/sc_data.txt`.
+
+**5 · Render the picture.** `hex_to_png.py` reads `sc_data.txt`, decodes it as RGB, 4:4:4, 4:2:2
+or 4:2:0 according to `pipeline_config.txt`, and saves `app/result.png` — which the GUI then
+displays.
 
 ---
 
@@ -190,13 +230,13 @@ patches into the RTL before each run — inactive stages are bypassed in the sam
 
 | Topology | Active stages | Output protocol | Enabled GUI controls |
 | :--- | :--- | :--- | :--- |
-| `FULL` | DIL → CRS → CSC → Clipper → Protocol Conv → Scaler | Lite | all |
-| `SCALER_ONLY` | Scaler | Lite | scaler |
-| `CLIP_SCL` | Clipper → Protocol Conv → Scaler | Lite | clipper, scaler |
-| `CSC_ONLY` | CSC | Full | CSC mode |
-| `CRS_ONLY` | CRS | Full | CRS mode |
-| `CRS_CSC` | CRS → CSC | Full | CRS + CSC modes |
 | `DIL_ONLY` | Deinterlacer | Full | — |
+| `CRS_ONLY` | Chroma Resampler | Full | CRS mode |
+| `CSC_ONLY` | Color Space Converter | Full | CSC mode |
+| `CRS_CSC` | Chroma Resampler → Color Space Converter | Full | CRS + CSC modes |
+| `SCALER_ONLY` | Protocol Converter (Full→Lite) → Scaler | Lite | scaler |
+| `CLIP_SCL` | Clipper → Protocol Converter (Full→Lite) → Scaler | Lite | clipper, scaler |
+| `FULL` | Deinterlacer → Chroma Resampler → Color Space Converter → Clipper → Protocol Converter (Full→Lite) → Scaler | Lite | all |
 
 Controls that don't apply to the selected topology are greyed out, and for non-scaler
 topologies the output dimensions automatically track the input resolution.

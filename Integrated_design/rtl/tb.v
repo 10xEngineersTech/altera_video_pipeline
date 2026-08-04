@@ -118,6 +118,21 @@ module tb();
     reg [31:0] frc_in_period_r = 32'd0;
     reg [31:0] otg_period_r  = 32'd0;
     integer    nat_period;        // measured cycles per frame, unthrottled
+    // Raised once frc_calibrate has measured the natural period AND applied the
+    // throttled rates. The image player restarts its numbered sequence at frame
+    // 1 on this edge, and frame capture only begins here - so every captured
+    // frame is one that was subject to the 2:1 conversion. Without it the
+    // calibration pass (both pacers OFF, by necessity) lets the first several
+    // frames through untouched, which reads as "conversion not working".
+    reg        rates_applied = 1'b0;
+    // Capture is enabled LATER than rates_applied. When the rates go live the
+    // frame buffer still holds frames written during the calibration pass -
+    // it is triple buffered, so up to 3 can be in flight in DDR4 - and the
+    // reader emits those stale frames before it reaches the restarted
+    // sequence. That is why an "8" appeared at the head of the dump. Drain by
+    // the MEASURED backlog (in - dropped - out) before capturing, so the dump
+    // contains only post-restart frames.
+    reg        capture_en = 1'b0;
     integer    per_in, per_out;   // absolute frame periods we will impose
 
     // READ rate is now set by the DESIGN's output timing generator, not by the
@@ -232,7 +247,17 @@ module tb();
         .reset     (cap_reset),
         .tdata     (out_tdata),
         .tvalid    (out_tvalid),
-        .tready    (out_tready & (dut.current_state == dut.ST_WORKING)),
+        // Capture only frames that were actually rate-converted: the
+        // calibration pass runs with both pacers OFF (it has to, to measure the
+        // natural period), so frames passing during it are NOT converted and
+        // would read as "conversion not working".
+        // NOT gated on ST_WORKING when FRC is on: the measurement window polls
+        // the VFB counters, which repeatedly takes the FSM into the ST_FRC_RD_*
+        // states. Gating on ST_WORKING therefore switched capture OFF during
+        // every poll and silently lost output frames (8 captured vs 12 counted).
+        // rates_applied alone is the correct gate.
+        .tready    (ENABLE_FRC ? (out_tready & capture_en)
+                               : (out_tready & (dut.current_state == dut.ST_WORKING))),
         .tlast     (out_tlast),
         .tuser     (out_tuser),
         .frame_done(frame_done),
@@ -320,15 +345,25 @@ module tb();
 
         // Wait for first clean SOF after ST_WORKING.
         // frame_controller auto-resets on this SOF and captures the frame.
-        wait(out_tvalid && out_tuser[0]);
-        $display("[%0t] SOF detected - capturing frame.", $time);
-
-        wait(frame_done);
-        $display("[%0t] Frame written to sc_data.txt.", $time);
-
         if (!ENABLE_FRC) begin
+            // non-FRC: capture the first clean frame and stop
+            wait(out_tvalid && out_tuser[0]);
+            $display("[%0t] SOF detected - capturing frame.", $time);
+            wait(frame_done);
+            $display("[%0t] Frame written to sc_data.txt.", $time);
             $finish;
         end else begin
+            // ORDER MATTERS: calibrate FIRST, then capture.
+            //
+            // Capture is gated on rates_applied so that only rate-converted
+            // frames are written - but rates_applied is set inside
+            // frc_calibrate. Waiting for frame_done before calibrating is
+            // therefore a deadlock: no capture until rates are applied, no
+            // rates until the wait completes. Calibrate, then let frames land.
+            frc_calibrate;
+
+            wait(out_tvalid && out_tuser[0]);
+            $display("[%0t] SOF after rates applied - capturing.", $time);
             // =================================================================
             // FRC MEASUREMENT WINDOW
             //
@@ -342,7 +377,6 @@ module tb();
             // So: settle, snapshot, run a known number of output frames,
             // snapshot again, and judge only the DELTAS.
             // =================================================================
-            frc_calibrate;
             frc_measure;
             frc_report;
             $finish;
@@ -353,7 +387,7 @@ module tb();
     // Measurement window state
     // ---------------------------------------------------------------------
     localparam integer FRC_SETTLE_FRAMES = 2;    // discard startup transient
-    localparam integer FRC_WINDOW_FRAMES = 16;   // 16 sink frames (expect 32 source frames in)
+    localparam integer FRC_WINDOW_FRAMES = 16;   // output frames measured
 
     integer a_in, a_drop, a_out, a_rpt;          // snapshot A (window start)
     integer b_in, b_drop, b_out, b_rpt;          // snapshot B (window end)
@@ -421,7 +455,7 @@ module tb();
     task automatic frc_calibrate;
         integer i0, dr0, o0, rp0, i1, dr1, o1, rp1;
         reg [63:0] c0, c1;
-        integer basis, fastest;
+        integer basis, fastest, backlog, drain_to;
         begin
             frc_in_period_r = 32'd0;   // unthrottled for the measurement
             otg_period_r = 32'd0;
@@ -462,6 +496,21 @@ module tb();
                      per_in, per_out, per_out / per_in,
                      (((per_out * 100) / per_in) / 10) % 10, ((per_out * 100) / per_in) % 10);
 
+            rates_applied = 1'b1;
+            $display("[FRC] rates now active - image sequence restarts at frame 1");
+
+            // Drain the frames already in DDR4 from the calibration pass.
+            frc_snapshot(i1, dr1, o1, rp1);
+            backlog = i1 - dr1 - o1;          // written, not dropped, not yet read
+            drain_to = o1 + backlog + 1;      // +1 for the frame in the pipeline
+            $display("[FRC] draining %0d stale frame(s) before capture (out=%0d -> %0d)",
+                     backlog + 1, o1, drain_to);
+            while (o1 < drain_to) begin
+                repeat (200) @(posedge clk);
+                frc_snapshot(i1, dr1, o1, rp1);
+            end
+            $display("[FRC] buffer drained (out=%0d) - capture starts at window open", o1);
+
             // let the new rates take effect before measuring
             frc_wait_out(2, i1, dr1, o1, rp1);
         end
@@ -475,12 +524,18 @@ module tb();
             // writer starts ~2 frames ahead - that is not conversion)
             frc_wait_out(FRC_SETTLE_FRAMES, t_i, t_dr, t_o, t_rp);
             frc_snapshot(a_in, a_drop, a_out, a_rpt);
-            $display("[%0t] FRC window OPEN : in=%0d drop=%0d out=%0d rpt=%0d",
+            // Capture is bounded by the window so the image count matches the
+            // measured frame count exactly. Enabling it earlier (at the drain)
+            // captured frames from before the window opened and after it closed,
+            // giving 20 images for a 16-frame measurement.
+            capture_en = 1'b1;
+            $display("[%0t] FRC window OPEN : in=%0d drop=%0d out=%0d rpt=%0d  (capture ON)",
                      $time, a_in, a_drop, a_out, a_rpt);
 
             // measure a known number of OUTPUT frames
             frc_wait_out(FRC_WINDOW_FRAMES, b_in, b_drop, b_out, b_rpt);
-            $display("[%0t] FRC window CLOSE: in=%0d drop=%0d out=%0d rpt=%0d",
+            capture_en = 1'b0;
+            $display("[%0t] FRC window CLOSE: in=%0d drop=%0d out=%0d rpt=%0d  (capture OFF)",
                      $time, b_in, b_drop, b_out, b_rpt);
 
             d_in   = b_in   - a_in;
@@ -592,42 +647,67 @@ module tb();
     // =========================================================================
     generate
         if (INPUT_SEL == 1'b1) begin : gen_img
-            reg [23:0] img_mem [0 : TPG_WIDTH * TPG_HEIGHT - 1];
-            integer px, py;
+            // Numbered frame sequence from app/make_test_frames.py: NUM_IMG
+            // frames, each carrying its index as digits on a distinct
+            // background colour. Played in a continuous LOOP so the sequence
+            // never starves the measurement window - DDR4 calibration and the
+            // settle phase both consume frames before the window even opens, so
+            // a single pass of 32 would run out.
+            //
+            // The point of the loop: the tags on the frames that come OUT tell
+            // you exactly which inputs the frame buffer kept and which it
+            // discarded, rather than just how many.
+            localparam integer NUM_IMG   = 32;
+            localparam integer IMG_PIX   = TPG_WIDTH * TPG_HEIGHT;
+            reg [23:0] img_mem [0 : NUM_IMG*IMG_PIX - 1];
+            integer px, py, fr;
+            reg     seen_rates;
 
             initial begin
                 $readmemh("../../../../app/image_data.txt", img_mem);
-                $display("[IMG] Loaded %0dx%0d image.", TPG_WIDTH, TPG_HEIGHT);
+                $display("[IMG] Loaded %0d frames of %0dx%0d (%0d words).",
+                         NUM_IMG, TPG_WIDTH, TPG_HEIGHT, NUM_IMG*IMG_PIX);
 
-                // With FRC the frame buffer must be FED before its read side is
-                // released, and ST_WORKING is only reached after that handshake -
-                // so waiting for ST_WORKING here would deadlock. ready_to_start
-                // opens at the start of the FRC bring-up phase instead. Without
-                // FRC ready_to_start == (state==ST_WORKING), so this is
-                // unchanged for every existing topology.
+                // ready_to_start (not ST_WORKING): with FRC the frame buffer
+                // must be fed BEFORE its read side is released, and ST_WORKING
+                // is only reached after that handshake.
                 wait(dut.ready_to_start);
                 repeat(5) @(posedge clk);
+                $display("[IMG] Streaming numbered frames...");
 
-                $display("[IMG] Sending image...");
-                @(posedge clk); #1;
-
-                for (py = 0; py < TPG_HEIGHT; py = py + 1) begin
-                    for (px = 0; px < TPG_WIDTH; px = px + 1) begin
-                        pc1_in_tdata  = img_mem[py * TPG_WIDTH + px];
-                        pc1_in_tvalid = 1'b1;
-                        pc1_in_tuser  = (px==0 && py==0) ? 3'b001 : 3'b000;
-                        pc1_in_tlast  = (px==TPG_WIDTH-1) ? 1'b1 : 1'b0;
-
-                        @(posedge clk);
-                        while (!pc1_in_tready) @(posedge clk);
-                        #1;
+                // Stream continuously. Video MUST flow during calibration or
+                // the natural period cannot be measured - so the sequence runs
+                // from the start, then RESTARTS at frame 1 the moment the
+                // throttled rates go live. Everything captured after that point
+                // is genuinely rate-converted.
+                fr = 0;
+                seen_rates = 1'b0;
+                forever begin
+                    if (rates_applied && !seen_rates) begin
+                        seen_rates = 1'b1;
+                        fr         = 0;
+                        $display("[IMG] restarting numbered sequence at frame 1");
                     end
+
+                    for (py = 0; py < TPG_HEIGHT; py = py + 1) begin
+                        for (px = 0; px < TPG_WIDTH; px = px + 1) begin
+                            pc1_in_tdata  = img_mem[fr*IMG_PIX + py*TPG_WIDTH + px];
+                            pc1_in_tvalid = 1'b1;
+                            pc1_in_tuser  = (px==0 && py==0) ? 3'b001 : 3'b000;
+                            pc1_in_tlast  = (px==TPG_WIDTH-1) ? 1'b1 : 1'b0;
+
+                            @(posedge clk);
+                            while (!pc1_in_tready) @(posedge clk);
+                            #1;
+                        end
+                    end
+                    fr = (fr + 1) % NUM_IMG;
                 end
 
                 pc1_in_tvalid = 1'b0;
                 pc1_in_tlast  = 1'b0;
                 pc1_in_tuser  = 3'b000;
-                $display("[IMG] Image sent.");
+                $display("[IMG] Sequence exhausted.");
             end
         end
     endgenerate

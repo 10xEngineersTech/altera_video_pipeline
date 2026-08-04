@@ -1,7 +1,7 @@
 // Auto-generated Configuration Header
 
 parameter DEBUG_MODE      = 0;
-parameter INPUT_SEL       = 0;
+parameter INPUT_SEL       = 1;
 parameter TPG_WIDTH       = 10;
 parameter TPG_HEIGHT      = 10;
 parameter CLIPPER_TOP     = 0;

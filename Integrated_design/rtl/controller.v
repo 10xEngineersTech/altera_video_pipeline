@@ -66,6 +66,13 @@ module frame_controller #(
                     if (line_count == (IMG_H + SKIP_ROWS - 1)) begin
                         frame_done <= 1'b1;
                         sof        <= 1'b0;
+                        // MUST reset: without it line_count stays at IMG_H-1
+                        // into the next frame's SOF, where the sanity check
+                        // below reads it as a broken frame and raises `error`.
+                        // make_file's error handler reopens the capture file
+                        // with "w", truncating away the pixel just written -
+                        // which silently corrupted every frame after the first.
+                        line_count <= 0;
                     end else begin
                         line_count <= line_count + 1;
                     end
@@ -79,7 +86,13 @@ module frame_controller #(
     // write_flag: capture pixel when handshake active, inside frame,
     // not done, within bounds, not a metapacket, and past the discarded
     // SKIP_ROWS guard rows at the top of the frame.
-    assign write_flag = (frame_active || start_of_frame) && !frame_done &&
+    // start_of_frame must OVERRIDE frame_done. frame_done is still set from the
+    // PREVIOUS frame on the SOF cycle - it is cleared by a non-blocking
+    // assignment that only lands next cycle - so gating the SOF pixel on
+    // !frame_done silently dropped the first pixel of every frame after the
+    // first. That shifted the whole raster by one pixel and cost the last
+    // pixel of the frame, which showed up as visibly offset/clipped images.
+    assign write_flag = ((frame_active && !frame_done) || start_of_frame) &&
                         (pixel_count < IMG_W) &&
                         (line_count  >= SKIP_ROWS) &&
                         (line_count  < (IMG_H + SKIP_ROWS));
